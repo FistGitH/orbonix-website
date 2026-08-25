@@ -1,1 +1,6031 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ORBONIX · Exploring Space</title>
+<style>
 
+
+/* =====================================
+   BASIC
+===================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+
+    margin: 0;
+    padding: 0;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    background: #02030a;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+}
+
+
+/* =====================================
+   HERO
+===================================== */
+
+.orbonix-hero {
+
+    position: relative;
+
+    width: 100%;
+
+    height: 650px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 50%,
+            #11162b 0%,
+            #050712 45%,
+            #010208 100%
+        );
+
+    isolation: isolate;
+}
+
+
+/* =====================================
+   STARS
+===================================== */
+
+.stars {
+
+    position: absolute;
+
+    inset: -12%;
+
+    width: 124%;
+    height: 124%;
+
+    pointer-events: none;
+}
+
+.stars-back {
+    z-index: 1;
+}
+
+.stars-mid {
+    z-index: 2;
+}
+
+.stars-front {
+    z-index: 3;
+}
+
+
+.star {
+
+    position: absolute;
+
+    width: 2px;
+    height: 2px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    opacity: 0.7;
+
+    box-shadow:
+        0 0 5px
+        rgba(255,255,255,0.8);
+}
+
+
+.star.small {
+
+    width: 1px;
+    height: 1px;
+
+    opacity: 0.45;
+}
+
+
+.star.bright {
+
+    width: 3px;
+    height: 3px;
+
+    opacity: 0.95;
+
+    box-shadow:
+
+        0 0 5px white,
+
+        0 0 12px
+        rgba(160,190,255,0.7),
+
+        0 0 20px
+        rgba(120,150,255,0.4);
+}
+
+
+/* =====================================
+   NEBULA
+===================================== */
+
+.nebula {
+
+    position: absolute;
+
+    width: 850px;
+    height: 850px;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background:
+
+        radial-gradient(
+            ellipse,
+
+            rgba(50,85,180,0.25)
+            0%,
+
+            rgba(80,40,170,0.16)
+            25%,
+
+            rgba(20,30,100,0.09)
+            45%,
+
+            transparent
+            70%
+        );
+
+    filter: blur(45px);
+
+    z-index: 0;
+
+    pointer-events: none;
+}
+
+
+.nebula2 {
+
+    position: absolute;
+
+    width: 600px;
+    height: 400px;
+
+    left: 20%;
+    top: 25%;
+
+    border-radius: 50%;
+
+    background:
+
+        radial-gradient(
+            ellipse,
+
+            rgba(100,50,200,0.16),
+
+            transparent 70%
+        );
+
+    filter: blur(60px);
+
+    z-index: 0;
+
+    pointer-events: none;
+}
+
+
+/* =====================================
+   CONTENT
+===================================== */
+
+.content {
+
+    position: absolute;
+
+    z-index: 10;
+
+    inset: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    color: white;
+
+    padding: 30px;
+}
+
+
+/* =====================================
+   LOGO
+===================================== */
+
+.logo {
+
+    font-size:
+        clamp(
+            52px,
+            9vw,
+            110px
+        );
+
+    font-weight: 800;
+
+    letter-spacing:
+        0.18em;
+
+    margin-left:
+        0.18em;
+
+    background:
+
+        linear-gradient(
+            120deg,
+
+            #ffffff,
+
+            #b8c7ff,
+
+            #ffffff
+        );
+
+    -webkit-background-clip:
+        text;
+
+    background-clip:
+        text;
+
+    color:
+        transparent;
+
+    text-shadow:
+
+        0 0 25px
+        rgba(130,160,255,0.18),
+
+        0 0 70px
+        rgba(70,90,255,0.08);
+
+    transition:
+        transform
+        0.25s ease;
+}
+
+
+/* =====================================
+   TAGLINE
+===================================== */
+
+.tagline {
+
+    margin-top:
+        12px;
+
+    font-size:
+        clamp(
+            15px,
+            2vw,
+            23px
+        );
+
+    letter-spacing:
+        0.32em;
+
+    margin-left:
+        0.32em;
+
+    font-weight:
+        300;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.78
+        );
+}
+
+
+/* =====================================
+   DESCRIPTION
+===================================== */
+
+.description {
+
+    max-width:
+        620px;
+
+    margin-top:
+        25px;
+
+    font-size:
+        15px;
+
+    line-height:
+        1.7;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.58
+        );
+}
+
+
+/* =====================================
+   BUTTONS
+===================================== */
+
+.buttons {
+
+    display:
+        flex;
+
+    gap:
+        16px;
+
+    margin-top:
+        35px;
+
+    flex-wrap:
+        wrap;
+
+    justify-content:
+        center;
+}
+
+
+/* =====================================
+   BUTTON
+===================================== */
+
+.orbonix-button {
+
+    position:
+        relative;
+
+    padding:
+        15px 30px;
+
+    min-height:
+        48px;
+
+    border-radius:
+        30px;
+
+    border:
+        1px solid
+        rgba(
+            160,
+            180,
+            255,
+            0.35
+        );
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.045
+        );
+
+    color:
+        white;
+
+    font-size:
+        13px;
+
+    letter-spacing:
+        0.14em;
+
+    cursor:
+        pointer;
+
+    overflow:
+        visible;
+
+    backdrop-filter:
+        blur(10px);
+
+    -webkit-backdrop-filter:
+        blur(10px);
+
+    transition:
+
+        transform
+        0.18s ease,
+
+        background
+        0.25s ease,
+
+        border-color
+        0.25s ease,
+
+        box-shadow
+        0.25s ease;
+
+    box-shadow:
+
+        0 0 20px
+        rgba(
+            80,
+            100,
+            255,
+            0.06
+        );
+
+    user-select:
+        none;
+
+    -webkit-tap-highlight-color:
+        transparent;
+}
+
+
+/* =====================================
+   PC HOVER
+===================================== */
+
+@media (hover: hover) {
+
+    .orbonix-button:hover {
+
+        background:
+            rgba(
+                110,
+                130,
+                255,
+                0.10
+            );
+
+        border-color:
+            rgba(
+                180,
+                195,
+                255,
+                0.75
+            );
+
+        box-shadow:
+
+            0 0 25px
+            rgba(
+                100,
+                130,
+                255,
+                0.22
+            ),
+
+            0 0 60px
+            rgba(
+                70,
+                90,
+                255,
+                0.08
+            );
+
+        transform:
+            translateY(-3px);
+    }
+}
+
+
+/* =====================================
+   CLICK
+===================================== */
+
+.orbonix-button.clicked {
+
+    transform:
+        scale(0.90);
+}
+
+
+/* =====================================
+   RIPPLE
+===================================== */
+
+.ripple {
+
+    position:
+        absolute;
+
+    left:
+        50%;
+
+    top:
+        50%;
+
+    width:
+        20px;
+
+    height:
+        20px;
+
+    border-radius:
+        50%;
+
+    border:
+        1px solid
+        rgba(
+            180,
+            200,
+            255,
+            0.9
+        );
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        )
+        scale(0);
+
+    pointer-events:
+        none;
+
+    animation:
+        rippleAnimation
+        0.75s
+        ease-out
+        forwards;
+}
+
+
+@keyframes rippleAnimation {
+
+    0% {
+
+        transform:
+            translate(
+                -50%,
+                -50%
+            )
+            scale(0);
+
+        opacity:
+            1;
+    }
+
+    100% {
+
+        transform:
+            translate(
+                -50%,
+                -50%
+            )
+            scale(12);
+
+        opacity:
+            0;
+    }
+}
+
+
+/* =====================================
+   ORBIT
+===================================== */
+
+.orbit-ring {
+
+    position:
+        absolute;
+
+    left:
+        50%;
+
+    top:
+        50%;
+
+    width:
+        120px;
+
+    height:
+        45px;
+
+    border:
+        1px solid
+        rgba(
+            150,
+            180,
+            255,
+            0
+        );
+
+    border-radius:
+        50%;
+
+    transform:
+
+        translate(
+            -50%,
+            -50%
+        )
+
+        rotate(-18deg)
+
+        scale(0.3);
+
+    pointer-events:
+        none;
+
+    animation:
+        orbitAnimation
+        0.9s
+        ease-out
+        forwards;
+}
+
+
+@keyframes orbitAnimation {
+
+    0% {
+
+        opacity:
+            0;
+
+        transform:
+
+            translate(
+                -50%,
+                -50%
+            )
+
+            rotate(-18deg)
+
+            scale(0.3);
+
+        border-color:
+            rgba(
+                150,
+                180,
+                255,
+                0
+            );
+    }
+
+    20% {
+
+        opacity:
+            1;
+
+        border-color:
+            rgba(
+                150,
+                180,
+                255,
+                0.9
+            );
+    }
+
+    100% {
+
+        opacity:
+            0;
+
+        transform:
+
+            translate(
+                -50%,
+                -50%
+            )
+
+            rotate(25deg)
+
+            scale(1.5);
+
+        border-color:
+            rgba(
+                150,
+                180,
+                255,
+                0
+            );
+    }
+}
+
+
+/* =====================================
+   PARTICLES
+===================================== */
+
+.energy {
+
+    position:
+        absolute;
+
+    width:
+        4px;
+
+    height:
+        4px;
+
+    border-radius:
+        50%;
+
+    background:
+        white;
+
+    box-shadow:
+
+        0 0 8px white,
+
+        0 0 15px
+        rgba(
+            120,
+            150,
+            255,
+            0.8
+        );
+
+    pointer-events:
+        none;
+
+    animation:
+        energyAnimation
+        0.8s
+        ease-out
+        forwards;
+}
+
+
+@keyframes energyAnimation {
+
+    0% {
+
+        opacity:
+            1;
+
+        transform:
+            translate(
+                0,
+                0
+            )
+            scale(1);
+    }
+
+    100% {
+
+        opacity:
+            0;
+
+        transform:
+            translate(
+                var(--x),
+                var(--y)
+            )
+            scale(0);
+    }
+}
+
+
+/* =====================================
+   VIGNETTE
+===================================== */
+
+.vignette {
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    z-index:
+        8;
+
+    pointer-events:
+        none;
+
+    background:
+
+        radial-gradient(
+            circle,
+
+            transparent
+            40%,
+
+            rgba(
+                0,
+                0,
+                0,
+                0.42
+            )
+            100%
+        );
+}
+
+
+/* =====================================
+   TABLET
+===================================== */
+
+@media (
+    max-width: 900px
+) {
+
+    .orbonix-hero {
+
+        height:
+            620px;
+    }
+
+    .logo {
+
+        font-size:
+            clamp(
+                55px,
+                11vw,
+                90px
+            );
+    }
+}
+
+
+/* =====================================
+   PHONE
+===================================== */
+
+@media (
+    max-width: 600px
+) {
+
+    .orbonix-hero {
+
+        height:
+            600px;
+    }
+
+    .content {
+
+        padding:
+            20px;
+    }
+
+    .logo {
+
+        font-size:
+            clamp(
+                48px,
+                16vw,
+                72px
+            );
+
+        letter-spacing:
+            0.13em;
+
+        margin-left:
+            0.13em;
+    }
+
+    .tagline {
+
+        max-width:
+            330px;
+
+        font-size:
+            13px;
+
+        line-height:
+            1.6;
+
+        letter-spacing:
+            0.15em;
+
+        margin-left:
+            0.15em;
+    }
+
+    .description {
+
+        max-width:
+            330px;
+
+        margin-top:
+            18px;
+
+        font-size:
+            14px;
+
+        line-height:
+            1.6;
+    }
+
+    .buttons {
+
+        width:
+            100%;
+
+        max-width:
+            330px;
+
+        flex-direction:
+            column;
+
+        gap:
+            12px;
+
+        margin-top:
+            28px;
+    }
+
+    .orbonix-button {
+
+        width:
+            100%;
+
+        min-height:
+            54px;
+
+        display:
+            flex;
+
+        justify-content:
+            center;
+
+        align-items:
+            center;
+
+        padding:
+            16px 20px;
+
+        font-size:
+            12px;
+
+        letter-spacing:
+            0.13em;
+    }
+
+    .nebula {
+
+        width:
+            650px;
+
+        height:
+            650px;
+    }
+
+    .nebula2 {
+
+        width:
+            450px;
+
+        height:
+            300px;
+    }
+}
+
+
+/* =====================================
+   VERY SMALL PHONE
+===================================== */
+
+@media (
+    max-width: 380px
+) {
+
+    .orbonix-hero {
+
+        height:
+            570px;
+    }
+
+    .logo {
+
+        font-size:
+            43px;
+    }
+
+    .tagline {
+
+        font-size:
+            11px;
+    }
+
+    .description {
+
+        font-size:
+            13px;
+    }
+}
+
+
+/* =====================================
+   TOUCH DEVICE
+===================================== */
+
+@media (
+    hover: none
+) {
+
+    .orbonix-button:active {
+
+        transform:
+            scale(0.92);
+
+        background:
+            rgba(
+                110,
+                130,
+                255,
+                0.14
+            );
+    }
+}
+
+
+
+
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #02050b;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   SECTION
+========================================= */
+
+.orbonix-news {
+    position: relative;
+
+    width: 100%;
+    min-height: 760px;
+
+    padding: 120px 5vw;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 20% 50%,
+            rgba(45,80,140,.12),
+            transparent 45%
+        ),
+        #02050b;
+}
+
+
+/* =========================================
+   BACKGROUND
+========================================= */
+
+.news-stars {
+    position: absolute;
+
+    inset: -15%;
+
+    pointer-events: none;
+
+    opacity: .35;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.8) 1px,
+            transparent 1px
+        );
+
+    background-size: 110px 110px;
+
+    transition:
+        transform 1s
+        cubic-bezier(.2,.8,.2,1);
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.news-header {
+    position: relative;
+
+    z-index: 2;
+
+    text-align: center;
+
+    margin-bottom: 70px;
+}
+
+.news-label {
+
+    font-size: 11px;
+
+    letter-spacing: 5px;
+
+    color:
+        rgba(255,255,255,.45);
+
+    margin-bottom: 18px;
+}
+
+.news-title {
+
+    margin: 0;
+
+    font-size:
+        clamp(40px,6vw,72px);
+
+    letter-spacing: 4px;
+}
+
+.news-subtitle {
+
+    max-width: 600px;
+
+    margin:
+        22px auto 0;
+
+    color:
+        rgba(255,255,255,.55);
+
+    font-size: 14px;
+
+    line-height: 1.7;
+}
+
+.news-line {
+
+    width: 0;
+
+    height: 1px;
+
+    margin:
+        28px auto 0;
+
+    background:
+        rgba(255,255,255,.7);
+
+    transition:
+        width 1.2s ease;
+}
+
+.orbonix-news.visible
+.news-line {
+
+    width: 180px;
+}
+
+
+/* =========================================
+   NEWS GRID
+========================================= */
+
+.news-grid {
+
+    position: relative;
+
+    z-index: 2;
+
+    width:
+        min(1250px,100%);
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        1.5fr 1fr 1fr;
+
+    gap: 22px;
+}
+
+
+/* =========================================
+   NEWS CARD
+========================================= */
+
+.news-card {
+
+    position: relative;
+
+    min-height: 390px;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        rgba(255,255,255,.13);
+
+    background: #070b13;
+
+    opacity: 0;
+
+    transform:
+        translateY(60px);
+
+    transition:
+        opacity .8s ease,
+        transform .8s ease,
+        border-color .35s ease,
+        box-shadow .35s ease;
+}
+
+.orbonix-news.visible
+.news-card {
+
+    opacity: 1;
+
+    transform:
+        translateY(0);
+}
+
+.orbonix-news.visible
+.news-card:nth-child(1) {
+    transition-delay: .15s;
+}
+
+.orbonix-news.visible
+.news-card:nth-child(2) {
+    transition-delay: .3s;
+}
+
+.orbonix-news.visible
+.news-card:nth-child(3) {
+    transition-delay: .45s;
+}
+
+
+/* =========================================
+   NEWS IMAGE
+========================================= */
+
+.news-image {
+
+    position: absolute;
+
+    inset: -25px;
+
+    transition:
+        transform .8s
+        cubic-bezier(.2,.8,.2,1);
+}
+
+
+/* =========================================
+   NEWS VISUALS
+========================================= */
+
+.news-space {
+
+    background:
+
+        radial-gradient(
+            circle at 70% 35%,
+            #d6c28d 0 8%,
+            #75684f 9%,
+            transparent 18%
+        ),
+
+        radial-gradient(
+            circle at 25% 20%,
+            rgba(255,255,255,.9) 1px,
+            transparent 2px
+        ),
+
+        linear-gradient(
+            135deg,
+            #03070f,
+            #132542 55%,
+            #02050b
+        );
+}
+
+
+.news-telescope {
+
+    background:
+
+        radial-gradient(
+            ellipse at 55% 50%,
+            rgba(120,160,230,.4),
+            transparent 28%
+        ),
+
+        radial-gradient(
+            circle at 30% 35%,
+            rgba(255,255,255,.9) 1px,
+            transparent 2px
+        ),
+
+        linear-gradient(
+            120deg,
+            #090414,
+            #111c38,
+            #03050b
+        );
+}
+
+
+.news-mars {
+
+    background:
+
+        radial-gradient(
+            circle at 65% 50%,
+            #c9683f 0 12%,
+            #763b2d 13%,
+            transparent 24%
+        ),
+
+        linear-gradient(
+            180deg,
+            #02050b,
+            #16233a 55%,
+            #26100b
+        );
+}
+
+
+/* =========================================
+   IMAGE OVERLAY
+========================================= */
+
+.news-image::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            transparent 25%,
+            rgba(0,0,0,.92) 100%
+        );
+}
+
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.news-content {
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    padding: 30px;
+
+    z-index: 3;
+}
+
+.news-date {
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    color:
+        rgba(255,255,255,.4);
+
+    margin-bottom: 12px;
+}
+
+.news-card-title {
+
+    margin: 0;
+
+    font-size: 25px;
+
+    line-height: 1.2;
+
+    letter-spacing: 1px;
+}
+
+.news-text {
+
+    margin:
+        14px 0 22px;
+
+    color:
+        rgba(255,255,255,.6);
+
+    font-size: 13px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   BUTTON
+========================================= */
+
+.news-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding:
+        10px 16px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.3);
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    transition:
+        background .3s ease,
+        color .3s ease,
+        transform .3s ease;
+}
+
+.news-arrow {
+
+    transition:
+        transform .3s ease;
+}
+
+.news-button:hover {
+
+    background: white;
+
+    color: #02050b;
+
+    transform:
+        translateY(-3px);
+}
+
+.news-button:hover
+.news-arrow {
+
+    transform:
+        translateX(5px);
+}
+
+
+/* =========================================
+   HOVER
+========================================= */
+
+.news-card:hover {
+
+    border-color:
+        rgba(255,255,255,.55);
+
+    box-shadow:
+        0 30px 90px
+        rgba(0,0,0,.45);
+}
+
+.news-card:hover
+.news-image {
+
+    transform:
+        scale(1.08);
+}
+
+
+/* =========================================
+   TOP CORNER
+========================================= */
+
+.news-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 20px;
+    right: 20px;
+
+    width: 28px;
+    height: 28px;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,.3);
+
+    border-right:
+        1px solid
+        rgba(255,255,255,.3);
+
+    z-index: 4;
+
+    transition:
+        width .3s ease,
+        height .3s ease;
+}
+
+.news-card:hover::before {
+
+    width: 43px;
+    height: 43px;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 850px) {
+
+    .orbonix-news {
+
+        padding:
+            85px 20px;
+    }
+
+    .news-grid {
+
+        grid-template-columns:
+            1fr;
+
+        max-width:
+            500px;
+    }
+
+    .news-card {
+
+        min-height:
+            360px;
+    }
+
+}
+
+
+/* =========================================
+   SMALL PHONE
+========================================= */
+
+@media (max-width: 450px) {
+
+    .orbonix-news {
+
+        padding:
+            70px 15px;
+    }
+
+    .news-card {
+
+        min-height:
+            340px;
+    }
+
+    .news-content {
+
+        padding:
+            24px;
+    }
+
+    .news-card-title {
+
+        font-size:
+            22px;
+    }
+
+}
+
+
+
+
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+
+    background: #01030a;
+
+    color: white;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   SECTION
+========================================= */
+
+.deep-space {
+
+    position: relative;
+
+    width: 100%;
+
+    min-height: 720px;
+
+    padding:
+        120px 30px;
+
+    overflow: hidden;
+
+    background:
+
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(90,45,180,.13),
+            transparent 45%
+        ),
+
+        radial-gradient(
+            circle at 15% 80%,
+            rgba(20,90,180,.10),
+            transparent 35%
+        ),
+
+        #01030a;
+}
+
+
+/* =========================================
+   STARS
+========================================= */
+
+.deep-stars {
+
+    position: absolute;
+
+    inset: -30%;
+
+    pointer-events: none;
+
+    opacity: .38;
+
+    background-image:
+
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.95) 1px,
+            transparent 1px
+        );
+
+    background-size:
+        75px 75px;
+
+    transition:
+        transform 1.5s ease;
+}
+
+
+.deep-stars-small {
+
+    position: absolute;
+
+    inset: -30%;
+
+    pointer-events: none;
+
+    opacity: .18;
+
+    background-image:
+
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.9) 1px,
+            transparent 1px
+        );
+
+    background-size:
+        32px 32px;
+
+    transition:
+        transform 2s ease;
+}
+
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.deep-container {
+
+    position: relative;
+
+    z-index: 3;
+
+    max-width: 1150px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        .9fr 1.1fr;
+
+    gap: 80px;
+
+    align-items: center;
+}
+
+
+/* =========================================
+   LEFT
+========================================= */
+
+.deep-info {
+
+    opacity: 0;
+
+    transform:
+        translateX(-60px);
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease;
+}
+
+
+.deep-space.visible
+.deep-info {
+
+    opacity: 1;
+
+    transform:
+        translateX(0);
+}
+
+
+.deep-label {
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+
+    color:
+        rgba(255,255,255,.38);
+
+    margin-bottom: 20px;
+}
+
+
+.deep-title {
+
+    margin: 0;
+
+    font-size:
+        clamp(48px, 7vw, 82px);
+
+    line-height: .95;
+
+    letter-spacing: 3px;
+}
+
+
+.deep-line {
+
+    width: 0;
+
+    height: 1px;
+
+    margin:
+        30px 0;
+
+    background:
+        rgba(255,255,255,.7);
+
+    transition:
+        width 1s ease .3s;
+}
+
+
+.deep-space.visible
+.deep-line {
+
+    width: 150px;
+}
+
+
+.deep-description {
+
+    max-width: 500px;
+
+    color:
+        rgba(255,255,255,.55);
+
+    font-size: 15px;
+
+    line-height: 1.85;
+}
+
+
+/* =========================================
+   OBJECT CARDS
+========================================= */
+
+.deep-objects {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 12px;
+
+    margin-top: 30px;
+}
+
+
+.deep-object {
+
+    position: relative;
+
+    padding:
+        18px 16px;
+
+    min-height: 85px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    background:
+        rgba(255,255,255,.015);
+
+    overflow: hidden;
+
+    transition:
+        transform .4s ease,
+        border-color .4s ease,
+        background .4s ease;
+}
+
+
+.deep-object::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 70px;
+
+    height: 70px;
+
+    right: -30px;
+
+    top: -30px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(130,100,255,.25),
+            transparent 70%
+        );
+
+    transition:
+        transform .5s ease;
+}
+
+
+.deep-object:hover {
+
+    transform:
+        translateY(-6px);
+
+    border-color:
+        rgba(160,140,255,.4);
+
+    background:
+        rgba(255,255,255,.045);
+}
+
+
+.deep-object:hover::before {
+
+    transform:
+        scale(2);
+}
+
+
+.deep-object-name {
+
+    position: relative;
+
+    z-index: 2;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 8px;
+}
+
+
+.deep-object-description {
+
+    position: relative;
+
+    z-index: 2;
+
+    color:
+        rgba(255,255,255,.4);
+
+    font-size: 9px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   RIGHT VISUAL
+========================================= */
+
+.deep-visual {
+
+    position: relative;
+
+    height: 500px;
+
+    opacity: 0;
+
+    transform:
+        translateX(60px)
+        scale(.94);
+
+    transition:
+        opacity 1.1s ease .2s,
+        transform 1.1s ease .2s;
+}
+
+
+.deep-space.visible
+.deep-visual {
+
+    opacity: 1;
+
+    transform:
+        translateX(0)
+        scale(1);
+}
+
+
+/* =========================================
+   GALAXY
+========================================= */
+
+.galaxy {
+
+    position: absolute;
+
+    width: 430px;
+
+    height: 430px;
+
+    left: 50%;
+
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%)
+        rotate(-20deg);
+
+    border-radius: 50%;
+
+    background:
+
+        radial-gradient(
+            ellipse at center,
+            rgba(255,255,255,.95) 0%,
+            rgba(170,150,255,.8) 2%,
+            rgba(90,80,180,.5) 8%,
+            rgba(50,40,120,.25) 18%,
+            transparent 55%
+        );
+
+    filter:
+        blur(.2px);
+
+    box-shadow:
+        0 0 80px
+        rgba(100,80,220,.15);
+
+    animation:
+        galaxyRotate 30s linear infinite;
+}
+
+
+@keyframes galaxyRotate {
+
+    from {
+
+        transform:
+            translate(-50%, -50%)
+            rotate(-20deg);
+
+    }
+
+    to {
+
+        transform:
+            translate(-50%, -50%)
+            rotate(340deg);
+
+    }
+
+}
+
+
+/* =========================================
+   GALAXY ARMS
+========================================= */
+
+.galaxy::before,
+.galaxy::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 50%;
+
+    width: 390px;
+
+    height: 100px;
+
+    transform:
+        translate(-50%, -50%)
+        rotate(25deg);
+
+    border-radius: 50%;
+
+    border-top:
+        1px solid
+        rgba(170,150,255,.28);
+
+    border-bottom:
+        1px solid
+        rgba(100,120,220,.16);
+
+    box-shadow:
+        0 0 30px
+        rgba(120,100,255,.08);
+}
+
+
+.galaxy::after {
+
+    transform:
+        translate(-50%, -50%)
+        rotate(-25deg);
+}
+
+
+/* =========================================
+   CENTRAL CORE
+========================================= */
+
+.galaxy-core {
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 50%;
+
+    width: 55px;
+
+    height: 55px;
+
+    transform:
+        translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background:
+
+        radial-gradient(
+            circle,
+            white 0%,
+            #cfc8ff 12%,
+            rgba(120,100,255,.7) 35%,
+            transparent 72%
+        );
+
+    box-shadow:
+
+        0 0 40px
+        rgba(190,180,255,.5);
+}
+
+
+/* =========================================
+   FLOATING LABELS
+========================================= */
+
+.deep-label-card {
+
+    position: absolute;
+
+    padding:
+        12px 16px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.14);
+
+    background:
+        rgba(3,5,15,.72);
+
+    backdrop-filter:
+        blur(8px);
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    color:
+        rgba(255,255,255,.65);
+
+    transition:
+        transform .4s ease;
+}
+
+
+.deep-label-card:hover {
+
+    transform:
+        translateY(-6px);
+
+    color: white;
+}
+
+
+.label-galaxy {
+
+    top: 40px;
+
+    right: 20px;
+}
+
+
+.label-blackhole {
+
+    bottom: 75px;
+
+    left: 10px;
+}
+
+
+.label-nebula {
+
+    top: 190px;
+
+    right: -5px;
+}
+
+
+/* =========================================
+   BUTTON
+========================================= */
+
+.deep-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    margin-top: 28px;
+
+    padding:
+        14px 22px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.3);
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    transition:
+        .35s ease;
+}
+
+
+.deep-button:hover {
+
+    background: white;
+
+    color: #01030a;
+
+    border-color: white;
+
+    transform:
+        translateY(-5px);
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 850px) {
+
+    .deep-space {
+
+        padding:
+            90px 20px;
+    }
+
+
+    .deep-container {
+
+        grid-template-columns:
+            1fr;
+
+        gap: 50px;
+    }
+
+
+    .deep-info {
+
+        text-align: center;
+    }
+
+
+    .deep-line {
+
+        margin-left: auto;
+
+        margin-right: auto;
+    }
+
+
+    .deep-description {
+
+        margin-left: auto;
+
+        margin-right: auto;
+    }
+
+
+    .deep-visual {
+
+        height: 400px;
+    }
+
+
+    .galaxy {
+
+        width: 330px;
+
+        height: 330px;
+    }
+
+
+    .galaxy::before,
+    .galaxy::after {
+
+        width: 300px;
+    }
+
+
+    .label-galaxy {
+
+        right: 0;
+    }
+
+
+    .label-nebula {
+
+        right: -10px;
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .deep-objects {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .deep-visual {
+
+        height: 330px;
+    }
+
+
+    .galaxy {
+
+        width: 260px;
+
+        height: 260px;
+    }
+
+
+    .galaxy::before,
+    .galaxy::after {
+
+        width: 230px;
+
+        height: 70px;
+    }
+
+
+    .deep-label-card {
+
+        font-size: 8px;
+
+        padding:
+            9px 11px;
+    }
+
+}
+
+
+
+
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #01030a;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   MAIN
+========================================= */
+
+.solar-system {
+
+    position: relative;
+
+    width: 100%;
+    min-height: 1200px;
+
+    padding: 60px 20px 100px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(45,85,180,.16),
+            transparent 42%
+        ),
+        #01030a;
+}
+
+
+/* =========================================
+   STARS
+========================================= */
+
+.solar-stars {
+
+    position: absolute;
+
+    inset: -30%;
+
+    pointer-events: none;
+
+    opacity: .4;
+
+    background-image:
+        radial-gradient(
+            circle,
+            white 1px,
+            transparent 1px
+        );
+
+    background-size: 75px 75px;
+
+    transition:
+        transform 1.5s ease;
+}
+
+
+.solar-stars-small {
+
+    position: absolute;
+
+    inset: -30%;
+
+    pointer-events: none;
+
+    opacity: .18;
+
+    background-image:
+        radial-gradient(
+            circle,
+            white 1px,
+            transparent 1px
+        );
+
+    background-size: 32px 32px;
+
+    transition:
+        transform 2s ease;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.solar-header {
+
+    position: relative;
+
+    z-index: 100;
+
+    max-width: 1000px;
+
+    margin: auto;
+
+    text-align: center;
+}
+
+
+.solar-return-home {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 12px 20px;
+
+    margin-bottom: 35px;
+
+    color:
+        rgba(255,255,255,.7);
+
+    border:
+        1px solid
+        rgba(255,255,255,.2);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    transition:
+        .35s ease;
+}
+
+
+.solar-return-home:hover {
+
+    color: #000;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-4px);
+}
+
+
+.solar-label {
+
+    margin-bottom: 18px;
+
+    color:
+        rgba(255,255,255,.4);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+
+ .solar-system h1 {
+
+    margin: 0;
+
+    font-size:
+        clamp(45px,7vw,82px);
+
+    line-height: .95;
+
+    letter-spacing: 4px;
+}
+
+
+.solar-description {
+
+    max-width: 650px;
+
+    margin:
+        25px auto 0;
+
+    color:
+        rgba(255,255,255,.5);
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   SOLAR SYSTEM
+========================================= */
+
+.system {
+
+    position: relative;
+
+    width:
+        min(1100px,100%);
+
+    height: 720px;
+
+    margin:
+        30px auto 0;
+}
+
+
+/* =========================================
+   ORBITS
+========================================= */
+
+.orbit {
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%,-50%);
+
+    border:
+        1px solid
+        rgba(140,180,240,.13);
+
+    border-radius: 50%;
+}
+
+
+.o1 {
+    width: 160px;
+    height: 160px;
+}
+
+.o2 {
+    width: 230px;
+    height: 230px;
+}
+
+.o3 {
+    width: 305px;
+    height: 305px;
+}
+
+.o4 {
+    width: 380px;
+    height: 380px;
+}
+
+.o5 {
+    width: 475px;
+    height: 475px;
+}
+
+.o6 {
+    width: 570px;
+    height: 570px;
+}
+
+.o7 {
+    width: 650px;
+    height: 650px;
+}
+
+.o8 {
+    width: 730px;
+    height: 730px;
+}
+
+
+/* =========================================
+   OBJECT
+========================================= */
+
+.object {
+
+    position: absolute;
+
+    z-index: 20;
+
+    display: block;
+
+    color: white;
+
+    text-decoration: none;
+
+    transition:
+        transform .45s
+        cubic-bezier(.2,.8,.2,1);
+}
+
+
+.object:hover {
+
+    transform:
+        scale(1.18);
+}
+
+
+/* =========================================
+   PLANET IMAGE
+========================================= */
+
+.planet-image {
+
+    display: block;
+
+    width: 44px;
+    height: 44px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    background: #080b12;
+
+    box-shadow:
+        0 0 18px
+        rgba(100,160,255,.12);
+
+    transition:
+        .4s ease;
+}
+
+
+.object:hover .planet-image {
+
+    box-shadow:
+        0 0 35px
+        rgba(100,170,255,.4);
+
+    transform:
+        scale(1.08);
+}
+
+
+/* =========================================
+   SUN
+========================================= */
+
+.sun-object {
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%,-50%);
+}
+
+
+.sun-object:hover {
+
+    transform:
+        translate(-50%,-50%)
+        scale(1.12);
+}
+
+
+.sun-image {
+
+    display: block;
+
+    width: 130px;
+    height: 130px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    background: #ff8b00;
+
+    box-shadow:
+        0 0 40px
+        rgba(255,145,20,.75),
+        0 0 110px
+        rgba(255,80,0,.25);
+
+    transition:
+        .45s ease;
+}
+
+
+.sun-object:hover
+.sun-image {
+
+    box-shadow:
+        0 0 60px
+        rgba(255,175,40,.9),
+        0 0 150px
+        rgba(255,90,0,.4);
+}
+
+
+.sun-name {
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 145px;
+
+    transform:
+        translateX(-50%);
+
+    white-space: nowrap;
+
+    font-size: 10px;
+
+    letter-spacing: 4px;
+
+    color:
+        rgba(255,255,255,.75);
+}
+
+
+/* =========================================
+   PLANET NAME
+========================================= */
+
+.name {
+
+    position: absolute;
+
+    left: 58px;
+
+    top: 50%;
+
+    transform:
+        translateY(-50%);
+
+    white-space: nowrap;
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+
+    color:
+        rgba(255,255,255,.5);
+
+    transition:
+        .3s ease;
+}
+
+
+.object:hover .name {
+
+    color: white;
+}
+
+
+/* =========================================
+   PLANET POSITIONS
+========================================= */
+
+.mercury {
+
+    left:
+        calc(50% + 78px);
+
+    top:
+        calc(50% - 45px);
+}
+
+
+.venus {
+
+    left:
+        calc(50% + 105px);
+
+    top:
+        calc(50% - 105px);
+}
+
+
+.earth {
+
+    left:
+        calc(50% + 135px);
+
+    top:
+        calc(50% - 150px);
+}
+
+
+.mars {
+
+    left:
+        calc(50% + 160px);
+
+    top:
+        calc(50% + 70px);
+}
+
+
+.jupiter {
+
+    left:
+        calc(50% - 255px);
+
+    top:
+        calc(50% - 235px);
+}
+
+
+.jupiter .planet-image {
+
+    width: 70px;
+    height: 70px;
+}
+
+
+.saturn {
+
+    left:
+        calc(50% - 300px);
+
+    top:
+        calc(50% + 120px);
+}
+
+
+.saturn .planet-image {
+
+    width: 75px;
+    height: 75px;
+
+    object-fit: cover;
+}
+
+
+.uranus {
+
+    left:
+        calc(50% - 315px);
+
+    top:
+        calc(50% - 65px);
+}
+
+
+.uranus .planet-image {
+
+    width: 50px;
+    height: 50px;
+}
+
+
+.neptune {
+
+    left:
+        calc(50% + 280px);
+
+    top:
+        calc(50% - 25px);
+}
+
+
+.neptune .planet-image {
+
+    width: 50px;
+    height: 50px;
+}
+
+
+/* =========================================
+   DWARF PLANETS
+========================================= */
+
+.dwarf {
+
+    position: relative;
+
+    z-index: 100;
+
+    width:
+        min(760px,100%);
+
+    margin:
+        -20px auto 0;
+
+    padding: 25px;
+
+    text-align: center;
+
+    background:
+        rgba(255,255,255,.025);
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    transition:
+        .4s ease;
+}
+
+
+.dwarf:hover {
+
+    transform:
+        translateY(-5px);
+
+    border-color:
+        rgba(255,255,255,.3);
+}
+
+
+.dwarf-title {
+
+    margin-bottom: 9px;
+
+    font-size: 10px;
+
+    letter-spacing: 4px;
+}
+
+
+.dwarf-text {
+
+    margin-bottom: 17px;
+
+    color:
+        rgba(255,255,255,.4);
+
+    font-size: 10px;
+}
+
+
+.dwarf-button {
+
+    display: inline-block;
+
+    padding:
+        10px 20px;
+
+    color: white;
+
+    border:
+        1px solid
+        rgba(255,255,255,.25);
+
+    text-decoration: none;
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+
+    transition:
+        .3s ease;
+}
+
+
+.dwarf-button:hover {
+
+    color: #01030a;
+
+    background: white;
+
+    border-color: white;
+}
+
+
+/* =========================================
+   GO TO SOLAR SYSTEM BUTTON
+========================================= */
+
+.solar-button-container {
+
+    position: relative;
+
+    z-index: 100;
+
+    display: flex;
+
+    justify-content: center;
+
+    margin-top: 55px;
+}
+
+
+.solar-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 14px 28px;
+
+    color:
+        rgba(255,255,255,.8);
+
+    border:
+        1px solid
+        rgba(255,255,255,.25);
+
+    background:
+        rgba(255,255,255,.025);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    transition:
+        .35s ease;
+}
+
+
+.solar-button:hover {
+
+    color: #01030a;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-4px);
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:800px) {
+
+    .system {
+
+        transform:
+            scale(.7);
+
+        transform-origin:
+            top center;
+
+        height: 520px;
+    }
+
+}
+
+
+@media(max-width:500px) {
+
+    .solar-system {
+
+        padding:
+            50px 12px 80px;
+
+        min-height: 900px;
+    }
+
+
+    .system {
+
+        transform:
+            scale(.48);
+
+        transform-origin:
+            top center;
+
+        height: 370px;
+    }
+
+
+    .dwarf {
+
+        margin-top:
+            -100px;
+    }
+
+
+    .solar-button-container {
+
+        margin-top: 45px;
+    }
+
+}
+
+
+.solar-system-title{margin:0;}
+
+
+/* =========================================
+   MERGED PAGE SAFETY
+========================================= */
+html, body {
+    min-height: 100%;
+}
+body {
+    overflow-x: hidden;
+    overflow-y: auto !important;
+}
+</style>
+</head>
+<body>
+
+
+
+<div
+    class="orbonix-hero"
+    id="hero">
+
+
+    <!-- NEBULA -->
+
+    <div
+        class="nebula"
+        id="nebula">
+    </div>
+
+
+    <div
+        class="nebula2">
+    </div>
+
+
+    <!-- STARS -->
+
+    <div
+        class="stars stars-back"
+        id="starsBack">
+    </div>
+
+
+    <div
+        class="stars stars-mid"
+        id="starsMid">
+    </div>
+
+
+    <div
+        class="stars stars-front"
+        id="starsFront">
+    </div>
+
+
+    <!-- VIGNETTE -->
+
+    <div
+        class="vignette">
+    </div>
+
+
+    <!-- CONTENT -->
+
+    <div
+        class="content">
+
+
+        <div
+            class="logo"
+            id="logo">
+
+            ORBONIX
+
+        </div>
+
+
+        <div
+            class="tagline">
+
+            EXPLORING SPACE.
+            BUILDING THE FUTURE.
+
+        </div>
+
+
+        <div
+            class="description">
+
+            A growing space and technology
+            project exploring astronomy,
+            science and the future of
+            space exploration.
+
+        </div>
+
+
+        <!-- BUTTONS -->
+
+        <div
+            class="buttons">
+
+
+            <!-- =========================
+                 EXPLORE SPACE
+            ========================== -->
+
+            <div
+                class="orbonix-button"
+                data-page="/exploring-space">
+
+                EXPLORE SPACE
+
+            </div>
+
+
+            <!-- =========================
+                 SOLAR SIMULATION
+            ========================== -->
+
+            <div
+                class="orbonix-button"
+                data-page="/solar-system-simulation">
+
+                SOLAR SIMULATION
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+<script>
+
+
+/* =====================================
+   CREATE STARS
+===================================== */
+
+function createStars(
+    container,
+    amount,
+    type
+) {
+
+    for (
+        let i = 0;
+        i < amount;
+        i++
+    ) {
+
+        const star =
+            document.createElement(
+                "div"
+            );
+
+
+        star.classList.add(
+            "star"
+        );
+
+
+        if (
+            type === "small"
+        ) {
+
+            star.classList.add(
+                "small"
+            );
+
+        }
+
+
+        if (
+            type === "bright" &&
+            Math.random() > 0.82
+        ) {
+
+            star.classList.add(
+                "bright"
+            );
+
+        }
+
+
+        star.style.left =
+            Math.random()
+            * 100
+            + "%";
+
+
+        star.style.top =
+            Math.random()
+            * 100
+            + "%";
+
+
+        star.style.opacity =
+            (
+                Math.random()
+                * 0.65
+                + 0.25
+            ).toFixed(2);
+
+
+        container.appendChild(
+            star
+        );
+
+    }
+
+}
+
+
+createStars(
+    document.getElementById(
+        "starsBack"
+    ),
+    150,
+    "small"
+);
+
+
+createStars(
+    document.getElementById(
+        "starsMid"
+    ),
+    110,
+    "normal"
+);
+
+
+createStars(
+    document.getElementById(
+        "starsFront"
+    ),
+    55,
+    "bright"
+);
+
+
+/* =====================================
+   ELEMENTS
+===================================== */
+
+const hero =
+    document.getElementById(
+        "hero"
+    );
+
+
+const back =
+    document.getElementById(
+        "starsBack"
+    );
+
+
+const mid =
+    document.getElementById(
+        "starsMid"
+    );
+
+
+const front =
+    document.getElementById(
+        "starsFront"
+    );
+
+
+const nebula =
+    document.getElementById(
+        "nebula"
+    );
+
+
+const logo =
+    document.getElementById(
+        "logo"
+    );
+
+
+/* =====================================
+   PARALLAX VALUES
+===================================== */
+
+let targetX = 0;
+let targetY = 0;
+
+let currentX = 0;
+let currentY = 0;
+
+
+/* =====================================
+   DESKTOP MOUSE
+===================================== */
+
+hero.addEventListener(
+    "mousemove",
+    function(event) {
+
+        const rect =
+            hero.getBoundingClientRect();
+
+
+        const x =
+            (
+                event.clientX -
+                rect.left
+            )
+            /
+            rect.width
+            -
+            0.5;
+
+
+        const y =
+            (
+                event.clientY -
+                rect.top
+            )
+            /
+            rect.height
+            -
+            0.5;
+
+
+        targetX = x;
+
+        targetY = y;
+
+    }
+);
+
+
+/* =====================================
+   DESKTOP RESET
+===================================== */
+
+hero.addEventListener(
+    "mouseleave",
+    function() {
+
+        targetX = 0;
+
+        targetY = 0;
+
+    }
+);
+
+
+/* =====================================
+   PHONE / TABLET MOTION
+===================================== */
+
+let deviceX = 0;
+let deviceY = 0;
+
+
+function handleOrientation(
+    event
+) {
+
+    let gamma =
+        event.gamma || 0;
+
+    let beta =
+        event.beta || 0;
+
+
+    gamma =
+        Math.max(
+            -30,
+            Math.min(
+                30,
+                gamma
+            )
+        );
+
+
+    beta =
+        Math.max(
+            -30,
+            Math.min(
+                30,
+                beta - 45
+            )
+        );
+
+
+    deviceX =
+        gamma / 30;
+
+
+    deviceY =
+        beta / 30;
+
+
+    if (
+        window.matchMedia(
+            "(hover: none)"
+        ).matches
+    ) {
+
+        targetX =
+            deviceX;
+
+        targetY =
+            deviceY;
+
+    }
+
+}
+
+
+/* =====================================
+   REQUEST SENSOR ACCESS
+===================================== */
+
+function enableMotion() {
+
+    if (
+        typeof DeviceOrientationEvent !==
+        "undefined" &&
+        typeof DeviceOrientationEvent.requestPermission ===
+        "function"
+    ) {
+
+        DeviceOrientationEvent
+            .requestPermission()
+            .then(
+                function(permission) {
+
+                    if (
+                        permission ===
+                        "granted"
+                    ) {
+
+                        window.addEventListener(
+                            "deviceorientation",
+                            handleOrientation
+                        );
+
+                    }
+
+                }
+            )
+            .catch(
+                function() {
+
+                    /* fallback */
+
+                }
+            );
+
+    } else {
+
+        window.addEventListener(
+            "deviceorientation",
+            handleOrientation
+        );
+
+    }
+
+}
+
+
+/* =====================================
+   ENABLE SENSOR AFTER TOUCH
+===================================== */
+
+document.addEventListener(
+    "touchstart",
+    function() {
+
+        enableMotion();
+
+    },
+    {
+        once: true
+    }
+);
+
+
+/* =====================================
+   ANIMATION
+===================================== */
+
+function animate() {
+
+
+    currentX +=
+        (
+            targetX -
+            currentX
+        )
+        * 0.035;
+
+
+    currentY +=
+        (
+            targetY -
+            currentY
+        )
+        * 0.035;
+
+
+    /* FAR */
+
+    back.style.transform =
+        `translate3d(
+            ${currentX * 25}px,
+            ${currentY * 25}px,
+            0
+        )`;
+
+
+    /* MIDDLE */
+
+    mid.style.transform =
+        `translate3d(
+            ${currentX * 50}px,
+            ${currentY * 50}px,
+            0
+        )`;
+
+
+    /* FRONT */
+
+    front.style.transform =
+        `translate3d(
+            ${currentX * 80}px,
+            ${currentY * 80}px,
+            0
+        )`;
+
+
+    /* NEBULA */
+
+    nebula.style.transform =
+        `translate(
+            calc(
+                -50% +
+                ${currentX * 100}px
+            ),
+            calc(
+                -50% +
+                ${currentY * 100}px
+            )
+        )`;
+
+
+    /* LOGO */
+
+    logo.style.transform =
+        `translate3d(
+            ${currentX * 12}px,
+            ${currentY * 12}px,
+            0
+        )`;
+
+
+    requestAnimationFrame(
+        animate
+    );
+
+}
+
+
+animate();
+
+
+/* =====================================
+   BUTTONS
+===================================== */
+
+const buttons =
+    document.querySelectorAll(
+        ".orbonix-button"
+    );
+
+
+buttons.forEach(
+    function(button) {
+
+        button.addEventListener(
+            "click",
+            function() {
+
+
+                /* =================================
+                   RELATIVE URL
+                   
+                   Example:
+                   /exploring-space
+
+                   becomes automatically:
+
+                   https://sites.google.com/view/kosmolearn/exploring-space
+
+                   And later, after moving to another
+                   domain:
+
+                   https://yourdomain.com/exploring-space
+                ================================= */
+
+                const page =
+                    button.dataset.page;
+
+
+                const url =
+                    window.location.origin +
+                    page;
+
+
+                /* PRESS */
+
+                button.classList.add(
+                    "clicked"
+                );
+
+
+                setTimeout(
+                    function() {
+
+                        button.classList.remove(
+                            "clicked"
+                        );
+
+                    },
+                    180
+                );
+
+
+                /* RIPPLE */
+
+                const ripple =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                ripple.classList.add(
+                    "ripple"
+                );
+
+
+                button.appendChild(
+                    ripple
+                );
+
+
+                setTimeout(
+                    function() {
+
+                        ripple.remove();
+
+                    },
+                    800
+                );
+
+
+                /* ORBIT */
+
+                const orbit =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                orbit.classList.add(
+                    "orbit-ring"
+                );
+
+
+                button.appendChild(
+                    orbit
+                );
+
+
+                setTimeout(
+                    function() {
+
+                        orbit.remove();
+
+                    },
+                    1000
+                );
+
+
+                /* PARTICLES */
+
+                for (
+                    let i = 0;
+                    i < 16;
+                    i++
+                ) {
+
+
+                    const particle =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    particle.classList.add(
+                        "energy"
+                    );
+
+
+                    const angle =
+                        Math.random()
+                        *
+                        Math.PI
+                        *
+                        2;
+
+
+                    const distance =
+                        45 +
+                        Math.random()
+                        * 55;
+
+
+                    const x =
+                        Math.cos(angle)
+                        *
+                        distance;
+
+
+                    const y =
+                        Math.sin(angle)
+                        *
+                        distance;
+
+
+                    particle.style.setProperty(
+                        "--x",
+                        x + "px"
+                    );
+
+
+                    particle.style.setProperty(
+                        "--y",
+                        y + "px"
+                    );
+
+
+                    particle.style.left =
+                        (
+                            50 +
+                            (
+                                Math.random()
+                                * 20
+                                - 10
+                            )
+                        )
+                        + "%";
+
+
+                    particle.style.top =
+                        (
+                            50 +
+                            (
+                                Math.random()
+                                * 20
+                                - 10
+                            )
+                        )
+                        + "%";
+
+
+                    button.appendChild(
+                        particle
+                    );
+
+
+                    setTimeout(
+                        function() {
+
+                            particle.remove();
+
+                        },
+                        900
+                    );
+
+                }
+
+
+                /* =================================
+                   NAVIGATION
+                ================================= */
+
+                setTimeout(
+                    function() {
+
+                        window.top.location.href =
+                            url;
+
+                    },
+                    250
+                );
+
+            }
+
+        );
+
+    }
+);
+
+
+</script>
+
+
+
+
+
+
+<section class="orbonix-news">
+
+
+    <!-- BACKGROUND -->
+
+    <div
+        class="news-stars">
+    </div>
+
+
+    <!-- HEADER -->
+
+    <div
+        class="news-header">
+
+        <div
+            class="news-label">
+
+            ORBONIX INTELLIGENCE
+
+        </div>
+
+
+        <h2
+            class="news-title">
+
+            LATEST SPACE NEWS
+
+        </h2>
+
+
+        <p
+            class="news-subtitle">
+
+            Discover the latest discoveries,
+            missions and developments from
+            the world of space exploration.
+
+        </p>
+
+
+        <div
+            class="news-line">
+        </div>
+
+    </div>
+
+
+    <!-- NEWS -->
+
+    <div
+        class="news-grid">
+
+
+        <!-- NEWS 01 -->
+
+        <article
+            class="news-card">
+
+            <div
+                class="news-image news-space">
+            </div>
+
+
+            <div
+                class="news-content">
+
+                <div
+                    class="news-date">
+
+                    SPACE / DISCOVERY
+
+                </div>
+
+
+                <h3
+                    class="news-card-title">
+
+                    EXPLORING THE
+                    UNKNOWN
+
+                </h3>
+
+
+                <p
+                    class="news-text">
+
+                    New observations continue
+                    to reveal unexpected details
+                    about our Universe.
+
+                </p>
+
+
+                <a
+                    href="#"
+                    class="news-button">
+
+                    READ STORY
+
+                    <span
+                        class="news-arrow">
+
+                        →
+
+                    </span>
+
+                </a>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- NEWS 02 -->
+
+        <article
+            class="news-card">
+
+            <div
+                class="news-image news-telescope">
+            </div>
+
+
+            <div
+                class="news-content">
+
+                <div
+                    class="news-date">
+
+                    ASTRONOMY / SCIENCE
+
+                </div>
+
+
+                <h3
+                    class="news-card-title">
+
+                    NEW EYES
+                    ON THE COSMOS
+
+                </h3>
+
+
+                <p
+                    class="news-text">
+
+                    Modern observatories are
+                    allowing scientists to study
+                    increasingly distant objects.
+
+                </p>
+
+
+                <a
+                    href="#"
+                    class="news-button">
+
+                    READ STORY
+
+                    <span
+                        class="news-arrow">
+
+                        →
+
+                    </span>
+
+                </a>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- NEWS 03 -->
+
+        <article
+            class="news-card">
+
+            <div
+                class="news-image news-mars">
+            </div>
+
+
+            <div
+                class="news-content">
+
+                <div
+                    class="news-date">
+
+                    EXPLORATION / FUTURE
+
+                </div>
+
+
+                <h3
+                    class="news-card-title">
+
+                    THE NEXT
+                    FRONTIER
+
+                </h3>
+
+
+                <p
+                    class="news-text">
+
+                    Humanity continues to develop
+                    new technologies for exploring
+                    worlds beyond Earth.
+
+                </p>
+
+
+                <a
+                    href="#"
+                    class="news-button">
+
+                    READ STORY
+
+                    <span
+                        class="news-arrow">
+
+                        →
+
+                    </span>
+
+                </a>
+
+            </div>
+
+        </article>
+
+
+    </div>
+
+
+</section>
+
+
+<script>
+
+/* =========================================
+   SCROLL ANIMATION
+========================================= */
+
+const newsSection =
+    document.querySelector(
+        ".orbonix-news"
+    );
+
+
+const newsObserver =
+    new IntersectionObserver(
+
+        (entries) => {
+
+            entries.forEach(
+                entry => {
+
+                    if (
+                        entry.isIntersecting
+                    ) {
+
+                        newsSection
+                            .classList
+                            .add("visible");
+
+                    }
+
+                }
+            );
+
+        },
+
+        {
+            threshold: 0.15
+        }
+
+    );
+
+
+newsObserver.observe(
+    newsSection
+);
+
+
+/* =========================================
+   MOUSE PARALLAX
+========================================= */
+
+const newsStars =
+    document.querySelector(
+        ".news-stars"
+    );
+
+const newsCards =
+    document.querySelectorAll(
+        ".news-card"
+    );
+
+
+document.addEventListener(
+    "mousemove",
+
+    (event) => {
+
+        const x =
+            event.clientX /
+            window.innerWidth -
+            0.5;
+
+        const y =
+            event.clientY /
+            window.innerHeight -
+            0.5;
+
+
+        if (newsStars) {
+
+            newsStars.style.transform =
+                `translate(
+                    ${x * 20}px,
+                    ${y * 20}px
+                )`;
+
+        }
+
+
+        newsCards.forEach(
+            (card, index) => {
+
+                const image =
+                    card.querySelector(
+                        ".news-image"
+                    );
+
+                if (!image) return;
+
+
+                const depth =
+                    8 + index * 5;
+
+
+                image.style.transform =
+                    `scale(1.08)
+                     translate(
+                        ${x * depth}px,
+                        ${y * depth}px
+                     )`;
+
+            }
+        );
+
+    }
+);
+
+
+/* =========================================
+   MOBILE TOUCH
+========================================= */
+
+document.addEventListener(
+    "touchmove",
+
+    (event) => {
+
+        const touch =
+            event.touches[0];
+
+        if (!touch) return;
+
+
+        const x =
+            touch.clientX /
+            window.innerWidth -
+            0.5;
+
+        const y =
+            touch.clientY /
+            window.innerHeight -
+            0.5;
+
+
+        if (newsStars) {
+
+            newsStars.style.transform =
+                `translate(
+                    ${x * 12}px,
+                    ${y * 12}px
+                )`;
+
+        }
+
+    },
+
+    {
+        passive: true
+    }
+);
+
+</script>
+
+
+
+
+
+
+<section class="deep-space">
+
+
+    <!-- BACKGROUND -->
+
+    <div class="deep-stars"></div>
+
+    <div class="deep-stars-small"></div>
+
+
+    <div class="deep-container">
+
+
+        <!-- LEFT -->
+
+        <div class="deep-info">
+
+
+            <div class="deep-label">
+
+                BEYOND THE SOLAR SYSTEM · 02
+
+            </div>
+
+
+            <h2 class="deep-title">
+
+                DEEP<br>
+                SPACE
+
+            </h2>
+
+
+            <div class="deep-line"></div>
+
+
+            <p class="deep-description">
+
+                The Solar System is only a tiny
+                part of an enormous Universe.
+
+                Beyond our planetary neighborhood
+                lie billions of stars, galaxies,
+                nebulae, black holes and other
+                extreme cosmic objects.
+
+            </p>
+
+
+            <div class="deep-objects">
+
+
+                <div class="deep-object">
+
+                    <div class="deep-object-name">
+                        GALAXIES
+                    </div>
+
+                    <div class="deep-object-description">
+                        Vast systems containing
+                        billions of stars.
+                    </div>
+
+                </div>
+
+
+                <div class="deep-object">
+
+                    <div class="deep-object-name">
+                        NEBULAE
+                    </div>
+
+                    <div class="deep-object-description">
+                        Enormous clouds of gas
+                        and cosmic dust.
+                    </div>
+
+                </div>
+
+
+                <div class="deep-object">
+
+                    <div class="deep-object-name">
+                        BLACK HOLES
+                    </div>
+
+                    <div class="deep-object-description">
+                        Regions where gravity
+                        becomes extraordinarily strong.
+                    </div>
+
+                </div>
+
+
+                <div class="deep-object">
+
+                    <div class="deep-object-name">
+                        STAR CLUSTERS
+                    </div>
+
+                    <div class="deep-object-description">
+                        Groups of stars bound
+                        together by gravity.
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <a
+                href="#deep-space-content"
+                class="deep-button">
+
+                EXPLORE DEEP SPACE
+
+                <span>↓</span>
+
+            </a>
+
+
+        </div>
+
+
+        <!-- RIGHT -->
+
+        <div class="deep-visual">
+
+
+            <div class="galaxy">
+
+                <div class="galaxy-core"></div>
+
+            </div>
+
+
+            <div
+                class="deep-label-card label-galaxy">
+
+                GALAXY
+
+            </div>
+
+
+            <div
+                class="deep-label-card label-blackhole">
+
+                BLACK HOLE
+
+            </div>
+
+
+            <div
+                class="deep-label-card label-nebula">
+
+                NEBULA
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+<script>
+
+/* =========================================
+   SCROLL REVEAL
+========================================= */
+
+const deepSection =
+    document.querySelector(
+        ".deep-space"
+    );
+
+
+const deepObserver =
+    new IntersectionObserver(
+
+        entries => {
+
+            entries.forEach(entry => {
+
+                if (
+                    entry.isIntersecting
+                ) {
+
+                    deepSection
+                        .classList
+                        .add("visible");
+
+                }
+
+            });
+
+        },
+
+        {
+            threshold: .15
+        }
+
+    );
+
+
+deepObserver.observe(
+    deepSection
+);
+
+
+/* =========================================
+   PARALLAX
+========================================= */
+
+const deepStars =
+    document.querySelector(
+        ".deep-stars"
+    );
+
+
+const deepSmallStars =
+    document.querySelector(
+        ".deep-stars-small"
+    );
+
+
+document.addEventListener(
+    "mousemove",
+
+    event => {
+
+        const x =
+            event.clientX /
+            window.innerWidth -
+            .5;
+
+        const y =
+            event.clientY /
+            window.innerHeight -
+            .5;
+
+
+        if (deepStars) {
+
+            deepStars.style.transform =
+                `translate(
+                    ${x * 20}px,
+                    ${y * 20}px
+                )`;
+
+        }
+
+
+        if (deepSmallStars) {
+
+            deepSmallStars.style.transform =
+                `translate(
+                    ${x * -12}px,
+                    ${y * -12}px
+                )`;
+
+        }
+
+    }
+
+);
+
+</script>
+
+
+
+
+
+
+
+<section class="solar-system">
+
+
+<div class="solar-stars"></div>
+
+<div class="solar-stars-small"></div>
+
+
+<!-- HEADER -->
+
+<div class="solar-header">
+
+
+<a
+href="https://sites.google.com/view/kosmolearn"
+class="solar-return-home">
+
+← RETURN TO HOME
+
+</a>
+
+
+<div class="solar-label">
+
+ORBONIX · EXPLORING SPACE
+
+</div>
+
+
+<h1 class="solar-system-title">
+
+SOLAR SYSTEM
+
+</h1>
+
+
+<div class="solar-description">
+
+Explore the worlds orbiting our Sun.
+Click any planet or the Sun to discover
+more about each world.
+
+</div>
+
+
+</div>
+
+
+<!-- SYSTEM -->
+
+<div class="system">
+
+
+<!-- ORBITS -->
+
+<div class="orbit o1"></div>
+
+<div class="orbit o2"></div>
+
+<div class="orbit o3"></div>
+
+<div class="orbit o4"></div>
+
+<div class="orbit o5"></div>
+
+<div class="orbit o6"></div>
+
+<div class="orbit o7"></div>
+
+<div class="orbit o8"></div>
+
+
+<!-- SUN -->
+
+<a
+href="#SUN-PAGE"
+class="object sun-object">
+
+<img
+class="sun-image"
+src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Sun%20in%20true%20color.jpg"
+alt="Sun">
+
+<div class="sun-name">
+SUN
+</div>
+
+</a>
+
+
+<!-- MERCURY -->
+
+<a
+href="#MERCURY-PAGE"
+class="object mercury">
+
+<img
+class="planet-image"
+src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Mercury%20in%20true%20color.jpg"
+alt="Mercury">
+
+<div class="name">
+MERCURY
+</div>
+
+</a>
+
+
+<!-- VENUS -->
+
+<a
+href="#VENUS-PAGE"
+class="object venus">
+
+<img
+class="planet-image"
+src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Venus-real%20color.jpg"
+alt="Venus">
+
+<div class="name">
+VENUS
+</div>
+
+</a>
+
+
+<!-- EARTH -->
+
+<a
+href="#EARTH-PAGE"
+class="object earth">
+
+<img
+class="planet-image"
+src="https://commons.wikimedia.org/wiki/Special:Redirect/file/The%20Earth%20seen%20from%20Apollo%2017.jpg"
+alt="Earth">
+
+<div class="name">
+EARTH
+</div>
+
+</a>
+
+
+<!-- MARS -->
+
+<a
+href="#MARS-PAGE"
+class="object mars">
+
+<img
+class="planet-image"
+src="https://commons.wikimedia.org/wiki/Special:Redirect/file/OSIRIS_Mars_true_color.jpg"
+alt="Mars">
+
+<div class="name">
+MARS
+</div>
+
+</a>
+
+
+<!-- JUPITER -->
+
+<a
+href="#JUPITER-PAGE"
+class="object jupiter">
+
+<img
+class="planet-image"
+src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Jupiter.jpg"
+alt="Jupiter">
+
+<div class="name">
+JUPITER
+</div>
+
+</a>
+
+
+<!-- SATURN -->
+
+<a
+href="#SATURN-PAGE"
+class="object saturn">
+
+<img
+class="planet-image"
+src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Saturn%20during%20Equinox.jpg"
+alt="Saturn">
+
+<div class="name">
+SATURN
+</div>
+
+</a>
+
+
+<!-- URANUS -->
+
+<a
+href="#URANUS-PAGE"
+class="object uranus">
+
+<img
+class="planet-image"
+src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Uranus2.jpg"
+alt="Uranus">
+
+<div class="name">
+URANUS
+</div>
+
+</a>
+
+
+<!-- NEPTUNE -->
+
+<a
+href="#NEPTUNE-PAGE"
+class="object neptune">
+
+<img
+class="planet-image"
+src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Neptune%20Full.jpg"
+alt="Neptune">
+
+<div class="name">
+NEPTUNE
+</div>
+
+</a>
+
+
+</div>
+
+
+<!-- DWARF PLANETS -->
+
+<div class="dwarf">
+
+
+<div class="dwarf-title">
+DWARF PLANETS
+</div>
+
+
+<div class="dwarf-text">
+Pluto · Ceres · Eris · Haumea · Makemake
+</div>
+
+
+<a
+href="#DWARF-PLANETS-PAGE"
+class="dwarf-button">
+
+EXPLORE DWARF PLANETS →
+
+</a>
+
+
+</div>
+
+
+<!-- GO TO SOLAR SYSTEM -->
+
+<div class="solar-button-container">
+
+<a
+href="https://sites.google.com/view/kosmolearn/solar-system"
+class="solar-button">
+
+GO TO SOLAR SYSTEM →
+
+</a>
+
+</div>
+
+
+</section>
+
+
+<script>
+
+
+/* =========================================
+   PARALLAX
+========================================= */
+
+const stars =
+document.querySelector(".solar-stars");
+
+const smallStars =
+document.querySelector(".solar-stars-small");
+
+
+document.addEventListener(
+"mousemove",
+
+function(event) {
+
+    const x =
+        event.clientX /
+        window.innerWidth -
+        0.5;
+
+    const y =
+        event.clientY /
+        window.innerHeight -
+        0.5;
+
+
+    stars.style.transform =
+        `translate(
+            ${x * 20}px,
+            ${y * 20}px
+        )`;
+
+
+    smallStars.style.transform =
+        `translate(
+            ${x * -12}px,
+            ${y * -12}px
+        )`;
+
+});
+
+
+</script>
+
+
+
+<script>
+
+
+
+/* =====================================
+   CREATE STARS
+===================================== */
+
+function createStars(
+    container,
+    amount,
+    type
+) {
+
+    for (
+        let i = 0;
+        i < amount;
+        i++
+    ) {
+
+        const star =
+            document.createElement(
+                "div"
+            );
+
+
+        star.classList.add(
+            "star"
+        );
+
+
+        if (
+            type === "small"
+        ) {
+
+            star.classList.add(
+                "small"
+            );
+
+        }
+
+
+        if (
+            type === "bright" &&
+            Math.random() > 0.82
+        ) {
+
+            star.classList.add(
+                "bright"
+            );
+
+        }
+
+
+        star.style.left =
+            Math.random()
+            * 100
+            + "%";
+
+
+        star.style.top =
+            Math.random()
+            * 100
+            + "%";
+
+
+        star.style.opacity =
+            (
+                Math.random()
+                * 0.65
+                + 0.25
+            ).toFixed(2);
+
+
+        container.appendChild(
+            star
+        );
+
+    }
+
+}
+
+
+createStars(
+    document.getElementById(
+        "starsBack"
+    ),
+    150,
+    "small"
+);
+
+
+createStars(
+    document.getElementById(
+        "starsMid"
+    ),
+    110,
+    "normal"
+);
+
+
+createStars(
+    document.getElementById(
+        "starsFront"
+    ),
+    55,
+    "bright"
+);
+
+
+/* =====================================
+   ELEMENTS
+===================================== */
+
+const hero =
+    document.getElementById(
+        "hero"
+    );
+
+
+const back =
+    document.getElementById(
+        "starsBack"
+    );
+
+
+const mid =
+    document.getElementById(
+        "starsMid"
+    );
+
+
+const front =
+    document.getElementById(
+        "starsFront"
+    );
+
+
+const nebula =
+    document.getElementById(
+        "nebula"
+    );
+
+
+const logo =
+    document.getElementById(
+        "logo"
+    );
+
+
+/* =====================================
+   PARALLAX VALUES
+===================================== */
+
+let targetX = 0;
+let targetY = 0;
+
+let currentX = 0;
+let currentY = 0;
+
+
+/* =====================================
+   DESKTOP MOUSE
+===================================== */
+
+hero.addEventListener(
+    "mousemove",
+    function(event) {
+
+        const rect =
+            hero.getBoundingClientRect();
+
+
+        const x =
+            (
+                event.clientX -
+                rect.left
+            )
+            /
+            rect.width
+            -
+            0.5;
+
+
+        const y =
+            (
+                event.clientY -
+                rect.top
+            )
+            /
+            rect.height
+            -
+            0.5;
+
+
+        targetX = x;
+
+        targetY = y;
+
+    }
+);
+
+
+/* =====================================
+   DESKTOP RESET
+===================================== */
+
+hero.addEventListener(
+    "mouseleave",
+    function() {
+
+        targetX = 0;
+
+        targetY = 0;
+
+    }
+);
+
+
+/* =====================================
+   PHONE / TABLET MOTION
+===================================== */
+
+let deviceX = 0;
+let deviceY = 0;
+
+
+function handleOrientation(
+    event
+) {
+
+    let gamma =
+        event.gamma || 0;
+
+    let beta =
+        event.beta || 0;
+
+
+    gamma =
+        Math.max(
+            -30,
+            Math.min(
+                30,
+                gamma
+            )
+        );
+
+
+    beta =
+        Math.max(
+            -30,
+            Math.min(
+                30,
+                beta - 45
+            )
+        );
+
+
+    deviceX =
+        gamma / 30;
+
+
+    deviceY =
+        beta / 30;
+
+
+    if (
+        window.matchMedia(
+            "(hover: none)"
+        ).matches
+    ) {
+
+        targetX =
+            deviceX;
+
+        targetY =
+            deviceY;
+
+    }
+
+}
+
+
+/* =====================================
+   REQUEST SENSOR ACCESS
+===================================== */
+
+function enableMotion() {
+
+    if (
+        typeof DeviceOrientationEvent !==
+        "undefined" &&
+        typeof DeviceOrientationEvent.requestPermission ===
+        "function"
+    ) {
+
+        DeviceOrientationEvent
+            .requestPermission()
+            .then(
+                function(permission) {
+
+                    if (
+                        permission ===
+                        "granted"
+                    ) {
+
+                        window.addEventListener(
+                            "deviceorientation",
+                            handleOrientation
+                        );
+
+                    }
+
+                }
+            )
+            .catch(
+                function() {
+
+                    /* fallback */
+
+                }
+            );
+
+    } else {
+
+        window.addEventListener(
+            "deviceorientation",
+            handleOrientation
+        );
+
+    }
+
+}
+
+
+/* =====================================
+   ENABLE SENSOR AFTER TOUCH
+===================================== */
+
+document.addEventListener(
+    "touchstart",
+    function() {
+
+        enableMotion();
+
+    },
+    {
+        once: true
+    }
+);
+
+
+/* =====================================
+   ANIMATION
+===================================== */
+
+function animate() {
+
+
+    currentX +=
+        (
+            targetX -
+            currentX
+        )
+        * 0.035;
+
+
+    currentY +=
+        (
+            targetY -
+            currentY
+        )
+        * 0.035;
+
+
+    /* FAR */
+
+    back.style.transform =
+        `translate3d(
+            ${currentX * 25}px,
+            ${currentY * 25}px,
+            0
+        )`;
+
+
+    /* MIDDLE */
+
+    mid.style.transform =
+        `translate3d(
+            ${currentX * 50}px,
+            ${currentY * 50}px,
+            0
+        )`;
+
+
+    /* FRONT */
+
+    front.style.transform =
+        `translate3d(
+            ${currentX * 80}px,
+            ${currentY * 80}px,
+            0
+        )`;
+
+
+    /* NEBULA */
+
+    nebula.style.transform =
+        `translate(
+            calc(
+                -50% +
+                ${currentX * 100}px
+            ),
+            calc(
+                -50% +
+                ${currentY * 100}px
+            )
+        )`;
+
+
+    /* LOGO */
+
+    logo.style.transform =
+        `translate3d(
+            ${currentX * 12}px,
+            ${currentY * 12}px,
+            0
+        )`;
+
+
+    requestAnimationFrame(
+        animate
+    );
+
+}
+
+
+animate();
+
+
+/* =====================================
+   BUTTONS
+===================================== */
+
+const buttons =
+    document.querySelectorAll(
+        ".orbonix-button"
+    );
+
+
+buttons.forEach(
+    function(button) {
+
+        button.addEventListener(
+            "click",
+            function() {
+
+
+                /* =================================
+                   RELATIVE URL
+                   
+                   Example:
+                   /exploring-space
+
+                   becomes automatically:
+
+                   https://sites.google.com/view/kosmolearn/exploring-space
+
+                   And later, after moving to another
+                   domain:
+
+                   https://yourdomain.com/exploring-space
+                ================================= */
+
+                const page =
+                    button.dataset.page;
+
+
+                const url =
+                    window.location.origin +
+                    page;
+
+
+                /* PRESS */
+
+                button.classList.add(
+                    "clicked"
+                );
+
+
+                setTimeout(
+                    function() {
+
+                        button.classList.remove(
+                            "clicked"
+                        );
+
+                    },
+                    180
+                );
+
+
+                /* RIPPLE */
+
+                const ripple =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                ripple.classList.add(
+                    "ripple"
+                );
+
+
+                button.appendChild(
+                    ripple
+                );
+
+
+                setTimeout(
+                    function() {
+
+                        ripple.remove();
+
+                    },
+                    800
+                );
+
+
+                /* ORBIT */
+
+                const orbit =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                orbit.classList.add(
+                    "orbit-ring"
+                );
+
+
+                button.appendChild(
+                    orbit
+                );
+
+
+                setTimeout(
+                    function() {
+
+                        orbit.remove();
+
+                    },
+                    1000
+                );
+
+
+                /* PARTICLES */
+
+                for (
+                    let i = 0;
+                    i < 16;
+                    i++
+                ) {
+
+
+                    const particle =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    particle.classList.add(
+                        "energy"
+                    );
+
+
+                    const angle =
+                        Math.random()
+                        *
+                        Math.PI
+                        *
+                        2;
+
+
+                    const distance =
+                        45 +
+                        Math.random()
+                        * 55;
+
+
+                    const x =
+                        Math.cos(angle)
+                        *
+                        distance;
+
+
+                    const y =
+                        Math.sin(angle)
+                        *
+                        distance;
+
+
+                    particle.style.setProperty(
+                        "--x",
+                        x + "px"
+                    );
+
+
+                    particle.style.setProperty(
+                        "--y",
+                        y + "px"
+                    );
+
+
+                    particle.style.left =
+                        (
+                            50 +
+                            (
+                                Math.random()
+                                * 20
+                                - 10
+                            )
+                        )
+                        + "%";
+
+
+                    particle.style.top =
+                        (
+                            50 +
+                            (
+                                Math.random()
+                                * 20
+                                - 10
+                            )
+                        )
+                        + "%";
+
+
+                    button.appendChild(
+                        particle
+                    );
+
+
+                    setTimeout(
+                        function() {
+
+                            particle.remove();
+
+                        },
+                        900
+                    );
+
+                }
+
+
+                /* =================================
+                   NAVIGATION
+                ================================= */
+
+                setTimeout(
+                    function() {
+
+                        window.top.location.href =
+                            url;
+
+                    },
+                    250
+                );
+
+            }
+
+        );
+
+    }
+);
+
+
+
+
+
+
+/* =========================================
+   SCROLL ANIMATION
+========================================= */
+
+const newsSection =
+    document.querySelector(
+        ".orbonix-news"
+    );
+
+
+const newsObserver =
+    new IntersectionObserver(
+
+        (entries) => {
+
+            entries.forEach(
+                entry => {
+
+                    if (
+                        entry.isIntersecting
+                    ) {
+
+                        newsSection
+                            .classList
+                            .add("visible");
+
+                    }
+
+                }
+            );
+
+        },
+
+        {
+            threshold: 0.15
+        }
+
+    );
+
+
+newsObserver.observe(
+    newsSection
+);
+
+
+/* =========================================
+   MOUSE PARALLAX
+========================================= */
+
+const newsStars =
+    document.querySelector(
+        ".news-stars"
+    );
+
+const newsCards =
+    document.querySelectorAll(
+        ".news-card"
+    );
+
+
+document.addEventListener(
+    "mousemove",
+
+    (event) => {
+
+        const x =
+            event.clientX /
+            window.innerWidth -
+            0.5;
+
+        const y =
+            event.clientY /
+            window.innerHeight -
+            0.5;
+
+
+        if (newsStars) {
+
+            newsStars.style.transform =
+                `translate(
+                    ${x * 20}px,
+                    ${y * 20}px
+                )`;
+
+        }
+
+
+        newsCards.forEach(
+            (card, index) => {
+
+                const image =
+                    card.querySelector(
+                        ".news-image"
+                    );
+
+                if (!image) return;
+
+
+                const depth =
+                    8 + index * 5;
+
+
+                image.style.transform =
+                    `scale(1.08)
+                     translate(
+                        ${x * depth}px,
+                        ${y * depth}px
+                     )`;
+
+            }
+        );
+
+    }
+);
+
+
+/* =========================================
+   MOBILE TOUCH
+========================================= */
+
+document.addEventListener(
+    "touchmove",
+
+    (event) => {
+
+        const touch =
+            event.touches[0];
+
+        if (!touch) return;
+
+
+        const x =
+            touch.clientX /
+            window.innerWidth -
+            0.5;
+
+        const y =
+            touch.clientY /
+            window.innerHeight -
+            0.5;
+
+
+        if (newsStars) {
+
+            newsStars.style.transform =
+                `translate(
+                    ${x * 12}px,
+                    ${y * 12}px
+                )`;
+
+        }
+
+    },
+
+    {
+        passive: true
+    }
+);
+
+
+
+
+
+/* =========================================
+   SCROLL REVEAL
+========================================= */
+
+const deepSection =
+    document.querySelector(
+        ".deep-space"
+    );
+
+
+const deepObserver =
+    new IntersectionObserver(
+
+        entries => {
+
+            entries.forEach(entry => {
+
+                if (
+                    entry.isIntersecting
+                ) {
+
+                    deepSection
+                        .classList
+                        .add("visible");
+
+                }
+
+            });
+
+        },
+
+        {
+            threshold: .15
+        }
+
+    );
+
+
+deepObserver.observe(
+    deepSection
+);
+
+
+/* =========================================
+   PARALLAX
+========================================= */
+
+const deepStars =
+    document.querySelector(
+        ".deep-stars"
+    );
+
+
+const deepSmallStars =
+    document.querySelector(
+        ".deep-stars-small"
+    );
+
+
+document.addEventListener(
+    "mousemove",
+
+    event => {
+
+        const x =
+            event.clientX /
+            window.innerWidth -
+            .5;
+
+        const y =
+            event.clientY /
+            window.innerHeight -
+            .5;
+
+
+        if (deepStars) {
+
+            deepStars.style.transform =
+                `translate(
+                    ${x * 20}px,
+                    ${y * 20}px
+                )`;
+
+        }
+
+
+        if (deepSmallStars) {
+
+            deepSmallStars.style.transform =
+                `translate(
+                    ${x * -12}px,
+                    ${y * -12}px
+                )`;
+
+        }
+
+    }
+
+);
+
+
+
+
+
+
+/* =========================================
+   PARALLAX
+========================================= */
+
+const stars =
+document.querySelector(".solar-stars");
+
+const smallStars =
+document.querySelector(".solar-stars-small");
+
+
+document.addEventListener(
+"mousemove",
+
+function(event) {
+
+    const x =
+        event.clientX /
+        window.innerWidth -
+        0.5;
+
+    const y =
+        event.clientY /
+        window.innerHeight -
+        0.5;
+
+
+    stars.style.transform =
+        `translate(
+            ${x * 20}px,
+            ${y * 20}px
+        )`;
+
+
+    smallStars.style.transform =
+        `translate(
+            ${x * -12}px,
+            ${y * -12}px
+        )`;
+
+});
+
+
+
+</script>
+</body>
+</html>
