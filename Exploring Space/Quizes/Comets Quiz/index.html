@@ -1,1 +1,2390 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: #010208;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   PAGE
+========================================= */
+
+.comets-quiz-page {
+
+    position: relative;
+
+    min-height: 100vh;
+
+    padding: 65px 20px 100px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 15%,
+            rgba(100,160,255,.16),
+            transparent 42%
+        ),
+        radial-gradient(
+            circle at 20% 70%,
+            rgba(70,130,255,.08),
+            transparent 35%
+        ),
+        #010208;
+}
+
+
+/* =========================================
+   BACKGROUND STARS
+========================================= */
+
+.stars,
+.stars-small {
+
+    position: fixed;
+
+    inset: -25%;
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+.stars {
+
+    opacity: .4;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.9) 1px,
+            transparent 1px
+        );
+
+    background-size: 75px 75px;
+
+    transition:
+        transform 1.5s ease;
+}
+
+.stars-small {
+
+    opacity: .17;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.8) 1px,
+            transparent 1px
+        );
+
+    background-size: 32px 32px;
+
+    transition:
+        transform 2s ease;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header {
+
+    position: relative;
+
+    z-index: 5;
+
+    max-width: 900px;
+
+    margin: auto;
+
+    text-align: center;
+}
+
+
+.return {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 12px 20px;
+
+    margin-bottom: 40px;
+
+    color:
+        rgba(255,255,255,.7);
+
+    border:
+        1px solid
+        rgba(255,255,255,.22);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    transition: .35s ease;
+}
+
+
+.return:hover {
+
+    color: #010208;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-4px);
+}
+
+
+.label {
+
+    margin-bottom: 18px;
+
+    color:
+        rgba(170,200,255,.55);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+
+h1 {
+
+    margin: 0;
+
+    font-size:
+        clamp(43px,8vw,85px);
+
+    line-height: .9;
+
+    letter-spacing: 6px;
+}
+
+
+.subtitle {
+
+    max-width: 720px;
+
+    margin:
+        28px auto 0;
+
+    color:
+        rgba(255,255,255,.52);
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   QUIZ
+========================================= */
+
+.quiz-container {
+
+    position: relative;
+
+    z-index: 5;
+
+    width:
+        min(850px,100%);
+
+    margin:
+        70px auto 0;
+
+    padding: 35px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.025);
+
+    transition:
+        .8s ease;
+}
+
+
+/* =========================================
+   QUIZ TOP
+========================================= */
+
+.quiz-top {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 15px;
+}
+
+
+.question-number {
+
+    color:
+        rgba(255,255,255,.45);
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+}
+
+
+.difficulty {
+
+    padding:
+        7px 12px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.15);
+
+    color:
+        rgba(255,255,255,.5);
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================
+   PROGRESS
+========================================= */
+
+.progress {
+
+    width: 100%;
+
+    height: 2px;
+
+    margin-bottom: 45px;
+
+    background:
+        rgba(255,255,255,.08);
+
+    overflow: hidden;
+}
+
+
+.progress-bar {
+
+    width: 0%;
+
+    height: 100%;
+
+    background: white;
+
+    transition:
+        width .5s ease;
+}
+
+
+/* =========================================
+   QUESTION
+========================================= */
+
+.question {
+
+    margin-bottom: 35px;
+
+    font-size:
+        clamp(20px,3vw,30px);
+
+    line-height: 1.4;
+
+    letter-spacing: .4px;
+}
+
+
+/* =========================================
+   ANSWERS
+========================================= */
+
+.answers {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap: 12px;
+}
+
+
+.answer {
+
+    min-height: 70px;
+
+    padding:
+        18px 20px;
+
+    text-align: left;
+
+    color:
+        rgba(255,255,255,.7);
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    background:
+        rgba(255,255,255,.02);
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 12px;
+
+    cursor: pointer;
+
+    transition:
+        .3s ease;
+}
+
+
+.answer:hover {
+
+    color: white;
+
+    border-color:
+        rgba(130,180,255,.45);
+
+    background:
+        rgba(80,140,255,.06);
+
+    transform:
+        translateY(-3px);
+}
+
+
+.answer.correct {
+
+    color: white;
+
+    border-color:
+        rgba(100,220,150,.7);
+
+    background:
+        rgba(60,180,110,.12);
+}
+
+
+.answer.wrong {
+
+    color: white;
+
+    border-color:
+        rgba(255,90,90,.7);
+
+    background:
+        rgba(220,50,50,.12);
+}
+
+
+.answer.disabled {
+
+    pointer-events: none;
+}
+
+
+/* =========================================
+   NEXT
+========================================= */
+
+.next-area {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    margin-top: 25px;
+}
+
+
+.next-button {
+
+    display: none;
+
+    padding:
+        13px 25px;
+
+    color:
+        rgba(255,255,255,.8);
+
+    border:
+        1px solid
+        rgba(255,255,255,.2);
+
+    background:
+        transparent;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    cursor: pointer;
+
+    transition:
+        .3s ease;
+}
+
+
+.next-button:hover {
+
+    color: #010208;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-3px);
+}
+
+
+/* =========================================
+   RESULT
+========================================= */
+
+.result {
+
+    display: none;
+
+    position: relative;
+
+    text-align: center;
+
+    min-height: 500px;
+
+    padding:
+        25px 10px 15px;
+
+    overflow: hidden;
+}
+
+
+.result::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 360px;
+
+    height: 360px;
+
+    left: 50%;
+
+    top: 43%;
+
+    transform:
+        translate(-50%,-50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(100,170,255,.2),
+            rgba(60,120,230,.07) 38%,
+            transparent 70%
+        );
+
+    filter: blur(5px);
+
+    animation:
+        cosmicGlow 4s ease-in-out infinite;
+
+    pointer-events: none;
+}
+
+
+@keyframes cosmicGlow {
+
+    0%,100% {
+
+        transform:
+            translate(-50%,-50%)
+            scale(.82);
+
+        opacity: .55;
+    }
+
+    50% {
+
+        transform:
+            translate(-50%,-50%)
+            scale(1.18);
+
+        opacity: 1;
+    }
+}
+
+
+/* =========================================
+   COMET COMPLETION ICON
+========================================= */
+
+.completion-icon {
+
+    position: relative;
+
+    width: 105px;
+
+    height: 105px;
+
+    margin:
+        5px auto 32px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #ffffff 0%,
+            #e0f0ff 25%,
+            #8fc8ff 55%,
+            #447cff 100%
+        );
+
+    box-shadow:
+        0 0 25px
+        rgba(140,200,255,.8),
+
+        0 0 65px
+        rgba(70,140,255,.45),
+
+        0 0 120px
+        rgba(40,100,255,.2);
+
+    animation:
+        cometAppear 1s ease forwards,
+        cometFloat 4s ease-in-out 1s infinite;
+
+    z-index: 2;
+}
+
+
+.completion-icon::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 150px;
+
+    height: 32px;
+
+    left: -125px;
+
+    top: 38px;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(150,210,255,.12),
+            rgba(190,230,255,.65)
+        );
+
+    filter: blur(7px);
+
+    transform:
+        rotate(-25deg);
+
+    transform-origin: right center;
+}
+
+
+.completion-icon::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: -20px;
+
+    border-radius: 50%;
+
+    border:
+        1px dashed
+        rgba(180,220,255,.22);
+
+    animation:
+        cometRing 10s linear infinite;
+}
+
+
+@keyframes cometAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            scale(.2)
+            translateX(-80px)
+            rotate(-30deg);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            scale(1)
+            translateX(0)
+            rotate(0);
+    }
+}
+
+
+@keyframes cometFloat {
+
+    0%,100% {
+
+        transform:
+            translateY(0);
+    }
+
+    50% {
+
+        transform:
+            translateY(-8px);
+    }
+}
+
+
+@keyframes cometRing {
+
+    from {
+
+        transform:
+            rotate(0deg);
+    }
+
+    to {
+
+        transform:
+            rotate(360deg);
+    }
+}
+
+
+/* =========================================
+   RESULT TEXT
+========================================= */
+
+.result-label {
+
+    position: relative;
+
+    z-index: 2;
+
+    margin-bottom: 18px;
+
+    color:
+        rgba(170,205,255,.6);
+
+    font-size: 10px;
+
+    letter-spacing: 6px;
+
+    animation:
+        fadeUp .8s ease .2s both;
+}
+
+
+.result-title {
+
+    position: relative;
+
+    z-index: 2;
+
+    margin-bottom: 12px;
+
+    font-size:
+        clamp(32px,7vw,65px);
+
+    letter-spacing: 5px;
+
+    animation:
+        titleAppear 1s ease .35s both;
+}
+
+
+@keyframes titleAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(20px);
+
+        letter-spacing: 15px;
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+        letter-spacing: 5px;
+    }
+}
+
+
+.score {
+
+    position: relative;
+
+    z-index: 2;
+
+    margin-bottom: 22px;
+
+    font-size: 25px;
+
+    font-weight: bold;
+
+    letter-spacing: 3px;
+
+    animation:
+        fadeUp .8s ease .55s both;
+}
+
+
+.result-text {
+
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 650px;
+
+    margin:
+        0 auto 30px;
+
+    color:
+        rgba(255,255,255,.5);
+
+    font-size: 13px;
+
+    line-height: 1.8;
+
+    animation:
+        fadeUp .8s ease .7s both;
+}
+
+
+@keyframes fadeUp {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(15px);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* =========================================
+   SCORE BAR
+========================================= */
+
+.final-score-bar {
+
+    position: relative;
+
+    z-index: 2;
+
+    width:
+        min(500px,90%);
+
+    height: 3px;
+
+    margin:
+        0 auto 35px;
+
+    background:
+        rgba(255,255,255,.08);
+
+    overflow: hidden;
+
+    animation:
+        fadeUp .8s ease .85s both;
+}
+
+
+.final-score-fill {
+
+    width: 0%;
+
+    height: 100%;
+
+    background: white;
+
+    box-shadow:
+        0 0 12px
+        rgba(180,220,255,.9);
+
+    transition:
+        width 1.8s cubic-bezier(.2,.8,.2,1);
+}
+
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.result-buttons {
+
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+
+    animation:
+        fadeUp .8s ease 1s both;
+}
+
+
+.result-button {
+
+    padding:
+        13px 23px;
+
+    color:
+        rgba(255,255,255,.75);
+
+    border:
+        1px solid
+        rgba(255,255,255,.2);
+
+    background:
+        transparent;
+
+    text-decoration: none;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    cursor: pointer;
+
+    transition:
+        .3s ease;
+}
+
+
+.result-button:hover {
+
+    color: #010208;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-3px);
+}
+
+
+/* =========================================
+   PARTICLES
+========================================= */
+
+.final-particle {
+
+    position: absolute;
+
+    width: 3px;
+
+    height: 3px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    pointer-events: none;
+
+    opacity: 0;
+
+    animation:
+        particleFly 2.5s ease-out forwards;
+}
+
+
+@keyframes particleFly {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            translate(0,0)
+            scale(.2);
+    }
+
+    15% {
+
+        opacity: 1;
+
+        transform:
+            translate(0,0)
+            scale(1);
+    }
+
+    100% {
+
+        opacity: 0;
+
+        transform:
+            translate(
+                var(--x),
+                var(--y)
+            )
+            scale(.2);
+    }
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.footer {
+
+    position: relative;
+
+    z-index: 5;
+
+    margin-top: 35px;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,.25);
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:600px) {
+
+    .comets-quiz-page {
+
+        padding:
+            50px 15px 80px;
+    }
+
+    .quiz-container {
+
+        padding: 25px;
+    }
+
+    .answers {
+
+        grid-template-columns:
+            1fr;
+    }
+
+    .question {
+
+        font-size: 20px;
+    }
+
+    .completion-icon {
+
+        width: 85px;
+
+        height: 85px;
+    }
+
+    .result {
+
+        min-height: 550px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<section class="comets-quiz-page">
+
+
+<div class="stars"></div>
+
+<div class="stars-small"></div>
+
+
+<!-- HEADER -->
+
+<div class="header">
+
+
+<a
+href="https://sites.google.com/view/kosmolearn"
+class="return">
+
+← RETURN TO HOME
+
+</a>
+
+
+<div class="label">
+
+ORBONIX · SPACE KNOWLEDGE
+
+</div>
+
+
+<h1>
+
+COMETS QUIZ
+
+</h1>
+
+
+<div class="subtitle">
+
+30 questions about comets — from their basic
+structure and famous visitors to their origins,
+orbits, chemistry and the secrets they reveal
+about the early Solar System.
+
+</div>
+
+
+</div>
+
+
+<!-- QUIZ -->
+
+<div class="quiz-container">
+
+
+<div id="quiz">
+
+
+<div class="quiz-top">
+
+<div
+class="question-number"
+id="questionNumber">
+
+QUESTION 01 / 30
+
+</div>
+
+
+<div
+class="difficulty"
+id="difficulty">
+
+EASY
+
+</div>
+
+</div>
+
+
+<div class="progress">
+
+<div
+class="progress-bar"
+id="progressBar">
+</div>
+
+</div>
+
+
+<div
+class="question"
+id="question">
+
+Loading question...
+
+</div>
+
+
+<div
+class="answers"
+id="answers">
+</div>
+
+
+<div class="next-area">
+
+<button
+class="next-button"
+id="nextButton"
+onclick="nextQuestion()">
+
+NEXT QUESTION →
+
+</button>
+
+</div>
+
+
+</div>
+
+
+<!-- RESULT -->
+
+<div
+class="result"
+id="result">
+
+
+<div class="completion-icon"></div>
+
+
+<div class="result-label">
+
+COMETARY MISSION COMPLETE
+
+</div>
+
+
+<div
+class="result-title"
+id="resultTitle">
+
+COMET EXPLORER
+
+</div>
+
+
+<div
+class="score"
+id="score">
+
+0 / 30
+
+</div>
+
+
+<div class="final-score-bar">
+
+<div
+class="final-score-fill"
+id="finalScoreFill">
+</div>
+
+</div>
+
+
+<div
+class="result-text"
+id="resultText">
+
+You have completed your journey
+through the icy bodies of the Solar System.
+
+</div>
+
+
+<div class="result-buttons">
+
+
+<button
+class="result-button"
+onclick="restartQuiz()">
+
+↻ RESTART QUIZ
+
+</button>
+
+
+<a
+href="YOUR-QUIZ-SELECT-PAGE-LINK"
+class="result-button">
+
+← QUIZ SELECT
+
+</a>
+
+
+<a
+href="https://sites.google.com/view/kosmolearn"
+class="result-button">
+
+RETURN TO HOME
+
+</a>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+<div class="footer">
+
+ORBONIX · COMETS QUIZ · SPACE KNOWLEDGE
+
+</div>
+
+
+</section>
+
+
+<script>
+
+
+/* =========================================
+   QUESTIONS
+========================================= */
+
+const questions = [
+
+/* =========================================
+   EASY 1-10
+========================================= */
+
+{
+question:
+"What is a comet primarily made of?",
+answers:
+[
+"Ice, dust and rocky material",
+"Liquid metal",
+"Pure hydrogen",
+"Solid iron"
+],
+correct: 0,
+difficulty: "EASY"
+},
+
+{
+question:
+"What gives a comet its famous glowing tail?",
+answers:
+[
+"Interaction of released material with sunlight and the solar wind",
+"Earth's atmosphere",
+"Lightning",
+"Radio waves from Jupiter"
+],
+correct: 0,
+difficulty: "EASY"
+},
+
+{
+question:
+"Where does a comet spend most of its time?",
+answers:
+[
+"Far from the Sun",
+"Inside Earth's atmosphere",
+"On the surface of a planet",
+"Inside the Sun"
+],
+correct: 0,
+difficulty: "EASY"
+},
+
+{
+question:
+"What happens to a comet when it approaches the Sun?",
+answers:
+[
+"Its ices heat up and release gas and dust",
+"It becomes a star",
+"It stops moving",
+"It turns completely into metal"
+],
+correct: 0,
+difficulty: "EASY"
+},
+
+{
+question:
+"What is the solid central part of a comet called?",
+answers:
+[
+"The nucleus",
+"The corona",
+"The mantle",
+"The core cloud"
+],
+correct: 0,
+difficulty: "EASY"
+},
+
+{
+question:
+"Which famous comet returns to the inner Solar System roughly every 76 years?",
+answers:
+[
+"Halley's Comet",
+"Shoemaker-Levy 9",
+"Comet Hale-Bopp",
+"Comet NEOWISE"
+],
+correct: 0,
+difficulty: "EASY"
+},
+
+{
+question:
+"Which direction does a comet's tail generally point?",
+answers:
+[
+"Away from the Sun",
+"Always toward Earth",
+"Always toward the Sun",
+"Toward Jupiter"
+],
+correct: 0,
+difficulty: "EASY"
+},
+
+{
+question:
+"What is the glowing cloud surrounding a comet's nucleus called?",
+answers:
+[
+"The coma",
+"The nebula",
+"The photosphere",
+"The magnetosphere"
+],
+correct: 0,
+difficulty: "EASY"
+},
+
+{
+question:
+"Are comet tails always visible from Earth?",
+answers:
+[
+"No",
+"Yes",
+"Only during eclipses",
+"Only in winter"
+],
+correct: 0,
+difficulty: "EASY"
+},
+
+{
+question:
+"What is the name of the region of the Solar System containing many distant icy bodies and some comet sources?",
+answers:
+[
+"The Kuiper Belt",
+"The Asteroid Belt",
+"The Main Sequence",
+"The Van Allen Belt"
+],
+correct: 0,
+difficulty: "EASY"
+},
+
+
+/* =========================================
+   MEDIUM 11-20
+========================================= */
+
+{
+question:
+"What is a short-period comet?",
+answers:
+[
+"A comet with an orbital period of less than about 200 years",
+"A comet that exists for only one day",
+"A comet that never leaves Earth's orbit",
+"A comet that travels only around the Moon"
+],
+correct: 0,
+difficulty: "MEDIUM"
+},
+
+{
+question:
+"Which two forces mainly shape the direction of a comet's tails?",
+answers:
+[
+"Solar radiation and the solar wind",
+"Earth's gravity and tides",
+"Magnetism from Saturn and Jupiter",
+"Dark matter and gravity waves"
+],
+correct: 0,
+difficulty: "MEDIUM"
+},
+
+{
+question:
+"What is the ion tail of a comet mainly made of?",
+answers:
+[
+"Charged gas",
+"Solid rocks",
+"Liquid water",
+"Frozen metal"
+],
+correct: 0,
+difficulty: "MEDIUM"
+},
+
+{
+question:
+"What is the dust tail of a comet mainly made of?",
+answers:
+[
+"Tiny solid particles",
+"Pure plasma",
+"Liquid hydrogen",
+"Neutron matter"
+],
+correct: 0,
+difficulty: "MEDIUM"
+},
+
+{
+question:
+"Why do comet tails usually become more prominent near the Sun?",
+answers:
+[
+"Solar heating releases gas and dust from the nucleus",
+"The comet becomes heavier",
+"The Sun pulls the tail directly behind it",
+"Earth's atmosphere becomes stronger"
+],
+correct: 0,
+difficulty: "MEDIUM"
+},
+
+{
+question:
+"Where are many short-period comets thought to originate?",
+answers:
+[
+"The Kuiper Belt and scattered disk",
+"The surface of the Sun",
+"Earth's oceans",
+"The asteroid belt exclusively"
+],
+correct: 0,
+difficulty: "MEDIUM"
+},
+
+{
+question:
+"What is the Oort Cloud?",
+answers:
+[
+"A hypothetical distant spherical reservoir of icy bodies surrounding the Solar System",
+"A cloud inside the Sun",
+"A ring around Saturn",
+"A region of Mars"
+],
+correct: 0,
+difficulty: "MEDIUM"
+},
+
+{
+question:
+"Why are comets scientifically valuable?",
+answers:
+[
+"They preserve relatively primitive material from the early Solar System",
+"They are the oldest stars",
+"They contain only material from Earth",
+"They create all galaxies"
+],
+correct: 0,
+difficulty: "MEDIUM"
+},
+
+{
+question:
+"What spacecraft deliberately impacted a comet's nucleus in NASA's Deep Impact mission?",
+answers:
+[
+"An impactor spacecraft",
+"The Hubble Space Telescope",
+"Voyager 1",
+"New Horizons"
+],
+correct: 0,
+difficulty: "MEDIUM"
+},
+
+{
+question:
+"Which mission famously orbited comet 67P/Churyumov–Gerasimenko?",
+answers:
+[
+"Rosetta",
+"Cassini",
+"Juno",
+"Galileo"
+],
+correct: 0,
+difficulty: "MEDIUM"
+},
+
+
+/* =========================================
+   HARD 21-30
+========================================= */
+
+{
+question:
+"What is the approximate shape of a typical comet nucleus?",
+answers:
+[
+"Irregular and often elongated or lumpy",
+"Perfectly spherical",
+"Perfectly cubic",
+"Completely flat"
+],
+correct: 0,
+difficulty: "HARD"
+},
+
+{
+question:
+"Why does a comet's tail not simply trail behind it along its orbit?",
+answers:
+[
+"Solar wind and radiation pressure push material away from the Sun",
+"Gravity always points backward",
+"The comet has no orbit",
+"The tail is attached to Earth"
+],
+correct: 0,
+difficulty: "HARD"
+},
+
+{
+question:
+"What happens to a comet's mass over many close passages near the Sun?",
+answers:
+[
+"It gradually loses material",
+"It always gains mass",
+"It becomes a star",
+"It turns into an asteroid immediately"
+],
+correct: 0,
+difficulty: "HARD"
+},
+
+{
+question:
+"What is the main difference between a comet and an asteroid?",
+answers:
+[
+"Comets typically contain much more volatile ice and can develop comae and tails",
+"Asteroids are made only of gas",
+"Comets never orbit the Sun",
+"Asteroids cannot contain rock"
+],
+correct: 0,
+difficulty: "HARD"
+},
+
+{
+question:
+"What did the Rosetta mission discover about comet 67P?",
+answers:
+[
+"It has a complex, active surface and a distinctive two-lobed shape",
+"It is larger than the Sun",
+"It has a permanent atmosphere like Earth",
+"It is completely covered by liquid water"
+],
+correct: 0,
+difficulty: "HARD"
+},
+
+{
+question:
+"What is cometary outgassing?",
+answers:
+[
+"The release of gas and dust caused by heating of volatile material",
+"The explosion of a star",
+"The collision of two galaxies",
+"The freezing of water"
+],
+correct: 0,
+difficulty: "HARD"
+},
+
+{
+question:
+"Why can some comets suddenly become much brighter?",
+answers:
+[
+"Sudden increases in outgassing or fragmentation can release large amounts of material",
+"They turn into stars",
+"Their gravity disappears",
+"Earth becomes closer to them permanently"
+],
+correct: 0,
+difficulty: "HARD"
+},
+
+{
+question:
+"What is a sungrazing comet?",
+answers:
+[
+"A comet whose orbit brings it extremely close to the Sun",
+"A comet orbiting Earth",
+"A comet located beyond Neptune",
+"A comet that never approaches the Sun"
+],
+correct: 0,
+difficulty: "HARD"
+},
+
+{
+question:
+"What can happen to a comet that passes extremely close to the Sun?",
+answers:
+[
+"It can fragment or even be destroyed by intense heating and tidal forces",
+"It becomes a planet",
+"It stops experiencing gravity",
+"It always becomes a black hole"
+],
+correct: 0,
+difficulty: "HARD"
+},
+
+{
+question:
+"Why are long-period comets particularly important for studying the distant Solar System?",
+answers:
+[
+"Their origins may lie in the extremely distant Oort Cloud",
+"They were created on Earth",
+"They never contain ice",
+"They orbit only between Earth and Mars"
+],
+correct: 0,
+difficulty: "HARD"
+}
+
+];
+
+
+/* =========================================
+   VARIABLES
+========================================= */
+
+let currentQuestion = 0;
+
+let score = 0;
+
+let answered = false;
+
+
+/* =========================================
+   SHUFFLE ANSWERS
+========================================= */
+
+function shuffleAnswers(question) {
+
+    const answerObjects =
+        question.answers.map(
+            (answer, index) => {
+
+                return {
+
+                    text: answer,
+
+                    correct:
+                        index === question.correct
+
+                };
+
+            }
+        );
+
+
+    for (
+        let i = answerObjects.length - 1;
+        i > 0;
+        i--
+    ) {
+
+        const j =
+            Math.floor(
+                Math.random() * (i + 1)
+            );
+
+
+        [
+            answerObjects[i],
+            answerObjects[j]
+        ] =
+        [
+            answerObjects[j],
+            answerObjects[i]
+        ];
+
+    }
+
+
+    return answerObjects;
+}
+
+
+/* =========================================
+   LOAD QUESTION
+========================================= */
+
+function loadQuestion() {
+
+    answered = false;
+
+
+    const q =
+        questions[currentQuestion];
+
+
+    document.getElementById(
+        "questionNumber"
+    ).textContent =
+        `QUESTION ${
+            String(currentQuestion + 1)
+            .padStart(2,"0")
+        } / ${questions.length}`;
+
+
+    document.getElementById(
+        "difficulty"
+    ).textContent =
+        q.difficulty;
+
+
+    document.getElementById(
+        "question"
+    ).textContent =
+        q.question;
+
+
+    document.getElementById(
+        "progressBar"
+    ).style.width =
+        `${
+            (currentQuestion /
+            questions.length) * 100
+        }%`;
+
+
+    const answersContainer =
+        document.getElementById(
+            "answers"
+        );
+
+
+    answersContainer.innerHTML = "";
+
+
+    const shuffled =
+        shuffleAnswers(q);
+
+
+    shuffled.forEach(
+        answerObject => {
+
+            const button =
+                document.createElement(
+                    "button"
+                );
+
+
+            button.className =
+                "answer";
+
+
+            button.textContent =
+                answerObject.text;
+
+
+            button.dataset.correct =
+                answerObject.correct;
+
+
+            button.onclick =
+                function() {
+
+                    selectAnswer(
+                        answerObject.correct,
+                        button
+                    );
+
+                };
+
+
+            answersContainer.appendChild(
+                button
+            );
+
+        }
+    );
+
+
+    document.getElementById(
+        "nextButton"
+    ).style.display =
+        "none";
+}
+
+
+/* =========================================
+   ANSWER
+========================================= */
+
+function selectAnswer(
+    isCorrect,
+    selectedButton
+) {
+
+    if (answered)
+        return;
+
+
+    answered = true;
+
+
+    const buttons =
+        document.querySelectorAll(
+            ".answer"
+        );
+
+
+    buttons.forEach(
+        button => {
+
+            button.classList.add(
+                "disabled"
+            );
+
+        }
+    );
+
+
+    if (isCorrect) {
+
+        selectedButton.classList.add(
+            "correct"
+        );
+
+        score++;
+
+    }
+
+    else {
+
+        selectedButton.classList.add(
+            "wrong"
+        );
+
+
+        buttons.forEach(
+            button => {
+
+                if (
+                    button.dataset.correct
+                    === "true"
+                ) {
+
+                    button.classList.add(
+                        "correct"
+                    );
+
+                }
+
+            }
+        );
+
+    }
+
+
+    document.getElementById(
+        "nextButton"
+    ).style.display =
+        "inline-flex";
+}
+
+
+/* =========================================
+   NEXT QUESTION
+========================================= */
+
+function nextQuestion() {
+
+    currentQuestion++;
+
+
+    if (
+        currentQuestion >=
+        questions.length
+    ) {
+
+        showResult();
+
+        return;
+
+    }
+
+
+    loadQuestion();
+}
+
+
+/* =========================================
+   RESULT
+========================================= */
+
+function showResult() {
+
+    document.getElementById(
+        "quiz"
+    ).style.display =
+        "none";
+
+
+    const result =
+        document.getElementById(
+            "result"
+        );
+
+
+    result.style.display =
+        "block";
+
+
+    document.getElementById(
+        "score"
+    ).textContent =
+        "0 / 30";
+
+
+    let title = "";
+
+    let text = "";
+
+
+    if (score <= 10) {
+
+        title =
+            "COMET BEGINNER";
+
+        text =
+            "Your journey into cometary science has begun. There are countless icy worlds still waiting to be explored.";
+
+    }
+
+    else if (score <= 17) {
+
+        title =
+            "COMET EXPLORER";
+
+        text =
+            "A solid result. You understand the basic structure, behavior and origins of comets.";
+
+    }
+
+    else if (score <= 23) {
+
+        title =
+            "COMET ASTRONOMER";
+
+        text =
+            "Very strong performance. You understand cometary orbits, activity and their connection to the early Solar System.";
+
+    }
+
+    else if (score <= 27) {
+
+        title =
+            "COMET EXPERT";
+
+        text =
+            "Excellent. You handled advanced questions about cometary physics, outgassing, origins and evolution.";
+
+    }
+
+    else {
+
+        title =
+            "COMET MASTER";
+
+        text =
+            "Outstanding. Your knowledge reaches from basic comet structure to the most challenging questions about these ancient icy worlds.";
+
+    }
+
+
+    document.getElementById(
+        "resultTitle"
+    ).textContent =
+        title;
+
+
+    document.getElementById(
+        "resultText"
+    ).textContent =
+        text;
+
+
+    animateScore();
+
+
+    setTimeout(
+        function() {
+
+            document.getElementById(
+                "finalScoreFill"
+            ).style.width =
+                `${
+                    (score /
+                    questions.length) * 100
+                }%`;
+
+        },
+        600
+    );
+
+
+    createParticles();
+
+}
+
+
+/* =========================================
+   SCORE ANIMATION
+========================================= */
+
+function animateScore() {
+
+    let value = 0;
+
+    const scoreElement =
+        document.getElementById(
+            "score"
+        );
+
+
+    const duration = 1600;
+
+    const start =
+        performance.now();
+
+
+    function update(now) {
+
+        const progress =
+            Math.min(
+                (now - start) /
+                duration,
+                1
+            );
+
+
+        const eased =
+            1 -
+            Math.pow(
+                1 - progress,
+                3
+            );
+
+
+        value =
+            Math.floor(
+                eased * score
+            );
+
+
+        scoreElement.textContent =
+            `${value} / ${questions.length}`;
+
+
+        if (progress < 1) {
+
+            requestAnimationFrame(
+                update
+            );
+
+        }
+
+        else {
+
+            scoreElement.textContent =
+                `${score} / ${questions.length}`;
+
+        }
+
+    }
+
+
+    requestAnimationFrame(
+        update
+    );
+}
+
+
+/* =========================================
+   PARTICLES
+========================================= */
+
+function createParticles() {
+
+    const result =
+        document.getElementById(
+            "result"
+        );
+
+
+    for (
+        let i = 0;
+        i < 80;
+        i++
+    ) {
+
+        const particle =
+            document.createElement(
+                "div"
+            );
+
+
+        particle.className =
+            "final-particle";
+
+
+        particle.style.left =
+            Math.random() * 100 + "%";
+
+
+        particle.style.top =
+            40 +
+            Math.random() * 20 +
+            "%";
+
+
+        particle.style.setProperty(
+            "--x",
+            (
+                Math.random() * 550 -
+                275
+            ) + "px"
+        );
+
+
+        particle.style.setProperty(
+            "--y",
+            (
+                Math.random() * 550 -
+                275
+            ) + "px"
+        );
+
+
+        particle.style.animationDelay =
+            Math.random() * .8 +
+            "s";
+
+
+        result.appendChild(
+            particle
+        );
+
+
+        setTimeout(
+            function() {
+
+                particle.remove();
+
+            },
+            3500
+        );
+
+    }
+
+}
+
+
+/* =========================================
+   RESTART
+========================================= */
+
+function restartQuiz() {
+
+    currentQuestion = 0;
+
+    score = 0;
+
+
+    document.getElementById(
+        "quiz"
+    ).style.display =
+        "block";
+
+
+    document.getElementById(
+        "result"
+    ).style.display =
+        "none";
+
+
+    document.getElementById(
+        "finalScoreFill"
+    ).style.width =
+        "0%";
+
+
+    loadQuestion();
+}
+
+
+/* =========================================
+   STAR PARALLAX
+========================================= */
+
+const stars =
+document.querySelector(".stars");
+
+const smallStars =
+document.querySelector(".stars-small");
+
+
+document.addEventListener(
+"mousemove",
+
+function(event) {
+
+    const x =
+        event.clientX /
+        window.innerWidth -
+        0.5;
+
+
+    const y =
+        event.clientY /
+        window.innerHeight -
+        0.5;
+
+
+    stars.style.transform =
+        `translate(
+            ${x * 20}px,
+            ${y * 20}px
+        )`;
+
+
+    smallStars.style.transform =
+        `translate(
+            ${x * -12}px,
+            ${y * -12}px
+        )`;
+
+});
+
+
+/* =========================================
+   START
+========================================= */
+
+loadQuestion();
+
+</script>
+
+
+</body>
+
+</html>
