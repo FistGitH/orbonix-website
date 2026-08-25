@@ -1,1 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: #020308;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   PAGE
+========================================= */
+
+.sun-page {
+
+    position: relative;
+
+    min-height: 1200px;
+
+    padding: 55px 20px 100px;
+
+    overflow: hidden;
+
+    background: #020308;
+}
+
+
+/* =========================================
+   STARS
+========================================= */
+
+.stars {
+
+    position: absolute;
+
+    inset: -20%;
+
+    pointer-events: none;
+
+    opacity: .32;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.9) 1px,
+            transparent 1px
+        );
+
+    background-size: 75px 75px;
+
+    transition:
+        transform 1.5s ease;
+}
+
+
+.stars-small {
+
+    position: absolute;
+
+    inset: -20%;
+
+    pointer-events: none;
+
+    opacity: .15;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.8) 1px,
+            transparent 1px
+        );
+
+    background-size: 32px 32px;
+
+    transition:
+        transform 2s ease;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header {
+
+    position: relative;
+
+    z-index: 5;
+
+    max-width: 950px;
+
+    margin: auto;
+
+    text-align: center;
+}
+
+
+.return {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    padding: 12px 20px;
+
+    margin-bottom: 35px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.22);
+
+    color:
+        rgba(255,255,255,.7);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    transition:
+        .35s ease;
+}
+
+
+.return:hover {
+
+    background: white;
+
+    color: #020308;
+
+    border-color: white;
+
+    transform:
+        translateY(-4px);
+}
+
+
+.label {
+
+    margin-bottom: 18px;
+
+    color:
+        rgba(255,255,255,.4);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+
+h1 {
+
+    margin: 0;
+
+    font-size:
+        clamp(55px,9vw,105px);
+
+    line-height: .9;
+
+    letter-spacing: 8px;
+}
+
+
+.subtitle {
+
+    max-width: 680px;
+
+    margin:
+        25px auto 0;
+
+    color:
+        rgba(255,255,255,.52);
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   SUN AREA
+========================================= */
+
+.sun-area {
+
+    position: relative;
+
+    width: 500px;
+
+    height: 500px;
+
+    margin:
+        70px auto 80px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+}
+
+
+/* =========================================
+   SUN IMAGE
+========================================= */
+
+.sun-image {
+
+    display: block;
+
+    width: 390px;
+
+    height: 390px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    position: relative;
+
+    z-index: 2;
+
+    background: #111;
+
+    transition:
+        transform .7s ease;
+}
+
+
+.sun-image:hover {
+
+    transform:
+        scale(1.045);
+}
+
+
+/* =========================================
+   IMAGE CREDIT
+========================================= */
+
+.image-credit {
+
+    position: absolute;
+
+    z-index: 3;
+
+    bottom: 5px;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    color:
+        rgba(255,255,255,.35);
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================
+   INFORMATION GRID
+========================================= */
+
+.info {
+
+    position: relative;
+
+    z-index: 5;
+
+    width:
+        min(1050px,100%);
+
+    margin: auto;
+}
+
+
+.info-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 1px;
+
+    background:
+        rgba(255,255,255,.1);
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+}
+
+
+.card {
+
+    padding: 30px;
+
+    background:
+        rgba(5,7,13,.95);
+
+    transition:
+        .35s ease;
+}
+
+
+.card:hover {
+
+    transform:
+        translateY(-5px);
+
+    background:
+        rgba(255,255,255,.04);
+}
+
+
+.number {
+
+    margin-bottom: 8px;
+
+    font-size: 23px;
+
+    font-weight: bold;
+}
+
+
+.card-label {
+
+    color:
+        rgba(255,255,255,.4);
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================
+   DESCRIPTION
+========================================= */
+
+.description {
+
+    margin-top: 60px;
+
+    padding: 40px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.025);
+}
+
+
+.description-title {
+
+    margin-bottom: 20px;
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+}
+
+
+.description-text {
+
+    max-width: 850px;
+
+    color:
+        rgba(255,255,255,.58);
+
+    font-size: 14px;
+
+    line-height: 1.9;
+}
+
+
+/* =========================================
+   SUN LAYERS
+========================================= */
+
+.layers {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(5,1fr);
+
+    gap: 10px;
+
+    margin-top: 35px;
+}
+
+
+.layer {
+
+    padding: 20px 8px;
+
+    text-align: center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    transition:
+        .3s ease;
+}
+
+
+.layer:hover {
+
+    transform:
+        translateY(-5px);
+
+    border-color:
+        rgba(255,170,50,.5);
+}
+
+
+/* =========================================
+   FACT
+========================================= */
+
+.fact {
+
+    margin-top: 60px;
+
+    padding: 35px;
+
+    text-align: center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    background:
+        rgba(255,255,255,.025);
+}
+
+
+.fact-label {
+
+    margin-bottom: 15px;
+
+    color:
+        rgba(255,255,255,.45);
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+}
+
+
+.fact-text {
+
+    font-size:
+        clamp(18px,3vw,27px);
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:800px) {
+
+    .sun-area {
+
+        width: 390px;
+
+        height: 390px;
+    }
+
+
+    .sun-image {
+
+        width: 300px;
+
+        height: 300px;
+    }
+
+
+    .info-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .layers {
+
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+}
+
+
+@media(max-width:500px) {
+
+    .sun-page {
+
+        padding:
+            45px 15px 70px;
+    }
+
+
+    .sun-area {
+
+        width: 300px;
+
+        height: 300px;
+
+        margin-top: 50px;
+    }
+
+
+    .sun-image {
+
+        width: 220px;
+
+        height: 220px;
+    }
+
+
+    .image-credit {
+
+        bottom: -5px;
+
+        font-size: 7px;
+    }
+
+
+    .description {
+
+        padding: 25px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<section class="sun-page">
+
+
+<!-- =========================================
+     BACKGROUND
+========================================= -->
+
+<div class="stars"></div>
+
+<div class="stars-small"></div>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<div class="header">
+
+
+<a
+href="https://sites.google.com/view/kosmolearn/exploring-space"
+class="return">
+
+← RETURN TO EXPLORING SPACE
+
+</a>
+
+
+<div class="label">
+
+ORBONIX · SOLAR SYSTEM
+
+</div>
+
+
+<h1>
+
+SUN
+
+</h1>
+
+
+<div class="subtitle">
+
+The star at the center of our Solar System.
+Its gravity controls the motion of every planet,
+asteroid and comet around it.
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     SUN
+========================================= -->
+
+<div class="sun-area">
+
+
+<img
+
+class="sun-image"
+
+src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Image_of_Sun_From_NASA%E2%80%99s_Solar_Dynamics_Observatory_(PIA26681).jpg"
+
+alt="Sun photographed by NASA's Solar Dynamics Observatory"
+
+
+<div class="image-credit">
+
+IMAGE: NASA / SDO
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     INFORMATION
+========================================= -->
+
+<div class="info">
+
+
+<div class="info-grid">
+
+
+<div class="card">
+
+<div class="number">
+1,392,700 km
+</div>
+
+<div class="card-label">
+DIAMETER
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="number">
+4.6 BY
+</div>
+
+<div class="card-label">
+AGE
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="number">
+5,778 K
+</div>
+
+<div class="card-label">
+PHOTOSPHERE TEMPERATURE
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="number">
+1.989 × 10³⁰ kg
+</div>
+
+<div class="card-label">
+MASS
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="number">
+25–35 DAYS
+</div>
+
+<div class="card-label">
+ROTATION PERIOD
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="number">
+G2 V
+</div>
+
+<div class="card-label">
+STELLAR TYPE
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     DESCRIPTION
+========================================= -->
+
+<div class="description">
+
+
+<div class="description-title">
+
+WHAT IS THE SUN?
+
+</div>
+
+
+<div class="description-text">
+
+The Sun is a G-type main-sequence star
+located at the center of our Solar System.
+
+It contains about 99.8% of the total mass
+of the Solar System.
+
+Deep inside its core, hydrogen nuclei
+undergo nuclear fusion and form helium.
+This process releases enormous amounts
+of energy.
+
+That energy eventually reaches Earth
+as light and other electromagnetic radiation,
+providing the energy that supports life
+and drives Earth's climate.
+
+The Sun is also a highly active star.
+Its magnetic field constantly changes,
+producing sunspots, solar flares and
+coronal mass ejections.
+
+</div>
+
+
+<!-- =========================================
+     LAYERS
+========================================= -->
+
+<div class="layers">
+
+
+<div class="layer">
+CORE
+</div>
+
+
+<div class="layer">
+RADIATIVE ZONE
+</div>
+
+
+<div class="layer">
+CONVECTIVE ZONE
+</div>
+
+
+<div class="layer">
+PHOTOSPHERE
+</div>
+
+
+<div class="layer">
+CORONA
+</div>
+
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     FACT
+========================================= -->
+
+<div class="fact">
+
+
+<div class="fact-label">
+
+DID YOU KNOW?
+
+</div>
+
+
+<div class="fact-text">
+
+Sunlight takes approximately
+<strong>8 minutes 20 seconds</strong>
+to travel from the Sun to Earth.
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+<script>
+
+/* =========================================
+   STAR PARALLAX
+========================================= */
+
+const stars =
+document.querySelector(".stars");
+
+const smallStars =
+document.querySelector(".stars-small");
+
+
+document.addEventListener(
+"mousemove",
+
+function(event) {
+
+    const x =
+        event.clientX /
+        window.innerWidth -
+        0.5;
+
+    const y =
+        event.clientY /
+        window.innerHeight -
+        0.5;
+
+
+    stars.style.transform =
+        `translate(
+            ${x * 20}px,
+            ${y * 20}px
+        )`;
+
+
+    smallStars.style.transform =
+        `translate(
+            ${x * -12}px,
+            ${y * -12}px
+        )`;
+
+});
+
+</script>
+
+
+</body>
+
+</html>
