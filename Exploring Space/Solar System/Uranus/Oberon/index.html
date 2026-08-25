@@ -1,1 +1,1143 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: #020308;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   PAGE
+========================================= */
+
+.oberon-page {
+    position: relative;
+    min-height: 1700px;
+    padding: 55px 20px 100px;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 30%,
+            rgba(150,170,210,.14),
+            transparent 45%
+        ),
+        #020308;
+}
+
+
+/* =========================================
+   STARS
+========================================= */
+
+.stars {
+    position: absolute;
+    inset: -20%;
+    pointer-events: none;
+    opacity: .38;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.9) 1px,
+            transparent 1px
+        );
+
+    background-size: 75px 75px;
+
+    transition: transform 1.5s ease;
+}
+
+.stars-small {
+    position: absolute;
+    inset: -20%;
+    pointer-events: none;
+    opacity: .14;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.8) 1px,
+            transparent 1px
+        );
+
+    background-size: 32px 32px;
+
+    transition: transform 2s ease;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header {
+    position: relative;
+    z-index: 100;
+
+    max-width: 950px;
+    margin: auto;
+
+    text-align: center;
+}
+
+
+.return {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 12px 20px;
+    margin-bottom: 35px;
+
+    color: rgba(255,255,255,.7);
+
+    border: 1px solid rgba(255,255,255,.22);
+
+    text-decoration: none;
+
+    font-size: 9px;
+    letter-spacing: 3px;
+
+    transition: .35s ease;
+}
+
+
+.return:hover {
+    color: #020308;
+    background: white;
+    border-color: white;
+
+    transform: translateY(-4px);
+}
+
+
+.label {
+    margin-bottom: 18px;
+
+    color: rgba(255,255,255,.4);
+
+    font-size: 10px;
+    letter-spacing: 5px;
+}
+
+
+h1 {
+    margin: 0;
+
+    font-size: clamp(55px,9vw,105px);
+
+    line-height: .9;
+
+    letter-spacing: 7px;
+}
+
+
+.subtitle {
+    max-width: 720px;
+
+    margin: 25px auto 0;
+
+    color: rgba(255,255,255,.52);
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   OBERON AREA
+========================================= */
+
+.oberon-area {
+    position: relative;
+
+    width: 720px;
+    height: 720px;
+
+    margin: 55px auto 85px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* =========================================
+   ORBITS
+========================================= */
+
+.orbit {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%,-50%);
+
+    border: 1px solid rgba(160,190,220,.14);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+
+.orbit-1 {
+    width: 300px;
+    height: 300px;
+}
+
+
+.orbit-2 {
+    width: 450px;
+    height: 450px;
+}
+
+
+.orbit-3 {
+    width: 610px;
+    height: 610px;
+}
+
+
+/* =========================================
+   OBERON IMAGE
+========================================= */
+
+.oberon {
+    position: relative;
+
+    z-index: 20;
+
+    width: 285px;
+    height: 285px;
+
+    display: block;
+
+    border-radius: 50%;
+
+    overflow: hidden;
+
+    text-decoration: none;
+
+    transition: transform .45s ease;
+}
+
+
+.oberon img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    background: #11151a;
+
+    box-shadow:
+        0 0 40px rgba(170,190,220,.28),
+        0 0 90px rgba(100,140,190,.12);
+
+    transition: .45s ease;
+}
+
+
+.oberon:hover {
+    transform: scale(1.07);
+}
+
+
+.oberon:hover img {
+    box-shadow:
+        0 0 55px rgba(190,210,240,.42),
+        0 0 120px rgba(120,160,220,.2);
+}
+
+
+/* =========================================
+   DOTS
+========================================= */
+
+.dot {
+    position: absolute;
+
+    width: 11px;
+    height: 11px;
+
+    border-radius: 50%;
+
+    background: rgba(220,225,235,.85);
+
+    box-shadow:
+        0 0 15px rgba(190,210,240,.4);
+}
+
+
+.dot-1 {
+    left: calc(50% + 135px);
+    top: calc(50% - 115px);
+}
+
+
+.dot-2 {
+    left: calc(50% - 215px);
+    top: calc(50% + 95px);
+}
+
+
+.dot-3 {
+    left: calc(50% + 275px);
+    top: calc(50% + 20px);
+}
+
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.content {
+    position: relative;
+
+    z-index: 10;
+
+    width: min(1050px,100%);
+
+    margin: auto;
+}
+
+
+/* =========================================
+   STATS
+========================================= */
+
+.stats {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 1px;
+
+    background:
+        rgba(255,255,255,.1);
+
+    border:
+        1px solid rgba(255,255,255,.1);
+}
+
+
+.stat {
+    padding: 30px;
+
+    background:
+        rgba(5,7,13,.96);
+
+    transition: .35s ease;
+}
+
+
+.stat:hover {
+    transform: translateY(-5px);
+
+    background:
+        rgba(255,255,255,.04);
+}
+
+
+.stat-value {
+    margin-bottom: 9px;
+
+    font-size: 21px;
+
+    font-weight: bold;
+}
+
+
+.stat-label {
+    color:
+        rgba(255,255,255,.4);
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================
+   DESCRIPTION
+========================================= */
+
+.description {
+    margin-top: 60px;
+
+    padding: 40px;
+
+    border:
+        1px solid rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.025);
+}
+
+
+.description-title {
+    margin-bottom: 20px;
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+}
+
+
+.description-text {
+    max-width: 900px;
+
+    color:
+        rgba(255,255,255,.58);
+
+    font-size: 14px;
+
+    line-height: 1.9;
+}
+
+
+/* =========================================
+   FEATURES
+========================================= */
+
+.features-title {
+    margin-top: 60px;
+
+    margin-bottom: 25px;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,.45);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+
+.features {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 15px;
+}
+
+
+.feature {
+    padding: 28px;
+
+    border:
+        1px solid rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.02);
+
+    transition: .35s ease;
+}
+
+
+.feature:hover {
+    transform: translateY(-6px);
+
+    border-color:
+        rgba(180,205,235,.4);
+
+    background:
+        rgba(255,255,255,.04);
+}
+
+
+.feature-title {
+    margin-bottom: 12px;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+}
+
+
+.feature-text {
+    color:
+        rgba(255,255,255,.5);
+
+    font-size: 12px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   FACT
+========================================= */
+
+.fact {
+    margin-top: 60px;
+
+    padding: 40px;
+
+    text-align: center;
+
+    border:
+        1px solid rgba(255,255,255,.12);
+
+    background:
+        rgba(255,255,255,.025);
+}
+
+
+.fact-label {
+    margin-bottom: 16px;
+
+    color:
+        rgba(255,255,255,.42);
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+}
+
+
+.fact-text {
+    max-width: 800px;
+
+    margin: auto;
+
+    font-size:
+        clamp(18px,3vw,27px);
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   NAVIGATION
+========================================= */
+
+.navigation {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    margin-top: 55px;
+
+    flex-wrap: wrap;
+}
+
+
+.nav-button {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 13px 22px;
+
+    color:
+        rgba(255,255,255,.75);
+
+    border:
+        1px solid rgba(255,255,255,.2);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    transition: .35s ease;
+}
+
+
+.nav-button:hover {
+    color: #020308;
+
+    background: white;
+
+    border-color: white;
+
+    transform: translateY(-4px);
+}
+
+
+/* =========================================
+   CREDIT
+========================================= */
+
+.credit {
+    margin-top: 30px;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,.3);
+
+    font-size: 9px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:800px) {
+
+    .oberon-area {
+        width: 500px;
+        height: 500px;
+    }
+
+
+    .oberon {
+        width: 210px;
+        height: 210px;
+    }
+
+
+    .orbit-1 {
+        width: 230px;
+        height: 230px;
+    }
+
+
+    .orbit-2 {
+        width: 350px;
+        height: 350px;
+    }
+
+
+    .orbit-3 {
+        width: 470px;
+        height: 470px;
+    }
+
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+
+    .features {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media(max-width:500px) {
+
+    .oberon-page {
+        padding:
+            45px 15px 70px;
+    }
+
+
+    .oberon-area {
+        width: 320px;
+        height: 320px;
+
+        margin-top: 45px;
+    }
+
+
+    .oberon {
+        width: 145px;
+        height: 145px;
+    }
+
+
+    .orbit-1 {
+        width: 170px;
+        height: 170px;
+    }
+
+
+    .orbit-2 {
+        width: 240px;
+        height: 240px;
+    }
+
+
+    .orbit-3 {
+        width: 310px;
+        height: 310px;
+    }
+
+
+    .dot-1 {
+        left:
+            calc(50% + 65px);
+
+        top:
+            calc(50% - 60px);
+    }
+
+
+    .dot-2 {
+        left:
+            calc(50% - 105px);
+
+        top:
+            calc(50% + 50px);
+    }
+
+
+    .dot-3 {
+        left:
+            calc(50% + 125px);
+
+        top:
+            calc(50% + 15px);
+    }
+
+
+    .description {
+        padding: 25px;
+    }
+
+
+    .fact {
+        padding:
+            28px 20px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<section class="oberon-page">
+
+
+<div class="stars"></div>
+
+<div class="stars-small"></div>
+
+
+<!-- HEADER -->
+
+<div class="header">
+
+
+<a
+href="https://sites.google.com/view/kosmolearn/solar-system/uranus"
+class="return">
+
+← RETURN TO URANUS
+
+</a>
+
+
+<div class="label">
+
+ORBONIX · URANUS MOONS
+
+</div>
+
+
+<h1>
+
+OBERON
+
+</h1>
+
+
+<div class="subtitle">
+
+The outermost major moon of Uranus,
+covered by ancient craters and enormous
+bright deposits on its surface.
+
+</div>
+
+
+</div>
+
+
+<!-- OBERON -->
+
+<div class="oberon-area">
+
+
+<div class="orbit orbit-1"></div>
+
+<div class="orbit orbit-2"></div>
+
+<div class="orbit orbit-3"></div>
+
+
+<div class="dot dot-1"></div>
+
+<div class="dot dot-2"></div>
+
+<div class="dot dot-3"></div>
+
+
+<a
+href="#OBERON"
+class="oberon">
+
+<img
+src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Oberon_-_PIA00034.jpg"
+alt="Oberon"
+loading="eager">
+
+</a>
+
+
+</div>
+
+
+<!-- CONTENT -->
+
+<div class="content">
+
+
+<div class="stats">
+
+
+<div class="stat">
+
+<div class="stat-value">
+1,523 km
+</div>
+
+<div class="stat-label">
+DIAMETER
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+13.46 DAYS
+</div>
+
+<div class="stat-label">
+ORBITAL PERIOD
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+583,500 km
+</div>
+
+<div class="stat-label">
+FROM URANUS
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+1787
+</div>
+
+<div class="stat-label">
+DISCOVERED
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+13.46 DAYS
+</div>
+
+<div class="stat-label">
+ROTATION PERIOD
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+#2
+</div>
+
+<div class="stat-label">
+LARGEST URANUS MOON
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- DESCRIPTION -->
+
+<div class="description">
+
+
+<div class="description-title">
+
+THE OUTER MOON
+
+</div>
+
+
+<div class="description-text">
+
+Oberon is the second-largest moon of
+Uranus and the outermost of the planet's
+five major moons.
+
+It was discovered in 1787 by William
+Herschel, on the same night that he
+discovered Titania.
+
+Voyager 2 photographed Oberon during
+its 1986 encounter with Uranus.
+
+The images revealed a very old and
+heavily cratered surface.
+
+Several enormous impact craters can
+be seen across Oberon's icy terrain.
+
+Oberon is composed primarily of water
+ice mixed with rocky material.
+
+</div>
+
+
+</div>
+
+
+<!-- FEATURES -->
+
+<div class="features-title">
+
+OBERON FEATURES
+
+</div>
+
+
+<div class="features">
+
+
+<div class="feature">
+
+<div class="feature-title">
+
+HAMLET CRATER
+
+</div>
+
+<div class="feature-text">
+
+Hamlet is one of Oberon's largest
+impact craters, measuring about
+206 kilometres across.
+
+</div>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-title">
+
+BRIGHT DEPOSITS
+
+</div>
+
+<div class="feature-text">
+
+Some crater floors contain unusually
+bright material that contrasts with
+the dark surface.
+
+</div>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-title">
+
+ANCIENT SURFACE
+
+</div>
+
+<div class="feature-text">
+
+Oberon's heavily cratered terrain
+preserves evidence of impacts from
+the distant past.
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- FACT -->
+
+<div class="fact">
+
+
+<div class="fact-label">
+
+DID YOU KNOW?
+
+</div>
+
+
+<div class="fact-text">
+
+Oberon is the
+<strong>outermost of Uranus'
+five major moons</strong>
+and was photographed in detail
+by Voyager 2 in 1986.
+
+</div>
+
+
+</div>
+
+
+<!-- NAVIGATION -->
+
+<div class="navigation">
+
+
+<a
+href="https://sites.google.com/view/kosmolearn/solar-system/uranus"
+class="nav-button">
+
+← RETURN TO URANUS
+
+</a>
+
+
+<a
+href="https://sites.google.com/view/kosmolearn/solar-system"
+class="nav-button">
+
+← RETURN TO SOLAR SYSTEM
+
+</a>
+
+
+</div>
+
+
+<div class="credit">
+
+IMAGE:
+NASA / JPL / VOYAGER 2
+<br>
+IMAGE SOURCE: WIKIMEDIA COMMONS
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+<script>
+
+const stars =
+document.querySelector(".stars");
+
+const smallStars =
+document.querySelector(".stars-small");
+
+
+document.addEventListener(
+"mousemove",
+
+function(event) {
+
+    const x =
+        event.clientX /
+        window.innerWidth - 0.5;
+
+    const y =
+        event.clientY /
+        window.innerHeight - 0.5;
+
+
+    stars.style.transform =
+        `translate(
+            ${x * 20}px,
+            ${y * 20}px
+        )`;
+
+
+    smallStars.style.transform =
+        `translate(
+            ${x * -12}px,
+            ${y * -12}px
+        )`;
+
+});
+
+</script>
+
+
+</body>
+
+</html>
+```
