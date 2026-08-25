@@ -1,1 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: #020308;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   PAGE
+========================================= */
+
+.eris-page {
+
+    position: relative;
+
+    min-height: 1500px;
+
+    padding: 55px 20px 100px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 30%,
+            rgba(155,155,170,.16),
+            transparent 45%
+        ),
+        #020308;
+}
+
+
+/* =========================================
+   STARS
+========================================= */
+
+.stars {
+
+    position: absolute;
+
+    inset: -20%;
+
+    pointer-events: none;
+
+    opacity: .38;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.9) 1px,
+            transparent 1px
+        );
+
+    background-size: 75px 75px;
+
+    transition:
+        transform 1.5s ease;
+}
+
+
+.stars-small {
+
+    position: absolute;
+
+    inset: -20%;
+
+    pointer-events: none;
+
+    opacity: .14;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.8) 1px,
+            transparent 1px
+        );
+
+    background-size: 32px 32px;
+
+    transition:
+        transform 2s ease;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header {
+
+    position: relative;
+
+    z-index: 10;
+
+    max-width: 950px;
+
+    margin: auto;
+
+    text-align: center;
+}
+
+
+.return {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    padding: 12px 20px;
+
+    margin-bottom: 35px;
+
+    color:
+        rgba(255,255,255,.7);
+
+    border:
+        1px solid
+        rgba(255,255,255,.22);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    transition:
+        .35s ease;
+}
+
+
+.return:hover {
+
+    color: #020308;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-4px);
+}
+
+
+.label {
+
+    margin-bottom: 18px;
+
+    color:
+        rgba(255,255,255,.4);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+
+h1 {
+
+    margin: 0;
+
+    font-size:
+        clamp(55px,9vw,105px);
+
+    line-height: .9;
+
+    letter-spacing: 7px;
+}
+
+
+.subtitle {
+
+    max-width: 720px;
+
+    margin:
+        25px auto 0;
+
+    color:
+        rgba(255,255,255,.52);
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.content {
+
+    position: relative;
+
+    z-index: 10;
+
+    width:
+        min(1050px,100%);
+
+    margin:
+        80px auto 0;
+}
+
+
+/* =========================================
+   DESCRIPTION
+========================================= */
+
+.description {
+
+    padding: 40px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.025);
+}
+
+
+.description-title {
+
+    margin-bottom: 20px;
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+}
+
+
+.description-text {
+
+    max-width: 900px;
+
+    color:
+        rgba(255,255,255,.58);
+
+    font-size: 14px;
+
+    line-height: 1.9;
+}
+
+
+/* =========================================
+   STATS
+========================================= */
+
+.stats {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 1px;
+
+    margin-top: 25px;
+
+    background:
+        rgba(255,255,255,.1);
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+}
+
+
+.stat {
+
+    padding: 30px;
+
+    background:
+        rgba(5,7,13,.96);
+
+    transition:
+        .35s ease;
+}
+
+
+.stat:hover {
+
+    transform:
+        translateY(-5px);
+
+    background:
+        rgba(255,255,255,.04);
+}
+
+
+.stat-value {
+
+    margin-bottom: 9px;
+
+    font-size: 21px;
+
+    font-weight: bold;
+}
+
+
+.stat-label {
+
+    color:
+        rgba(255,255,255,.4);
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================
+   FEATURES
+========================================= */
+
+.features-title {
+
+    margin-top: 60px;
+
+    margin-bottom: 25px;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,.45);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+
+.features {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 15px;
+}
+
+
+.feature {
+
+    padding: 28px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.02);
+
+    transition:
+        .35s ease;
+}
+
+
+.feature:hover {
+
+    transform:
+        translateY(-6px);
+
+    border-color:
+        rgba(210,210,225,.4);
+
+    background:
+        rgba(255,255,255,.04);
+}
+
+
+.feature-title {
+
+    margin-bottom: 12px;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+}
+
+
+.feature-text {
+
+    color:
+        rgba(255,255,255,.5);
+
+    font-size: 12px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   FACT
+========================================= */
+
+.fact {
+
+    margin-top: 60px;
+
+    padding: 40px;
+
+    text-align: center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    background:
+        rgba(255,255,255,.025);
+}
+
+
+.fact-label {
+
+    margin-bottom: 16px;
+
+    color:
+        rgba(255,255,255,.42);
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+}
+
+
+.fact-text {
+
+    max-width: 800px;
+
+    margin: auto;
+
+    font-size:
+        clamp(18px,3vw,27px);
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   NAVIGATION
+========================================= */
+
+.navigation {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    margin-top: 55px;
+
+    flex-wrap: wrap;
+}
+
+
+.nav-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 13px 22px;
+
+    color:
+        rgba(255,255,255,.75);
+
+    border:
+        1px solid
+        rgba(255,255,255,.2);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    transition:
+        .35s ease;
+}
+
+
+.nav-button:hover {
+
+    color: #020308;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-4px);
+}
+
+
+/* =========================================
+   CREDIT
+========================================= */
+
+.credit {
+
+    margin-top: 30px;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,.3);
+
+    font-size: 9px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:800px) {
+
+    .stats {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .features {
+
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media(max-width:500px) {
+
+    .eris-page {
+
+        padding:
+            45px 15px 70px;
+    }
+
+
+    .description {
+
+        padding: 25px;
+    }
+
+
+    .fact {
+
+        padding:
+            28px 20px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<section class="eris-page">
+
+
+<div class="stars"></div>
+
+<div class="stars-small"></div>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<div class="header">
+
+
+<a
+href="https://sites.google.com/view/kosmolearn/solar-system/dwarf-planets"
+class="return">
+
+← RETURN TO DWARF PLANETS
+
+</a>
+
+
+<div class="label">
+
+ORBONIX · DWARF PLANETS
+
+</div>
+
+
+<h1>
+
+ERIS
+
+</h1>
+
+
+<div class="subtitle">
+
+A distant dwarf planet beyond Neptune,
+one of the most massive known objects
+in the scattered disc and a world that
+helped redefine the Solar System.
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     CONTENT
+========================================= -->
+
+<div class="content">
+
+
+<!-- DESCRIPTION -->
+
+<div class="description">
+
+
+<div class="description-title">
+
+THE DISTANT WORLD
+
+</div>
+
+
+<div class="description-text">
+
+Eris is a dwarf planet located far beyond
+Neptune in a region of the Solar System
+known as the scattered disc.
+
+It was discovered in 2005 by a team led
+by astronomer Mike Brown. Its discovery
+was one of the major events that led to
+the reclassification of Pluto as a dwarf
+planet in 2006.
+
+Eris is slightly smaller in diameter than
+Pluto, but its mass is slightly greater.
+It has an extremely distant and elongated
+orbit around the Sun.
+
+Eris takes more than five centuries to
+complete one orbit.
+
+The dwarf planet has one known moon,
+Dysnomia, which helped astronomers
+determine Eris's mass.
+
+</div>
+
+
+</div>
+
+
+<!-- STATS -->
+
+<div class="stats">
+
+
+<div class="stat">
+
+<div class="stat-value">
+~2,326 km
+</div>
+
+<div class="stat-label">
+DIAMETER
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+~558 YEARS
+</div>
+
+<div class="stat-label">
+ORBITAL PERIOD
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+~68 AU
+</div>
+
+<div class="stat-label">
+AVERAGE DISTANCE FROM SUN
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+2005
+</div>
+
+<div class="stat-label">
+DISCOVERED
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+1
+</div>
+
+<div class="stat-label">
+KNOWN MOON
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+DWARF PLANET
+</div>
+
+<div class="stat-label">
+CLASSIFICATION
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- FEATURES -->
+
+<div class="features-title">
+
+ERIS FEATURES
+
+</div>
+
+
+<div class="features">
+
+
+<div class="feature">
+
+<div class="feature-title">
+
+DYSNOMIA
+
+</div>
+
+<div class="feature-text">
+
+Eris has one known moon named
+Dysnomia. Its orbit helped scientists
+measure the mass of Eris.
+
+</div>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-title">
+
+SCATTERED DISC
+
+</div>
+
+<div class="feature-text">
+
+Eris travels through the distant
+scattered disc, far beyond the main
+planetary region of the Solar System.
+
+</div>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-title">
+
+PLUTO'S RIVAL
+
+</div>
+
+<div class="feature-text">
+
+The discovery of Eris forced astronomers
+to reconsider what should officially
+count as a planet.
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- FACT -->
+
+<div class="fact">
+
+
+<div class="fact-label">
+
+DID YOU KNOW?
+
+</div>
+
+
+<div class="fact-text">
+
+Eris is so far from the Sun that it takes
+about <strong>558 years</strong> to complete
+a single orbit.
+
+</div>
+
+
+</div>
+
+
+<!-- NAVIGATION -->
+
+<div class="navigation">
+
+
+<a
+href="https://sites.google.com/view/kosmolearn/solar-system/dwarf-planets"
+class="nav-button">
+
+← RETURN TO DWARF PLANETS
+
+</a>
+
+
+<a
+href="https://sites.google.com/view/kosmolearn/solar-system"
+class="nav-button">
+
+← RETURN TO SOLAR SYSTEM
+
+</a>
+
+
+</div>
+
+
+<div class="credit">
+
+ORBONIX · SOLAR SYSTEM
+<br>
+DWARF PLANET · ERIS
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+<script>
+
+const stars =
+document.querySelector(".stars");
+
+
+const smallStars =
+document.querySelector(".stars-small");
+
+
+document.addEventListener(
+"mousemove",
+
+function(event) {
+
+    const x =
+        event.clientX /
+        window.innerWidth - 0.5;
+
+
+    const y =
+        event.clientY /
+        window.innerHeight - 0.5;
+
+
+    stars.style.transform =
+        `translate(
+            ${x * 20}px,
+            ${y * 20}px
+        )`;
+
+
+    smallStars.style.transform =
+        `translate(
+            ${x * -12}px,
+            ${y * -12}px
+        )`;
+
+});
+
+</script>
+
+
+</body>
+
+</html>
