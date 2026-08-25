@@ -1,1 +1,1157 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: #020308;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   PAGE
+========================================= */
+
+.core-page {
+
+    position: relative;
+
+    min-height: 1300px;
+
+    padding: 55px 20px 100px;
+
+    overflow: hidden;
+
+    background: #020308;
+}
+
+
+/* =========================================
+   STARS
+========================================= */
+
+.stars {
+
+    position: absolute;
+
+    inset: -20%;
+
+    pointer-events: none;
+
+    opacity: .32;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.9) 1px,
+            transparent 1px
+        );
+
+    background-size: 75px 75px;
+
+    transition:
+        transform 1.5s ease;
+}
+
+
+.stars-small {
+
+    position: absolute;
+
+    inset: -20%;
+
+    pointer-events: none;
+
+    opacity: .14;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.8) 1px,
+            transparent 1px
+        );
+
+    background-size: 32px 32px;
+
+    transition:
+        transform 2s ease;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header {
+
+    position: relative;
+
+    z-index: 5;
+
+    max-width: 950px;
+
+    margin: auto;
+
+    text-align: center;
+}
+
+
+.return {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    padding: 12px 20px;
+
+    margin-bottom: 35px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.22);
+
+    color:
+        rgba(255,255,255,.7);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    transition:
+        .35s ease;
+}
+
+
+.return:hover {
+
+    background: white;
+
+    color: #020308;
+
+    border-color: white;
+
+    transform:
+        translateY(-4px);
+}
+
+
+.label {
+
+    margin-bottom: 18px;
+
+    color:
+        rgba(255,255,255,.4);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+
+h1 {
+
+    margin: 0;
+
+    font-size:
+        clamp(52px,9vw,105px);
+
+    line-height: .9;
+
+    letter-spacing: 8px;
+}
+
+
+.subtitle {
+
+    max-width: 700px;
+
+    margin:
+        25px auto 0;
+
+    color:
+        rgba(255,255,255,.52);
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   CORE VISUAL
+========================================= */
+
+.core-area {
+
+    position: relative;
+
+    width: 520px;
+
+    height: 520px;
+
+    margin:
+        70px auto 90px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+/* =========================================
+   OUTER SUN
+========================================= */
+
+.sun-surface {
+
+    position: absolute;
+
+    width: 430px;
+
+    height: 430px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 45% 42%,
+            #ffb52d 0%,
+            #ef6c12 35%,
+            #b83208 68%,
+            #541000 100%
+        );
+
+    box-shadow:
+        0 0 35px
+        rgba(255,120,20,.25);
+
+    animation:
+        surfacePulse 5s
+        ease-in-out infinite;
+}
+
+
+@keyframes surfacePulse {
+
+    0%,100% {
+
+        transform:
+            scale(1);
+    }
+
+    50% {
+
+        transform:
+            scale(1.025);
+    }
+}
+
+
+/* =========================================
+   CORE
+========================================= */
+
+.core {
+
+    position: relative;
+
+    z-index: 5;
+
+    width: 210px;
+
+    height: 210px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 45% 40%,
+            #fff9b0 0%,
+            #ffe066 18%,
+            #ffb000 45%,
+            #e95700 72%,
+            #9b2100 100%
+        );
+
+    box-shadow:
+
+        0 0 35px
+        rgba(255,210,60,.8),
+
+        0 0 75px
+        rgba(255,120,0,.45);
+
+    animation:
+        corePulse 3.5s
+        ease-in-out infinite;
+}
+
+
+@keyframes corePulse {
+
+    0%,100% {
+
+        transform:
+            scale(.97);
+    }
+
+    50% {
+
+        transform:
+            scale(1.04);
+    }
+}
+
+
+/* =========================================
+   ORBITS
+========================================= */
+
+.orbit {
+
+    position: absolute;
+
+    border:
+        1px solid
+        rgba(255,220,120,.16);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+
+.orbit-one {
+
+    width: 470px;
+
+    height: 170px;
+
+    transform:
+        rotate(-20deg);
+}
+
+
+.orbit-two {
+
+    width: 490px;
+
+    height: 230px;
+
+    transform:
+        rotate(38deg);
+}
+
+
+/* =========================================
+   LABEL
+========================================= */
+
+.core-label {
+
+    position: absolute;
+
+    z-index: 10;
+
+    bottom: 0;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    padding:
+        9px 16px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.18);
+
+    background:
+        rgba(2,3,8,.85);
+
+    backdrop-filter:
+        blur(8px);
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================
+   INFO GRID
+========================================= */
+
+.info {
+
+    position: relative;
+
+    z-index: 5;
+
+    width:
+        min(1050px,100%);
+
+    margin: auto;
+}
+
+
+.info-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 1px;
+
+    background:
+        rgba(255,255,255,.1);
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+}
+
+
+.card {
+
+    padding: 30px;
+
+    background:
+        rgba(5,7,13,.95);
+
+    transition:
+        .35s ease;
+}
+
+
+.card:hover {
+
+    transform:
+        translateY(-5px);
+
+    background:
+        rgba(255,255,255,.04);
+}
+
+
+.number {
+
+    margin-bottom: 8px;
+
+    font-size: 22px;
+
+    font-weight: bold;
+}
+
+
+.card-label {
+
+    color:
+        rgba(255,255,255,.4);
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================
+   DESCRIPTION
+========================================= */
+
+.description {
+
+    margin-top: 60px;
+
+    padding: 40px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.025);
+}
+
+
+.description-title {
+
+    margin-bottom: 20px;
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+}
+
+
+.description-text {
+
+    max-width: 900px;
+
+    color:
+        rgba(255,255,255,.58);
+
+    font-size: 14px;
+
+    line-height: 1.9;
+}
+
+
+/* =========================================
+   FUSION
+========================================= */
+
+.fusion {
+
+    margin-top: 45px;
+
+    padding: 30px;
+
+    border:
+        1px solid
+        rgba(255,180,50,.2);
+
+    background:
+        rgba(255,130,20,.025);
+}
+
+
+.fusion-title {
+
+    margin-bottom: 15px;
+
+    font-size: 10px;
+
+    letter-spacing: 4px;
+
+    color:
+        rgba(255,190,90,.75);
+}
+
+
+.fusion-equation {
+
+    font-size:
+        clamp(20px,4vw,35px);
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 15px;
+}
+
+
+.fusion-text {
+
+    color:
+        rgba(255,255,255,.55);
+
+    font-size: 13px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   LAYERS
+========================================= */
+
+.layers {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap: 10px;
+
+    margin-top: 45px;
+}
+
+
+.layer {
+
+    padding: 22px 10px;
+
+    text-align: center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    transition:
+        .3s ease;
+}
+
+
+.layer:hover {
+
+    transform:
+        translateY(-5px);
+
+    border-color:
+        rgba(255,180,50,.45);
+}
+
+
+/* =========================================
+   FACT
+========================================= */
+
+.fact {
+
+    margin-top: 60px;
+
+    padding: 35px;
+
+    text-align: center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    background:
+        rgba(255,255,255,.025);
+}
+
+
+.fact-label {
+
+    margin-bottom: 15px;
+
+    color:
+        rgba(255,255,255,.45);
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+}
+
+
+.fact-text {
+
+    font-size:
+        clamp(18px,3vw,27px);
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:800px) {
+
+    .core-area {
+
+        width: 390px;
+
+        height: 390px;
+    }
+
+
+    .sun-surface {
+
+        width: 330px;
+
+        height: 330px;
+    }
+
+
+    .core {
+
+        width: 160px;
+
+        height: 160px;
+    }
+
+
+    .orbit-one {
+
+        width: 360px;
+
+        height: 135px;
+    }
+
+
+    .orbit-two {
+
+        width: 380px;
+
+        height: 180px;
+    }
+
+
+    .info-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .layers {
+
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+}
+
+
+@media(max-width:500px) {
+
+    .core-page {
+
+        padding:
+            45px 15px 70px;
+    }
+
+
+    .core-area {
+
+        width: 300px;
+
+        height: 300px;
+
+        margin-top: 50px;
+    }
+
+
+    .sun-surface {
+
+        width: 245px;
+
+        height: 245px;
+    }
+
+
+    .core {
+
+        width: 120px;
+
+        height: 120px;
+    }
+
+
+    .orbit-one {
+
+        width: 275px;
+
+        height: 100px;
+    }
+
+
+    .orbit-two {
+
+        width: 290px;
+
+        height: 140px;
+    }
+
+
+    .description {
+
+        padding: 25px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<section class="core-page">
+
+
+<div class="stars"></div>
+
+<div class="stars-small"></div>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<div class="header">
+
+
+<a
+href="https://sites.google.com/view/kosmolearn/sun"
+class="return">
+
+← RETURN TO SUN
+
+</a>
+
+
+<div class="label">
+
+ORBONIX · SUN STRUCTURE
+
+</div>
+
+
+<h1>
+
+CORE
+
+</h1>
+
+
+<div class="subtitle">
+
+The innermost region of the Sun —
+where extreme temperature and pressure
+power the star through nuclear fusion.
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     CORE VISUAL
+========================================= -->
+
+<div class="core-area">
+
+
+<div class="sun-surface"></div>
+
+
+<div class="orbit orbit-one"></div>
+
+<div class="orbit orbit-two"></div>
+
+
+<div class="core"></div>
+
+
+<div class="core-label">
+
+SOLAR CORE
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     INFORMATION
+========================================= -->
+
+<div class="info">
+
+
+<div class="info-grid">
+
+
+<div class="card">
+
+<div class="number">
+≈ 15,000,000 K
+</div>
+
+<div class="card-label">
+TEMPERATURE
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="number">
+≈ 150 g/cm³
+</div>
+
+<div class="card-label">
+DENSITY
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="number">
+≈ 0–25%
+</div>
+
+<div class="card-label">
+SOLAR RADIUS
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="number">
+≈ 15%
+</div>
+
+<div class="card-label">
+SOLAR VOLUME
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="number">
+H → He
+</div>
+
+<div class="card-label">
+FUSION
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="number">
+≈ 600 Mt/s
+</div>
+
+<div class="card-label">
+HYDROGEN FUSED / SECOND
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     DESCRIPTION
+========================================= -->
+
+<div class="description">
+
+
+<div class="description-title">
+
+INSIDE THE CORE
+
+</div>
+
+
+<div class="description-text">
+
+The solar core is the innermost part
+of the Sun and the only region where
+the conditions are extreme enough for
+sustained nuclear fusion.
+
+Temperatures reach roughly
+15 million kelvin, while enormous
+gravitational pressure compresses the
+plasma to extremely high densities.
+
+Under these conditions, hydrogen nuclei
+can overcome their electrostatic
+repulsion and participate in the
+proton–proton chain reaction.
+
+The result is the production of helium,
+positrons, neutrinos and high-energy
+photons.
+
+The energy generated here ultimately
+powers the Sun's light and heat.
+
+</div>
+
+
+<!-- =========================================
+     FUSION
+========================================= -->
+
+<div class="fusion">
+
+
+<div class="fusion-title">
+
+THE MAIN ENERGY SOURCE
+
+</div>
+
+
+<div class="fusion-equation">
+
+4H → He + ENERGY
+
+</div>
+
+
+<div class="fusion-text">
+
+Four hydrogen nuclei are ultimately
+converted into one helium nucleus.
+A small amount of mass is converted
+into energy according to Einstein's
+mass–energy equivalence.
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     SOLAR STRUCTURE
+========================================= -->
+
+<div class="layers">
+
+
+<div class="layer">
+CORE
+</div>
+
+
+<div class="layer">
+RADIATIVE ZONE
+</div>
+
+
+<div class="layer">
+CONVECTIVE ZONE
+</div>
+
+
+<div class="layer">
+PHOTOSPHERE
+</div>
+
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     FACT
+========================================= -->
+
+<div class="fact">
+
+
+<div class="fact-label">
+
+DID YOU KNOW?
+
+</div>
+
+
+<div class="fact-text">
+
+A photon produced in the Sun's core
+can take <strong>thousands to hundreds
+of thousands of years</strong> to work its
+way outward through the Sun.
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+<script>
+
+/* =========================================
+   STAR PARALLAX
+========================================= */
+
+const stars =
+document.querySelector(".stars");
+
+const smallStars =
+document.querySelector(".stars-small");
+
+
+document.addEventListener(
+"mousemove",
+
+function(event) {
+
+    const x =
+        event.clientX /
+        window.innerWidth -
+        0.5;
+
+    const y =
+        event.clientY /
+        window.innerHeight -
+        0.5;
+
+
+    stars.style.transform =
+        `translate(
+            ${x * 20}px,
+            ${y * 20}px
+        )`;
+
+
+    smallStars.style.transform =
+        `translate(
+            ${x * -12}px,
+            ${y * -12}px
+        )`;
+
+});
+
+</script>
+
+
+</body>
+
+</html>
