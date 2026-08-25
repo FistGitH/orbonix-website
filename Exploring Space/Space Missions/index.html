@@ -1,1 +1,1179 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ORBONIX · SPACE MISSIONS</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: #01030a;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   PAGE
+========================================= */
+
+.missions-page {
+
+    position: relative;
+
+    min-height: 100vh;
+
+    padding: 55px 20px 100px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 25%,
+            rgba(55,80,150,.18),
+            transparent 45%
+        ),
+        #01030a;
+}
+
+
+/* =========================================
+   STARS
+========================================= */
+
+.stars {
+
+    position: fixed;
+
+    inset: -20%;
+
+    pointer-events: none;
+
+    opacity: .38;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.9) 1px,
+            transparent 1px
+        );
+
+    background-size: 75px 75px;
+
+    transition:
+        transform 1.5s ease;
+}
+
+
+.stars-small {
+
+    position: fixed;
+
+    inset: -20%;
+
+    pointer-events: none;
+
+    opacity: .14;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.8) 1px,
+            transparent 1px
+        );
+
+    background-size: 32px 32px;
+
+    transition:
+        transform 2s ease;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header {
+
+    position: relative;
+
+    z-index: 10;
+
+    max-width: 950px;
+
+    margin: auto;
+
+    text-align: center;
+}
+
+
+.return {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    padding: 12px 20px;
+
+    margin-bottom: 35px;
+
+    color:
+        rgba(255,255,255,.7);
+
+    border:
+        1px solid
+        rgba(255,255,255,.22);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    transition: .35s ease;
+}
+
+
+.return:hover {
+
+    color: #01030a;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-4px);
+}
+
+
+.label {
+
+    margin-bottom: 18px;
+
+    color:
+        rgba(255,255,255,.4);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+
+h1 {
+
+    margin: 0;
+
+    font-size:
+        clamp(48px,8vw,100px);
+
+    line-height: .9;
+
+    letter-spacing: 6px;
+}
+
+
+.subtitle {
+
+    max-width: 720px;
+
+    margin:
+        28px auto 0;
+
+    color:
+        rgba(255,255,255,.52);
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   INTRO
+========================================= */
+
+.intro {
+
+    position: relative;
+
+    z-index: 5;
+
+    width:
+        min(900px,100%);
+
+    margin:
+        75px auto 0;
+
+    padding: 35px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.025);
+
+    text-align: center;
+}
+
+
+.intro-title {
+
+    margin-bottom: 15px;
+
+    font-size: 10px;
+
+    letter-spacing: 4px;
+
+    color:
+        rgba(255,255,255,.45);
+}
+
+
+.intro-text {
+
+    max-width: 750px;
+
+    margin: auto;
+
+    color:
+        rgba(255,255,255,.58);
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   MISSIONS
+========================================= */
+
+.missions {
+
+    position: relative;
+
+    z-index: 5;
+
+    width:
+        min(1050px,100%);
+
+    margin:
+        70px auto 0;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 15px;
+}
+
+
+/* =========================================
+   MISSION CARD
+========================================= */
+
+.mission {
+
+    position: relative;
+
+    min-height: 230px;
+
+    padding: 30px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.025);
+
+    text-decoration: none;
+
+    color: white;
+
+    overflow: hidden;
+
+    transition:
+        .4s ease;
+}
+
+
+.mission::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+
+    height: 180px;
+
+    right: -80px;
+
+    bottom: -90px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(90,120,190,.12);
+
+    filter: blur(20px);
+
+    transition:
+        .4s ease;
+}
+
+
+.mission:hover {
+
+    transform:
+        translateY(-8px);
+
+    border-color:
+        rgba(180,205,240,.4);
+
+    background:
+        rgba(255,255,255,.045);
+}
+
+
+.mission:hover::before {
+
+    transform:
+        scale(1.4);
+
+}
+
+
+.mission-number {
+
+    color:
+        rgba(255,255,255,.28);
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+}
+
+
+.mission-name {
+
+    margin-top: 20px;
+
+    font-size: 25px;
+
+    letter-spacing: 2px;
+}
+
+
+.mission-description {
+
+    margin-top: 12px;
+
+    color:
+        rgba(255,255,255,.48);
+
+    font-size: 11px;
+
+    line-height: 1.7;
+}
+
+
+.mission-arrow {
+
+    margin-top: 25px;
+
+    color:
+        rgba(255,255,255,.65);
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================
+   SECTION TITLE
+========================================= */
+
+.section-title {
+
+    position: relative;
+
+    z-index: 5;
+
+    margin-top: 85px;
+
+    margin-bottom: 25px;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,.42);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+
+/* =========================================
+   MISSION TYPES
+========================================= */
+
+.types {
+
+    position: relative;
+
+    z-index: 5;
+
+    width:
+        min(1050px,100%);
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap: 12px;
+}
+
+
+.type {
+
+    padding: 25px 20px;
+
+    text-align: center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+    background:
+        rgba(255,255,255,.02);
+
+    transition:
+        .35s ease;
+}
+
+
+.type:hover {
+
+    transform:
+        translateY(-5px);
+
+    border-color:
+        rgba(255,255,255,.25);
+}
+
+
+.type-name {
+
+    margin-bottom: 10px;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+}
+
+
+.type-text {
+
+    color:
+        rgba(255,255,255,.42);
+
+    font-size: 10px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   FACT
+========================================= */
+
+.fact {
+
+    position: relative;
+
+    z-index: 5;
+
+    width:
+        min(900px,100%);
+
+    margin:
+        70px auto 0;
+
+    padding: 40px;
+
+    text-align: center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    background:
+        rgba(255,255,255,.025);
+}
+
+
+.fact-label {
+
+    margin-bottom: 16px;
+
+    color:
+        rgba(255,255,255,.4);
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+}
+
+
+.fact-text {
+
+    max-width: 750px;
+
+    margin: auto;
+
+    font-size:
+        clamp(18px,3vw,27px);
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   NAVIGATION
+========================================= */
+
+.navigation {
+
+    position: relative;
+
+    z-index: 5;
+
+    display: flex;
+
+    justify-content: center;
+
+    margin-top: 55px;
+}
+
+
+.nav-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 13px 22px;
+
+    color:
+        rgba(255,255,255,.75);
+
+    border:
+        1px solid
+        rgba(255,255,255,.2);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    transition:
+        .35s ease;
+}
+
+
+.nav-button:hover {
+
+    color: #01030a;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-4px);
+}
+
+
+/* =========================================
+   CREDIT
+========================================= */
+
+.credit {
+
+    position: relative;
+
+    z-index: 5;
+
+    margin-top: 30px;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,.25);
+
+    font-size: 9px;
+
+    letter-spacing: 1px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:800px) {
+
+    .missions {
+
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+
+    .types {
+
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+}
+
+
+@media(max-width:500px) {
+
+    .missions-page {
+
+        padding:
+            45px 15px 70px;
+    }
+
+
+    .missions {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .types {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .intro {
+
+        padding: 25px;
+    }
+
+
+    .fact {
+
+        padding:
+            28px 20px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<section class="missions-page">
+
+
+<div class="stars"></div>
+
+<div class="stars-small"></div>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<div class="header">
+
+
+<a
+href="https://sites.google.com/view/kosmolearn"
+class="return">
+
+← RETURN TO HOME
+
+</a>
+
+
+<div class="label">
+
+ORBONIX · SPACE EXPLORATION
+
+</div>
+
+
+<h1>
+
+SPACE MISSIONS
+
+</h1>
+
+
+<div class="subtitle">
+
+Explore the missions that pushed humanity
+beyond Earth and transformed our understanding
+of the Solar System and the Universe.
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     INTRO
+========================================= -->
+
+<div class="intro">
+
+
+<div class="intro-title">
+
+EXPLORING THE UNKNOWN
+
+</div>
+
+
+<div class="intro-text">
+
+From the first human journeys beyond Earth
+to robotic spacecraft traveling billions of
+kilometers through deep space, every mission
+has expanded the boundaries of exploration.
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     MISSIONS
+========================================= -->
+
+<div class="section-title">
+
+FEATURED MISSIONS
+
+</div>
+
+
+<div class="missions">
+
+
+<a
+href="#APOLLO"
+class="mission">
+
+<div>
+
+<div class="mission-number">
+01 · HUMAN EXPLORATION
+</div>
+
+<div class="mission-name">
+APOLLO
+</div>
+
+<div class="mission-description">
+
+The historic program that sent humans
+to the Moon and changed space exploration
+forever.
+
+</div>
+
+</div>
+
+<div class="mission-arrow">
+EXPLORE MISSION →
+</div>
+
+</a>
+
+
+<a
+href="#VOYAGER"
+class="mission">
+
+<div>
+
+<div class="mission-number">
+02 · DEEP SPACE
+</div>
+
+<div class="mission-name">
+VOYAGER
+</div>
+
+<div class="mission-description">
+
+Two spacecraft exploring the outer Solar
+System and interstellar space.
+
+</div>
+
+</div>
+
+<div class="mission-arrow">
+EXPLORE MISSION →
+</div>
+
+</a>
+
+
+<a
+href="#CASSINI"
+class="mission">
+
+<div>
+
+<div class="mission-number">
+03 · PLANETARY
+</div>
+
+<div class="mission-name">
+CASSINI
+</div>
+
+<div class="mission-description">
+
+A remarkable mission that transformed our
+knowledge of Saturn and its moons.
+
+</div>
+
+</div>
+
+<div class="mission-arrow">
+EXPLORE MISSION →
+</div>
+
+</a>
+
+
+<a
+href="#NEW-HORIZONS"
+class="mission">
+
+<div>
+
+<div class="mission-number">
+04 · OUTER SOLAR SYSTEM
+</div>
+
+<div class="mission-name">
+NEW HORIZONS
+</div>
+
+<div class="mission-description">
+
+The first spacecraft to explore Pluto
+up close and continue into the Kuiper Belt.
+
+</div>
+
+</div>
+
+<div class="mission-arrow">
+EXPLORE MISSION →
+</div>
+
+</a>
+
+
+<a
+href="#JAMES-WEBB"
+class="mission">
+
+<div>
+
+<div class="mission-number">
+05 · SPACE TELESCOPE
+</div>
+
+<div class="mission-name">
+JAMES WEBB
+</div>
+
+<div class="mission-description">
+
+A powerful infrared observatory studying
+the earliest galaxies and distant worlds.
+
+</div>
+
+</div>
+
+<div class="mission-arrow">
+EXPLORE MISSION →
+</div>
+
+</a>
+
+
+<a
+href="#ARTEMIS"
+class="mission">
+
+<div>
+
+<div class="mission-number">
+06 · FUTURE EXPLORATION
+</div>
+
+<div class="mission-name">
+ARTEMIS
+</div>
+
+<div class="mission-description">
+
+A new era of human lunar exploration
+designed to prepare for deeper space missions.
+
+</div>
+
+</div>
+
+<div class="mission-arrow">
+EXPLORE MISSION →
+</div>
+
+</a>
+
+
+</div>
+
+
+<!-- =========================================
+     TYPES
+========================================= -->
+
+<div class="section-title">
+
+MISSION CATEGORIES
+
+</div>
+
+
+<div class="types">
+
+
+<div class="type">
+
+<div class="type-name">
+MOON
+</div>
+
+<div class="type-text">
+Human and robotic exploration
+of Earth's Moon.
+</div>
+
+</div>
+
+
+<div class="type">
+
+<div class="type-name">
+PLANETS
+</div>
+
+<div class="type-text">
+Spacecraft exploring worlds
+across the Solar System.
+</div>
+
+</div>
+
+
+<div class="type">
+
+<div class="type-name">
+DEEP SPACE
+</div>
+
+<div class="type-text">
+Missions traveling far beyond
+the outer planets.
+</div>
+
+</div>
+
+
+<div class="type">
+
+<div class="type-name">
+TELESCOPES
+</div>
+
+<div class="type-text">
+Observatories studying distant
+objects and the Universe.
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     FACT
+========================================= -->
+
+<div class="fact">
+
+
+<div class="fact-label">
+
+DID YOU KNOW?
+
+</div>
+
+
+<div class="fact-text">
+
+Some spacecraft launched decades ago
+are still sending information back to Earth
+from the <strong>edge of interstellar space</strong>.
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     NAVIGATION
+========================================= -->
+
+<div class="navigation">
+
+
+<a
+href="https://sites.google.com/view/kosmolearn"
+class="nav-button">
+
+← RETURN TO HOME
+
+</a>
+
+
+</div>
+
+
+<div class="credit">
+
+ORBONIX · SPACE MISSIONS
+
+<br>
+
+EXPLORING HUMANITY'S JOURNEY INTO SPACE
+
+</div>
+
+
+</section>
+
+
+<script>
+
+
+/* =========================================
+   STAR PARALLAX
+========================================= */
+
+const stars =
+document.querySelector(".stars");
+
+const smallStars =
+document.querySelector(".stars-small");
+
+
+document.addEventListener(
+"mousemove",
+
+function(event) {
+
+    const x =
+        event.clientX /
+        window.innerWidth - 0.5;
+
+
+    const y =
+        event.clientY /
+        window.innerHeight - 0.5;
+
+
+    stars.style.transform =
+        `translate(
+            ${x * 20}px,
+            ${y * 20}px
+        )`;
+
+
+    smallStars.style.transform =
+        `translate(
+            ${x * -12}px,
+            ${y * -12}px
+        )`;
+
+});
+
+
+</script>
+
+
+</body>
+
+</html>
+```
