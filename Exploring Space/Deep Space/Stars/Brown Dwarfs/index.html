@@ -1,1 +1,1653 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: #010208;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   PAGE
+========================================= */
+
+.brown-dwarf-page {
+
+    position: relative;
+
+    min-height: 1750px;
+
+    padding: 65px 20px 100px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 28%,
+            rgba(150,65,25,.20),
+            transparent 45%
+        ),
+        radial-gradient(
+            circle at 25% 70%,
+            rgba(100,40,20,.10),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 75% 75%,
+            rgba(190,80,30,.08),
+            transparent 35%
+        ),
+        #010208;
+}
+
+
+/* =========================================
+   STARS
+========================================= */
+
+.stars,
+.stars-small {
+
+    position: absolute;
+
+    inset: -25%;
+
+    pointer-events: none;
+}
+
+
+.stars {
+
+    opacity: .38;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.9) 1px,
+            transparent 1px
+        );
+
+    background-size: 75px 75px;
+
+    transition:
+        transform 1.5s ease;
+}
+
+
+.stars-small {
+
+    opacity: .16;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.8) 1px,
+            transparent 1px
+        );
+
+    background-size: 32px 32px;
+
+    transition:
+        transform 2s ease;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header {
+
+    position: relative;
+
+    z-index: 10;
+
+    max-width: 900px;
+
+    margin: auto;
+
+    text-align: center;
+}
+
+
+.return {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 12px 20px;
+
+    margin-bottom: 40px;
+
+    color:
+        rgba(255,255,255,.7);
+
+    border:
+        1px solid
+        rgba(255,255,255,.22);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    transition: .35s ease;
+}
+
+
+.return:hover {
+
+    color: #010208;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-4px);
+}
+
+
+.label {
+
+    margin-bottom: 18px;
+
+    color:
+        rgba(255,255,255,.4);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+
+h1 {
+
+    margin: 0;
+
+    font-size:
+        clamp(45px,8vw,90px);
+
+    line-height: .9;
+
+    letter-spacing: 6px;
+}
+
+
+.subtitle {
+
+    max-width: 760px;
+
+    margin:
+        28px auto 0;
+
+    color:
+        rgba(255,255,255,.52);
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   HERO
+========================================= */
+
+.hero {
+
+    position: relative;
+
+    z-index: 5;
+
+    width:
+        min(900px,100%);
+
+    height: 430px;
+
+    margin:
+        75px auto 60px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.02);
+
+    overflow: hidden;
+}
+
+
+/* =========================================
+   BROWN DWARF
+========================================= */
+
+.brown-dwarf {
+
+    position: relative;
+
+    width: 330px;
+
+    height: 330px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    animation:
+        dwarfFloat 7s ease-in-out infinite;
+}
+
+
+/* ATMOSPHERE GLOW */
+
+.glow {
+
+    position: absolute;
+
+    width: 400px;
+
+    height: 400px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(190,80,25,.18),
+            rgba(120,45,20,.20) 35%,
+            rgba(80,30,15,.10) 55%,
+            transparent 75%
+        );
+
+    filter:
+        blur(12px);
+
+    animation:
+        glowPulse 5s ease-in-out infinite;
+}
+
+
+/* ATMOSPHERIC RINGS */
+
+.atmosphere {
+
+    position: absolute;
+
+    width: 320px;
+
+    height: 320px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid
+        rgba(230,120,55,.18);
+
+    box-shadow:
+        0 0 45px
+        rgba(180,70,25,.12);
+
+    animation:
+        atmospherePulse 6s ease-in-out infinite;
+}
+
+
+/* PLANETARY BODY */
+
+.core {
+
+    position: relative;
+
+    z-index: 10;
+
+    width: 170px;
+
+    height: 170px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 25%,
+            #d69b65 0%,
+            #9b5430 25%,
+            #54291f 52%,
+            #24131a 78%,
+            #07050b 100%
+        );
+
+    box-shadow:
+
+        0 0 30px
+        rgba(220,110,55,.65),
+
+        0 0 70px
+        rgba(150,60,25,.38),
+
+        inset
+        -25px -20px 35px
+        rgba(0,0,0,.65);
+
+    overflow: hidden;
+
+    animation:
+        corePulse 5s ease-in-out infinite;
+}
+
+
+/* ATMOSPHERIC BANDS */
+
+.core::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: -10px;
+
+    background:
+
+        repeating-linear-gradient(
+            to bottom,
+            transparent 0px,
+            transparent 18px,
+            rgba(245,170,105,.15) 20px,
+            rgba(80,25,20,.28) 27px,
+            transparent 34px
+        );
+
+    transform:
+        rotate(-7deg);
+
+    opacity: .8;
+
+    animation:
+        bandsMove 8s linear infinite;
+}
+
+
+/* STORM */
+
+.core::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 42px;
+
+    height: 24px;
+
+    top: 70px;
+
+    left: 82px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,180,110,.25);
+
+    box-shadow:
+        0 0 15px
+        rgba(255,140,60,.3);
+
+    filter:
+        blur(4px);
+
+    animation:
+        stormMove 5s ease-in-out infinite;
+}
+
+
+/* CLOUD LAYERS */
+
+.clouds {
+
+    position: absolute;
+
+    z-index: 12;
+
+    width: 245px;
+
+    height: 245px;
+
+    border-radius: 50%;
+
+    background-image:
+        radial-gradient(
+            ellipse,
+            rgba(255,170,100,.14) 0%,
+            transparent 60%
+        );
+
+    filter:
+        blur(5px);
+
+    animation:
+        cloudRotate 12s linear infinite;
+}
+
+
+/* PARTICLES */
+
+.particles {
+
+    position: absolute;
+
+    width: 520px;
+
+    height: 520px;
+
+    border-radius: 50%;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(220,130,75,.8) 1px,
+            transparent 2px
+        );
+
+    background-size:
+        37px 35px;
+
+    opacity: .22;
+
+    animation:
+        particlesRotate 28s linear infinite;
+}
+
+
+/* ORBIT RINGS */
+
+.ring {
+
+    position: absolute;
+
+    width: 440px;
+
+    height: 135px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid
+        rgba(200,110,65,.16);
+
+    transform:
+        rotate(20deg);
+
+    animation:
+        ringRotate 15s linear infinite;
+}
+
+
+.ring-two {
+
+    width: 360px;
+
+    height: 110px;
+
+    transform:
+        rotate(-30deg);
+
+    border-color:
+        rgba(230,150,90,.12);
+
+    animation-direction:
+        reverse;
+}
+
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+
+@keyframes dwarfFloat {
+
+    0%,100% {
+
+        transform:
+            translateY(0);
+
+    }
+
+    50% {
+
+        transform:
+            translateY(-8px);
+
+    }
+
+}
+
+
+@keyframes glowPulse {
+
+    0%,100% {
+
+        transform:
+            scale(.88);
+
+        opacity: .6;
+
+    }
+
+    50% {
+
+        transform:
+            scale(1.1);
+
+        opacity: 1;
+
+    }
+
+}
+
+
+@keyframes atmospherePulse {
+
+    0%,100% {
+
+        transform:
+            scale(.92);
+
+        opacity: .4;
+
+    }
+
+    50% {
+
+        transform:
+            scale(1.08);
+
+        opacity: 1;
+
+    }
+
+}
+
+
+@keyframes corePulse {
+
+    0%,100% {
+
+        transform:
+            scale(.97);
+
+    }
+
+    50% {
+
+        transform:
+            scale(1.04);
+
+    }
+
+}
+
+
+@keyframes bandsMove {
+
+    from {
+
+        transform:
+            translateY(-15px)
+            rotate(-7deg);
+
+    }
+
+    to {
+
+        transform:
+            translateY(15px)
+            rotate(-7deg);
+
+    }
+
+}
+
+
+@keyframes stormMove {
+
+    0%,100% {
+
+        transform:
+            translateX(-10px)
+            scale(.9);
+
+    }
+
+    50% {
+
+        transform:
+            translateX(15px)
+            scale(1.1);
+
+    }
+
+}
+
+
+@keyframes cloudRotate {
+
+    from {
+
+        transform:
+            rotate(0deg);
+
+    }
+
+    to {
+
+        transform:
+            rotate(360deg);
+
+    }
+
+}
+
+
+@keyframes particlesRotate {
+
+    from {
+
+        transform:
+            rotate(0deg);
+
+    }
+
+    to {
+
+        transform:
+            rotate(-360deg);
+
+    }
+
+}
+
+
+@keyframes ringRotate {
+
+    from {
+
+        transform:
+            rotate(0deg);
+
+    }
+
+    to {
+
+        transform:
+            rotate(360deg);
+
+    }
+
+}
+
+
+.hero-label {
+
+    position: absolute;
+
+    bottom: 35px;
+
+    color:
+        rgba(255,255,255,.4);
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+}
+
+
+/* =========================================
+   STATS
+========================================= */
+
+.stats {
+
+    position: relative;
+
+    z-index: 5;
+
+    width:
+        min(1050px,100%);
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap: 1px;
+
+    background:
+        rgba(255,255,255,.1);
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+}
+
+
+.stat {
+
+    padding: 28px;
+
+    background:
+        rgba(5,7,15,.94);
+
+    transition: .35s ease;
+}
+
+
+.stat:hover {
+
+    transform:
+        translateY(-5px);
+
+    background:
+        rgba(255,255,255,.04);
+}
+
+
+.stat-value {
+
+    margin-bottom: 9px;
+
+    font-size: 18px;
+
+    font-weight: bold;
+}
+
+
+.stat-label {
+
+    color:
+        rgba(255,255,255,.38);
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.content {
+
+    position: relative;
+
+    z-index: 5;
+
+    width:
+        min(1050px,100%);
+
+    margin:
+        65px auto 0;
+}
+
+
+.info {
+
+    margin-bottom: 18px;
+
+    padding: 35px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.025);
+
+    transition: .35s ease;
+}
+
+
+.info:hover {
+
+    transform:
+        translateY(-4px);
+
+    border-color:
+        rgba(255,255,255,.22);
+}
+
+
+.info-title {
+
+    margin-bottom: 18px;
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+}
+
+
+.info-text {
+
+    margin: 0;
+
+    color:
+        rgba(255,255,255,.56);
+
+    font-size: 13px;
+
+    line-height: 1.9;
+}
+
+
+/* =========================================
+   FEATURES
+========================================= */
+
+.features-title {
+
+    margin:
+        60px 0 25px;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,.42);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+
+.features {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 15px;
+}
+
+
+.feature {
+
+    padding: 27px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.02);
+
+    transition: .35s ease;
+}
+
+
+.feature:hover {
+
+    transform:
+        translateY(-6px);
+
+    border-color:
+        rgba(210,120,70,.35);
+
+    background:
+        rgba(255,255,255,.04);
+}
+
+
+.feature-title {
+
+    margin-bottom: 11px;
+
+    font-size: 13px;
+
+    letter-spacing: 2px;
+}
+
+
+.feature-text {
+
+    color:
+        rgba(255,255,255,.5);
+
+    font-size: 11px;
+
+    line-height: 1.75;
+}
+
+
+/* =========================================
+   FACT
+========================================= */
+
+.fact {
+
+    margin-top: 60px;
+
+    padding: 42px;
+
+    text-align: center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    background:
+        rgba(255,255,255,.025);
+}
+
+
+.fact-label {
+
+    margin-bottom: 17px;
+
+    color:
+        rgba(255,255,255,.4);
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+}
+
+
+.fact-text {
+
+    max-width: 820px;
+
+    margin: auto;
+
+    font-size:
+        clamp(18px,3vw,27px);
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   NAVIGATION
+========================================= */
+
+.navigation {
+
+    display: flex;
+
+    justify-content: center;
+
+    margin-top: 55px;
+}
+
+
+.nav-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding:
+        13px 24px;
+
+    color:
+        rgba(255,255,255,.75);
+
+    border:
+        1px solid
+        rgba(255,255,255,.2);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    transition: .35s ease;
+}
+
+
+.nav-button:hover {
+
+    color: #010208;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-4px);
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.footer {
+
+    margin-top: 30px;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,.25);
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:800px) {
+
+    .stats {
+
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .features {
+
+        grid-template-columns:
+            1fr;
+    }
+
+}
+
+
+@media(max-width:600px) {
+
+    .brown-dwarf-page {
+
+        padding:
+            50px 15px 80px;
+    }
+
+    .hero {
+
+        height: 340px;
+    }
+
+    .brown-dwarf {
+
+        transform:
+            scale(.7);
+    }
+
+    .stats {
+
+        grid-template-columns:
+            1fr;
+    }
+
+    .info {
+
+        padding: 27px;
+    }
+
+    .fact {
+
+        padding:
+            30px 22px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<section class="brown-dwarf-page">
+
+
+<div class="stars"></div>
+
+<div class="stars-small"></div>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<div class="header">
+
+
+<a
+href="https://sites.google.com/view/kosmolearn"
+class="return">
+
+← RETURN TO HOME
+
+</a>
+
+
+<div class="label">
+
+ORBONIX · DEEP SPACE
+
+</div>
+
+
+<h1>
+
+BROWN DWARFS
+
+</h1>
+
+
+<div class="subtitle">
+
+Objects too massive to be ordinary planets,
+yet not massive enough to sustain hydrogen
+fusion like true stars.
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     HERO
+========================================= -->
+
+<div class="hero">
+
+
+<div class="brown-dwarf">
+
+<div class="particles"></div>
+
+<div class="ring"></div>
+
+<div class="ring ring-two"></div>
+
+<div class="glow"></div>
+
+<div class="atmosphere"></div>
+
+<div class="clouds"></div>
+
+<div class="core"></div>
+
+</div>
+
+
+<div class="hero-label">
+
+SUBSTELLAR OBJECT · FAILED STAR · ATMOSPHERIC CLOUDS
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     STATS
+========================================= -->
+
+<div class="stats">
+
+
+<div class="stat">
+
+<div class="stat-value">
+~13–80 M<sub>J</sub>
+</div>
+
+<div class="stat-label">
+MASS RANGE · APPROXIMATE
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+NO H-FUSION
+</div>
+
+<div class="stat-label">
+CANNOT SUSTAIN NORMAL HYDROGEN FUSION
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+~PLANET SIZE
+</div>
+
+<div class="stat-label">
+SIMILAR SIZE TO GAS GIANTS
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+LATE-TYPE
+</div>
+
+<div class="stat-label">
+COOL ATMOSPHERES · L / T / Y
+</div>
+
+</div>
+
+
+<!-- =========================================
+     CONTENT
+========================================= -->
+
+<div class="content">
+
+
+<div class="info">
+
+
+<div class="info-title">
+
+WHAT IS A BROWN DWARF?
+
+</div>
+
+
+<p class="info-text">
+
+A brown dwarf is a substellar object that
+forms through gravitational collapse like a
+star but does not have enough mass to sustain
+long-term hydrogen fusion in its core.
+
+They occupy the unusual region between the
+largest planets and the smallest true stars.
+
+Because they cannot maintain ordinary
+hydrogen fusion, brown dwarfs gradually cool
+and become fainter over time.
+
+</p>
+
+
+</div>
+
+
+<div class="info">
+
+
+<div class="info-title">
+
+WHY CAN'T IT BECOME A STAR?
+
+</div>
+
+
+<p class="info-text">
+
+For a collapsing object to become a normal
+hydrogen-burning star, its core must reach
+sufficient temperature and pressure for
+sustained hydrogen fusion.
+
+Brown dwarfs do not reach the required
+conditions.
+
+Some of the most massive brown dwarfs can
+briefly fuse deuterium, and possibly lithium
+under suitable conditions, but this is not
+the sustained hydrogen fusion that powers
+ordinary stars.
+
+</p>
+
+
+</div>
+
+
+<div class="info">
+
+
+<div class="info-title">
+
+BROWN DWARFS VS PLANETS
+
+</div>
+
+
+<p class="info-text">
+
+Brown dwarfs can have masses similar to
+giant planets, but their formation is an
+important distinction.
+
+Many brown dwarfs are thought to form from
+the gravitational collapse of gas clouds,
+similar to stars.
+
+Planets generally form inside disks around
+young stars.
+
+The exact boundary between massive planets
+and brown dwarfs can therefore be complicated.
+
+</p>
+
+
+</div>
+
+
+<div class="info">
+
+
+<div class="info-title">
+
+STRANGE ATMOSPHERES
+
+</div>
+
+
+<p class="info-text">
+
+Brown dwarfs have cool, complex atmospheres
+containing clouds and unusual chemical
+compounds.
+
+Depending on their temperature, they can
+contain clouds made from materials such as
+silicates and iron droplets.
+
+Their atmospheres also produce distinctive
+spectral signatures, allowing astronomers to
+study these objects even when they are too
+faint to see easily in visible light.
+
+</p>
+
+
+<!-- =========================================
+     FEATURES
+========================================= -->
+
+<div class="features-title">
+
+KEY IDEAS
+
+</div>
+
+
+<div class="features">
+
+
+<div class="feature">
+
+<div class="feature-title">
+
+FAILED STARS
+
+</div>
+
+<div class="feature-text">
+
+Brown dwarfs are often called "failed stars"
+because they never become sustained
+hydrogen-burning stars.
+
+</div>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-title">
+
+DEUTERIUM FUSION
+
+</div>
+
+<div class="feature-text">
+
+The most massive young brown dwarfs can
+temporarily fuse deuterium in their interiors.
+
+</div>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-title">
+
+COOLING
+
+</div>
+
+<div class="feature-text">
+
+Unlike normal stars, brown dwarfs continuously
+cool and fade as they lose their internal heat.
+
+</div>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-title">
+
+CLOUDS
+
+</div>
+
+<div class="feature-text">
+
+Their atmospheres can contain exotic clouds
+made from minerals, metals and other compounds.
+
+</div>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-title">
+
+L · T · Y
+
+</div>
+
+<div class="feature-text">
+
+Brown dwarfs are classified into spectral
+classes including L, T and the extremely cool
+Y dwarfs.
+
+</div>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-title">
+
+BETWEEN WORLDS
+
+</div>
+
+<div class="feature-text">
+
+They occupy a fascinating middle ground
+between giant planets and ordinary stars.
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     FACT
+========================================= -->
+
+<div class="fact">
+
+
+<div class="fact-label">
+
+DID YOU KNOW?
+
+</div>
+
+
+<div class="fact-text">
+
+Some brown dwarfs are only slightly larger
+than Jupiter, yet they can contain dozens of
+times more mass — making them some of the
+strangest objects between planets and stars.
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     NAVIGATION
+========================================= -->
+
+<div class="navigation">
+
+
+<a
+href="https://sites.google.com/view/kosmolearn"
+class="nav-button">
+
+← RETURN TO HOME
+
+</a>
+
+
+</div>
+
+
+<div class="footer">
+
+ORBONIX · DEEP SPACE · BROWN DWARFS
+
+</div>
+
+
+</section>
+
+
+<script>
+
+/* =========================================
+   STAR PARALLAX
+========================================= */
+
+const stars =
+document.querySelector(".stars");
+
+const smallStars =
+document.querySelector(".stars-small");
+
+
+document.addEventListener(
+"mousemove",
+
+function(event) {
+
+    const x =
+        event.clientX /
+        window.innerWidth -
+        0.5;
+
+    const y =
+        event.clientY /
+        window.innerHeight -
+        0.5;
+
+
+    stars.style.transform =
+        `translate(
+            ${x * 20}px,
+            ${y * 20}px
+        )`;
+
+
+    smallStars.style.transform =
+        `translate(
+            ${x * -12}px,
+            ${y * -12}px
+        )`;
+
+});
+
+</script>
+
+
+</body>
+
+</html>
