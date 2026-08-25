@@ -1,1 +1,1017 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: #020308;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   PAGE
+========================================= */
+
+.dwarf-page {
+
+    position: relative;
+
+    min-height: 1700px;
+
+    padding: 55px 20px 100px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 25%,
+            rgba(100,110,145,.18),
+            transparent 45%
+        ),
+        #020308;
+}
+
+
+/* =========================================
+   STARS
+========================================= */
+
+.stars {
+
+    position: absolute;
+
+    inset: -20%;
+
+    pointer-events: none;
+
+    opacity: .38;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.9) 1px,
+            transparent 1px
+        );
+
+    background-size: 75px 75px;
+
+    transition:
+        transform 1.5s ease;
+}
+
+
+.stars-small {
+
+    position: absolute;
+
+    inset: -20%;
+
+    pointer-events: none;
+
+    opacity: .14;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.8) 1px,
+            transparent 1px
+        );
+
+    background-size: 32px 32px;
+
+    transition:
+        transform 2s ease;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header {
+
+    position: relative;
+
+    z-index: 10;
+
+    max-width: 950px;
+
+    margin: auto;
+
+    text-align: center;
+}
+
+
+.return {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    padding: 12px 20px;
+
+    margin-bottom: 35px;
+
+    color: rgba(255,255,255,.7);
+
+    border: 1px solid rgba(255,255,255,.22);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    transition: .35s ease;
+}
+
+
+.return:hover {
+
+    color: #020308;
+
+    background: white;
+
+    border-color: white;
+
+    transform: translateY(-4px);
+}
+
+
+.label {
+
+    margin-bottom: 18px;
+
+    color: rgba(255,255,255,.4);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+
+h1 {
+
+    margin: 0;
+
+    font-size: clamp(48px,8vw,100px);
+
+    line-height: .9;
+
+    letter-spacing: 6px;
+}
+
+
+.subtitle {
+
+    max-width: 720px;
+
+    margin: 25px auto 0;
+
+    color: rgba(255,255,255,.52);
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   DWARF PLANETS
+========================================= */
+
+.dwarf-system {
+
+    position: relative;
+
+    z-index: 5;
+
+    width: min(900px,100%);
+
+    margin: 80px auto 100px;
+
+    display: grid;
+
+    grid-template-columns: repeat(2,1fr);
+
+    gap: 15px;
+}
+
+
+/* =========================================
+   PLANET BUTTON
+========================================= */
+
+.planet-button {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    min-height: 115px;
+
+    padding: 30px;
+
+    color: white;
+
+    text-decoration: none;
+
+    border: 1px solid rgba(255,255,255,.12);
+
+    background: rgba(255,255,255,.025);
+
+    transition:
+        transform .35s ease,
+        background .35s ease,
+        border-color .35s ease;
+}
+
+
+.planet-button:hover {
+
+    transform: translateY(-6px);
+
+    background: rgba(255,255,255,.06);
+
+    border-color:
+        rgba(255,255,255,.4);
+}
+
+
+.planet-name {
+
+    font-size: 22px;
+
+    letter-spacing: 4px;
+
+    font-weight: bold;
+}
+
+
+.planet-number {
+
+    color: rgba(255,255,255,.3);
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+}
+
+
+.arrow {
+
+    color: rgba(255,255,255,.45);
+
+    font-size: 18px;
+
+    transition: .35s ease;
+}
+
+
+.planet-button:hover .arrow {
+
+    color: white;
+
+    transform: translateX(5px);
+}
+
+
+/* =========================================
+   INFO
+========================================= */
+
+.content {
+
+    position: relative;
+
+    z-index: 5;
+
+    width: min(1050px,100%);
+
+    margin: auto;
+}
+
+
+/* =========================================
+   STATS
+========================================= */
+
+.stats {
+
+    display: grid;
+
+    grid-template-columns: repeat(3,1fr);
+
+    gap: 1px;
+
+    background: rgba(255,255,255,.1);
+
+    border: 1px solid rgba(255,255,255,.1);
+}
+
+
+.stat {
+
+    padding: 30px;
+
+    background: rgba(5,7,13,.96);
+
+    transition: .35s ease;
+}
+
+
+.stat:hover {
+
+    transform: translateY(-5px);
+
+    background: rgba(255,255,255,.04);
+}
+
+
+.stat-value {
+
+    margin-bottom: 9px;
+
+    font-size: 21px;
+
+    font-weight: bold;
+}
+
+
+.stat-label {
+
+    color: rgba(255,255,255,.4);
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================
+   DESCRIPTION
+========================================= */
+
+.description {
+
+    margin-top: 60px;
+
+    padding: 40px;
+
+    border: 1px solid rgba(255,255,255,.1);
+
+    background: rgba(255,255,255,.025);
+}
+
+
+.description-title {
+
+    margin-bottom: 20px;
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+}
+
+
+.description-text {
+
+    max-width: 900px;
+
+    color: rgba(255,255,255,.58);
+
+    font-size: 14px;
+
+    line-height: 1.9;
+}
+
+
+/* =========================================
+   FACT
+========================================= */
+
+.fact {
+
+    margin-top: 60px;
+
+    padding: 40px;
+
+    text-align: center;
+
+    border: 1px solid rgba(255,255,255,.12);
+
+    background: rgba(255,255,255,.025);
+}
+
+
+.fact-label {
+
+    margin-bottom: 16px;
+
+    color: rgba(255,255,255,.42);
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+}
+
+
+.fact-text {
+
+    max-width: 800px;
+
+    margin: auto;
+
+    font-size: clamp(18px,3vw,27px);
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   NAVIGATION
+========================================= */
+
+.navigation {
+
+    display: flex;
+
+    justify-content: center;
+
+    margin-top: 55px;
+}
+
+
+.nav-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 13px 22px;
+
+    color: rgba(255,255,255,.75);
+
+    border: 1px solid rgba(255,255,255,.2);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    transition: .35s ease;
+}
+
+
+.nav-button:hover {
+
+    color: #020308;
+
+    background: white;
+
+    border-color: white;
+
+    transform: translateY(-4px);
+}
+
+
+/* =========================================
+   CREDIT
+========================================= */
+
+.credit {
+
+    margin-top: 30px;
+
+    text-align: center;
+
+    color: rgba(255,255,255,.3);
+
+    font-size: 9px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:650px) {
+
+    .dwarf-system {
+
+        grid-template-columns: 1fr;
+
+        margin-top: 55px;
+    }
+
+
+    .stats {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .planet-button {
+
+        min-height: 100px;
+
+        padding: 25px;
+    }
+
+
+    .description {
+
+        padding: 25px;
+    }
+
+
+    .fact {
+
+        padding: 28px 20px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<section class="dwarf-page">
+
+
+<div class="stars"></div>
+
+<div class="stars-small"></div>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<div class="header">
+
+
+<a
+href="https://sites.google.com/view/kosmolearn/solar-system"
+class="return">
+
+← RETURN TO SOLAR SYSTEM
+
+</a>
+
+
+<div class="label">
+
+ORBONIX · SOLAR SYSTEM
+
+</div>
+
+
+<h1>
+
+DWARF PLANETS
+
+</h1>
+
+
+<div class="subtitle">
+
+Explore the most fascinating dwarf planets
+and dwarf-planet candidates of the Solar System.
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     PLANETS
+========================================= -->
+
+<div class="dwarf-system">
+
+
+<a
+href="https://sites.google.com/view/kosmolearn/solar-system/dwarf-planets/ceres"
+class="planet-button">
+
+<div>
+
+<div class="planet-number">
+01 · MAIN BELT
+</div>
+
+<div class="planet-name">
+CERES
+</div>
+
+</div>
+
+<div class="arrow">
+→
+</div>
+
+</a>
+
+
+<a
+href="https://sites.google.com/view/kosmolearn/solar-system/dwarf-planets/pluto"
+class="planet-button">
+
+<div>
+
+<div class="planet-number">
+02 · KUIPER BELT
+</div>
+
+<div class="planet-name">
+PLUTO
+</div>
+
+</div>
+
+<div class="arrow">
+→
+</div>
+
+</a>
+
+
+<a
+href="https://sites.google.com/view/kosmolearn/solar-system/dwarf-planets/eris"
+class="planet-button">
+
+<div>
+
+<div class="planet-number">
+03 · SCATTERED DISC
+</div>
+
+<div class="planet-name">
+ERIS
+</div>
+
+</div>
+
+<div class="arrow">
+→
+</div>
+
+</a>
+
+
+<a
+href="https://sites.google.com/view/kosmolearn/solar-system/dwarf-planets/haumea"
+class="planet-button">
+
+<div>
+
+<div class="planet-number">
+04 · KUIPER BELT
+</div>
+
+<div class="planet-name">
+HAUMEA
+</div>
+
+</div>
+
+<div class="arrow">
+→
+</div>
+
+</a>
+
+
+<a
+href="https://sites.google.com/view/kosmolearn/solar-system/dwarf-planets/makemake"
+class="planet-button">
+
+<div>
+
+<div class="planet-number">
+05 · KUIPER BELT
+</div>
+
+<div class="planet-name">
+MAKEMAKE
+</div>
+
+</div>
+
+<div class="arrow">
+→
+</div>
+
+</a>
+
+
+<a
+href="https://sites.google.com/view/kosmolearn/solar-system/dwarf-planets/orcus"
+class="planet-button">
+
+<div>
+
+<div class="planet-number">
+06 · PLUTINO
+</div>
+
+<div class="planet-name">
+ORCUS
+</div>
+
+</div>
+
+<div class="arrow">
+→
+</div>
+
+</a>
+
+
+<a
+href="https://sites.google.com/view/kosmolearn/solar-system/dwarf-planets/gonggong"
+class="planet-button">
+
+<div>
+
+<div class="planet-number">
+07 · SCATTERED DISC
+</div>
+
+<div class="planet-name">
+GONGGONG
+</div>
+
+</div>
+
+<div class="arrow">
+→
+</div>
+
+</a>
+
+
+</div>
+
+
+<!-- =========================================
+     CONTENT
+========================================= -->
+
+<div class="content">
+
+
+<div class="stats">
+
+
+<div class="stat">
+
+<div class="stat-value">
+7
+</div>
+
+<div class="stat-label">
+WORLDS FEATURED
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+5
+</div>
+
+<div class="stat-label">
+OFFICIALLY RECOGNIZED DWARF PLANETS
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+4.6 BILLION YEARS
+</div>
+
+<div class="stat-label">
+AGE OF THE SOLAR SYSTEM
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+KUIPER BELT
+</div>
+
+<div class="stat-label">
+HOME OF MOST DISTANT WORLDS
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+CERES
+</div>
+
+<div class="stat-label">
+DWARF PLANET IN THE MAIN ASTEROID BELT
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+PLUTO</div>
+
+<div class="stat-label">
+MOST FAMOUS DWARF PLANET
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     DESCRIPTION
+========================================= -->
+
+<div class="description">
+
+
+<div class="description-title">
+
+SMALL WORLDS · BIG STORIES
+
+</div>
+
+
+<div class="description-text">
+
+Dwarf planets are worlds that orbit the Sun
+and are massive enough for their gravity to
+make them approximately round, but they have
+not cleared their orbital neighbourhoods.
+
+The five officially recognized dwarf planets
+are Ceres, Pluto, Eris, Haumea and Makemake.
+
+There are also several large trans-Neptunian
+objects that are considered strong dwarf-planet
+candidates, including Orcus and Gonggong.
+
+Explore each world above to learn about its
+size, orbit, composition, discovery and place
+in the Solar System.
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     FACT
+========================================= -->
+
+<div class="fact">
+
+
+<div class="fact-label">
+
+DID YOU KNOW?
+
+</div>
+
+
+<div class="fact-text">
+
+There may be
+<strong>many more dwarf planets</strong>
+hidden in the distant outer Solar System.
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     NAVIGATION
+========================================= -->
+
+<div class="navigation">
+
+
+<a
+href="https://sites.google.com/view/kosmolearn/solar-system"
+class="nav-button">
+
+← RETURN TO SOLAR SYSTEM
+
+</a>
+
+
+</div>
+
+
+<div class="credit">
+
+ORBONIX · SOLAR SYSTEM
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+<script>
+
+const stars =
+document.querySelector(".stars");
+
+
+const smallStars =
+document.querySelector(".stars-small");
+
+
+document.addEventListener(
+"mousemove",
+
+function(event) {
+
+    const x =
+        event.clientX /
+        window.innerWidth - 0.5;
+
+
+    const y =
+        event.clientY /
+        window.innerHeight - 0.5;
+
+
+    stars.style.transform =
+        `translate(
+            ${x * 20}px,
+            ${y * 20}px
+        )`;
+
+
+    smallStars.style.transform =
+        `translate(
+            ${x * -12}px,
+            ${y * -12}px
+        )`;
+
+});
+
+</script>
+
+
+</body>
+
+</html>
