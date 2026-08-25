@@ -1,1 +1,1470 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: #020308;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   PAGE
+========================================= */
+
+.planetx-page {
+
+    position: relative;
+
+    min-height: 1750px;
+
+    padding: 55px 20px 100px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 30%,
+            rgba(75,90,130,.18),
+            transparent 45%
+        ),
+        #020308;
+}
+
+
+/* =========================================
+   STARS
+========================================= */
+
+.stars {
+
+    position: absolute;
+
+    inset: -20%;
+
+    pointer-events: none;
+
+    opacity: .38;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.9) 1px,
+            transparent 1px
+        );
+
+    background-size: 75px 75px;
+
+    transition:
+        transform 1.5s ease;
+}
+
+
+.stars-small {
+
+    position: absolute;
+
+    inset: -20%;
+
+    pointer-events: none;
+
+    opacity: .14;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.8) 1px,
+            transparent 1px
+        );
+
+    background-size: 32px 32px;
+
+    transition:
+        transform 2s ease;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header {
+
+    position: relative;
+
+    z-index: 100;
+
+    max-width: 950px;
+
+    margin: auto;
+
+    text-align: center;
+}
+
+
+.return {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    padding: 12px 20px;
+
+    margin-bottom: 35px;
+
+    color:
+        rgba(255,255,255,.7);
+
+    border:
+        1px solid
+        rgba(255,255,255,.22);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    transition:
+        .35s ease;
+}
+
+
+.return:hover {
+
+    color: #020308;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-4px);
+}
+
+
+.label {
+
+    margin-bottom: 18px;
+
+    color:
+        rgba(255,255,255,.4);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+
+h1 {
+
+    margin: 0;
+
+    font-size:
+        clamp(55px,9vw,105px);
+
+    line-height: .9;
+
+    letter-spacing: 7px;
+}
+
+
+.subtitle {
+
+    max-width: 760px;
+
+    margin:
+        25px auto 0;
+
+    color:
+        rgba(255,255,255,.52);
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   PLANET X AREA
+========================================= */
+
+.planetx-area {
+
+    position: relative;
+
+    width: 720px;
+
+    height: 720px;
+
+    margin:
+        65px auto 90px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+/* =========================================
+   ORBITS
+========================================= */
+
+.orbit {
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 50%;
+
+    transform:
+        translate(-50%,-50%);
+
+    border:
+        1px solid
+        rgba(130,145,180,.16);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+
+.orbit-1 {
+
+    width: 300px;
+
+    height: 300px;
+}
+
+
+.orbit-2 {
+
+    width: 455px;
+
+    height: 455px;
+}
+
+
+.orbit-3 {
+
+    width: 610px;
+
+    height: 610px;
+}
+
+
+.orbit-4 {
+
+    width: 690px;
+
+    height: 690px;
+
+    border-color:
+        rgba(110,125,160,.08);
+}
+
+
+/* =========================================
+   PLANET X
+========================================= */
+
+.planetx {
+
+    position: relative;
+
+    z-index: 20;
+
+    width: 300px;
+
+    height: 300px;
+
+    border-radius: 50%;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 35% 28%,
+            #8996aa 0%,
+            #566273 28%,
+            #303948 58%,
+            #111722 82%,
+            #05070c 100%
+        );
+
+    box-shadow:
+
+        inset -35px -30px 65px
+        rgba(0,0,0,.75),
+
+        inset 20px 15px 35px
+        rgba(180,195,215,.12),
+
+        0 0 55px
+        rgba(100,125,170,.35),
+
+        0 0 130px
+        rgba(65,85,125,.18);
+
+    transition:
+        transform .6s ease,
+        box-shadow .6s ease;
+}
+
+
+.planetx::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 100%;
+
+    height: 100%;
+
+    left: 0;
+
+    top: 0;
+
+    border-radius: 50%;
+
+    background:
+
+        radial-gradient(
+            ellipse at 25% 35%,
+            rgba(210,220,235,.12),
+            transparent 22%
+        ),
+
+        radial-gradient(
+            ellipse at 70% 30%,
+            rgba(0,0,0,.22),
+            transparent 28%
+        ),
+
+        radial-gradient(
+            ellipse at 60% 72%,
+            rgba(0,0,0,.28),
+            transparent 30%
+        );
+
+    opacity: .9;
+}
+
+
+.planetx::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            115deg,
+            transparent 35%,
+            rgba(0,0,0,.35) 75%,
+            rgba(0,0,0,.72) 100%
+        );
+}
+
+
+.planetx:hover {
+
+    transform:
+        scale(1.07);
+
+    box-shadow:
+
+        inset -35px -30px 65px
+        rgba(0,0,0,.7),
+
+        0 0 70px
+        rgba(120,145,190,.45),
+
+        0 0 155px
+        rgba(75,100,150,.25);
+}
+
+
+/* =========================================
+   PLANET LABEL
+========================================= */
+
+.planetx-label {
+
+    position: absolute;
+
+    left: 50%;
+
+    bottom: -48px;
+
+    transform:
+        translateX(-50%);
+
+    z-index: 30;
+
+    white-space: nowrap;
+
+    color:
+        rgba(255,255,255,.75);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+
+/* =========================================
+   DECORATIVE OBJECTS
+========================================= */
+
+.object {
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    background:
+        rgba(180,195,220,.7);
+
+    box-shadow:
+        0 0 15px
+        rgba(150,175,210,.35);
+}
+
+
+.object-1 {
+
+    width: 8px;
+
+    height: 8px;
+
+    left:
+        calc(50% - 245px);
+
+    top:
+        calc(50% - 135px);
+}
+
+
+.object-2 {
+
+    width: 12px;
+
+    height: 12px;
+
+    left:
+        calc(50% + 225px);
+
+    top:
+        calc(50% - 45px);
+}
+
+
+.object-3 {
+
+    width: 6px;
+
+    height: 6px;
+
+    left:
+        calc(50% + 130px);
+
+    top:
+        calc(50% + 245px);
+}
+
+
+.object-4 {
+
+    width: 9px;
+
+    height: 9px;
+
+    left:
+        calc(50% - 285px);
+
+    top:
+        calc(50% + 190px);
+}
+
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.content {
+
+    position: relative;
+
+    z-index: 10;
+
+    width:
+        min(1050px,100%);
+
+    margin: auto;
+}
+
+
+/* =========================================
+   WARNING
+========================================= */
+
+.status {
+
+    margin-bottom: 25px;
+
+    padding: 18px 25px;
+
+    text-align: center;
+
+    border:
+        1px solid
+        rgba(180,195,225,.18);
+
+    background:
+        rgba(100,120,160,.04);
+
+    color:
+        rgba(255,255,255,.55);
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================
+   STATS
+========================================= */
+
+.stats {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 1px;
+
+    background:
+        rgba(255,255,255,.1);
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+}
+
+
+.stat {
+
+    padding: 30px;
+
+    background:
+        rgba(5,7,13,.96);
+
+    transition:
+        .35s ease;
+}
+
+
+.stat:hover {
+
+    transform:
+        translateY(-5px);
+
+    background:
+        rgba(255,255,255,.04);
+}
+
+
+.stat-value {
+
+    margin-bottom: 9px;
+
+    font-size: 21px;
+
+    font-weight: bold;
+}
+
+
+.stat-label {
+
+    color:
+        rgba(255,255,255,.4);
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================
+   DESCRIPTION
+========================================= */
+
+.description {
+
+    margin-top: 60px;
+
+    padding: 40px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.025);
+}
+
+
+.description-title {
+
+    margin-bottom: 20px;
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+}
+
+
+.description-text {
+
+    max-width: 900px;
+
+    color:
+        rgba(255,255,255,.58);
+
+    font-size: 14px;
+
+    line-height: 1.9;
+}
+
+
+/* =========================================
+   FEATURES
+========================================= */
+
+.features-title {
+
+    margin-top: 60px;
+
+    margin-bottom: 25px;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,.45);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+
+.features {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 15px;
+}
+
+
+.feature {
+
+    padding: 28px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.02);
+
+    transition:
+        .35s ease;
+}
+
+
+.feature:hover {
+
+    transform:
+        translateY(-6px);
+
+    border-color:
+        rgba(155,180,220,.4);
+
+    background:
+        rgba(255,255,255,.04);
+}
+
+
+.feature-title {
+
+    margin-bottom: 12px;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+}
+
+
+.feature-text {
+
+    color:
+        rgba(255,255,255,.5);
+
+    font-size: 12px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   FACT
+========================================= */
+
+.fact {
+
+    margin-top: 60px;
+
+    padding: 40px;
+
+    text-align: center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    background:
+        rgba(255,255,255,.025);
+}
+
+
+.fact-label {
+
+    margin-bottom: 16px;
+
+    color:
+        rgba(255,255,255,.42);
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+}
+
+
+.fact-text {
+
+    max-width: 800px;
+
+    margin: auto;
+
+    font-size:
+        clamp(18px,3vw,27px);
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   NAVIGATION
+========================================= */
+
+.navigation {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    margin-top: 55px;
+
+    flex-wrap: wrap;
+}
+
+
+.nav-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 13px 22px;
+
+    color:
+        rgba(255,255,255,.75);
+
+    border:
+        1px solid
+        rgba(255,255,255,.2);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    transition:
+        .35s ease;
+}
+
+
+.nav-button:hover {
+
+    color: #020308;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-4px);
+}
+
+
+/* =========================================
+   CREDIT
+========================================= */
+
+.credit {
+
+    margin-top: 30px;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,.3);
+
+    font-size: 9px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:800px) {
+
+    .planetx-area {
+
+        width: 500px;
+
+        height: 500px;
+    }
+
+
+    .planetx {
+
+        width: 220px;
+
+        height: 220px;
+    }
+
+
+    .orbit-1 {
+
+        width: 230px;
+
+        height: 230px;
+    }
+
+
+    .orbit-2 {
+
+        width: 350px;
+
+        height: 350px;
+    }
+
+
+    .orbit-3 {
+
+        width: 470px;
+
+        height: 470px;
+    }
+
+
+    .orbit-4 {
+
+        width: 490px;
+
+        height: 490px;
+    }
+
+
+    .stats {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .features {
+
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media(max-width:500px) {
+
+    .planetx-page {
+
+        padding:
+            45px 15px 70px;
+    }
+
+
+    .planetx-area {
+
+        width: 320px;
+
+        height: 320px;
+
+        margin-top: 45px;
+    }
+
+
+    .planetx {
+
+        width: 145px;
+
+        height: 145px;
+    }
+
+
+    .orbit-1 {
+
+        width: 170px;
+
+        height: 170px;
+    }
+
+
+    .orbit-2 {
+
+        width: 240px;
+
+        height: 240px;
+    }
+
+
+    .orbit-3 {
+
+        width: 310px;
+
+        height: 310px;
+    }
+
+
+    .orbit-4 {
+
+        width: 315px;
+
+        height: 315px;
+    }
+
+
+    .object-1 {
+
+        left:
+            calc(50% - 110px);
+
+        top:
+            calc(50% - 70px);
+    }
+
+
+    .object-2 {
+
+        left:
+            calc(50% + 105px);
+
+        top:
+            calc(50% - 25px);
+    }
+
+
+    .object-3 {
+
+        left:
+            calc(50% + 55px);
+
+        top:
+            calc(50% + 105px);
+    }
+
+
+    .object-4 {
+
+        left:
+            calc(50% - 125px);
+
+        top:
+            calc(50% + 85px);
+    }
+
+
+    .description {
+
+        padding: 25px;
+    }
+
+
+    .fact {
+
+        padding:
+            28px 20px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<section class="planetx-page">
+
+
+<div class="stars"></div>
+
+<div class="stars-small"></div>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<div class="header">
+
+
+<a
+href="https://sites.google.com/view/kosmolearn/solar-system"
+class="return">
+
+← RETURN TO SOLAR SYSTEM
+
+</a>
+
+
+<div class="label">
+
+ORBONIX · HYPOTHETICAL WORLD
+
+</div>
+
+
+<h1>
+
+PLANET X
+
+</h1>
+
+
+<div class="subtitle">
+
+A hypothetical distant planet proposed to
+explain unusual orbital patterns among some
+objects in the outer Solar System.
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     PLANET X
+========================================= -->
+
+<div class="planetx-area">
+
+
+<div class="orbit orbit-1"></div>
+
+<div class="orbit orbit-2"></div>
+
+<div class="orbit orbit-3"></div>
+
+<div class="orbit orbit-4"></div>
+
+
+<div class="object object-1"></div>
+
+<div class="object object-2"></div>
+
+<div class="object object-3"></div>
+
+<div class="object object-4"></div>
+
+
+<div class="planetx">
+
+<div class="planetx-label">
+
+PLANET X · HYPOTHETICAL
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     CONTENT
+========================================= -->
+
+<div class="content">
+
+
+<div class="status">
+
+PLANET X HAS NOT BEEN DIRECTLY OBSERVED · HYPOTHETICAL OBJECT
+
+</div>
+
+
+<!-- STATS -->
+
+<div class="stats">
+
+
+<div class="stat">
+
+<div class="stat-value">
+~5–10 M⊕
+</div>
+
+<div class="stat-label">
+POSSIBLE MASS RANGE
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+~400–800 AU
+</div>
+
+<div class="stat-label">
+POSSIBLE ORBITAL DISTANCE
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+HUNDREDS OF YEARS
+</div>
+
+<div class="stat-label">
+POSSIBLE ORBITAL PERIOD
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+UNKNOWN
+</div>
+
+<div class="stat-label">
+DIAMETER</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+UNKNOWN
+</div>
+
+<div class="stat-label">
+COMPOSITION
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+UNCONFIRMED
+</div>
+
+<div class="stat-label">
+EXISTENCE
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- DESCRIPTION -->
+
+<div class="description">
+
+
+<div class="description-title">
+
+THE SEARCH FOR A HIDDEN WORLD
+
+</div>
+
+
+<div class="description-text">
+
+Planet X is a hypothetical planet that
+may exist far beyond Neptune.
+
+The modern Planet X hypothesis is closely
+related to the idea of "Planet Nine".
+Researchers proposed that the unusual
+orbits of several distant trans-Neptunian
+objects could be explained by the gravity
+of a large, currently undiscovered planet.
+
+The proposed object would be extremely
+far from the Sun. Because of this enormous
+distance, it would receive very little
+sunlight and would be exceptionally faint
+from Earth.
+
+Scientists have not directly detected
+Planet Nine, and its existence remains
+unconfirmed.
+
+The search continues using powerful
+ground-based telescopes and astronomical
+surveys.
+
+</div>
+
+
+</div>
+
+
+<!-- FEATURES -->
+
+<div class="features-title">
+
+PLANET X FEATURES
+
+</div>
+
+
+<div class="features">
+
+
+<div class="feature">
+
+<div class="feature-title">
+
+GRAVITATIONAL CLUES
+
+</div>
+
+<div class="feature-text">
+
+The hypothesis is based partly on unusual
+orbital patterns observed among distant
+objects beyond Neptune.
+
+</div>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-title">
+
+EXTREME DISTANCE
+
+</div>
+
+<div class="feature-text">
+
+If it exists, Planet Nine would orbit
+hundreds of astronomical units from the
+Sun, far beyond the known planets.
+
+</div>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-title">
+
+NOT DISCOVERED
+
+</div>
+
+<div class="feature-text">
+
+No telescope has yet produced a confirmed
+direct observation of the proposed planet.
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- FACT -->
+
+<div class="fact">
+
+
+<div class="fact-label">
+
+DID YOU KNOW?
+
+</div>
+
+
+<div class="fact-text">
+
+If Planet Nine exists, it could be
+<strong>farther from the Sun than any
+known planet</strong> in our Solar System.
+
+</div>
+
+
+</div>
+
+
+<!-- NAVIGATION -->
+
+<div class="navigation">
+
+
+<a
+href="https://sites.google.com/view/kosmolearn/solar-system"
+class="nav-button">
+
+← RETURN TO SOLAR SYSTEM
+
+</a>
+
+
+</div>
+
+
+<div class="credit">
+
+CONCEPTUAL VISUALIZATION · PLANET NINE
+
+<br>
+
+ORBONIX · SOLAR SYSTEM
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+<script>
+
+const stars =
+document.querySelector(".stars");
+
+
+const smallStars =
+document.querySelector(".stars-small");
+
+
+document.addEventListener(
+"mousemove",
+
+function(event) {
+
+    const x =
+        event.clientX /
+        window.innerWidth - 0.5;
+
+
+    const y =
+        event.clientY /
+        window.innerHeight - 0.5;
+
+
+    stars.style.transform =
+        `translate(
+            ${x * 20}px,
+            ${y * 20}px
+        )`;
+
+
+    smallStars.style.transform =
+        `translate(
+            ${x * -12}px,
+            ${y * -12}px
+        )`;
+
+});
+
+</script>
+
+
+</body>
+
+</html>
