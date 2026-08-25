@@ -1,1 +1,1863 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: #020308;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   PAGE
+========================================= */
+
+.neptune-page {
+
+    position: relative;
+
+    min-height: 1750px;
+
+    padding: 55px 20px 100px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 30%,
+            rgba(50,90,220,.18),
+            transparent 45%
+        ),
+        #020308;
+}
+
+
+/* =========================================
+   STARS
+========================================= */
+
+.stars {
+
+    position: absolute;
+
+    inset: -20%;
+
+    pointer-events: none;
+
+    opacity: .38;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.9) 1px,
+            transparent 1px
+        );
+
+    background-size: 75px 75px;
+
+    transition:
+        transform 1.5s ease;
+}
+
+
+.stars-small {
+
+    position: absolute;
+
+    inset: -20%;
+
+    pointer-events: none;
+
+    opacity: .14;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.8) 1px,
+            transparent 1px
+        );
+
+    background-size: 32px 32px;
+
+    transition:
+        transform 2s ease;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header {
+
+    position: relative;
+
+    z-index: 100;
+
+    max-width: 950px;
+
+    margin: auto;
+
+    text-align: center;
+}
+
+
+.return {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    padding: 12px 20px;
+
+    margin-bottom: 35px;
+
+    color:
+        rgba(255,255,255,.7);
+
+    border:
+        1px solid
+        rgba(255,255,255,.22);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    transition:
+        .35s ease;
+}
+
+
+.return:hover {
+
+    color: #020308;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-4px);
+}
+
+
+.label {
+
+    margin-bottom: 18px;
+
+    color:
+        rgba(255,255,255,.4);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+
+h1 {
+
+    margin: 0;
+
+    font-size:
+        clamp(55px,9vw,105px);
+
+    line-height: .9;
+
+    letter-spacing: 7px;
+}
+
+
+.subtitle {
+
+    max-width: 720px;
+
+    margin:
+        25px auto 0;
+
+    color:
+        rgba(255,255,255,.52);
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   NEPTUNE SYSTEM
+========================================= */
+
+.planet-area {
+
+    position: relative;
+
+    width: 760px;
+
+    height: 760px;
+
+    margin:
+        65px auto 90px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+/* =========================================
+   ORBITS
+========================================= */
+
+.moon-orbit {
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 50%;
+
+    transform:
+        translate(-50%,-50%);
+
+    border:
+        1px solid
+        rgba(80,130,255,.18);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+
+.orbit-triton {
+
+    width: 280px;
+
+    height: 280px;
+}
+
+
+.orbit-nereid {
+
+    width: 390px;
+
+    height: 390px;
+}
+
+
+.orbit-proteus {
+
+    width: 500px;
+
+    height: 500px;
+}
+
+
+.orbit-larissa {
+
+    width: 600px;
+
+    height: 600px;
+}
+
+
+.orbit-galatea {
+
+    width: 700px;
+
+    height: 700px;
+}
+
+
+/* =========================================
+   NEPTUNE CENTER
+========================================= */
+
+.neptune-center {
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 50%;
+
+    transform:
+        translate(-50%,-50%);
+
+    z-index: 20;
+
+    width: 195px;
+
+    height: 195px;
+
+    border-radius: 50%;
+
+    text-decoration: none;
+
+    transition:
+        .4s ease;
+}
+
+
+.neptune-center img {
+
+    width: 100%;
+
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    box-shadow:
+
+        0 0 45px
+        rgba(60,100,255,.42),
+
+        0 0 100px
+        rgba(30,70,220,.16);
+}
+
+
+.neptune-center span {
+
+    position: absolute;
+
+    left: 50%;
+
+    bottom: -35px;
+
+    transform:
+        translateX(-50%);
+
+    color: white;
+
+    font-size: 10px;
+
+    letter-spacing: 4px;
+
+    white-space: nowrap;
+}
+
+
+.neptune-center:hover {
+
+    transform:
+        translate(-50%,-50%)
+        scale(1.08);
+}
+
+
+/* =========================================
+   MOONS
+========================================= */
+
+.neptune-moon {
+
+    position: absolute;
+
+    z-index: 30;
+
+    width: 65px;
+
+    height: 65px;
+
+    text-decoration: none;
+
+    transition:
+        transform .35s ease;
+}
+
+
+.neptune-moon img {
+
+    width: 100%;
+
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    background: #11151a;
+
+    box-shadow:
+        0 0 18px
+        rgba(120,150,230,.2);
+}
+
+
+.neptune-moon span {
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 75px;
+
+    transform:
+        translateX(-50%);
+
+    color:
+        rgba(255,255,255,.65);
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+
+    white-space: nowrap;
+
+    transition:
+        .3s ease;
+}
+
+
+.neptune-moon:hover {
+
+    transform:
+        scale(1.18);
+
+    z-index: 50;
+}
+
+
+.neptune-moon:hover span {
+
+    color: white;
+}
+
+
+/* =========================================
+   MOON POSITIONS
+========================================= */
+
+.triton {
+
+    left:
+        calc(50% + 110px);
+
+    top:
+        calc(50% - 140px);
+}
+
+
+.nereid {
+
+    left:
+        calc(50% + 145px);
+
+    top:
+        calc(50% + 105px);
+}
+
+
+.proteus {
+
+    left:
+        calc(50% - 250px);
+
+    top:
+        calc(50% - 240px);
+}
+
+
+.larissa {
+
+    left:
+        calc(50% - 305px);
+
+    top:
+        calc(50% + 95px);
+}
+
+
+.galatea {
+
+    left:
+        calc(50% + 285px);
+
+    top:
+        calc(50% - 50px);
+}
+
+
+/* =========================================
+   INFORMATION
+========================================= */
+
+.info {
+
+    position: relative;
+
+    z-index: 5;
+
+    width:
+        min(1050px,100%);
+
+    margin: auto;
+}
+
+
+.info-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 1px;
+
+    background:
+        rgba(255,255,255,.1);
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+}
+
+
+.card {
+
+    padding: 30px;
+
+    background:
+        rgba(5,7,13,.95);
+
+    transition:
+        .35s ease;
+}
+
+
+.card:hover {
+
+    transform:
+        translateY(-5px);
+
+    background:
+        rgba(255,255,255,.04);
+}
+
+
+.number {
+
+    margin-bottom: 8px;
+
+    font-size: 20px;
+
+    font-weight: bold;
+}
+
+
+.card-label {
+
+    color:
+        rgba(255,255,255,.4);
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================
+   DESCRIPTION
+========================================= */
+
+.description {
+
+    margin-top: 60px;
+
+    padding: 40px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.025);
+}
+
+
+.description-title {
+
+    margin-bottom: 20px;
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+}
+
+
+.description-text {
+
+    max-width: 900px;
+
+    color:
+        rgba(255,255,255,.58);
+
+    font-size: 14px;
+
+    line-height: 1.9;
+}
+
+
+/* =========================================
+   MAJOR MOONS
+========================================= */
+
+.moons-title {
+
+    margin-top: 55px;
+
+    margin-bottom: 25px;
+
+    text-align: center;
+
+    font-size: 11px;
+
+    letter-spacing: 5px;
+
+    color:
+        rgba(255,255,255,.5);
+}
+
+
+.moons {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(5,1fr);
+
+    gap: 15px;
+}
+
+
+.moon-card {
+
+    display: block;
+
+    padding: 20px;
+
+    color: white;
+
+    text-decoration: none;
+
+    text-align: center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.025);
+
+    transition:
+        .35s ease;
+}
+
+
+.moon-card:hover {
+
+    transform:
+        translateY(-7px);
+
+    border-color:
+        rgba(90,130,255,.5);
+
+    background:
+        rgba(255,255,255,.05);
+}
+
+
+.moon-image {
+
+    width: 105px;
+
+    height: 105px;
+
+    margin:
+        0 auto 15px;
+
+    display: block;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    background: #10151a;
+
+    box-shadow:
+        0 0 25px
+        rgba(80,120,240,.14);
+}
+
+
+.moon-name {
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 8px;
+}
+
+
+.moon-description {
+
+    color:
+        rgba(255,255,255,.42);
+
+    font-size: 9px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   FEATURES
+========================================= */
+
+.features {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 15px;
+
+    margin-top: 45px;
+}
+
+
+.feature {
+
+    padding: 25px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.02);
+
+    transition:
+        .35s ease;
+}
+
+
+.feature:hover {
+
+    transform:
+        translateY(-6px);
+
+    border-color:
+        rgba(90,130,255,.4);
+}
+
+
+.feature-title {
+
+    margin-bottom: 10px;
+
+    font-size: 12px;
+
+    letter-spacing: 2px;
+}
+
+
+.feature-text {
+
+    color:
+        rgba(255,255,255,.5);
+
+    font-size: 12px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   FACT
+========================================= */
+
+.fact {
+
+    margin-top: 60px;
+
+    padding: 35px;
+
+    text-align: center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    background:
+        rgba(255,255,255,.025);
+}
+
+
+.fact-label {
+
+    margin-bottom: 15px;
+
+    color:
+        rgba(255,255,255,.45);
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+}
+
+
+.fact-text {
+
+    font-size:
+        clamp(18px,3vw,27px);
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   CREDIT
+========================================= */
+
+.credit {
+
+    margin-top: 25px;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,.3);
+
+    font-size: 9px;
+
+    letter-spacing: 1px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:900px) {
+
+    .moons {
+
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+}
+
+
+@media(max-width:800px) {
+
+    .planet-area {
+
+        width: 450px;
+
+        height: 450px;
+    }
+
+
+    .neptune-center {
+
+        width: 130px;
+
+        height: 130px;
+    }
+
+
+    .orbit-triton {
+
+        width: 180px;
+
+        height: 180px;
+    }
+
+
+    .orbit-nereid {
+
+        width: 250px;
+
+        height: 250px;
+    }
+
+
+    .orbit-proteus {
+
+        width: 320px;
+
+        height: 320px;
+    }
+
+
+    .orbit-larissa {
+
+        width: 400px;
+
+        height: 400px;
+    }
+
+
+    .orbit-galatea {
+
+        width: 490px;
+
+        height: 490px;
+    }
+
+
+    .neptune-moon {
+
+        width: 50px;
+
+        height: 50px;
+    }
+
+
+    .triton {
+
+        left:
+            calc(50% + 55px);
+
+        top:
+            calc(50% - 90px);
+    }
+
+
+    .nereid {
+
+        left:
+            calc(50% + 80px);
+
+        top:
+            calc(50% + 55px);
+    }
+
+
+    .proteus {
+
+        left:
+            calc(50% - 150px);
+
+        top:
+            calc(50% - 160px);
+    }
+
+
+    .larissa {
+
+        left:
+            calc(50% - 200px);
+
+        top:
+            calc(50% + 75px);
+    }
+
+
+    .galatea {
+
+        left:
+            calc(50% + 185px);
+
+        top:
+            calc(50% - 40px);
+    }
+
+
+    .info-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .features {
+
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media(max-width:500px) {
+
+    .neptune-page {
+
+        padding:
+            45px 15px 70px;
+    }
+
+
+    .planet-area {
+
+        width: 320px;
+
+        height: 320px;
+
+        margin-top: 50px;
+    }
+
+
+    .neptune-center {
+
+        width: 95px;
+
+        height: 95px;
+    }
+
+
+    .orbit-triton {
+
+        width: 135px;
+
+        height: 135px;
+    }
+
+
+    .orbit-nereid {
+
+        width: 180px;
+
+        height: 180px;
+    }
+
+
+    .orbit-proteus {
+
+        width: 230px;
+
+        height: 230px;
+    }
+
+
+    .orbit-larissa {
+
+        width: 285px;
+
+        height: 285px;
+    }
+
+
+    .orbit-galatea {
+
+        width: 315px;
+
+        height: 315px;
+    }
+
+
+    .neptune-moon {
+
+        width: 40px;
+
+        height: 40px;
+    }
+
+
+    .triton {
+
+        left:
+            calc(50% + 45px);
+
+        top:
+            calc(50% - 65px);
+    }
+
+
+    .nereid {
+
+        left:
+            calc(50% + 55px);
+
+        top:
+            calc(50% + 40px);
+    }
+
+
+    .proteus {
+
+        left:
+            calc(50% - 110px);
+
+        top:
+            calc(50% - 115px);
+    }
+
+
+    .larissa {
+
+        left:
+            calc(50% - 135px);
+
+        top:
+            calc(50% + 55px);
+    }
+
+
+    .galatea {
+
+        left:
+            calc(50% + 125px);
+
+        top:
+            calc(50% - 30px);
+    }
+
+
+    .description {
+
+        padding: 25px;
+    }
+
+
+    .moons {
+
+        grid-template-columns: 1fr;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<section class="neptune-page">
+
+
+<div class="stars"></div>
+
+<div class="stars-small"></div>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<div class="header">
+
+
+<a
+href="https://sites.google.com/view/kosmolearn/solar-system"
+class="return">
+
+← RETURN TO SOLAR SYSTEM
+
+</a>
+
+
+<div class="label">
+
+ORBONIX · SOLAR SYSTEM
+
+</div>
+
+
+<h1>
+
+NEPTUNE
+
+</h1>
+
+
+<div class="subtitle">
+
+The eighth and most distant major planet
+from the Sun, a deep-blue ice giant with
+powerful winds and a dynamic atmosphere.
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     NEPTUNE + MOONS
+========================================= -->
+
+<div class="planet-area">
+
+
+<div class="moon-orbit orbit-triton"></div>
+
+<div class="moon-orbit orbit-nereid"></div>
+
+<div class="moon-orbit orbit-proteus"></div>
+
+<div class="moon-orbit orbit-larissa"></div>
+
+<div class="moon-orbit orbit-galatea"></div>
+
+
+<!-- NEPTUNE -->
+
+<a
+href="#NEPTUNE-PAGE"
+class="neptune-center">
+
+
+<img
+src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Neptune_Full.jpg"
+alt="Neptune">
+
+
+<span>
+
+NEPTUNE
+
+</span>
+
+
+</a>
+
+
+<!-- TRITON -->
+
+<a
+href="#TRITON-PAGE"
+class="neptune-moon triton">
+
+
+<img
+src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Triton_1989_Voyager_2.jpg"
+alt="Triton">
+
+
+<span>
+
+TRITON
+
+</span>
+
+
+</a>
+
+
+<!-- NEREID -->
+
+<a
+href="#NEREID-PAGE"
+class="neptune-moon nereid">
+
+
+<img
+src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Nereid-Voyager2.jpg"
+alt="Nereid">
+
+
+<span>
+
+NEREID
+
+</span>
+
+
+</a>
+
+
+<!-- PROTEUS -->
+
+<a
+href="#PROTEUS-PAGE"
+class="neptune-moon proteus">
+
+
+<img
+src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Proteus_%28Voyager_2%29.jpg"
+alt="Proteus">
+
+
+<span>
+
+PROTEUS
+
+</span>
+
+
+</a>
+
+
+<!-- LARISSA -->
+
+<a
+href="#LARISSA-PAGE"
+class="neptune-moon larissa">
+
+
+<img
+src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Larissa.jpg"
+alt="Larissa">
+
+
+<span>
+
+LARISSA
+
+</span>
+
+
+</a>
+
+
+<!-- GALATEA -->
+
+<a
+href="#GALATEA-PAGE"
+class="neptune-moon galatea">
+
+
+<img
+src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Galatea_moon.jpg"
+alt="Galatea">
+
+
+<span>
+
+GALATEA
+
+</span>
+
+
+</a>
+
+
+</div>
+
+
+<!-- =========================================
+     INFORMATION
+========================================= -->
+
+<div class="info">
+
+
+<div class="info-grid">
+
+
+<div class="card">
+
+<div class="number">
+
+4.50 billion km
+
+</div>
+
+<div class="card-label">
+
+AVERAGE DISTANCE FROM SUN
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="number">
+
+49,244 km
+
+</div>
+
+<div class="card-label">
+
+DIAMETER
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="number">
+
+165 YEARS
+
+</div>
+
+<div class="card-label">
+
+ORBITAL PERIOD
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="number">
+
+16.1 HOURS
+
+</div>
+
+<div class="card-label">
+
+ROTATION PERIOD
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="number">
+
+16
+
+</div>
+
+<div class="card-label">
+
+KNOWN MOONS
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="number">
+
+5
+
+</div>
+
+<div class="card-label">
+
+MAIN RINGS
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     DESCRIPTION
+========================================= -->
+
+<div class="description">
+
+
+<div class="description-title">
+
+THE ICE GIANT
+
+</div>
+
+
+<div class="description-text">
+
+Neptune is the eighth planet from the Sun
+and the most distant major planet in our
+Solar System.
+
+Its striking blue color is caused mainly by
+methane in its atmosphere, which absorbs
+red wavelengths of sunlight.
+
+Neptune has one of the most active
+atmospheres in the Solar System, with
+winds that can reach more than 2,000 km/h.
+
+The planet has a faint ring system and
+16 known moons. Triton is by far the
+largest and most famous of them.
+
+</div>
+
+
+<!-- =========================================
+     MAJOR MOONS
+========================================= -->
+
+<div class="moons-title">
+
+MAJOR MOONS
+
+</div>
+
+
+<div class="moons">
+
+
+<!-- TRITON -->
+
+<a
+href="#TRITON-PAGE"
+class="moon-card">
+
+
+<img
+class="moon-image"
+src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Triton_1989_Voyager_2.jpg"
+alt="Triton">
+
+
+<div class="moon-name">
+
+TRITON
+
+</div>
+
+
+<div class="moon-description">
+
+Neptune's largest moon, with an
+active icy surface and nitrogen geysers.
+
+</div>
+
+
+</a>
+
+
+<!-- NEREID -->
+
+<a
+href="#NEREID-PAGE"
+class="moon-card">
+
+
+<img
+class="moon-image"
+src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Nereid-Voyager2.jpg"
+alt="Nereid">
+
+
+<div class="moon-name">
+
+NEREID
+
+</div>
+
+
+<div class="moon-description">
+
+A distant irregular moon with one
+of the most eccentric known orbits.
+
+</div>
+
+
+</a>
+
+
+<!-- PROTEUS -->
+
+<a
+href="#PROTEUS-PAGE"
+class="moon-card">
+
+
+<img
+class="moon-image"
+src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Proteus_%28Voyager_2%29.jpg"
+alt="Proteus">
+
+
+<div class="moon-name">
+
+PROTEUS
+
+</div>
+
+
+<div class="moon-description">
+
+A dark, irregular moon heavily
+covered with impact craters.
+
+</div>
+
+
+</a>
+
+
+<!-- LARISSA -->
+
+<a
+href="#LARISSA-PAGE"
+class="moon-card">
+
+
+<img
+class="moon-image"
+src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Larissa.jpg"
+alt="Larissa">
+
+
+<div class="moon-name">
+
+LARISSA
+
+</div>
+
+
+<div class="moon-description">
+
+A small inner moon discovered
+in Voyager 2 images.
+
+</div>
+
+
+</a>
+
+
+<!-- GALATEA -->
+
+<a
+href="#GALATEA-PAGE"
+class="moon-card">
+
+
+<img
+class="moon-image"
+src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Galatea_moon.jpg"
+alt="Galatea">
+
+
+<div class="moon-name">
+
+GALATEA
+
+</div>
+
+
+<div class="moon-description">
+
+A small irregular moon that helps
+shape Neptune's faint ring system.
+
+</div>
+
+
+</a>
+
+
+</div>
+
+
+<!-- =========================================
+     FEATURES
+========================================= -->
+
+<div class="features">
+
+
+<div class="feature">
+
+
+<div class="feature-title">
+
+EXTREME WINDS
+
+</div>
+
+
+<div class="feature-text">
+
+Neptune has the fastest winds
+measured on any planet in the
+Solar System.
+
+</div>
+
+
+</div>
+
+
+<div class="feature">
+
+
+<div class="feature-title">
+
+DEEP BLUE
+
+</div>
+
+
+<div class="feature-text">
+
+Methane absorbs red light,
+helping give Neptune its deep
+blue appearance.
+
+</div>
+
+
+</div>
+
+
+<div class="feature">
+
+
+<div class="feature-title">
+
+GREAT DARK SPOTS
+
+</div>
+
+
+<div class="feature-text">
+
+Large dark storms have been
+observed moving through
+Neptune's atmosphere.
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     FACT
+========================================= -->
+
+<div class="fact">
+
+
+<div class="fact-label">
+
+DID YOU KNOW?
+
+</div>
+
+
+<div class="fact-text">
+
+One year on Neptune lasts about
+<strong>165 Earth years</strong>.
+
+Since its discovery in 1846, Neptune
+has completed only one full orbit
+around the Sun.
+
+</div>
+
+
+</div>
+
+
+<div class="credit">
+
+IMAGES:
+NASA / JPL / VOYAGER 2
+<br>
+PLANET AND MOON IMAGES VIA WIKIMEDIA COMMONS
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+<script>
+
+
+/* =========================================
+   STAR PARALLAX
+========================================= */
+
+const stars =
+document.querySelector(".stars");
+
+
+const smallStars =
+document.querySelector(".stars-small");
+
+
+document.addEventListener(
+"mousemove",
+
+function(event) {
+
+
+    const x =
+        event.clientX /
+        window.innerWidth - 0.5;
+
+
+    const y =
+        event.clientY /
+        window.innerHeight - 0.5;
+
+
+    stars.style.transform =
+        `translate(
+            ${x * 20}px,
+            ${y * 20}px
+        )`;
+
+
+    smallStars.style.transform =
+        `translate(
+            ${x * -12}px,
+            ${y * -12}px
+        )`;
+
+
+});
+
+
+</script>
+
+
+</body>
+
+</html>
