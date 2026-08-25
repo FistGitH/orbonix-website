@@ -1,1 +1,1113 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: #01030a;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   MAIN
+========================================= */
+
+.saturn-page {
+
+    position: relative;
+
+    width: 100%;
+    min-height: 1200px;
+
+    padding: 55px 20px 100px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(170,140,90,.12),
+            transparent 45%
+        ),
+        #01030a;
+}
+
+
+/* =========================================
+   STARS
+========================================= */
+
+.stars {
+
+    position: absolute;
+
+    inset: -30%;
+
+    pointer-events: none;
+
+    opacity: .4;
+
+    background-image:
+        radial-gradient(
+            circle,
+            white 1px,
+            transparent 1px
+        );
+
+    background-size: 75px 75px;
+
+    transition: transform 1.5s ease;
+}
+
+
+.stars-small {
+
+    position: absolute;
+
+    inset: -30%;
+
+    pointer-events: none;
+
+    opacity: .18;
+
+    background-image:
+        radial-gradient(
+            circle,
+            white 1px,
+            transparent 1px
+        );
+
+    background-size: 32px 32px;
+
+    transition: transform 2s ease;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header {
+
+    position: relative;
+
+    z-index: 100;
+
+    max-width: 1000px;
+
+    margin: auto;
+
+    text-align: center;
+}
+
+
+.return {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    padding: 12px 20px;
+
+    margin-bottom: 35px;
+
+    color: rgba(255,255,255,.7);
+
+    border: 1px solid rgba(255,255,255,.2);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    transition: .35s ease;
+}
+
+
+.return:hover {
+
+    color: #000;
+
+    background: white;
+
+    border-color: white;
+
+    transform: translateY(-4px);
+}
+
+
+.label {
+
+    margin-bottom: 18px;
+
+    color: rgba(255,255,255,.4);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+
+h1 {
+
+    margin: 0;
+
+    font-size: clamp(50px,8vw,90px);
+
+    line-height: .95;
+
+    letter-spacing: 6px;
+}
+
+
+.subtitle {
+
+    max-width: 700px;
+
+    margin: 25px auto 0;
+
+    color: rgba(255,255,255,.5);
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   SYSTEM
+========================================= */
+
+.system {
+
+    position: relative;
+
+    width: min(1100px,100%);
+
+    height: 720px;
+
+    margin: 30px auto 0;
+}
+
+
+/* =========================================
+   ORBITS
+========================================= */
+
+.orbit {
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%,-50%);
+
+    border: 1px solid rgba(220,200,160,.13);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+
+.o1 {
+    width: 150px;
+    height: 150px;
+}
+
+.o2 {
+    width: 220px;
+    height: 220px;
+}
+
+.o3 {
+    width: 290px;
+    height: 290px;
+}
+
+.o4 {
+    width: 365px;
+    height: 365px;
+}
+
+.o5 {
+    width: 440px;
+    height: 440px;
+}
+
+.o6 {
+    width: 530px;
+    height: 530px;
+}
+
+.o7 {
+    width: 625px;
+    height: 625px;
+}
+
+
+/* =========================================
+   OBJECT
+========================================= */
+
+.object {
+
+    position: absolute;
+
+    z-index: 20;
+
+    display: block;
+
+    color: white;
+
+    text-decoration: none;
+
+    transition:
+        transform .45s
+        cubic-bezier(.2,.8,.2,1);
+}
+
+
+.object:hover {
+
+    transform: scale(1.16);
+}
+
+
+/* =========================================
+   MOON IMAGE
+========================================= */
+
+.moon-image {
+
+    display: block;
+
+    width: 48px;
+    height: 48px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    background: #080b12;
+
+    box-shadow:
+        0 0 18px
+        rgba(210,190,150,.12);
+
+    transition: .4s ease;
+}
+
+
+.object:hover .moon-image {
+
+    box-shadow:
+        0 0 35px
+        rgba(230,210,170,.4);
+
+    transform: scale(1.08);
+}
+
+
+/* =========================================
+   SATURN
+========================================= */
+
+.saturn-object {
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%,-50%);
+}
+
+
+.saturn-object:hover {
+
+    transform:
+        translate(-50%,-50%)
+        scale(1.08);
+}
+
+
+.saturn-image {
+
+    display: block;
+
+    width: 190px;
+    height: 190px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 45px
+        rgba(220,190,120,.22);
+
+    transition: .45s ease;
+}
+
+
+.saturn-object:hover
+.saturn-image {
+
+    box-shadow:
+        0 0 65px
+        rgba(240,210,150,.38);
+}
+
+
+.saturn-name {
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 205px;
+
+    transform:
+        translateX(-50%);
+
+    white-space: nowrap;
+
+    font-size: 10px;
+
+    letter-spacing: 4px;
+
+    color: rgba(255,255,255,.75);
+}
+
+
+/* =========================================
+   MOON NAME
+========================================= */
+
+.name {
+
+    position: absolute;
+
+    left: 62px;
+
+    top: 50%;
+
+    transform:
+        translateY(-50%);
+
+    white-space: nowrap;
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+
+    color: rgba(255,255,255,.5);
+
+    transition: .3s ease;
+}
+
+
+.object:hover .name {
+
+    color: white;
+}
+
+
+/* =========================================
+   TITAN
+========================================= */
+
+.titan {
+
+    left:
+        calc(50% + 225px);
+
+    top:
+        calc(50% - 265px);
+}
+
+
+.titan .moon-image {
+
+    width: 70px;
+    height: 70px;
+}
+
+
+/* =========================================
+   ENCELADUS
+========================================= */
+
+.enceladus {
+
+    left:
+        calc(50% - 270px);
+
+    top:
+        calc(50% - 220px);
+}
+
+
+/* =========================================
+   MIMAS
+========================================= */
+
+.mimas {
+
+    left:
+        calc(50% + 150px);
+
+    top:
+        calc(50% - 145px);
+}
+
+
+/* =========================================
+   RHEA
+========================================= */
+
+.rhea {
+
+    left:
+        calc(50% - 235px);
+
+    top:
+        calc(50% + 65px);
+}
+
+
+/* =========================================
+   IAPETUS
+========================================= */
+
+.iapetus {
+
+    left:
+        calc(50% + 265px);
+
+    top:
+        calc(50% + 100px);
+}
+
+
+.iapetus .moon-image {
+
+    width: 55px;
+    height: 55px;
+}
+
+
+/* =========================================
+   DIONE
+========================================= */
+
+.dione {
+
+    left:
+        calc(50% - 125px);
+
+    top:
+        calc(50% + 185px);
+}
+
+
+/* =========================================
+   TETHYS
+========================================= */
+
+.tethys {
+
+    left:
+        calc(50% + 25px);
+
+    top:
+        calc(50% - 265px);
+}
+
+
+/* =========================================
+   INFO
+========================================= */
+
+.info {
+
+    position: relative;
+
+    z-index: 50;
+
+    width:
+        min(900px,100%);
+
+    margin:
+        -20px auto 0;
+}
+
+
+.info-box {
+
+    padding: 35px;
+
+    text-align: center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    background:
+        rgba(255,255,255,.025);
+
+    transition: .4s ease;
+}
+
+
+.info-box:hover {
+
+    transform:
+        translateY(-5px);
+
+    border-color:
+        rgba(255,255,255,.25);
+}
+
+
+.info-title {
+
+    margin-bottom: 15px;
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+}
+
+
+.info-text {
+
+    max-width: 800px;
+
+    margin: auto;
+
+    color:
+        rgba(255,255,255,.55);
+
+    font-size: 13px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   FACTS
+========================================= */
+
+.facts {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 1px;
+
+    margin-top: 30px;
+
+    background:
+        rgba(255,255,255,.1);
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+}
+
+
+.fact {
+
+    padding: 28px;
+
+    background:
+        rgba(5,7,13,.95);
+
+    transition: .35s ease;
+}
+
+
+.fact:hover {
+
+    transform:
+        translateY(-5px);
+
+    background:
+        rgba(255,255,255,.04);
+}
+
+
+.fact-number {
+
+    margin-bottom: 8px;
+
+    font-size: 20px;
+
+    font-weight: bold;
+}
+
+
+.fact-label {
+
+    color:
+        rgba(255,255,255,.4);
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================
+   CREDIT
+========================================= */
+
+.credit {
+
+    margin-top: 25px;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,.3);
+
+    font-size: 9px;
+
+    letter-spacing: 1px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:800px) {
+
+    .system {
+
+        transform:
+            scale(.7);
+
+        transform-origin:
+            top center;
+
+        height: 520px;
+    }
+
+
+    .facts {
+
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media(max-width:500px) {
+
+    .saturn-page {
+
+        padding:
+            45px 12px 80px;
+    }
+
+
+    .system {
+
+        transform:
+            scale(.48);
+
+        transform-origin:
+            top center;
+
+        height: 370px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<section class="saturn-page">
+
+
+<div class="stars"></div>
+
+<div class="stars-small"></div>
+
+
+<!-- HEADER -->
+
+<div class="header">
+
+
+<a
+href="https://sites.google.com/view/kosmolearn/solar-system"
+class="return">
+
+← RETURN TO SOLAR SYSTEM
+
+</a>
+
+
+<div class="label">
+
+ORBONIX · SOLAR SYSTEM
+
+</div>
+
+
+<h1>
+
+SATURN
+
+</h1>
+
+
+<div class="subtitle">
+
+The sixth planet from the Sun,
+famous for its spectacular system
+of icy rings and dozens of moons.
+
+</div>
+
+
+</div>
+
+
+<!-- SATURN SYSTEM -->
+
+<div class="system">
+
+
+<div class="orbit o1"></div>
+<div class="orbit o2"></div>
+<div class="orbit o3"></div>
+<div class="orbit o4"></div>
+<div class="orbit o5"></div>
+<div class="orbit o6"></div>
+<div class="orbit o7"></div>
+
+
+<!-- SATURN -->
+
+<a
+href="#SATURN-INFO"
+class="object saturn-object">
+
+<img
+class="saturn-image"
+src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Saturn%20during%20Equinox.jpg"
+alt="Saturn">
+
+<div class="saturn-name">
+SATURN
+</div>
+
+</a>
+
+
+<!-- TITAN -->
+
+<a
+href="#TITAN-PAGE"
+class="object titan">
+
+<img
+class="moon-image"
+src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Titan%20in%20true%20color.jpg"
+alt="Titan">
+
+<div class="name">
+TITAN
+</div>
+
+</a>
+
+
+<!-- ENCELADUS -->
+
+<a
+href="#ENCELADUS-PAGE"
+class="object enceladus">
+
+<img
+class="moon-image"
+src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Enceladus%20-%20December%2024%202005%20%2838595687845%29.jpg"
+alt="Enceladus">
+
+<div class="name">
+ENCELADUS
+</div>
+
+</a>
+
+
+<!-- MIMAS -->
+
+<a
+href="#MIMAS-PAGE"
+class="object mimas">
+
+<img
+class="moon-image"
+src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Mimas_Cassini.jpg"
+alt="Mimas">
+
+<div class="name">
+MIMAS
+</div>
+
+</a>
+
+
+<!-- RHEA -->
+
+<a
+href="#RHEA-PAGE"
+class="object rhea">
+
+<img
+class="moon-image"
+src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Rhea%20true%20color.jpg"
+alt="Rhea">
+
+<div class="name">
+RHEA
+</div>
+
+</a>
+
+
+<!-- IAPETUS -->
+
+<a
+href="#IAPETUS-PAGE"
+class="object iapetus">
+
+<img
+class="moon-image"
+src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Iapetus_cassini1.jpg"
+alt="Iapetus">
+
+<div class="name">
+IAPETUS
+</div>
+
+</a>
+
+
+<!-- DIONE -->
+
+<a
+href="#DIONE-PAGE"
+class="object dione">
+
+<img
+class="moon-image"
+src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Saturn%27s_moon_Dione_by_Cassini_in_color.jpg"
+alt="Dione">
+
+<div class="name">
+DIONE
+</div>
+
+</a>
+
+
+<!-- TETHYS -->
+
+<a
+href="#TETHYS-PAGE"
+class="object tethys">
+
+<img
+class="moon-image"
+src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Tethys_near_true.jpg"
+alt="Tethys">
+
+<div class="name">
+TETHYS
+</div>
+
+</a>
+
+
+</div>
+
+
+<!-- INFO -->
+
+<div
+class="info"
+id="SATURN-INFO">
+
+
+<div class="info-box">
+
+<div class="info-title">
+
+THE RINGED GIANT
+
+</div>
+
+
+<div class="info-text">
+
+Saturn is the sixth planet from the Sun
+and the second-largest planet in the
+Solar System.
+
+Its spectacular ring system is made
+mostly of countless particles of water
+ice, rocky material and dust.
+
+Saturn has a very large family of moons.
+The seven shown above are among the
+most scientifically interesting worlds
+orbiting the planet.
+
+Click a moon to explore it individually.
+
+</div>
+
+</div>
+
+
+<!-- FACTS -->
+
+<div class="facts">
+
+
+<div class="fact">
+
+<div class="fact-number">
+1.43 billion km
+</div>
+
+<div class="fact-label">
+AVERAGE DISTANCE FROM SUN
+</div>
+
+</div>
+
+
+<div class="fact">
+
+<div class="fact-number">
+120,536 km
+</div>
+
+<div class="fact-label">
+EQUATORIAL DIAMETER
+</div>
+
+</div>
+
+
+<div class="fact">
+
+<div class="fact-number">
+29.4 YEARS
+</div>
+
+<div class="fact-label">
+ORBITAL PERIOD
+</div>
+
+</div>
+
+
+</div>
+
+
+<div class="credit">
+
+PLANET AND MOON IMAGES:
+NASA / JPL / CASSINI
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+<script>
+
+const stars =
+document.querySelector(".stars");
+
+const smallStars =
+document.querySelector(".stars-small");
+
+
+document.addEventListener(
+"mousemove",
+
+function(event) {
+
+    const x =
+        event.clientX /
+        window.innerWidth -
+        0.5;
+
+    const y =
+        event.clientY /
+        window.innerHeight -
+        0.5;
+
+
+    stars.style.transform =
+        `translate(
+            ${x * 20}px,
+            ${y * 20}px
+        )`;
+
+
+    smallStars.style.transform =
+        `translate(
+            ${x * -12}px,
+            ${y * -12}px
+        )`;
+
+});
+
+</script>
+
+
+</body>
+
+</html>
