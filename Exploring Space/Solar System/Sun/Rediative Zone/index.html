@@ -1,1 +1,1246 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: #020308;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   PAGE
+========================================= */
+
+.radiative-page {
+
+    position: relative;
+
+    min-height: 1300px;
+
+    padding: 55px 20px 100px;
+
+    overflow: hidden;
+
+    background: #020308;
+}
+
+
+/* =========================================
+   STARS
+========================================= */
+
+.stars {
+
+    position: absolute;
+
+    inset: -20%;
+
+    pointer-events: none;
+
+    opacity: .32;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.9) 1px,
+            transparent 1px
+        );
+
+    background-size: 75px 75px;
+
+    transition:
+        transform 1.5s ease;
+}
+
+
+.stars-small {
+
+    position: absolute;
+
+    inset: -20%;
+
+    pointer-events: none;
+
+    opacity: .14;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.8) 1px,
+            transparent 1px
+        );
+
+    background-size: 32px 32px;
+
+    transition:
+        transform 2s ease;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header {
+
+    position: relative;
+
+    z-index: 5;
+
+    max-width: 950px;
+
+    margin: auto;
+
+    text-align: center;
+}
+
+
+.return {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    padding: 12px 20px;
+
+    margin-bottom: 35px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.22);
+
+    color:
+        rgba(255,255,255,.7);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    transition:
+        .35s ease;
+}
+
+
+.return:hover {
+
+    background: white;
+
+    color: #020308;
+
+    border-color: white;
+
+    transform:
+        translateY(-4px);
+}
+
+
+.label {
+
+    margin-bottom: 18px;
+
+    color:
+        rgba(255,255,255,.4);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+
+h1 {
+
+    margin: 0;
+
+    font-size:
+        clamp(45px,8vw,90px);
+
+    line-height: .95;
+
+    letter-spacing: 6px;
+}
+
+
+.subtitle {
+
+    max-width: 720px;
+
+    margin:
+        25px auto 0;
+
+    color:
+        rgba(255,255,255,.52);
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   MAIN VISUAL
+========================================= */
+
+.zone-area {
+
+    position: relative;
+
+    width: 560px;
+
+    height: 560px;
+
+    margin:
+        70px auto 90px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+/* =========================================
+   SUN
+========================================= */
+
+.sun {
+
+    position: absolute;
+
+    width: 430px;
+
+    height: 430px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 45% 42%,
+            #ffb52d 0%,
+            #ef6c12 35%,
+            #b83208 68%,
+            #541000 100%
+        );
+
+    box-shadow:
+        0 0 35px
+        rgba(255,120,20,.22);
+}
+
+
+/* =========================================
+   RADIATIVE ZONE
+========================================= */
+
+.radiative-zone {
+
+    position: absolute;
+
+    width: 300px;
+
+    height: 300px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,240,160,.95) 0%,
+            rgba(255,190,50,.9) 30%,
+            rgba(255,120,10,.75) 62%,
+            rgba(200,45,0,.55) 100%
+        );
+
+    box-shadow:
+        inset 0 0 45px
+        rgba(255,240,120,.35);
+
+    animation:
+        radiativePulse 5s
+        ease-in-out infinite;
+}
+
+
+@keyframes radiativePulse {
+
+    0%,100% {
+
+        transform:
+            scale(.98);
+
+        opacity: .9;
+    }
+
+    50% {
+
+        transform:
+            scale(1.02);
+
+        opacity: 1;
+    }
+}
+
+
+/* =========================================
+   CORE
+========================================= */
+
+.core {
+
+    position: absolute;
+
+    width: 135px;
+
+    height: 135px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #fffbd0,
+            #ffe064 30%,
+            #ff9b00 65%,
+            #e84b00 100%
+        );
+
+    box-shadow:
+        0 0 30px
+        rgba(255,210,60,.55);
+}
+
+
+/* =========================================
+   PHOTON PARTICLES
+========================================= */
+
+.photon {
+
+    position: absolute;
+
+    width: 5px;
+
+    height: 5px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    box-shadow:
+        0 0 8px
+        rgba(255,255,255,.9);
+
+    animation:
+        photonMove
+        linear infinite;
+}
+
+
+.p1 {
+    animation-duration: 4s;
+}
+
+.p2 {
+    animation-duration: 6s;
+    animation-delay: -2s;
+}
+
+.p3 {
+    animation-duration: 5s;
+    animation-delay: -1s;
+}
+
+.p4 {
+    animation-duration: 7s;
+    animation-delay: -4s;
+}
+
+.p5 {
+    animation-duration: 5.5s;
+    animation-delay: -3s;
+}
+
+
+@keyframes photonMove {
+
+    0% {
+
+        transform:
+            rotate(0deg)
+            translateX(70px)
+            rotate(0deg);
+
+        opacity: .2;
+    }
+
+    25% {
+
+        opacity: 1;
+    }
+
+    50% {
+
+        transform:
+            rotate(180deg)
+            translateX(130px)
+            rotate(-180deg);
+
+        opacity: .8;
+    }
+
+    75% {
+
+        opacity: .4;
+    }
+
+    100% {
+
+        transform:
+            rotate(360deg)
+            translateX(70px)
+            rotate(-360deg);
+
+        opacity: .2;
+    }
+}
+
+
+/* =========================================
+   ZONE LABEL
+========================================= */
+
+.zone-label {
+
+    position: absolute;
+
+    z-index: 10;
+
+    bottom: 0;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    padding:
+        10px 18px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.18);
+
+    background:
+        rgba(2,3,8,.88);
+
+    backdrop-filter:
+        blur(8px);
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================
+   INFO
+========================================= */
+
+.info {
+
+    position: relative;
+
+    z-index: 5;
+
+    width:
+        min(1050px,100%);
+
+    margin: auto;
+}
+
+
+.info-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 1px;
+
+    background:
+        rgba(255,255,255,.1);
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+}
+
+
+.card {
+
+    padding: 30px;
+
+    background:
+        rgba(5,7,13,.95);
+
+    transition:
+        .35s ease;
+}
+
+
+.card:hover {
+
+    transform:
+        translateY(-5px);
+
+    background:
+        rgba(255,255,255,.04);
+}
+
+
+.number {
+
+    margin-bottom: 8px;
+
+    font-size: 22px;
+
+    font-weight: bold;
+}
+
+
+.card-label {
+
+    color:
+        rgba(255,255,255,.4);
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================
+   DESCRIPTION
+========================================= */
+
+.description {
+
+    margin-top: 60px;
+
+    padding: 40px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.025);
+}
+
+
+.description-title {
+
+    margin-bottom: 20px;
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+}
+
+
+.description-text {
+
+    max-width: 900px;
+
+    color:
+        rgba(255,255,255,.58);
+
+    font-size: 14px;
+
+    line-height: 1.9;
+}
+
+
+/* =========================================
+   PHOTON JOURNEY
+========================================= */
+
+.journey {
+
+    margin-top: 45px;
+
+    padding: 30px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.02);
+}
+
+
+.journey-title {
+
+    margin-bottom: 20px;
+
+    font-size: 10px;
+
+    letter-spacing: 4px;
+
+    color:
+        rgba(255,255,255,.5);
+}
+
+
+.journey-line {
+
+    position: relative;
+
+    height: 2px;
+
+    margin:
+        35px 10px;
+
+    background:
+        rgba(255,255,255,.15);
+}
+
+
+.journey-line::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    top: -4px;
+
+    width: 10px;
+
+    height: 10px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    box-shadow:
+        0 0 12px white;
+
+    animation:
+        journeyMove 4s
+        linear infinite;
+}
+
+
+@keyframes journeyMove {
+
+    from {
+        left: 0%;
+    }
+
+    to {
+        left: 100%;
+    }
+}
+
+
+.journey-text {
+
+    color:
+        rgba(255,255,255,.55);
+
+    font-size: 13px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   STRUCTURE
+========================================= */
+
+.layers {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap: 10px;
+
+    margin-top: 45px;
+}
+
+
+.layer {
+
+    padding: 22px 10px;
+
+    text-align: center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    transition:
+        .3s ease;
+}
+
+
+.layer:hover {
+
+    transform:
+        translateY(-5px);
+
+    border-color:
+        rgba(255,180,50,.45);
+}
+
+
+/* =========================================
+   FACT
+========================================= */
+
+.fact {
+
+    margin-top: 60px;
+
+    padding: 35px;
+
+    text-align: center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    background:
+        rgba(255,255,255,.025);
+}
+
+
+.fact-label {
+
+    margin-bottom: 15px;
+
+    color:
+        rgba(255,255,255,.45);
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+}
+
+
+.fact-text {
+
+    font-size:
+        clamp(18px,3vw,27px);
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:800px) {
+
+    .zone-area {
+
+        width: 400px;
+
+        height: 400px;
+    }
+
+
+    .sun {
+
+        width: 330px;
+
+        height: 330px;
+    }
+
+
+    .radiative-zone {
+
+        width: 235px;
+
+        height: 235px;
+    }
+
+
+    .core {
+
+        width: 105px;
+
+        height: 105px;
+    }
+
+
+    .info-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .layers {
+
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+}
+
+
+@media(max-width:500px) {
+
+    .radiative-page {
+
+        padding:
+            45px 15px 70px;
+    }
+
+
+    .zone-area {
+
+        width: 300px;
+
+        height: 300px;
+
+        margin-top: 50px;
+    }
+
+
+    .sun {
+
+        width: 245px;
+
+        height: 245px;
+    }
+
+
+    .radiative-zone {
+
+        width: 175px;
+
+        height: 175px;
+    }
+
+
+    .core {
+
+        width: 80px;
+
+        height: 80px;
+    }
+
+
+    .description {
+
+        padding: 25px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<section class="radiative-page">
+
+
+<div class="stars"></div>
+
+<div class="stars-small"></div>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<div class="header">
+
+
+<a
+href="https://sites.google.com/view/kosmolearn/sun"
+class="return">
+
+← RETURN TO SUN
+
+</a>
+
+
+<div class="label">
+
+ORBONIX · SUN STRUCTURE
+
+</div>
+
+
+<h1>
+
+RADIATIVE ZONE
+
+</h1>
+
+
+<div class="subtitle">
+
+The region surrounding the solar core
+where energy travels outward primarily
+through the diffusion of photons.
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     VISUAL
+========================================= -->
+
+<div class="zone-area">
+
+
+<div class="sun"></div>
+
+
+<div class="radiative-zone"></div>
+
+
+<div class="core"></div>
+
+
+<div class="photon p1"></div>
+
+<div class="photon p2"></div>
+
+<div class="photon p3"></div>
+
+<div class="photon p4"></div>
+
+<div class="photon p5"></div>
+
+
+<div class="zone-label">
+
+RADIATIVE ZONE
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     INFORMATION
+========================================= -->
+
+<div class="info">
+
+
+<div class="info-grid">
+
+
+<div class="card">
+
+<div class="number">
+≈ 25–70%
+</div>
+
+<div class="card-label">
+SOLAR RADIUS
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="number">
+~7,000,000 K → 2,000,000 K
+</div>
+
+<div class="card-label">
+APPROX. TEMPERATURE RANGE
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="number">
+PHOTONS
+</div>
+
+<div class="card-label">
+PRIMARY ENERGY TRANSFER
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="number">
+HIGH
+</div>
+
+<div class="card-label">
+PLASMA DENSITY
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="number">
+NO CONVECTION
+</div>
+
+<div class="card-label">
+ENERGY TRANSPORT
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="number">
+~45%
+</div>
+
+<div class="card-label">
+APPROX. SOLAR RADIUS THICKNESS
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     DESCRIPTION
+========================================= -->
+
+<div class="description">
+
+
+<div class="description-title">
+
+WHAT IS THE RADIATIVE ZONE?
+
+</div>
+
+
+<div class="description-text">
+
+The radiative zone extends outward from
+approximately 25% to 70% of the Sun's
+radius.
+
+Unlike the convective zone, material in
+this region does not transport energy
+primarily through large-scale convection.
+
+Instead, energy moves outward mainly
+through radiation.
+
+Photons are repeatedly absorbed and
+reemitted by particles in the extremely
+dense plasma. Their path is therefore
+far from a straight line.
+
+A photon can change direction countless
+times before its energy gradually moves
+toward the outer layers of the Sun.
+
+</div>
+
+
+<!-- =========================================
+     PHOTON JOURNEY
+========================================= -->
+
+<div class="journey">
+
+
+<div class="journey-title">
+
+ENERGY TRANSPORT
+
+</div>
+
+
+<div class="journey-line"></div>
+
+
+<div class="journey-text">
+
+Energy generated by nuclear fusion in
+the core gradually diffuses outward.
+Photons interact with the surrounding
+plasma again and again, transferring
+energy toward the boundary with the
+convective zone.
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     SOLAR STRUCTURE
+========================================= -->
+
+<div class="layers">
+
+
+<div class="layer">
+CORE
+</div>
+
+
+<div class="layer">
+RADIATIVE ZONE
+</div>
+
+
+<div class="layer">
+CONVECTIVE ZONE
+</div>
+
+
+<div class="layer">
+PHOTOSPHERE
+</div>
+
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     FACT
+========================================= -->
+
+<div class="fact">
+
+
+<div class="fact-label">
+
+DID YOU KNOW?
+
+</div>
+
+
+<div class="fact-text">
+
+In the radiative zone, energy can take
+an enormous amount of time to travel
+outward because photons are constantly
+interacting with the plasma.
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+<script>
+
+/* =========================================
+   STAR PARALLAX
+========================================= */
+
+const stars =
+document.querySelector(".stars");
+
+const smallStars =
+document.querySelector(".stars-small");
+
+
+document.addEventListener(
+"mousemove",
+
+function(event) {
+
+    const x =
+        event.clientX /
+        window.innerWidth -
+        0.5;
+
+    const y =
+        event.clientY /
+        window.innerHeight -
+        0.5;
+
+
+    stars.style.transform =
+        `translate(
+            ${x * 20}px,
+            ${y * 20}px
+        )`;
+
+
+    smallStars.style.transform =
+        `translate(
+            ${x * -12}px,
+            ${y * -12}px
+        )`;
+
+});
+
+</script>
+
+
+</body>
+
+</html>
