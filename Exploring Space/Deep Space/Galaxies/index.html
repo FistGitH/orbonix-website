@@ -1,1 +1,1457 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: #010208;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   PAGE
+========================================= */
+
+.galaxy-page {
+
+    position: relative;
+
+    min-height: 1700px;
+
+    padding: 65px 20px 100px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 20%,
+            rgba(55,90,190,.15),
+            transparent 45%
+        ),
+        radial-gradient(
+            circle at 50% 70%,
+            rgba(100,50,180,.08),
+            transparent 40%
+        ),
+        #010208;
+}
+
+
+/* =========================================
+   STARS
+========================================= */
+
+.stars {
+
+    position: absolute;
+
+    inset: -25%;
+
+    pointer-events: none;
+
+    opacity: .38;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.9) 1px,
+            transparent 1px
+        );
+
+    background-size: 75px 75px;
+
+    transition:
+        transform 1.5s ease;
+}
+
+
+.stars-small {
+
+    position: absolute;
+
+    inset: -25%;
+
+    pointer-events: none;
+
+    opacity: .16;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.8) 1px,
+            transparent 1px
+        );
+
+    background-size: 32px 32px;
+
+    transition:
+        transform 2s ease;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header {
+
+    position: relative;
+
+    z-index: 10;
+
+    max-width: 900px;
+
+    margin: auto;
+
+    text-align: center;
+}
+
+
+.return {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 12px 20px;
+
+    margin-bottom: 40px;
+
+    color:
+        rgba(255,255,255,.7);
+
+    border:
+        1px solid
+        rgba(255,255,255,.22);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    transition: .35s ease;
+}
+
+
+.return:hover {
+
+    color: #010208;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-4px);
+}
+
+
+.label {
+
+    margin-bottom: 18px;
+
+    color:
+        rgba(255,255,255,.4);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+
+h1 {
+
+    margin: 0;
+
+    font-size:
+        clamp(48px,8vw,92px);
+
+    line-height: .9;
+
+    letter-spacing: 6px;
+}
+
+
+.subtitle {
+
+    max-width: 720px;
+
+    margin:
+        28px auto 0;
+
+    color:
+        rgba(255,255,255,.52);
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   HERO
+========================================= */
+
+.hero {
+
+    position: relative;
+
+    z-index: 5;
+
+    width:
+        min(900px,100%);
+
+    margin:
+        75px auto 60px;
+
+    padding:
+        45px;
+
+    text-align: center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    background:
+        rgba(255,255,255,.025);
+
+    overflow: hidden;
+}
+
+
+.galaxy-visual {
+
+    position: relative;
+
+    width: 250px;
+
+    height: 150px;
+
+    margin:
+        0 auto 30px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            #05050a 0 10%,
+            rgba(150,150,255,.7) 11%,
+            rgba(100,120,255,.3) 23%,
+            rgba(150,100,255,.12) 45%,
+            transparent 70%
+        );
+
+    box-shadow:
+        0 0 50px
+        rgba(100,100,255,.15);
+
+    transform:
+        rotate(-12deg);
+
+    animation:
+        galaxyPulse 6s ease-in-out infinite;
+}
+
+
+.galaxy-visual::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 230px;
+    height: 55px;
+
+    transform:
+        translate(-50%,-50%)
+        rotate(-8deg);
+
+    border-radius: 50%;
+
+    border:
+        1px solid
+        rgba(210,210,255,.22);
+}
+
+
+.galaxy-visual::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 12px;
+    height: 12px;
+
+    transform:
+        translate(-50%,-50%);
+
+    border-radius: 50%;
+
+    background: #000;
+
+    box-shadow:
+        0 0 25px
+        rgba(180,180,255,.7);
+}
+
+
+@keyframes galaxyPulse {
+
+    0%,100% {
+
+        transform:
+            rotate(-12deg)
+            scale(1);
+
+    }
+
+    50% {
+
+        transform:
+            rotate(-12deg)
+            scale(1.06);
+
+    }
+
+}
+
+
+.hero-label {
+
+    margin-bottom: 18px;
+
+    color:
+        rgba(255,255,255,.4);
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+}
+
+
+.hero-title {
+
+    font-size:
+        clamp(22px,4vw,34px);
+
+    letter-spacing: 3px;
+}
+
+
+.hero-text {
+
+    max-width: 680px;
+
+    margin:
+        18px auto 0;
+
+    color:
+        rgba(255,255,255,.55);
+
+    font-size: 13px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   STATS
+========================================= */
+
+.stats {
+
+    position: relative;
+
+    z-index: 5;
+
+    width:
+        min(1050px,100%);
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap: 1px;
+
+    background:
+        rgba(255,255,255,.1);
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+}
+
+
+.stat {
+
+    padding: 28px;
+
+    background:
+        rgba(5,7,15,.94);
+
+    transition: .35s ease;
+}
+
+
+.stat:hover {
+
+    background:
+        rgba(255,255,255,.04);
+
+    transform:
+        translateY(-5px);
+}
+
+
+.stat-value {
+
+    margin-bottom: 9px;
+
+    font-size: 19px;
+
+    font-weight: bold;
+}
+
+
+.stat-label {
+
+    color:
+        rgba(255,255,255,.38);
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.content {
+
+    position: relative;
+
+    z-index: 5;
+
+    width:
+        min(1050px,100%);
+
+    margin:
+        65px auto 0;
+}
+
+
+.info-section {
+
+    margin-bottom: 18px;
+
+    padding: 35px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.025);
+
+    transition: .35s ease;
+}
+
+
+.info-section:hover {
+
+    border-color:
+        rgba(255,255,255,.22);
+
+    transform:
+        translateY(-4px);
+}
+
+
+.info-title {
+
+    margin-bottom: 18px;
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+}
+
+
+.info-text {
+
+    margin: 0;
+
+    color:
+        rgba(255,255,255,.56);
+
+    font-size: 13px;
+
+    line-height: 1.9;
+}
+
+
+/* =========================================
+   GALAXY TYPES
+========================================= */
+
+.types-title {
+
+    margin:
+        60px 0 25px;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,.42);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+
+.types {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap: 15px;
+}
+
+
+.type {
+
+    padding: 28px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.02);
+
+    transition: .35s ease;
+}
+
+
+.type:hover {
+
+    transform:
+        translateY(-6px);
+
+    border-color:
+        rgba(180,190,240,.3);
+
+    background:
+        rgba(255,255,255,.04);
+}
+
+
+.type-name {
+
+    margin-bottom: 10px;
+
+    font-size: 15px;
+
+    letter-spacing: 2px;
+}
+
+
+.type-text {
+
+    color:
+        rgba(255,255,255,.5);
+
+    font-size: 12px;
+
+    line-height: 1.75;
+}
+
+
+/* =========================================
+   EXAMPLES
+========================================= */
+
+.examples-title {
+
+    margin:
+        60px 0 25px;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,.42);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+
+.examples {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 15px;
+}
+
+
+.example {
+
+    padding: 25px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.02);
+
+    transition: .35s ease;
+}
+
+
+.example:hover {
+
+    transform:
+        translateY(-6px);
+
+    border-color:
+        rgba(180,190,240,.3);
+}
+
+
+.example-name {
+
+    margin-bottom: 9px;
+
+    font-size: 14px;
+
+    letter-spacing: 2px;
+}
+
+
+.example-text {
+
+    color:
+        rgba(255,255,255,.48);
+
+    font-size: 11px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   FACT
+========================================= */
+
+.fact {
+
+    margin-top: 60px;
+
+    padding: 42px;
+
+    text-align: center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    background:
+        rgba(255,255,255,.025);
+}
+
+
+.fact-label {
+
+    margin-bottom: 17px;
+
+    color:
+        rgba(255,255,255,.4);
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+}
+
+
+.fact-text {
+
+    max-width: 800px;
+
+    margin: auto;
+
+    font-size:
+        clamp(18px,3vw,27px);
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   NAVIGATION
+========================================= */
+
+.navigation {
+
+    display: flex;
+
+    justify-content: center;
+
+    margin-top: 55px;
+}
+
+
+.nav-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding:
+        13px 24px;
+
+    color:
+        rgba(255,255,255,.75);
+
+    border:
+        1px solid
+        rgba(255,255,255,.2);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    transition: .35s ease;
+}
+
+
+.nav-button:hover {
+
+    color: #010208;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-4px);
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.footer {
+
+    margin-top: 30px;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,.25);
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:800px) {
+
+    .stats {
+
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .examples {
+
+        grid-template-columns:
+            1fr;
+    }
+
+}
+
+
+@media(max-width:600px) {
+
+    .galaxy-page {
+
+        padding:
+            50px 15px 80px;
+    }
+
+    .hero {
+
+        padding:
+            30px 20px;
+    }
+
+    .stats {
+
+        grid-template-columns:
+            1fr;
+    }
+
+    .types {
+
+        grid-template-columns:
+            1fr;
+    }
+
+    .info-section {
+
+        padding: 27px;
+    }
+
+    .fact {
+
+        padding:
+            30px 22px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<section class="galaxy-page">
+
+
+<div class="stars"></div>
+
+<div class="stars-small"></div>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<div class="header">
+
+
+<a
+href="https://sites.google.com/view/kosmolearn"
+class="return">
+
+← RETURN TO HOME
+
+</a>
+
+
+<div class="label">
+
+ORBONIX · DEEP SPACE
+
+</div>
+
+
+<h1>
+
+GALAXIES
+
+</h1>
+
+
+<div class="subtitle">
+
+Enormous cosmic structures containing
+stars, planets, gas, dust and dark matter,
+bound together by gravity.
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     HERO
+========================================= -->
+
+<div class="hero">
+
+
+<div class="galaxy-visual"></div>
+
+
+<div class="hero-label">
+
+COSMIC STRUCTURES
+
+</div>
+
+
+<div class="hero-title">
+
+ISLANDS OF STARS
+
+</div>
+
+
+<p class="hero-text">
+
+A galaxy can contain millions, billions,
+or even trillions of stars. Galaxies are
+among the largest gravitationally bound
+structures in the Universe.
+
+</p>
+
+
+</div>
+
+
+<!-- =========================================
+     STATS
+========================================= -->
+
+<div class="stats">
+
+
+<div class="stat">
+
+<div class="stat-value">
+
+100+ BILLION
+
+</div>
+
+<div class="stat-label">
+
+ESTIMATED GALAXIES IN OBSERVABLE UNIVERSE
+
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+
+MILKY WAY
+
+</div>
+
+<div class="stat-label">
+
+OUR GALAXY
+
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+
+BILLIONS
+
+</div>
+
+<div class="stat-label">
+
+STARS IN THE MILKY WAY
+
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+
+13.6+ BY
+
+</div>
+
+<div class="stat-label">
+
+AGE OF THE OLDEST GALAXIES
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     CONTENT
+========================================= -->
+
+<div class="content">
+
+
+<div class="info-section">
+
+
+<div class="info-title">
+
+WHAT IS A GALAXY?
+
+</div>
+
+
+<p class="info-text">
+
+A galaxy is a huge gravitationally bound
+system containing stars, stellar remnants,
+gas, dust and dark matter.
+
+Galaxies range from relatively small
+dwarf galaxies to enormous systems
+containing hundreds of billions of stars.
+
+They can also contain supermassive black
+holes at their centers.
+
+</p>
+
+
+</div>
+
+
+<div class="info-section">
+
+
+<div class="info-title">
+
+HOW DO GALAXIES FORM?
+
+</div>
+
+
+<p class="info-text">
+
+Galaxies began forming in the early
+Universe as matter gradually collected
+under gravity.
+
+Small structures merged together over
+billions of years, growing into larger
+galaxies.
+
+Dark matter played a major role by
+providing gravitational structures that
+helped ordinary matter gather and form
+stars and galaxies.
+
+</p>
+
+
+</div>
+
+
+<div class="info-section">
+
+
+<div class="info-title">
+
+THE MILKY WAY
+
+</div>
+
+
+<p class="info-text">
+
+The Milky Way is the galaxy that contains
+our Solar System.
+
+It is a barred spiral galaxy with a
+central region surrounded by a large
+disk of stars, gas and dust.
+
+The Solar System lies in one of its
+spiral-arm regions, roughly 26,000
+light-years from the galactic center.
+
+</p>
+
+
+</div>
+
+
+<div class="info-section">
+
+
+<div class="info-title">
+
+GALAXY COLLISIONS
+
+</div>
+
+
+<p class="info-text">
+
+Galaxies can interact and collide because
+of their mutual gravity.
+
+Despite the enormous number of stars
+inside galaxies, direct star-to-star
+collisions are extremely rare because
+the distances between stars are so large.
+
+The Milky Way and Andromeda are expected
+to interact in the distant future.
+
+</p>
+
+
+</div>
+
+
+<!-- =========================================
+     TYPES
+========================================= -->
+
+<div class="types-title">
+
+MAIN GALAXY TYPES
+
+</div>
+
+
+<div class="types">
+
+
+<div class="type">
+
+
+<div class="type-name">
+
+SPIRAL
+
+</div>
+
+
+<div class="type-text">
+
+Spiral galaxies have a rotating disk
+with spiral arms extending from a
+central bulge. The Milky Way and
+Andromeda are examples.
+
+</div>
+
+
+</div>
+
+
+<div class="type">
+
+
+<div class="type-name">
+
+ELLIPTICAL
+
+</div>
+
+
+<div class="type-text">
+
+Elliptical galaxies have smooth,
+rounded shapes and generally contain
+older stars with relatively little
+cold gas and dust.
+
+</div>
+
+
+</div>
+
+
+<div class="type">
+
+
+<div class="type-name">
+
+IRREGULAR
+
+</div>
+
+
+<div class="type-text">
+
+Irregular galaxies do not have a
+simple organized shape. Gravitational
+interactions can strongly influence
+their appearance.
+
+</div>
+
+
+</div>
+
+
+<div class="type">
+
+
+<div class="type-name">
+
+LENTICULAR
+
+</div>
+
+
+<div class="type-text">
+
+Lenticular galaxies have a disk and
+central bulge like spiral galaxies,
+but they generally lack prominent
+spiral arms.
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     EXAMPLES
+========================================= -->
+
+<div class="examples-title">
+
+FAMOUS GALAXIES
+
+</div>
+
+
+<div class="examples">
+
+
+<div class="example">
+
+<div class="example-name">
+
+MILKY WAY
+
+</div>
+
+<div class="example-text">
+
+Our home galaxy and a barred spiral
+galaxy containing the Solar System.
+
+</div>
+
+</div>
+
+
+<div class="example">
+
+<div class="example-name">
+
+ANDROMEDA
+
+</div>
+
+<div class="example-text">
+
+A large spiral galaxy approximately
+2.5 million light-years from Earth.
+
+</div>
+
+</div>
+
+
+<div class="example">
+
+<div class="example-name">
+
+TRIANGULUM
+
+</div>
+
+<div class="example-text">
+
+A spiral galaxy in the Local Group
+and one of the nearest large galaxies
+to the Milky Way.
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     FACT
+========================================= -->
+
+<div class="fact">
+
+
+<div class="fact-label">
+
+DID YOU KNOW?
+
+</div>
+
+
+<div class="fact-text">
+
+When you look at a distant galaxy,
+you are looking into the past because
+<strong>its light can take millions or
+billions of years to reach Earth.</strong>
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     NAVIGATION
+========================================= -->
+
+<div class="navigation">
+
+
+<a
+href="https://sites.google.com/view/kosmolearn"
+class="nav-button">
+
+← RETURN TO HOME
+
+</a>
+
+
+</div>
+
+
+<div class="footer">
+
+ORBONIX · DEEP SPACE · GALAXIES
+
+</div>
+
+
+</section>
+
+
+<script>
+
+
+/* =========================================
+   STAR PARALLAX
+========================================= */
+
+const stars =
+document.querySelector(".stars");
+
+const smallStars =
+document.querySelector(".stars-small");
+
+
+document.addEventListener(
+"mousemove",
+
+function(event) {
+
+    const x =
+        event.clientX /
+        window.innerWidth -
+        0.5;
+
+
+    const y =
+        event.clientY /
+        window.innerHeight -
+        0.5;
+
+
+    stars.style.transform =
+        `translate(
+            ${x * 20}px,
+            ${y * 20}px
+        )`;
+
+
+    smallStars.style.transform =
+        `translate(
+            ${x * -12}px,
+            ${y * -12}px
+        )`;
+
+});
+
+
+</script>
+
+
+</body>
+
+</html>
+```
