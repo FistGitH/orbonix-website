@@ -9,6 +9,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ORBONIX</title>
+
+<link
+    rel="icon"
+    type="image/png"
+    href="/favicon.png"
+>
+
 <style>
 
 
@@ -8106,5 +8113,9 @@ const footerSmallStars=document.querySelector('.footer-stars-small');
 document.addEventListener('mousemove',event=>{const x=event.clientX/window.innerWidth-.5;const y=event.clientY/window.innerHeight-.5;if(footerStars)footerStars.style.transform=`translate(${x*18}px,${y*18}px)`;if(footerSmallStars)footerSmallStars.style.transform=`translate(${x*-10}px,${y*-10}px)`;});
 
 </script>
+   
+   <script src="/js/search.js"></script>
+<script src="/js/search-ui.js"></script>
+   
 </body>
 </html>
