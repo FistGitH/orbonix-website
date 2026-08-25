@@ -1,7 +1,11 @@
+```javascript
 /* =========================================================
-   ORBONIX GLOBAL SEARCH DATABASE
-   Version 2
+   ORBONIX GLOBAL SEARCH
+   Real URLs for orbonix.net
 ========================================================= */
+
+const BASE = "https://orbonix.net";
+
 
 const ORBONIX_PAGES = [
 
@@ -11,96 +15,50 @@ const ORBONIX_PAGES = [
 
     {
         title: "Home",
-        url: "/",
+        url: `${BASE}/`,
         category: "Main",
-        keywords: [
-            "home",
-            "orbonix",
-            "space",
-            "astronomy",
-            "universe"
-        ],
-        description:
-            "The main ORBONIX space and astronomy website."
+        keywords: "home orbonix space astronomy universe",
+        description: "The main ORBONIX space and astronomy website."
     },
 
     {
         title: "Exploring Space",
-        url: "/Exploring%20Space/",
+        url: `${BASE}/Exploring%20Space/`,
         category: "Exploring Space",
-        keywords: [
-            "exploring",
-            "space",
-            "explore",
-            "astronomy",
-            "universe"
-        ],
-        description:
-            "Explore the universe, astronomy and space."
+        keywords: "exploring space explore astronomy universe cosmos",
+        description: "Explore the universe, astronomy and space."
     },
 
     {
         title: "Gallery",
-        url: "/Gallery/",
+        url: `${BASE}/Gallery/`,
         category: "Gallery",
-        keywords: [
-            "gallery",
-            "photos",
-            "images",
-            "pictures",
-            "space photos",
-            "astronomy photos"
-        ],
-        description:
-            "Explore the ORBONIX space photography gallery."
+        keywords: "gallery photos images pictures observations telescope astronomy",
+        description: "Explore the ORBONIX observation gallery."
     },
 
     {
         title: "Latest Space News",
-        url: "/Latest%20Space%20News/",
+        url: `${BASE}/Latest%20Space%20News/`,
         category: "News",
-        keywords: [
-            "news",
-            "space news",
-            "latest",
-            "discoveries",
-            "nasa",
-            "esa",
-            "astronomy news"
-        ],
-        description:
-            "The latest space news, discoveries and astronomy events."
+        keywords: "latest space news astronomy news nasa esa discovery discoveries science",
+        description: "Discover the latest space news and discoveries."
     },
 
     {
         title: "More About Orbonix",
-        url: "/More%20About%20Orbonix/",
+        url: `${BASE}/More%20About%20Orbonix/`,
         category: "Orbonix",
-        keywords: [
-            "orbonix",
-            "about",
-            "project",
-            "website",
-            "achievements"
-        ],
-        description:
-            "Learn more about the ORBONIX project."
+        keywords: "about orbonix project website achievements photos telescope",
+        description: "Learn more about the ORBONIX project."
     },
 
     {
         title: "Solar System Simulation",
-        url: "/Solar%20System%20Simulation/",
+        url: `${BASE}/Solar%20System%20Simulation/`,
         category: "Simulation",
-        keywords: [
-            "simulation",
-            "solar system simulation",
-            "planets",
-            "orbit",
-            "orbits",
-            "space simulation"
-        ],
-        description:
-            "Interactive simulation of the Solar System."
+        keywords: "solar system simulation interactive simulation planets moons orbit 3d",
+        description: "Explore the interactive Solar System simulation."
     },
 
 
@@ -110,84 +68,42 @@ const ORBONIX_PAGES = [
 
     {
         title: "Deep Space",
-        url: "/Exploring%20Space/Deep%20Space/",
+        url: `${BASE}/Exploring%20Space/Deep%20Space/`,
         category: "Deep Space",
-        keywords: [
-            "deep space",
-            "universe",
-            "cosmos",
-            "deep universe",
-            "strange objects"
-        ],
-        description:
-            "Explore some of the strangest objects and phenomena in deep space."
+        keywords: "deep space universe cosmos strange objects",
+        description: "Explore strange and mysterious objects in deep space."
     },
 
     {
         title: "Solar System",
-        url: "/Exploring%20Space/Solar%20System/",
+        url: `${BASE}/Exploring%20Space/Solar%20System/`,
         category: "Solar System",
-        keywords: [
-            "solar system",
-            "planets",
-            "sun",
-            "moons",
-            "asteroids",
-            "comets",
-            "kuiper belt",
-            "oort cloud"
-        ],
-        description:
-            "Explore the planets and other objects of our Solar System."
+        keywords: "solar system planets sun moons asteroids comets kuiper oort",
+        description: "Explore the Solar System."
     },
 
     {
         title: "Space Missions",
-        url: "/Exploring%20Space/Space%20Missions/",
+        url: `${BASE}/Exploring%20Space/Space%20Missions/`,
         category: "Space Missions",
-        keywords: [
-            "space missions",
-            "missions",
-            "nasa",
-            "esa",
-            "space exploration",
-            "rockets"
-        ],
-        description:
-            "Discover historic and important space missions."
+        keywords: "space missions nasa esa exploration spacecraft rockets",
+        description: "Explore humanity's greatest space missions."
     },
 
     {
         title: "Quizzes",
-        url: "/Exploring%20Space/Quizes/",
+        url: `${BASE}/Exploring%20Space/Quizes/`,
         category: "Quizzes",
-        keywords: [
-            "quiz",
-            "quizzes",
-            "test",
-            "tests",
-            "knowledge",
-            "space quiz",
-            "astronomy quiz"
-        ],
-        description:
-            "Test your knowledge of space and astronomy."
+        keywords: "quiz quizzes test tests astronomy knowledge space knowledge",
+        description: "Test your space and astronomy knowledge."
     },
 
     {
         title: "Terms",
-        url: "/Exploring%20Space/Terms/",
+        url: `${BASE}/Exploring%20Space/Terms/`,
         category: "Terms",
-        keywords: [
-            "terms",
-            "definitions",
-            "dictionary",
-            "astronomy terms",
-            "space terms",
-            "glossary"
-        ],
-        description:
-            "Learn important astronomy and space terminology."
+        keywords: "terms dictionary definitions glossary astronomy space",
+        description: "Learn important space and astronomy terms."
     },
 
 
@@ -197,267 +113,130 @@ const ORBONIX_PAGES = [
 
     {
         title: "Sun",
-        url: "/Exploring%20Space/Solar%20System/Sun/",
+        url: `${BASE}/Exploring%20Space/Solar%20System/Sun/`,
         category: "Solar System",
-        keywords: [
-            "sun",
-            "star",
-            "solar",
-            "solar star",
-            "heliosphere",
-            "solar wind",
-            "sunspots",
-            "solar flares",
-            "corona"
-        ],
-        description:
-            "Explore the Sun, our Solar System's star."
+        keywords: "sun star solar solar wind solar flare sunspots corona",
+        description: "Explore the Sun, our Solar System's star."
     },
 
     {
         title: "Mercury",
-        url: "/Exploring%20Space/Solar%20System/Mercury/",
+        url: `${BASE}/Exploring%20Space/Solar%20System/Mercury/`,
         category: "Planets",
-        keywords: [
-            "mercury",
-            "planet",
-            "smallest planet",
-            "closest planet",
-            "inner planet"
-        ],
-        description:
-            "Explore Mercury, the smallest planet and the closest to the Sun."
+        keywords: "mercury planet smallest closest sun inner planet",
+        description: "Explore Mercury, the smallest planet and closest to the Sun."
     },
 
     {
         title: "Venus",
-        url: "/Exploring%20Space/Solar%20System/Venus/",
+        url: `${BASE}/Exploring%20Space/Solar%20System/Venus/`,
         category: "Planets",
-        keywords: [
-            "venus",
-            "planet",
-            "hot planet",
-            "hottest planet",
-            "clouds",
-            "atmosphere"
-        ],
-        description:
-            "Explore Venus, the hottest planet in the Solar System."
+        keywords: "venus planet hottest atmosphere clouds greenhouse",
+        description: "Explore Venus, the hottest planet in the Solar System."
     },
 
     {
         title: "Earth",
-        url: "/Exploring%20Space/Solar%20System/Earth/",
+        url: `${BASE}/Exploring%20Space/Solar%20System/Earth/`,
         category: "Planets",
-        keywords: [
-            "earth",
-            "planet",
-            "home",
-            "world",
-            "life",
-            "ocean",
-            "atmosphere"
-        ],
-        description:
-            "Explore Earth, our home planet."
+        keywords: "earth planet world home life atmosphere ocean",
+        description: "Explore Earth, our home planet."
     },
 
     {
         title: "Mars",
-        url: "/Exploring%20Space/Solar%20System/Mars/",
+        url: `${BASE}/Exploring%20Space/Solar%20System/Mars/`,
         category: "Planets",
-        keywords: [
-            "mars",
-            "planet",
-            "red planet",
-            "red",
-            "phobos",
-            "deimos",
-            "martian",
-            "martian surface",
-            "mars rover",
-            "rover"
-        ],
-        description:
-            "Explore Mars, the Red Planet, and its moons Phobos and Deimos."
+        keywords: "mars planet red planet martian phobos deimos rover",
+        description: "Explore Mars, the Red Planet."
     },
-
-    {
-        title: "Jupiter",
-        url: "/Exploring%20Space/Solar%20System/Jupiter/",
-        category: "Planets",
-        keywords: [
-            "jupiter",
-            "planet",
-            "gas giant",
-            "giant planet",
-            "great red spot",
-            "io",
-            "europa",
-            "ganymede",
-            "callisto"
-        ],
-        description:
-            "Explore Jupiter, the largest planet in the Solar System."
-    },
-
-    {
-        title: "Saturn",
-        url: "/Exploring%20Space/Solar%20System/Saturn/",
-        category: "Planets",
-        keywords: [
-            "saturn",
-            "planet",
-            "gas giant",
-            "rings",
-            "ringed planet",
-            "titan",
-            "enceladus"
-        ],
-        description:
-            "Explore Saturn and its spectacular ring system."
-    },
-
-    {
-        title: "Uranus",
-        url: "/Exploring%20Space/Solar%20System/Uranus/",
-        category: "Planets",
-        keywords: [
-            "uranus",
-            "planet",
-            "ice giant",
-            "rings",
-            "tilted planet"
-        ],
-        description:
-            "Explore Uranus, the tilted ice giant."
-    },
-
-    {
-        title: "Neptune",
-        url: "/Exploring%20Space/Solar%20System/Neptune/",
-        category: "Planets",
-        keywords: [
-            "neptune",
-            "planet",
-            "ice giant",
-            "blue planet",
-            "winds",
-            "outer planet"
-        ],
-        description:
-            "Explore Neptune, the distant blue ice giant."
-    },
-
-    {
-        title: "Dwarf Planets",
-        url: "/Exploring%20Space/Solar%20System/Dwarf%20Planets/",
-        category: "Solar System",
-        keywords: [
-            "dwarf planets",
-            "dwarf planet",
-            "pluto",
-            "ceres",
-            "eris",
-            "haumea",
-            "makemake"
-        ],
-        description:
-            "Explore the dwarf planets of the Solar System."
-    },
-
-    {
-        title: "Asteroid Belt",
-        url: "/Exploring%20Space/Solar%20System/Asteroid%20Belt/",
-        category: "Solar System",
-        keywords: [
-            "asteroid belt",
-            "asteroids",
-            "asteroid",
-            "rocks",
-            "minor planets"
-        ],
-        description:
-            "Explore the asteroid belt between Mars and Jupiter."
-    },
-
-    {
-        title: "Kuiper Belt",
-        url: "/Exploring%20Space/Solar%20System/Kuiper%20Belt/",
-        category: "Solar System",
-        keywords: [
-            "kuiper belt",
-            "kuiper",
-            "trans neptunian",
-            "outer solar system",
-            "icy objects"
-        ],
-        description:
-            "Explore the icy Kuiper Belt beyond Neptune."
-    },
-
-    {
-        title: "Oort Cloud",
-        url: "/Exploring%20Space/Solar%20System/Oort%20Cloud/",
-        category: "Solar System",
-        keywords: [
-            "oort cloud",
-            "oort",
-            "comets",
-            "long period comets",
-            "outer solar system"
-        ],
-        description:
-            "Explore the distant Oort Cloud and long-period comets."
-    },
-
-    {
-        title: "Planet X",
-        url: "/Exploring%20Space/Solar%20System/Planet%20X/",
-        category: "Solar System",
-        keywords: [
-            "planet x",
-            "planet nine",
-            "planet 9",
-            "ninth planet",
-            "hypothetical planet",
-            "outer planet"
-        ],
-        description:
-            "Explore the mystery surrounding the hypothetical Planet X."
-    },
-
-
-    /* =====================================================
-       MARS MOONS
-    ===================================================== */
 
     {
         title: "Phobos",
-        url: "/Exploring%20Space/Solar%20System/Mars/Phobos/",
+        url: `${BASE}/Exploring%20Space/Solar%20System/Mars/Phobos/`,
         category: "Mars",
-        keywords: [
-            "phobos",
-            "mars moon",
-            "moon of mars",
-            "martian moon"
-        ],
-        description:
-            "Explore Phobos, the larger moon of Mars."
+        keywords: "phobos mars moon martian moon satellite",
+        description: "Explore Phobos, one of Mars' moons."
     },
 
     {
         title: "Deimos",
-        url: "/Exploring%20Space/Solar%20System/Mars/Deimos/",
+        url: `${BASE}/Exploring%20Space/Solar%20System/Mars/Deimos/`,
         category: "Mars",
-        keywords: [
-            "deimos",
-            "mars moon",
-            "moon of mars",
-            "martian moon"
-        ],
-        description:
-            "Explore Deimos, the smaller moon of Mars."
+        keywords: "deimos mars moon martian moon satellite",
+        description: "Explore Deimos, one of Mars' moons."
+    },
+
+    {
+        title: "Jupiter",
+        url: `${BASE}/Exploring%20Space/Solar%20System/Jupiter/`,
+        category: "Planets",
+        keywords: "jupiter planet gas giant largest planet great red spot io europa ganymede callisto",
+        description: "Explore Jupiter, the largest planet in the Solar System."
+    },
+
+    {
+        title: "Saturn",
+        url: `${BASE}/Exploring%20Space/Solar%20System/Saturn/`,
+        category: "Planets",
+        keywords: "saturn planet rings gas giant titan enceladus",
+        description: "Explore Saturn and its spectacular rings."
+    },
+
+    {
+        title: "Uranus",
+        url: `${BASE}/Exploring%20Space/Solar%20System/Uranus/`,
+        category: "Planets",
+        keywords: "uranus planet ice giant rings tilted planet",
+        description: "Explore Uranus, the tilted ice giant."
+    },
+
+    {
+        title: "Neptune",
+        url: `${BASE}/Exploring%20Space/Solar%20System/Neptune/`,
+        category: "Planets",
+        keywords: "neptune planet ice giant blue planet winds outer planet",
+        description: "Explore Neptune, the distant blue ice giant."
+    },
+
+    {
+        title: "Dwarf Planets",
+        url: `${BASE}/Exploring%20Space/Solar%20System/Dwarf%20Planets/`,
+        category: "Solar System",
+        keywords: "dwarf planets pluto ceres eris haumea makemake",
+        description: "Explore the dwarf planets of the Solar System."
+    },
+
+    {
+        title: "Asteroid Belt",
+        url: `${BASE}/Exploring%20Space/Solar%20System/Asteroid%20Belt/`,
+        category: "Solar System",
+        keywords: "asteroid belt asteroids rocks minor planets mars jupiter",
+        description: "Explore the asteroid belt between Mars and Jupiter."
+    },
+
+    {
+        title: "Kuiper Belt",
+        url: `${BASE}/Exploring%20Space/Solar%20System/Kuiper%20Belt/`,
+        category: "Solar System",
+        keywords: "kuiper belt icy objects trans neptunian outer solar system",
+        description: "Explore the Kuiper Belt beyond Neptune."
+    },
+
+    {
+        title: "Oort Cloud",
+        url: `${BASE}/Exploring%20Space/Solar%20System/Oort%20Cloud/`,
+        category: "Solar System",
+        keywords: "oort cloud comets long period comets outer solar system",
+        description: "Explore the distant Oort Cloud."
+    },
+
+    {
+        title: "Planet X",
+        url: `${BASE}/Exploring%20Space/Solar%20System/Planet%20X/`,
+        category: "Solar System",
+        keywords: "planet x planet nine planet 9 ninth planet hypothetical planet",
+        description: "Explore the hypothetical Planet X."
     },
 
 
@@ -467,166 +246,82 @@ const ORBONIX_PAGES = [
 
     {
         title: "Black Holes",
-        url: "/Exploring%20Space/Deep%20Space/Blackholes/",
+        url: `${BASE}/Exploring%20Space/Deep%20Space/Blackholes/`,
         category: "Deep Space",
-        keywords: [
-            "black hole",
-            "black holes",
-            "singularity",
-            "event horizon",
-            "gravity",
-            "supermassive black hole",
-            "stellar black hole"
-        ],
-        description:
-            "Explore black holes, event horizons and singularities."
+        keywords: "black hole black holes singularity event horizon gravity supermassive stellar",
+        description: "Explore black holes and their extreme physics."
     },
 
     {
         title: "Cosmic Voids",
-        url: "/Exploring%20Space/Deep%20Space/Cosmic%20Voids/",
+        url: `${BASE}/Exploring%20Space/Deep%20Space/Cosmic%20Voids/`,
         category: "Deep Space",
-        keywords: [
-            "cosmic voids",
-            "cosmic void",
-            "void",
-            "empty space",
-            "large scale universe"
-        ],
-        description:
-            "Explore enormous regions of the universe with very few galaxies."
+        keywords: "cosmic void cosmic voids empty space universe galaxies",
+        description: "Explore enormous cosmic voids."
     },
 
     {
         title: "Dark Energy",
-        url: "/Exploring%20Space/Deep%20Space/Dark%20Energy/",
+        url: `${BASE}/Exploring%20Space/Deep%20Space/Dark%20Energy/`,
         category: "Deep Space",
-        keywords: [
-            "dark energy",
-            "expansion",
-            "accelerating universe",
-            "cosmology",
-            "universe expansion"
-        ],
-        description:
-            "Explore dark energy and the accelerating expansion of the universe."
+        keywords: "dark energy expansion accelerating universe cosmology",
+        description: "Explore dark energy and the expansion of the Universe."
     },
 
     {
         title: "Dark Matter",
-        url: "/Exploring%20Space/Deep%20Space/Dark%20Matter/",
+        url: `${BASE}/Exploring%20Space/Deep%20Space/Dark%20Matter/`,
         category: "Deep Space",
-        keywords: [
-            "dark matter",
-            "matter",
-            "gravity",
-            "invisible matter",
-            "galaxies",
-            "cosmology"
-        ],
-        description:
-            "Explore the mysterious invisible matter that shapes galaxies."
+        keywords: "dark matter invisible matter gravity galaxies cosmology",
+        description: "Explore the mysterious dark matter."
     },
 
     {
         title: "Galaxies",
-        url: "/Exploring%20Space/Deep%20Space/Galaxies/",
+        url: `${BASE}/Exploring%20Space/Deep%20Space/Galaxies/`,
         category: "Deep Space",
-        keywords: [
-            "galaxy",
-            "galaxies",
-            "milky way",
-            "andromeda",
-            "spiral galaxy",
-            "elliptical galaxy",
-            "galactic"
-        ],
-        description:
-            "Explore galaxies and the enormous structures of the universe."
+        keywords: "galaxy galaxies milky way andromeda spiral elliptical universe",
+        description: "Explore galaxies across the Universe."
     },
 
     {
         title: "Nebulae",
-        url: "/Exploring%20Space/Deep%20Space/Nebulae/",
+        url: `${BASE}/Exploring%20Space/Deep%20Space/Nebulae/`,
         category: "Deep Space",
-        keywords: [
-            "nebula",
-            "nebulae",
-            "gas cloud",
-            "dust cloud",
-            "star formation",
-            "emission nebula",
-            "planetary nebula"
-        ],
-        description:
-            "Explore beautiful clouds of gas and dust where stars are born and die."
+        keywords: "nebula nebulae gas dust stars star formation emission planetary",
+        description: "Explore enormous clouds of gas and dust."
     },
 
     {
         title: "Quasars",
-        url: "/Exploring%20Space/Deep%20Space/Quasars/",
+        url: `${BASE}/Exploring%20Space/Deep%20Space/Quasars/`,
         category: "Deep Space",
-        keywords: [
-            "quasar",
-            "quasars",
-            "active galaxy",
-            "active galactic nucleus",
-            "supermassive black hole",
-            "accretion disk"
-        ],
-        description:
-            "Explore some of the brightest objects in the universe."
+        keywords: "quasar quasars active galaxy active galactic nucleus black hole accretion",
+        description: "Explore quasars, among the brightest objects in the Universe."
     },
 
     {
         title: "Rogue Planets",
-        url: "/Exploring%20Space/Deep%20Space/Rouge%20Planets/",
+        url: `${BASE}/Exploring%20Space/Deep%20Space/Rouge%20Planets/`,
         category: "Deep Space",
-        keywords: [
-            "rogue planet",
-            "rogue planets",
-            "rouge planets",
-            "free floating planet",
-            "free floating planets",
-            "planet without star",
-            "wandering planet"
-        ],
-        description:
-            "Explore planets that wander through space without orbiting a star."
+        keywords: "rogue planet rogue planets rouge planets free floating planet wandering planet",
+        description: "Explore planets wandering through space without a star."
     },
 
     {
         title: "Stars",
-        url: "/Exploring%20Space/Deep%20Space/Stars/",
+        url: `${BASE}/Exploring%20Space/Deep%20Space/Stars/`,
         category: "Deep Space",
-        keywords: [
-            "star",
-            "stars",
-            "stellar",
-            "sun",
-            "red giant",
-            "white dwarf",
-            "neutron star",
-            "supernova"
-        ],
-        description:
-            "Explore stars, stellar evolution and stellar remnants."
+        keywords: "star stars stellar sun red giant white dwarf neutron star supernova",
+        description: "Explore stars and stellar evolution."
     },
 
     {
         title: "Wormholes",
-        url: "/Exploring%20Space/Deep%20Space/Wormholes/",
+        url: `${BASE}/Exploring%20Space/Deep%20Space/Wormholes/`,
         category: "Deep Space",
-        keywords: [
-            "wormhole",
-            "wormholes",
-            "einstein rosen bridge",
-            "space time",
-            "spacetime",
-            "theoretical physics"
-        ],
-        description:
-            "Explore the theoretical idea of shortcuts through spacetime."
+        keywords: "wormhole wormholes einstein rosen bridge spacetime space time theoretical",
+        description: "Explore theoretical wormholes and spacetime."
     },
 
 
@@ -636,105 +331,50 @@ const ORBONIX_PAGES = [
 
     {
         title: "Apollo",
-        url: "/Exploring%20Space/Space%20Missions/Apollo/",
+        url: `${BASE}/Exploring%20Space/Space%20Missions/Apollo/`,
         category: "Space Missions",
-        keywords: [
-            "apollo",
-            "apollo program",
-            "moon",
-            "moon landing",
-            "lunar mission",
-            "nasa",
-            "apollo 11"
-        ],
-        description:
-            "Explore NASA's Apollo program and the historic Moon missions."
+        keywords: "apollo apollo program apollo 11 moon moon landing lunar nasa",
+        description: "Explore NASA's Apollo program and the Moon landings."
     },
 
     {
         title: "Artemis",
-        url: "/Exploring%20Space/Space%20Missions/Artemis/",
+        url: `${BASE}/Exploring%20Space/Space%20Missions/Artemis/`,
         category: "Space Missions",
-        keywords: [
-            "artemis",
-            "artemis program",
-            "moon",
-            "lunar",
-            "nasa",
-            "moon mission"
-        ],
-        description:
-            "Explore NASA's Artemis program and humanity's return to the Moon."
+        keywords: "artemis artemis program moon lunar nasa moon mission",
+        description: "Explore NASA's Artemis program."
     },
 
     {
         title: "Cassini",
-        url: "/Exploring%20Space/Space%20Missions/Cassini/",
+        url: `${BASE}/Exploring%20Space/Space%20Missions/Cassini/`,
         category: "Space Missions",
-        keywords: [
-            "cassini",
-            "saturn",
-            "titan",
-            "saturn mission",
-            "nasa",
-            "esa"
-        ],
-        description:
-            "Explore the Cassini mission to Saturn and its moons."
+        keywords: "cassini saturn titan saturn mission nasa esa",
+        description: "Explore the Cassini mission to Saturn."
     },
 
     {
         title: "James Webb Space Telescope",
-        url: "/Exploring%20Space/Space%20Missions/James%20Webb/",
+        url: `${BASE}/Exploring%20Space/Space%20Missions/James%20Webb/`,
         category: "Space Missions",
-        keywords: [
-            "james webb",
-            "jwst",
-            "webb",
-            "space telescope",
-            "telescope",
-            "infrared",
-            "nasa",
-            "esa",
-            "galaxies",
-            "nebulae",
-            "exoplanets"
-        ],
-        description:
-            "Explore the James Webb Space Telescope and its observations of the universe."
+        keywords: "james webb jwst webb space telescope infrared telescope nasa esa csa galaxies nebulae exoplanets",
+        description: "Explore the James Webb Space Telescope."
     },
 
     {
         title: "New Horizons",
-        url: "/Exploring%20Space/Space%20Missions/New%20Horizonts/",
+        url: `${BASE}/Exploring%20Space/Space%20Missions/New%20Horizonts/`,
         category: "Space Missions",
-        keywords: [
-            "new horizons",
-            "new horizonts",
-            "pluto",
-            "kuiper belt",
-            "pluto mission",
-            "nasa"
-        ],
-        description:
-            "Explore New Horizons and its journey beyond Pluto."
+        keywords: "new horizons new horizonts pluto kuiper belt nasa spacecraft",
+        description: "Explore NASA's New Horizons mission."
     },
 
     {
         title: "Voyager",
-        url: "/Exploring%20Space/Space%20Missions/Voyager/",
+        url: `${BASE}/Exploring%20Space/Space%20Missions/Voyager/`,
         category: "Space Missions",
-        keywords: [
-            "voyager",
-            "voyager 1",
-            "voyager 2",
-            "interstellar space",
-            "deep space",
-            "nasa",
-            "golden record"
-        ],
-        description:
-            "Explore Voyager 1, Voyager 2 and humanity's journey into interstellar space."
+        keywords: "voyager voyager 1 voyager 2 interstellar space nasa golden record jupiter saturn uranus neptune",
+        description: "Explore Voyager 1 and Voyager 2."
     },
 
 
@@ -744,147 +384,102 @@ const ORBONIX_PAGES = [
 
     {
         title: "Black Holes Quiz",
-        url: "/Exploring%20Space/Quizes/Blackholes%20Quiz/",
+        url: `${BASE}/Exploring%20Space/Quizes/Blackholes%20Quiz/`,
         category: "Quiz",
-        keywords: [
-            "black hole quiz",
-            "black holes quiz",
-            "black hole test",
-            "singularity quiz",
-            "event horizon quiz"
-        ],
-        description:
-            "Test your knowledge about black holes."
+        keywords: "black holes quiz black hole test singularity event horizon",
+        description: "Test your knowledge of black holes."
     },
 
     {
         title: "Comets Quiz",
-        url: "/Exploring%20Space/Quizes/Comets%20Quiz/",
+        url: `${BASE}/Exploring%20Space/Quizes/Comets%20Quiz/`,
         category: "Quiz",
-        keywords: [
-            "comet quiz",
-            "comets quiz",
-            "comet test",
-            "halley",
-            "ice",
-            "comet tail"
-        ],
-        description:
-            "Test your knowledge about comets."
+        keywords: "comets quiz comet test halley comet tail ice",
+        description: "Test your knowledge of comets."
     },
 
     {
         title: "Final Quiz",
-        url: "/Exploring%20Space/Quizes/Final%20Quiz/",
+        url: `${BASE}/Exploring%20Space/Quizes/Final%20Quiz/`,
         category: "Quiz",
-        keywords: [
-            "final quiz",
-            "mega quiz",
-            "space mega quiz",
-            "astronomy test",
-            "space test",
-            "final test"
-        ],
-        description:
-            "The ultimate ORBONIX space and astronomy quiz."
+        keywords: "final quiz mega quiz space quiz astronomy test ultimate test",
+        description: "The ultimate ORBONIX space quiz."
     },
 
     {
         title: "Galactic Quiz",
-        url: "/Exploring%20Space/Quizes/Galactic%20Quiz/",
+        url: `${BASE}/Exploring%20Space/Quizes/Galactic%20Quiz/`,
         category: "Quiz",
-        keywords: [
-            "galactic quiz",
-            "galaxy quiz",
-            "galaxies quiz",
-            "universe quiz",
-            "galactic test"
-        ],
-        description:
-            "Test your knowledge of galaxies and the universe."
+        keywords: "galactic quiz galaxy quiz galaxies universe test",
+        description: "Test your knowledge of galaxies and the Universe."
     },
 
     {
         title: "Moons Quiz",
-        url: "/Exploring%20Space/Quizes/Moons%20Quiz/",
+        url: `${BASE}/Exploring%20Space/Quizes/Moons%20Quiz/`,
         category: "Quiz",
-        keywords: [
-            "moon quiz",
-            "moons quiz",
-            "satellite quiz",
-            "natural satellite",
-            "moon test"
-        ],
-        description:
-            "Test your knowledge about moons and natural satellites."
+        keywords: "moons quiz moon test natural satellites satellite",
+        description: "Test your knowledge of moons."
     },
 
     {
         title: "Planet Quiz",
-        url: "/Exploring%20Space/Quizes/Planet%20Quiz/",
+        url: `${BASE}/Exploring%20Space/Quizes/Planet%20Quiz/`,
         category: "Quiz",
-        keywords: [
-            "planet quiz",
-            "planets quiz",
-            "planet test",
-            "solar system quiz",
-            "mars quiz",
-            "jupiter quiz"
-        ],
-        description:
-            "Test your knowledge about the planets of the Solar System."
+        keywords: "planet quiz planets solar system test mars jupiter saturn",
+        description: "Test your knowledge of planets."
     },
 
     {
         title: "Stars Quiz",
-        url: "/Exploring%20Space/Quizes/Stars%20Quiz/",
+        url: `${BASE}/Exploring%20Space/Quizes/Stars%20Quiz/`,
         category: "Quiz",
-        keywords: [
-            "stars quiz",
-            "star quiz",
-            "stellar quiz",
-            "supernova quiz",
-            "star test"
-        ],
-        description:
-            "Test your knowledge about stars."
+        keywords: "stars quiz star test stellar supernova",
+        description: "Test your knowledge of stars."
     },
 
     {
         title: "Sun Quiz",
-        url: "/Exploring%20Space/Quizes/Sun%20Quiz/",
+        url: `${BASE}/Exploring%20Space/Quizes/Sun%20Quiz/`,
         category: "Quiz",
-        keywords: [
-            "sun quiz",
-            "solar quiz",
-            "sun test",
-            "solar flares quiz",
-            "sunspots quiz"
-        ],
-        description:
-            "Test your knowledge about the Sun."
+        keywords: "sun quiz solar quiz sunspots solar flares corona",
+        description: "Test your knowledge of the Sun."
     },
 
     {
         title: "Telescope Quiz",
-        url: "/Exploring%20Space/Quizes/Telescope%20Quiz/",
+        url: `${BASE}/Exploring%20Space/Quizes/Telescope%20Quiz/`,
         category: "Quiz",
-        keywords: [
-            "telescope quiz",
-            "telescope test",
-            "astronomy equipment",
-            "observation",
-            "stargazing"
-        ],
-        description:
-            "Test your knowledge about telescopes and astronomical observation."
+        keywords: "telescope quiz telescope test astronomy equipment observation stargazing",
+        description: "Test your knowledge of telescopes."
+    },
+
+
+    /* =====================================================
+       MORE ABOUT ORBONIX
+    ===================================================== */
+
+    {
+        title: "Orbonix Fotos and Telescope",
+        url: `${BASE}/More%20About%20Orbonix/Orbonix%20fotos%20and%20telescope/`,
+        category: "Orbonix",
+        keywords: "orbonix photos fotos telescope photography observations meade",
+        description: "Explore ORBONIX telescope photographs and observations."
+    },
+
+    {
+        title: "Site Achievements",
+        url: `${BASE}/More%20About%20Orbonix/Site%20Achivments/`,
+        category: "Orbonix",
+        keywords: "achievements achievements site achievements orbonix milestones",
+        description: "Explore ORBONIX website achievements."
     }
 
 ];
 
 
 /* =========================================================
-   NORMALIZE TEXT
+   NORMALIZE
 ========================================================= */
 
 function normalizeSearchText(text) {
@@ -901,8 +496,7 @@ function normalizeSearchText(text) {
 
 
 /* =========================================================
-   LEVENSHTEIN DISTANCE
-   Allows small typing mistakes.
+   FUZZY MATCH
 ========================================================= */
 
 function levenshtein(a, b) {
@@ -916,38 +510,29 @@ function levenshtein(a, b) {
     const matrix = [];
 
     for (let i = 0; i <= b.length; i++) {
-
         matrix[i] = [i];
-
     }
 
     for (let j = 0; j <= a.length; j++) {
-
         matrix[0][j] = j;
-
     }
 
     for (let i = 1; i <= b.length; i++) {
 
         for (let j = 1; j <= a.length; j++) {
 
-            if (b.charAt(i - 1) === a.charAt(j - 1)) {
+            if (b[j - 1] === a[j - 1]) {
 
                 matrix[i][j] =
                     matrix[i - 1][j - 1];
 
             } else {
 
-                matrix[i][j] =
-                    Math.min(
-
-                        matrix[i - 1][j] + 1,
-
-                        matrix[i][j - 1] + 1,
-
-                        matrix[i - 1][j - 1] + 1
-
-                    );
+                matrix[i][j] = Math.min(
+                    matrix[i - 1][j] + 1,
+                    matrix[i][j - 1] + 1,
+                    matrix[i - 1][j - 1] + 1
+                );
 
             }
 
@@ -961,16 +546,16 @@ function levenshtein(a, b) {
 
 
 /* =========================================================
-   SCORE RESULT
+   SCORE
 ========================================================= */
 
 function scoreSearchResult(page, query) {
 
-    const normalizedQuery =
-        normalizeSearchText(query);
+    const q = normalizeSearchText(query);
 
-    const queryWords =
-        normalizedQuery.split(" ");
+    if (!q) return 0;
+
+    const words = q.split(" ");
 
     const title =
         normalizeSearchText(page.title);
@@ -979,7 +564,7 @@ function scoreSearchResult(page, query) {
         normalizeSearchText(page.category);
 
     const keywords =
-        page.keywords.map(normalizeSearchText);
+        normalizeSearchText(page.keywords);
 
     const description =
         normalizeSearchText(page.description);
@@ -989,98 +574,66 @@ function scoreSearchResult(page, query) {
 
     /* Exact title */
 
-    if (title === normalizedQuery) {
-
-        score += 1000;
-
+    if (title === q) {
+        score += 2000;
     }
 
 
-    /* Title contains query */
+    /* Title */
 
-    if (title.includes(normalizedQuery)) {
-
-        score += 700;
-
+    if (title.includes(q)) {
+        score += 1000;
     }
 
 
     /* Category */
 
-    if (category.includes(normalizedQuery)) {
-
+    if (category.includes(q)) {
         score += 500;
-
     }
 
 
-    /* Keyword exact match */
+    /* Keywords */
 
-    keywords.forEach(keyword => {
-
-        if (keyword === normalizedQuery) {
-
-            score += 600;
-
-        }
-
-        if (keyword.includes(normalizedQuery)) {
-
-            score += 300;
-
-        }
-
-    });
+    if (keywords.includes(q)) {
+        score += 700;
+    }
 
 
     /* Description */
 
-    if (description.includes(normalizedQuery)) {
-
-        score += 100;
-
+    if (description.includes(q)) {
+        score += 200;
     }
 
 
     /* Individual words */
 
-    queryWords.forEach(word => {
+    for (const word of words) {
 
-        if (word.length < 2) return;
+        if (word.length < 2) continue;
 
 
         if (title.includes(word)) {
-
-            score += 250;
-
+            score += 400;
         }
 
 
         if (category.includes(word)) {
-
-            score += 150;
-
+            score += 200;
         }
 
 
-        keywords.forEach(keyword => {
-
-            if (keyword.includes(word)) {
-
-                score += 180;
-
-            }
-
-        });
+        if (keywords.includes(word)) {
+            score += 250;
+        }
 
 
         if (description.includes(word)) {
-
-            score += 60;
-
+            score += 100;
         }
 
-    });
+    }
 
 
     /* Small spelling mistakes */
@@ -1088,41 +641,34 @@ function scoreSearchResult(page, query) {
     const titleWords =
         title.split(" ");
 
-    queryWords.forEach(queryWord => {
+    for (const word of words) {
 
-        titleWords.forEach(titleWord => {
+        if (word.length < 4) continue;
 
-            if (
-                queryWord.length >= 4 &&
-                titleWord.length >= 4
-            ) {
+        for (const titleWord of titleWords) {
 
-                const distance =
-                    levenshtein(
-                        queryWord,
-                        titleWord
-                    );
+            if (titleWord.length < 4) continue;
 
-                if (distance === 1) {
+            const distance =
+                levenshtein(
+                    word,
+                    titleWord
+                );
 
-                    score += 120;
-
-                }
-
-                if (
-                    distance === 2 &&
-                    queryWord.length >= 6
-                ) {
-
-                    score += 60;
-
-                }
-
+            if (distance === 1) {
+                score += 150;
             }
 
-        });
+            if (
+                distance === 2 &&
+                word.length >= 6
+            ) {
+                score += 75;
+            }
 
-    });
+        }
+
+    }
 
 
     return score;
@@ -1136,39 +682,34 @@ function scoreSearchResult(page, query) {
 
 function searchOrbonix(query) {
 
-    query =
+    const normalized =
         normalizeSearchText(query);
 
-    if (!query) {
-
+    if (!normalized) {
         return [];
-
     }
 
 
     return ORBONIX_PAGES
 
-        .map(page => {
+        .map(page => ({
 
-            return {
+            ...page,
 
-                ...page,
+            score:
+                scoreSearchResult(
+                    page,
+                    normalized
+                )
 
-                score:
-                    scoreSearchResult(
-                        page,
-                        query
-                    )
+        }))
 
-            };
+        .filter(page =>
+            page.score > 0
+        )
 
-        })
-
-        .filter(page => page.score > 0)
-
-        .sort(
-            (a, b) =>
-                b.score - a.score
+        .sort((a, b) =>
+            b.score - a.score
         )
 
         .slice(0, 12);
@@ -1177,7 +718,7 @@ function searchOrbonix(query) {
 
 
 /* =========================================================
-   EXPORT
+   GLOBAL EXPORT
 ========================================================= */
 
 window.ORBONIX_PAGES =
@@ -1185,3 +726,4 @@ window.ORBONIX_PAGES =
 
 window.searchOrbonix =
     searchOrbonix;
+```
