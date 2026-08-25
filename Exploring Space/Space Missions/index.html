@@ -317,8 +317,12 @@ h1 {
 
     overflow: hidden;
 
+    cursor: pointer;
+
     transition:
-        .4s ease;
+        transform .4s ease,
+        border-color .4s ease,
+        background .4s ease;
 }
 
 
@@ -365,7 +369,6 @@ h1 {
 
     transform:
         scale(1.4);
-
 }
 
 
@@ -810,8 +813,9 @@ FEATURED MISSIONS
 
 
 <a
-href="#APOLLO"
-class="mission">
+href="javascript:void(0)"
+class="mission"
+data-page="Apollo">
 
 <div>
 
@@ -841,8 +845,9 @@ EXPLORE MISSION →
 
 
 <a
-href="#VOYAGER"
-class="mission">
+href="javascript:void(0)"
+class="mission"
+data-page="Voyager">
 
 <div>
 
@@ -871,8 +876,9 @@ EXPLORE MISSION →
 
 
 <a
-href="#CASSINI"
-class="mission">
+href="javascript:void(0)"
+class="mission"
+data-page="Cassini">
 
 <div>
 
@@ -901,8 +907,9 @@ EXPLORE MISSION →
 
 
 <a
-href="#NEW-HORIZONS"
-class="mission">
+href="javascript:void(0)"
+class="mission"
+data-page="New Horizons">
 
 <div>
 
@@ -931,8 +938,9 @@ EXPLORE MISSION →
 
 
 <a
-href="#JAMES-WEBB"
-class="mission">
+href="javascript:void(0)"
+class="mission"
+data-page="James Webb">
 
 <div>
 
@@ -961,8 +969,9 @@ EXPLORE MISSION →
 
 
 <a
-href="#ARTEMIS"
-class="mission">
+href="javascript:void(0)"
+class="mission"
+data-page="Artemis">
 
 <div>
 
@@ -1127,48 +1136,111 @@ EXPLORING HUMANITY'S JOURNEY INTO SPACE
 
 <script>
 
+/* =========================================
+   GOOGLE SITES PAGE NAVIGATION
+   Finds the page by its Google Sites name
+========================================= */
+
+function openGoogleSitePage(pageName) {
+
+    const baseURL =
+        "https://sites.google.com/view/kosmolearn";
+
+    const currentURL =
+        window.location.href;
+
+    /*
+       Google Sites normally creates URLs like:
+
+       /apollo
+       /voyager
+       /cassini
+
+       We generate the URL automatically
+       from the page name.
+    */
+
+    const slug =
+        pageName
+            .trim()
+            .toLowerCase()
+            .replace(/&/g, "and")
+            .replace(/[^a-z0-9]+/g, "-")
+            .replace(/^-+|-+$/g, "");
+
+    window.location.href =
+        baseURL + "/" + slug;
+}
+
+
+/* =========================================
+   MISSION BUTTONS
+========================================= */
+
+document
+    .querySelectorAll(".mission")
+    .forEach(function(card) {
+
+        card.addEventListener(
+            "click",
+            function(event) {
+
+                event.preventDefault();
+
+                const page =
+                    card.getAttribute("data-page");
+
+                if (!page) return;
+
+                openGoogleSitePage(page);
+
+            }
+        );
+
+    });
+
 
 /* =========================================
    STAR PARALLAX
 ========================================= */
 
 const stars =
-document.querySelector(".stars");
+    document.querySelector(".stars");
 
 const smallStars =
-document.querySelector(".stars-small");
+    document.querySelector(".stars-small");
 
 
 document.addEventListener(
-"mousemove",
+    "mousemove",
+    function(event) {
 
-function(event) {
+        const x =
+            event.clientX /
+            window.innerWidth -
+            0.5;
 
-    const x =
-        event.clientX /
-        window.innerWidth - 0.5;
-
-
-    const y =
-        event.clientY /
-        window.innerHeight - 0.5;
-
-
-    stars.style.transform =
-        `translate(
-            ${x * 20}px,
-            ${y * 20}px
-        )`;
+        const y =
+            event.clientY /
+            window.innerHeight -
+            0.5;
 
 
-    smallStars.style.transform =
-        `translate(
-            ${x * -12}px,
-            ${y * -12}px
-        )`;
+        stars.style.transform =
+            `translate(
+                ${x * 20}px,
+                ${y * 20}px
+            )`;
 
-});
 
+        smallStars.style.transform =
+            `translate(
+                ${x * -12}px,
+                ${y * -12}px
+            )`;
+
+    }
+);
 
 </script>
 
