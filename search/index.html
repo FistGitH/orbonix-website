@@ -1,1 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Search | ORBONIX</title>
+
+<link rel="icon"
+      type="image/png"
+      href="/favicon.png">
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #05070d;
+    color: white;
+}
+
+.search-page {
+    max-width: 1000px;
+    margin: auto;
+    padding: 60px 20px;
+}
+
+h1 {
+    font-size: 48px;
+    margin-bottom: 30px;
+}
+
+.search-box {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 40px;
+}
+
+.search-box input {
+    flex: 1;
+    padding: 16px 18px;
+    font-size: 18px;
+    border-radius: 10px;
+    border: 1px solid #333;
+    background: #111522;
+    color: white;
+    outline: none;
+}
+
+.search-box button {
+    padding: 16px 25px;
+    border: none;
+    border-radius: 10px;
+    background: #ffffff;
+    color: #000;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.search-box button:hover {
+    opacity: 0.8;
+}
+
+.result {
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 12px;
+    background: #111522;
+    border: 1px solid #222838;
+    transition: 0.2s;
+}
+
+.result:hover {
+    transform: translateY(-2px);
+    border-color: #555;
+}
+
+.result a {
+    color: white;
+    text-decoration: none;
+}
+
+.result h2 {
+    margin: 0 0 8px;
+}
+
+.result p {
+    margin: 0;
+    color: #aeb4c2;
+}
+
+.no-results {
+    color: #999;
+    font-size: 18px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="search-page">
+
+    <h1>Search ORBONIX</h1>
+
+    <div class="search-box">
+
+        <input
+            id="searchInput"
+            type="text"
+            placeholder="Search space, planets, missions..."
+        >
+
+        <button onclick="performSearch()">
+            Search
+        </button>
+
+    </div>
+
+    <div id="results"></div>
+
+</div>
+
+<script src="/js/search.js"></script>
+
+<script>
+
+const input = document.getElementById("searchInput");
+const results = document.getElementById("results");
+
+function performSearch() {
+
+    const query = input.value;
+
+    const found = searchOrbonix(query);
+
+    results.innerHTML = "";
+
+    if (!query.trim()) {
+
+        results.innerHTML =
+            '<div class="no-results">Enter something to search.</div>';
+
+        return;
+    }
+
+    if (found.length === 0) {
+
+        results.innerHTML =
+            '<div class="no-results">No results found.</div>';
+
+        return;
+    }
+
+    found.forEach(page => {
+
+        const result = document.createElement("div");
+
+        result.className = "result";
+
+        result.innerHTML = `
+            <a href="${page.url}">
+                <h2>${page.title}</h2>
+                <p>${page.description}</p>
+            </a>
+        `;
+
+        results.appendChild(result);
+
+    });
+}
+
+input.addEventListener("keydown", function(event) {
+
+    if (event.key === "Enter") {
+        performSearch();
+    }
+
+});
+
+</script>
+
+</body>
+
+</html>
