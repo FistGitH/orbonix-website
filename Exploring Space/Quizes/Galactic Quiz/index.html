@@ -1,1 +1,2500 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: #010208;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   PAGE
+========================================= */
+
+.galaxies-quiz-page {
+
+    position: relative;
+
+    min-height: 100vh;
+
+    padding: 65px 20px 100px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 15%,
+            rgba(150,90,255,.16),
+            transparent 42%
+        ),
+        radial-gradient(
+            circle at 20% 70%,
+            rgba(90,80,220,.09),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 80% 80%,
+            rgba(180,80,255,.07),
+            transparent 35%
+        ),
+        #010208;
+}
+
+
+/* =========================================
+   BACKGROUND STARS
+========================================= */
+
+.stars,
+.stars-small {
+
+    position: fixed;
+
+    inset: -25%;
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+.stars {
+
+    opacity: .4;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.9) 1px,
+            transparent 1px
+        );
+
+    background-size: 75px 75px;
+
+    transition:
+        transform 1.5s ease;
+}
+
+.stars-small {
+
+    opacity: .17;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.8) 1px,
+            transparent 1px
+        );
+
+    background-size: 32px 32px;
+
+    transition:
+        transform 2s ease;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header {
+
+    position: relative;
+
+    z-index: 5;
+
+    max-width: 900px;
+
+    margin: auto;
+
+    text-align: center;
+}
+
+
+.return {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 12px 20px;
+
+    margin-bottom: 40px;
+
+    color:
+        rgba(255,255,255,.7);
+
+    border:
+        1px solid
+        rgba(255,255,255,.22);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    transition: .35s ease;
+}
+
+
+.return:hover {
+
+    color: #010208;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-4px);
+}
+
+
+.label {
+
+    margin-bottom: 18px;
+
+    color:
+        rgba(190,170,255,.55);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+
+h1 {
+
+    margin: 0;
+
+    font-size:
+        clamp(43px,8vw,85px);
+
+    line-height: .9;
+
+    letter-spacing: 6px;
+}
+
+
+.subtitle {
+
+    max-width: 720px;
+
+    margin:
+        28px auto 0;
+
+    color:
+        rgba(255,255,255,.52);
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   QUIZ
+========================================= */
+
+.quiz-container {
+
+    position: relative;
+
+    z-index: 5;
+
+    width:
+        min(850px,100%);
+
+    margin:
+        70px auto 0;
+
+    padding: 35px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.025);
+
+    transition:
+        .8s ease;
+}
+
+
+/* =========================================
+   QUIZ TOP
+========================================= */
+
+.quiz-top {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 15px;
+}
+
+
+.question-number {
+
+    color:
+        rgba(255,255,255,.45);
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+}
+
+
+.difficulty {
+
+    padding:
+        7px 12px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.15);
+
+    color:
+        rgba(255,255,255,.5);
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================
+   PROGRESS
+========================================= */
+
+.progress {
+
+    width: 100%;
+
+    height: 2px;
+
+    margin-bottom: 45px;
+
+    background:
+        rgba(255,255,255,.08);
+
+    overflow: hidden;
+}
+
+
+.progress-bar {
+
+    width: 0%;
+
+    height: 100%;
+
+    background: white;
+
+    transition:
+        width .5s ease;
+}
+
+
+/* =========================================
+   QUESTION
+========================================= */
+
+.question {
+
+    margin-bottom: 35px;
+
+    font-size:
+        clamp(20px,3vw,30px);
+
+    line-height: 1.4;
+
+    letter-spacing: .4px;
+}
+
+
+/* =========================================
+   ANSWERS
+========================================= */
+
+.answers {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap: 12px;
+}
+
+
+.answer {
+
+    min-height: 70px;
+
+    padding:
+        18px 20px;
+
+    text-align: left;
+
+    color:
+        rgba(255,255,255,.7);
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    background:
+        rgba(255,255,255,.02);
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 12px;
+
+    cursor: pointer;
+
+    transition:
+        .3s ease;
+}
+
+
+.answer:hover {
+
+    color: white;
+
+    border-color:
+        rgba(170,120,255,.5);
+
+    background:
+        rgba(130,80,255,.08);
+
+    transform:
+        translateY(-3px);
+}
+
+
+.answer.correct {
+
+    color: white;
+
+    border-color:
+        rgba(100,220,150,.7);
+
+    background:
+        rgba(60,180,110,.12);
+}
+
+
+.answer.wrong {
+
+    color: white;
+
+    border-color:
+        rgba(255,90,90,.7);
+
+    background:
+        rgba(220,50,50,.12);
+}
+
+
+.answer.disabled {
+
+    pointer-events: none;
+}
+
+
+/* =========================================
+   NEXT
+========================================= */
+
+.next-area {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    margin-top: 25px;
+}
+
+
+.next-button {
+
+    display: none;
+
+    padding:
+        13px 25px;
+
+    color:
+        rgba(255,255,255,.8);
+
+    border:
+        1px solid
+        rgba(255,255,255,.2);
+
+    background:
+        transparent;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    cursor: pointer;
+
+    transition:
+        .3s ease;
+}
+
+
+.next-button:hover {
+
+    color: #010208;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-3px);
+}
+
+
+/* =========================================
+   RESULT
+========================================= */
+
+.result {
+
+    display: none;
+
+    position: relative;
+
+    text-align: center;
+
+    min-height: 500px;
+
+    padding:
+        25px 10px 15px;
+
+    overflow: hidden;
+}
+
+
+.result::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 360px;
+
+    height: 360px;
+
+    left: 50%;
+
+    top: 43%;
+
+    transform:
+        translate(-50%,-50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(170,100,255,.22),
+            rgba(100,70,230,.07) 38%,
+            transparent 70%
+        );
+
+    filter: blur(5px);
+
+    animation:
+        galaxyGlow 4s ease-in-out infinite;
+
+    pointer-events: none;
+}
+
+
+@keyframes galaxyGlow {
+
+    0%,100% {
+
+        transform:
+            translate(-50%,-50%)
+            scale(.82);
+
+        opacity: .55;
+    }
+
+    50% {
+
+        transform:
+            translate(-50%,-50%)
+            scale(1.18);
+
+        opacity: 1;
+    }
+}
+
+
+/* =========================================
+   GALAXY COMPLETION ICON
+========================================= */
+
+.completion-icon {
+
+    position: relative;
+
+    width: 105px;
+
+    height: 105px;
+
+    margin:
+        5px auto 32px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 50% 50%,
+            #ffffff 0%,
+            #e4d9ff 8%,
+            #b99aff 22%,
+            #8155ff 42%,
+            rgba(80,40,200,.5) 62%,
+            transparent 75%
+        );
+
+    box-shadow:
+        0 0 25px
+        rgba(180,140,255,.8),
+
+        0 0 65px
+        rgba(120,70,255,.45),
+
+        0 0 120px
+        rgba(90,50,255,.2);
+
+    animation:
+        galaxyAppear 1s ease forwards,
+        galaxyFloat 4s ease-in-out 1s infinite;
+
+    z-index: 2;
+}
+
+
+.completion-icon::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: -17px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid
+        rgba(190,160,255,.4);
+
+    box-shadow:
+        0 0 20px
+        rgba(150,110,255,.3);
+
+    animation:
+        galaxyRing 7s linear infinite;
+}
+
+
+.completion-icon::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: -29px;
+
+    border-radius: 50%;
+
+    border:
+        1px dashed
+        rgba(210,190,255,.16);
+
+    animation:
+        galaxyRingReverse 12s linear infinite;
+}
+
+
+@keyframes galaxyAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            scale(.2)
+            rotate(-60deg);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            scale(1)
+            rotate(0);
+    }
+}
+
+
+@keyframes galaxyFloat {
+
+    0%,100% {
+
+        transform:
+            translateY(0)
+            rotate(0deg);
+    }
+
+    50% {
+
+        transform:
+            translateY(-8px)
+            rotate(8deg);
+    }
+}
+
+
+@keyframes galaxyRing {
+
+    from {
+
+        transform:
+            rotate(0deg);
+    }
+
+    to {
+
+        transform:
+            rotate(360deg);
+    }
+}
+
+
+@keyframes galaxyRingReverse {
+
+    from {
+
+        transform:
+            rotate(360deg);
+    }
+
+    to {
+
+        transform:
+            rotate(0deg);
+    }
+}
+
+
+/* =========================================
+   RESULT TEXT
+========================================= */
+
+.result-label {
+
+    position: relative;
+
+    z-index: 2;
+
+    margin-bottom: 18px;
+
+    color:
+        rgba(190,170,255,.65);
+
+    font-size: 10px;
+
+    letter-spacing: 6px;
+
+    animation:
+        fadeUp .8s ease .2s both;
+}
+
+
+.result-title {
+
+    position: relative;
+
+    z-index: 2;
+
+    margin-bottom: 12px;
+
+    font-size:
+        clamp(32px,7vw,65px);
+
+    letter-spacing: 5px;
+
+    animation:
+        titleAppear 1s ease .35s both;
+}
+
+
+@keyframes titleAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(20px);
+
+        letter-spacing: 15px;
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+        letter-spacing: 5px;
+    }
+}
+
+
+.score {
+
+    position: relative;
+
+    z-index: 2;
+
+    margin-bottom: 22px;
+
+    font-size: 25px;
+
+    font-weight: bold;
+
+    letter-spacing: 3px;
+
+    animation:
+        fadeUp .8s ease .55s both;
+}
+
+
+.result-text {
+
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 650px;
+
+    margin:
+        0 auto 30px;
+
+    color:
+        rgba(255,255,255,.5);
+
+    font-size: 13px;
+
+    line-height: 1.8;
+
+    animation:
+        fadeUp .8s ease .7s both;
+}
+
+
+@keyframes fadeUp {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(15px);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* =========================================
+   SCORE BAR
+========================================= */
+
+.final-score-bar {
+
+    position: relative;
+
+    z-index: 2;
+
+    width:
+        min(500px,90%);
+
+    height: 3px;
+
+    margin:
+        0 auto 35px;
+
+    background:
+        rgba(255,255,255,.08);
+
+    overflow: hidden;
+
+    animation:
+        fadeUp .8s ease .85s both;
+}
+
+
+.final-score-fill {
+
+    width: 0%;
+
+    height: 100%;
+
+    background: white;
+
+    box-shadow:
+        0 0 12px
+        rgba(200,180,255,.9);
+
+    transition:
+        width 1.8s cubic-bezier(.2,.8,.2,1);
+}
+
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.result-buttons {
+
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+
+    animation:
+        fadeUp .8s ease 1s both;
+}
+
+
+.result-button {
+
+    padding:
+        13px 23px;
+
+    color:
+        rgba(255,255,255,.75);
+
+    border:
+        1px solid
+        rgba(255,255,255,.2);
+
+    background:
+        transparent;
+
+    text-decoration: none;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    cursor: pointer;
+
+    transition:
+        .3s ease;
+}
+
+
+.result-button:hover {
+
+    color: #010208;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-3px);
+}
+
+
+/* =========================================
+   PARTICLES
+========================================= */
+
+.final-particle {
+
+    position: absolute;
+
+    width: 3px;
+
+    height: 3px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    pointer-events: none;
+
+    opacity: 0;
+
+    animation:
+        particleFly 2.5s ease-out forwards;
+}
+
+
+@keyframes particleFly {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            translate(0,0)
+            scale(.2);
+    }
+
+    15% {
+
+        opacity: 1;
+
+        transform:
+            translate(0,0)
+            scale(1);
+    }
+
+    100% {
+
+        opacity: 0;
+
+        transform:
+            translate(
+                var(--x),
+                var(--y)
+            )
+            scale(.2);
+    }
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.footer {
+
+    position: relative;
+
+    z-index: 5;
+
+    margin-top: 35px;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,.25);
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:600px) {
+
+    .galaxies-quiz-page {
+
+        padding:
+            50px 15px 80px;
+    }
+
+    .quiz-container {
+
+        padding: 25px;
+    }
+
+    .answers {
+
+        grid-template-columns:
+            1fr;
+    }
+
+    .question {
+
+        font-size: 20px;
+    }
+
+    .completion-icon {
+
+        width: 85px;
+
+        height: 85px;
+    }
+
+    .result {
+
+        min-height: 550px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<section class="galaxies-quiz-page">
+
+
+<div class="stars"></div>
+
+<div class="stars-small"></div>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<div class="header">
+
+
+<a
+href="https://sites.google.com/view/kosmolearn"
+class="return">
+
+← RETURN TO HOME
+
+</a>
+
+
+<div class="label">
+
+ORBONIX · SPACE KNOWLEDGE
+
+</div>
+
+
+<h1>
+
+GALAXIES QUIZ
+
+</h1>
+
+
+<div class="subtitle">
+
+30 questions about galaxies — from basic
+galaxy types to galaxy formation, mergers,
+active galactic nuclei and the largest
+structures in the Universe.
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     QUIZ
+========================================= -->
+
+<div class="quiz-container">
+
+
+<div id="quiz">
+
+
+<div class="quiz-top">
+
+<div
+class="question-number"
+id="questionNumber">
+
+QUESTION 01 / 30
+
+</div>
+
+
+<div
+class="difficulty"
+id="difficulty">
+
+EASY
+
+</div>
+
+</div>
+
+
+<div class="progress">
+
+<div
+class="progress-bar"
+id="progressBar">
+</div>
+
+</div>
+
+
+<div
+class="question"
+id="question">
+
+Loading question...
+
+</div>
+
+
+<div
+class="answers"
+id="answers">
+</div>
+
+
+<div class="next-area">
+
+<button
+class="next-button"
+id="nextButton"
+onclick="nextQuestion()">
+
+NEXT QUESTION →
+
+</button>
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     RESULT
+========================================= -->
+
+<div
+class="result"
+id="result">
+
+
+<div class="completion-icon"></div>
+
+
+<div class="result-label">
+
+GALACTIC MISSION COMPLETE
+
+</div>
+
+
+<div
+class="result-title"
+id="resultTitle">
+
+GALAXY EXPLORER
+
+</div>
+
+
+<div
+class="score"
+id="score">
+
+0 / 30
+
+</div>
+
+
+<div class="final-score-bar">
+
+<div
+class="final-score-fill"
+id="finalScoreFill">
+</div>
+
+</div>
+
+
+<div
+class="result-text"
+id="resultText">
+
+You have completed your journey
+through the galaxies of the Universe.
+
+</div>
+
+
+<div class="result-buttons">
+
+
+<button
+class="result-button"
+onclick="restartQuiz()">
+
+↻ RESTART QUIZ
+
+</button>
+
+
+<a
+href="YOUR-QUIZ-SELECT-PAGE-LINK"
+class="result-button">
+
+← QUIZ SELECT
+
+</a>
+
+
+<a
+href="https://sites.google.com/view/kosmolearn"
+class="result-button">
+
+RETURN TO HOME
+
+</a>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+<div class="footer">
+
+ORBONIX · GALAXIES QUIZ · SPACE KNOWLEDGE
+
+</div>
+
+
+</section>
+
+
+<script>
+
+
+/* =========================================
+   QUESTIONS
+========================================= */
+
+const questions = [
+
+/* =========================================
+   EASY 1-10
+========================================= */
+
+{
+question:
+"What is a galaxy?",
+
+answers:
+[
+"A huge gravitationally bound system of stars, gas, dust and dark matter",
+"A single giant star",
+"A planetary system",
+"A cloud of only hydrogen"
+],
+
+correct: 0,
+difficulty: "EASY"
+},
+
+
+{
+question:
+"What galaxy do we live in?",
+
+answers:
+[
+"Andromeda Galaxy",
+"Milky Way Galaxy",
+"Triangulum Galaxy",
+"Whirlpool Galaxy"
+],
+
+correct: 1,
+difficulty: "EASY"
+},
+
+
+{
+question:
+"What is the closest large galaxy to the Milky Way?",
+
+answers:
+[
+"Andromeda Galaxy",
+"Sombrero Galaxy",
+"Whirlpool Galaxy",
+"Cartwheel Galaxy"
+],
+
+correct: 0,
+difficulty: "EASY"
+},
+
+
+{
+question:
+"Which galaxy type has prominent spiral arms?",
+
+answers:
+[
+"Spiral galaxy",
+"Elliptical galaxy",
+"Irregular galaxy",
+"Ringless galaxy"
+],
+
+correct: 0,
+difficulty: "EASY"
+},
+
+
+{
+question:
+"What is the shape of a typical elliptical galaxy?",
+
+answers:
+[
+"Mostly round or oval",
+"Perfectly flat",
+"Long and rectangular",
+"Only a thin ring"
+],
+
+correct: 0,
+difficulty: "EASY"
+},
+
+
+{
+question:
+"What is the Milky Way?",
+
+answers:
+[
+"A spiral galaxy",
+"An elliptical galaxy",
+"An irregular galaxy",
+"A galaxy cluster"
+],
+
+correct: 0,
+difficulty: "EASY"
+},
+
+
+{
+question:
+"What is located at the center of the Milky Way?",
+
+answers:
+[
+"A supermassive black hole",
+"A neutron star",
+"A giant planet",
+"A white dwarf"
+],
+
+correct: 0,
+difficulty: "EASY"
+},
+
+
+{
+question:
+"What is the name of the Milky Way's central supermassive black hole?",
+
+answers:
+[
+"Cygnus X-1",
+"TON 618",
+"Sagittarius A*",
+"V404 Cygni"
+],
+
+correct: 2,
+difficulty: "EASY"
+},
+
+
+{
+question:
+"What are galaxies primarily held together by?",
+
+answers:
+[
+"Gravity",
+"Sound",
+"Solar wind",
+"Electricity"
+],
+
+correct: 0,
+difficulty: "EASY"
+},
+
+
+{
+question:
+"Which galaxy is expected to merge with the Milky Way in the distant future?",
+
+answers:
+[
+"Andromeda Galaxy",
+"Sombrero Galaxy",
+"Triangulum Galaxy",
+"Large Magellanic Cloud"
+],
+
+correct: 0,
+difficulty: "EASY"
+},
+
+
+/* =========================================
+   MEDIUM 11-20
+========================================= */
+
+{
+question:
+"What are the three broad traditional galaxy categories?",
+
+answers:
+[
+"Spiral, elliptical and irregular",
+"Blue, green and red",
+"Small, medium and large",
+"Young, middle-aged and old"
+],
+
+correct: 0,
+difficulty: "MEDIUM"
+},
+
+
+{
+question:
+"What is a barred spiral galaxy?",
+
+answers:
+[
+"A spiral galaxy with a bar-shaped structure of stars across its central region",
+"A galaxy shaped like a perfect sphere",
+"A galaxy without stars",
+"A galaxy made entirely of gas"
+],
+
+correct: 0,
+difficulty: "MEDIUM"
+},
+
+
+{
+question:
+"What is a galaxy cluster?",
+
+answers:
+[
+"A gravitationally bound collection of many galaxies",
+"A group of planets around one star",
+"A group of only black holes",
+"A cloud inside a single star"
+],
+
+correct: 0,
+difficulty: "MEDIUM"
+},
+
+
+{
+question:
+"What is the Local Group?",
+
+answers:
+[
+"The galaxy group containing the Milky Way, Andromeda and many smaller galaxies",
+"A cluster of stars inside the Sun",
+"A group of planets around Earth",
+"A group of quasars"
+],
+
+correct: 0,
+difficulty: "MEDIUM"
+},
+
+
+{
+question:
+"What usually happens during a major galaxy merger?",
+
+answers:
+[
+"The galaxies gravitationally interact and can eventually combine into one system",
+"Both galaxies instantly disappear",
+"All stars explode simultaneously",
+"The galaxies turn into planets"
+],
+
+correct: 0,
+difficulty: "MEDIUM"
+},
+
+
+{
+question:
+"Why do galaxy mergers often trigger bursts of star formation?",
+
+answers:
+[
+"Gravitational interactions can compress gas clouds",
+"Gravity stops working",
+"Stars begin producing oxygen from nothing",
+"Black holes freeze the gas"
+],
+
+correct: 0,
+difficulty: "MEDIUM"
+},
+
+
+{
+question:
+"What is a dwarf galaxy?",
+
+answers:
+[
+"A relatively small galaxy containing far fewer stars than major galaxies",
+"A galaxy smaller than a planet",
+"A galaxy made only of dark matter",
+"A galaxy with no gravity"
+],
+
+correct: 0,
+difficulty: "MEDIUM"
+},
+
+
+{
+question:
+"What is the main difference between spiral and elliptical galaxies?",
+
+answers:
+[
+"Spiral galaxies have disk-and-arm structures, while elliptical galaxies are generally smoother and more rounded",
+"Elliptical galaxies contain no stars",
+"Spiral galaxies contain no gas",
+"Elliptical galaxies are always larger"
+],
+
+correct: 0,
+difficulty: "MEDIUM"
+},
+
+
+{
+question:
+"What is dark matter thought to do in galaxies?",
+
+answers:
+[
+"Provide additional gravitational mass that helps shape galaxy dynamics",
+"Produce all visible light",
+"Destroy stars",
+"Create oxygen directly"
+],
+
+correct: 0,
+difficulty: "MEDIUM"
+},
+
+
+{
+question:
+"What is a galaxy's halo?",
+
+answers:
+[
+"A large, diffuse region surrounding the main visible galaxy",
+"The center of a planet",
+"A cloud inside a star",
+"A ring around a neutron star"
+],
+
+correct: 0,
+difficulty: "MEDIUM"
+},
+
+
+/* =========================================
+   HARD 21-30
+========================================= */
+
+{
+question:
+"What is an active galactic nucleus (AGN)?",
+
+answers:
+[
+"A highly energetic central region of a galaxy powered by material accreting onto a supermassive black hole",
+"A galaxy with no stars",
+"A region where planets are formed",
+"A giant stellar nursery with no black hole"
+],
+
+correct: 0,
+difficulty: "HARD"
+},
+
+
+{
+question:
+"What is a quasar?",
+
+answers:
+[
+"An extremely luminous type of active galactic nucleus powered by accretion onto a supermassive black hole",
+"A type of neutron star",
+"A small galaxy",
+"A cold molecular cloud"
+],
+
+correct: 0,
+difficulty: "HARD"
+},
+
+
+{
+question:
+"Why can quasars be visible from extremely large distances?",
+
+answers:
+[
+"Their accreting supermassive black holes can release enormous amounts of energy",
+"They are closer than all stars",
+"They are made of pure light",
+"They are larger than galaxy clusters"
+],
+
+correct: 0,
+difficulty: "HARD"
+},
+
+
+{
+question:
+"What is the relationship between a galaxy's central black hole and its bulge that astronomers have observed?",
+
+answers:
+[
+"Their masses are correlated in many galaxies",
+"Black holes are always more massive than the entire galaxy",
+"They have no measurable relationship",
+"Bulges contain no stars"
+],
+
+correct: 0,
+difficulty: "HARD"
+},
+
+
+{
+question:
+"What is galactic redshift generally used to help determine?",
+
+answers:
+[
+"How rapidly a distant object is receding and, with a cosmological model, its approximate distance",
+"The exact number of planets in a galaxy",
+"The age of every star individually",
+"The mass of Earth's Moon"
+],
+
+correct: 0,
+difficulty: "HARD"
+},
+
+
+{
+question:
+"What is a galaxy filament?",
+
+answers:
+[
+"A vast thread-like structure of galaxies and matter within the cosmic web",
+"A structure inside a star",
+"A ring around a black hole",
+"A type of planetary orbit"
+],
+
+correct: 0,
+difficulty: "HARD"
+},
+
+
+{
+question:
+"What is the cosmic web?",
+
+answers:
+[
+"The large-scale network of filaments, sheets, voids and dense structures formed by matter across the Universe",
+"A web made by space particles",
+"A group of only spiral galaxies",
+"The atmosphere of a galaxy"
+],
+
+correct: 0,
+difficulty: "HARD"
+},
+
+
+{
+question:
+"Why are elliptical galaxies often less active in forming new stars than spiral galaxies?",
+
+answers:
+[
+"They generally contain less cold gas available for star formation",
+"They contain no gravity",
+"They have no dark matter",
+"Their stars cannot emit light"
+],
+
+correct: 0,
+difficulty: "HARD"
+},
+
+
+{
+question:
+"What can happen to a galaxy after a major merger between two spiral galaxies?",
+
+answers:
+[
+"It can transform into a more elliptical-looking galaxy",
+"It always becomes a planet",
+"It disappears completely",
+"It turns entirely into dark matter"
+],
+
+correct: 0,
+difficulty: "HARD"
+},
+
+
+{
+question:
+"Which statement about the largest galaxies is correct?",
+
+answers:
+[
+"Some giant elliptical galaxies can contain trillions of stars",
+"All galaxies contain exactly the same number of stars",
+"The Milky Way is the largest possible galaxy",
+"Large galaxies cannot contain black holes"
+],
+
+correct: 0,
+difficulty: "HARD"
+}
+
+];
+
+
+/* =========================================
+   VARIABLES
+========================================= */
+
+let currentQuestion = 0;
+
+let score = 0;
+
+let answered = false;
+
+
+/* =========================================
+   SHUFFLE ANSWERS
+========================================= */
+
+function shuffleAnswers(question) {
+
+    const answerObjects =
+        question.answers.map(
+            (answer, index) => {
+
+                return {
+
+                    text: answer,
+
+                    correct:
+                        index === question.correct
+
+                };
+
+            }
+        );
+
+
+    for (
+        let i = answerObjects.length - 1;
+        i > 0;
+        i--
+    ) {
+
+        const j =
+            Math.floor(
+                Math.random() * (i + 1)
+            );
+
+
+        [
+            answerObjects[i],
+            answerObjects[j]
+        ] =
+        [
+            answerObjects[j],
+            answerObjects[i]
+        ];
+
+    }
+
+
+    return answerObjects;
+}
+
+
+/* =========================================
+   LOAD QUESTION
+========================================= */
+
+function loadQuestion() {
+
+    answered = false;
+
+
+    const q =
+        questions[currentQuestion];
+
+
+    document.getElementById(
+        "questionNumber"
+    ).textContent =
+        `QUESTION ${
+            String(currentQuestion + 1)
+            .padStart(2,"0")
+        } / ${questions.length}`;
+
+
+    document.getElementById(
+        "difficulty"
+    ).textContent =
+        q.difficulty;
+
+
+    document.getElementById(
+        "question"
+    ).textContent =
+        q.question;
+
+
+    document.getElementById(
+        "progressBar"
+    ).style.width =
+        `${
+            (currentQuestion /
+            questions.length) * 100
+        }%`;
+
+
+    const answersContainer =
+        document.getElementById(
+            "answers"
+        );
+
+
+    answersContainer.innerHTML = "";
+
+
+    const shuffled =
+        shuffleAnswers(q);
+
+
+    shuffled.forEach(
+        answerObject => {
+
+            const button =
+                document.createElement(
+                    "button"
+                );
+
+
+            button.className =
+                "answer";
+
+
+            button.textContent =
+                answerObject.text;
+
+
+            button.dataset.correct =
+                answerObject.correct;
+
+
+            button.onclick =
+                function() {
+
+                    selectAnswer(
+                        answerObject.correct,
+                        button
+                    );
+
+                };
+
+
+            answersContainer.appendChild(
+                button
+            );
+
+        }
+    );
+
+
+    document.getElementById(
+        "nextButton"
+    ).style.display =
+        "none";
+}
+
+
+/* =========================================
+   ANSWER
+========================================= */
+
+function selectAnswer(
+    isCorrect,
+    selectedButton
+) {
+
+    if (answered)
+        return;
+
+
+    answered = true;
+
+
+    const buttons =
+        document.querySelectorAll(
+            ".answer"
+        );
+
+
+    buttons.forEach(
+        button => {
+
+            button.classList.add(
+                "disabled"
+            );
+
+        }
+    );
+
+
+    if (isCorrect) {
+
+        selectedButton.classList.add(
+            "correct"
+        );
+
+        score++;
+
+    }
+
+    else {
+
+        selectedButton.classList.add(
+            "wrong"
+        );
+
+
+        buttons.forEach(
+            button => {
+
+                if (
+                    button.dataset.correct
+                    === "true"
+                ) {
+
+                    button.classList.add(
+                        "correct"
+                    );
+
+                }
+
+            }
+        );
+
+    }
+
+
+    document.getElementById(
+        "nextButton"
+    ).style.display =
+        "inline-flex";
+}
+
+
+/* =========================================
+   NEXT QUESTION
+========================================= */
+
+function nextQuestion() {
+
+    currentQuestion++;
+
+
+    if (
+        currentQuestion >=
+        questions.length
+    ) {
+
+        showResult();
+
+        return;
+
+    }
+
+
+    loadQuestion();
+}
+
+
+/* =========================================
+   RESULT
+========================================= */
+
+function showResult() {
+
+    document.getElementById(
+        "quiz"
+    ).style.display =
+        "none";
+
+
+    const result =
+        document.getElementById(
+            "result"
+        );
+
+
+    result.style.display =
+        "block";
+
+
+    document.getElementById(
+        "score"
+    ).textContent =
+        "0 / 30";
+
+
+    let title = "";
+
+    let text = "";
+
+
+    if (score <= 10) {
+
+        title =
+            "GALAXY BEGINNER";
+
+        text =
+            "Your journey through galactic astronomy has begun. There are billions of galaxies waiting to be explored.";
+
+    }
+
+    else if (score <= 17) {
+
+        title =
+            "GALAXY EXPLORER";
+
+        text =
+            "A solid result. You understand the basic types, structures and properties of galaxies.";
+
+    }
+
+    else if (score <= 23) {
+
+        title =
+            "GALACTIC ASTRONOMER";
+
+        text =
+            "Very strong performance. You understand galaxy evolution, mergers, dark matter and large-scale structures.";
+
+    }
+
+    else if (score <= 27) {
+
+        title =
+            "GALAXY EXPERT";
+
+        text =
+            "Excellent. You handled advanced concepts involving quasars, active galaxies, black holes and the cosmic web.";
+
+    }
+
+    else {
+
+        title =
+            "GALAXY MASTER";
+
+        text =
+            "Outstanding. Your knowledge reaches from basic galaxy classification to the extreme physics of active galactic nuclei and the cosmic web.";
+
+    }
+
+
+    document.getElementById(
+        "resultTitle"
+    ).textContent =
+        title;
+
+
+    document.getElementById(
+        "resultText"
+    ).textContent =
+        text;
+
+
+    animateScore();
+
+
+    setTimeout(
+        function() {
+
+            document.getElementById(
+                "finalScoreFill"
+            ).style.width =
+                `${
+                    (score /
+                    questions.length) * 100
+                }%`;
+
+        },
+        600
+    );
+
+
+    createParticles();
+
+}
+
+
+/* =========================================
+   SCORE ANIMATION
+========================================= */
+
+function animateScore() {
+
+    let value = 0;
+
+
+    const scoreElement =
+        document.getElementById(
+            "score"
+        );
+
+
+    const duration = 1600;
+
+
+    const start =
+        performance.now();
+
+
+    function update(now) {
+
+        const progress =
+            Math.min(
+                (now - start) /
+                duration,
+                1
+            );
+
+
+        const eased =
+            1 -
+            Math.pow(
+                1 - progress,
+                3
+            );
+
+
+        value =
+            Math.floor(
+                eased * score
+            );
+
+
+        scoreElement.textContent =
+            `${value} / ${questions.length}`;
+
+
+        if (progress < 1) {
+
+            requestAnimationFrame(
+                update
+            );
+
+        }
+
+        else {
+
+            scoreElement.textContent =
+                `${score} / ${questions.length}`;
+
+        }
+
+    }
+
+
+    requestAnimationFrame(
+        update
+    );
+
+}
+
+
+/* =========================================
+   PARTICLES
+========================================= */
+
+function createParticles() {
+
+    const result =
+        document.getElementById(
+            "result"
+        );
+
+
+    for (
+        let i = 0;
+        i < 100;
+        i++
+    ) {
+
+        const particle =
+            document.createElement(
+                "div"
+            );
+
+
+        particle.className =
+            "final-particle";
+
+
+        particle.style.left =
+            Math.random() * 100 + "%";
+
+
+        particle.style.top =
+            40 +
+            Math.random() * 20 +
+            "%";
+
+
+        particle.style.setProperty(
+            "--x",
+            (
+                Math.random() * 600 -
+                300
+            ) + "px"
+        );
+
+
+        particle.style.setProperty(
+            "--y",
+            (
+                Math.random() * 600 -
+                300
+            ) + "px"
+        );
+
+
+        particle.style.animationDelay =
+            Math.random() * .8 +
+            "s";
+
+
+        result.appendChild(
+            particle
+        );
+
+
+        setTimeout(
+            function() {
+
+                particle.remove();
+
+            },
+            3500
+        );
+
+    }
+
+}
+
+
+/* =========================================
+   RESTART
+========================================= */
+
+function restartQuiz() {
+
+    currentQuestion = 0;
+
+    score = 0;
+
+
+    document.getElementById(
+        "quiz"
+    ).style.display =
+        "block";
+
+
+    document.getElementById(
+        "result"
+    ).style.display =
+        "none";
+
+
+    document.getElementById(
+        "finalScoreFill"
+    ).style.width =
+        "0%";
+
+
+    loadQuestion();
+}
+
+
+/* =========================================
+   GALAXY PARALLAX
+========================================= */
+
+const stars =
+document.querySelector(".stars");
+
+
+const smallStars =
+document.querySelector(".stars-small");
+
+
+document.addEventListener(
+"mousemove",
+
+function(event) {
+
+    const x =
+        event.clientX /
+        window.innerWidth -
+        0.5;
+
+
+    const y =
+        event.clientY /
+        window.innerHeight -
+        0.5;
+
+
+    stars.style.transform =
+        `translate(
+            ${x * 20}px,
+            ${y * 20}px
+        )`;
+
+
+    smallStars.style.transform =
+        `translate(
+            ${x * -12}px,
+            ${y * -12}px
+        )`;
+
+});
+
+
+/* =========================================
+   START
+========================================= */
+
+loadQuestion();
+
+</script>
+
+
+</body>
+
+</html>
