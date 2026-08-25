@@ -1,1 +1,1145 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: #010208;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   PAGE
+========================================= */
+
+.rogue-page {
+    position: relative;
+    min-height: 1500px;
+    padding: 65px 20px 100px;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 30%,
+            rgba(70,90,160,.14),
+            transparent 45%
+        ),
+        #010208;
+}
+
+
+/* =========================================
+   STARS
+========================================= */
+
+.stars,
+.stars-small {
+    position: absolute;
+    inset: -25%;
+    pointer-events: none;
+}
+
+.stars {
+    opacity: .38;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.9) 1px,
+            transparent 1px
+        );
+
+    background-size: 75px 75px;
+
+    transition: transform 1.5s ease;
+}
+
+.stars-small {
+    opacity: .16;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.8) 1px,
+            transparent 1px
+        );
+
+    background-size: 32px 32px;
+
+    transition: transform 2s ease;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header {
+    position: relative;
+    z-index: 10;
+
+    max-width: 900px;
+    margin: auto;
+
+    text-align: center;
+}
+
+.return {
+    display: inline-flex;
+
+    padding: 12px 20px;
+    margin-bottom: 40px;
+
+    color: rgba(255,255,255,.7);
+
+    border:
+        1px solid
+        rgba(255,255,255,.22);
+
+    text-decoration: none;
+
+    font-size: 9px;
+    letter-spacing: 3px;
+
+    transition: .35s ease;
+}
+
+.return:hover {
+    color: #010208;
+    background: white;
+    border-color: white;
+
+    transform: translateY(-4px);
+}
+
+.label {
+    margin-bottom: 18px;
+
+    color: rgba(255,255,255,.4);
+
+    font-size: 10px;
+    letter-spacing: 5px;
+}
+
+h1 {
+    margin: 0;
+
+    font-size:
+        clamp(45px,8vw,90px);
+
+    line-height: .9;
+
+    letter-spacing: 6px;
+}
+
+.subtitle {
+    max-width: 700px;
+
+    margin: 28px auto 0;
+
+    color: rgba(255,255,255,.52);
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   HERO
+========================================= */
+
+.hero {
+    position: relative;
+    z-index: 5;
+
+    width:
+        min(900px,100%);
+
+    height: 420px;
+
+    margin: 75px auto 60px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.02);
+
+    overflow: hidden;
+}
+
+
+/* =========================================
+   ROGUE PLANET
+========================================= */
+
+.planet {
+    position: relative;
+
+    width: 220px;
+    height: 220px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #8991a5,
+            #3b4050 32%,
+            #11141d 70%,
+            #05060b 100%
+        );
+
+    box-shadow:
+        0 0 35px
+        rgba(120,140,180,.18),
+
+        0 0 100px
+        rgba(70,90,150,.12);
+
+    animation:
+        planetFloat 6s ease-in-out infinite;
+}
+
+
+/* DARK SIDE */
+
+.planet::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            115deg,
+            transparent 35%,
+            rgba(0,0,0,.65) 75%,
+            rgba(0,0,0,.95)
+        );
+}
+
+
+/* ATMOSPHERE */
+
+.planet::after {
+    content: "";
+
+    position: absolute;
+
+    inset: -8px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid
+        rgba(150,170,210,.14);
+
+    box-shadow:
+        0 0 25px
+        rgba(120,150,200,.12);
+}
+
+
+@keyframes planetFloat {
+
+    0%,100% {
+        transform:
+            translateY(0)
+            rotate(0deg);
+    }
+
+    50% {
+        transform:
+            translateY(-10px)
+            rotate(2deg);
+    }
+}
+
+
+.hero-label {
+    position: absolute;
+
+    bottom: 35px;
+
+    color:
+        rgba(255,255,255,.4);
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+}
+
+
+/* =========================================
+   STATS
+========================================= */
+
+.stats {
+    position: relative;
+    z-index: 5;
+
+    width:
+        min(1050px,100%);
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap: 1px;
+
+    background:
+        rgba(255,255,255,.1);
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+}
+
+.stat {
+    padding: 28px;
+
+    background:
+        rgba(5,7,15,.94);
+
+    transition: .35s ease;
+}
+
+.stat:hover {
+    transform:
+        translateY(-5px);
+
+    background:
+        rgba(255,255,255,.04);
+}
+
+.stat-value {
+    margin-bottom: 9px;
+
+    font-size: 18px;
+
+    font-weight: bold;
+}
+
+.stat-label {
+    color:
+        rgba(255,255,255,.38);
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.content {
+    position: relative;
+    z-index: 5;
+
+    width:
+        min(1050px,100%);
+
+    margin:
+        65px auto 0;
+}
+
+.info {
+    margin-bottom: 18px;
+
+    padding: 35px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.025);
+
+    transition: .35s ease;
+}
+
+.info:hover {
+    transform:
+        translateY(-4px);
+
+    border-color:
+        rgba(255,255,255,.22);
+}
+
+.info-title {
+    margin-bottom: 18px;
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+}
+
+.info-text {
+    margin: 0;
+
+    color:
+        rgba(255,255,255,.56);
+
+    font-size: 13px;
+
+    line-height: 1.9;
+}
+
+
+/* =========================================
+   FEATURES
+========================================= */
+
+.features-title {
+    margin:
+        60px 0 25px;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,.42);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+.features {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 15px;
+}
+
+.feature {
+    padding: 27px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.02);
+
+    transition: .35s ease;
+}
+
+.feature:hover {
+    transform:
+        translateY(-6px);
+
+    border-color:
+        rgba(180,195,230,.3);
+
+    background:
+        rgba(255,255,255,.04);
+}
+
+.feature-title {
+    margin-bottom: 11px;
+
+    font-size: 13px;
+
+    letter-spacing: 2px;
+}
+
+.feature-text {
+    color:
+        rgba(255,255,255,.5);
+
+    font-size: 11px;
+
+    line-height: 1.75;
+}
+
+
+/* =========================================
+   FACT
+========================================= */
+
+.fact {
+    margin-top: 60px;
+
+    padding: 42px;
+
+    text-align: center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    background:
+        rgba(255,255,255,.025);
+}
+
+.fact-label {
+    margin-bottom: 17px;
+
+    color:
+        rgba(255,255,255,.4);
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+}
+
+.fact-text {
+    max-width: 800px;
+
+    margin: auto;
+
+    font-size:
+        clamp(18px,3vw,27px);
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   NAVIGATION
+========================================= */
+
+.navigation {
+    display: flex;
+
+    justify-content: center;
+
+    margin-top: 55px;
+}
+
+.nav-button {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding:
+        13px 24px;
+
+    color:
+        rgba(255,255,255,.75);
+
+    border:
+        1px solid
+        rgba(255,255,255,.2);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    transition: .35s ease;
+}
+
+.nav-button:hover {
+    color: #010208;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-4px);
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.footer {
+    margin-top: 30px;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,.25);
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:800px) {
+
+    .stats {
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .features {
+        grid-template-columns:
+            1fr;
+    }
+
+}
+
+@media(max-width:600px) {
+
+    .rogue-page {
+        padding:
+            50px 15px 80px;
+    }
+
+    .hero {
+        height: 340px;
+    }
+
+    .planet {
+        width: 170px;
+        height: 170px;
+    }
+
+    .stats {
+        grid-template-columns:
+            1fr;
+    }
+
+    .info {
+        padding: 27px;
+    }
+
+    .fact {
+        padding:
+            30px 22px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<section class="rogue-page">
+
+
+<div class="stars"></div>
+<div class="stars-small"></div>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<div class="header">
+
+
+<a
+href="https://sites.google.com/view/kosmolearn"
+class="return">
+
+← RETURN TO HOME
+
+</a>
+
+
+<div class="label">
+
+ORBONIX · DEEP SPACE
+
+</div>
+
+
+<h1>
+
+ROGUE PLANETS
+
+</h1>
+
+
+<div class="subtitle">
+
+Worlds drifting through interstellar space
+without orbiting a star. Dark, isolated and
+potentially far more common than we once thought.
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     HERO
+========================================= -->
+
+<div class="hero">
+
+
+<div class="planet"></div>
+
+
+<div class="hero-label">
+
+A WORLD WITHOUT A STAR
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     STATS
+========================================= -->
+
+<div class="stats">
+
+
+<div class="stat">
+
+<div class="stat-value">
+STARLESS
+</div>
+
+<div class="stat-label">
+NO HOST STAR
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+INTERSTELLAR
+</div>
+
+<div class="stat-label">
+DRIFT THROUGH SPACE
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+COLD
+</div>
+
+<div class="stat-label">
+LITTLE EXTERNAL HEAT
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+MANY?
+
+</div>
+
+<div class="stat-label">
+POSSIBLY EXTREMELY COMMON
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     CONTENT
+========================================= -->
+
+<div class="content">
+
+
+<div class="info">
+
+
+<div class="info-title">
+
+WHAT IS A ROGUE PLANET?
+
+</div>
+
+
+<p class="info-text">
+
+A rogue planet is a planetary-mass object
+that travels through space without being
+gravitationally bound to a star.
+
+Unlike Earth, Jupiter or Neptune, it does
+not follow a normal orbit around a host star.
+
+Some may have formed around stars and later
+been ejected from their planetary systems.
+
+</p>
+
+
+</div>
+
+
+<div class="info">
+
+
+<div class="info-title">
+
+HOW DO THEY BECOME ROGUE?
+
+</div>
+
+
+<p class="info-text">
+
+Young planetary systems can be chaotic.
+
+When several massive planets interact
+gravitationally, one planet can receive
+enough energy to be thrown completely out
+of the system.
+
+After that, it can continue travelling
+through interstellar space for millions
+or billions of years.
+
+</p>
+
+
+</div>
+
+
+<div class="info">
+
+
+<div class="info-title">
+
+CAN THEY FORM ALONE?
+
+</div>
+
+
+<p class="info-text">
+
+Scientists are investigating whether
+some planetary-mass objects could form
+directly from collapsing clouds of gas,
+without ever orbiting a star.
+
+The distinction between a very small
+brown dwarf and a rogue planet can
+therefore be complicated.
+
+</p>
+
+
+</div>
+
+
+<div class="info">
+
+
+<div class="info-title">
+
+COULD THEY HAVE MOONS?
+
+</div>
+
+
+<p class="info-text">
+
+A rogue planet could potentially retain
+moons after leaving its original system.
+
+However, detecting such moons would be
+extremely difficult because both objects
+would be drifting through the darkness
+of interstellar space.
+
+</p>
+
+
+</div>
+
+
+<!-- =========================================
+     FEATURES
+========================================= -->
+
+<div class="features-title">
+
+THE MYSTERY OF ROGUE PLANETS
+
+</div>
+
+
+<div class="features">
+
+
+<div class="feature">
+
+<div class="feature-title">
+
+NO SUNRISE
+
+</div>
+
+<div class="feature-text">
+
+A rogue planet would not experience
+a normal sunrise or sunset because
+there is no nearby star illuminating
+its surface.
+
+</div>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-title">
+
+EXTREME COLD
+
+</div>
+
+<div class="feature-text">
+
+Without stellar heating, the surface
+could become incredibly cold, although
+internal heat may remain for a long time.
+
+</div>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-title">
+
+HARD TO FIND
+
+</div>
+
+<div class="feature-text">
+
+They emit very little visible light,
+making direct observation extremely
+difficult.
+
+</div>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-title">
+
+MICROLENSING
+
+</div>
+
+<div class="feature-text">
+
+Astronomers can sometimes detect
+planetary-mass objects when their gravity
+briefly magnifies the light of a distant star.
+
+</div>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-title">
+
+ANCIENT WORLDS
+
+</div>
+
+<div class="feature-text">
+
+Some rogue planets could have travelled
+through the Milky Way for billions of years.
+
+</div>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-title">
+
+UNKNOWN POPULATION
+
+</div>
+
+<div class="feature-text">
+
+Astronomers are still determining how
+many rogue planets exist in our galaxy.
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     FACT
+========================================= -->
+
+<div class="fact">
+
+
+<div class="fact-label">
+
+DID YOU KNOW?
+
+</div>
+
+
+<div class="fact-text">
+
+A rogue planet could be travelling through
+the Milky Way with no star nearby to light
+its surface — a planetary world wandering
+alone through interstellar darkness.
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     NAVIGATION
+========================================= -->
+
+<div class="navigation">
+
+
+<a
+href="https://sites.google.com/view/kosmolearn"
+class="nav-button">
+
+← RETURN TO HOME
+
+</a>
+
+
+</div>
+
+
+<div class="footer">
+
+ORBONIX · DEEP SPACE · ROGUE PLANETS
+
+</div>
+
+
+</section>
+
+
+<script>
+
+/* =========================================
+   STAR PARALLAX
+========================================= */
+
+const stars =
+document.querySelector(".stars");
+
+const smallStars =
+document.querySelector(".stars-small");
+
+
+document.addEventListener(
+"mousemove",
+
+function(event) {
+
+    const x =
+        event.clientX /
+        window.innerWidth -
+        0.5;
+
+    const y =
+        event.clientY /
+        window.innerHeight -
+        0.5;
+
+
+    stars.style.transform =
+        `translate(
+            ${x * 20}px,
+            ${y * 20}px
+        )`;
+
+
+    smallStars.style.transform =
+        `translate(
+            ${x * -12}px,
+            ${y * -12}px
+        )`;
+
+});
+
+</script>
+
+
+</body>
+
+</html>
+```
