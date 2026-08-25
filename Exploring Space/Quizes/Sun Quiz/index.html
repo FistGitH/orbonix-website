@@ -1,1 +1,2400 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: #010208;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   PAGE
+========================================= */
+
+.sun-quiz-page {
+
+    position: relative;
+
+    min-height: 100vh;
+
+    padding: 65px 20px 100px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 15%,
+            rgba(255,150,40,.17),
+            transparent 42%
+        ),
+        radial-gradient(
+            circle at 20% 70%,
+            rgba(255,90,20,.07),
+            transparent 35%
+        ),
+        #010208;
+}
+
+
+/* =========================================
+   STARS
+========================================= */
+
+.stars,
+.stars-small {
+
+    position: fixed;
+
+    inset: -25%;
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+.stars {
+
+    opacity: .38;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.9) 1px,
+            transparent 1px
+        );
+
+    background-size: 75px 75px;
+
+    transition:
+        transform 1.5s ease;
+}
+
+.stars-small {
+
+    opacity: .16;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.8) 1px,
+            transparent 1px
+        );
+
+    background-size: 32px 32px;
+
+    transition:
+        transform 2s ease;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header {
+
+    position: relative;
+
+    z-index: 5;
+
+    max-width: 900px;
+
+    margin: auto;
+
+    text-align: center;
+}
+
+
+.return {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 12px 20px;
+
+    margin-bottom: 40px;
+
+    color:
+        rgba(255,255,255,.7);
+
+    border:
+        1px solid
+        rgba(255,255,255,.22);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    transition: .35s ease;
+}
+
+
+.return:hover {
+
+    color: #010208;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-4px);
+}
+
+
+.label {
+
+    margin-bottom: 18px;
+
+    color:
+        rgba(255,190,100,.55);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+
+h1 {
+
+    margin: 0;
+
+    font-size:
+        clamp(43px,8vw,85px);
+
+    line-height: .9;
+
+    letter-spacing: 6px;
+}
+
+
+.subtitle {
+
+    max-width: 720px;
+
+    margin:
+        28px auto 0;
+
+    color:
+        rgba(255,255,255,.52);
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   QUIZ
+========================================= */
+
+.quiz-container {
+
+    position: relative;
+
+    z-index: 5;
+
+    width:
+        min(850px,100%);
+
+    margin:
+        70px auto 0;
+
+    padding: 35px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.025);
+
+    transition:
+        .8s ease;
+}
+
+
+/* =========================================
+   QUIZ TOP
+========================================= */
+
+.quiz-top {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 15px;
+}
+
+
+.question-number {
+
+    color:
+        rgba(255,255,255,.45);
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+}
+
+
+.difficulty {
+
+    padding:
+        7px 12px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.15);
+
+    color:
+        rgba(255,255,255,.5);
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================
+   PROGRESS
+========================================= */
+
+.progress {
+
+    width: 100%;
+
+    height: 2px;
+
+    margin-bottom: 45px;
+
+    background:
+        rgba(255,255,255,.08);
+
+    overflow: hidden;
+}
+
+
+.progress-bar {
+
+    width: 0%;
+
+    height: 100%;
+
+    background: white;
+
+    transition:
+        width .5s ease;
+}
+
+
+/* =========================================
+   QUESTION
+========================================= */
+
+.question {
+
+    margin-bottom: 35px;
+
+    font-size:
+        clamp(20px,3vw,30px);
+
+    line-height: 1.4;
+
+    letter-spacing: .4px;
+}
+
+
+/* =========================================
+   ANSWERS
+========================================= */
+
+.answers {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap: 12px;
+}
+
+
+.answer {
+
+    min-height: 70px;
+
+    padding:
+        18px 20px;
+
+    text-align: left;
+
+    color:
+        rgba(255,255,255,.7);
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    background:
+        rgba(255,255,255,.02);
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 12px;
+
+    cursor: pointer;
+
+    transition:
+        .3s ease;
+}
+
+
+.answer:hover {
+
+    color: white;
+
+    border-color:
+        rgba(255,180,80,.45);
+
+    background:
+        rgba(255,150,40,.06);
+
+    transform:
+        translateY(-3px);
+}
+
+
+.answer.correct {
+
+    color: white;
+
+    border-color:
+        rgba(100,220,150,.7);
+
+    background:
+        rgba(60,180,110,.12);
+}
+
+
+.answer.wrong {
+
+    color: white;
+
+    border-color:
+        rgba(255,90,90,.7);
+
+    background:
+        rgba(220,50,50,.12);
+}
+
+
+.answer.disabled {
+
+    pointer-events: none;
+}
+
+
+/* =========================================
+   NEXT
+========================================= */
+
+.next-area {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    margin-top: 25px;
+}
+
+
+.next-button {
+
+    display: none;
+
+    padding:
+        13px 25px;
+
+    color:
+        rgba(255,255,255,.8);
+
+    border:
+        1px solid
+        rgba(255,255,255,.2);
+
+    background:
+        transparent;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    cursor: pointer;
+
+    transition:
+        .3s ease;
+}
+
+
+.next-button:hover {
+
+    color: #010208;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-3px);
+}
+
+
+/* =========================================
+   RESULT
+========================================= */
+
+.result {
+
+    display: none;
+
+    position: relative;
+
+    text-align: center;
+
+    min-height: 500px;
+
+    padding:
+        25px 10px 15px;
+
+    overflow: hidden;
+}
+
+
+.result::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 360px;
+
+    height: 360px;
+
+    left: 50%;
+
+    top: 43%;
+
+    transform:
+        translate(-50%,-50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,190,70,.24),
+            rgba(255,100,20,.09) 38%,
+            transparent 70%
+        );
+
+    filter: blur(5px);
+
+    animation:
+        solarGlow 4s ease-in-out infinite;
+
+    pointer-events: none;
+}
+
+
+@keyframes solarGlow {
+
+    0%,100% {
+
+        transform:
+            translate(-50%,-50%)
+            scale(.82);
+
+        opacity: .55;
+    }
+
+    50% {
+
+        transform:
+            translate(-50%,-50%)
+            scale(1.18);
+
+        opacity: 1;
+    }
+}
+
+
+/* =========================================
+   SUN ICON
+========================================= */
+
+.completion-icon {
+
+    position: relative;
+
+    width: 105px;
+
+    height: 105px;
+
+    margin:
+        5px auto 32px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #fff8cf 0%,
+            #ffd66b 30%,
+            #ff9d27 65%,
+            #e95b13 100%
+        );
+
+    box-shadow:
+        0 0 25px
+        rgba(255,190,60,.65),
+
+        0 0 65px
+        rgba(255,120,20,.35),
+
+        0 0 120px
+        rgba(255,80,10,.18);
+
+    animation:
+        sunAppear 1s ease forwards,
+        sunFloat 4s ease-in-out 1s infinite;
+
+    z-index: 2;
+}
+
+
+.completion-icon::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: -17px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid
+        rgba(255,180,70,.35);
+
+    box-shadow:
+        0 0 20px
+        rgba(255,160,50,.25);
+
+    animation:
+        sunRing 7s linear infinite;
+}
+
+
+.completion-icon::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: -29px;
+
+    border-radius: 50%;
+
+    border:
+        1px dashed
+        rgba(255,210,120,.13);
+
+    animation:
+        sunRingReverse 12s linear infinite;
+}
+
+
+@keyframes sunAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            scale(.25)
+            rotate(-40deg);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            scale(1)
+            rotate(0);
+    }
+}
+
+
+@keyframes sunFloat {
+
+    0%,100% {
+
+        transform:
+            translateY(0);
+    }
+
+    50% {
+
+        transform:
+            translateY(-8px);
+    }
+}
+
+
+@keyframes sunRing {
+
+    from {
+
+        transform:
+            rotate(0deg);
+    }
+
+    to {
+
+        transform:
+            rotate(360deg);
+    }
+}
+
+
+@keyframes sunRingReverse {
+
+    from {
+
+        transform:
+            rotate(360deg);
+    }
+
+    to {
+
+        transform:
+            rotate(0deg);
+    }
+}
+
+
+/* =========================================
+   RESULT TEXT
+========================================= */
+
+.result-label {
+
+    position: relative;
+
+    z-index: 2;
+
+    margin-bottom: 18px;
+
+    color:
+        rgba(255,190,100,.55);
+
+    font-size: 10px;
+
+    letter-spacing: 6px;
+
+    animation:
+        fadeUp .8s ease .2s both;
+}
+
+
+.result-title {
+
+    position: relative;
+
+    z-index: 2;
+
+    margin-bottom: 12px;
+
+    font-size:
+        clamp(32px,7vw,65px);
+
+    letter-spacing: 5px;
+
+    animation:
+        titleAppear 1s ease .35s both;
+}
+
+
+@keyframes titleAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(20px);
+
+        letter-spacing: 15px;
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+        letter-spacing: 5px;
+    }
+}
+
+
+.score {
+
+    position: relative;
+
+    z-index: 2;
+
+    margin-bottom: 22px;
+
+    font-size: 25px;
+
+    font-weight: bold;
+
+    letter-spacing: 3px;
+
+    animation:
+        fadeUp .8s ease .55s both;
+}
+
+
+.result-text {
+
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 650px;
+
+    margin:
+        0 auto 30px;
+
+    color:
+        rgba(255,255,255,.5);
+
+    font-size: 13px;
+
+    line-height: 1.8;
+
+    animation:
+        fadeUp .8s ease .7s both;
+}
+
+
+@keyframes fadeUp {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(15px);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* =========================================
+   SCORE BAR
+========================================= */
+
+.final-score-bar {
+
+    position: relative;
+
+    z-index: 2;
+
+    width:
+        min(500px,90%);
+
+    height: 3px;
+
+    margin:
+        0 auto 35px;
+
+    background:
+        rgba(255,255,255,.08);
+
+    overflow: hidden;
+
+    animation:
+        fadeUp .8s ease .85s both;
+}
+
+
+.final-score-fill {
+
+    width: 0%;
+
+    height: 100%;
+
+    background: white;
+
+    box-shadow:
+        0 0 12px
+        rgba(255,255,255,.8);
+
+    transition:
+        width 1.8s cubic-bezier(.2,.8,.2,1);
+}
+
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.result-buttons {
+
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+
+    animation:
+        fadeUp .8s ease 1s both;
+}
+
+
+.result-button {
+
+    padding:
+        13px 23px;
+
+    color:
+        rgba(255,255,255,.75);
+
+    border:
+        1px solid
+        rgba(255,255,255,.2);
+
+    background:
+        transparent;
+
+    text-decoration: none;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    cursor: pointer;
+
+    transition:
+        .3s ease;
+}
+
+
+.result-button:hover {
+
+    color: #010208;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-3px);
+}
+
+
+/* =========================================
+   PARTICLES
+========================================= */
+
+.final-particle {
+
+    position: absolute;
+
+    width: 3px;
+
+    height: 3px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    pointer-events: none;
+
+    opacity: 0;
+
+    animation:
+        particleFly 2.5s ease-out forwards;
+}
+
+
+@keyframes particleFly {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            translate(0,0)
+            scale(.2);
+    }
+
+    15% {
+
+        opacity: 1;
+
+        transform:
+            translate(0,0)
+            scale(1);
+    }
+
+    100% {
+
+        opacity: 0;
+
+        transform:
+            translate(
+                var(--x),
+                var(--y)
+            )
+            scale(.2);
+    }
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.footer {
+
+    position: relative;
+
+    z-index: 5;
+
+    margin-top: 35px;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,.25);
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:600px) {
+
+    .sun-quiz-page {
+
+        padding:
+            50px 15px 80px;
+    }
+
+    .quiz-container {
+
+        padding: 25px;
+    }
+
+    .answers {
+
+        grid-template-columns:
+            1fr;
+    }
+
+    .question {
+
+        font-size: 20px;
+    }
+
+    .completion-icon {
+
+        width: 85px;
+
+        height: 85px;
+    }
+
+    .result {
+
+        min-height: 550px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<section class="sun-quiz-page">
+
+
+<div class="stars"></div>
+
+<div class="stars-small"></div>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<div class="header">
+
+
+<a
+href="https://sites.google.com/view/kosmolearn"
+class="return">
+
+← RETURN TO HOME
+
+</a>
+
+
+<div class="label">
+
+ORBONIX · SPACE KNOWLEDGE
+
+</div>
+
+
+<h1>
+
+SUN QUIZ
+
+</h1>
+
+
+<div class="subtitle">
+
+30 questions about the star at the center
+of our Solar System — from basic facts
+to the physics of the Sun's interior.
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     QUIZ
+========================================= -->
+
+<div class="quiz-container">
+
+
+<div id="quiz">
+
+
+<div class="quiz-top">
+
+<div
+class="question-number"
+id="questionNumber">
+
+QUESTION 01 / 30
+
+</div>
+
+
+<div
+class="difficulty"
+id="difficulty">
+
+EASY
+
+</div>
+
+</div>
+
+
+<div class="progress">
+
+<div
+class="progress-bar"
+id="progressBar">
+</div>
+
+</div>
+
+
+<div
+class="question"
+id="question">
+
+Loading question...
+
+</div>
+
+
+<div
+class="answers"
+id="answers">
+</div>
+
+
+<div class="next-area">
+
+
+<button
+class="next-button"
+id="nextButton"
+onclick="nextQuestion()">
+
+NEXT QUESTION →
+
+</button>
+
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     FINAL RESULT
+========================================= -->
+
+<div
+class="result"
+id="result">
+
+
+<div class="completion-icon"></div>
+
+
+<div class="result-label">
+
+SOLAR MISSION COMPLETE
+
+</div>
+
+
+<div
+class="result-title"
+id="resultTitle">
+
+SOLAR EXPLORER
+
+</div>
+
+
+<div
+class="score"
+id="score">
+
+0 / 30
+
+</div>
+
+
+<div class="final-score-bar">
+
+<div
+class="final-score-fill"
+id="finalScoreFill">
+</div>
+
+</div>
+
+
+<div
+class="result-text"
+id="resultText">
+
+You have completed your journey
+through the physics of our star.
+
+</div>
+
+
+<div class="result-buttons">
+
+
+<button
+class="result-button"
+onclick="restartQuiz()">
+
+↻ RESTART QUIZ
+
+</button>
+
+
+<a
+href="YOUR-QUIZ-SELECT-PAGE-LINK"
+class="result-button">
+
+← QUIZ SELECT
+
+</a>
+
+
+<a
+href="https://sites.google.com/view/kosmolearn"
+class="result-button">
+
+RETURN TO HOME
+
+</a>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+<div class="footer">
+
+ORBONIX · SUN QUIZ · SPACE KNOWLEDGE
+
+</div>
+
+
+</section>
+
+
+<script>
+
+
+/* =========================================
+   QUESTIONS
+========================================= */
+
+const questions = [
+
+/* =========================================
+   EASY — 1-10
+========================================= */
+
+{
+question:
+"What type of object is the Sun?",
+answers:
+[
+"A planet",
+"A star",
+"A galaxy",
+"A moon"
+],
+correct: 1,
+difficulty: "EASY"
+},
+
+{
+question:
+"What is the Sun at the center of?",
+answers:
+[
+"The Solar System",
+"The Milky Way",
+"The Universe",
+"The Kuiper Belt"
+],
+correct: 0,
+difficulty: "EASY"
+},
+
+{
+question:
+"Which force keeps the planets in orbit around the Sun?",
+answers:
+[
+"Magnetism",
+"Electricity",
+"Gravity",
+"Radiation pressure"
+],
+correct: 2,
+difficulty: "EASY"
+},
+
+{
+question:
+"What is the Sun mostly made of?",
+answers:
+[
+"Iron and rock",
+"Hydrogen and helium",
+"Oxygen and carbon",
+"Nitrogen and water"
+],
+correct: 1,
+difficulty: "EASY"
+},
+
+{
+question:
+"Which planet is closest to the Sun?",
+answers:
+[
+"Venus",
+"Earth",
+"Mars",
+"Mercury"
+],
+correct: 3,
+difficulty: "EASY"
+},
+
+{
+question:
+"How old is the Sun approximately?",
+answers:
+[
+"4.6 billion years",
+"460 million years",
+"46 billion years",
+"13.8 billion years"
+],
+correct: 0,
+difficulty: "EASY"
+},
+
+{
+question:
+"What gives the Sun its energy?",
+answers:
+[
+"Burning oxygen",
+"Nuclear fusion",
+"Chemical reactions",
+"Lightning"
+],
+correct: 1,
+difficulty: "EASY"
+},
+
+{
+question:
+"Which color does the Sun appear to be from space?",
+answers:
+[
+"Pure blue",
+"Green",
+"White",
+"Purple"
+],
+correct: 2,
+difficulty: "EASY"
+},
+
+{
+question:
+"What is the visible surface of the Sun called?",
+answers:
+[
+"Corona",
+"Photosphere",
+"Core",
+"Chromosphere"
+],
+correct: 1,
+difficulty: "EASY"
+},
+
+{
+question:
+"What is a solar eclipse?",
+answers:
+[
+"When Earth moves between the Sun and Moon",
+"When the Moon moves between Earth and the Sun",
+"When the Sun disappears permanently",
+"When Mars blocks sunlight"
+],
+correct: 1,
+difficulty: "EASY"
+},
+
+
+/* =========================================
+   MEDIUM — 11-20
+========================================= */
+
+{
+question:
+"Where does nuclear fusion occur inside the Sun?",
+answers:
+[
+"The corona",
+"The photosphere",
+"The core",
+"The solar wind"
+],
+correct: 2,
+difficulty: "MEDIUM"
+},
+
+{
+question:
+"What element is primarily fused into helium in the Sun's core?",
+answers:
+[
+"Hydrogen",
+"Oxygen",
+"Iron",
+"Carbon"
+],
+correct: 0,
+difficulty: "MEDIUM"
+},
+
+{
+question:
+"What is the Sun's outer atmosphere called?",
+answers:
+[
+"Corona",
+"Photosphere",
+"Radiative zone",
+"Convection zone"
+],
+correct: 0,
+difficulty: "MEDIUM"
+},
+
+{
+question:
+"What are sunspots?",
+answers:
+[
+"Black holes on the Sun",
+"Cooler, darker regions associated with strong magnetic fields",
+"Holes in the Sun's surface",
+"Frozen pieces of the Sun"
+],
+correct: 1,
+difficulty: "MEDIUM"
+},
+
+{
+question:
+"What causes the Sun's approximately 11-year solar cycle?",
+answers:
+[
+"Changes in its magnetic activity",
+"The orbit of Jupiter",
+"The changing distance to Earth",
+"The Moon's gravity"
+],
+correct: 0,
+difficulty: "MEDIUM"
+},
+
+{
+question:
+"What is the solar wind?",
+answers:
+[
+"A wind caused by Earth's atmosphere",
+"A stream of charged particles flowing from the Sun",
+"Sound waves travelling through space",
+"Gas clouds orbiting the Sun"
+],
+correct: 1,
+difficulty: "MEDIUM"
+},
+
+{
+question:
+"What happens during a solar flare?",
+answers:
+[
+"The Sun suddenly becomes a black hole",
+"A burst of electromagnetic energy is released",
+"The Sun stops producing light",
+"The Sun loses all of its atmosphere"
+],
+correct: 1,
+difficulty: "MEDIUM"
+},
+
+{
+question:
+"Which layer lies directly above the Sun's photosphere?",
+answers:
+[
+"Core",
+"Chromosphere",
+"Radiative zone",
+"Convection zone"
+],
+correct: 1,
+difficulty: "MEDIUM"
+},
+
+{
+question:
+"What are prominences on the Sun?",
+answers:
+[
+"Large structures of plasma held by magnetic fields",
+"Small planets orbiting the Sun",
+"Permanent holes in the photosphere",
+"Frozen clouds of hydrogen"
+],
+correct: 0,
+difficulty: "MEDIUM"
+},
+
+{
+question:
+"What is the approximate temperature of the Sun's surface?",
+answers:
+[
+"5,500 °C",
+"550 °C",
+"55,000 °C",
+"55 °C"
+],
+correct: 0,
+difficulty: "MEDIUM"
+},
+
+
+/* =========================================
+   HARD — 21-30
+========================================= */
+
+{
+question:
+"What is the approximate temperature of the Sun's core?",
+answers:
+[
+"5,500 K",
+"600,000 K",
+"15 million K",
+"150 million K"
+],
+correct: 2,
+difficulty: "HARD"
+},
+
+{
+question:
+"Why does the Sun shine for billions of years instead of burning like a fire?",
+answers:
+[
+"It is powered by nuclear fusion rather than chemical combustion",
+"It contains an unlimited supply of oxygen",
+"It is made of solid fire",
+"Gravity continuously creates oxygen"
+],
+correct: 0,
+difficulty: "HARD"
+},
+
+{
+question:
+"What process powers the Sun's core?",
+answers:
+[
+"The proton–proton chain",
+"Radioactive decay",
+"Chemical combustion",
+"Nuclear fission"
+],
+correct: 0,
+difficulty: "HARD"
+},
+
+{
+question:
+"What is the main function of the Sun's radiative zone?",
+answers:
+[
+"Energy is transported mainly by radiation",
+"Solar flares are created there",
+"Sunspots form there",
+"The solar wind is produced there"
+],
+correct: 0,
+difficulty: "HARD"
+},
+
+{
+question:
+"How is energy transported through the Sun's convection zone?",
+answers:
+[
+"By convection involving moving plasma",
+"Only by gravitational waves",
+"By sound travelling through space",
+"By solid rocks moving upward"
+],
+correct: 0,
+difficulty: "HARD"
+},
+
+{
+question:
+"Why are sunspots darker than their surroundings?",
+answers:
+[
+"They are actually holes",
+"They are cooler regions of the photosphere",
+"They contain no matter",
+"They are outside the Sun"
+],
+correct: 1,
+difficulty: "HARD"
+},
+
+{
+question:
+"What is a coronal mass ejection (CME)?",
+answers:
+[
+"A large eruption of magnetized plasma from the Sun",
+"A nuclear explosion inside Earth",
+"A planet leaving the Solar System",
+"A permanent hole in the corona"
+],
+correct: 0,
+difficulty: "HARD"
+},
+
+{
+question:
+"What can a powerful solar storm cause on Earth?",
+answers:
+[
+"Changes in Earth's orbit",
+"Geomagnetic storms and auroras",
+"The Moon to disappear",
+"Earth's atmosphere to freeze"
+],
+correct: 1,
+difficulty: "HARD"
+},
+
+{
+question:
+"Why is the Sun's corona much hotter than its visible surface?",
+answers:
+[
+"The exact heating mechanism is not completely understood",
+"The corona is closer to the Sun's core",
+"The corona contains liquid metal",
+"Sunlight heats it directly"
+],
+correct: 0,
+difficulty: "HARD"
+},
+
+{
+question:
+"What will eventually happen to the Sun after it leaves the main sequence?",
+answers:
+[
+"It will become a neutron star",
+"It will become a red giant and eventually leave behind a white dwarf",
+"It will immediately become a black hole",
+"It will turn into a galaxy"
+],
+correct: 1,
+difficulty: "HARD"
+}
+
+];
+
+
+/* =========================================
+   VARIABLES
+========================================= */
+
+let currentQuestion = 0;
+
+let score = 0;
+
+let answered = false;
+
+
+/* =========================================
+   SHUFFLE
+========================================= */
+
+function shuffleAnswers(question) {
+
+    const answerObjects =
+        question.answers.map(
+            (answer, index) => {
+
+                return {
+
+                    text: answer,
+
+                    correct:
+                        index === question.correct
+
+                };
+
+            }
+        );
+
+
+    for (
+        let i = answerObjects.length - 1;
+        i > 0;
+        i--
+    ) {
+
+        const j =
+            Math.floor(
+                Math.random() * (i + 1)
+            );
+
+
+        [
+            answerObjects[i],
+            answerObjects[j]
+        ] =
+        [
+            answerObjects[j],
+            answerObjects[i]
+        ];
+
+    }
+
+
+    return answerObjects;
+}
+
+
+/* =========================================
+   LOAD QUESTION
+========================================= */
+
+function loadQuestion() {
+
+    answered = false;
+
+
+    const q =
+        questions[currentQuestion];
+
+
+    document.getElementById(
+        "questionNumber"
+    ).textContent =
+        `QUESTION ${
+            String(currentQuestion + 1)
+            .padStart(2,"0")
+        } / ${questions.length}`;
+
+
+    document.getElementById(
+        "difficulty"
+    ).textContent =
+        q.difficulty;
+
+
+    document.getElementById(
+        "question"
+    ).textContent =
+        q.question;
+
+
+    document.getElementById(
+        "progressBar"
+    ).style.width =
+        `${(
+            currentQuestion /
+            questions.length
+        ) * 100}%`;
+
+
+    const answersContainer =
+        document.getElementById(
+            "answers"
+        );
+
+
+    answersContainer.innerHTML = "";
+
+
+    const shuffled =
+        shuffleAnswers(q);
+
+
+    shuffled.forEach(
+        answerObject => {
+
+            const button =
+                document.createElement(
+                    "button"
+                );
+
+
+            button.className =
+                "answer";
+
+
+            button.textContent =
+                answerObject.text;
+
+
+            button.dataset.correct =
+                answerObject.correct;
+
+
+            button.onclick =
+                function() {
+
+                    selectAnswer(
+                        answerObject.correct,
+                        button
+                    );
+
+                };
+
+
+            answersContainer.appendChild(
+                button
+            );
+
+        }
+    );
+
+
+    document.getElementById(
+        "nextButton"
+    ).style.display =
+        "none";
+}
+
+
+/* =========================================
+   ANSWER
+========================================= */
+
+function selectAnswer(
+    isCorrect,
+    selectedButton
+) {
+
+    if (answered)
+        return;
+
+
+    answered = true;
+
+
+    const buttons =
+        document.querySelectorAll(
+            ".answer"
+        );
+
+
+    buttons.forEach(
+        button => {
+
+            button.classList.add(
+                "disabled"
+            );
+
+        }
+    );
+
+
+    if (isCorrect) {
+
+        selectedButton.classList.add(
+            "correct"
+        );
+
+        score++;
+
+    }
+
+    else {
+
+        selectedButton.classList.add(
+            "wrong"
+        );
+
+
+        buttons.forEach(
+            button => {
+
+                if (
+                    button.dataset.correct
+                    === "true"
+                ) {
+
+                    button.classList.add(
+                        "correct"
+                    );
+
+                }
+
+            }
+        );
+
+    }
+
+
+    document.getElementById(
+        "nextButton"
+    ).style.display =
+        "inline-flex";
+}
+
+
+/* =========================================
+   NEXT QUESTION
+========================================= */
+
+function nextQuestion() {
+
+    currentQuestion++;
+
+
+    if (
+        currentQuestion >=
+        questions.length
+    ) {
+
+        showResult();
+
+        return;
+
+    }
+
+
+    loadQuestion();
+}
+
+
+/* =========================================
+   RESULT
+========================================= */
+
+function showResult() {
+
+    document.getElementById(
+        "quiz"
+    ).style.display =
+        "none";
+
+
+    const result =
+        document.getElementById(
+            "result"
+        );
+
+
+    result.style.display =
+        "block";
+
+
+    document.getElementById(
+        "score"
+    ).textContent =
+        "0 / 30";
+
+
+    let title = "";
+
+    let text = "";
+
+
+    if (score <= 10) {
+
+        title =
+            "SOLAR BEGINNER";
+
+        text =
+            "Your journey into solar physics has begun. The Sun still has many secrets waiting for you to discover.";
+
+    }
+
+    else if (score <= 17) {
+
+        title =
+            "SOLAR EXPLORER";
+
+        text =
+            "A solid result. You know the basic structure and activity of our nearest star.";
+
+    }
+
+    else if (score <= 23) {
+
+        title =
+            "SOLAR ASTRONOMER";
+
+        text =
+            "Very strong performance. You understand many of the physical processes happening inside and around the Sun.";
+
+    }
+
+    else if (score <= 27) {
+
+        title =
+            "SOLAR EXPERT";
+
+        text =
+            "Excellent. You handled advanced questions about solar physics, magnetic activity and stellar evolution.";
+
+    }
+
+    else {
+
+        title =
+            "SOLAR MASTER";
+
+        text =
+            "Outstanding. Your knowledge of the Sun is exceptional — from its core to its corona and future evolution.";
+
+    }
+
+
+    document.getElementById(
+        "resultTitle"
+    ).textContent =
+        title;
+
+
+    document.getElementById(
+        "resultText"
+    ).textContent =
+        text;
+
+
+    animateScore();
+
+
+    setTimeout(
+        function() {
+
+            document.getElementById(
+                "finalScoreFill"
+            ).style.width =
+                `${(
+                    score /
+                    questions.length
+                ) * 100}%`;
+
+        },
+        600
+    );
+
+
+    createParticles();
+
+}
+
+
+/* =========================================
+   SCORE ANIMATION
+========================================= */
+
+function animateScore() {
+
+    let value = 0;
+
+    const scoreElement =
+        document.getElementById(
+            "score"
+        );
+
+
+    const duration = 1600;
+
+    const start =
+        performance.now();
+
+
+    function update(now) {
+
+        const progress =
+            Math.min(
+                (now - start) /
+                duration,
+                1
+            );
+
+
+        const eased =
+            1 -
+            Math.pow(
+                1 - progress,
+                3
+            );
+
+
+        value =
+            Math.floor(
+                eased * score
+            );
+
+
+        scoreElement.textContent =
+            `${value} / ${questions.length}`;
+
+
+        if (progress < 1) {
+
+            requestAnimationFrame(
+                update
+            );
+
+        }
+
+        else {
+
+            scoreElement.textContent =
+                `${score} / ${questions.length}`;
+
+        }
+
+    }
+
+
+    requestAnimationFrame(
+        update
+    );
+}
+
+
+/* =========================================
+   PARTICLES
+========================================= */
+
+function createParticles() {
+
+    const result =
+        document.getElementById(
+            "result"
+        );
+
+
+    for (
+        let i = 0;
+        i < 80;
+        i++
+    ) {
+
+        const particle =
+            document.createElement(
+                "div"
+            );
+
+
+        particle.className =
+            "final-particle";
+
+
+        particle.style.left =
+            Math.random() * 100 + "%";
+
+
+        particle.style.top =
+            40 +
+            Math.random() * 20 +
+            "%";
+
+
+        particle.style.setProperty(
+            "--x",
+            (
+                Math.random() * 550 -
+                275
+            ) + "px"
+        );
+
+
+        particle.style.setProperty(
+            "--y",
+            (
+                Math.random() * 550 -
+                275
+            ) + "px"
+        );
+
+
+        particle.style.animationDelay =
+            Math.random() * .8 +
+            "s";
+
+
+        result.appendChild(
+            particle
+        );
+
+
+        setTimeout(
+            function() {
+
+                particle.remove();
+
+            },
+            3500
+        );
+
+    }
+
+}
+
+
+/* =========================================
+   RESTART
+========================================= */
+
+function restartQuiz() {
+
+    currentQuestion = 0;
+
+    score = 0;
+
+
+    document.getElementById(
+        "quiz"
+    ).style.display =
+        "block";
+
+
+    document.getElementById(
+        "result"
+    ).style.display =
+        "none";
+
+
+    document.getElementById(
+        "finalScoreFill"
+    ).style.width =
+        "0%";
+
+
+    loadQuestion();
+}
+
+
+/* =========================================
+   STAR PARALLAX
+========================================= */
+
+const stars =
+document.querySelector(".stars");
+
+const smallStars =
+document.querySelector(".stars-small");
+
+
+document.addEventListener(
+"mousemove",
+
+function(event) {
+
+    const x =
+        event.clientX /
+        window.innerWidth -
+        0.5;
+
+    const y =
+        event.clientY /
+        window.innerHeight -
+        0.5;
+
+
+    stars.style.transform =
+        `translate(
+            ${x * 20}px,
+            ${y * 20}px
+        )`;
+
+
+    smallStars.style.transform =
+        `translate(
+            ${x * -12}px,
+            ${y * -12}px
+        )`;
+
+});
+
+
+/* =========================================
+   START
+========================================= */
+
+loadQuestion();
+
+</script>
+
+
+</body>
+
+</html>
