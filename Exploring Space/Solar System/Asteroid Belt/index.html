@@ -1,1 +1,1159 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: #020308;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   PAGE
+========================================= */
+
+.asteroid-page {
+
+    position: relative;
+
+    min-height: 1750px;
+
+    padding: 55px 20px 100px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 30%,
+            rgba(120,110,95,.16),
+            transparent 45%
+        ),
+        #020308;
+}
+
+
+/* =========================================
+   STARS
+========================================= */
+
+.stars {
+
+    position: absolute;
+
+    inset: -20%;
+
+    pointer-events: none;
+
+    opacity: .38;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.9) 1px,
+            transparent 1px
+        );
+
+    background-size: 75px 75px;
+
+    transition:
+        transform 1.5s ease;
+}
+
+
+.stars-small {
+
+    position: absolute;
+
+    inset: -20%;
+
+    pointer-events: none;
+
+    opacity: .14;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.8) 1px,
+            transparent 1px
+        );
+
+    background-size: 32px 32px;
+
+    transition:
+        transform 2s ease;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header {
+
+    position: relative;
+
+    z-index: 100;
+
+    max-width: 950px;
+
+    margin: auto;
+
+    text-align: center;
+}
+
+
+.return {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    padding: 12px 20px;
+
+    margin-bottom: 35px;
+
+    color:
+        rgba(255,255,255,.7);
+
+    border:
+        1px solid
+        rgba(255,255,255,.22);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    transition:
+        .35s ease;
+}
+
+
+.return:hover {
+
+    color: #020308;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-4px);
+}
+
+
+.label {
+
+    margin-bottom: 18px;
+
+    color:
+        rgba(255,255,255,.4);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+
+h1 {
+
+    margin: 0;
+
+    font-size:
+        clamp(48px,8vw,100px);
+
+    line-height: .9;
+
+    letter-spacing: 6px;
+}
+
+
+.subtitle {
+
+    max-width: 720px;
+
+    margin:
+        25px auto 0;
+
+    color:
+        rgba(255,255,255,.52);
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   ASTEROID BELT VISUAL
+========================================= */
+
+.asteroid-area {
+
+    position: relative;
+
+    width: min(900px, 100%);
+
+    height: 620px;
+
+    margin:
+        65px auto 90px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    background:
+        rgba(0,0,0,.45);
+
+    box-shadow:
+        0 0 80px
+        rgba(100,100,100,.08);
+
+    transition:
+        transform .5s ease,
+        box-shadow .5s ease;
+}
+
+
+.asteroid-area:hover {
+
+    transform:
+        scale(1.015);
+
+    box-shadow:
+        0 0 100px
+        rgba(150,140,120,.13);
+}
+
+
+/* =========================================
+   NASA IMAGE
+========================================= */
+
+.asteroid-visual {
+
+    width: 100%;
+
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    object-position: center;
+
+    filter:
+        brightness(.72)
+        contrast(1.08)
+        saturate(.8);
+
+    transition:
+        transform 1.2s ease,
+        filter 1.2s ease;
+}
+
+
+.asteroid-area:hover .asteroid-visual {
+
+    transform:
+        scale(1.035);
+
+    filter:
+        brightness(.82)
+        contrast(1.12)
+        saturate(.9);
+}
+
+
+/* =========================================
+   IMAGE OVERLAY
+========================================= */
+
+.asteroid-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(2,3,8,.18),
+            transparent 35%,
+            transparent 65%,
+            rgba(2,3,8,.5)
+        );
+}
+
+
+/* =========================================
+   VISUAL LABEL
+========================================= */
+
+.visual-label {
+
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 22px;
+
+    transform:
+        translateX(-50%);
+
+    padding:
+        9px 16px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.2);
+
+    background:
+        rgba(0,0,0,.55);
+
+    backdrop-filter:
+        blur(8px);
+
+    color:
+        rgba(255,255,255,.72);
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.content {
+
+    position: relative;
+
+    z-index: 10;
+
+    width:
+        min(1050px,100%);
+
+    margin: auto;
+}
+
+
+/* =========================================
+   STATS
+========================================= */
+
+.stats {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 1px;
+
+    background:
+        rgba(255,255,255,.1);
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+}
+
+
+.stat {
+
+    padding: 30px;
+
+    background:
+        rgba(5,7,13,.96);
+
+    transition:
+        .35s ease;
+}
+
+
+.stat:hover {
+
+    transform:
+        translateY(-5px);
+
+    background:
+        rgba(255,255,255,.04);
+}
+
+
+.stat-value {
+
+    margin-bottom: 9px;
+
+    font-size: 21px;
+
+    font-weight: bold;
+}
+
+
+.stat-label {
+
+    color:
+        rgba(255,255,255,.4);
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================
+   DESCRIPTION
+========================================= */
+
+.description {
+
+    margin-top: 60px;
+
+    padding: 40px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.025);
+}
+
+
+.description-title {
+
+    margin-bottom: 20px;
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+}
+
+
+.description-text {
+
+    max-width: 900px;
+
+    color:
+        rgba(255,255,255,.58);
+
+    font-size: 14px;
+
+    line-height: 1.9;
+}
+
+
+/* =========================================
+   FEATURES
+========================================= */
+
+.features-title {
+
+    margin-top: 60px;
+
+    margin-bottom: 25px;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,.45);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+
+.features {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 15px;
+}
+
+
+.feature {
+
+    padding: 28px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.02);
+
+    transition:
+        .35s ease;
+}
+
+
+.feature:hover {
+
+    transform:
+        translateY(-6px);
+
+    border-color:
+        rgba(205,190,160,.4);
+
+    background:
+        rgba(255,255,255,.04);
+}
+
+
+.feature-title {
+
+    margin-bottom: 12px;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+}
+
+
+.feature-text {
+
+    color:
+        rgba(255,255,255,.5);
+
+    font-size: 12px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   FACT
+========================================= */
+
+.fact {
+
+    margin-top: 60px;
+
+    padding: 40px;
+
+    text-align: center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    background:
+        rgba(255,255,255,.025);
+}
+
+
+.fact-label {
+
+    margin-bottom: 16px;
+
+    color:
+        rgba(255,255,255,.42);
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+}
+
+
+.fact-text {
+
+    max-width: 800px;
+
+    margin: auto;
+
+    font-size:
+        clamp(18px,3vw,27px);
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   NAVIGATION
+========================================= */
+
+.navigation {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    margin-top: 55px;
+
+    flex-wrap: wrap;
+}
+
+
+.nav-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 13px 22px;
+
+    color:
+        rgba(255,255,255,.75);
+
+    border:
+        1px solid
+        rgba(255,255,255,.2);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    transition:
+        .35s ease;
+}
+
+
+.nav-button:hover {
+
+    color: #020308;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-4px);
+}
+
+
+/* =========================================
+   CREDIT
+========================================= */
+
+.credit {
+
+    margin-top: 30px;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,.3);
+
+    font-size: 9px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:800px) {
+
+    .asteroid-area {
+
+        height: 500px;
+    }
+
+
+    .stats {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .features {
+
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media(max-width:500px) {
+
+    .asteroid-page {
+
+        padding:
+            45px 15px 70px;
+    }
+
+
+    .asteroid-area {
+
+        height: 360px;
+
+        margin-top: 45px;
+    }
+
+
+    .asteroid-visual {
+
+        object-fit: cover;
+
+        object-position: center;
+    }
+
+
+    .visual-label {
+
+        font-size: 8px;
+
+        letter-spacing: 2px;
+
+        bottom: 15px;
+    }
+
+
+    .description {
+
+        padding: 25px;
+    }
+
+
+    .fact {
+
+        padding:
+            28px 20px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<section class="asteroid-page">
+
+
+<div class="stars"></div>
+
+<div class="stars-small"></div>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<div class="header">
+
+
+<a
+href="https://sites.google.com/view/kosmolearn/solar-system"
+class="return">
+
+← RETURN TO SOLAR SYSTEM
+
+</a>
+
+
+<div class="label">
+
+ORBONIX · SOLAR SYSTEM
+
+</div>
+
+
+<h1>
+
+ASTEROID BELT
+
+</h1>
+
+
+<div class="subtitle">
+
+A vast region of rocky and metallic bodies
+orbiting the Sun between Mars and Jupiter,
+containing millions of asteroids and some
+of the Solar System's most ancient worlds.
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     REAL ASTEROID BELT VISUAL
+========================================= -->
+
+<div class="asteroid-area">
+
+
+<img
+class="asteroid-visual"
+src="https://d2pn8kiwq2w21t.cloudfront.net/original_images/jpegPIA19380.jpg"
+alt="NASA visualization of the asteroid belt">
+
+
+<div class="asteroid-overlay"></div>
+
+
+<div class="visual-label">
+
+NASA · ASTEROID BELT
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     CONTENT
+========================================= -->
+
+<div class="content">
+
+
+<!-- STATS -->
+
+<div class="stats">
+
+
+<div class="stat">
+
+<div class="stat-value">
+2.1–3.3 AU
+</div>
+
+<div class="stat-label">
+DISTANCE FROM SUN
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+~1.1 MILLION
+</div>
+
+<div class="stat-label">
+KNOWN ASTEROIDS
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+4–5.5 YEARS
+</div>
+
+<div class="stat-label">
+TYPICAL ORBITAL PERIOD
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+~4.6 BILLION YEARS
+</div>
+
+<div class="stat-label">
+AGE
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+CERES
+</div>
+
+<div class="stat-label">
+LARGEST OBJECT
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+MARS ↔ JUPITER
+</div>
+
+<div class="stat-label">
+LOCATION
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- DESCRIPTION -->
+
+<div class="description">
+
+
+<div class="description-title">
+
+THE ROCKY FRONTIER
+
+</div>
+
+
+<div class="description-text">
+
+The asteroid belt is a vast region of
+the Solar System located between the
+orbits of Mars and Jupiter.
+
+It contains millions of rocky and
+metallic bodies known as asteroids.
+Most are relatively small, but the region
+also contains large objects such as
+Ceres, Vesta, Pallas and Hygiea.
+
+Despite its name, the asteroid belt is
+not a densely packed field of rocks.
+The average distance between individual
+asteroids is enormous, making collisions
+between spacecraft and asteroids very rare.
+
+Jupiter's powerful gravity prevented
+the material in this region from combining
+into a planet during the formation of the
+Solar System.
+
+Instead, the asteroid belt remained as
+one of the best surviving records of the
+early Solar System.
+
+</div>
+
+
+</div>
+
+
+<!-- FEATURES -->
+
+<div class="features-title">
+
+ASTEROID BELT FEATURES
+
+</div>
+
+
+<div class="features">
+
+
+<div class="feature">
+
+<div class="feature-title">
+
+CERES
+
+</div>
+
+<div class="feature-text">
+
+Ceres is the largest object in the
+asteroid belt and is classified as
+a dwarf planet.
+
+</div>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-title">
+
+JUPITER'S GRAVITY
+
+</div>
+
+<div class="feature-text">
+
+Jupiter's enormous gravity disrupted
+the formation of a planet in this region
+of the Solar System.
+
+</div>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-title">
+
+ANCIENT MATERIAL
+
+</div>
+
+<div class="feature-text">
+
+Asteroids preserve material left over
+from the formation of the Solar System
+more than 4.5 billion years ago.
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- FACT -->
+
+<div class="fact">
+
+
+<div class="fact-label">
+
+DID YOU KNOW?
+
+</div>
+
+
+<div class="fact-text">
+
+The asteroid belt contains
+<strong>millions of objects</strong>,
+but spacecraft can travel through it
+without constantly dodging asteroids.
+
+</div>
+
+
+</div>
+
+
+<!-- NAVIGATION -->
+
+<div class="navigation">
+
+
+<a
+href="https://sites.google.com/view/kosmolearn/solar-system"
+class="nav-button">
+
+← RETURN TO SOLAR SYSTEM
+
+</a>
+
+
+</div>
+
+
+<div class="credit">
+
+IMAGE: NASA / JPL / McREL
+<br>
+NASA DAWN MISSION ART · PIA19380
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+<script>
+
+const stars =
+document.querySelector(".stars");
+
+
+const smallStars =
+document.querySelector(".stars-small");
+
+
+document.addEventListener(
+"mousemove",
+
+function(event) {
+
+    const x =
+        event.clientX /
+        window.innerWidth - 0.5;
+
+
+    const y =
+        event.clientY /
+        window.innerHeight - 0.5;
+
+
+    stars.style.transform =
+        `translate(
+            ${x * 20}px,
+            ${y * 20}px
+        )`;
+
+
+    smallStars.style.transform =
+        `translate(
+            ${x * -12}px,
+            ${y * -12}px
+        )`;
+
+});
+
+</script>
+
+
+</body>
+
+</html>
