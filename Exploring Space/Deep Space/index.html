@@ -5,7 +5,24 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<!-- =========================================
+     FAVICON
+========================================= -->
+
+<link
+    rel="icon"
+    type="image/png"
+    href="/favicon.png"
+>
+
+<title>ORBONIX — Deep Space</title>
+
 
 <style>
 
@@ -314,6 +331,8 @@ h1 {
     text-decoration: none;
 
     color: white;
+
+    cursor: pointer;
 
     transition:
         transform .45s ease,
@@ -722,7 +741,7 @@ h1 {
 
 
 <a
-href="https://sites.google.com/view/kosmolearn"
+href="/"
 class="return">
 
 ← RETURN TO HOME
@@ -794,7 +813,8 @@ are difficult to imagine.
 <!-- 01 BLACK HOLES -->
 
 <a
-href="#BLACK-HOLES"
+href="#"
+data-page="Black Holes"
 class="object-card">
 
 <div class="object-number">
@@ -831,7 +851,8 @@ EXPLORE →
 <!-- 02 GALAXIES -->
 
 <a
-href="#GALAXIES"
+href="#"
+data-page="Galaxies"
 class="object-card">
 
 <div class="object-number">
@@ -868,7 +889,8 @@ EXPLORE →
 <!-- 03 STARS -->
 
 <a
-href="#STARS"
+href="#"
+data-page="Stars"
 class="object-card">
 
 <div class="object-number">
@@ -905,7 +927,8 @@ EXPLORE →
 <!-- 04 QUASARS -->
 
 <a
-href="#QUASARS"
+href="#"
+data-page="Quasars"
 class="object-card">
 
 <div class="object-number">
@@ -942,7 +965,8 @@ EXPLORE →
 <!-- 05 NEBULAE -->
 
 <a
-href="#NEBULAE"
+href="#"
+data-page="Nebulae"
 class="object-card">
 
 <div class="object-number">
@@ -979,7 +1003,8 @@ EXPLORE →
 <!-- 06 ROGUE PLANETS -->
 
 <a
-href="#ROGUE-PLANETS"
+href="#"
+data-page="Rogue Planets"
 class="object-card">
 
 <div class="object-number">
@@ -1016,7 +1041,8 @@ EXPLORE →
 <!-- 07 COSMIC VOIDS -->
 
 <a
-href="#COSMIC-VOIDS"
+href="#"
+data-page="Cosmic Voids"
 class="object-card">
 
 <div class="object-number">
@@ -1053,7 +1079,8 @@ EXPLORE →
 <!-- 08 DARK MATTER -->
 
 <a
-href="#DARK-MATTER"
+href="#"
+data-page="Dark Matter"
 class="object-card">
 
 <div class="object-number">
@@ -1090,7 +1117,8 @@ EXPLORE →
 <!-- 09 DARK ENERGY -->
 
 <a
-href="#DARK-ENERGY"
+href="#"
+data-page="Dark Energy"
 class="object-card">
 
 <div class="object-number">
@@ -1127,7 +1155,8 @@ EXPLORE →
 <!-- 10 WORMHOLES -->
 
 <a
-href="#WORMHOLES"
+href="#"
+data-page="Wormholes"
 class="object-card">
 
 <div class="object-number">
@@ -1199,7 +1228,7 @@ of stars.
 
 
 <a
-href="https://sites.google.com/view/kosmolearn"
+href="/"
 class="nav-button">
 
 ← RETURN TO HOME
@@ -1220,12 +1249,11 @@ ORBONIX · DEEP SPACE
 </section>
 
 
+<!-- =========================================
+     STAR PARALLAX
+========================================= -->
+
 <script>
-
-
-/* =========================================
-   STAR PARALLAX
-========================================= */
 
 const stars =
 document.querySelector(".stars");
@@ -1266,6 +1294,13 @@ function(event) {
 });
 
 </script>
+
+
+<!-- =========================================
+     ORBONIX GLOBAL SEARCH / NAVIGATION
+========================================= -->
+
+<script src="/search.js"></script>
 
 
 </body>
