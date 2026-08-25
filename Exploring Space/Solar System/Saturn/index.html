@@ -6,7 +6,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Saturn | ORBONIX</title>
+
 <style>
+
+/* =========================================
+   RESET
+========================================= */
 
 * {
     box-sizing: border-box;
@@ -26,7 +32,7 @@ body {
 
 
 /* =========================================
-   MAIN
+   MAIN PAGE
 ========================================= */
 
 .saturn-page {
@@ -34,7 +40,7 @@ body {
     position: relative;
 
     width: 100%;
-    min-height: 1200px;
+    min-height: 1450px;
 
     padding: 55px 20px 100px;
 
@@ -42,9 +48,14 @@ body {
 
     background:
         radial-gradient(
-            circle at 50% 45%,
-            rgba(170,140,90,.12),
+            circle at 50% 40%,
+            rgba(170,140,90,.14),
             transparent 45%
+        ),
+        radial-gradient(
+            circle at 50% 80%,
+            rgba(80,100,150,.06),
+            transparent 50%
         ),
         #01030a;
 }
@@ -54,29 +65,7 @@ body {
    STARS
 ========================================= */
 
-.stars {
-
-    position: absolute;
-
-    inset: -30%;
-
-    pointer-events: none;
-
-    opacity: .4;
-
-    background-image:
-        radial-gradient(
-            circle,
-            white 1px,
-            transparent 1px
-        );
-
-    background-size: 75px 75px;
-
-    transition: transform 1.5s ease;
-}
-
-
+.stars,
 .stars-small {
 
     position: absolute;
@@ -85,18 +74,41 @@ body {
 
     pointer-events: none;
 
-    opacity: .18;
+    will-change: transform;
+}
+
+.stars {
+
+    opacity: .4;
 
     background-image:
         radial-gradient(
             circle,
-            white 1px,
+            rgba(255,255,255,.95) 1px,
+            transparent 1px
+        );
+
+    background-size: 75px 75px;
+
+    transition:
+        transform 1.5s ease;
+}
+
+.stars-small {
+
+    opacity: .17;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.8) 1px,
             transparent 1px
         );
 
     background-size: 32px 32px;
 
-    transition: transform 2s ease;
+    transition:
+        transform 2s ease;
 }
 
 
@@ -110,7 +122,7 @@ body {
 
     z-index: 100;
 
-    max-width: 1000px;
+    width: min(1000px,100%);
 
     margin: auto;
 
@@ -118,19 +130,30 @@ body {
 }
 
 
+/* =========================================
+   RETURN BUTTON
+========================================= */
+
 .return {
 
     display: inline-flex;
 
     align-items: center;
+    justify-content: center;
 
     padding: 12px 20px;
 
     margin-bottom: 35px;
 
-    color: rgba(255,255,255,.7);
+    color:
+        rgba(255,255,255,.7);
 
-    border: 1px solid rgba(255,255,255,.2);
+    border:
+        1px solid
+        rgba(255,255,255,.2);
+
+    background:
+        rgba(255,255,255,.01);
 
     text-decoration: none;
 
@@ -138,9 +161,9 @@ body {
 
     letter-spacing: 3px;
 
-    transition: .35s ease;
+    transition:
+        .35s ease;
 }
-
 
 .return:hover {
 
@@ -150,15 +173,21 @@ body {
 
     border-color: white;
 
-    transform: translateY(-4px);
+    transform:
+        translateY(-4px);
 }
 
+
+/* =========================================
+   HEADER TEXT
+========================================= */
 
 .label {
 
     margin-bottom: 18px;
 
-    color: rgba(255,255,255,.4);
+    color:
+        rgba(255,255,255,.4);
 
     font-size: 10px;
 
@@ -170,11 +199,14 @@ h1 {
 
     margin: 0;
 
-    font-size: clamp(50px,8vw,90px);
+    font-size:
+        clamp(50px,8vw,90px);
 
     line-height: .95;
 
     letter-spacing: 6px;
+
+    font-weight: 700;
 }
 
 
@@ -182,9 +214,11 @@ h1 {
 
     max-width: 700px;
 
-    margin: 25px auto 0;
+    margin:
+        25px auto 0;
 
-    color: rgba(255,255,255,.5);
+    color:
+        rgba(255,255,255,.5);
 
     font-size: 14px;
 
@@ -193,18 +227,22 @@ h1 {
 
 
 /* =========================================
-   SYSTEM
+   SATURN SYSTEM
 ========================================= */
 
 .system {
 
     position: relative;
 
-    width: min(1100px,100%);
+    width:
+        min(1100px,100%);
 
     height: 720px;
 
-    margin: 30px auto 0;
+    margin:
+        30px auto 0;
+
+    isolation: isolate;
 }
 
 
@@ -219,15 +257,20 @@ h1 {
     left: 50%;
     top: 50%;
 
-    transform: translate(-50%,-50%);
+    transform:
+        translate(-50%,-50%);
 
-    border: 1px solid rgba(220,200,160,.13);
+    border:
+        1px solid
+        rgba(220,200,160,.13);
 
     border-radius: 50%;
 
     pointer-events: none;
 }
 
+
+/* Individual orbit sizes */
 
 .o1 {
     width: 150px;
@@ -266,7 +309,7 @@ h1 {
 
 
 /* =========================================
-   OBJECT
+   GENERAL OBJECT
 ========================================= */
 
 .object {
@@ -284,12 +327,16 @@ h1 {
     transition:
         transform .45s
         cubic-bezier(.2,.8,.2,1);
+
+    -webkit-tap-highlight-color:
+        transparent;
 }
 
 
 .object:hover {
 
-    transform: scale(1.16);
+    transform:
+        scale(1.16);
 }
 
 
@@ -308,13 +355,15 @@ h1 {
 
     border-radius: 50%;
 
-    background: #080b12;
+    background:
+        #080b12;
 
     box-shadow:
         0 0 18px
         rgba(210,190,150,.12);
 
-    transition: .4s ease;
+    transition:
+        .4s ease;
 }
 
 
@@ -324,7 +373,8 @@ h1 {
         0 0 35px
         rgba(230,210,170,.4);
 
-    transform: scale(1.08);
+    transform:
+        scale(1.08);
 }
 
 
@@ -339,6 +389,8 @@ h1 {
 
     transform:
         translate(-50%,-50%);
+
+    z-index: 40;
 }
 
 
@@ -362,21 +414,33 @@ h1 {
     border-radius: 50%;
 
     box-shadow:
-        0 0 45px
-        rgba(220,190,120,.22);
 
-    transition: .45s ease;
+        0 0 45px
+        rgba(220,190,120,.22),
+
+        0 0 100px
+        rgba(180,150,90,.08);
+
+    transition:
+        .45s ease;
 }
 
 
-.saturn-object:hover
-.saturn-image {
+.saturn-object:hover .saturn-image {
 
     box-shadow:
+
         0 0 65px
-        rgba(240,210,150,.38);
+        rgba(240,210,150,.38),
+
+        0 0 110px
+        rgba(220,190,120,.12);
 }
 
+
+/* =========================================
+   SATURN LABEL
+========================================= */
 
 .saturn-name {
 
@@ -395,12 +459,13 @@ h1 {
 
     letter-spacing: 4px;
 
-    color: rgba(255,255,255,.75);
+    color:
+        rgba(255,255,255,.75);
 }
 
 
 /* =========================================
-   MOON NAME
+   MOON NAMES
 ========================================= */
 
 .name {
@@ -420,9 +485,11 @@ h1 {
 
     letter-spacing: 2px;
 
-    color: rgba(255,255,255,.5);
+    color:
+        rgba(255,255,255,.5);
 
-    transition: .3s ease;
+    transition:
+        .3s ease;
 }
 
 
@@ -562,6 +629,10 @@ h1 {
 }
 
 
+/* =========================================
+   INFO BOX
+========================================= */
+
 .info-box {
 
     padding: 35px;
@@ -575,7 +646,11 @@ h1 {
     background:
         rgba(255,255,255,.025);
 
-    transition: .4s ease;
+    backdrop-filter:
+        blur(8px);
+
+    transition:
+        .4s ease;
 }
 
 
@@ -645,7 +720,8 @@ h1 {
     background:
         rgba(5,7,13,.95);
 
-    transition: .35s ease;
+    transition:
+        .35s ease;
 }
 
 
@@ -677,6 +753,70 @@ h1 {
     font-size: 9px;
 
     letter-spacing: 2px;
+}
+
+
+/* =========================================
+   EXTRA INFORMATION
+========================================= */
+
+.extra-info {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap: 15px;
+
+    margin-top: 15px;
+}
+
+
+.extra-card {
+
+    padding: 25px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.02);
+
+    transition:
+        .35s ease;
+}
+
+
+.extra-card:hover {
+
+    transform:
+        translateY(-5px);
+
+    border-color:
+        rgba(255,255,255,.25);
+}
+
+
+.extra-title {
+
+    margin-bottom: 10px;
+
+    font-size: 11px;
+
+    letter-spacing: 3px;
+}
+
+
+.extra-text {
+
+    color:
+        rgba(255,255,255,.5);
+
+    font-size: 12px;
+
+    line-height: 1.7;
 }
 
 
@@ -721,11 +861,23 @@ h1 {
 
     .facts {
 
-        grid-template-columns: 1fr;
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .extra-info {
+
+        grid-template-columns:
+            1fr;
     }
 
 }
 
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
 
 @media(max-width:500px) {
 
@@ -747,6 +899,54 @@ h1 {
         height: 370px;
     }
 
+
+    .info {
+
+        margin-top:
+            0;
+    }
+
+
+    .info-box {
+
+        padding:
+            25px 20px;
+    }
+
+
+    .info-title {
+
+        font-size: 10px;
+
+        letter-spacing: 3px;
+    }
+
+
+    .info-text {
+
+        font-size: 12px;
+    }
+
+
+    .fact {
+
+        padding:
+            24px 20px;
+    }
+
+
+    .fact-number {
+
+        font-size: 18px;
+    }
+
+
+    .extra-card {
+
+        padding:
+            22px 20px;
+    }
+
 }
 
 </style>
@@ -760,12 +960,18 @@ h1 {
 <section class="saturn-page">
 
 
+<!-- =========================================
+     BACKGROUND
+========================================= -->
+
 <div class="stars"></div>
 
 <div class="stars-small"></div>
 
 
-<!-- HEADER -->
+<!-- =========================================
+     HEADER
+========================================= -->
 
 <div class="header">
 
@@ -805,160 +1011,234 @@ of icy rings and dozens of moons.
 </div>
 
 
-<!-- SATURN SYSTEM -->
+<!-- =========================================
+     SATURN SYSTEM
+========================================= -->
 
 <div class="system">
 
 
+<!-- ORBITS -->
+
 <div class="orbit o1"></div>
+
 <div class="orbit o2"></div>
+
 <div class="orbit o3"></div>
+
 <div class="orbit o4"></div>
+
 <div class="orbit o5"></div>
+
 <div class="orbit o6"></div>
+
 <div class="orbit o7"></div>
 
 
-<!-- SATURN -->
+<!-- =========================================
+     SATURN
+========================================= -->
 
 <a
 href="#SATURN-INFO"
-class="object saturn-object">
+class="object saturn-object"
+title="Saturn information">
+
 
 <img
 class="saturn-image"
 src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Saturn%20during%20Equinox.jpg"
 alt="Saturn">
 
+
 <div class="saturn-name">
+
 SATURN
+
 </div>
+
 
 </a>
 
 
-<!-- TITAN -->
+<!-- =========================================
+     TITAN
+========================================= -->
 
 <a
-href="#TITAN-PAGE"
-class="object titan">
+href="https://sites.google.com/view/kosmolearn/solar-system/saturn/titan"
+class="object titan"
+title="Explore Titan">
+
 
 <img
 class="moon-image"
 src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Titan%20in%20true%20color.jpg"
 alt="Titan">
 
+
 <div class="name">
+
 TITAN
+
 </div>
+
 
 </a>
 
 
-<!-- ENCELADUS -->
+<!-- =========================================
+     ENCELADUS
+========================================= -->
 
 <a
-href="#ENCELADUS-PAGE"
-class="object enceladus">
+href="https://sites.google.com/view/kosmolearn/solar-system/saturn/enceladus"
+class="object enceladus"
+title="Explore Enceladus">
+
 
 <img
 class="moon-image"
 src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Enceladus%20-%20December%2024%202005%20%2838595687845%29.jpg"
 alt="Enceladus">
 
+
 <div class="name">
+
 ENCELADUS
+
 </div>
+
 
 </a>
 
 
-<!-- MIMAS -->
+<!-- =========================================
+     MIMAS
+========================================= -->
 
 <a
-href="#MIMAS-PAGE"
-class="object mimas">
+href="https://sites.google.com/view/kosmolearn/solar-system/saturn/mimas"
+class="object mimas"
+title="Explore Mimas">
+
 
 <img
 class="moon-image"
 src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Mimas_Cassini.jpg"
 alt="Mimas">
 
+
 <div class="name">
+
 MIMAS
+
 </div>
+
 
 </a>
 
 
-<!-- RHEA -->
+<!-- =========================================
+     RHEA
+========================================= -->
 
 <a
-href="#RHEA-PAGE"
-class="object rhea">
+href="https://sites.google.com/view/kosmolearn/solar-system/saturn/rhea"
+class="object rhea"
+title="Explore Rhea">
+
 
 <img
 class="moon-image"
 src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Rhea%20true%20color.jpg"
 alt="Rhea">
 
+
 <div class="name">
+
 RHEA
+
 </div>
+
 
 </a>
 
 
-<!-- IAPETUS -->
+<!-- =========================================
+     IAPETUS
+========================================= -->
 
 <a
-href="#IAPETUS-PAGE"
-class="object iapetus">
+href="https://sites.google.com/view/kosmolearn/solar-system/saturn/iapetus"
+class="object iapetus"
+title="Explore Iapetus">
+
 
 <img
 class="moon-image"
 src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Iapetus_cassini1.jpg"
 alt="Iapetus">
 
+
 <div class="name">
+
 IAPETUS
+
 </div>
+
 
 </a>
 
 
-<!-- DIONE -->
+<!-- =========================================
+     DIONE
+========================================= -->
 
 <a
-href="#DIONE-PAGE"
-class="object dione">
+href="https://sites.google.com/view/kosmolearn/solar-system/saturn/dione"
+class="object dione"
+title="Explore Dione">
+
 
 <img
 class="moon-image"
 src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Saturn%27s_moon_Dione_by_Cassini_in_color.jpg"
 alt="Dione">
 
+
 <div class="name">
+
 DIONE
+
 </div>
+
 
 </a>
 
 
-<!-- TETHYS -->
+<!-- =========================================
+     TETHYS
+========================================= -->
 
 <a
-href="#TETHYS-PAGE"
-class="object tethys">
+href="https://sites.google.com/view/kosmolearn/solar-system/saturn/tethys"
+class="object tethys"
+title="Explore Tethys">
+
 
 <img
 class="moon-image"
 src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Tethys_near_true.jpg"
 alt="Tethys">
 
+
 <div class="name">
+
 TETHYS
+
 </div>
+
 
 </a>
 
@@ -966,7 +1246,9 @@ TETHYS
 </div>
 
 
-<!-- INFO -->
+<!-- =========================================
+     INFORMATION
+========================================= -->
 
 <div
 class="info"
@@ -974,6 +1256,7 @@ id="SATURN-INFO">
 
 
 <div class="info-box">
+
 
 <div class="info-title">
 
@@ -1001,10 +1284,13 @@ Click a moon to explore it individually.
 
 </div>
 
+
 </div>
 
 
-<!-- FACTS -->
+<!-- =========================================
+     FACTS
+========================================= -->
 
 <div class="facts">
 
@@ -1012,11 +1298,15 @@ Click a moon to explore it individually.
 <div class="fact">
 
 <div class="fact-number">
+
 1.43 billion km
+
 </div>
 
 <div class="fact-label">
+
 AVERAGE DISTANCE FROM SUN
+
 </div>
 
 </div>
@@ -1025,11 +1315,15 @@ AVERAGE DISTANCE FROM SUN
 <div class="fact">
 
 <div class="fact-number">
+
 120,536 km
+
 </div>
 
 <div class="fact-label">
+
 EQUATORIAL DIAMETER
+
 </div>
 
 </div>
@@ -1038,18 +1332,84 @@ EQUATORIAL DIAMETER
 <div class="fact">
 
 <div class="fact-number">
+
 29.4 YEARS
+
 </div>
 
 <div class="fact-label">
+
 ORBITAL PERIOD
-</div>
 
 </div>
 
+</div>
+
 
 </div>
 
+
+<!-- =========================================
+     EXTRA INFORMATION
+========================================= -->
+
+<div class="extra-info">
+
+
+<div class="extra-card">
+
+
+<div class="extra-title">
+
+RING SYSTEM
+
+</div>
+
+
+<div class="extra-text">
+
+Saturn's rings are made primarily
+of water ice particles mixed with
+rock and dust. The main rings
+extend hundreds of thousands of
+kilometres from the planet.
+
+</div>
+
+
+</div>
+
+
+<div class="extra-card">
+
+
+<div class="extra-title">
+
+TITAN
+
+</div>
+
+
+<div class="extra-text">
+
+Titan is Saturn's largest moon
+and has a thick atmosphere.
+It is the only moon known to
+have stable lakes and seas of
+liquid hydrocarbons on its surface.
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     CREDIT
+========================================= -->
 
 <div class="credit">
 
@@ -1067,6 +1427,10 @@ NASA / JPL / CASSINI
 
 <script>
 
+/* =========================================
+   STAR PARALLAX
+========================================= */
+
 const stars =
 document.querySelector(".stars");
 
@@ -1076,7 +1440,6 @@ document.querySelector(".stars-small");
 
 document.addEventListener(
 "mousemove",
-
 function(event) {
 
     const x =
@@ -1102,6 +1465,59 @@ function(event) {
             ${x * -12}px,
             ${y * -12}px
         )`;
+
+});
+
+
+/* =========================================
+   SATURN PARALLAX
+========================================= */
+
+const saturn =
+document.querySelector(".saturn-object");
+
+
+document.addEventListener(
+"mousemove",
+function(event) {
+
+    if (
+        window.innerWidth <= 800
+    ) {
+        return;
+    }
+
+
+    const x =
+        event.clientX /
+        window.innerWidth -
+        0.5;
+
+    const y =
+        event.clientY /
+        window.innerHeight -
+        0.5;
+
+
+    saturn.style.transform =
+        `translate(
+            calc(-50% + ${x * 8}px),
+            calc(-50% + ${y * 8}px)
+        )`;
+
+});
+
+
+/* =========================================
+   RESET SATURN PARALLAX
+========================================= */
+
+window.addEventListener(
+"mouseleave",
+function() {
+
+    saturn.style.transform =
+        "translate(-50%,-50%)";
 
 });
 
