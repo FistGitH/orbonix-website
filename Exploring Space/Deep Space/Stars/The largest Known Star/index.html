@@ -1,1 +1,1521 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: #010208;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   PAGE
+========================================= */
+
+.largest-star-page {
+
+    position: relative;
+
+    min-height: 1750px;
+
+    padding: 65px 20px 100px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 28%,
+            rgba(255,75,25,.18),
+            transparent 44%
+        ),
+        radial-gradient(
+            circle at 25% 65%,
+            rgba(170,40,20,.09),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 75% 75%,
+            rgba(80,40,180,.08),
+            transparent 35%
+        ),
+        #010208;
+}
+
+
+/* =========================================
+   STARS
+========================================= */
+
+.stars,
+.stars-small {
+
+    position: absolute;
+
+    inset: -25%;
+
+    pointer-events: none;
+}
+
+
+.stars {
+
+    opacity: .38;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.9) 1px,
+            transparent 1px
+        );
+
+    background-size: 75px 75px;
+
+    transition:
+        transform 1.5s ease;
+}
+
+
+.stars-small {
+
+    opacity: .16;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.8) 1px,
+            transparent 1px
+        );
+
+    background-size: 32px 32px;
+
+    transition:
+        transform 2s ease;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header {
+
+    position: relative;
+
+    z-index: 10;
+
+    max-width: 900px;
+
+    margin: auto;
+
+    text-align: center;
+}
+
+
+.return {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 12px 20px;
+
+    margin-bottom: 40px;
+
+    color:
+        rgba(255,255,255,.7);
+
+    border:
+        1px solid
+        rgba(255,255,255,.22);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    transition: .35s ease;
+}
+
+
+.return:hover {
+
+    color: #010208;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-4px);
+}
+
+
+.label {
+
+    margin-bottom: 18px;
+
+    color:
+        rgba(255,255,255,.4);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+
+h1 {
+
+    margin: 0;
+
+    font-size:
+        clamp(42px,7vw,82px);
+
+    line-height: .9;
+
+    letter-spacing: 5px;
+}
+
+
+.subtitle {
+
+    max-width: 760px;
+
+    margin:
+        28px auto 0;
+
+    color:
+        rgba(255,255,255,.52);
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   HERO
+========================================= */
+
+.hero {
+
+    position: relative;
+
+    z-index: 5;
+
+    width:
+        min(900px,100%);
+
+    height: 430px;
+
+    margin:
+        75px auto 60px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.02);
+
+    overflow: hidden;
+}
+
+
+/* =========================================
+   STEPHENSON 2-18
+========================================= */
+
+.star-system {
+
+    position: relative;
+
+    width: 430px;
+
+    height: 430px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    animation:
+        starFloat 7s ease-in-out infinite;
+}
+
+
+/* OUTER ATMOSPHERE */
+
+.atmosphere {
+
+    position: absolute;
+
+    width: 420px;
+
+    height: 420px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,215,155,.08) 0%,
+            rgba(255,100,30,.28) 34%,
+            rgba(180,30,10,.22) 55%,
+            rgba(90,15,10,.08) 70%,
+            transparent 80%
+        );
+
+    filter:
+        blur(8px);
+
+    animation:
+        atmospherePulse 5s ease-in-out infinite;
+}
+
+
+/* STAR */
+
+.giant-star {
+
+    position: relative;
+
+    z-index: 5;
+
+    width: 270px;
+
+    height: 270px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 34% 27%,
+            #fff1cf 0%,
+            #ffd49a 10%,
+            #ff9a4c 28%,
+            #ef4d20 52%,
+            #a5160b 76%,
+            #310400 100%
+        );
+
+    box-shadow:
+
+        0 0 35px
+        rgba(255,210,150,.75),
+
+        0 0 85px
+        rgba(255,85,25,.65),
+
+        0 0 160px
+        rgba(190,35,10,.4);
+
+    animation:
+        starPulse 5s ease-in-out infinite;
+}
+
+
+/* SURFACE */
+
+.giant-star::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 15px;
+
+    border-radius: 50%;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,210,140,.4) 1px,
+            transparent 9px
+        );
+
+    background-size:
+        25px 23px;
+
+    opacity: .65;
+
+    animation:
+        surfaceRotate 14s linear infinite;
+}
+
+
+/* BRIGHT REGION */
+
+.giant-star::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 85px;
+
+    height: 70px;
+
+    top: 43px;
+
+    left: 58px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(255,244,210,.9),
+            rgba(255,190,100,.25),
+            transparent
+        );
+
+    filter:
+        blur(5px);
+}
+
+
+/* OUTER RINGS */
+
+.ring {
+
+    position: absolute;
+
+    width: 470px;
+
+    height: 470px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid
+        rgba(255,100,35,.18);
+
+    animation:
+        ringPulse 6s ease-in-out infinite;
+}
+
+
+.ring-two {
+
+    width: 350px;
+
+    height: 350px;
+
+    border-color:
+        rgba(255,180,100,.13);
+
+    animation-delay:
+        -2s;
+}
+
+
+/* PARTICLES */
+
+.particles {
+
+    position: absolute;
+
+    width: 560px;
+
+    height: 560px;
+
+    border-radius: 50%;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,170,100,.85) 1px,
+            transparent 2px
+        );
+
+    background-size:
+        34px 31px;
+
+    opacity: .28;
+
+    animation:
+        particlesRotate 30s linear infinite;
+}
+
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+
+@keyframes starFloat {
+
+    0%,100% {
+
+        transform:
+            translateY(0);
+
+    }
+
+    50% {
+
+        transform:
+            translateY(-9px);
+
+    }
+
+}
+
+
+@keyframes atmospherePulse {
+
+    0%,100% {
+
+        transform:
+            scale(.9);
+
+        opacity: .65;
+
+    }
+
+    50% {
+
+        transform:
+            scale(1.08);
+
+        opacity: 1;
+
+    }
+
+}
+
+
+@keyframes starPulse {
+
+    0%,100% {
+
+        transform:
+            scale(.96);
+
+    }
+
+    50% {
+
+        transform:
+            scale(1.035);
+
+    }
+
+}
+
+
+@keyframes surfaceRotate {
+
+    from {
+
+        transform:
+            rotate(0deg);
+
+    }
+
+    to {
+
+        transform:
+            rotate(360deg);
+
+    }
+
+}
+
+
+@keyframes ringPulse {
+
+    0%,100% {
+
+        opacity: .3;
+
+        transform:
+            scale(.9);
+
+    }
+
+    50% {
+
+        opacity: 1;
+
+        transform:
+            scale(1.06);
+
+    }
+
+}
+
+
+@keyframes particlesRotate {
+
+    from {
+
+        transform:
+            rotate(0deg);
+
+    }
+
+    to {
+
+        transform:
+            rotate(-360deg);
+
+    }
+
+}
+
+
+.hero-label {
+
+    position: absolute;
+
+    bottom: 35px;
+
+    color:
+        rgba(255,255,255,.4);
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+}
+
+
+/* =========================================
+   STATS
+========================================= */
+
+.stats {
+
+    position: relative;
+
+    z-index: 5;
+
+    width:
+        min(1050px,100%);
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap: 1px;
+
+    background:
+        rgba(255,255,255,.1);
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+}
+
+
+.stat {
+
+    padding: 28px;
+
+    background:
+        rgba(5,7,15,.94);
+
+    transition: .35s ease;
+}
+
+
+.stat:hover {
+
+    transform:
+        translateY(-5px);
+
+    background:
+        rgba(255,255,255,.04);
+}
+
+
+.stat-value {
+
+    margin-bottom: 9px;
+
+    font-size: 17px;
+
+    font-weight: bold;
+}
+
+
+.stat-label {
+
+    color:
+        rgba(255,255,255,.38);
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.content {
+
+    position: relative;
+
+    z-index: 5;
+
+    width:
+        min(1050px,100%);
+
+    margin:
+        65px auto 0;
+}
+
+
+.info {
+
+    margin-bottom: 18px;
+
+    padding: 35px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.025);
+
+    transition: .35s ease;
+}
+
+
+.info:hover {
+
+    transform:
+        translateY(-4px);
+
+    border-color:
+        rgba(255,255,255,.22);
+}
+
+
+.info-title {
+
+    margin-bottom: 18px;
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+}
+
+
+.info-text {
+
+    margin: 0;
+
+    color:
+        rgba(255,255,255,.56);
+
+    font-size: 13px;
+
+    line-height: 1.9;
+}
+
+
+/* =========================================
+   FEATURES
+========================================= */
+
+.features-title {
+
+    margin:
+        60px 0 25px;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,.42);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+
+.features {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 15px;
+}
+
+
+.feature {
+
+    padding: 27px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.02);
+
+    transition: .35s ease;
+}
+
+
+.feature:hover {
+
+    transform:
+        translateY(-6px);
+
+    border-color:
+        rgba(255,120,60,.32);
+
+    background:
+        rgba(255,255,255,.04);
+}
+
+
+.feature-title {
+
+    margin-bottom: 11px;
+
+    font-size: 13px;
+
+    letter-spacing: 2px;
+}
+
+
+.feature-text {
+
+    color:
+        rgba(255,255,255,.5);
+
+    font-size: 11px;
+
+    line-height: 1.75;
+}
+
+
+/* =========================================
+   FACT
+========================================= */
+
+.fact {
+
+    margin-top: 60px;
+
+    padding: 42px;
+
+    text-align: center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    background:
+        rgba(255,255,255,.025);
+}
+
+
+.fact-label {
+
+    margin-bottom: 17px;
+
+    color:
+        rgba(255,255,255,.4);
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+}
+
+
+.fact-text {
+
+    max-width: 820px;
+
+    margin: auto;
+
+    font-size:
+        clamp(18px,3vw,27px);
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   NAVIGATION
+========================================= */
+
+.navigation {
+
+    display: flex;
+
+    justify-content: center;
+
+    margin-top: 55px;
+}
+
+
+.nav-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding:
+        13px 24px;
+
+    color:
+        rgba(255,255,255,.75);
+
+    border:
+        1px solid
+        rgba(255,255,255,.2);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    transition: .35s ease;
+}
+
+
+.nav-button:hover {
+
+    color: #010208;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-4px);
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.footer {
+
+    margin-top: 30px;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,.25);
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:800px) {
+
+    .stats {
+
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .features {
+
+        grid-template-columns:
+            1fr;
+    }
+
+}
+
+
+@media(max-width:600px) {
+
+    .largest-star-page {
+
+        padding:
+            50px 15px 80px;
+    }
+
+    .hero {
+
+        height: 340px;
+    }
+
+    .star-system {
+
+        transform:
+            scale(.67);
+    }
+
+    .stats {
+
+        grid-template-columns:
+            1fr;
+    }
+
+    .info {
+
+        padding: 27px;
+    }
+
+    .fact {
+
+        padding:
+            30px 22px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<section class="largest-star-page">
+
+
+<div class="stars"></div>
+
+<div class="stars-small"></div>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<div class="header">
+
+
+<a
+href="https://sites.google.com/view/kosmolearn"
+class="return">
+
+← RETURN TO HOME
+
+</a>
+
+
+<div class="label">
+
+ORBONIX · DEEP SPACE
+
+</div>
+
+
+<h1>
+
+THE LARGEST KNOWN STAR
+
+</h1>
+
+
+<div class="subtitle">
+
+Stephenson 2-18 is often cited as one of the
+largest known stars by radius — an enormous
+red supergiant whose true size remains
+uncertain.
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     HERO
+========================================= -->
+
+<div class="hero">
+
+
+<div class="star-system">
+
+<div class="particles"></div>
+
+<div class="ring"></div>
+
+<div class="ring ring-two"></div>
+
+<div class="atmosphere"></div>
+
+<div class="giant-star"></div>
+
+</div>
+
+
+<div class="hero-label">
+
+STEPHENSON 2-18 · RED SUPERGIANT · EXTREME SCALE
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     STATS
+========================================= -->
+
+<div class="stats">
+
+
+<div class="stat">
+
+<div class="stat-value">
+~2,150 R☉
+</div>
+
+<div class="stat-label">
+ESTIMATED MAXIMUM RADIUS
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+~10,000 LY
+</div>
+
+<div class="stat-label">
+DISTANCE · APPROXIMATE
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+RED SUPERGIANT
+</div>
+
+<div class="stat-label">
+STELLAR CLASS
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+UNCERTAIN
+</div>
+
+<div class="stat-label">
+TRUE SIZE NOT PRECISELY KNOWN
+</div>
+
+</div>
+
+
+<!-- =========================================
+     CONTENT
+========================================= -->
+
+<div class="content">
+
+
+<div class="info">
+
+
+<div class="info-title">
+
+WHAT IS STEPHENSON 2-18?
+
+</div>
+
+
+<p class="info-text">
+
+Stephenson 2-18 is a red supergiant star
+associated with the Stephenson 2 stellar
+cluster in the constellation Scutum.
+
+It is frequently listed among the largest
+known stars by radius.
+
+Estimates of its physical size are highly
+uncertain because its distance, cluster
+membership and atmospheric properties are
+difficult to determine precisely.
+
+</p>
+
+
+</div>
+
+
+<div class="info">
+
+
+<div class="info-title">
+
+HOW LARGE IS IT?
+
+</div>
+
+
+<p class="info-text">
+
+Some estimates place Stephenson 2-18 at
+roughly 2,000 times the radius of the Sun,
+with values around 2,150 solar radii often
+quoted.
+
+If such an estimate were correct, its
+photosphere would extend enormously beyond
+the orbit of Mars if the star replaced the
+Sun.
+
+However, the exact radius should not be
+treated as a precisely measured value.
+
+</p>
+
+
+</div>
+
+
+<div class="info">
+
+
+<div class="info-title">
+
+WHY IS ITS SIZE UNCERTAIN?
+
+</div>
+
+
+<p class="info-text">
+
+Determining the radius of a distant red
+supergiant is difficult.
+
+Astronomers must estimate its distance,
+temperature, luminosity and atmospheric
+properties.
+
+Stephenson 2-18 is especially challenging
+because its relationship with the Stephenson
+2 cluster is not completely certain.
+
+For this reason, astronomers should describe
+its extreme size as an estimate rather than
+an exact measurement.
+
+</p>
+
+
+</div>
+
+
+<div class="info">
+
+
+<div class="info-title">
+
+WHAT WILL HAPPEN TO THE STAR?
+
+</div>
+
+
+<p class="info-text">
+
+A massive red supergiant is in a late stage
+of stellar evolution.
+
+Eventually, its core can collapse when it
+can no longer support itself against gravity.
+
+Depending on the star's final core mass,
+the collapse could produce a powerful
+core-collapse supernova and leave behind
+a neutron star or black hole.
+
+</p>
+
+
+<!-- =========================================
+     FEATURES
+========================================= -->
+
+<div class="features-title">
+
+KEY IDEAS
+
+</div>
+
+
+<div class="features">
+
+
+<div class="feature">
+
+<div class="feature-title">
+
+RED SUPERGIANT
+
+</div>
+
+<div class="feature-text">
+
+Stephenson 2-18 is classified as an
+extremely large red supergiant.
+
+</div>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-title">
+
+~2,000 SUN RADII
+
+</div>
+
+<div class="feature-text">
+
+Some estimates give a radius thousands of
+times larger than the Sun's.
+
+</div>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-title">
+
+SCUTUM
+
+</div>
+
+<div class="feature-text">
+
+The star is located in the direction of
+the constellation Scutum.
+
+</div>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-title">
+
+EXTREME DISTANCE
+
+</div>
+
+<div class="feature-text">
+
+Its estimated distance is on the order of
+ten thousand light-years.
+
+</div>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-title">
+
+COOL SURFACE
+
+</div>
+
+<div class="feature-text">
+
+Despite its enormous size, its surface is
+much cooler than the Sun's.
+
+</div>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-title">
+
+NOT CERTAINLY #1
+
+</div>
+
+<div class="feature-text">
+
+Its exact ranking among the largest stars
+depends on uncertain measurements and
+definitions.
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     FACT
+========================================= -->
+
+<div class="fact">
+
+
+<div class="fact-label">
+
+DID YOU KNOW?
+
+</div>
+
+
+<div class="fact-text">
+
+If Stephenson 2-18 really has a radius of
+about 2,150 Suns, its surface would extend
+far beyond the orbit of Mars if it replaced
+our Sun.
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     NAVIGATION
+========================================= -->
+
+<div class="navigation">
+
+
+<a
+href="https://sites.google.com/view/kosmolearn"
+class="nav-button">
+
+← RETURN TO HOME
+
+</a>
+
+
+</div>
+
+
+<div class="footer">
+
+ORBONIX · DEEP SPACE · THE LARGEST KNOWN STAR
+
+</div>
+
+
+</section>
+
+
+<script>
+
+/* =========================================
+   STAR PARALLAX
+========================================= */
+
+const stars =
+document.querySelector(".stars");
+
+const smallStars =
+document.querySelector(".stars-small");
+
+
+document.addEventListener(
+"mousemove",
+
+function(event) {
+
+    const x =
+        event.clientX /
+        window.innerWidth -
+        0.5;
+
+    const y =
+        event.clientY /
+        window.innerHeight -
+        0.5;
+
+
+    stars.style.transform =
+        `translate(
+            ${x * 20}px,
+            ${y * 20}px
+        )`;
+
+
+    smallStars.style.transform =
+        `translate(
+            ${x * -12}px,
+            ${y * -12}px
+        )`;
+
+});
+
+</script>
+
+
+</body>
+
+</html>
