@@ -1,1 +1,1277 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: #010208;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   PAGE
+========================================= */
+
+.void-page {
+
+    position: relative;
+
+    min-height: 1550px;
+
+    padding: 65px 20px 100px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 30%,
+            rgba(40,70,140,.14),
+            transparent 45%
+        ),
+        #010208;
+}
+
+
+/* =========================================
+   STARS
+========================================= */
+
+.stars,
+.stars-small {
+
+    position: absolute;
+
+    inset: -25%;
+
+    pointer-events: none;
+}
+
+.stars {
+
+    opacity: .38;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.9) 1px,
+            transparent 1px
+        );
+
+    background-size: 75px 75px;
+
+    transition:
+        transform 1.5s ease;
+}
+
+.stars-small {
+
+    opacity: .16;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.8) 1px,
+            transparent 1px
+        );
+
+    background-size: 32px 32px;
+
+    transition:
+        transform 2s ease;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header {
+
+    position: relative;
+
+    z-index: 10;
+
+    max-width: 900px;
+
+    margin: auto;
+
+    text-align: center;
+}
+
+
+.return {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 12px 20px;
+
+    margin-bottom: 40px;
+
+    color:
+        rgba(255,255,255,.7);
+
+    border:
+        1px solid
+        rgba(255,255,255,.22);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    transition: .35s ease;
+}
+
+
+.return:hover {
+
+    color: #010208;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-4px);
+}
+
+
+.label {
+
+    margin-bottom: 18px;
+
+    color:
+        rgba(255,255,255,.4);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+
+h1 {
+
+    margin: 0;
+
+    font-size:
+        clamp(45px,8vw,90px);
+
+    line-height: .9;
+
+    letter-spacing: 6px;
+}
+
+
+.subtitle {
+
+    max-width: 720px;
+
+    margin:
+        28px auto 0;
+
+    color:
+        rgba(255,255,255,.52);
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   HERO
+========================================= */
+
+.hero {
+
+    position: relative;
+
+    z-index: 5;
+
+    width:
+        min(900px,100%);
+
+    height: 400px;
+
+    margin:
+        75px auto 60px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.02);
+
+    overflow: hidden;
+}
+
+
+/* =========================================
+   COSMIC VOID VISUAL
+========================================= */
+
+.void {
+
+    position: relative;
+
+    width: 300px;
+
+    height: 300px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #000000 0%,
+            #00030a 48%,
+            rgba(5,10,25,.7) 68%,
+            transparent 72%
+        );
+
+    box-shadow:
+        0 0 50px
+        rgba(0,0,0,.9),
+
+        0 0 120px
+        rgba(20,40,100,.18);
+
+    animation:
+        voidPulse 7s ease-in-out infinite;
+}
+
+
+/* DISTANT GALAXIES */
+
+.void::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: -170px;
+
+    border-radius: 50%;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.85) 1px,
+            transparent 1.5px
+        );
+
+    background-size:
+        55px 55px;
+
+    opacity: .32;
+
+    -webkit-mask-image:
+        radial-gradient(
+            circle,
+            transparent 0%,
+            transparent 42%,
+            black 65%,
+            black 100%
+        );
+
+    mask-image:
+        radial-gradient(
+            circle,
+            transparent 0%,
+            transparent 42%,
+            black 65%,
+            black 100%
+        );
+}
+
+
+/* VOID EDGE */
+
+.void::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: -3px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid
+        rgba(100,130,190,.12);
+
+    box-shadow:
+        0 0 35px
+        rgba(40,70,140,.12);
+}
+
+
+@keyframes voidPulse {
+
+    0%,100% {
+
+        transform:
+            scale(1);
+
+    }
+
+    50% {
+
+        transform:
+            scale(1.04);
+
+    }
+
+}
+
+
+.hero-label {
+
+    position: absolute;
+
+    bottom: 35px;
+
+    color:
+        rgba(255,255,255,.4);
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+}
+
+
+/* =========================================
+   STATS
+========================================= */
+
+.stats {
+
+    position: relative;
+
+    z-index: 5;
+
+    width:
+        min(1050px,100%);
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap: 1px;
+
+    background:
+        rgba(255,255,255,.1);
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+}
+
+
+.stat {
+
+    padding: 28px;
+
+    background:
+        rgba(5,7,15,.94);
+
+    transition: .35s ease;
+}
+
+
+.stat:hover {
+
+    transform:
+        translateY(-5px);
+
+    background:
+        rgba(255,255,255,.04);
+}
+
+
+.stat-value {
+
+    margin-bottom: 9px;
+
+    font-size: 18px;
+
+    font-weight: bold;
+}
+
+
+.stat-label {
+
+    color:
+        rgba(255,255,255,.38);
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.content {
+
+    position: relative;
+
+    z-index: 5;
+
+    width:
+        min(1050px,100%);
+
+    margin:
+        65px auto 0;
+}
+
+
+.info {
+
+    margin-bottom: 18px;
+
+    padding: 35px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.025);
+
+    transition: .35s ease;
+}
+
+
+.info:hover {
+
+    transform:
+        translateY(-4px);
+
+    border-color:
+        rgba(255,255,255,.22);
+}
+
+
+.info-title {
+
+    margin-bottom: 18px;
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+}
+
+
+.info-text {
+
+    margin: 0;
+
+    color:
+        rgba(255,255,255,.56);
+
+    font-size: 13px;
+
+    line-height: 1.9;
+}
+
+
+/* =========================================
+   FEATURES
+========================================= */
+
+.features-title {
+
+    margin:
+        60px 0 25px;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,.42);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+
+.features {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 15px;
+}
+
+
+.feature {
+
+    padding: 27px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.02);
+
+    transition: .35s ease;
+}
+
+
+.feature:hover {
+
+    transform:
+        translateY(-6px);
+
+    border-color:
+        rgba(170,190,230,.3);
+
+    background:
+        rgba(255,255,255,.04);
+}
+
+
+.feature-title {
+
+    margin-bottom: 11px;
+
+    font-size: 13px;
+
+    letter-spacing: 2px;
+}
+
+
+.feature-text {
+
+    color:
+        rgba(255,255,255,.5);
+
+    font-size: 11px;
+
+    line-height: 1.75;
+}
+
+
+/* =========================================
+   FACT
+========================================= */
+
+.fact {
+
+    margin-top: 60px;
+
+    padding: 42px;
+
+    text-align: center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    background:
+        rgba(255,255,255,.025);
+}
+
+
+.fact-label {
+
+    margin-bottom: 17px;
+
+    color:
+        rgba(255,255,255,.4);
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+}
+
+
+.fact-text {
+
+    max-width: 800px;
+
+    margin: auto;
+
+    font-size:
+        clamp(18px,3vw,27px);
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   NAVIGATION
+========================================= */
+
+.navigation {
+
+    display: flex;
+
+    justify-content: center;
+
+    margin-top: 55px;
+}
+
+
+.nav-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding:
+        13px 24px;
+
+    color:
+        rgba(255,255,255,.75);
+
+    border:
+        1px solid
+        rgba(255,255,255,.2);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    transition: .35s ease;
+}
+
+
+.nav-button:hover {
+
+    color: #010208;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-4px);
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.footer {
+
+    margin-top: 30px;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,.25);
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:800px) {
+
+    .stats {
+
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .features {
+
+        grid-template-columns:
+            1fr;
+    }
+
+}
+
+
+@media(max-width:600px) {
+
+    .void-page {
+
+        padding:
+            50px 15px 80px;
+    }
+
+    .hero {
+
+        height: 340px;
+    }
+
+    .void {
+
+        width: 210px;
+
+        height: 210px;
+    }
+
+    .stats {
+
+        grid-template-columns:
+            1fr;
+    }
+
+    .info {
+
+        padding: 27px;
+    }
+
+    .fact {
+
+        padding:
+            30px 22px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<section class="void-page">
+
+
+<div class="stars"></div>
+
+<div class="stars-small"></div>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<div class="header">
+
+
+<a
+href="https://sites.google.com/view/kosmolearn"
+class="return">
+
+← RETURN TO HOME
+
+</a>
+
+
+<div class="label">
+
+ORBONIX · DEEP SPACE
+
+</div>
+
+
+<h1>
+
+COSMIC VOIDS
+
+</h1>
+
+
+<div class="subtitle">
+
+Enormous regions of space containing
+far fewer galaxies than the cosmic
+average — some of the largest structures
+in the Universe.
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     HERO
+========================================= -->
+
+<div class="hero">
+
+
+<div class="void"></div>
+
+
+<div class="hero-label">
+
+THE EMPTY SPACES BETWEEN GALAXIES
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     STATS
+========================================= -->
+
+<div class="stats">
+
+
+<div class="stat">
+
+<div class="stat-value">
+MILLIONS
+</div>
+
+<div class="stat-label">
+LIGHT-YEARS ACROSS
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+LOW DENSITY
+</div>
+
+<div class="stat-label">
+FEW GALAXIES
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+COSMIC WEB
+</div>
+
+<div class="stat-label">
+LARGE-SCALE STRUCTURE
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+DARK
+</div>
+
+<div class="stat-label">
+VERY LITTLE MATTER
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     CONTENT
+========================================= -->
+
+<div class="content">
+
+
+<div class="info">
+
+
+<div class="info-title">
+
+WHAT IS A COSMIC VOID?
+
+</div>
+
+
+<p class="info-text">
+
+A cosmic void is a huge region of the
+Universe where galaxies and matter are
+much less concentrated than average.
+
+They are not completely empty. Extremely
+thin gas, dark matter and occasional
+galaxies can still exist inside them.
+
+Voids are surrounded by denser structures
+such as galaxy filaments, sheets and
+clusters.
+
+</p>
+
+
+</div>
+
+
+<div class="info">
+
+
+<div class="info-title">
+
+THE COSMIC WEB
+
+</div>
+
+
+<p class="info-text">
+
+On the largest scales, matter in the
+Universe forms a vast network known as
+the cosmic web.
+
+Galaxies gather along enormous filaments
+and walls, while huge empty regions form
+between them.
+
+Gravity gradually pulled matter toward
+denser regions, leaving some areas with
+far fewer galaxies.
+
+</p>
+
+
+</div>
+
+
+<div class="info">
+
+
+<div class="info-title">
+
+ARE VOIDS REALLY EMPTY?
+
+</div>
+
+
+<p class="info-text">
+
+No.
+
+A cosmic void is not a perfect vacuum.
+It can contain extremely diffuse gas,
+dark matter and isolated galaxies.
+
+The important difference is density:
+there is dramatically less matter than
+in the surrounding cosmic structures.
+
+</p>
+
+
+</div>
+
+
+<div class="info">
+
+
+<div class="info-title">
+
+HOW DID VOIDS FORM?
+
+</div>
+
+
+<p class="info-text">
+
+Tiny variations in the density of the
+early Universe grew under gravity.
+
+Matter flowed away from underdense regions
+and toward denser ones.
+
+Over billions of years, these differences
+became the enormous network of clusters,
+filaments and voids that we observe today.
+
+</p>
+
+
+</div>
+
+
+<!-- =========================================
+     FEATURES
+========================================= -->
+
+<div class="features-title">
+
+THE STRUCTURE OF THE UNIVERSE
+
+</div>
+
+
+<div class="features">
+
+
+<div class="feature">
+
+<div class="feature-title">
+
+GIANT SCALE
+
+</div>
+
+<div class="feature-text">
+
+Some cosmic voids stretch across
+hundreds of millions of light-years.
+
+</div>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-title">
+
+FEW GALAXIES
+
+</div>
+
+<div class="feature-text">
+
+Galaxies are much less common inside
+voids than in galaxy clusters and filaments.
+
+</div>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-title">
+
+DARK MATTER
+
+</div>
+
+<div class="feature-text">
+
+Voids also contain less dark matter
+than the surrounding cosmic web.
+
+</div>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-title">
+
+GALAXY WALLS
+
+</div>
+
+<div class="feature-text">
+
+Dense sheets and filaments often form
+the boundaries around cosmic voids.
+
+</div>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-title">
+
+ANCIENT STRUCTURE
+
+</div>
+
+<div class="feature-text">
+
+Voids developed over billions of years
+as cosmic matter evolved under gravity.
+
+</div>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-title">
+
+COSMIC MAP
+
+</div>
+
+<div class="feature-text">
+
+Mapping voids helps astronomers understand
+the large-scale evolution of the Universe.
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     FACT
+========================================= -->
+
+<div class="fact">
+
+
+<div class="fact-label">
+
+DID YOU KNOW?
+
+</div>
+
+
+<div class="fact-text">
+
+The Universe is not simply a collection
+of galaxies scattered randomly through space.
+
+On enormous scales, galaxies form a
+cosmic web — and the vast emptiness between
+its threads can be just as important as
+the galaxies themselves.
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     NAVIGATION
+========================================= -->
+
+<div class="navigation">
+
+
+<a
+href="https://sites.google.com/view/kosmolearn"
+class="nav-button">
+
+← RETURN TO HOME
+
+</a>
+
+
+</div>
+
+
+<div class="footer">
+
+ORBONIX · DEEP SPACE · COSMIC VOIDS
+
+</div>
+
+
+</section>
+
+
+<script>
+
+/* =========================================
+   STAR PARALLAX
+========================================= */
+
+const stars =
+document.querySelector(".stars");
+
+const smallStars =
+document.querySelector(".stars-small");
+
+
+document.addEventListener(
+"mousemove",
+
+function(event) {
+
+    const x =
+        event.clientX /
+        window.innerWidth -
+        0.5;
+
+    const y =
+        event.clientY /
+        window.innerHeight -
+        0.5;
+
+
+    stars.style.transform =
+        `translate(
+            ${x * 20}px,
+            ${y * 20}px
+        )`;
+
+
+    smallStars.style.transform =
+        `translate(
+            ${x * -12}px,
+            ${y * -12}px
+        )`;
+
+});
+
+</script>
+
+
+</body>
+
+</html>
+```
