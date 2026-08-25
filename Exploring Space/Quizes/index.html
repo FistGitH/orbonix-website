@@ -1,1 +1,1335 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: #010208;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   PAGE
+========================================= */
+
+.quiz-select-page {
+
+    position: relative;
+
+    min-height: 1800px;
+
+    padding:
+        65px 20px 100px;
+
+    overflow: hidden;
+
+    background:
+
+        radial-gradient(
+            circle at 50% 18%,
+            rgba(100,70,190,.18),
+            transparent 43%
+        ),
+
+        radial-gradient(
+            circle at 15% 65%,
+            rgba(30,100,210,.08),
+            transparent 35%
+        ),
+
+        radial-gradient(
+            circle at 85% 75%,
+            rgba(150,50,180,.07),
+            transparent 35%
+        ),
+
+        #010208;
+}
+
+
+/* =========================================
+   STARS
+========================================= */
+
+.stars,
+.stars-small {
+
+    position: absolute;
+
+    inset: -25%;
+
+    pointer-events: none;
+}
+
+
+.stars {
+
+    opacity: .38;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.9) 1px,
+            transparent 1px
+        );
+
+    background-size: 75px 75px;
+
+    transition:
+        transform 1.5s ease;
+}
+
+
+.stars-small {
+
+    opacity: .16;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.8) 1px,
+            transparent 1px
+        );
+
+    background-size: 32px 32px;
+
+    transition:
+        transform 2s ease;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header {
+
+    position: relative;
+
+    z-index: 5;
+
+    max-width: 950px;
+
+    margin: auto;
+
+    text-align: center;
+}
+
+
+.return {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 12px 20px;
+
+    margin-bottom: 40px;
+
+    color:
+        rgba(255,255,255,.7);
+
+    border:
+        1px solid
+        rgba(255,255,255,.22);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    transition: .35s ease;
+}
+
+
+.return:hover {
+
+    color: #010208;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-4px);
+}
+
+
+.label {
+
+    margin-bottom: 18px;
+
+    color:
+        rgba(255,255,255,.4);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+
+h1 {
+
+    margin: 0;
+
+    font-size:
+        clamp(45px,8vw,90px);
+
+    line-height: .9;
+
+    letter-spacing: 6px;
+}
+
+
+.subtitle {
+
+    max-width: 720px;
+
+    margin:
+        28px auto 0;
+
+    color:
+        rgba(255,255,255,.52);
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   SELECT LABEL
+========================================= */
+
+.select-label {
+
+    position: relative;
+
+    z-index: 5;
+
+    margin:
+        75px auto 25px;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,.4);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+
+/* =========================================
+   QUIZ GRID
+========================================= */
+
+.quiz-grid {
+
+    position: relative;
+
+    z-index: 5;
+
+    width:
+        min(1050px,100%);
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap: 15px;
+}
+
+
+/* =========================================
+   QUIZ CARD
+========================================= */
+
+.quiz-card {
+
+    position: relative;
+
+    min-height: 245px;
+
+    padding: 32px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    text-decoration: none;
+
+    color: white;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.025);
+
+    overflow: hidden;
+
+    transition:
+        .4s ease;
+}
+
+
+.quiz-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+
+    height: 180px;
+
+    right: -80px;
+
+    top: -80px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(120,90,230,.18),
+            transparent 70%
+        );
+
+    transition:
+        .5s ease;
+}
+
+
+.quiz-card:hover {
+
+    transform:
+        translateY(-8px);
+
+    border-color:
+        rgba(255,255,255,.28);
+
+    background:
+        rgba(255,255,255,.045);
+
+    box-shadow:
+        0 15px 50px
+        rgba(0,0,0,.35);
+}
+
+
+.quiz-card:hover::before {
+
+    transform:
+        scale(1.7);
+
+    opacity: .8;
+}
+
+
+/* =========================================
+   CARD NUMBER
+========================================= */
+
+.card-number {
+
+    position: relative;
+
+    z-index: 2;
+
+    margin-bottom: 25px;
+
+    color:
+        rgba(255,255,255,.25);
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+}
+
+
+/* =========================================
+   CARD TITLE
+========================================= */
+
+.card-title {
+
+    position: relative;
+
+    z-index: 2;
+
+    margin-bottom: 13px;
+
+    font-size: 24px;
+
+    letter-spacing: 3px;
+}
+
+
+/* =========================================
+   CARD DESCRIPTION
+========================================= */
+
+.card-description {
+
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 450px;
+
+    color:
+        rgba(255,255,255,.48);
+
+    font-size: 12px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   CARD BOTTOM
+========================================= */
+
+.card-bottom {
+
+    position: relative;
+
+    z-index: 2;
+
+    margin-top: 30px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+
+.card-level {
+
+    color:
+        rgba(255,255,255,.35);
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+}
+
+
+.start {
+
+    padding:
+        10px 16px;
+
+    color:
+        rgba(255,255,255,.7);
+
+    border:
+        1px solid
+        rgba(255,255,255,.18);
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+
+    transition:
+        .3s ease;
+}
+
+
+.quiz-card:hover .start {
+
+    color: #010208;
+
+    background: white;
+
+    border-color: white;
+}
+
+
+/* =========================================
+   SPECIAL MEGA QUIZ
+========================================= */
+
+.mega-card {
+
+    grid-column:
+        1 / -1;
+
+    min-height:
+        290px;
+
+    text-align: center;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+
+        radial-gradient(
+            circle at center,
+            rgba(110,70,210,.12),
+            transparent 65%
+        ),
+
+        rgba(255,255,255,.025);
+}
+
+
+.mega-card::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 20px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.04);
+
+    pointer-events: none;
+
+    transition:
+        .4s ease;
+}
+
+
+.mega-card:hover::after {
+
+    inset: 10px;
+
+    border-color:
+        rgba(255,255,255,.12);
+}
+
+
+.mega-title {
+
+    position: relative;
+
+    z-index: 3;
+
+    margin-bottom: 15px;
+
+    font-size:
+        clamp(30px,5vw,50px);
+
+    letter-spacing: 6px;
+}
+
+
+.mega-description {
+
+    position: relative;
+
+    z-index: 3;
+
+    max-width: 650px;
+
+    margin: auto;
+
+    color:
+        rgba(255,255,255,.5);
+
+    font-size: 12px;
+
+    line-height: 1.8;
+}
+
+
+.mega-start {
+
+    position: relative;
+
+    z-index: 3;
+
+    margin-top: 25px;
+
+    padding:
+        13px 25px;
+
+    color:
+        rgba(255,255,255,.75);
+
+    border:
+        1px solid
+        rgba(255,255,255,.2);
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    transition:
+        .35s ease;
+}
+
+
+.mega-card:hover .mega-start {
+
+    color: #010208;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-3px);
+}
+
+
+/* =========================================
+   INFO
+========================================= */
+
+.info {
+
+    position: relative;
+
+    z-index: 5;
+
+    width:
+        min(1050px,100%);
+
+    margin:
+        70px auto 0;
+
+    padding:
+        35px;
+
+    text-align: center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.02);
+}
+
+
+.info-label {
+
+    margin-bottom: 15px;
+
+    color:
+        rgba(255,255,255,.4);
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+}
+
+
+.info-text {
+
+    max-width: 750px;
+
+    margin: auto;
+
+    color:
+        rgba(255,255,255,.45);
+
+    font-size: 12px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.footer {
+
+    position: relative;
+
+    z-index: 5;
+
+    margin-top: 35px;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,.25);
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:800px) {
+
+    .quiz-grid {
+
+        grid-template-columns:
+            1fr;
+    }
+
+    .mega-card {
+
+        grid-column:
+            auto;
+    }
+
+}
+
+
+@media(max-width:600px) {
+
+    .quiz-select-page {
+
+        padding:
+            50px 15px 80px;
+    }
+
+    .quiz-card {
+
+        min-height:
+            230px;
+
+        padding:
+            27px;
+    }
+
+    .card-title {
+
+        font-size:
+            20px;
+    }
+
+    .mega-title {
+
+        font-size:
+            29px;
+
+        letter-spacing:
+            4px;
+    }
+
+    .info {
+
+        padding:
+            27px 20px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<section class="quiz-select-page">
+
+
+<div class="stars"></div>
+
+<div class="stars-small"></div>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<div class="header">
+
+
+<a
+href="https://sites.google.com/view/kosmolearn"
+class="return">
+
+← RETURN TO HOME
+
+</a>
+
+
+<div class="label">
+
+ORBONIX · SPACE KNOWLEDGE
+
+</div>
+
+
+<h1>
+
+QUIZ
+
+</h1>
+
+
+<div class="subtitle">
+
+Choose your mission.
+Test your knowledge of planets,
+moons, stars, galaxies and the
+Universe.
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     SELECT
+========================================= -->
+
+<div class="select-label">
+
+SELECT A QUIZ
+
+</div>
+
+
+<div class="quiz-grid">
+
+
+<!-- =========================================
+     PLANET QUIZ
+========================================= -->
+
+<a
+href="YOUR-PLANET-QUIZ-LINK"
+class="quiz-card">
+
+<div>
+
+<div class="card-number">
+QUIZ 01
+</div>
+
+<div class="card-title">
+PLANET QUIZ
+</div>
+
+<div class="card-description">
+
+Test your knowledge of the eight planets,
+their atmospheres, surfaces, moons,
+rings and orbital characteristics.
+
+</div>
+
+</div>
+
+<div class="card-bottom">
+
+<div class="card-level">
+DIFFICULTY · ★☆☆
+</div>
+
+<div class="start">
+START →
+</div>
+
+</div>
+
+</a>
+
+
+<!-- =========================================
+     MOONS QUIZ
+========================================= -->
+
+<a
+href="YOUR-MOONS-QUIZ-LINK"
+class="quiz-card">
+
+<div>
+
+<div class="card-number">
+QUIZ 02
+</div>
+
+<div class="card-title">
+MOONS QUIZ
+</div>
+
+<div class="card-description">
+
+Explore Earth's Moon and the strange
+natural satellites orbiting planets
+throughout the Solar System.
+
+</div>
+
+</div>
+
+<div class="card-bottom">
+
+<div class="card-level">
+DIFFICULTY · ★☆☆
+</div>
+
+<div class="start">
+START →
+</div>
+
+</div>
+
+</a>
+
+
+<!-- =========================================
+     SUN QUIZ
+========================================= -->
+
+<a
+href="YOUR-SUN-QUIZ-LINK"
+class="quiz-card">
+
+<div>
+
+<div class="card-number">
+QUIZ 03
+</div>
+
+<div class="card-title">
+SUN QUIZ
+</div>
+
+<div class="card-description">
+
+Learn about the Sun's structure,
+solar activity, magnetic fields,
+flares and the energy powering Earth.
+
+</div>
+
+</div>
+
+<div class="card-bottom">
+
+<div class="card-level">
+DIFFICULTY · ★★☆
+</div>
+
+<div class="start">
+START →
+</div>
+
+</div>
+
+</a>
+
+
+<!-- =========================================
+     STARS QUIZ
+========================================= -->
+
+<a
+href="YOUR-STARS-QUIZ-LINK"
+class="quiz-card">
+
+<div>
+
+<div class="card-number">
+QUIZ 04
+</div>
+
+<div class="card-title">
+STARS QUIZ
+</div>
+
+<div class="card-description">
+
+Test your knowledge of stellar evolution,
+giant stars, supernovae, neutron stars,
+white dwarfs and stellar remnants.
+
+</div>
+
+</div>
+
+<div class="card-bottom">
+
+<div class="card-level">
+DIFFICULTY · ★☆☆
+</div>
+
+<div class="start">
+START →
+</div>
+
+</div>
+
+</a>
+
+
+<!-- =========================================
+     GALACTIC QUIZ
+========================================= -->
+
+<a
+href="YOUR-GALACTIC-QUIZ-LINK"
+class="quiz-card">
+
+<div>
+
+<div class="card-number">
+QUIZ 05
+</div>
+
+<div class="card-title">
+GALACTIC QUIZ
+</div>
+
+<div class="card-description">
+
+Explore spiral, elliptical and irregular
+galaxies, galaxy clusters, mergers and
+the structure of the Universe.
+
+</div>
+
+</div>
+
+<div class="card-bottom">
+
+<div class="card-level">
+DIFFICULTY · ★★☆
+</div>
+
+<div class="start">
+START →
+</div>
+
+</div>
+
+</a>
+
+
+<!-- =========================================
+     BLACKHOLES QUIZ
+========================================= -->
+
+<a
+href="YOUR-BLACKHOLES-QUIZ-LINK"
+class="quiz-card">
+
+<div>
+
+<div class="card-number">
+QUIZ 06
+</div>
+
+<div class="card-title">
+BLACKHOLES QUIZ
+</div>
+
+<div class="card-description">
+
+Event horizons, singularities, accretion
+disks, gravitational time dilation and
+the most extreme objects in the Universe.
+
+</div>
+
+</div>
+
+<div class="card-bottom">
+
+<div class="card-level">
+DIFFICULTY · ★★★
+</div>
+
+<div class="start">
+START →
+</div>
+
+</div>
+
+</a>
+
+
+<!-- =========================================
+     COMETS QUIZ
+========================================= -->
+
+<a
+href="YOUR-COMETS-QUIZ-LINK"
+class="quiz-card">
+
+<div>
+
+<div class="card-number">
+QUIZ 07
+</div>
+
+<div class="card-title">
+COMETS QUIZ
+</div>
+
+<div class="card-description">
+
+Discover icy visitors from the outer
+Solar System, their tails, nuclei,
+orbits and origins.
+
+</div>
+
+</div>
+
+<div class="card-bottom">
+
+<div class="card-level">
+DIFFICULTY · ★★☆
+</div>
+
+<div class="start">
+START →
+</div>
+
+</div>
+
+</a>
+
+
+<!-- =========================================
+     NASA QUIZ
+========================================= -->
+
+<a
+href="YOUR-NASA-QUIZ-LINK"
+class="quiz-card">
+
+<div>
+
+<div class="card-number">
+QUIZ 08
+</div>
+
+<div class="card-title">
+NASA QUIZ
+</div>
+
+<div class="card-description">
+
+How well do you know NASA?
+Missions, spacecraft, astronauts,
+telescopes and major discoveries.
+
+</div>
+
+</div>
+
+<div class="card-bottom">
+
+<div class="card-level">
+DIFFICULTY · ★★★
+</div>
+
+<div class="start">
+START →
+</div>
+
+</div>
+
+</a>
+
+
+<!-- =========================================
+     TELESCOPE QUIZ
+========================================= -->
+
+<a
+href="YOUR-TELESCOPE-QUIZ-LINK"
+class="quiz-card">
+
+<div>
+
+<div class="card-number">
+QUIZ 09
+</div>
+
+<div class="card-title">
+TELESCOPE QUIZ
+</div>
+
+<div class="card-description">
+
+Test your knowledge of telescopes,
+optics, observing techniques, space
+telescopes and astronomical instruments.
+
+</div>
+
+</div>
+
+<div class="card-bottom">
+
+<div class="card-level">
+DIFFICULTY · ★★★
+</div>
+
+<div class="start">
+START →
+</div>
+
+</div>
+
+</a>
+
+
+<!-- =========================================
+     MEGA QUIZ
+========================================= -->
+
+<a
+href="YOUR-MEGA-QUIZ-LINK"
+class="quiz-card mega-card">
+
+<div>
+
+<div class="card-number">
+ORBONIX · FINAL CHALLENGE
+</div>
+
+<div class="mega-title">
+MEGA QUIZ
+</div>
+
+<div class="mega-description">
+
+The ultimate ORBONIX astronomy challenge.
+A massive test combining planets, moons,
+the Sun, stars, galaxies, black holes,
+comets, NASA, telescopes and the deepest
+mysteries of the Universe.
+
+</div>
+
+<div class="mega-start">
+ENTER THE MEGA QUIZ →
+</div>
+
+</div>
+
+</a>
+
+
+</div>
+
+
+<!-- =========================================
+     INFO
+========================================= -->
+
+<div class="info">
+
+<div class="info-label">
+HOW IT WORKS
+</div>
+
+<div class="info-text">
+
+Choose a quiz and begin your mission.
+Each quiz has its own topic and difficulty.
+Your score will be calculated automatically
+after completing the test.
+
+</div>
+
+</div>
+
+
+<div class="footer">
+
+ORBONIX · SPACE KNOWLEDGE · QUIZ
+
+</div>
+
+
+</section>
+
+
+<script>
+
+/* =========================================
+   STAR PARALLAX
+========================================= */
+
+const stars =
+document.querySelector(".stars");
+
+const smallStars =
+document.querySelector(".stars-small");
+
+
+document.addEventListener(
+"mousemove",
+
+function(event) {
+
+    const x =
+        event.clientX /
+        window.innerWidth -
+        0.5;
+
+    const y =
+        event.clientY /
+        window.innerHeight -
+        0.5;
+
+
+    stars.style.transform =
+        `translate(
+            ${x * 20}px,
+            ${y * 20}px
+        )`;
+
+
+    smallStars.style.transform =
+        `translate(
+            ${x * -12}px,
+            ${y * -12}px
+        )`;
+
+});
+
+</script>
+
+
+</body>
+
+</html>
