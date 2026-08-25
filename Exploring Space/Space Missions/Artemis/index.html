@@ -1,1 +1,1497 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: #020308;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   PAGE
+========================================= */
+
+.artemis-page {
+
+    position: relative;
+
+    min-height: 1750px;
+
+    padding: 55px 20px 100px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 25%,
+            rgba(95,120,170,.18),
+            transparent 45%
+        ),
+        #020308;
+}
+
+
+/* =========================================
+   STARS
+========================================= */
+
+.stars {
+
+    position: absolute;
+
+    inset: -20%;
+
+    pointer-events: none;
+
+    opacity: .38;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.9) 1px,
+            transparent 1px
+        );
+
+    background-size: 75px 75px;
+
+    transition:
+        transform 1.5s ease;
+}
+
+
+.stars-small {
+
+    position: absolute;
+
+    inset: -20%;
+
+    pointer-events: none;
+
+    opacity: .14;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.8) 1px,
+            transparent 1px
+        );
+
+    background-size: 32px 32px;
+
+    transition:
+        transform 2s ease;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header {
+
+    position: relative;
+
+    z-index: 100;
+
+    max-width: 950px;
+
+    margin: auto;
+
+    text-align: center;
+}
+
+
+.return {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    padding: 12px 20px;
+
+    margin-bottom: 35px;
+
+    color:
+        rgba(255,255,255,.7);
+
+    border:
+        1px solid
+        rgba(255,255,255,.22);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    transition:
+        .35s ease;
+}
+
+
+.return:hover {
+
+    color: #020308;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-4px);
+}
+
+
+.label {
+
+    margin-bottom: 18px;
+
+    color:
+        rgba(255,255,255,.4);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+
+h1 {
+
+    margin: 0;
+
+    font-size:
+        clamp(55px,9vw,105px);
+
+    line-height: .9;
+
+    letter-spacing: 7px;
+}
+
+
+.subtitle {
+
+    max-width: 720px;
+
+    margin:
+        25px auto 0;
+
+    color:
+        rgba(255,255,255,.52);
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   MISSION AREA
+========================================= */
+
+.mission-area {
+
+    position: relative;
+
+    width: 720px;
+
+    height: 620px;
+
+    margin:
+        65px auto 90px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+/* =========================================
+   ORBITS
+========================================= */
+
+.orbit {
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 50%;
+
+    transform:
+        translate(-50%,-50%);
+
+    border:
+        1px solid
+        rgba(145,160,190,.15);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+
+.orbit-1 {
+
+    width: 260px;
+
+    height: 260px;
+}
+
+
+.orbit-2 {
+
+    width: 410px;
+
+    height: 410px;
+}
+
+
+.orbit-3 {
+
+    width: 570px;
+
+    height: 570px;
+}
+
+
+/* =========================================
+   ROCKET
+========================================= */
+
+.rocket {
+
+    position: relative;
+
+    z-index: 20;
+
+    width: 145px;
+
+    height: 300px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    transition:
+        transform .5s ease;
+}
+
+
+.rocket:hover {
+
+    transform:
+        translateY(-12px)
+        scale(1.06);
+}
+
+
+.rocket-body {
+
+    position: relative;
+
+    width: 72px;
+
+    height: 220px;
+
+    border-radius:
+        38px 38px 12px 12px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #9da5ad,
+            #f1f3f5 45%,
+            #8b9299
+        );
+
+    box-shadow:
+
+        0 0 25px
+        rgba(190,210,240,.18),
+
+        0 0 70px
+        rgba(120,150,200,.12);
+}
+
+
+.rocket-top {
+
+    position: absolute;
+
+    left: 50%;
+
+    top: -48px;
+
+    transform:
+        translateX(-50%);
+
+    width: 0;
+
+    height: 0;
+
+    border-left: 36px solid transparent;
+
+    border-right: 36px solid transparent;
+
+    border-bottom: 55px solid #dfe3e7;
+}
+
+
+.rocket-window {
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 42px;
+
+    transform:
+        translateX(-50%);
+
+    width: 25px;
+
+    height: 25px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #a9d8ff,
+            #315274 65%,
+            #111b29
+        );
+
+    border:
+        3px solid #777f87;
+}
+
+
+.rocket-band {
+
+    position: absolute;
+
+    left: 0;
+
+    top: 92px;
+
+    width: 100%;
+
+    height: 15px;
+
+    background: #b8bdc2;
+}
+
+
+.rocket-engine {
+
+    position: absolute;
+
+    left: 50%;
+
+    bottom: -42px;
+
+    transform:
+        translateX(-50%);
+
+    width: 40px;
+
+    height: 55px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #555b61,
+            #1c2024
+        );
+
+    clip-path:
+        polygon(
+            15% 0,
+            85% 0,
+            100% 100%,
+            0 100%
+        );
+}
+
+
+.flame {
+
+    position: absolute;
+
+    left: 50%;
+
+    bottom: -125px;
+
+    transform:
+        translateX(-50%);
+
+    width: 35px;
+
+    height: 90px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #fff,
+            #b9d8ff,
+            transparent
+        );
+
+    clip-path:
+        polygon(
+            35% 0,
+            65% 0,
+            100% 100%,
+            50% 75%,
+            0 100%
+        );
+
+    opacity: .8;
+
+    animation:
+        flame 0.25s infinite alternate;
+}
+
+
+@keyframes flame {
+
+    from {
+        transform:
+            translateX(-50%)
+            scaleY(.85);
+    }
+
+    to {
+        transform:
+            translateX(-50%)
+            scaleY(1.1);
+    }
+
+}
+
+
+/* =========================================
+   MOON
+========================================= */
+
+.moon {
+
+    position: absolute;
+
+    z-index: 10;
+
+    width: 95px;
+
+    height: 95px;
+
+    border-radius: 50%;
+
+    right: 85px;
+
+    top: 95px;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #d7d7d7,
+            #777 55%,
+            #292929 100%
+        );
+
+    box-shadow:
+        0 0 35px
+        rgba(220,220,220,.18);
+
+    transition:
+        .45s ease;
+}
+
+
+.moon:hover {
+
+    transform:
+        scale(1.12);
+
+    box-shadow:
+        0 0 55px
+        rgba(220,220,220,.3);
+}
+
+
+.moon::before,
+.moon::after {
+
+    content: "";
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    background:
+        rgba(40,40,40,.3);
+}
+
+
+.moon::before {
+
+    width: 18px;
+    height: 18px;
+
+    left: 25px;
+    top: 45px;
+}
+
+
+.moon::after {
+
+    width: 11px;
+    height: 11px;
+
+    right: 20px;
+    top: 25px;
+}
+
+
+/* =========================================
+   DECORATIVE DOTS
+========================================= */
+
+.dot {
+
+    position: absolute;
+
+    width: 9px;
+
+    height: 9px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(210,220,235,.8);
+
+    box-shadow:
+        0 0 15px
+        rgba(180,205,240,.35);
+}
+
+
+.dot-1 {
+
+    left:
+        calc(50% - 230px);
+
+    top:
+        calc(50% - 110px);
+}
+
+
+.dot-2 {
+
+    left:
+        calc(50% + 185px);
+
+    top:
+        calc(50% + 125px);
+}
+
+
+.dot-3 {
+
+    left:
+        calc(50% + 70px);
+
+    top:
+        calc(50% - 220px);
+}
+
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.content {
+
+    position: relative;
+
+    z-index: 10;
+
+    width:
+        min(1050px,100%);
+
+    margin: auto;
+}
+
+
+/* =========================================
+   STATS
+========================================= */
+
+.stats {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 1px;
+
+    background:
+        rgba(255,255,255,.1);
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+}
+
+
+.stat {
+
+    padding: 30px;
+
+    background:
+        rgba(5,7,13,.96);
+
+    transition:
+        .35s ease;
+}
+
+
+.stat:hover {
+
+    transform:
+        translateY(-5px);
+
+    background:
+        rgba(255,255,255,.04);
+}
+
+
+.stat-value {
+
+    margin-bottom: 9px;
+
+    font-size: 21px;
+
+    font-weight: bold;
+}
+
+
+.stat-label {
+
+    color:
+        rgba(255,255,255,.4);
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================
+   DESCRIPTION
+========================================= */
+
+.description {
+
+    margin-top: 60px;
+
+    padding: 40px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.025);
+}
+
+
+.description-title {
+
+    margin-bottom: 20px;
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+}
+
+
+.description-text {
+
+    max-width: 900px;
+
+    color:
+        rgba(255,255,255,.58);
+
+    font-size: 14px;
+
+    line-height: 1.9;
+}
+
+
+/* =========================================
+   FEATURES
+========================================= */
+
+.features-title {
+
+    margin-top: 60px;
+
+    margin-bottom: 25px;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,.45);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+
+.features {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 15px;
+}
+
+
+.feature {
+
+    padding: 28px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.02);
+
+    transition:
+        .35s ease;
+}
+
+
+.feature:hover {
+
+    transform:
+        translateY(-6px);
+
+    border-color:
+        rgba(180,205,235,.4);
+
+    background:
+        rgba(255,255,255,.04);
+}
+
+
+.feature-title {
+
+    margin-bottom: 12px;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+}
+
+
+.feature-text {
+
+    color:
+        rgba(255,255,255,.5);
+
+    font-size: 12px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   FACT
+========================================= */
+
+.fact {
+
+    margin-top: 60px;
+
+    padding: 40px;
+
+    text-align: center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    background:
+        rgba(255,255,255,.025);
+}
+
+
+.fact-label {
+
+    margin-bottom: 16px;
+
+    color:
+        rgba(255,255,255,.42);
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+}
+
+
+.fact-text {
+
+    max-width: 800px;
+
+    margin: auto;
+
+    font-size:
+        clamp(18px,3vw,27px);
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   NAVIGATION
+========================================= */
+
+.navigation {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    margin-top: 55px;
+
+    flex-wrap: wrap;
+}
+
+
+.nav-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 13px 22px;
+
+    color:
+        rgba(255,255,255,.75);
+
+    border:
+        1px solid
+        rgba(255,255,255,.2);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    transition:
+        .35s ease;
+}
+
+
+.nav-button:hover {
+
+    color: #020308;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-4px);
+}
+
+
+/* =========================================
+   CREDIT
+========================================= */
+
+.credit {
+
+    margin-top: 30px;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,.3);
+
+    font-size: 9px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:800px) {
+
+    .mission-area {
+
+        width: 500px;
+
+        height: 500px;
+    }
+
+    .rocket {
+
+        transform: scale(.8);
+    }
+
+    .rocket:hover {
+
+        transform:
+            translateY(-10px)
+            scale(.86);
+    }
+
+    .moon {
+
+        right: 45px;
+
+        top: 70px;
+
+        width: 70px;
+
+        height: 70px;
+    }
+
+    .stats {
+
+        grid-template-columns: 1fr;
+    }
+
+    .features {
+
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media(max-width:500px) {
+
+    .artemis-page {
+
+        padding:
+            45px 15px 70px;
+    }
+
+    .mission-area {
+
+        width: 320px;
+
+        height: 400px;
+
+        margin-top: 45px;
+    }
+
+    .orbit-1 {
+
+        width: 170px;
+
+        height: 170px;
+    }
+
+    .orbit-2 {
+
+        width: 250px;
+
+        height: 250px;
+    }
+
+    .orbit-3 {
+
+        width: 320px;
+
+        height: 320px;
+    }
+
+    .moon {
+
+        right: 10px;
+
+        top: 55px;
+
+        width: 55px;
+
+        height: 55px;
+    }
+
+    .description {
+
+        padding: 25px;
+    }
+
+    .fact {
+
+        padding:
+            28px 20px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<section class="artemis-page">
+
+
+<div class="stars"></div>
+
+<div class="stars-small"></div>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<div class="header">
+
+
+<a
+href="https://sites.google.com/view/kosmolearn"
+class="return">
+
+← RETURN TO HOME
+
+</a>
+
+
+<div class="label">
+
+ORBONIX · SPACE MISSIONS
+
+</div>
+
+
+<h1>
+
+ARTEMIS
+
+</h1>
+
+
+<div class="subtitle">
+
+A new era of lunar exploration designed
+to return humans to the Moon, develop
+new technologies and prepare the way
+for future missions to Mars.
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     ARTEMIS VISUAL
+========================================= -->
+
+<div class="mission-area">
+
+
+<div class="orbit orbit-1"></div>
+
+<div class="orbit orbit-2"></div>
+
+<div class="orbit orbit-3"></div>
+
+
+<div class="dot dot-1"></div>
+
+<div class="dot dot-2"></div>
+
+<div class="dot dot-3"></div>
+
+
+<div class="moon"></div>
+
+
+<div class="rocket">
+
+<div class="rocket-body">
+
+<div class="rocket-top"></div>
+
+<div class="rocket-window"></div>
+
+<div class="rocket-band"></div>
+
+<div class="rocket-engine"></div>
+
+<div class="flame"></div>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     CONTENT
+========================================= -->
+
+<div class="content">
+
+
+<!-- STATS -->
+
+<div class="stats">
+
+
+<div class="stat">
+
+<div class="stat-value">
+2022
+</div>
+
+<div class="stat-label">
+ARTEMIS I LAUNCH
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+MOON
+</div>
+
+<div class="stat-label">
+PRIMARY DESTINATION
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+SLS
+</div>
+
+<div class="stat-label">
+HEAVY-LIFT ROCKET
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+ORION
+</div>
+
+<div class="stat-label">
+CREW SPACECRAFT
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+LUNAR
+</div>
+
+<div class="stat-label">
+EXPLORATION PROGRAM</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+MARS
+</div>
+
+<div class="stat-label">
+LONG-TERM GOAL
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- DESCRIPTION -->
+
+<div class="description">
+
+
+<div class="description-title">
+
+RETURN TO THE MOON
+
+</div>
+
+
+<div class="description-text">
+
+Artemis is a human spaceflight program
+focused on exploring the Moon and
+building the capabilities needed for
+future deep-space missions.
+
+The program uses NASA's Space Launch
+System rocket and Orion spacecraft,
+along with commercial lunar landers
+and other international and commercial
+partners.
+
+Artemis I launched in November 2022
+without astronauts aboard. The mission
+tested the SLS rocket and Orion spacecraft
+during a journey around the Moon and
+back to Earth.
+
+Future Artemis missions are intended to
+bring astronauts back to the lunar surface
+and establish a sustained human presence
+around and on the Moon.
+
+The experience gained from lunar missions
+is also intended to help prepare humanity
+for future crewed missions to Mars.
+
+</div>
+
+
+</div>
+
+
+<!-- FEATURES -->
+
+<div class="features-title">
+
+ARTEMIS MISSION FEATURES
+
+</div>
+
+
+<div class="features">
+
+
+<div class="feature">
+
+<div class="feature-title">
+
+SLS ROCKET
+
+</div>
+
+<div class="feature-text">
+
+The Space Launch System is a powerful
+heavy-lift rocket designed to send Orion
+and crew toward the Moon and beyond.
+
+</div>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-title">
+
+ORION
+
+</div>
+
+<div class="feature-text">
+
+Orion is the crew spacecraft designed
+to transport astronauts through deep
+space and return them safely to Earth.
+
+</div>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-title">
+
+LUNAR GATEWAY
+
+</div>
+
+<div class="feature-text">
+
+Gateway is a planned space station in
+lunar orbit that will support exploration
+and future missions to the Moon.
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- FACT -->
+
+<div class="fact">
+
+
+<div class="fact-label">
+
+DID YOU KNOW?
+
+</div>
+
+
+<div class="fact-text">
+
+Artemis I traveled around the Moon
+and reached a distance of more than
+<strong>430,000 km from Earth</strong> during
+its mission.
+
+</div>
+
+
+</div>
+
+
+<!-- NAVIGATION -->
+
+<div class="navigation">
+
+
+<a
+href="https://sites.google.com/view/kosmolearn"
+class="nav-button">
+
+← RETURN TO HOME
+
+</a>
+
+
+<a
+href="https://sites.google.com/view/kosmolearn/space-missions"
+class="nav-button">
+
+← SPACE MISSIONS
+
+</a>
+
+
+</div>
+
+
+<div class="credit">
+
+ORBONIX · SPACE MISSIONS
+<br>
+ARTEMIS PROGRAM
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+<script>
+
+const stars =
+document.querySelector(".stars");
+
+const smallStars =
+document.querySelector(".stars-small");
+
+
+document.addEventListener(
+"mousemove",
+
+function(event) {
+
+    const x =
+        event.clientX /
+        window.innerWidth - 0.5;
+
+
+    const y =
+        event.clientY /
+        window.innerHeight - 0.5;
+
+
+    stars.style.transform =
+        `translate(
+            ${x * 20}px,
+            ${y * 20}px
+        )`;
+
+
+    smallStars.style.transform =
+        `translate(
+            ${x * -12}px,
+            ${y * -12}px
+        )`;
+
+});
+
+</script>
+
+
+</body>
+
+</html>
