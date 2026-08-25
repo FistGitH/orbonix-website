@@ -1,1 +1,1140 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: #020308;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   PAGE
+========================================= */
+
+.pluto-page {
+
+    position: relative;
+
+    min-height: 1750px;
+
+    padding: 55px 20px 100px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 25%,
+            rgba(100,105,125,.17),
+            transparent 45%
+        ),
+        #020308;
+}
+
+
+/* =========================================
+   STARS
+========================================= */
+
+.stars {
+
+    position: absolute;
+
+    inset: -20%;
+
+    pointer-events: none;
+
+    opacity: .38;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.9) 1px,
+            transparent 1px
+        );
+
+    background-size: 75px 75px;
+
+    transition: transform 1.5s ease;
+}
+
+
+.stars-small {
+
+    position: absolute;
+
+    inset: -20%;
+
+    pointer-events: none;
+
+    opacity: .14;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.8) 1px,
+            transparent 1px
+        );
+
+    background-size: 32px 32px;
+
+    transition: transform 2s ease;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header {
+
+    position: relative;
+
+    z-index: 10;
+
+    max-width: 950px;
+
+    margin: auto;
+
+    text-align: center;
+}
+
+
+.return {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    padding: 12px 20px;
+
+    margin-bottom: 35px;
+
+    color: rgba(255,255,255,.7);
+
+    border: 1px solid rgba(255,255,255,.22);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    transition: .35s ease;
+}
+
+
+.return:hover {
+
+    color: #020308;
+
+    background: white;
+
+    border-color: white;
+
+    transform: translateY(-4px);
+}
+
+
+.label {
+
+    margin-bottom: 18px;
+
+    color: rgba(255,255,255,.4);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+
+h1 {
+
+    margin: 0;
+
+    font-size: clamp(55px,9vw,105px);
+
+    line-height: .9;
+
+    letter-spacing: 7px;
+}
+
+
+.subtitle {
+
+    max-width: 720px;
+
+    margin: 25px auto 0;
+
+    color: rgba(255,255,255,.52);
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   TEXT HERO
+========================================= */
+
+.pluto-area {
+
+    position: relative;
+
+    width: min(850px,100%);
+
+    margin: 100px auto 110px;
+
+    text-align: center;
+}
+
+
+.pluto-title {
+
+    font-size: clamp(45px,8vw,90px);
+
+    font-weight: bold;
+
+    letter-spacing: 12px;
+
+    color: rgba(255,255,255,.92);
+
+    text-shadow:
+        0 0 35px rgba(170,180,210,.18);
+}
+
+
+.pluto-subtitle {
+
+    margin-top: 18px;
+
+    color: rgba(255,255,255,.38);
+
+    font-size: 9px;
+
+    letter-spacing: 5px;
+}
+
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.content {
+
+    position: relative;
+
+    z-index: 10;
+
+    width: min(1050px,100%);
+
+    margin: auto;
+}
+
+
+/* =========================================
+   STATS
+========================================= */
+
+.stats {
+
+    display: grid;
+
+    grid-template-columns: repeat(3,1fr);
+
+    gap: 1px;
+
+    background: rgba(255,255,255,.1);
+
+    border: 1px solid rgba(255,255,255,.1);
+}
+
+
+.stat {
+
+    padding: 30px;
+
+    background: rgba(5,7,13,.96);
+
+    transition: .35s ease;
+}
+
+
+.stat:hover {
+
+    transform: translateY(-5px);
+
+    background: rgba(255,255,255,.04);
+}
+
+
+.stat-value {
+
+    margin-bottom: 9px;
+
+    font-size: 21px;
+
+    font-weight: bold;
+}
+
+
+.stat-label {
+
+    color: rgba(255,255,255,.4);
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================
+   DESCRIPTION
+========================================= */
+
+.description {
+
+    margin-top: 60px;
+
+    padding: 40px;
+
+    border: 1px solid rgba(255,255,255,.1);
+
+    background: rgba(255,255,255,.025);
+}
+
+
+.description-title {
+
+    margin-bottom: 20px;
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+}
+
+
+.description-text {
+
+    max-width: 900px;
+
+    color: rgba(255,255,255,.58);
+
+    font-size: 14px;
+
+    line-height: 1.9;
+}
+
+
+/* =========================================
+   FEATURES
+========================================= */
+
+.features-title {
+
+    margin-top: 60px;
+
+    margin-bottom: 25px;
+
+    text-align: center;
+
+    color: rgba(255,255,255,.45);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+
+.features {
+
+    display: grid;
+
+    grid-template-columns: repeat(3,1fr);
+
+    gap: 15px;
+}
+
+
+.feature {
+
+    padding: 28px;
+
+    border: 1px solid rgba(255,255,255,.1);
+
+    background: rgba(255,255,255,.02);
+
+    transition: .35s ease;
+}
+
+
+.feature:hover {
+
+    transform: translateY(-6px);
+
+    border-color: rgba(190,195,215,.4);
+
+    background: rgba(255,255,255,.04);
+}
+
+
+.feature-title {
+
+    margin-bottom: 12px;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+}
+
+
+.feature-text {
+
+    color: rgba(255,255,255,.5);
+
+    font-size: 12px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   MOONS
+========================================= */
+
+.moons-title {
+
+    margin-top: 70px;
+
+    margin-bottom: 25px;
+
+    text-align: center;
+
+    color: rgba(255,255,255,.45);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+
+.moons {
+
+    display: grid;
+
+    grid-template-columns: repeat(5,1fr);
+
+    gap: 10px;
+}
+
+
+.moon {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 75px;
+
+    padding: 15px;
+
+    color: rgba(255,255,255,.75);
+
+    border: 1px solid rgba(255,255,255,.12);
+
+    background: rgba(255,255,255,.02);
+
+    text-decoration: none;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    transition: .35s ease;
+}
+
+
+.moon:hover {
+
+    color: #020308;
+
+    background: white;
+
+    border-color: white;
+
+    transform: translateY(-5px);
+}
+
+
+/* =========================================
+   FACT
+========================================= */
+
+.fact {
+
+    margin-top: 60px;
+
+    padding: 40px;
+
+    text-align: center;
+
+    border: 1px solid rgba(255,255,255,.12);
+
+    background: rgba(255,255,255,.025);
+}
+
+
+.fact-label {
+
+    margin-bottom: 16px;
+
+    color: rgba(255,255,255,.42);
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+}
+
+
+.fact-text {
+
+    max-width: 800px;
+
+    margin: auto;
+
+    font-size: clamp(18px,3vw,27px);
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   NAVIGATION
+========================================= */
+
+.navigation {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    margin-top: 55px;
+
+    flex-wrap: wrap;
+}
+
+
+.nav-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 13px 22px;
+
+    color: rgba(255,255,255,.75);
+
+    border: 1px solid rgba(255,255,255,.2);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    transition: .35s ease;
+}
+
+
+.nav-button:hover {
+
+    color: #020308;
+
+    background: white;
+
+    border-color: white;
+
+    transform: translateY(-4px);
+}
+
+
+/* =========================================
+   CREDIT
+========================================= */
+
+.credit {
+
+    margin-top: 30px;
+
+    text-align: center;
+
+    color: rgba(255,255,255,.3);
+
+    font-size: 9px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:800px) {
+
+    .stats {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .features {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .moons {
+
+        grid-template-columns: repeat(2,1fr);
+    }
+
+}
+
+
+@media(max-width:500px) {
+
+    .pluto-page {
+
+        padding: 45px 15px 70px;
+    }
+
+
+    .pluto-area {
+
+        margin-top: 70px;
+
+        margin-bottom: 80px;
+    }
+
+
+    .pluto-title {
+
+        letter-spacing: 7px;
+    }
+
+
+    .description {
+
+        padding: 25px;
+    }
+
+
+    .fact {
+
+        padding: 28px 20px;
+    }
+
+
+    .moons {
+
+        grid-template-columns: 1fr;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<section class="pluto-page">
+
+
+<div class="stars"></div>
+
+<div class="stars-small"></div>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<div class="header">
+
+
+<a
+href="https://sites.google.com/view/kosmolearn/solar-system"
+class="return">
+
+← RETURN TO SOLAR SYSTEM
+
+</a>
+
+
+<div class="label">
+
+ORBONIX · DWARF PLANETS
+
+</div>
+
+
+<h1>
+
+PLUTO
+
+</h1>
+
+
+<div class="subtitle">
+
+A distant dwarf planet in the Kuiper Belt,
+with a complex surface, a thin atmosphere
+and a remarkable system of five known moons.
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     TEXT HERO
+========================================= -->
+
+<div class="pluto-area">
+
+<div class="pluto-title">
+
+PLUTO
+
+</div>
+
+<div class="pluto-subtitle">
+
+DWARF PLANET · KUIPER BELT · TRANS-NEPTUNIAN OBJECT
+
+</div>
+
+</div>
+
+
+<!-- =========================================
+     CONTENT
+========================================= -->
+
+<div class="content">
+
+
+<!-- STATS -->
+
+<div class="stats">
+
+
+<div class="stat">
+
+<div class="stat-value">
+2,377 km
+</div>
+
+<div class="stat-label">
+DIAMETER
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+248 YEARS
+</div>
+
+<div class="stat-label">
+ORBITAL PERIOD
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+39.5 AU
+</div>
+
+<div class="stat-label">
+AVERAGE DISTANCE FROM SUN
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+1930
+</div>
+
+<div class="stat-label">
+DISCOVERED</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+DWARF PLANET
+</div>
+
+<div class="stat-label">
+CLASSIFICATION
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+5 MOONS
+</div>
+
+<div class="stat-label">
+KNOWN SATELLITES
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- DESCRIPTION -->
+
+<div class="description">
+
+
+<div class="description-title">
+
+THE DISTANT WORLD
+
+</div>
+
+
+<div class="description-text">
+
+Pluto is a dwarf planet located in the
+Kuiper Belt beyond the orbit of Neptune.
+
+It was discovered in 1930 by astronomer
+Clyde Tombaugh and was originally
+classified as the ninth planet of the
+Solar System.
+
+In 2006, Pluto was reclassified as a
+dwarf planet after the International
+Astronomical Union established a formal
+definition of a planet.
+
+Pluto has a surprisingly complex surface.
+It contains mountains of water ice, vast
+plains of nitrogen ice and regions with
+different colours and compositions.
+
+Its most famous feature is Sputnik
+Planitia, a huge bright basin covered
+mainly by nitrogen ice.
+
+Pluto also has a thin atmosphere that
+expands when the dwarf planet is closer
+to the Sun and partially freezes onto the
+surface when Pluto moves farther away.
+
+NASA's New Horizons spacecraft flew
+past Pluto in July 2015, providing the
+first close-up observations of the dwarf
+planet and its moons.
+
+</div>
+
+
+</div>
+
+
+<!-- FEATURES -->
+
+<div class="features-title">
+
+PLUTO FEATURES
+
+</div>
+
+
+<div class="features">
+
+
+<div class="feature">
+
+<div class="feature-title">
+
+HEART-SHAPED REGION
+
+</div>
+
+<div class="feature-text">
+
+Sputnik Planitia forms the western
+part of Pluto's famous bright,
+heart-shaped Tombaugh Regio.
+
+</div>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-title">
+
+THIN ATMOSPHERE
+
+</div>
+
+<div class="feature-text">
+
+Pluto has a tenuous atmosphere
+containing nitrogen, methane and
+carbon monoxide.
+
+</div>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-title">
+
+NEW HORIZONS
+
+</div>
+
+<div class="feature-text">
+
+New Horizons became the first
+spacecraft to explore Pluto up close
+during its historic 2015 flyby.
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     MOONS
+========================================= -->
+
+<div class="moons-title">
+
+PLUTO'S MOONS
+
+</div>
+
+
+<div class="moons">
+
+
+<a
+href="https://sites.google.com/view/kosmolearn/solar-system/pluto/charon"
+class="moon">
+
+CHARON
+
+</a>
+
+
+<a
+href="https://sites.google.com/view/kosmolearn/solar-system/pluto/nyx"
+class="moon">
+
+NYX
+
+</a>
+
+
+<a
+href="https://sites.google.com/view/kosmolearn/solar-system/pluto/hydra"
+class="moon">
+
+HYDRA
+
+</a>
+
+
+<a
+href="https://sites.google.com/view/kosmolearn/solar-system/pluto/kerberos"
+class="moon">
+
+KERBEROS
+
+</a>
+
+
+<a
+href="https://sites.google.com/view/kosmolearn/solar-system/pluto/styx"
+class="moon">
+
+STYX
+
+</a>
+
+
+</div>
+
+
+<!-- =========================================
+     FACT
+========================================= -->
+
+<div class="fact">
+
+
+<div class="fact-label">
+
+DID YOU KNOW?
+
+</div>
+
+
+<div class="fact-text">
+
+Pluto and its largest moon,
+<strong>Charon</strong>, orbit a common
+centre of mass that lies outside Pluto.
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     NAVIGATION
+========================================= -->
+
+<div class="navigation">
+
+
+<a
+href="https://sites.google.com/view/kosmolearn/solar-system"
+class="nav-button">
+
+← RETURN TO SOLAR SYSTEM
+
+</a>
+
+
+<a
+href="https://sites.google.com/view/kosmolearn/solar-system/kuiper-belt"
+class="nav-button">
+
+← RETURN TO KUIPER BELT
+
+</a>
+
+
+</div>
+
+
+<div class="credit">
+
+ORBONIX · DWARF PLANETS
+<br>
+TEXT-BASED VISUALIZATION · PLUTO
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+<script>
+
+const stars =
+document.querySelector(".stars");
+
+
+const smallStars =
+document.querySelector(".stars-small");
+
+
+document.addEventListener(
+"mousemove",
+
+function(event) {
+
+    const x =
+        event.clientX /
+        window.innerWidth - 0.5;
+
+
+    const y =
+        event.clientY /
+        window.innerHeight - 0.5;
+
+
+    stars.style.transform =
+        `translate(
+            ${x * 20}px,
+            ${y * 20}px
+        )`;
+
+
+    smallStars.style.transform =
+        `translate(
+            ${x * -12}px,
+            ${y * -12}px
+        )`;
+
+});
+
+</script>
+
+
+</body>
+
+</html>
