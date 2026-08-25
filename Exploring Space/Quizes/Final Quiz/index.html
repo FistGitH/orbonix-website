@@ -1,1 +1,3431 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>FINAL SPACE QUIZ</title>
+
+<style>
+
+/* =========================================
+   RESET
+========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: #010208;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   PAGE
+========================================= */
+
+.space-quiz-page {
+
+    position: relative;
+
+    min-height: 100vh;
+
+    padding: 65px 20px 100px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 15%,
+            rgba(100,130,255,.17),
+            transparent 42%
+        ),
+        radial-gradient(
+            circle at 15% 75%,
+            rgba(80,100,220,.09),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 85% 65%,
+            rgba(150,80,255,.07),
+            transparent 30%
+        ),
+        #010208;
+}
+
+
+/* =========================================
+   STARS
+========================================= */
+
+.stars,
+.stars-small {
+
+    position: fixed;
+
+    inset: -25%;
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+.stars {
+
+    opacity: .42;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.9) 1px,
+            transparent 1px
+        );
+
+    background-size: 75px 75px;
+
+    transition:
+        transform 1.5s ease;
+}
+
+.stars-small {
+
+    opacity: .18;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.8) 1px,
+            transparent 1px
+        );
+
+    background-size: 32px 32px;
+
+    transition:
+        transform 2s ease;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header {
+
+    position: relative;
+
+    z-index: 5;
+
+    max-width: 950px;
+
+    margin: auto;
+
+    text-align: center;
+}
+
+
+.return {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 12px 20px;
+
+    margin-bottom: 40px;
+
+    color:
+        rgba(255,255,255,.7);
+
+    border:
+        1px solid
+        rgba(255,255,255,.22);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    transition: .35s ease;
+}
+
+.return:hover {
+
+    color: #010208;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-4px);
+}
+
+
+.label {
+
+    margin-bottom: 18px;
+
+    color:
+        rgba(170,190,255,.6);
+
+    font-size: 10px;
+
+    letter-spacing: 6px;
+}
+
+
+h1 {
+
+    margin: 0;
+
+    font-size:
+        clamp(43px,8vw,90px);
+
+    line-height: .9;
+
+    letter-spacing: 7px;
+}
+
+
+.subtitle {
+
+    max-width: 760px;
+
+    margin:
+        28px auto 0;
+
+    color:
+        rgba(255,255,255,.52);
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   TOPIC LINE
+========================================= */
+
+.topic-line {
+
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    margin-top: 25px;
+}
+
+
+.topic {
+
+    padding: 7px 11px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    color:
+        rgba(255,255,255,.4);
+
+    font-size: 7px;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================
+   QUIZ CONTAINER
+========================================= */
+
+.quiz-container {
+
+    position: relative;
+
+    z-index: 5;
+
+    width:
+        min(900px,100%);
+
+    margin:
+        70px auto 0;
+
+    padding: 35px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.025);
+
+    backdrop-filter:
+        blur(8px);
+
+    transition: .8s ease;
+}
+
+
+/* =========================================
+   QUIZ TOP
+========================================= */
+
+.quiz-top {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 15px;
+}
+
+
+.question-number {
+
+    color:
+        rgba(255,255,255,.45);
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+}
+
+
+.difficulty {
+
+    padding:
+        7px 12px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.15);
+
+    color:
+        rgba(255,255,255,.5);
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================
+   PROGRESS
+========================================= */
+
+.progress {
+
+    width: 100%;
+
+    height: 3px;
+
+    margin-bottom: 45px;
+
+    background:
+        rgba(255,255,255,.08);
+
+    overflow: hidden;
+}
+
+
+.progress-bar {
+
+    width: 0%;
+
+    height: 100%;
+
+    background: white;
+
+    box-shadow:
+        0 0 12px
+        rgba(180,200,255,.8);
+
+    transition:
+        width .5s ease;
+}
+
+
+/* =========================================
+   QUESTION
+========================================= */
+
+.question {
+
+    min-height: 85px;
+
+    margin-bottom: 35px;
+
+    font-size:
+        clamp(20px,3vw,30px);
+
+    line-height: 1.4;
+
+    letter-spacing: .4px;
+}
+
+
+/* =========================================
+   ANSWERS
+========================================= */
+
+.answers {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap: 12px;
+}
+
+
+.answer {
+
+    min-height: 75px;
+
+    padding:
+        18px 20px;
+
+    text-align: left;
+
+    color:
+        rgba(255,255,255,.7);
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    background:
+        rgba(255,255,255,.02);
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+
+    cursor: pointer;
+
+    transition:
+        .3s ease;
+}
+
+
+.answer:hover {
+
+    color: white;
+
+    border-color:
+        rgba(150,180,255,.45);
+
+    background:
+        rgba(100,130,255,.06);
+
+    transform:
+        translateY(-3px);
+}
+
+
+.answer.correct {
+
+    color: white;
+
+    border-color:
+        rgba(100,220,150,.75);
+
+    background:
+        rgba(60,180,110,.13);
+
+    box-shadow:
+        0 0 20px
+        rgba(60,180,110,.08);
+}
+
+
+.answer.wrong {
+
+    color: white;
+
+    border-color:
+        rgba(255,90,90,.75);
+
+    background:
+        rgba(220,50,50,.13);
+
+    box-shadow:
+        0 0 20px
+        rgba(220,50,50,.08);
+}
+
+
+.answer.disabled {
+
+    pointer-events: none;
+}
+
+
+/* =========================================
+   NEXT
+========================================= */
+
+.next-area {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    margin-top: 25px;
+}
+
+
+.next-button {
+
+    display: none;
+
+    padding:
+        13px 25px;
+
+    color:
+        rgba(255,255,255,.8);
+
+    border:
+        1px solid
+        rgba(255,255,255,.2);
+
+    background:
+        transparent;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    cursor: pointer;
+
+    transition:
+        .3s ease;
+}
+
+
+.next-button:hover {
+
+    color: #010208;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-3px);
+}
+
+
+/* =========================================
+   RESULT
+========================================= */
+
+.result {
+
+    display: none;
+
+    position: relative;
+
+    text-align: center;
+
+    min-height: 650px;
+
+    padding:
+        25px 10px 20px;
+
+    overflow: hidden;
+}
+
+
+.result::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 450px;
+
+    height: 450px;
+
+    left: 50%;
+
+    top: 43%;
+
+    transform:
+        translate(-50%,-50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(130,160,255,.22),
+            rgba(70,100,230,.07) 38%,
+            transparent 70%
+        );
+
+    filter: blur(5px);
+
+    animation:
+        cosmicGlow 4s ease-in-out infinite;
+
+    pointer-events: none;
+}
+
+
+@keyframes cosmicGlow {
+
+    0%,100% {
+
+        transform:
+            translate(-50%,-50%)
+            scale(.82);
+
+        opacity: .55;
+    }
+
+    50% {
+
+        transform:
+            translate(-50%,-50%)
+            scale(1.18);
+
+        opacity: 1;
+    }
+}
+
+
+/* =========================================
+   COMPLETION ICON
+========================================= */
+
+.completion-icon {
+
+    position: relative;
+
+    width: 110px;
+
+    height: 110px;
+
+    margin:
+        5px auto 32px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #ffffff 0%,
+            #dbe6ff 25%,
+            #8faeff 55%,
+            #5575ff 100%
+        );
+
+    box-shadow:
+        0 0 25px
+        rgba(150,180,255,.8),
+
+        0 0 65px
+        rgba(90,120,255,.45),
+
+        0 0 130px
+        rgba(60,80,255,.2);
+
+    animation:
+        starAppear 1s ease forwards,
+        starFloat 4s ease-in-out 1s infinite;
+
+    z-index: 2;
+}
+
+
+.completion-icon::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: -18px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid
+        rgba(160,190,255,.45);
+
+    box-shadow:
+        0 0 20px
+        rgba(130,160,255,.3);
+
+    animation:
+        starRing 7s linear infinite;
+}
+
+
+.completion-icon::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: -32px;
+
+    border-radius: 50%;
+
+    border:
+        1px dashed
+        rgba(190,210,255,.18);
+
+    animation:
+        starRingReverse 12s linear infinite;
+}
+
+
+@keyframes starAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            scale(.2)
+            rotate(-60deg);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            scale(1)
+            rotate(0);
+    }
+}
+
+
+@keyframes starFloat {
+
+    0%,100% {
+
+        transform:
+            translateY(0);
+    }
+
+    50% {
+
+        transform:
+            translateY(-9px);
+    }
+}
+
+
+@keyframes starRing {
+
+    from {
+
+        transform:
+            rotate(0deg);
+    }
+
+    to {
+
+        transform:
+            rotate(360deg);
+    }
+}
+
+
+@keyframes starRingReverse {
+
+    from {
+
+        transform:
+            rotate(360deg);
+    }
+
+    to {
+
+        transform:
+            rotate(0deg);
+    }
+}
+
+
+/* =========================================
+   RESULT TEXT
+========================================= */
+
+.result-label {
+
+    position: relative;
+
+    z-index: 2;
+
+    margin-bottom: 18px;
+
+    color:
+        rgba(170,190,255,.65);
+
+    font-size: 10px;
+
+    letter-spacing: 6px;
+
+    animation:
+        fadeUp .8s ease .2s both;
+}
+
+
+.result-title {
+
+    position: relative;
+
+    z-index: 2;
+
+    margin-bottom: 12px;
+
+    font-size:
+        clamp(32px,7vw,65px);
+
+    letter-spacing: 5px;
+
+    animation:
+        titleAppear 1s ease .35s both;
+}
+
+
+@keyframes titleAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(20px);
+
+        letter-spacing: 15px;
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+        letter-spacing: 5px;
+    }
+}
+
+
+.score {
+
+    position: relative;
+
+    z-index: 2;
+
+    margin-bottom: 22px;
+
+    font-size: 27px;
+
+    font-weight: bold;
+
+    letter-spacing: 3px;
+
+    animation:
+        fadeUp .8s ease .55s both;
+}
+
+
+.result-text {
+
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 680px;
+
+    margin:
+        0 auto 30px;
+
+    color:
+        rgba(255,255,255,.5);
+
+    font-size: 13px;
+
+    line-height: 1.8;
+
+    animation:
+        fadeUp .8s ease .7s both;
+}
+
+
+@keyframes fadeUp {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(15px);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* =========================================
+   SCORE BAR
+========================================= */
+
+.final-score-bar {
+
+    position: relative;
+
+    z-index: 2;
+
+    width:
+        min(550px,90%);
+
+    height: 4px;
+
+    margin:
+        0 auto 35px;
+
+    background:
+        rgba(255,255,255,.08);
+
+    overflow: hidden;
+
+    animation:
+        fadeUp .8s ease .85s both;
+}
+
+
+.final-score-fill {
+
+    width: 0%;
+
+    height: 100%;
+
+    background: white;
+
+    box-shadow:
+        0 0 15px
+        rgba(180,200,255,.95);
+
+    transition:
+        width 1.8s cubic-bezier(.2,.8,.2,1);
+}
+
+
+/* =========================================
+   RESULT BUTTONS
+========================================= */
+
+.result-buttons {
+
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+
+    animation:
+        fadeUp .8s ease 1s both;
+}
+
+
+.result-button {
+
+    padding:
+        13px 23px;
+
+    color:
+        rgba(255,255,255,.75);
+
+    border:
+        1px solid
+        rgba(255,255,255,.2);
+
+    background:
+        transparent;
+
+    text-decoration: none;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    cursor: pointer;
+
+    transition:
+        .3s ease;
+}
+
+
+.result-button:hover {
+
+    color: #010208;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-3px);
+}
+
+
+/* =========================================
+   PARTICLES
+========================================= */
+
+.final-particle {
+
+    position: absolute;
+
+    width: 3px;
+
+    height: 3px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    pointer-events: none;
+
+    opacity: 0;
+
+    animation:
+        particleFly 2.5s ease-out forwards;
+}
+
+
+@keyframes particleFly {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            translate(0,0)
+            scale(.2);
+    }
+
+    15% {
+
+        opacity: 1;
+
+        transform:
+            translate(0,0)
+            scale(1);
+    }
+
+    100% {
+
+        opacity: 0;
+
+        transform:
+            translate(
+                var(--x),
+                var(--y)
+            )
+            scale(.2);
+    }
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.footer {
+
+    position: relative;
+
+    z-index: 5;
+
+    margin-top: 35px;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,.25);
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:600px) {
+
+    .space-quiz-page {
+
+        padding:
+            50px 15px 80px;
+    }
+
+    .quiz-container {
+
+        padding: 25px;
+    }
+
+    .answers {
+
+        grid-template-columns:
+            1fr;
+    }
+
+    .question {
+
+        font-size: 20px;
+    }
+
+    .completion-icon {
+
+        width: 85px;
+
+        height: 85px;
+    }
+
+    .result {
+
+        min-height: 600px;
+    }
+
+    .topic-line {
+
+        display: none;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<section class="space-quiz-page">
+
+
+<div class="stars"></div>
+
+<div class="stars-small"></div>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<div class="header">
+
+
+<a
+href="https://sites.google.com/view/kosmolearn"
+class="return">
+
+← RETURN TO HOME
+
+</a>
+
+
+<div class="label">
+
+ORBONIX · SPACE KNOWLEDGE
+
+</div>
+
+
+<h1>
+
+FINAL SPACE QUIZ
+
+</h1>
+
+
+<div class="subtitle">
+
+100 questions across the Universe —
+from planets, moons and stars to galaxies,
+black holes, comets, telescopes, NASA
+and the most extreme objects in deep space.
+
+</div>
+
+
+<div class="topic-line">
+
+<div class="topic">PLANETS</div>
+
+<div class="topic">MOONS</div>
+
+<div class="topic">SUN</div>
+
+<div class="topic">STARS</div>
+
+<div class="topic">GALAXIES</div>
+
+<div class="topic">BLACK HOLES</div>
+
+<div class="topic">COMETS</div>
+
+<div class="topic">TELESCOPES</div>
+
+<div class="topic">NASA</div>
+
+<div class="topic">DEEP SPACE</div>
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     QUIZ
+========================================= -->
+
+<div class="quiz-container">
+
+
+<div id="quiz">
+
+
+<div class="quiz-top">
+
+<div
+class="question-number"
+id="questionNumber">
+
+QUESTION 01 / 100
+
+</div>
+
+
+<div
+class="difficulty"
+id="difficulty">
+
+EASY
+
+</div>
+
+</div>
+
+
+<div class="progress">
+
+<div
+class="progress-bar"
+id="progressBar">
+</div>
+
+</div>
+
+
+<div
+class="question"
+id="question">
+
+Loading question...
+
+</div>
+
+
+<div
+class="answers"
+id="answers">
+</div>
+
+
+<div class="next-area">
+
+<button
+class="next-button"
+id="nextButton"
+onclick="nextQuestion()">
+
+NEXT QUESTION →
+
+</button>
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     RESULT
+========================================= -->
+
+<div
+class="result"
+id="result">
+
+
+<div class="completion-icon"></div>
+
+
+<div class="result-label">
+
+UNIVERSAL MISSION COMPLETE
+
+</div>
+
+
+<div
+class="result-title"
+id="resultTitle">
+
+COSMIC EXPLORER
+
+</div>
+
+
+<div
+class="score"
+id="score">
+
+0 / 100
+
+</div>
+
+
+<div class="final-score-bar">
+
+<div
+class="final-score-fill"
+id="finalScoreFill">
+</div>
+
+</div>
+
+
+<div
+class="result-text"
+id="resultText">
+
+You have completed the ultimate journey
+through space and astronomy.
+
+</div>
+
+
+<div class="result-buttons">
+
+
+<button
+class="result-button"
+onclick="restartQuiz()">
+
+↻ RESTART QUIZ
+
+</button>
+
+
+<a
+href="YOUR-QUIZ-SELECT-PAGE-LINK"
+class="result-button">
+
+← QUIZ SELECT
+
+</a>
+
+
+<a
+href="https://sites.google.com/view/kosmolearn"
+class="result-button">
+
+RETURN TO HOME
+
+</a>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+<div class="footer">
+
+ORBONIX · FINAL SPACE QUIZ · 100 QUESTIONS
+
+</div>
+
+
+</section>
+
+
+<script>
+
+/* =========================================================
+   100 QUESTIONS
+========================================================= */
+
+const questions = [
+
+/* =========================================================
+   PLANETS — 1-10
+========================================================= */
+
+{
+question:"Which planet is closest to the Sun?",
+answers:[
+"Mercury",
+"Venus",
+"Earth",
+"Mars"
+],
+correct:0,
+difficulty:"EASY"
+},
+
+{
+question:"Which planet is known as the Red Planet?",
+answers:[
+"Jupiter",
+"Mars",
+"Venus",
+"Mercury"
+],
+correct:1,
+difficulty:"EASY"
+},
+
+{
+question:"Which is the largest planet in the Solar System?",
+answers:[
+"Saturn",
+"Neptune",
+"Jupiter",
+"Uranus"
+],
+correct:2,
+difficulty:"EASY"
+},
+
+{
+question:"Which planet is famous for its prominent ring system?",
+answers:[
+"Saturn",
+"Jupiter",
+"Uranus",
+"Neptune"
+],
+correct:0,
+difficulty:"EASY"
+},
+
+{
+question:"Which planet is the hottest in the Solar System?",
+answers:[
+"Mercury",
+"Venus",
+"Mars",
+"Jupiter"
+],
+correct:1,
+difficulty:"EASY"
+},
+
+{
+question:"Which planet is sometimes called Earth's twin because of its similar size?",
+answers:[
+"Venus",
+"Mars",
+"Mercury",
+"Neptune"
+],
+correct:0,
+difficulty:"EASY"
+},
+
+{
+question:"Which planet is farthest from the Sun among the eight planets?",
+answers:[
+"Uranus",
+"Saturn",
+"Neptune",
+"Jupiter"
+],
+correct:2,
+difficulty:"EASY"
+},
+
+{
+question:"What is the largest planet in the Solar System?",
+answers:[
+"Earth",
+"Jupiter",
+"Saturn",
+"Neptune"
+],
+correct:1,
+difficulty:"EASY"
+},
+
+{
+question:"Which planet has the Great Red Spot?",
+answers:[
+"Mars",
+"Jupiter",
+"Saturn",
+"Neptune"
+],
+correct:1,
+difficulty:"EASY"
+},
+
+{
+question:"Which planet rotates on its side with an extreme axial tilt?",
+answers:[
+"Uranus",
+"Venus",
+"Mars",
+"Mercury"
+],
+correct:0,
+difficulty:"EASY"
+},
+
+
+/* =========================================================
+   MOONS — 11-20
+========================================================= */
+
+{
+question:"What is Earth's natural satellite called?",
+answers:[
+"The Moon",
+"Europa",
+"Titan",
+"Phobos"
+],
+correct:0,
+difficulty:"EASY"
+},
+
+{
+question:"Which planet has the Moon?",
+answers:[
+"Mars",
+"Earth",
+"Venus",
+"Mercury"
+],
+correct:1,
+difficulty:"EASY"
+},
+
+{
+question:"Which moon is the largest moon in the Solar System?",
+answers:[
+"Titan",
+"Ganymede",
+"Europa",
+"Callisto"
+],
+correct:1,
+difficulty:"EASY"
+},
+
+{
+question:"Which moon is famous for its thick atmosphere and methane lakes?",
+answers:[
+"Titan",
+"Europa",
+"Io",
+"Enceladus"
+],
+correct:0,
+difficulty:"MEDIUM"
+},
+
+{
+question:"Which moon of Jupiter is famous for its subsurface ocean?",
+answers:[
+"Europa",
+"Io",
+"Callisto",
+"Ganymede"
+],
+correct:0,
+difficulty:"MEDIUM"
+},
+
+{
+question:"Which moon of Jupiter is the most volcanically active world known?",
+answers:[
+"Io",
+"Europa",
+"Ganymede",
+"Callisto"
+],
+correct:0,
+difficulty:"MEDIUM"
+},
+
+{
+question:"Which Saturnian moon is famous for its geysers of water ice?",
+answers:[
+"Enceladus",
+"Titan",
+"Iapetus",
+"Rhea"
+],
+correct:0,
+difficulty:"MEDIUM"
+},
+
+{
+question:"What causes most ocean tides on Earth?",
+answers:[
+"The Moon's gravity",
+"Solar wind",
+"Earth's magnetic field",
+"Asteroids"
+],
+correct:0,
+difficulty:"MEDIUM"
+},
+
+{
+question:"Which planet has two small moons named Phobos and Deimos?",
+answers:[
+"Mars",
+"Jupiter",
+"Saturn",
+"Neptune"
+],
+correct:0,
+difficulty:"MEDIUM"
+},
+
+{
+question:"Which moon is larger than the planet Mercury?",
+answers:[
+"Ganymede",
+"Europa",
+"Titan",
+"Callisto"
+],
+correct:0,
+difficulty:"HARD"
+},
+
+
+/* =========================================================
+   SUN — 21-30
+========================================================= */
+
+{
+question:"What type of object is the Sun?",
+answers:[
+"A star",
+"A planet",
+"A brown dwarf",
+"A neutron star"
+],
+correct:0,
+difficulty:"EASY"
+},
+
+{
+question:"What element makes up most of the Sun?",
+answers:[
+"Hydrogen",
+"Oxygen",
+"Carbon",
+"Iron"
+],
+correct:0,
+difficulty:"EASY"
+},
+
+{
+question:"What process powers the Sun?",
+answers:[
+"Nuclear fusion",
+"Nuclear fission",
+"Chemical combustion",
+"Radioactive decay"
+],
+correct:0,
+difficulty:"EASY"
+},
+
+{
+question:"What is the visible surface of the Sun called?",
+answers:[
+"Photosphere",
+"Chromosphere",
+"Corona",
+"Core"
+],
+correct:0,
+difficulty:"MEDIUM"
+},
+
+{
+question:"What is the outermost atmosphere of the Sun called?",
+answers:[
+"Corona",
+"Photosphere",
+"Core",
+"Radiative zone"
+],
+correct:0,
+difficulty:"MEDIUM"
+},
+
+{
+question:"What are sunspots?",
+answers:[
+"Relatively cooler, darker regions on the Sun",
+"Holes in the Sun",
+"Small planets orbiting the Sun",
+"Exploding comets"
+],
+correct:0,
+difficulty:"MEDIUM"
+},
+
+{
+question:"What causes auroras on Earth?",
+answers:[
+"Charged particles interacting with Earth's magnetic field and atmosphere",
+"Moonlight",
+"Asteroid impacts",
+"Earthquakes"
+],
+correct:0,
+difficulty:"MEDIUM"
+},
+
+{
+question:"What is a solar flare?",
+answers:[
+"A sudden powerful release of energy from the Sun",
+"A new planet forming",
+"A lunar eclipse",
+"A comet tail"
+],
+correct:0,
+difficulty:"MEDIUM"
+},
+
+{
+question:"Approximately how old is the Sun?",
+answers:[
+"4.6 billion years",
+"46 million years",
+"13.8 billion years",
+"600 million years"
+],
+correct:0,
+difficulty:"HARD"
+},
+
+{
+question:"What will the Sun eventually become after its red giant phase?",
+answers:[
+"A white dwarf",
+"A neutron star",
+"A black hole",
+"A supernova"
+],
+correct:0,
+difficulty:"HARD"
+},
+
+
+/* =========================================================
+   STARS — 31-40
+========================================================= */
+
+{
+question:"What is a star?",
+answers:[
+"A giant ball of hot plasma held together by gravity",
+"A giant planet",
+"A cloud of ice",
+"A moon"
+],
+correct:0,
+difficulty:"EASY"
+},
+
+{
+question:"What force holds a star together?",
+answers:[
+"Gravity",
+"Magnetism",
+"Electricity",
+"Wind"
+],
+correct:0,
+difficulty:"EASY"
+},
+
+{
+question:"What is the closest star to Earth?",
+answers:[
+"The Sun",
+"Sirius",
+"Betelgeuse",
+"Polaris"
+],
+correct:0,
+difficulty:"EASY"
+},
+
+{
+question:"Which star is the brightest star in the night sky?",
+answers:[
+"Sirius",
+"Vega",
+"Rigel",
+"Deneb"
+],
+correct:0,
+difficulty:"EASY"
+},
+
+{
+question:"What are stars mostly made of?",
+answers:[
+"Hydrogen and helium",
+"Rock and metal",
+"Water and oxygen",
+"Carbon and iron"
+],
+correct:0,
+difficulty:"EASY"
+},
+
+{
+question:"What color are the hottest stars generally?",
+answers:[
+"Blue",
+"Red",
+"Orange",
+"Brown"
+],
+correct:0,
+difficulty:"EASY"
+},
+
+{
+question:"What process powers most main-sequence stars?",
+answers:[
+"Nuclear fusion",
+"Nuclear fission",
+"Chemical combustion",
+"Radioactive decay"
+],
+correct:0,
+difficulty:"MEDIUM"
+},
+
+{
+question:"What is the main sequence?",
+answers:[
+"A stage where stars spend most of their lives fusing hydrogen",
+"A group of galaxies",
+"A type of black hole",
+"A region without stars"
+],
+correct:0,
+difficulty:"MEDIUM"
+},
+
+{
+question:"What determines a star's evolution most strongly?",
+answers:[
+"Its initial mass",
+"Its distance from Earth",
+"Its number of planets",
+"Its color only"
+],
+correct:0,
+difficulty:"HARD"
+},
+
+{
+question:"What is a neutron star?",
+answers:[
+"An extremely dense stellar remnant",
+"A planet made of neutrons",
+"A young star",
+"A gas giant"
+],
+correct:0,
+difficulty:"HARD"
+},
+
+
+/* =========================================================
+   GALAXIES — 41-50
+========================================================= */
+
+{
+question:"What galaxy contains our Solar System?",
+answers:[
+"The Milky Way",
+"Andromeda",
+"Triangulum",
+"Whirlpool"
+],
+correct:0,
+difficulty:"EASY"
+},
+
+{
+question:"What type of galaxy is the Milky Way?",
+answers:[
+"Barred spiral galaxy",
+"Elliptical galaxy",
+"Irregular galaxy",
+"Ring galaxy"
+],
+correct:0,
+difficulty:"EASY"
+},
+
+{
+question:"What is the nearest large galaxy to the Milky Way?",
+answers:[
+"Andromeda Galaxy",
+"Whirlpool Galaxy",
+"Sombrero Galaxy",
+"Triangulum Galaxy"
+],
+correct:0,
+difficulty:"EASY"
+},
+
+{
+question:"What is a galaxy?",
+answers:[
+"A huge gravitationally bound system of stars, gas, dust and dark matter",
+"A single giant star",
+"A planetary system",
+"A comet cloud"
+],
+correct:0,
+difficulty:"EASY"
+},
+
+{
+question:"What is located at the center of the Milky Way?",
+answers:[
+"A supermassive black hole",
+"A neutron star",
+"A white dwarf",
+"A giant planet"
+],
+correct:0,
+difficulty:"MEDIUM"
+},
+
+{
+question:"What is the name of the supermassive black hole at the center of the Milky Way?",
+answers:[
+" Sagittarius A*",
+"Cygnus X-1",
+"TON 618",
+"M87*"
+],
+correct:0,
+difficulty:"MEDIUM"
+},
+
+{
+question:"Approximately how many stars does the Milky Way contain?",
+answers:[
+"Hundreds of billions",
+"About one thousand",
+"About one million",
+"Exactly one trillion"
+],
+correct:0,
+difficulty:"MEDIUM"
+},
+
+{
+question:"What happens when two galaxies collide?",
+answers:[
+"Their stars can interact gravitationally while direct star collisions are rare",
+"Every star immediately collides",
+"Both galaxies instantly disappear",
+"They turn into planets"
+],
+correct:0,
+difficulty:"HARD"
+},
+
+{
+question:"What is an elliptical galaxy?",
+answers:[
+"A galaxy with a smooth, rounded or elongated stellar distribution",
+"A galaxy with only one star",
+"A galaxy made entirely of gas",
+"A galaxy shaped like a planet"
+],
+correct:0,
+difficulty:"HARD"
+},
+
+{
+question:"What is the Local Group?",
+answers:[
+"A gravitationally bound group of galaxies including the Milky Way and Andromeda",
+"A group of planets",
+"A cluster of stars inside the Sun",
+"A NASA spacecraft"
+],
+correct:0,
+difficulty:"HARD"
+},
+
+
+/* =========================================================
+   BLACK HOLES — 51-60
+========================================================= */
+
+{
+question:"What is a black hole?",
+answers:[
+"A region of spacetime from which nothing can escape once inside the event horizon",
+"A completely empty planet",
+"A dark cloud",
+"A giant asteroid"
+],
+correct:0,
+difficulty:"EASY"
+},
+
+{
+question:"What is the boundary around a black hole beyond which escape is impossible?",
+answers:[
+"Event horizon",
+"Accretion disk",
+"Singularity",
+"Photon shell"
+],
+correct:0,
+difficulty:"EASY"
+},
+
+{
+question:"What is the singularity in a classical black hole model?",
+answers:[
+"A region where density and spacetime curvature become extreme in the theory",
+"The outer atmosphere",
+"The event horizon",
+"A cloud of gas"
+],
+correct:0,
+difficulty:"MEDIUM"
+},
+
+{
+question:"What often forms around an actively feeding black hole?",
+answers:[
+"An accretion disk",
+"A planetary ring",
+"A comet tail",
+"A moon system"
+],
+correct:0,
+difficulty:"MEDIUM"
+},
+
+{
+question:"What happens to time near a black hole according to general relativity?",
+answers:[
+"Time passes more slowly relative to a distant observer",
+"Time stops everywhere",
+"Time moves backward",
+"Time disappears"
+],
+correct:0,
+difficulty:"MEDIUM"
+},
+
+{
+question:"What is a stellar-mass black hole usually formed from?",
+answers:[
+"The collapse of a massive star",
+"The collision of two planets",
+"A comet",
+"A white dwarf cooling"
+],
+correct:0,
+difficulty:"MEDIUM"
+},
+
+{
+question:"What is a supermassive black hole?",
+answers:[
+"A black hole with millions to billions of solar masses",
+"A black hole smaller than an atom",
+"A neutron star",
+"A giant planet"
+],
+correct:0,
+difficulty:"MEDIUM"
+},
+
+{
+question:"What produces Hawking radiation in theory?",
+answers:[
+"Quantum effects near the event horizon",
+"Solar fusion",
+"Comet collisions",
+"Magnetic storms on Earth"
+],
+correct:0,
+difficulty:"HARD"
+},
+
+{
+question:"What are gravitational waves?",
+answers:[
+"Ripples in spacetime produced by accelerating massive objects",
+"Ocean waves caused by gravity",
+"Radio waves from planets",
+"Solar wind"
+],
+correct:0,
+difficulty:"HARD"
+},
+
+{
+question:"Which black hole was famously imaged by the Event Horizon Telescope in 2019?",
+answers:[
+"M87*",
+" Sagittarius A*",
+"Cygnus X-1",
+"TON 618"
+],
+correct:0,
+difficulty:"HARD"
+},
+
+
+/* =========================================================
+   COMETS — 61-70
+========================================================= */
+
+{
+question:"What is a comet mainly made of?",
+answers:[
+"Ice, dust and rocky material",
+"Pure metal",
+"Liquid water",
+"Hydrogen plasma only"
+],
+correct:0,
+difficulty:"EASY"
+},
+
+{
+question:"What is the solid central part of a comet called?",
+answers:[
+"Nucleus",
+"Core shell",
+"Head",
+"Crust"
+],
+correct:0,
+difficulty:"EASY"
+},
+
+{
+question:"What forms around a comet's nucleus when it approaches the Sun?",
+answers:[
+"Coma",
+"Atmosphere",
+"Corona",
+"Photosphere"
+],
+correct:0,
+difficulty:"EASY"
+},
+
+{
+question:"Which way does a comet's ion tail generally point?",
+answers:[
+"Away from the Sun",
+"Toward the Sun",
+"Toward Earth",
+"In the direction of travel only"
+],
+correct:0,
+difficulty:"MEDIUM"
+},
+
+{
+question:"Why do comets develop tails?",
+answers:[
+"Solar heating releases gas and dust from the nucleus",
+"They produce light themselves",
+"They collide with planets",
+"Gravity stretches them"
+],
+correct:0,
+difficulty:"MEDIUM"
+},
+
+{
+question:"What is Halley's Comet?",
+answers:[
+"A periodic comet visible from Earth",
+"A planet",
+"A moon",
+"An asteroid"
+],
+correct:0,
+difficulty:"EASY"
+},
+
+{
+question:"About how often does Halley's Comet return to the inner Solar System?",
+answers:[
+"About every 76 years",
+"Every 10 years",
+"Every 1,000 years",
+"Every 365 days"
+],
+correct:0,
+difficulty:"MEDIUM"
+},
+
+{
+question:"Where are many long-period comets thought to originate?",
+answers:[
+"The Oort Cloud",
+"The asteroid belt",
+"Earth's atmosphere",
+"The Kuiper belt only"
+],
+correct:0,
+difficulty:"HARD"
+},
+
+{
+question:"What is the Kuiper Belt?",
+answers:[
+"A region beyond Neptune containing many icy bodies",
+"A ring around Saturn",
+"A cloud around the Sun",
+"A region inside Mercury's orbit"
+],
+correct:0,
+difficulty:"MEDIUM"
+},
+
+{
+question:"What is a comet's dust tail primarily made of?",
+answers:[
+"Small dust particles pushed away by sunlight",
+"Liquid water",
+"Molten metal",
+"Neutrons"
+],
+correct:0,
+difficulty:"HARD"
+},
+
+
+/* =========================================================
+   TELESCOPES — 71-80
+========================================================= */
+
+{
+question:"What is the main purpose of a telescope?",
+answers:[
+"To collect and study light from distant objects",
+"To make stars brighter",
+"To create planets",
+"To measure Earth's temperature"
+],
+correct:0,
+difficulty:"EASY"
+},
+
+{
+question:"What does the aperture of a telescope describe?",
+answers:[
+"The diameter of its main light-collecting opening or mirror",
+"Its maximum magnification",
+"Its weight",
+"Its focal length only"
+],
+correct:0,
+difficulty:"EASY"
+},
+
+{
+question:"Why is telescope aperture important?",
+answers:[
+"Larger aperture generally collects more light and can improve resolution",
+"It makes planets move slower",
+"It changes gravity",
+"It increases Earth's rotation"
+],
+correct:0,
+difficulty:"MEDIUM"
+},
+
+{
+question:"What type of telescope uses mirrors to collect light?",
+answers:[
+"Reflector",
+"Refractor",
+"Radio only",
+"Solar clock"
+],
+correct:0,
+difficulty:"EASY"
+},
+
+{
+question:"What type of telescope uses lenses as its main optical element?",
+answers:[
+"Refractor",
+"Reflector",
+"Radio telescope",
+"X-ray telescope"
+],
+correct:0,
+difficulty:"EASY"
+},
+
+{
+question:"What is magnification?",
+answers:[
+"How many times larger an object appears through the telescope",
+"How much light the telescope collects",
+"The telescope's diameter",
+"The telescope's weight"
+],
+correct:0,
+difficulty:"EASY"
+},
+
+{
+question:"Why is very high magnification not always better?",
+answers:[
+"The image can become dimmer and more affected by atmospheric turbulence",
+"It makes stars disappear",
+"It reduces the telescope's aperture",
+"It turns planets into stars"
+],
+correct:0,
+difficulty:"MEDIUM"
+},
+
+{
+question:"What is adaptive optics used for?",
+answers:[
+"Correcting atmospheric distortion in astronomical observations",
+"Making telescopes heavier",
+"Changing a planet's orbit",
+"Cooling the Sun"
+],
+correct:0,
+difficulty:"HARD"
+},
+
+{
+question:"What does a radio telescope detect?",
+answers:[
+"Radio waves from astronomical sources",
+"Only visible light",
+"Only ultraviolet light",
+"Sound traveling through space"
+],
+correct:0,
+difficulty:"MEDIUM"
+},
+
+{
+question:"Why are space telescopes useful?",
+answers:[
+"They can observe wavelengths blocked or distorted by Earth's atmosphere",
+"They are always closer to stars",
+"They create artificial stars",
+"They have unlimited magnification"
+],
+correct:0,
+difficulty:"HARD"
+},
+
+
+/* =========================================================
+   NASA — 81-90
+========================================================= */
+
+{
+question:"What does NASA stand for?",
+answers:[
+"National Aeronautics and Space Administration",
+"National Astronomy and Science Agency",
+"North American Space Association",
+"National Air and Satellite Authority"
+],
+correct:0,
+difficulty:"EASY"
+},
+
+{
+question:"When was NASA established?",
+answers:[
+"1958",
+"1945",
+"1969",
+"1975"
+],
+correct:0,
+difficulty:"EASY"
+},
+
+{
+question:"What was the first human Moon landing mission?",
+answers:[
+"Apollo 11",
+"Apollo 8",
+"Gemini 4",
+"Mercury 7"
+],
+correct:0,
+difficulty:"EASY"
+},
+
+{
+question:"Who was the first person to walk on the Moon?",
+answers:[
+"Neil Armstrong",
+"Buzz Aldrin",
+"Yuri Gagarin",
+"John Glenn"
+],
+correct:0,
+difficulty:"EASY"
+},
+
+{
+question:"What was NASA's reusable spacecraft program called?",
+answers:[
+"Space Shuttle",
+"Moon Runner",
+"Star Cruiser",
+"Space Flyer"
+],
+correct:0,
+difficulty:"EASY"
+},
+
+{
+question:"Which telescope launched in 1990 became one of the most famous space telescopes?",
+answers:[
+"Hubble Space Telescope",
+"Kepler",
+"Chandra",
+"Spitzer"
+],
+correct:0,
+difficulty:"EASY"
+},
+
+{
+question:"Which rover landed in Jezero Crater on Mars in 2021?",
+answers:[
+"Perseverance",
+"Curiosity",
+"Spirit",
+"Opportunity"
+],
+correct:0,
+difficulty:"MEDIUM"
+},
+
+{
+question:"Which helicopter operated on Mars with Perseverance?",
+answers:[
+"Ingenuity",
+"Dragonfly",
+"Scout",
+"Pathfinder"
+],
+correct:0,
+difficulty:"MEDIUM"
+},
+
+{
+question:"Which spacecraft first performed a close flyby of Pluto?",
+answers:[
+"New Horizons",
+"Voyager 2",
+"Juno",
+"Cassini"
+],
+correct:0,
+difficulty:"MEDIUM"
+},
+
+{
+question:"What is NASA's Artemis program focused on?",
+answers:[
+"Human exploration of the Moon and preparation for future deep-space missions",
+"Exploring only Venus",
+"Replacing all satellites",
+"Building cities on Jupiter"
+],
+correct:0,
+difficulty:"HARD"
+},
+
+
+/* =========================================================
+   DEEP SPACE — 91-100
+========================================================= */
+
+{
+question:"What is a nebula?",
+answers:[
+"A large cloud of gas and dust in space",
+"A black hole",
+"A planet",
+"A neutron star"
+],
+correct:0,
+difficulty:"EASY"
+},
+
+{
+question:"What is a quasar?",
+answers:[
+"An extremely luminous active galactic nucleus powered by matter falling toward a supermassive black hole",
+"A small star",
+"A comet",
+"A planet"
+],
+correct:0,
+difficulty:"HARD"
+},
+
+{
+question:"What is a pulsar?",
+answers:[
+"A rapidly rotating neutron star whose radiation can sweep past Earth like a beam",
+"A rotating planet",
+"A small black hole",
+"A comet"
+],
+correct:0,
+difficulty:"HARD"
+},
+
+{
+question:"What is a magnetar?",
+answers:[
+"A neutron star with an extraordinarily powerful magnetic field",
+"A giant magnetized planet",
+"A black hole",
+"A blue supergiant"
+],
+correct:0,
+difficulty:"HARD"
+},
+
+{
+question:"What is dark matter?",
+answers:[
+"Inferred matter that interacts strongly through gravity but does not emit or absorb light like ordinary matter",
+"Completely empty space",
+"Dark clouds of water",
+"A type of black hole"
+],
+correct:0,
+difficulty:"HARD"
+},
+
+{
+question:"What is dark energy associated with?",
+answers:[
+"The accelerated expansion of the Universe",
+"The formation of planets",
+"Solar flares",
+"Black hole jets only"
+],
+correct:0,
+difficulty:"HARD"
+},
+
+{
+question:"What is a cosmic void?",
+answers:[
+"A vast region of the Universe with relatively few galaxies",
+"A hole inside a planet",
+"A black hole",
+"A region inside the Sun"
+],
+correct:0,
+difficulty:"HARD"
+},
+
+{
+question:"What is a rogue planet?",
+answers:[
+"A planet that does not orbit a star",
+"A planet with many moons",
+"A planet outside the Milky Way",
+"A planet made of dark matter"
+],
+correct:0,
+difficulty:"MEDIUM"
+},
+
+{
+question:"What is a wormhole?",
+answers:[
+"A hypothetical shortcut connecting distant regions of spacetime",
+"A type of black hole proven to exist",
+"A tunnel inside a planet",
+"A cosmic void"
+],
+correct:0,
+difficulty:"HARD"
+},
+
+{
+question:"Approximately how old is the Universe?",
+answers:[
+"13.8 billion years",
+"4.6 billion years",
+"100 billion years",
+"1 billion years"
+],
+correct:0,
+difficulty:"HARD"
+}
+
+];
+
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+let currentQuestion = 0;
+
+let score = 0;
+
+let answered = false;
+
+
+/* =========================================================
+   SHUFFLE ANSWERS
+========================================================= */
+
+function shuffleAnswers(question) {
+
+    const answerObjects =
+        question.answers.map(
+            (answer,index) => {
+
+                return {
+
+                    text: answer,
+
+                    correct:
+                        index === question.correct
+
+                };
+
+            }
+        );
+
+
+    for (
+        let i = answerObjects.length - 1;
+        i > 0;
+        i--
+    ) {
+
+        const j =
+            Math.floor(
+                Math.random() * (i + 1)
+            );
+
+
+        [
+            answerObjects[i],
+            answerObjects[j]
+        ] =
+        [
+            answerObjects[j],
+            answerObjects[i]
+        ];
+
+    }
+
+
+    return answerObjects;
+}
+
+
+/* =========================================================
+   LOAD QUESTION
+========================================================= */
+
+function loadQuestion() {
+
+    answered = false;
+
+
+    const q =
+        questions[currentQuestion];
+
+
+    document.getElementById(
+        "questionNumber"
+    ).textContent =
+        `QUESTION ${
+            String(currentQuestion + 1)
+            .padStart(2,"0")
+        } / ${questions.length}`;
+
+
+    document.getElementById(
+        "difficulty"
+    ).textContent =
+        q.difficulty;
+
+
+    document.getElementById(
+        "question"
+    ).textContent =
+        q.question;
+
+
+    document.getElementById(
+        "progressBar"
+    ).style.width =
+        `${
+            (currentQuestion /
+            questions.length) * 100
+        }%`;
+
+
+    const answersContainer =
+        document.getElementById(
+            "answers"
+        );
+
+
+    answersContainer.innerHTML = "";
+
+
+    const shuffled =
+        shuffleAnswers(q);
+
+
+    shuffled.forEach(
+        answerObject => {
+
+            const button =
+                document.createElement(
+                    "button"
+                );
+
+
+            button.className =
+                "answer";
+
+
+            button.textContent =
+                answerObject.text;
+
+
+            button.dataset.correct =
+                answerObject.correct;
+
+
+            button.onclick =
+                function() {
+
+                    selectAnswer(
+                        answerObject.correct,
+                        button
+                    );
+
+                };
+
+
+            answersContainer.appendChild(
+                button
+            );
+
+        }
+    );
+
+
+    document.getElementById(
+        "nextButton"
+    ).style.display =
+        "none";
+}
+
+
+/* =========================================================
+   ANSWER
+========================================================= */
+
+function selectAnswer(
+    isCorrect,
+    selectedButton
+) {
+
+    if (answered)
+        return;
+
+
+    answered = true;
+
+
+    const buttons =
+        document.querySelectorAll(
+            ".answer"
+        );
+
+
+    buttons.forEach(
+        button => {
+
+            button.classList.add(
+                "disabled"
+            );
+
+        }
+    );
+
+
+    if (isCorrect) {
+
+        selectedButton.classList.add(
+            "correct"
+        );
+
+        score++;
+
+    }
+
+    else {
+
+        selectedButton.classList.add(
+            "wrong"
+        );
+
+
+        buttons.forEach(
+            button => {
+
+                if (
+                    button.dataset.correct
+                    === "true"
+                ) {
+
+                    button.classList.add(
+                        "correct"
+                    );
+
+                }
+
+            }
+        );
+
+    }
+
+
+    document.getElementById(
+        "nextButton"
+    ).style.display =
+        "inline-flex";
+}
+
+
+/* =========================================================
+   NEXT QUESTION
+========================================================= */
+
+function nextQuestion() {
+
+    currentQuestion++;
+
+
+    if (
+        currentQuestion >=
+        questions.length
+    ) {
+
+        showResult();
+
+        return;
+
+    }
+
+
+    loadQuestion();
+}
+
+
+/* =========================================================
+   RESULT
+========================================================= */
+
+function showResult() {
+
+    document.getElementById(
+        "quiz"
+    ).style.display =
+        "none";
+
+
+    const result =
+        document.getElementById(
+            "result"
+        );
+
+
+    result.style.display =
+        "block";
+
+
+    document.getElementById(
+        "score"
+    ).textContent =
+        "0 / 100";
+
+
+    let title = "";
+
+    let text = "";
+
+
+    if (score <= 20) {
+
+        title =
+            "COSMIC BEGINNER";
+
+        text =
+            "Your journey through the Universe has begun. You explored planets, stars, galaxies and the strange objects of deep space. There is still an enormous Universe left to discover.";
+
+    }
+
+    else if (score <= 40) {
+
+        title =
+            "SPACE EXPLORER";
+
+        text =
+            "You have a growing understanding of astronomy. You know many of the Solar System's worlds and some of the major concepts of modern space science.";
+
+    }
+
+    else if (score <= 60) {
+
+        title =
+            "COSMIC NAVIGATOR";
+
+        text =
+            "A strong performance. You understand a wide range of astronomical objects, missions and physical processes across the Universe.";
+
+    }
+
+    else if (score <= 75) {
+
+        title =
+            "STELLAR SCHOLAR";
+
+        text =
+            "Very impressive. You successfully handled many questions about planets, stars, galaxies, black holes, telescopes and space exploration.";
+
+    }
+
+    else if (score <= 89) {
+
+        title =
+            "COSMIC EXPERT";
+
+        text =
+            "Excellent knowledge of astronomy. You understand both familiar Solar System objects and advanced concepts from astrophysics and cosmology.";
+
+    }
+
+    else if (score <= 99) {
+
+        title =
+            "UNIVERSE MASTER";
+
+        text =
+            "Outstanding performance. Your knowledge reaches from the Solar System all the way to black holes, galaxies, cosmology and the frontiers of space exploration.";
+
+    }
+
+    else {
+
+        title =
+            "ULTIMATE COSMIC MASTER";
+
+        text =
+            "Perfect score. You conquered all 100 questions across the Universe. From planets and moons to black holes and cosmology, your astronomical knowledge is exceptional.";
+
+    }
+
+
+    document.getElementById(
+        "resultTitle"
+    ).textContent =
+        title;
+
+
+    document.getElementById(
+        "resultText"
+    ).textContent =
+        text;
+
+
+    animateScore();
+
+
+    setTimeout(
+        function() {
+
+            document.getElementById(
+                "finalScoreFill"
+            ).style.width =
+                `${
+                    (score /
+                    questions.length) * 100
+                }%`;
+
+        },
+        600
+    );
+
+
+    createParticles();
+
+
+    createFinalBurst();
+
+}
+
+
+/* =========================================================
+   SCORE ANIMATION
+========================================================= */
+
+function animateScore() {
+
+    let value = 0;
+
+
+    const scoreElement =
+        document.getElementById(
+            "score"
+        );
+
+
+    const duration = 2200;
+
+
+    const start =
+        performance.now();
+
+
+    function update(now) {
+
+        const progress =
+            Math.min(
+                (now - start) /
+                duration,
+                1
+            );
+
+
+        const eased =
+            1 -
+            Math.pow(
+                1 - progress,
+                3
+            );
+
+
+        value =
+            Math.floor(
+                eased * score
+            );
+
+
+        scoreElement.textContent =
+            `${value} / ${questions.length}`;
+
+
+        if (progress < 1) {
+
+            requestAnimationFrame(
+                update
+            );
+
+        }
+
+        else {
+
+            scoreElement.textContent =
+                `${score} / ${questions.length}`;
+
+        }
+
+    }
+
+
+    requestAnimationFrame(
+        update
+    );
+}
+
+
+/* =========================================================
+   PARTICLES
+========================================================= */
+
+function createParticles() {
+
+    const result =
+        document.getElementById(
+            "result"
+        );
+
+
+    for (
+        let i = 0;
+        i < 120;
+        i++
+    ) {
+
+        const particle =
+            document.createElement(
+                "div"
+            );
+
+
+        particle.className =
+            "final-particle";
+
+
+        particle.style.left =
+            Math.random() * 100 + "%";
+
+
+        particle.style.top =
+            35 +
+            Math.random() * 30 +
+            "%";
+
+
+        particle.style.setProperty(
+            "--x",
+            (
+                Math.random() * 700 -
+                350
+            ) + "px"
+        );
+
+
+        particle.style.setProperty(
+            "--y",
+            (
+                Math.random() * 650 -
+                325
+            ) + "px"
+        );
+
+
+        particle.style.animationDelay =
+            Math.random() * 1.2 +
+            "s";
+
+
+        result.appendChild(
+            particle
+        );
+
+
+        setTimeout(
+            function() {
+
+                particle.remove();
+
+            },
+            4000
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   FINAL BURST
+========================================================= */
+
+function createFinalBurst() {
+
+    const result =
+        document.getElementById(
+            "result"
+        );
+
+
+    for (
+        let i = 0;
+        i < 40;
+        i++
+    ) {
+
+        const particle =
+            document.createElement(
+                "div"
+            );
+
+
+        particle.className =
+            "final-particle";
+
+
+        particle.style.left =
+            "50%";
+
+
+        particle.style.top =
+            "42%";
+
+
+        const angle =
+            Math.random() *
+            Math.PI *
+            2;
+
+
+        const distance =
+            150 +
+            Math.random() * 350;
+
+
+        particle.style.setProperty(
+            "--x",
+            Math.cos(angle) *
+            distance +
+            "px"
+        );
+
+
+        particle.style.setProperty(
+            "--y",
+            Math.sin(angle) *
+            distance +
+            "px"
+        );
+
+
+        particle.style.animationDelay =
+            Math.random() * .5 +
+            "s";
+
+
+        result.appendChild(
+            particle
+        );
+
+
+        setTimeout(
+            function() {
+
+                particle.remove();
+
+            },
+            3500
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   RESTART
+========================================================= */
+
+function restartQuiz() {
+
+    currentQuestion = 0;
+
+    score = 0;
+
+    answered = false;
+
+
+    document.getElementById(
+        "quiz"
+    ).style.display =
+        "block";
+
+
+    document.getElementById(
+        "result"
+    ).style.display =
+        "none";
+
+
+    document.getElementById(
+        "finalScoreFill"
+    ).style.width =
+        "0%";
+
+
+    loadQuestion();
+
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+
+/* =========================================================
+   STAR PARALLAX
+========================================================= */
+
+const stars =
+document.querySelector(".stars");
+
+
+const smallStars =
+document.querySelector(".stars-small");
+
+
+document.addEventListener(
+"mousemove",
+
+function(event) {
+
+    const x =
+        event.clientX /
+        window.innerWidth -
+        0.5;
+
+
+    const y =
+        event.clientY /
+        window.innerHeight -
+        0.5;
+
+
+    stars.style.transform =
+        `translate(
+            ${x * 20}px,
+            ${y * 20}px
+        )`;
+
+
+    smallStars.style.transform =
+        `translate(
+            ${x * -12}px,
+            ${y * -12}px
+        )`;
+
+});
+
+
+/* =========================================================
+   START
+========================================================= */
+
+loadQuestion();
+
+</script>
+
+
+</body>
+
+</html>
