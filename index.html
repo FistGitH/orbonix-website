@@ -1,1 +1,8110 @@
 
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ORBONIX</title>
+<style>
+
+
+/* =====================================
+   BASIC
+===================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+
+    margin: 0;
+    padding: 0;
+
+    width: 100%;
+    height: 100%;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    background: #02030a;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+}
+
+
+/* =====================================
+   HERO
+===================================== */
+
+.orbonix-hero {
+
+    position: relative;
+
+    width: 100%;
+
+    height: 650px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 50%,
+            #11162b 0%,
+            #050712 45%,
+            #010208 100%
+        );
+
+    isolation: isolate;
+}
+
+
+/* =====================================
+   STARS
+===================================== */
+
+.stars {
+
+    position: absolute;
+
+    inset: -12%;
+
+    width: 124%;
+    height: 124%;
+
+    pointer-events: none;
+}
+
+.stars-back {
+    z-index: 1;
+}
+
+.stars-mid {
+    z-index: 2;
+}
+
+.stars-front {
+    z-index: 3;
+}
+
+
+.star {
+
+    position: absolute;
+
+    width: 2px;
+    height: 2px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    opacity: 0.7;
+
+    box-shadow:
+        0 0 5px
+        rgba(255,255,255,0.8);
+}
+
+
+.star.small {
+
+    width: 1px;
+    height: 1px;
+
+    opacity: 0.45;
+}
+
+
+.star.bright {
+
+    width: 3px;
+    height: 3px;
+
+    opacity: 0.95;
+
+    box-shadow:
+
+        0 0 5px white,
+
+        0 0 12px
+        rgba(160,190,255,0.7),
+
+        0 0 20px
+        rgba(120,150,255,0.4);
+}
+
+
+/* =====================================
+   NEBULA
+===================================== */
+
+.nebula {
+
+    position: absolute;
+
+    width: 850px;
+    height: 850px;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background:
+
+        radial-gradient(
+            ellipse,
+
+            rgba(50,85,180,0.25)
+            0%,
+
+            rgba(80,40,170,0.16)
+            25%,
+
+            rgba(20,30,100,0.09)
+            45%,
+
+            transparent
+            70%
+        );
+
+    filter: blur(45px);
+
+    z-index: 0;
+
+    pointer-events: none;
+}
+
+
+.nebula2 {
+
+    position: absolute;
+
+    width: 600px;
+    height: 400px;
+
+    left: 20%;
+    top: 25%;
+
+    border-radius: 50%;
+
+    background:
+
+        radial-gradient(
+            ellipse,
+
+            rgba(100,50,200,0.16),
+
+            transparent 70%
+        );
+
+    filter: blur(60px);
+
+    z-index: 0;
+
+    pointer-events: none;
+}
+
+
+/* =====================================
+   CONTENT
+===================================== */
+
+.content {
+
+    position: absolute;
+
+    z-index: 10;
+
+    inset: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    color: white;
+
+    padding: 30px;
+}
+
+
+/* =====================================
+   LOGO
+===================================== */
+
+.logo {
+
+    font-size:
+        clamp(
+            52px,
+            9vw,
+            110px
+        );
+
+    font-weight: 800;
+
+    letter-spacing:
+        0.18em;
+
+    margin-left:
+        0.18em;
+
+    background:
+
+        linear-gradient(
+            120deg,
+
+            #ffffff,
+
+            #b8c7ff,
+
+            #ffffff
+        );
+
+    -webkit-background-clip:
+        text;
+
+    background-clip:
+        text;
+
+    color:
+        transparent;
+
+    text-shadow:
+
+        0 0 25px
+        rgba(130,160,255,0.18),
+
+        0 0 70px
+        rgba(70,90,255,0.08);
+
+    transition:
+        transform
+        0.25s ease;
+}
+
+
+/* =====================================
+   TAGLINE
+===================================== */
+
+.tagline {
+
+    margin-top:
+        12px;
+
+    font-size:
+        clamp(
+            15px,
+            2vw,
+            23px
+        );
+
+    letter-spacing:
+        0.32em;
+
+    margin-left:
+        0.32em;
+
+    font-weight:
+        300;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.78
+        );
+}
+
+
+/* =====================================
+   DESCRIPTION
+===================================== */
+
+.description {
+
+    max-width:
+        620px;
+
+    margin-top:
+        25px;
+
+    font-size:
+        15px;
+
+    line-height:
+        1.7;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.58
+        );
+}
+
+
+/* =====================================
+   BUTTONS
+===================================== */
+
+.buttons {
+
+    display:
+        flex;
+
+    gap:
+        16px;
+
+    margin-top:
+        35px;
+
+    flex-wrap:
+        wrap;
+
+    justify-content:
+        center;
+}
+
+
+/* =====================================
+   BUTTON
+===================================== */
+
+.orbonix-button {
+
+    position:
+        relative;
+
+    padding:
+        15px 30px;
+
+    min-height:
+        48px;
+
+    border-radius:
+        30px;
+
+    border:
+        1px solid
+        rgba(
+            160,
+            180,
+            255,
+            0.35
+        );
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.045
+        );
+
+    color:
+        white;
+
+    font-size:
+        13px;
+
+    letter-spacing:
+        0.14em;
+
+    cursor:
+        pointer;
+
+    overflow:
+        visible;
+
+    backdrop-filter:
+        blur(10px);
+
+    -webkit-backdrop-filter:
+        blur(10px);
+
+    transition:
+
+        transform
+        0.18s ease,
+
+        background
+        0.25s ease,
+
+        border-color
+        0.25s ease,
+
+        box-shadow
+        0.25s ease;
+
+    box-shadow:
+
+        0 0 20px
+        rgba(
+            80,
+            100,
+            255,
+            0.06
+        );
+
+    user-select:
+        none;
+
+    -webkit-tap-highlight-color:
+        transparent;
+}
+
+
+/* =====================================
+   PC HOVER
+===================================== */
+
+@media (hover: hover) {
+
+    .orbonix-button:hover {
+
+        background:
+            rgba(
+                110,
+                130,
+                255,
+                0.10
+            );
+
+        border-color:
+            rgba(
+                180,
+                195,
+                255,
+                0.75
+            );
+
+        box-shadow:
+
+            0 0 25px
+            rgba(
+                100,
+                130,
+                255,
+                0.22
+            ),
+
+            0 0 60px
+            rgba(
+                70,
+                90,
+                255,
+                0.08
+            );
+
+        transform:
+            translateY(-3px);
+    }
+}
+
+
+/* =====================================
+   CLICK
+===================================== */
+
+.orbonix-button.clicked {
+
+    transform:
+        scale(0.90);
+}
+
+
+/* =====================================
+   RIPPLE
+===================================== */
+
+.ripple {
+
+    position:
+        absolute;
+
+    left:
+        50%;
+
+    top:
+        50%;
+
+    width:
+        20px;
+
+    height:
+        20px;
+
+    border-radius:
+        50%;
+
+    border:
+        1px solid
+        rgba(
+            180,
+            200,
+            255,
+            0.9
+        );
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        )
+        scale(0);
+
+    pointer-events:
+        none;
+
+    animation:
+        rippleAnimation
+        0.75s
+        ease-out
+        forwards;
+}
+
+
+@keyframes rippleAnimation {
+
+    0% {
+
+        transform:
+            translate(
+                -50%,
+                -50%
+            )
+            scale(0);
+
+        opacity:
+            1;
+    }
+
+    100% {
+
+        transform:
+            translate(
+                -50%,
+                -50%
+            )
+            scale(12);
+
+        opacity:
+            0;
+    }
+}
+
+
+/* =====================================
+   ORBIT
+===================================== */
+
+.orbit-ring {
+
+    position:
+        absolute;
+
+    left:
+        50%;
+
+    top:
+        50%;
+
+    width:
+        120px;
+
+    height:
+        45px;
+
+    border:
+        1px solid
+        rgba(
+            150,
+            180,
+            255,
+            0
+        );
+
+    border-radius:
+        50%;
+
+    transform:
+
+        translate(
+            -50%,
+            -50%
+        )
+
+        rotate(-18deg)
+
+        scale(0.3);
+
+    pointer-events:
+        none;
+
+    animation:
+        orbitAnimation
+        0.9s
+        ease-out
+        forwards;
+}
+
+
+@keyframes orbitAnimation {
+
+    0% {
+
+        opacity:
+            0;
+
+        transform:
+
+            translate(
+                -50%,
+                -50%
+            )
+
+            rotate(-18deg)
+
+            scale(0.3);
+
+        border-color:
+            rgba(
+                150,
+                180,
+                255,
+                0
+            );
+    }
+
+    20% {
+
+        opacity:
+            1;
+
+        border-color:
+            rgba(
+                150,
+                180,
+                255,
+                0.9
+            );
+    }
+
+    100% {
+
+        opacity:
+            0;
+
+        transform:
+
+            translate(
+                -50%,
+                -50%
+            )
+
+            rotate(25deg)
+
+            scale(1.5);
+
+        border-color:
+            rgba(
+                150,
+                180,
+                255,
+                0
+            );
+    }
+}
+
+
+/* =====================================
+   PARTICLES
+===================================== */
+
+.energy {
+
+    position:
+        absolute;
+
+    width:
+        4px;
+
+    height:
+        4px;
+
+    border-radius:
+        50%;
+
+    background:
+        white;
+
+    box-shadow:
+
+        0 0 8px white,
+
+        0 0 15px
+        rgba(
+            120,
+            150,
+            255,
+            0.8
+        );
+
+    pointer-events:
+        none;
+
+    animation:
+        energyAnimation
+        0.8s
+        ease-out
+        forwards;
+}
+
+
+@keyframes energyAnimation {
+
+    0% {
+
+        opacity:
+            1;
+
+        transform:
+            translate(
+                0,
+                0
+            )
+            scale(1);
+    }
+
+    100% {
+
+        opacity:
+            0;
+
+        transform:
+            translate(
+                var(--x),
+                var(--y)
+            )
+            scale(0);
+    }
+}
+
+
+/* =====================================
+   VIGNETTE
+===================================== */
+
+.vignette {
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    z-index:
+        8;
+
+    pointer-events:
+        none;
+
+    background:
+
+        radial-gradient(
+            circle,
+
+            transparent
+            40%,
+
+            rgba(
+                0,
+                0,
+                0,
+                0.42
+            )
+            100%
+        );
+}
+
+
+/* =====================================
+   TABLET
+===================================== */
+
+@media (
+    max-width: 900px
+) {
+
+    .orbonix-hero {
+
+        height:
+            620px;
+    }
+
+    .logo {
+
+        font-size:
+            clamp(
+                55px,
+                11vw,
+                90px
+            );
+    }
+}
+
+
+/* =====================================
+   PHONE
+===================================== */
+
+@media (
+    max-width: 600px
+) {
+
+    .orbonix-hero {
+
+        height:
+            600px;
+    }
+
+    .content {
+
+        padding:
+            20px;
+    }
+
+    .logo {
+
+        font-size:
+            clamp(
+                48px,
+                16vw,
+                72px
+            );
+
+        letter-spacing:
+            0.13em;
+
+        margin-left:
+            0.13em;
+    }
+
+    .tagline {
+
+        max-width:
+            330px;
+
+        font-size:
+            13px;
+
+        line-height:
+            1.6;
+
+        letter-spacing:
+            0.15em;
+
+        margin-left:
+            0.15em;
+    }
+
+    .description {
+
+        max-width:
+            330px;
+
+        margin-top:
+            18px;
+
+        font-size:
+            14px;
+
+        line-height:
+            1.6;
+    }
+
+    .buttons {
+
+        width:
+            100%;
+
+        max-width:
+            330px;
+
+        flex-direction:
+            column;
+
+        gap:
+            12px;
+
+        margin-top:
+            28px;
+    }
+
+    .orbonix-button {
+
+        width:
+            100%;
+
+        min-height:
+            54px;
+
+        display:
+            flex;
+
+        justify-content:
+            center;
+
+        align-items:
+            center;
+
+        padding:
+            16px 20px;
+
+        font-size:
+            12px;
+
+        letter-spacing:
+            0.13em;
+    }
+
+    .nebula {
+
+        width:
+            650px;
+
+        height:
+            650px;
+    }
+
+    .nebula2 {
+
+        width:
+            450px;
+
+        height:
+            300px;
+    }
+}
+
+
+/* =====================================
+   VERY SMALL PHONE
+===================================== */
+
+@media (
+    max-width: 380px
+) {
+
+    .orbonix-hero {
+
+        height:
+            570px;
+    }
+
+    .logo {
+
+        font-size:
+            43px;
+    }
+
+    .tagline {
+
+        font-size:
+            11px;
+    }
+
+    .description {
+
+        font-size:
+            13px;
+    }
+}
+
+
+/* =====================================
+   TOUCH DEVICE
+===================================== */
+
+@media (
+    hover: none
+) {
+
+    .orbonix-button:active {
+
+        transform:
+            scale(0.92);
+
+        background:
+            rgba(
+                110,
+                130,
+                255,
+                0.14
+            );
+    }
+}
+
+
+
+
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #02050b;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   SECTION
+========================================= */
+
+.orbonix-news {
+    position: relative;
+
+    width: 100%;
+    min-height: 760px;
+
+    padding: 120px 5vw;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 20% 50%,
+            rgba(45,80,140,.12),
+            transparent 45%
+        ),
+        #02050b;
+}
+
+
+/* =========================================
+   BACKGROUND
+========================================= */
+
+.news-stars {
+    position: absolute;
+
+    inset: -15%;
+
+    pointer-events: none;
+
+    opacity: .35;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.8) 1px,
+            transparent 1px
+        );
+
+    background-size: 110px 110px;
+
+    transition:
+        transform 1s
+        cubic-bezier(.2,.8,.2,1);
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.news-header {
+    position: relative;
+
+    z-index: 2;
+
+    text-align: center;
+
+    margin-bottom: 70px;
+}
+
+.news-label {
+
+    font-size: 11px;
+
+    letter-spacing: 5px;
+
+    color:
+        rgba(255,255,255,.45);
+
+    margin-bottom: 18px;
+}
+
+.news-title {
+
+    margin: 0;
+
+    font-size:
+        clamp(40px,6vw,72px);
+
+    letter-spacing: 4px;
+}
+
+.news-subtitle {
+
+    max-width: 600px;
+
+    margin:
+        22px auto 0;
+
+    color:
+        rgba(255,255,255,.55);
+
+    font-size: 14px;
+
+    line-height: 1.7;
+}
+
+.news-line {
+
+    width: 0;
+
+    height: 1px;
+
+    margin:
+        28px auto 0;
+
+    background:
+        rgba(255,255,255,.7);
+
+    transition:
+        width 1.2s ease;
+}
+
+.orbonix-news.visible
+.news-line {
+
+    width: 180px;
+}
+
+
+/* =========================================
+   NEWS GRID
+========================================= */
+
+.news-grid {
+
+    position: relative;
+
+    z-index: 2;
+
+    width:
+        min(1250px,100%);
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        1.5fr 1fr 1fr;
+
+    gap: 22px;
+}
+
+
+/* =========================================
+   NEWS CARD
+========================================= */
+
+.news-card {
+
+    position: relative;
+
+    min-height: 390px;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        rgba(255,255,255,.13);
+
+    background: #070b13;
+
+    opacity: 0;
+
+    transform:
+        translateY(60px);
+
+    transition:
+        opacity .8s ease,
+        transform .8s ease,
+        border-color .35s ease,
+        box-shadow .35s ease;
+}
+
+.orbonix-news.visible
+.news-card {
+
+    opacity: 1;
+
+    transform:
+        translateY(0);
+}
+
+.orbonix-news.visible
+.news-card:nth-child(1) {
+    transition-delay: .15s;
+}
+
+.orbonix-news.visible
+.news-card:nth-child(2) {
+    transition-delay: .3s;
+}
+
+.orbonix-news.visible
+.news-card:nth-child(3) {
+    transition-delay: .45s;
+}
+
+
+/* =========================================
+   NEWS IMAGE
+========================================= */
+
+.news-image {
+
+    position: absolute;
+
+    inset: -25px;
+
+    transition:
+        transform .8s
+        cubic-bezier(.2,.8,.2,1);
+}
+
+
+/* =========================================
+   NEWS VISUALS
+========================================= */
+
+.news-space {
+
+    background:
+
+        radial-gradient(
+            circle at 70% 35%,
+            #d6c28d 0 8%,
+            #75684f 9%,
+            transparent 18%
+        ),
+
+        radial-gradient(
+            circle at 25% 20%,
+            rgba(255,255,255,.9) 1px,
+            transparent 2px
+        ),
+
+        linear-gradient(
+            135deg,
+            #03070f,
+            #132542 55%,
+            #02050b
+        );
+}
+
+
+.news-telescope {
+
+    background:
+
+        radial-gradient(
+            ellipse at 55% 50%,
+            rgba(120,160,230,.4),
+            transparent 28%
+        ),
+
+        radial-gradient(
+            circle at 30% 35%,
+            rgba(255,255,255,.9) 1px,
+            transparent 2px
+        ),
+
+        linear-gradient(
+            120deg,
+            #090414,
+            #111c38,
+            #03050b
+        );
+}
+
+
+.news-mars {
+
+    background:
+
+        radial-gradient(
+            circle at 65% 50%,
+            #c9683f 0 12%,
+            #763b2d 13%,
+            transparent 24%
+        ),
+
+        linear-gradient(
+            180deg,
+            #02050b,
+            #16233a 55%,
+            #26100b
+        );
+}
+
+
+/* =========================================
+   IMAGE OVERLAY
+========================================= */
+
+.news-image::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            transparent 25%,
+            rgba(0,0,0,.92) 100%
+        );
+}
+
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.news-content {
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    padding: 30px;
+
+    z-index: 3;
+}
+
+.news-date {
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    color:
+        rgba(255,255,255,.4);
+
+    margin-bottom: 12px;
+}
+
+.news-card-title {
+
+    margin: 0;
+
+    font-size: 25px;
+
+    line-height: 1.2;
+
+    letter-spacing: 1px;
+}
+
+.news-text {
+
+    margin:
+        14px 0 22px;
+
+    color:
+        rgba(255,255,255,.6);
+
+    font-size: 13px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   BUTTON
+========================================= */
+
+.news-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding:
+        10px 16px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.3);
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    transition:
+        background .3s ease,
+        color .3s ease,
+        transform .3s ease;
+}
+
+.news-arrow {
+
+    transition:
+        transform .3s ease;
+}
+
+.news-button:hover {
+
+    background: white;
+
+    color: #02050b;
+
+    transform:
+        translateY(-3px);
+}
+
+.news-button:hover
+.news-arrow {
+
+    transform:
+        translateX(5px);
+}
+
+
+/* =========================================
+   HOVER
+========================================= */
+
+.news-card:hover {
+
+    border-color:
+        rgba(255,255,255,.55);
+
+    box-shadow:
+        0 30px 90px
+        rgba(0,0,0,.45);
+}
+
+.news-card:hover
+.news-image {
+
+    transform:
+        scale(1.08);
+}
+
+
+/* =========================================
+   TOP CORNER
+========================================= */
+
+.news-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 20px;
+    right: 20px;
+
+    width: 28px;
+    height: 28px;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,.3);
+
+    border-right:
+        1px solid
+        rgba(255,255,255,.3);
+
+    z-index: 4;
+
+    transition:
+        width .3s ease,
+        height .3s ease;
+}
+
+.news-card:hover::before {
+
+    width: 43px;
+    height: 43px;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 850px) {
+
+    .orbonix-news {
+
+        padding:
+            85px 20px;
+    }
+
+    .news-grid {
+
+        grid-template-columns:
+            1fr;
+
+        max-width:
+            500px;
+    }
+
+    .news-card {
+
+        min-height:
+            360px;
+    }
+
+}
+
+
+/* =========================================
+   SMALL PHONE
+========================================= */
+
+@media (max-width: 450px) {
+
+    .orbonix-news {
+
+        padding:
+            70px 15px;
+    }
+
+    .news-card {
+
+        min-height:
+            340px;
+    }
+
+    .news-content {
+
+        padding:
+            24px;
+    }
+
+    .news-card-title {
+
+        font-size:
+            22px;
+    }
+
+}
+
+
+
+
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #02050b;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   SECTION
+========================================= */
+
+.orbonix-quiz {
+
+    position: relative;
+
+    width: 100%;
+    min-height: 700px;
+
+    padding: 120px 5vw;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(50,90,150,.18),
+            transparent 48%
+        ),
+        #02050b;
+}
+
+
+/* =========================================
+   BACKGROUND
+========================================= */
+
+.quiz-stars {
+
+    position: absolute;
+
+    inset: -20%;
+
+    pointer-events: none;
+
+    opacity: .45;
+
+    background-image:
+
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.9) 1px,
+            transparent 1px
+        );
+
+    background-size:
+        95px 95px;
+
+    transition:
+        transform 1s
+        cubic-bezier(.2,.8,.2,1);
+}
+
+
+/* second star layer */
+
+.quiz-stars-small {
+
+    position: absolute;
+
+    inset: -20%;
+
+    pointer-events: none;
+
+    opacity: .25;
+
+    background-image:
+
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.8) 1px,
+            transparent 1px
+        );
+
+    background-size:
+        45px 45px;
+
+    transition:
+        transform 1.2s
+        cubic-bezier(.2,.8,.2,1);
+}
+
+
+/* =========================================
+   GLOW
+========================================= */
+
+.quiz-glow {
+
+    position: absolute;
+
+    width: 600px;
+    height: 600px;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%,-50%);
+
+    border-radius: 50%;
+
+    background:
+
+        radial-gradient(
+            circle,
+            rgba(70,130,230,.13),
+            transparent 70%
+        );
+
+    pointer-events: none;
+}
+
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.quiz-container {
+
+    position: relative;
+
+    z-index: 2;
+
+    width:
+        min(1100px,100%);
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 70px;
+
+    align-items: center;
+}
+
+
+/* =========================================
+   LEFT SIDE
+========================================= */
+
+.quiz-info {
+
+    opacity: 0;
+
+    transform:
+        translateX(-60px);
+
+    transition:
+        opacity .9s ease,
+        transform .9s ease;
+}
+
+.orbonix-quiz.visible
+.quiz-info {
+
+    opacity: 1;
+
+    transform:
+        translateX(0);
+}
+
+
+.quiz-label {
+
+    font-size: 11px;
+
+    letter-spacing: 5px;
+
+    color:
+        rgba(255,255,255,.45);
+
+    margin-bottom: 18px;
+}
+
+
+.quiz-title {
+
+    margin: 0;
+
+    font-size:
+        clamp(42px,6vw,72px);
+
+    letter-spacing: 3px;
+
+    line-height: 1.05;
+}
+
+
+.quiz-line {
+
+    width: 0;
+
+    height: 1px;
+
+    margin:
+        28px 0;
+
+    background:
+        rgba(255,255,255,.7);
+
+    transition:
+        width 1.2s ease;
+}
+
+.orbonix-quiz.visible
+.quiz-line {
+
+    width: 150px;
+}
+
+
+.quiz-description {
+
+    max-width: 520px;
+
+    color:
+        rgba(255,255,255,.58);
+
+    font-size: 15px;
+
+    line-height: 1.8;
+
+    margin-bottom: 30px;
+}
+
+
+/* =========================================
+   STATS
+========================================= */
+
+.quiz-stats {
+
+    display: flex;
+
+    gap: 35px;
+
+    margin-bottom: 35px;
+}
+
+
+.quiz-stat {
+
+    border-left:
+        1px solid
+        rgba(255,255,255,.25);
+
+    padding-left: 14px;
+}
+
+
+.quiz-stat-number {
+
+    font-size: 22px;
+
+    font-weight: bold;
+
+    margin-bottom: 5px;
+}
+
+
+.quiz-stat-label {
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    color:
+        rgba(255,255,255,.4);
+}
+
+
+/* =========================================
+   BUTTON
+========================================= */
+
+.quiz-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding:
+        15px 24px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.45);
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 11px;
+
+    letter-spacing: 3px;
+
+    transition:
+        background .35s ease,
+        color .35s ease,
+        transform .35s ease,
+        border-color .35s ease;
+}
+
+
+.quiz-button-arrow {
+
+    font-size: 17px;
+
+    transition:
+        transform .35s ease;
+}
+
+
+.quiz-button:hover {
+
+    background: white;
+
+    color: #02050b;
+
+    border-color: white;
+
+    transform:
+        translateY(-5px);
+}
+
+
+.quiz-button:hover
+.quiz-button-arrow {
+
+    transform:
+        translateX(7px);
+}
+
+
+/* =========================================
+   RIGHT SIDE
+========================================= */
+
+.quiz-visual {
+
+    position: relative;
+
+    height: 450px;
+
+    opacity: 0;
+
+    transform:
+        translateX(60px)
+        scale(.95);
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease;
+}
+
+.orbonix-quiz.visible
+.quiz-visual {
+
+    opacity: 1;
+
+    transform:
+        translateX(0)
+        scale(1);
+
+    transition-delay:
+        .25s;
+}
+
+
+/* =========================================
+   PLANET
+========================================= */
+
+.quiz-planet {
+
+    position: absolute;
+
+    width: 330px;
+    height: 330px;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%,-50%);
+
+    border-radius: 50%;
+
+    background:
+
+        radial-gradient(
+            circle at 32% 28%,
+            rgba(255,255,255,.65),
+            transparent 5%
+        ),
+
+        radial-gradient(
+            circle at 35% 30%,
+            #839cc5,
+            #30476b 42%,
+            #111d32 72%,
+            #03060c 100%
+        );
+
+    box-shadow:
+
+        0 0 50px
+        rgba(80,130,220,.18),
+
+        inset -35px -25px 70px
+        rgba(0,0,0,.75);
+
+    transition:
+        transform 1s
+        cubic-bezier(.2,.8,.2,1);
+}
+
+
+/* =========================================
+   ORBIT
+========================================= */
+
+.quiz-orbit {
+
+    position: absolute;
+
+    width: 450px;
+    height: 150px;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%,-50%)
+        rotate(-18deg);
+
+    border:
+        1px solid
+        rgba(150,190,255,.25);
+
+    border-radius: 50%;
+
+    transition:
+        transform 1s
+        cubic-bezier(.2,.8,.2,1);
+}
+
+
+.quiz-orbit::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 10px;
+    height: 10px;
+
+    right: 60px;
+    top: 15px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    box-shadow:
+        0 0 15px
+        rgba(255,255,255,.8);
+}
+
+
+/* =========================================
+   FLOATING QUESTION
+========================================= */
+
+.quiz-question {
+
+    position: absolute;
+
+    left: 20px;
+    top: 35px;
+
+    width: 210px;
+
+    padding: 20px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.18);
+
+    background:
+        rgba(5,10,20,.75);
+
+    backdrop-filter:
+        blur(10px);
+
+    box-shadow:
+        0 20px 50px
+        rgba(0,0,0,.35);
+
+    transform:
+        rotate(-4deg);
+
+    transition:
+        transform .5s ease;
+}
+
+
+.quiz-question-number {
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    color:
+        rgba(255,255,255,.4);
+
+    margin-bottom: 10px;
+}
+
+
+.quiz-question-text {
+
+    font-size: 13px;
+
+    line-height: 1.5;
+}
+
+
+.quiz-question:hover {
+
+    transform:
+        rotate(0deg)
+        translateY(-8px);
+}
+
+
+/* =========================================
+   FLOATING ANSWER
+========================================= */
+
+.quiz-answer {
+
+    position: absolute;
+
+    right: 10px;
+    bottom: 40px;
+
+    padding:
+        15px 20px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.18);
+
+    background:
+        rgba(5,10,20,.75);
+
+    backdrop-filter:
+        blur(10px);
+
+    font-size: 11px;
+
+    letter-spacing: 1px;
+
+    transform:
+        rotate(4deg);
+
+    transition:
+        transform .5s ease;
+}
+
+
+.quiz-answer span {
+
+    color:
+        rgba(255,255,255,.45);
+}
+
+
+.quiz-answer:hover {
+
+    transform:
+        rotate(0deg)
+        translateY(-8px);
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 850px) {
+
+    .orbonix-quiz {
+
+        padding:
+            90px 20px;
+    }
+
+
+    .quiz-container {
+
+        grid-template-columns:
+            1fr;
+
+        gap: 50px;
+    }
+
+
+    .quiz-info {
+
+        text-align: center;
+    }
+
+
+    .quiz-line {
+
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+
+    .quiz-description {
+
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+
+    .quiz-stats {
+
+        justify-content:
+            center;
+    }
+
+
+    .quiz-button {
+
+        margin:
+            0 auto;
+    }
+
+
+    .quiz-visual {
+
+        height: 390px;
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .orbonix-quiz {
+
+        padding:
+            70px 15px;
+    }
+
+
+    .quiz-title {
+
+        font-size:
+            40px;
+    }
+
+
+    .quiz-stats {
+
+        gap: 18px;
+    }
+
+
+    .quiz-planet {
+
+        width: 250px;
+        height: 250px;
+    }
+
+
+    .quiz-orbit {
+
+        width: 340px;
+        height: 110px;
+    }
+
+
+    .quiz-question {
+
+        left: 0;
+        top: 20px;
+
+        width: 175px;
+
+        padding: 15px;
+    }
+
+
+    .quiz-answer {
+
+        right: 0;
+        bottom: 25px;
+    }
+
+}
+
+
+
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #02050b;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+.observation-section {
+    position: relative;
+    width: 100%;
+    min-height: 850px;
+    padding: 110px 5vw;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(60,100,180,.13),
+            transparent 48%
+        ),
+        #02050b;
+}
+
+/* ================================
+   STARS
+================================ */
+
+.observation-stars {
+    position: absolute;
+    inset: -30%;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.8) 1px,
+            transparent 1px
+        );
+
+    background-size: 90px 90px;
+
+    opacity: .35;
+
+    pointer-events: none;
+
+    transition:
+        transform 1s ease;
+}
+
+.observation-stars-small {
+    position: absolute;
+    inset: -30%;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.7) 1px,
+            transparent 1px
+        );
+
+    background-size: 42px 42px;
+
+    opacity: .18;
+
+    pointer-events: none;
+
+    transition:
+        transform 1.4s ease;
+}
+
+/* ================================
+   HEADER
+================================ */
+
+.observation-header {
+    position: relative;
+    z-index: 2;
+
+    text-align: center;
+
+    max-width: 850px;
+
+    margin: 0 auto 70px;
+
+    opacity: 0;
+
+    transform: translateY(45px);
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease;
+}
+
+.observation-section.visible
+.observation-header {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.observation-label {
+    font-size: 10px;
+    letter-spacing: 5px;
+
+    color:
+        rgba(255,255,255,.42);
+
+    margin-bottom: 18px;
+}
+
+.observation-title {
+    margin: 0;
+
+    font-size:
+        clamp(42px, 6vw, 70px);
+
+    letter-spacing: 3px;
+
+    line-height: 1.05;
+}
+
+.observation-line {
+    width: 0;
+    height: 1px;
+
+    margin: 28px auto;
+
+    background:
+        rgba(255,255,255,.7);
+
+    transition:
+        width 1.2s ease;
+}
+
+.observation-section.visible
+.observation-line {
+    width: 150px;
+}
+
+.observation-description {
+    max-width: 620px;
+
+    margin: auto;
+
+    color:
+        rgba(255,255,255,.55);
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+/* ================================
+   GALLERY
+================================ */
+
+.observation-gallery {
+    position: relative;
+    z-index: 2;
+
+    width: min(1200px, 100%);
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 25px;
+}
+
+/* ================================
+   CARD
+================================ */
+
+.observation-card {
+    position: relative;
+
+    height: 440px;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        rgba(255,255,255,.13);
+
+    background: #050a13;
+
+    opacity: 0;
+
+    transform:
+        translateY(70px)
+        scale(.96);
+
+    transition:
+        opacity .8s ease,
+        transform .8s ease,
+        border-color .4s ease;
+}
+
+.observation-section.visible
+.observation-card {
+    opacity: 1;
+
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+.observation-card:nth-child(1) {
+    transition-delay: .15s;
+}
+
+.observation-card:nth-child(2) {
+    transition-delay: .3s;
+}
+
+.observation-card:nth-child(3) {
+    transition-delay: .45s;
+}
+
+.observation-card:hover {
+    border-color:
+        rgba(255,255,255,.4);
+
+    transform:
+        translateY(-10px)
+        scale(1.015);
+}
+
+/* ================================
+   IMAGE
+================================ */
+
+.observation-image {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition:
+        transform 1s
+        cubic-bezier(.2,.8,.2,1),
+        filter .6s ease;
+}
+
+.observation-card:hover
+.observation-image {
+    transform: scale(1.09);
+
+    filter:
+        brightness(.72);
+}
+
+/* ================================
+   DARK GRADIENT
+================================ */
+
+.observation-gradient {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent 30%,
+            rgba(0,0,0,.15) 45%,
+            rgba(0,0,0,.92) 100%
+        );
+
+    pointer-events: none;
+}
+
+/* ================================
+   TOP NUMBER
+================================ */
+
+.observation-number {
+    position: absolute;
+
+    top: 20px;
+    left: 20px;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    color:
+        rgba(255,255,255,.6);
+
+    z-index: 3;
+}
+
+/* ================================
+   CARD CONTENT
+================================ */
+
+.observation-content {
+    position: absolute;
+
+    left: 25px;
+    right: 25px;
+    bottom: 25px;
+
+    z-index: 3;
+
+    transform:
+        translateY(12px);
+
+    transition:
+        transform .5s ease;
+}
+
+.observation-card:hover
+.observation-content {
+    transform:
+        translateY(0);
+}
+
+.observation-object {
+    font-size: 28px;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 7px;
+}
+
+.observation-meta {
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    color:
+        rgba(255,255,255,.48);
+
+    margin-bottom: 18px;
+}
+
+.observation-view {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    color: white;
+
+    text-decoration: none;
+
+    opacity: .65;
+
+    transition:
+        opacity .3s ease,
+        gap .3s ease;
+}
+
+.observation-card:hover
+.observation-view {
+    opacity: 1;
+
+    gap: 17px;
+}
+
+.observation-arrow {
+    font-size: 15px;
+}
+
+/* ================================
+   BOTTOM TEXT
+================================ */
+
+.observation-footer {
+    position: relative;
+
+    z-index: 2;
+
+    text-align: center;
+
+    margin-top: 55px;
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+
+    color:
+        rgba(255,255,255,.3);
+
+    opacity: 0;
+
+    transform:
+        translateY(20px);
+
+    transition:
+        opacity .8s ease .6s,
+        transform .8s ease .6s;
+}
+
+.observation-section.visible
+.observation-footer {
+    opacity: 1;
+
+    transform:
+        translateY(0);
+}
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 900px) {
+
+    .observation-gallery {
+        grid-template-columns:
+            1fr;
+    }
+
+    .observation-card {
+        height: 430px;
+    }
+
+    .observation-section {
+        padding:
+            90px 20px;
+    }
+}
+
+@media (max-width: 500px) {
+
+    .observation-title {
+        font-size: 40px;
+    }
+
+    .observation-card {
+        height: 380px;
+    }
+
+    .observation-content {
+        left: 20px;
+        right: 20px;
+        bottom: 20px;
+    }
+
+    .observation-object {
+        font-size: 24px;
+    }
+}
+
+
+
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #02050b;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   SECTION
+========================================= */
+
+.missions-section {
+
+    position: relative;
+
+    width: 100%;
+
+    min-height: 1000px;
+
+    padding: 120px 5vw;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 40%,
+            rgba(50,100,190,.13),
+            transparent 48%
+        ),
+        #02050b;
+}
+
+
+/* =========================================
+   STARS
+========================================= */
+
+.missions-stars {
+
+    position: absolute;
+
+    inset: -30%;
+
+    pointer-events: none;
+
+    opacity: .32;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.9) 1px,
+            transparent 1px
+        );
+
+    background-size: 85px 85px;
+
+    transition:
+        transform 1.2s ease;
+}
+
+
+.missions-stars-small {
+
+    position: absolute;
+
+    inset: -30%;
+
+    pointer-events: none;
+
+    opacity: .18;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.8) 1px,
+            transparent 1px
+        );
+
+    background-size: 40px 40px;
+
+    transition:
+        transform 1.5s ease;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.missions-header {
+
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 800px;
+
+    margin:
+        0 auto 80px;
+
+    text-align: center;
+
+    opacity: 0;
+
+    transform:
+        translateY(45px);
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease;
+}
+
+
+.missions-section.visible
+.missions-header {
+
+    opacity: 1;
+
+    transform:
+        translateY(0);
+}
+
+
+.missions-label {
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+
+    color:
+        rgba(255,255,255,.42);
+
+    margin-bottom: 18px;
+}
+
+
+.missions-title {
+
+    margin: 0;
+
+    font-size:
+        clamp(42px,6vw,70px);
+
+    line-height: 1.05;
+
+    letter-spacing: 4px;
+}
+
+
+.missions-line {
+
+    width: 0;
+
+    height: 1px;
+
+    margin:
+        28px auto;
+
+    background:
+        rgba(255,255,255,.7);
+
+    transition:
+        width 1.2s ease;
+}
+
+
+.missions-section.visible
+.missions-line {
+
+    width: 150px;
+}
+
+
+.missions-description {
+
+    max-width: 620px;
+
+    margin: auto;
+
+    color:
+        rgba(255,255,255,.55);
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   TIMELINE
+========================================= */
+
+.missions-timeline {
+
+    position: relative;
+
+    z-index: 2;
+
+    width:
+        min(1100px,100%);
+
+    margin: auto;
+}
+
+
+/* CENTER LINE */
+
+.missions-timeline::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    bottom: 0;
+
+    left: 50%;
+
+    width: 1px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent,
+            rgba(255,255,255,.25),
+            rgba(255,255,255,.25),
+            transparent
+        );
+
+    transform:
+        translateX(-50%);
+}
+
+
+/* =========================================
+   MISSION
+========================================= */
+
+.mission {
+
+    position: relative;
+
+    width: 50%;
+
+    padding:
+        0 45px 80px;
+
+    opacity: 0;
+
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
+}
+
+
+.mission:nth-child(odd) {
+
+    left: 0;
+
+    text-align: right;
+
+    transform:
+        translateX(-60px);
+}
+
+
+.mission:nth-child(even) {
+
+    left: 50%;
+
+    text-align: left;
+
+    transform:
+        translateX(60px);
+}
+
+
+.missions-section.visible
+.mission {
+
+    opacity: 1;
+
+    transform:
+        translateX(0);
+}
+
+
+.mission:nth-child(1) {
+    transition-delay: .15s;
+}
+
+.mission:nth-child(2) {
+    transition-delay: .3s;
+}
+
+.mission:nth-child(3) {
+    transition-delay: .45s;
+}
+
+.mission:nth-child(4) {
+    transition-delay: .6s;
+}
+
+
+/* =========================================
+   DOT
+========================================= */
+
+.mission-dot {
+
+    position: absolute;
+
+    top: 4px;
+
+    width: 11px;
+
+    height: 11px;
+
+    border-radius: 50%;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 0 20px
+        rgba(255,255,255,.6);
+
+    z-index: 3;
+}
+
+
+.mission:nth-child(odd)
+.mission-dot {
+
+    right: -5px;
+}
+
+
+.mission:nth-child(even)
+.mission-dot {
+
+    left: -5px;
+}
+
+
+/* =========================================
+   CARD
+========================================= */
+
+.mission-card {
+
+    position: relative;
+
+    padding: 28px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    background:
+        rgba(5,10,20,.65);
+
+    backdrop-filter:
+        blur(12px);
+
+    transition:
+        transform .4s ease,
+        border-color .4s ease,
+        background .4s ease;
+}
+
+
+.mission-card:hover {
+
+    border-color:
+        rgba(255,255,255,.38);
+
+    background:
+        rgba(10,18,32,.82);
+
+    transform:
+        translateY(-7px);
+}
+
+
+/* =========================================
+   YEAR
+========================================= */
+
+.mission-year {
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    color:
+        rgba(255,255,255,.38);
+
+    margin-bottom: 12px;
+}
+
+
+/* =========================================
+   TITLE
+========================================= */
+
+.mission-name {
+
+    margin:
+        0 0 8px;
+
+    font-size: 24px;
+
+    letter-spacing: 2px;
+}
+
+
+.mission-agency {
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    color:
+        rgba(255,255,255,.42);
+
+    margin-bottom: 17px;
+}
+
+
+/* =========================================
+   DESCRIPTION
+========================================= */
+
+.mission-text {
+
+    margin: 0;
+
+    font-size: 12px;
+
+    line-height: 1.7;
+
+    color:
+        rgba(255,255,255,.56);
+}
+
+
+/* =========================================
+   STATUS
+========================================= */
+
+.mission-status {
+
+    display: inline-block;
+
+    margin-top: 20px;
+
+    padding:
+        7px 11px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.18);
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+
+    color:
+        rgba(255,255,255,.65);
+}
+
+
+/* =========================================
+   BUTTON
+========================================= */
+
+.mission-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-top: 18px;
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+
+    opacity: .5;
+
+    transition:
+        opacity .3s ease,
+        gap .3s ease;
+}
+
+
+.mission-button:hover {
+
+    opacity: 1;
+
+    gap: 16px;
+}
+
+
+/* =========================================
+   MORE BUTTON
+========================================= */
+
+.more-container {
+
+    position: relative;
+
+    z-index: 100;
+
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    margin-top: 10px;
+
+    padding:
+        10px 0 45px;
+}
+
+
+.more-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-width: 160px;
+
+    padding:
+        15px 30px;
+
+    color: white;
+
+    background:
+        rgba(255,255,255,.03);
+
+    border:
+        1px solid
+        rgba(255,255,255,.3);
+
+    text-decoration: none;
+
+    font-size: 10px;
+
+    font-weight: bold;
+
+    letter-spacing: 3px;
+
+    transition:
+        all .35s ease;
+}
+
+
+.more-button:hover {
+
+    color: #02050b;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-5px);
+
+    box-shadow:
+        0 12px 40px
+        rgba(255,255,255,.18);
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.missions-footer {
+
+    position: relative;
+
+    z-index: 2;
+
+    text-align: center;
+
+    margin-top: 10px;
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+
+    color:
+        rgba(255,255,255,.28);
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 750px) {
+
+    .missions-section {
+
+        padding:
+            90px 20px;
+    }
+
+
+    .missions-timeline::before {
+
+        left: 8px;
+
+        transform: none;
+    }
+
+
+    .mission,
+    .mission:nth-child(even),
+    .mission:nth-child(odd) {
+
+        width: 100%;
+
+        left: 0;
+
+        text-align: left;
+
+        padding:
+            0 0 45px 35px;
+
+        transform:
+            translateY(40px);
+    }
+
+
+    .missions-section.visible
+    .mission {
+
+        transform:
+            translateY(0);
+    }
+
+
+    .mission-dot,
+    .mission:nth-child(odd)
+    .mission-dot,
+    .mission:nth-child(even)
+    .mission-dot {
+
+        left: 3px;
+
+        right: auto;
+    }
+
+
+    .mission-card {
+
+        padding: 22px;
+    }
+
+
+    .mission-name {
+
+        font-size: 21px;
+    }
+
+
+    .more-container {
+
+        padding-bottom: 35px;
+    }
+
+}
+
+
+
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #02050b;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* =========================
+   SECTION
+========================= */
+
+.orbonix-discover {
+    position: relative;
+    width: 100%;
+    min-height: 720px;
+    padding: 110px 5vw;
+
+    background:
+        radial-gradient(
+            circle at 50% 20%,
+            rgba(45, 75, 130, 0.18),
+            transparent 45%
+        ),
+        #02050b;
+
+    overflow: hidden;
+}
+
+
+/* =========================
+   BACKGROUND STARS
+========================= */
+
+.orbonix-stars {
+    position: absolute;
+    inset: -20%;
+
+    pointer-events: none;
+
+    transition: transform 0.8s cubic-bezier(.2,.8,.2,1);
+}
+
+.stars-1 {
+    opacity: 0.65;
+
+    background-image:
+        radial-gradient(circle, white 1px, transparent 1px);
+
+    background-size: 85px 85px;
+}
+
+.stars-2 {
+    opacity: 0.3;
+
+    background-image:
+        radial-gradient(circle, white 1.5px, transparent 1.5px);
+
+    background-size: 170px 170px;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.discover-header {
+    position: relative;
+    z-index: 2;
+
+    text-align: center;
+
+    margin-bottom: 65px;
+}
+
+.discover-label {
+    font-size: 11px;
+    letter-spacing: 5px;
+
+    color: rgba(255,255,255,0.5);
+
+    margin-bottom: 18px;
+}
+
+.discover-title {
+    margin: 0;
+
+    font-size: clamp(38px, 6vw, 72px);
+
+    letter-spacing: 4px;
+
+    font-weight: 700;
+}
+
+.discover-line {
+    width: 0;
+    height: 1px;
+
+    margin: 25px auto 0;
+
+    background: rgba(255,255,255,0.7);
+
+    transition: width 1.2s ease;
+}
+
+.orbonix-discover.visible .discover-line {
+    width: 180px;
+}
+
+
+/* =========================
+   CARDS
+========================= */
+
+.discover-grid {
+    position: relative;
+    z-index: 2;
+
+    width: min(1250px, 100%);
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 22px;
+}
+
+
+/* =========================
+   CARD
+========================= */
+
+.space-card {
+    position: relative;
+
+    height: 420px;
+
+    overflow: hidden;
+
+    border: 1px solid rgba(255,255,255,0.14);
+
+    background: #070b13;
+
+    cursor: pointer;
+
+    opacity: 0;
+    transform: translateY(50px);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease,
+        border-color 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+.orbonix-discover.visible .space-card {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.orbonix-discover.visible .space-card:nth-child(1) {
+    transition-delay: 0.15s;
+}
+
+.orbonix-discover.visible .space-card:nth-child(2) {
+    transition-delay: 0.3s;
+}
+
+.orbonix-discover.visible .space-card:nth-child(3) {
+    transition-delay: 0.45s;
+}
+
+
+/* =========================
+   CARD BACKGROUND
+========================= */
+
+.card-image {
+    position: absolute;
+
+    inset: -20px;
+
+    transition:
+        transform 0.8s cubic-bezier(.2,.8,.2,1);
+
+    background-position: center;
+    background-size: cover;
+}
+
+
+/* Different space scenes */
+
+.planets-image {
+    background:
+        radial-gradient(
+            circle at 30% 40%,
+            #d8c59a 0 5%,
+            transparent 6%
+        ),
+        radial-gradient(
+            circle at 75% 30%,
+            #7d91b5 0 12%,
+            transparent 13%
+        ),
+        radial-gradient(
+            circle at 55% 75%,
+            #b36e48 0 8%,
+            transparent 9%
+        ),
+        linear-gradient(
+            135deg,
+            #081326,
+            #182b4b 45%,
+            #050912
+        );
+}
+
+.deep-space-image {
+    background:
+        radial-gradient(
+            circle at 65% 40%,
+            #000 0 12%,
+            rgba(70,90,130,0.4) 13%,
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 30% 70%,
+            #536caa 0 2%,
+            transparent 3%
+        ),
+        linear-gradient(
+            135deg,
+            #100718,
+            #071326 50%,
+            #02050b
+        );
+}
+
+.missions-image {
+    background:
+        radial-gradient(
+            ellipse at 50% 100%,
+            #e8a15a 0 3%,
+            #b64c24 4%,
+            transparent 15%
+        ),
+        linear-gradient(
+            180deg,
+            #02050b,
+            #09182b 60%,
+            #32180d
+        );
+}
+
+
+/* =========================
+   CARD CONTENT
+========================= */
+
+.card-content {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    padding: 32px;
+
+    z-index: 3;
+}
+
+.card-number {
+    font-size: 10px;
+    letter-spacing: 3px;
+
+    color: rgba(255,255,255,0.5);
+
+    margin-bottom: 12px;
+}
+
+.card-title {
+    margin: 0;
+
+    font-size: 29px;
+
+    letter-spacing: 2px;
+}
+
+.card-description {
+    max-width: 330px;
+
+    margin: 14px 0 22px;
+
+    color: rgba(255,255,255,0.65);
+
+    font-size: 14px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================
+   BUTTON
+========================= */
+
+.card-button {
+    display: inline-flex;
+
+    align-items: center;
+    gap: 10px;
+
+    padding: 11px 17px;
+
+    border: 1px solid rgba(255,255,255,0.35);
+
+    color: white;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    text-decoration: none;
+
+    transition:
+        background 0.3s ease,
+        border-color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.card-button span {
+    transition: transform 0.3s ease;
+}
+
+.card-button:hover {
+    background: white;
+    color: #05070c;
+
+    border-color: white;
+
+    transform: translateY(-3px);
+}
+
+.card-button:hover span {
+    transform: translateX(5px);
+}
+
+
+/* =========================
+   HOVER EFFECT
+========================= */
+
+.space-card:hover {
+    border-color: rgba(255,255,255,0.55);
+
+    box-shadow:
+        0 25px 80px rgba(0,0,0,0.45);
+}
+
+.space-card:hover .card-image {
+    transform: scale(1.08);
+}
+
+
+/* Glow around card */
+
+.space-card::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            180deg,
+            transparent 30%,
+            rgba(0,0,0,0.85) 100%
+        );
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 850px) {
+
+    .orbonix-discover {
+        padding:
+            80px 20px;
+    }
+
+    .discover-grid {
+        grid-template-columns: 1fr;
+
+        max-width: 500px;
+    }
+
+    .space-card {
+        height: 360px;
+    }
+
+    .discover-title {
+        font-size: 42px;
+    }
+
+}
+
+
+/* =========================
+   SMALL PHONE
+========================= */
+
+@media (max-width: 450px) {
+
+    .orbonix-discover {
+        padding:
+            65px 15px;
+    }
+
+    .space-card {
+        height: 330px;
+    }
+
+    .card-content {
+        padding: 24px;
+    }
+
+    .card-title {
+        font-size: 25px;
+    }
+
+}
+
+
+/* Added sections */
+
+.simulation-section{position:relative;width:100%;min-height:430px;padding:70px 25px;display:flex;align-items:center;justify-content:center;overflow:hidden;background:radial-gradient(circle at center,rgba(55,85,180,.15),transparent 55%),#020308;}
+.simulation-section::before{content:"";position:absolute;inset:0;opacity:.25;background-image:radial-gradient(circle,white 1px,transparent 1px);background-size:70px 70px;pointer-events:none;}
+.simulation-content{position:relative;z-index:2;width:min(900px,100%);padding:55px 35px;text-align:center;border:1px solid rgba(255,255,255,.12);background:rgba(5,7,15,.75);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 30px 100px rgba(0,0,0,.4);}
+.simulation-label{margin-bottom:18px;color:rgba(255,255,255,.4);font-size:9px;letter-spacing:5px;}
+.simulation-title{margin:0;font-size:clamp(32px,7vw,65px);letter-spacing:5px;line-height:1;}
+.simulation-description{max-width:650px;margin:25px auto 35px;color:rgba(255,255,255,.5);font-size:13px;line-height:1.8;}
+.simulation-button{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:18px;min-width:300px;padding:18px 30px;border:1px solid rgba(160,180,255,.45);background:rgba(80,100,180,.08);color:white;text-decoration:none;font-size:10px;letter-spacing:4px;overflow:hidden;transition:.4s ease;}
+.simulation-button::before{content:"";position:absolute;left:-120%;top:0;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.13),transparent);transition:.6s ease;}
+.simulation-button:hover{transform:translateY(-6px);border-color:rgba(190,205,255,.8);background:rgba(90,115,210,.16);box-shadow:0 15px 45px rgba(60,90,200,.25);}
+.simulation-button:hover::before{left:120%;}
+.simulation-button .arrow{font-size:18px;transition:.35s ease;}
+.simulation-button:hover .arrow{transform:translateX(7px);}
+@media(max-width:500px){.simulation-section{padding:40px 15px}.simulation-content{padding:40px 20px}.simulation-button{width:100%;min-width:0;font-size:9px}}
+
+
+.orbonix-footer{position:relative;width:100%;min-height:430px;padding:100px 30px 35px;overflow:hidden;text-align:center;background:radial-gradient(circle at 50% 0%,rgba(70,120,220,.14),transparent 45%),#02050b;}
+.footer-stars{position:absolute;inset:-30%;pointer-events:none;opacity:.3;background-image:radial-gradient(circle,rgba(255,255,255,.9) 1px,transparent 1px);background-size:75px 75px;transition:transform 1.2s ease;}
+.footer-stars-small{position:absolute;inset:-30%;pointer-events:none;opacity:.16;background-image:radial-gradient(circle,rgba(255,255,255,.8) 1px,transparent 1px);background-size:35px 35px;transition:transform 1.5s ease;}
+.footer-glow{position:absolute;width:500px;height:250px;left:50%;top:0;transform:translateX(-50%);background:radial-gradient(ellipse,rgba(80,130,230,.12),transparent 70%);pointer-events:none;}
+.footer-content{position:relative;z-index:2;max-width:900px;margin:auto;opacity:0;transform:translateY(40px);transition:opacity 1s ease,transform 1s ease;}
+.orbonix-footer.visible .footer-content{opacity:1;transform:translateY(0);}
+.footer-logo{margin:0;font-size:clamp(48px,8vw,90px);font-weight:700;letter-spacing:10px;line-height:1;}
+.footer-subtitle{margin-top:18px;font-size:9px;letter-spacing:5px;color:rgba(255,255,255,.38);}
+.footer-line{width:0;height:1px;margin:45px auto;background:rgba(255,255,255,.25);transition:width 1.2s ease .2s;}
+.orbonix-footer.visible .footer-line{width:180px;}
+.footer-socials{display:flex;justify-content:center;align-items:center;gap:18px;flex-wrap:wrap;}
+.footer-social{width:58px;height:58px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,.22);color:white;text-decoration:none;transition:transform .35s ease,background .35s ease,color .35s ease,border-color .35s ease,box-shadow .35s ease;}
+.footer-social svg{width:23px;height:23px;fill:currentColor;transition:transform .35s ease;}
+.footer-social:hover{background:white;color:#02050b;border-color:white;transform:translateY(-6px);box-shadow:0 12px 35px rgba(255,255,255,.12);}
+.footer-social:hover svg{transform:scale(1.12);}
+.footer-bottom{position:absolute;z-index:2;left:30px;right:30px;bottom:25px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,.08);padding-top:18px;color:rgba(255,255,255,.28);font-size:8px;letter-spacing:2px;}
+@media(max-width:600px){.orbonix-footer{min-height:500px;padding:80px 20px 90px}.footer-logo{font-size:48px;letter-spacing:7px}.footer-socials{gap:15px}.footer-social{width:54px;height:54px}.footer-bottom{left:20px;right:20px;flex-direction:column;gap:8px;text-align:center}}
+
+</style>
+</head>
+<body>
+
+
+
+<div
+    class="orbonix-hero"
+    id="hero">
+
+
+    <!-- NEBULA -->
+
+    <div
+        class="nebula"
+        id="nebula">
+    </div>
+
+
+    <div
+        class="nebula2">
+    </div>
+
+
+    <!-- STARS -->
+
+    <div
+        class="stars stars-back"
+        id="starsBack">
+    </div>
+
+
+    <div
+        class="stars stars-mid"
+        id="starsMid">
+    </div>
+
+
+    <div
+        class="stars stars-front"
+        id="starsFront">
+    </div>
+
+
+    <!-- VIGNETTE -->
+
+    <div
+        class="vignette">
+    </div>
+
+
+    <!-- CONTENT -->
+
+    <div
+        class="content">
+
+
+        <div
+            class="logo"
+            id="logo">
+
+            ORBONIX
+
+        </div>
+
+
+        <div
+            class="tagline">
+
+            EXPLORING SPACE.
+            BUILDING THE FUTURE.
+
+        </div>
+
+
+        <div
+            class="description">
+
+            A growing space and technology
+            project exploring astronomy,
+            science and the future of
+            space exploration.
+
+        </div>
+
+
+        <!-- BUTTONS -->
+
+        <div
+            class="buttons">
+
+
+            <!-- =========================
+                 EXPLORE SPACE
+            ========================== -->
+
+            <div
+                class="orbonix-button"
+                data-page="/exploring-space">
+
+                EXPLORE SPACE
+
+            </div>
+
+
+            <!-- =========================
+                 SOLAR SIMULATION
+            ========================== -->
+
+            <div
+                class="orbonix-button"
+                data-page="/solar-system-simulation">
+
+                SOLAR SIMULATION
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+<script>
+
+
+/* =====================================
+   CREATE STARS
+===================================== */
+
+function createStars(
+    container,
+    amount,
+    type
+) {
+
+    for (
+        let i = 0;
+        i < amount;
+        i++
+    ) {
+
+        const star =
+            document.createElement(
+                "div"
+            );
+
+
+        star.classList.add(
+            "star"
+        );
+
+
+        if (
+            type === "small"
+        ) {
+
+            star.classList.add(
+                "small"
+            );
+
+        }
+
+
+        if (
+            type === "bright" &&
+            Math.random() > 0.82
+        ) {
+
+            star.classList.add(
+                "bright"
+            );
+
+        }
+
+
+        star.style.left =
+            Math.random()
+            * 100
+            + "%";
+
+
+        star.style.top =
+            Math.random()
+            * 100
+            + "%";
+
+
+        star.style.opacity =
+            (
+                Math.random()
+                * 0.65
+                + 0.25
+            ).toFixed(2);
+
+
+        container.appendChild(
+            star
+        );
+
+    }
+
+}
+
+
+createStars(
+    document.getElementById(
+        "starsBack"
+    ),
+    150,
+    "small"
+);
+
+
+createStars(
+    document.getElementById(
+        "starsMid"
+    ),
+    110,
+    "normal"
+);
+
+
+createStars(
+    document.getElementById(
+        "starsFront"
+    ),
+    55,
+    "bright"
+);
+
+
+/* =====================================
+   ELEMENTS
+===================================== */
+
+const hero =
+    document.getElementById(
+        "hero"
+    );
+
+
+const back =
+    document.getElementById(
+        "starsBack"
+    );
+
+
+const mid =
+    document.getElementById(
+        "starsMid"
+    );
+
+
+const front =
+    document.getElementById(
+        "starsFront"
+    );
+
+
+const nebula =
+    document.getElementById(
+        "nebula"
+    );
+
+
+const logo =
+    document.getElementById(
+        "logo"
+    );
+
+
+/* =====================================
+   PARALLAX VALUES
+===================================== */
+
+let targetX = 0;
+let targetY = 0;
+
+let currentX = 0;
+let currentY = 0;
+
+
+/* =====================================
+   DESKTOP MOUSE
+===================================== */
+
+hero.addEventListener(
+    "mousemove",
+    function(event) {
+
+        const rect =
+            hero.getBoundingClientRect();
+
+
+        const x =
+            (
+                event.clientX -
+                rect.left
+            )
+            /
+            rect.width
+            -
+            0.5;
+
+
+        const y =
+            (
+                event.clientY -
+                rect.top
+            )
+            /
+            rect.height
+            -
+            0.5;
+
+
+        targetX = x;
+
+        targetY = y;
+
+    }
+);
+
+
+/* =====================================
+   DESKTOP RESET
+===================================== */
+
+hero.addEventListener(
+    "mouseleave",
+    function() {
+
+        targetX = 0;
+
+        targetY = 0;
+
+    }
+);
+
+
+/* =====================================
+   PHONE / TABLET MOTION
+===================================== */
+
+let deviceX = 0;
+let deviceY = 0;
+
+
+function handleOrientation(
+    event
+) {
+
+    let gamma =
+        event.gamma || 0;
+
+    let beta =
+        event.beta || 0;
+
+
+    gamma =
+        Math.max(
+            -30,
+            Math.min(
+                30,
+                gamma
+            )
+        );
+
+
+    beta =
+        Math.max(
+            -30,
+            Math.min(
+                30,
+                beta - 45
+            )
+        );
+
+
+    deviceX =
+        gamma / 30;
+
+
+    deviceY =
+        beta / 30;
+
+
+    if (
+        window.matchMedia(
+            "(hover: none)"
+        ).matches
+    ) {
+
+        targetX =
+            deviceX;
+
+        targetY =
+            deviceY;
+
+    }
+
+}
+
+
+/* =====================================
+   REQUEST SENSOR ACCESS
+===================================== */
+
+function enableMotion() {
+
+    if (
+        typeof DeviceOrientationEvent !==
+        "undefined" &&
+        typeof DeviceOrientationEvent.requestPermission ===
+        "function"
+    ) {
+
+        DeviceOrientationEvent
+            .requestPermission()
+            .then(
+                function(permission) {
+
+                    if (
+                        permission ===
+                        "granted"
+                    ) {
+
+                        window.addEventListener(
+                            "deviceorientation",
+                            handleOrientation
+                        );
+
+                    }
+
+                }
+            )
+            .catch(
+                function() {
+
+                    /* fallback */
+
+                }
+            );
+
+    } else {
+
+        window.addEventListener(
+            "deviceorientation",
+            handleOrientation
+        );
+
+    }
+
+}
+
+
+/* =====================================
+   ENABLE SENSOR AFTER TOUCH
+===================================== */
+
+document.addEventListener(
+    "touchstart",
+    function() {
+
+        enableMotion();
+
+    },
+    {
+        once: true
+    }
+);
+
+
+/* =====================================
+   ANIMATION
+===================================== */
+
+function animate() {
+
+
+    currentX +=
+        (
+            targetX -
+            currentX
+        )
+        * 0.035;
+
+
+    currentY +=
+        (
+            targetY -
+            currentY
+        )
+        * 0.035;
+
+
+    /* FAR */
+
+    back.style.transform =
+        `translate3d(
+            ${currentX * 25}px,
+            ${currentY * 25}px,
+            0
+        )`;
+
+
+    /* MIDDLE */
+
+    mid.style.transform =
+        `translate3d(
+            ${currentX * 50}px,
+            ${currentY * 50}px,
+            0
+        )`;
+
+
+    /* FRONT */
+
+    front.style.transform =
+        `translate3d(
+            ${currentX * 80}px,
+            ${currentY * 80}px,
+            0
+        )`;
+
+
+    /* NEBULA */
+
+    nebula.style.transform =
+        `translate(
+            calc(
+                -50% +
+                ${currentX * 100}px
+            ),
+            calc(
+                -50% +
+                ${currentY * 100}px
+            )
+        )`;
+
+
+    /* LOGO */
+
+    logo.style.transform =
+        `translate3d(
+            ${currentX * 12}px,
+            ${currentY * 12}px,
+            0
+        )`;
+
+
+    requestAnimationFrame(
+        animate
+    );
+
+}
+
+
+animate();
+
+
+/* =====================================
+   BUTTONS
+===================================== */
+
+const buttons =
+    document.querySelectorAll(
+        ".orbonix-button"
+    );
+
+
+buttons.forEach(
+    function(button) {
+
+        button.addEventListener(
+            "click",
+            function() {
+
+
+                /* =================================
+                   RELATIVE URL
+                   
+                   Example:
+                   /exploring-space
+
+                   becomes automatically:
+
+                   https://sites.google.com/view/kosmolearn/exploring-space
+
+                   And later, after moving to another
+                   domain:
+
+                   https://yourdomain.com/exploring-space
+                ================================= */
+
+                const page =
+                    button.dataset.page;
+
+
+                const url =
+                    window.location.origin +
+                    page;
+
+
+                /* PRESS */
+
+                button.classList.add(
+                    "clicked"
+                );
+
+
+                setTimeout(
+                    function() {
+
+                        button.classList.remove(
+                            "clicked"
+                        );
+
+                    },
+                    180
+                );
+
+
+                /* RIPPLE */
+
+                const ripple =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                ripple.classList.add(
+                    "ripple"
+                );
+
+
+                button.appendChild(
+                    ripple
+                );
+
+
+                setTimeout(
+                    function() {
+
+                        ripple.remove();
+
+                    },
+                    800
+                );
+
+
+                /* ORBIT */
+
+                const orbit =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                orbit.classList.add(
+                    "orbit-ring"
+                );
+
+
+                button.appendChild(
+                    orbit
+                );
+
+
+                setTimeout(
+                    function() {
+
+                        orbit.remove();
+
+                    },
+                    1000
+                );
+
+
+                /* PARTICLES */
+
+                for (
+                    let i = 0;
+                    i < 16;
+                    i++
+                ) {
+
+
+                    const particle =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    particle.classList.add(
+                        "energy"
+                    );
+
+
+                    const angle =
+                        Math.random()
+                        *
+                        Math.PI
+                        *
+                        2;
+
+
+                    const distance =
+                        45 +
+                        Math.random()
+                        * 55;
+
+
+                    const x =
+                        Math.cos(angle)
+                        *
+                        distance;
+
+
+                    const y =
+                        Math.sin(angle)
+                        *
+                        distance;
+
+
+                    particle.style.setProperty(
+                        "--x",
+                        x + "px"
+                    );
+
+
+                    particle.style.setProperty(
+                        "--y",
+                        y + "px"
+                    );
+
+
+                    particle.style.left =
+                        (
+                            50 +
+                            (
+                                Math.random()
+                                * 20
+                                - 10
+                            )
+                        )
+                        + "%";
+
+
+                    particle.style.top =
+                        (
+                            50 +
+                            (
+                                Math.random()
+                                * 20
+                                - 10
+                            )
+                        )
+                        + "%";
+
+
+                    button.appendChild(
+                        particle
+                    );
+
+
+                    setTimeout(
+                        function() {
+
+                            particle.remove();
+
+                        },
+                        900
+                    );
+
+                }
+
+
+                /* =================================
+                   NAVIGATION
+                ================================= */
+
+                setTimeout(
+                    function() {
+
+                        window.top.location.href =
+                            url;
+
+                    },
+                    250
+                );
+
+            }
+
+        );
+
+    }
+);
+
+
+</script>
+
+
+
+
+
+
+<section class="orbonix-news">
+
+
+    <!-- BACKGROUND -->
+
+    <div
+        class="news-stars">
+    </div>
+
+
+    <!-- HEADER -->
+
+    <div
+        class="news-header">
+
+        <div
+            class="news-label">
+
+            ORBONIX INTELLIGENCE
+
+        </div>
+
+
+        <h2
+            class="news-title">
+
+            LATEST SPACE NEWS
+
+        </h2>
+
+
+        <p
+            class="news-subtitle">
+
+            Discover the latest discoveries,
+            missions and developments from
+            the world of space exploration.
+
+        </p>
+
+
+        <div
+            class="news-line">
+        </div>
+
+    </div>
+
+
+    <!-- NEWS -->
+
+    <div
+        class="news-grid">
+
+
+        <!-- NEWS 01 -->
+
+        <article
+            class="news-card">
+
+            <div
+                class="news-image news-space">
+            </div>
+
+
+            <div
+                class="news-content">
+
+                <div
+                    class="news-date">
+
+                    SPACE / DISCOVERY
+
+                </div>
+
+
+                <h3
+                    class="news-card-title">
+
+                    EXPLORING THE
+                    UNKNOWN
+
+                </h3>
+
+
+                <p
+                    class="news-text">
+
+                    New observations continue
+                    to reveal unexpected details
+                    about our Universe.
+
+                </p>
+
+
+                <a
+                    href="#"
+                    class="news-button">
+
+                    READ STORY
+
+                    <span
+                        class="news-arrow">
+
+                        →
+
+                    </span>
+
+                </a>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- NEWS 02 -->
+
+        <article
+            class="news-card">
+
+            <div
+                class="news-image news-telescope">
+            </div>
+
+
+            <div
+                class="news-content">
+
+                <div
+                    class="news-date">
+
+                    ASTRONOMY / SCIENCE
+
+                </div>
+
+
+                <h3
+                    class="news-card-title">
+
+                    NEW EYES
+                    ON THE COSMOS
+
+                </h3>
+
+
+                <p
+                    class="news-text">
+
+                    Modern observatories are
+                    allowing scientists to study
+                    increasingly distant objects.
+
+                </p>
+
+
+                <a
+                    href="#"
+                    class="news-button">
+
+                    READ STORY
+
+                    <span
+                        class="news-arrow">
+
+                        →
+
+                    </span>
+
+                </a>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- NEWS 03 -->
+
+        <article
+            class="news-card">
+
+            <div
+                class="news-image news-mars">
+            </div>
+
+
+            <div
+                class="news-content">
+
+                <div
+                    class="news-date">
+
+                    EXPLORATION / FUTURE
+
+                </div>
+
+
+                <h3
+                    class="news-card-title">
+
+                    THE NEXT
+                    FRONTIER
+
+                </h3>
+
+
+                <p
+                    class="news-text">
+
+                    Humanity continues to develop
+                    new technologies for exploring
+                    worlds beyond Earth.
+
+                </p>
+
+
+                <a
+                    href="#"
+                    class="news-button">
+
+                    READ STORY
+
+                    <span
+                        class="news-arrow">
+
+                        →
+
+                    </span>
+
+                </a>
+
+            </div>
+
+        </article>
+
+
+    </div>
+
+
+</section>
+
+
+<script>
+
+/* =========================================
+   SCROLL ANIMATION
+========================================= */
+
+const newsSection =
+    document.querySelector(
+        ".orbonix-news"
+    );
+
+
+const newsObserver =
+    new IntersectionObserver(
+
+        (entries) => {
+
+            entries.forEach(
+                entry => {
+
+                    if (
+                        entry.isIntersecting
+                    ) {
+
+                        newsSection
+                            .classList
+                            .add("visible");
+
+                    }
+
+                }
+            );
+
+        },
+
+        {
+            threshold: 0.15
+        }
+
+    );
+
+
+newsObserver.observe(
+    newsSection
+);
+
+
+/* =========================================
+   MOUSE PARALLAX
+========================================= */
+
+const newsStars =
+    document.querySelector(
+        ".news-stars"
+    );
+
+const newsCards =
+    document.querySelectorAll(
+        ".news-card"
+    );
+
+
+document.addEventListener(
+    "mousemove",
+
+    (event) => {
+
+        const x =
+            event.clientX /
+            window.innerWidth -
+            0.5;
+
+        const y =
+            event.clientY /
+            window.innerHeight -
+            0.5;
+
+
+        if (newsStars) {
+
+            newsStars.style.transform =
+                `translate(
+                    ${x * 20}px,
+                    ${y * 20}px
+                )`;
+
+        }
+
+
+        newsCards.forEach(
+            (card, index) => {
+
+                const image =
+                    card.querySelector(
+                        ".news-image"
+                    );
+
+                if (!image) return;
+
+
+                const depth =
+                    8 + index * 5;
+
+
+                image.style.transform =
+                    `scale(1.08)
+                     translate(
+                        ${x * depth}px,
+                        ${y * depth}px
+                     )`;
+
+            }
+        );
+
+    }
+);
+
+
+/* =========================================
+   MOBILE TOUCH
+========================================= */
+
+document.addEventListener(
+    "touchmove",
+
+    (event) => {
+
+        const touch =
+            event.touches[0];
+
+        if (!touch) return;
+
+
+        const x =
+            touch.clientX /
+            window.innerWidth -
+            0.5;
+
+        const y =
+            touch.clientY /
+            window.innerHeight -
+            0.5;
+
+
+        if (newsStars) {
+
+            newsStars.style.transform =
+                `translate(
+                    ${x * 12}px,
+                    ${y * 12}px
+                )`;
+
+        }
+
+    },
+
+    {
+        passive: true
+    }
+);
+
+</script>
+
+
+
+
+
+
+<section class="orbonix-quiz">
+
+
+    <!-- BACKGROUND -->
+
+    <div class="quiz-stars"></div>
+
+    <div class="quiz-stars-small"></div>
+
+    <div class="quiz-glow"></div>
+
+
+    <!-- MAIN -->
+
+    <div class="quiz-container">
+
+
+        <!-- LEFT -->
+
+        <div class="quiz-info">
+
+
+            <div class="quiz-label">
+
+                ORBONIX ACADEMY
+
+            </div>
+
+
+            <h2 class="quiz-title">
+
+                SPACE<br>
+                KNOWLEDGE
+
+            </h2>
+
+
+            <div class="quiz-line"></div>
+
+
+            <p class="quiz-description">
+
+                Test your knowledge of planets,
+                stars, galaxies, black holes and
+                the science of space exploration.
+
+                <br><br>
+
+                From beginner questions to
+                challenging astronomy problems,
+                discover how much you really know
+                about the Universe.
+
+            </p>
+
+
+            <!-- STATS -->
+
+            <div class="quiz-stats">
+
+
+                <div class="quiz-stat">
+
+                    <div class="quiz-stat-number">
+                        30+
+                    </div>
+
+                    <div class="quiz-stat-label">
+                        QUESTIONS
+                    </div>
+
+                </div>
+
+
+                <div class="quiz-stat">
+
+                    <div class="quiz-stat-number">
+                        3
+                    </div>
+
+                    <div class="quiz-stat-label">
+                        LEVELS
+                    </div>
+
+                </div>
+
+
+                <div class="quiz-stat">
+
+                    <div class="quiz-stat-number">
+                        ∞
+                    </div>
+
+                    <div class="quiz-stat-label">
+                        LEARNING
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- BUTTON -->
+
+            <a
+                href="#"
+                class="quiz-button">
+
+                START QUIZ
+
+                <span
+                    class="quiz-button-arrow">
+
+                    →
+
+                </span>
+
+            </a>
+
+
+        </div>
+
+
+        <!-- RIGHT -->
+
+        <div class="quiz-visual">
+
+
+            <!-- ORBIT -->
+
+            <div class="quiz-orbit"></div>
+
+
+            <!-- PLANET -->
+
+            <div class="quiz-planet"></div>
+
+
+            <!-- QUESTION -->
+
+            <div class="quiz-question">
+
+                <div
+                    class="quiz-question-number">
+
+                    QUESTION 01
+
+                </div>
+
+                <div
+                    class="quiz-question-text">
+
+                    Which planet has
+                    the largest ring system
+                    in our Solar System?
+
+                </div>
+
+            </div>
+
+
+            <!-- ANSWER -->
+
+            <div class="quiz-answer">
+
+                <span>
+                    ANSWER:
+                </span>
+
+                Saturn
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+<script>
+
+/* =========================================
+   SCROLL REVEAL
+========================================= */
+
+const quizSection =
+    document.querySelector(
+        ".orbonix-quiz"
+    );
+
+
+const quizObserver =
+    new IntersectionObserver(
+
+        (entries) => {
+
+            entries.forEach(
+                entry => {
+
+                    if (
+                        entry.isIntersecting
+                    ) {
+
+                        quizSection
+                            .classList
+                            .add("visible");
+
+                    }
+
+                }
+            );
+
+        },
+
+        {
+            threshold: 0.15
+        }
+
+    );
+
+
+quizObserver.observe(
+    quizSection
+);
+
+
+/* =========================================
+   PARALLAX
+========================================= */
+
+const quizStars =
+    document.querySelector(
+        ".quiz-stars"
+    );
+
+
+const quizStarsSmall =
+    document.querySelector(
+        ".quiz-stars-small"
+    );
+
+
+const quizPlanet =
+    document.querySelector(
+        ".quiz-planet"
+    );
+
+
+const quizOrbit =
+    document.querySelector(
+        ".quiz-orbit"
+    );
+
+
+document.addEventListener(
+    "mousemove",
+
+    (event) => {
+
+        const x =
+            event.clientX /
+            window.innerWidth -
+            0.5;
+
+        const y =
+            event.clientY /
+            window.innerHeight -
+            0.5;
+
+
+        /* stars */
+
+        if (quizStars) {
+
+            quizStars.style.transform =
+                `translate(
+                    ${x * 20}px,
+                    ${y * 20}px
+                )`;
+
+        }
+
+
+        /* small stars */
+
+        if (quizStarsSmall) {
+
+            quizStarsSmall.style.transform =
+                `translate(
+                    ${x * -12}px,
+                    ${y * -12}px
+                )`;
+
+        }
+
+
+        /* planet */
+
+        if (quizPlanet) {
+
+            quizPlanet.style.transform =
+                `translate(
+                    calc(-50% + ${x * 15}px),
+                    calc(-50% + ${y * 15}px)
+                )`;
+
+        }
+
+
+        /* orbit */
+
+        if (quizOrbit) {
+
+            quizOrbit.style.transform =
+                `translate(
+                    calc(-50% + ${x * 20}px),
+                    calc(-50% + ${y * 20}px)
+                )
+                rotate(-18deg)`;
+
+        }
+
+    }
+);
+
+
+/* =========================================
+   MOBILE TOUCH
+========================================= */
+
+document.addEventListener(
+    "touchmove",
+
+    (event) => {
+
+        const touch =
+            event.touches[0];
+
+        if (!touch) return;
+
+
+        const x =
+            touch.clientX /
+            window.innerWidth -
+            0.5;
+
+        const y =
+            touch.clientY /
+            window.innerHeight -
+            0.5;
+
+
+        if (quizStars) {
+
+            quizStars.style.transform =
+                `translate(
+                    ${x * 12}px,
+                    ${y * 12}px
+                )`;
+
+        }
+
+
+        if (quizPlanet) {
+
+            quizPlanet.style.transform =
+                `translate(
+                    calc(-50% + ${x * 10}px),
+                    calc(-50% + ${y * 10}px)
+                )`;
+
+        }
+
+    },
+
+    {
+        passive: true
+    }
+
+);
+
+</script>
+
+
+
+
+
+<section class="observation-section">
+
+    <!-- BACKGROUND -->
+    <div class="observation-stars"></div>
+    <div class="observation-stars-small"></div>
+
+    <!-- HEADER -->
+    <div class="observation-header">
+
+        <div class="observation-label">
+            ORBONIX · TELESCOPIC OBSERVATIONS
+        </div>
+
+        <h2 class="observation-title">
+            OBSERVATION<br>GALLERY
+        </h2>
+
+        <div class="observation-line"></div>
+
+        <p class="observation-description">
+            Real observations of the Universe captured
+            through our telescopic equipment.
+            Explore the objects we have observed
+            beyond Earth.
+        </p>
+
+    </div>
+
+
+    <!-- GALLERY -->
+    <div class="observation-gallery">
+
+
+        <!-- =========================
+             MOON
+        ========================== -->
+
+        <div class="observation-card">
+
+            <img
+                class="observation-image"
+                src="https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?auto=format&fit=crop&w=1200&q=85"
+                alt="Moon observation"
+            >
+
+            <div class="observation-gradient"></div>
+
+            <div class="observation-number">
+                01 / 03
+            </div>
+
+            <div class="observation-content">
+
+                <div class="observation-object">
+                    MOON
+                </div>
+
+                <div class="observation-meta">
+                    MEADE · LUNAR OBSERVATION
+                </div>
+
+                <a
+                    href="#"
+                    class="observation-view">
+
+                    VIEW OBSERVATION
+
+                    <span class="observation-arrow">
+                        →
+                    </span>
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             SATURN
+        ========================== -->
+
+        <div class="observation-card">
+
+            <img
+                class="observation-image"
+                src="https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?auto=format&fit=crop&w=1200&q=85"
+                alt="Saturn observation"
+            >
+
+            <div class="observation-gradient"></div>
+
+            <div class="observation-number">
+                02 / 03
+            </div>
+
+            <div class="observation-content">
+
+                <div class="observation-object">
+                    SATURN
+                </div>
+
+                <div class="observation-meta">
+                    MEADE · PLANETARY OBSERVATION
+                </div>
+
+                <a
+                    href="#"
+                    class="observation-view">
+
+                    VIEW OBSERVATION
+
+                    <span class="observation-arrow">
+                        →
+                    </span>
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             JUPITER
+        ========================== -->
+
+        <div class="observation-card">
+
+            <img
+                class="observation-image"
+                src="https://images.unsplash.com/photo-1630839437035-dac17da580d0?auto=format&fit=crop&w=1200&q=85"
+                alt="Jupiter observation"
+            >
+
+            <div class="observation-gradient"></div>
+
+            <div class="observation-number">
+                03 / 03
+            </div>
+
+            <div class="observation-content">
+
+                <div class="observation-object">
+                    JUPITER
+                </div>
+
+                <div class="observation-meta">
+                    MEADE · PLANETARY OBSERVATION
+                </div>
+
+                <a
+                    href="#"
+                    class="observation-view">
+
+                    VIEW OBSERVATION
+
+                    <span class="observation-arrow">
+                        →
+                    </span>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="observation-footer">
+        OBSERVE · CAPTURE · DISCOVER
+    </div>
+
+</section>
+
+
+<script>
+
+/* =========================================
+   SCROLL ANIMATION
+========================================= */
+
+const observationSection =
+    document.querySelector(
+        ".observation-section"
+    );
+
+const observationObserver =
+    new IntersectionObserver(
+
+        (entries) => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    observationSection
+                        .classList
+                        .add("visible");
+
+                }
+
+            });
+
+        },
+
+        {
+            threshold: 0.15
+        }
+
+    );
+
+observationObserver.observe(
+    observationSection
+);
+
+
+/* =========================================
+   MOUSE PARALLAX
+========================================= */
+
+const stars =
+    document.querySelector(
+        ".observation-stars"
+    );
+
+const smallStars =
+    document.querySelector(
+        ".observation-stars-small"
+    );
+
+
+document.addEventListener(
+    "mousemove",
+
+    (event) => {
+
+        const x =
+            event.clientX /
+            window.innerWidth -
+            0.5;
+
+        const y =
+            event.clientY /
+            window.innerHeight -
+            0.5;
+
+
+        if (stars) {
+
+            stars.style.transform =
+                `translate(
+                    ${x * 18}px,
+                    ${y * 18}px
+                )`;
+
+        }
+
+
+        if (smallStars) {
+
+            smallStars.style.transform =
+                `translate(
+                    ${x * -10}px,
+                    ${y * -10}px
+                )`;
+
+        }
+
+    }
+);
+
+</script>
+
+
+
+
+
+
+<section class="missions-section">
+
+
+<!-- =========================================
+     BACKGROUND
+========================================= -->
+
+<div class="missions-stars"></div>
+
+<div class="missions-stars-small"></div>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<div class="missions-header">
+
+    <div class="missions-label">
+
+        HUMANITY · EXPLORATION · DISCOVERY
+
+    </div>
+
+
+    <h2 class="missions-title">
+
+        SPACE<br>MISSIONS
+
+    </h2>
+
+
+    <div class="missions-line"></div>
+
+
+    <p class="missions-description">
+
+        From returning humans to the Moon
+        to exploring the outer Solar System,
+        space missions continue to expand
+        our understanding of the Universe.
+
+    </p>
+
+</div>
+
+
+<!-- =========================================
+     TIMELINE
+========================================= -->
+
+<div class="missions-timeline">
+
+
+<!-- =========================================
+     APOLLO
+========================================= -->
+
+<div class="mission">
+
+    <div class="mission-dot"></div>
+
+
+    <div class="mission-card">
+
+
+        <div class="mission-year">
+
+            1961–1972 · NASA
+
+        </div>
+
+
+        <h3 class="mission-name">
+
+            APOLLO
+
+        </h3>
+
+
+        <div class="mission-agency">
+
+            HUMAN LUNAR EXPLORATION
+
+        </div>
+
+
+        <p class="mission-text">
+
+            NASA's Apollo program sent humans
+            to the Moon and achieved the first
+            crewed lunar landings in history.
+            Apollo 11 became the first mission
+            to land humans on the lunar surface
+            in July 1969.
+
+        </p>
+
+
+        <div class="mission-status">
+
+            HISTORIC PROGRAM
+
+        </div>
+
+
+        <a
+            href="#"
+            class="mission-button">
+
+            EXPLORE MISSION →
+
+        </a>
+
+
+    </div>
+
+</div>
+
+
+<!-- =========================================
+     VOYAGER
+========================================= -->
+
+<div class="mission">
+
+    <div class="mission-dot"></div>
+
+
+    <div class="mission-card">
+
+
+        <div class="mission-year">
+
+            1977 · NASA
+
+        </div>
+
+
+        <h3 class="mission-name">
+
+            VOYAGER
+
+        </h3>
+
+
+        <div class="mission-agency">
+
+            OUTER SOLAR SYSTEM
+
+        </div>
+
+
+        <p class="mission-text">
+
+            Voyager 1 and Voyager 2 explored
+            the giant planets Jupiter and Saturn,
+            with Voyager 2 continuing on to
+            Uranus and Neptune. Both spacecraft
+            later entered interstellar space.
+
+        </p>
+
+
+        <div class="mission-status">
+
+            INTERSTELLAR MISSION
+
+        </div>
+
+
+        <a
+            href="#"
+            class="mission-button">
+
+            EXPLORE MISSION →
+
+        </a>
+
+
+    </div>
+
+</div>
+
+
+<!-- =========================================
+     JAMES WEBB
+========================================= -->
+
+<div class="mission">
+
+    <div class="mission-dot"></div>
+
+
+    <div class="mission-card">
+
+
+        <div class="mission-year">
+
+            2021 · NASA / ESA / CSA
+
+        </div>
+
+
+        <h3 class="mission-name">
+
+            JAMES WEBB
+
+        </h3>
+
+
+        <div class="mission-agency">
+
+            DEEP SPACE OBSERVATORY
+
+        </div>
+
+
+        <p class="mission-text">
+
+            The James Webb Space Telescope
+            observes the Universe primarily
+            in infrared light, revealing distant
+            galaxies, stellar nurseries,
+            exoplanet atmospheres and more.
+
+        </p>
+
+
+        <div class="mission-status">
+
+            OPERATIONAL
+
+        </div>
+
+
+        <a
+            href="#"
+            class="mission-button">
+
+            EXPLORE MISSION →
+
+        </a>
+
+
+    </div>
+
+</div>
+
+
+<!-- =========================================
+     ARTEMIS
+========================================= -->
+
+<div class="mission">
+
+    <div class="mission-dot"></div>
+
+
+    <div class="mission-card">
+
+
+        <div class="mission-year">
+
+            2017–PRESENT · NASA
+
+        </div>
+
+
+        <h3 class="mission-name">
+
+            ARTEMIS
+
+        </h3>
+
+
+        <div class="mission-agency">
+
+            MOON EXPLORATION
+
+        </div>
+
+
+        <p class="mission-text">
+
+            NASA's Artemis program is designed
+            to return humans to the Moon and
+            establish the foundation for a
+            sustained human presence around
+            and on the lunar surface.
+
+        </p>
+
+
+        <div class="mission-status">
+
+            ACTIVE PROGRAM
+
+        </div>
+
+
+        <a
+            href="#"
+            class="mission-button">
+
+            EXPLORE MISSION →
+
+        </a>
+
+
+    </div>
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     MORE
+========================================= -->
+
+<div class="more-container">
+
+    <a
+        href="#"
+        class="more-button">
+
+        MORE →
+
+    </a>
+
+</div>
+
+
+<!-- =========================================
+     FOOTER
+========================================= -->
+
+<div class="missions-footer">
+
+    EXPLORE · DISCOVER · GO BEYOND
+
+</div>
+
+
+</section>
+
+
+<script>
+
+
+/* =========================================
+   SCROLL REVEAL
+========================================= */
+
+const missionsSection =
+    document.querySelector(
+        ".missions-section"
+    );
+
+
+const missionsObserver =
+    new IntersectionObserver(
+
+        (entries) => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    missionsSection
+                        .classList
+                        .add("visible");
+
+                }
+
+            });
+
+        },
+
+        {
+            threshold: 0.12
+        }
+
+    );
+
+
+missionsObserver.observe(
+    missionsSection
+);
+
+
+/* =========================================
+   STAR PARALLAX
+========================================= */
+
+const missionStars =
+    document.querySelector(
+        ".missions-stars"
+    );
+
+
+const missionSmallStars =
+    document.querySelector(
+        ".missions-stars-small"
+    );
+
+
+document.addEventListener(
+
+    "mousemove",
+
+    (event) => {
+
+        const x =
+            event.clientX /
+            window.innerWidth -
+            .5;
+
+
+        const y =
+            event.clientY /
+            window.innerHeight -
+            .5;
+
+
+        if (missionStars) {
+
+            missionStars.style.transform =
+                `translate(
+                    ${x * 20}px,
+                    ${y * 20}px
+                )`;
+
+        }
+
+
+        if (missionSmallStars) {
+
+            missionSmallStars.style.transform =
+                `translate(
+                    ${x * -12}px,
+                    ${y * -12}px
+                )`;
+
+        }
+
+    }
+
+);
+
+</script>
+
+
+
+
+
+
+<section class="orbonix-discover">
+
+    <!-- BACKGROUND -->
+    <div
+        class="orbonix-stars stars-1"
+        data-speed="10">
+    </div>
+
+    <div
+        class="orbonix-stars stars-2"
+        data-speed="20">
+    </div>
+
+
+    <!-- TITLE -->
+
+    <div class="discover-header">
+
+        <div class="discover-label">
+            ORBONIX EXPLORATION
+        </div>
+
+        <h2 class="discover-title">
+            DISCOVER ORBONIX
+        </h2>
+
+        <div class="discover-line"></div>
+
+    </div>
+
+
+    <!-- CARDS -->
+
+    <div class="discover-grid">
+
+
+        <!-- PLANETS -->
+
+        <article
+            class="space-card"
+            data-depth="12">
+
+            <div
+                class="card-image planets-image">
+            </div>
+
+            <div class="card-content">
+
+                <div class="card-number">
+                    01 / SOLAR SYSTEM
+                </div>
+
+                <h3 class="card-title">
+                    PLANETS
+                </h3>
+
+                <p class="card-description">
+                    Explore the worlds of our Solar System,
+                    from Mercury to the distant Neptune.
+                </p>
+
+                <a
+                    href="#"
+                    class="card-button">
+
+                    EXPLORE
+                    <span>→</span>
+
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- DEEP SPACE -->
+
+        <article
+            class="space-card"
+            data-depth="18">
+
+            <div
+                class="card-image deep-space-image">
+            </div>
+
+            <div class="card-content">
+
+                <div class="card-number">
+                    02 / DEEP SPACE
+                </div>
+
+                <h3 class="card-title">
+                    DEEP SPACE
+                </h3>
+
+                <p class="card-description">
+                    Galaxies, nebulae, black holes
+                    and the most mysterious objects
+                    in the Universe.
+                </p>
+
+                <a
+                    href="#"
+                    class="card-button">
+
+                    EXPLORE
+                    <span>→</span>
+
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- MISSIONS -->
+
+        <article
+            class="space-card"
+            data-depth="24">
+
+            <div
+                class="card-image missions-image">
+            </div>
+
+            <div class="card-content">
+
+                <div class="card-number">
+                    03 / EXPLORATION
+                </div>
+
+                <h3 class="card-title">
+                    MISSIONS
+                </h3>
+
+                <p class="card-description">
+                    Discover humanity's journey beyond Earth
+                    and the missions exploring our Solar System.
+                </p>
+
+                <a
+                    href="#"
+                    class="card-button">
+
+                    EXPLORE
+                    <span>→</span>
+
+                </a>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<script>
+
+/* =========================
+   SCROLL ANIMATION
+========================= */
+
+const section =
+    document.querySelector(".orbonix-discover");
+
+const observer =
+    new IntersectionObserver(
+        (entries) => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    section.classList.add("visible");
+
+                }
+
+            });
+
+        },
+        {
+            threshold: 0.15
+        }
+    );
+
+observer.observe(section);
+
+
+/* =========================
+   MOUSE PARALLAX
+========================= */
+
+const cards =
+    document.querySelectorAll(".space-card");
+
+const stars =
+    document.querySelectorAll(".orbonix-stars");
+
+
+document.addEventListener(
+    "mousemove",
+    (event) => {
+
+        const x =
+            event.clientX /
+            window.innerWidth -
+            0.5;
+
+        const y =
+            event.clientY /
+            window.innerHeight -
+            0.5;
+
+
+        /* Stars */
+
+        stars.forEach(layer => {
+
+            const speed =
+                Number(
+                    layer.dataset.speed
+                );
+
+            layer.style.transform =
+                `translate(
+                    ${x * speed}px,
+                    ${y * speed}px
+                )`;
+
+        });
+
+
+        /* Cards */
+
+        cards.forEach(card => {
+
+            const depth =
+                Number(
+                    card.dataset.depth
+                );
+
+            const image =
+                card.querySelector(
+                    ".card-image"
+                );
+
+            if (!image) return;
+
+            image.style.transform =
+                `scale(1.08)
+                 translate(
+                    ${x * depth}px,
+                    ${y * depth}px
+                 )`;
+
+        });
+
+    }
+);
+
+
+/* =========================
+   TOUCH / MOBILE
+========================= */
+
+document.addEventListener(
+    "touchmove",
+    (event) => {
+
+        const touch =
+            event.touches[0];
+
+        if (!touch) return;
+
+        const x =
+            touch.clientX /
+            window.innerWidth -
+            0.5;
+
+        const y =
+            touch.clientY /
+            window.innerHeight -
+            0.5;
+
+        stars.forEach(layer => {
+
+            const speed =
+                Number(
+                    layer.dataset.speed
+                );
+
+            layer.style.transform =
+                `translate(
+                    ${x * speed}px,
+                    ${y * speed}px
+                )`;
+
+        });
+
+    },
+    {
+        passive: true
+    }
+);
+
+</script>
+
+
+
+<section class="simulation-section">
+<div class="simulation-content">
+<div class="simulation-label">ORBONIX · INTERACTIVE EXPERIENCE</div>
+<h1 class="simulation-title">SOLAR SYSTEM</h1>
+<div class="simulation-description">Enter the interactive Solar System and explore planets, dwarf planets and moons in a realistic three-dimensional environment. Travel through space, approach different objects and follow them with the camera.</div>
+<a href="https://sites.google.com/view/kosmolearn/simulation" class="simulation-button">ENTER SIMULATION <span class="arrow">→</span></a>
+</div>
+</section>
+
+
+<footer class="orbonix-footer">
+<div class="footer-stars"></div><div class="footer-stars-small"></div><div class="footer-glow"></div>
+<div class="footer-content">
+<h2 class="footer-logo">ORBONIX</h2>
+<div class="footer-subtitle">EXPLORE · DISCOVER · BEYOND</div>
+<div class="footer-line"></div>
+<div class="footer-socials">
+<a href="https://www.facebook.com/share/199YyvppaV/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" class="footer-social" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8h3V4h-3c-3.3 0-5 1.7-5 5v3H6v4h3v8h4v-8h3.5l.5-4H13V9c0-.7.3-1 1-1z"></path></svg></a>
+<a href="https://t.me/orbonix" target="_blank" rel="noopener noreferrer" class="footer-social" aria-label="Telegram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.8 3.2L18.5 20c-.25 1.18-.91 1.47-1.85.92l-5.1-3.76-2.46 2.37c-.27.27-.5.5-1.02.5l.37-5.2 9.46-8.55c.41-.37-.09-.58-.64-.21L5.57 13.1.54 11.53c-1.1-.34-1.12-1.1.23-1.63L20.43 2.3c.91-.34 1.71.21 1.37.9z"></path></svg></a>
+</div></div>
+<div class="footer-bottom"><span>© 2026 ORBONIX</span><span>SPACE · SCIENCE · EXPLORATION</span></div>
+</footer>
+
+<script>
+
+
+
+/* =====================================
+   CREATE STARS
+===================================== */
+
+function createStars(
+    container,
+    amount,
+    type
+) {
+
+    for (
+        let i = 0;
+        i < amount;
+        i++
+    ) {
+
+        const star =
+            document.createElement(
+                "div"
+            );
+
+
+        star.classList.add(
+            "star"
+        );
+
+
+        if (
+            type === "small"
+        ) {
+
+            star.classList.add(
+                "small"
+            );
+
+        }
+
+
+        if (
+            type === "bright" &&
+            Math.random() > 0.82
+        ) {
+
+            star.classList.add(
+                "bright"
+            );
+
+        }
+
+
+        star.style.left =
+            Math.random()
+            * 100
+            + "%";
+
+
+        star.style.top =
+            Math.random()
+            * 100
+            + "%";
+
+
+        star.style.opacity =
+            (
+                Math.random()
+                * 0.65
+                + 0.25
+            ).toFixed(2);
+
+
+        container.appendChild(
+            star
+        );
+
+    }
+
+}
+
+
+createStars(
+    document.getElementById(
+        "starsBack"
+    ),
+    150,
+    "small"
+);
+
+
+createStars(
+    document.getElementById(
+        "starsMid"
+    ),
+    110,
+    "normal"
+);
+
+
+createStars(
+    document.getElementById(
+        "starsFront"
+    ),
+    55,
+    "bright"
+);
+
+
+/* =====================================
+   ELEMENTS
+===================================== */
+
+const hero =
+    document.getElementById(
+        "hero"
+    );
+
+
+const back =
+    document.getElementById(
+        "starsBack"
+    );
+
+
+const mid =
+    document.getElementById(
+        "starsMid"
+    );
+
+
+const front =
+    document.getElementById(
+        "starsFront"
+    );
+
+
+const nebula =
+    document.getElementById(
+        "nebula"
+    );
+
+
+const logo =
+    document.getElementById(
+        "logo"
+    );
+
+
+/* =====================================
+   PARALLAX VALUES
+===================================== */
+
+let targetX = 0;
+let targetY = 0;
+
+let currentX = 0;
+let currentY = 0;
+
+
+/* =====================================
+   DESKTOP MOUSE
+===================================== */
+
+hero.addEventListener(
+    "mousemove",
+    function(event) {
+
+        const rect =
+            hero.getBoundingClientRect();
+
+
+        const x =
+            (
+                event.clientX -
+                rect.left
+            )
+            /
+            rect.width
+            -
+            0.5;
+
+
+        const y =
+            (
+                event.clientY -
+                rect.top
+            )
+            /
+            rect.height
+            -
+            0.5;
+
+
+        targetX = x;
+
+        targetY = y;
+
+    }
+);
+
+
+/* =====================================
+   DESKTOP RESET
+===================================== */
+
+hero.addEventListener(
+    "mouseleave",
+    function() {
+
+        targetX = 0;
+
+        targetY = 0;
+
+    }
+);
+
+
+/* =====================================
+   PHONE / TABLET MOTION
+===================================== */
+
+let deviceX = 0;
+let deviceY = 0;
+
+
+function handleOrientation(
+    event
+) {
+
+    let gamma =
+        event.gamma || 0;
+
+    let beta =
+        event.beta || 0;
+
+
+    gamma =
+        Math.max(
+            -30,
+            Math.min(
+                30,
+                gamma
+            )
+        );
+
+
+    beta =
+        Math.max(
+            -30,
+            Math.min(
+                30,
+                beta - 45
+            )
+        );
+
+
+    deviceX =
+        gamma / 30;
+
+
+    deviceY =
+        beta / 30;
+
+
+    if (
+        window.matchMedia(
+            "(hover: none)"
+        ).matches
+    ) {
+
+        targetX =
+            deviceX;
+
+        targetY =
+            deviceY;
+
+    }
+
+}
+
+
+/* =====================================
+   REQUEST SENSOR ACCESS
+===================================== */
+
+function enableMotion() {
+
+    if (
+        typeof DeviceOrientationEvent !==
+        "undefined" &&
+        typeof DeviceOrientationEvent.requestPermission ===
+        "function"
+    ) {
+
+        DeviceOrientationEvent
+            .requestPermission()
+            .then(
+                function(permission) {
+
+                    if (
+                        permission ===
+                        "granted"
+                    ) {
+
+                        window.addEventListener(
+                            "deviceorientation",
+                            handleOrientation
+                        );
+
+                    }
+
+                }
+            )
+            .catch(
+                function() {
+
+                    /* fallback */
+
+                }
+            );
+
+    } else {
+
+        window.addEventListener(
+            "deviceorientation",
+            handleOrientation
+        );
+
+    }
+
+}
+
+
+/* =====================================
+   ENABLE SENSOR AFTER TOUCH
+===================================== */
+
+document.addEventListener(
+    "touchstart",
+    function() {
+
+        enableMotion();
+
+    },
+    {
+        once: true
+    }
+);
+
+
+/* =====================================
+   ANIMATION
+===================================== */
+
+function animate() {
+
+
+    currentX +=
+        (
+            targetX -
+            currentX
+        )
+        * 0.035;
+
+
+    currentY +=
+        (
+            targetY -
+            currentY
+        )
+        * 0.035;
+
+
+    /* FAR */
+
+    back.style.transform =
+        `translate3d(
+            ${currentX * 25}px,
+            ${currentY * 25}px,
+            0
+        )`;
+
+
+    /* MIDDLE */
+
+    mid.style.transform =
+        `translate3d(
+            ${currentX * 50}px,
+            ${currentY * 50}px,
+            0
+        )`;
+
+
+    /* FRONT */
+
+    front.style.transform =
+        `translate3d(
+            ${currentX * 80}px,
+            ${currentY * 80}px,
+            0
+        )`;
+
+
+    /* NEBULA */
+
+    nebula.style.transform =
+        `translate(
+            calc(
+                -50% +
+                ${currentX * 100}px
+            ),
+            calc(
+                -50% +
+                ${currentY * 100}px
+            )
+        )`;
+
+
+    /* LOGO */
+
+    logo.style.transform =
+        `translate3d(
+            ${currentX * 12}px,
+            ${currentY * 12}px,
+            0
+        )`;
+
+
+    requestAnimationFrame(
+        animate
+    );
+
+}
+
+
+animate();
+
+
+/* =====================================
+   BUTTONS
+===================================== */
+
+const buttons =
+    document.querySelectorAll(
+        ".orbonix-button"
+    );
+
+
+buttons.forEach(
+    function(button) {
+
+        button.addEventListener(
+            "click",
+            function() {
+
+
+                /* =================================
+                   RELATIVE URL
+                   
+                   Example:
+                   /exploring-space
+
+                   becomes automatically:
+
+                   https://sites.google.com/view/kosmolearn/exploring-space
+
+                   And later, after moving to another
+                   domain:
+
+                   https://yourdomain.com/exploring-space
+                ================================= */
+
+                const page =
+                    button.dataset.page;
+
+
+                const url =
+                    window.location.origin +
+                    page;
+
+
+                /* PRESS */
+
+                button.classList.add(
+                    "clicked"
+                );
+
+
+                setTimeout(
+                    function() {
+
+                        button.classList.remove(
+                            "clicked"
+                        );
+
+                    },
+                    180
+                );
+
+
+                /* RIPPLE */
+
+                const ripple =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                ripple.classList.add(
+                    "ripple"
+                );
+
+
+                button.appendChild(
+                    ripple
+                );
+
+
+                setTimeout(
+                    function() {
+
+                        ripple.remove();
+
+                    },
+                    800
+                );
+
+
+                /* ORBIT */
+
+                const orbit =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                orbit.classList.add(
+                    "orbit-ring"
+                );
+
+
+                button.appendChild(
+                    orbit
+                );
+
+
+                setTimeout(
+                    function() {
+
+                        orbit.remove();
+
+                    },
+                    1000
+                );
+
+
+                /* PARTICLES */
+
+                for (
+                    let i = 0;
+                    i < 16;
+                    i++
+                ) {
+
+
+                    const particle =
+                        document.createElement(
+                            "div"
+                        );
+
+
+                    particle.classList.add(
+                        "energy"
+                    );
+
+
+                    const angle =
+                        Math.random()
+                        *
+                        Math.PI
+                        *
+                        2;
+
+
+                    const distance =
+                        45 +
+                        Math.random()
+                        * 55;
+
+
+                    const x =
+                        Math.cos(angle)
+                        *
+                        distance;
+
+
+                    const y =
+                        Math.sin(angle)
+                        *
+                        distance;
+
+
+                    particle.style.setProperty(
+                        "--x",
+                        x + "px"
+                    );
+
+
+                    particle.style.setProperty(
+                        "--y",
+                        y + "px"
+                    );
+
+
+                    particle.style.left =
+                        (
+                            50 +
+                            (
+                                Math.random()
+                                * 20
+                                - 10
+                            )
+                        )
+                        + "%";
+
+
+                    particle.style.top =
+                        (
+                            50 +
+                            (
+                                Math.random()
+                                * 20
+                                - 10
+                            )
+                        )
+                        + "%";
+
+
+                    button.appendChild(
+                        particle
+                    );
+
+
+                    setTimeout(
+                        function() {
+
+                            particle.remove();
+
+                        },
+                        900
+                    );
+
+                }
+
+
+                /* =================================
+                   NAVIGATION
+                ================================= */
+
+                setTimeout(
+                    function() {
+
+                        window.top.location.href =
+                            url;
+
+                    },
+                    250
+                );
+
+            }
+
+        );
+
+    }
+);
+
+
+
+
+
+
+/* =========================================
+   SCROLL ANIMATION
+========================================= */
+
+const newsSection =
+    document.querySelector(
+        ".orbonix-news"
+    );
+
+
+const newsObserver =
+    new IntersectionObserver(
+
+        (entries) => {
+
+            entries.forEach(
+                entry => {
+
+                    if (
+                        entry.isIntersecting
+                    ) {
+
+                        newsSection
+                            .classList
+                            .add("visible");
+
+                    }
+
+                }
+            );
+
+        },
+
+        {
+            threshold: 0.15
+        }
+
+    );
+
+
+newsObserver.observe(
+    newsSection
+);
+
+
+/* =========================================
+   MOUSE PARALLAX
+========================================= */
+
+const newsStars =
+    document.querySelector(
+        ".news-stars"
+    );
+
+const newsCards =
+    document.querySelectorAll(
+        ".news-card"
+    );
+
+
+document.addEventListener(
+    "mousemove",
+
+    (event) => {
+
+        const x =
+            event.clientX /
+            window.innerWidth -
+            0.5;
+
+        const y =
+            event.clientY /
+            window.innerHeight -
+            0.5;
+
+
+        if (newsStars) {
+
+            newsStars.style.transform =
+                `translate(
+                    ${x * 20}px,
+                    ${y * 20}px
+                )`;
+
+        }
+
+
+        newsCards.forEach(
+            (card, index) => {
+
+                const image =
+                    card.querySelector(
+                        ".news-image"
+                    );
+
+                if (!image) return;
+
+
+                const depth =
+                    8 + index * 5;
+
+
+                image.style.transform =
+                    `scale(1.08)
+                     translate(
+                        ${x * depth}px,
+                        ${y * depth}px
+                     )`;
+
+            }
+        );
+
+    }
+);
+
+
+/* =========================================
+   MOBILE TOUCH
+========================================= */
+
+document.addEventListener(
+    "touchmove",
+
+    (event) => {
+
+        const touch =
+            event.touches[0];
+
+        if (!touch) return;
+
+
+        const x =
+            touch.clientX /
+            window.innerWidth -
+            0.5;
+
+        const y =
+            touch.clientY /
+            window.innerHeight -
+            0.5;
+
+
+        if (newsStars) {
+
+            newsStars.style.transform =
+                `translate(
+                    ${x * 12}px,
+                    ${y * 12}px
+                )`;
+
+        }
+
+    },
+
+    {
+        passive: true
+    }
+);
+
+
+
+
+
+/* =========================================
+   SCROLL REVEAL
+========================================= */
+
+const quizSection =
+    document.querySelector(
+        ".orbonix-quiz"
+    );
+
+
+const quizObserver =
+    new IntersectionObserver(
+
+        (entries) => {
+
+            entries.forEach(
+                entry => {
+
+                    if (
+                        entry.isIntersecting
+                    ) {
+
+                        quizSection
+                            .classList
+                            .add("visible");
+
+                    }
+
+                }
+            );
+
+        },
+
+        {
+            threshold: 0.15
+        }
+
+    );
+
+
+quizObserver.observe(
+    quizSection
+);
+
+
+/* =========================================
+   PARALLAX
+========================================= */
+
+const quizStars =
+    document.querySelector(
+        ".quiz-stars"
+    );
+
+
+const quizStarsSmall =
+    document.querySelector(
+        ".quiz-stars-small"
+    );
+
+
+const quizPlanet =
+    document.querySelector(
+        ".quiz-planet"
+    );
+
+
+const quizOrbit =
+    document.querySelector(
+        ".quiz-orbit"
+    );
+
+
+document.addEventListener(
+    "mousemove",
+
+    (event) => {
+
+        const x =
+            event.clientX /
+            window.innerWidth -
+            0.5;
+
+        const y =
+            event.clientY /
+            window.innerHeight -
+            0.5;
+
+
+        /* stars */
+
+        if (quizStars) {
+
+            quizStars.style.transform =
+                `translate(
+                    ${x * 20}px,
+                    ${y * 20}px
+                )`;
+
+        }
+
+
+        /* small stars */
+
+        if (quizStarsSmall) {
+
+            quizStarsSmall.style.transform =
+                `translate(
+                    ${x * -12}px,
+                    ${y * -12}px
+                )`;
+
+        }
+
+
+        /* planet */
+
+        if (quizPlanet) {
+
+            quizPlanet.style.transform =
+                `translate(
+                    calc(-50% + ${x * 15}px),
+                    calc(-50% + ${y * 15}px)
+                )`;
+
+        }
+
+
+        /* orbit */
+
+        if (quizOrbit) {
+
+            quizOrbit.style.transform =
+                `translate(
+                    calc(-50% + ${x * 20}px),
+                    calc(-50% + ${y * 20}px)
+                )
+                rotate(-18deg)`;
+
+        }
+
+    }
+);
+
+
+/* =========================================
+   MOBILE TOUCH
+========================================= */
+
+document.addEventListener(
+    "touchmove",
+
+    (event) => {
+
+        const touch =
+            event.touches[0];
+
+        if (!touch) return;
+
+
+        const x =
+            touch.clientX /
+            window.innerWidth -
+            0.5;
+
+        const y =
+            touch.clientY /
+            window.innerHeight -
+            0.5;
+
+
+        if (quizStars) {
+
+            quizStars.style.transform =
+                `translate(
+                    ${x * 12}px,
+                    ${y * 12}px
+                )`;
+
+        }
+
+
+        if (quizPlanet) {
+
+            quizPlanet.style.transform =
+                `translate(
+                    calc(-50% + ${x * 10}px),
+                    calc(-50% + ${y * 10}px)
+                )`;
+
+        }
+
+    },
+
+    {
+        passive: true
+    }
+
+);
+
+
+
+
+
+/* =========================================
+   SCROLL ANIMATION
+========================================= */
+
+const observationSection =
+    document.querySelector(
+        ".observation-section"
+    );
+
+const observationObserver =
+    new IntersectionObserver(
+
+        (entries) => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    observationSection
+                        .classList
+                        .add("visible");
+
+                }
+
+            });
+
+        },
+
+        {
+            threshold: 0.15
+        }
+
+    );
+
+observationObserver.observe(
+    observationSection
+);
+
+
+/* =========================================
+   MOUSE PARALLAX
+========================================= */
+
+const stars =
+    document.querySelector(
+        ".observation-stars"
+    );
+
+const smallStars =
+    document.querySelector(
+        ".observation-stars-small"
+    );
+
+
+document.addEventListener(
+    "mousemove",
+
+    (event) => {
+
+        const x =
+            event.clientX /
+            window.innerWidth -
+            0.5;
+
+        const y =
+            event.clientY /
+            window.innerHeight -
+            0.5;
+
+
+        if (stars) {
+
+            stars.style.transform =
+                `translate(
+                    ${x * 18}px,
+                    ${y * 18}px
+                )`;
+
+        }
+
+
+        if (smallStars) {
+
+            smallStars.style.transform =
+                `translate(
+                    ${x * -10}px,
+                    ${y * -10}px
+                )`;
+
+        }
+
+    }
+);
+
+
+
+
+
+
+/* =========================================
+   SCROLL REVEAL
+========================================= */
+
+const missionsSection =
+    document.querySelector(
+        ".missions-section"
+    );
+
+
+const missionsObserver =
+    new IntersectionObserver(
+
+        (entries) => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    missionsSection
+                        .classList
+                        .add("visible");
+
+                }
+
+            });
+
+        },
+
+        {
+            threshold: 0.12
+        }
+
+    );
+
+
+missionsObserver.observe(
+    missionsSection
+);
+
+
+/* =========================================
+   STAR PARALLAX
+========================================= */
+
+const missionStars =
+    document.querySelector(
+        ".missions-stars"
+    );
+
+
+const missionSmallStars =
+    document.querySelector(
+        ".missions-stars-small"
+    );
+
+
+document.addEventListener(
+
+    "mousemove",
+
+    (event) => {
+
+        const x =
+            event.clientX /
+            window.innerWidth -
+            .5;
+
+
+        const y =
+            event.clientY /
+            window.innerHeight -
+            .5;
+
+
+        if (missionStars) {
+
+            missionStars.style.transform =
+                `translate(
+                    ${x * 20}px,
+                    ${y * 20}px
+                )`;
+
+        }
+
+
+        if (missionSmallStars) {
+
+            missionSmallStars.style.transform =
+                `translate(
+                    ${x * -12}px,
+                    ${y * -12}px
+                )`;
+
+        }
+
+    }
+
+);
+
+
+
+
+
+/* =========================
+   SCROLL ANIMATION
+========================= */
+
+const section =
+    document.querySelector(".orbonix-discover");
+
+const observer =
+    new IntersectionObserver(
+        (entries) => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    section.classList.add("visible");
+
+                }
+
+            });
+
+        },
+        {
+            threshold: 0.15
+        }
+    );
+
+observer.observe(section);
+
+
+/* =========================
+   MOUSE PARALLAX
+========================= */
+
+const cards =
+    document.querySelectorAll(".space-card");
+
+const stars =
+    document.querySelectorAll(".orbonix-stars");
+
+
+document.addEventListener(
+    "mousemove",
+    (event) => {
+
+        const x =
+            event.clientX /
+            window.innerWidth -
+            0.5;
+
+        const y =
+            event.clientY /
+            window.innerHeight -
+            0.5;
+
+
+        /* Stars */
+
+        stars.forEach(layer => {
+
+            const speed =
+                Number(
+                    layer.dataset.speed
+                );
+
+            layer.style.transform =
+                `translate(
+                    ${x * speed}px,
+                    ${y * speed}px
+                )`;
+
+        });
+
+
+        /* Cards */
+
+        cards.forEach(card => {
+
+            const depth =
+                Number(
+                    card.dataset.depth
+                );
+
+            const image =
+                card.querySelector(
+                    ".card-image"
+                );
+
+            if (!image) return;
+
+            image.style.transform =
+                `scale(1.08)
+                 translate(
+                    ${x * depth}px,
+                    ${y * depth}px
+                 )`;
+
+        });
+
+    }
+);
+
+
+/* =========================
+   TOUCH / MOBILE
+========================= */
+
+document.addEventListener(
+    "touchmove",
+    (event) => {
+
+        const touch =
+            event.touches[0];
+
+        if (!touch) return;
+
+        const x =
+            touch.clientX /
+            window.innerWidth -
+            0.5;
+
+        const y =
+            touch.clientY /
+            window.innerHeight -
+            0.5;
+
+        stars.forEach(layer => {
+
+            const speed =
+                Number(
+                    layer.dataset.speed
+                );
+
+            layer.style.transform =
+                `translate(
+                    ${x * speed}px,
+                    ${y * speed}px
+                )`;
+
+        });
+
+    },
+    {
+        passive: true
+    }
+);
+
+
+
+
+const footer=document.querySelector('.orbonix-footer');
+if(footer){const footerObserver=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting) footer.classList.add('visible');});},{threshold:.15});footerObserver.observe(footer);}
+const footerStars=document.querySelector('.footer-stars');
+const footerSmallStars=document.querySelector('.footer-stars-small');
+document.addEventListener('mousemove',event=>{const x=event.clientX/window.innerWidth-.5;const y=event.clientY/window.innerHeight-.5;if(footerStars)footerStars.style.transform=`translate(${x*18}px,${y*18}px)`;if(footerSmallStars)footerSmallStars.style.transform=`translate(${x*-10}px,${y*-10}px)`;});
+
+</script>
+</body>
+</html>
