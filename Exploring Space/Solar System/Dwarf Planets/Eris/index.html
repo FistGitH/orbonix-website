@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -144,6 +145,8 @@ body {
 
     transition:
         .35s ease;
+
+    cursor: pointer;
 }
 
 
@@ -499,6 +502,8 @@ h1 {
 
     transition:
         .35s ease;
+
+    cursor: pointer;
 }
 
 
@@ -581,16 +586,13 @@ h1 {
 
 </head>
 
-
 <body>
 
 <section class="eris-page">
 
-
 <div class="stars"></div>
 
 <div class="stars-small"></div>
-
 
 <!-- =========================================
      HEADER
@@ -598,15 +600,14 @@ h1 {
 
 <div class="header">
 
-
 <a
-href="https://sites.google.com/view/kosmolearn/solar-system/dwarf-planets"
+href="#"
+onclick="goToPage('solar-system/dwarf-planets'); return false;"
 class="return">
 
 ← RETURN TO DWARF PLANETS
 
 </a>
-
 
 <div class="label">
 
@@ -614,13 +615,11 @@ ORBONIX · DWARF PLANETS
 
 </div>
 
-
 <h1>
 
 ERIS
 
 </h1>
-
 
 <div class="subtitle">
 
@@ -631,9 +630,7 @@ helped redefine the Solar System.
 
 </div>
 
-
 </div>
-
 
 <!-- =========================================
      CONTENT
@@ -641,18 +638,15 @@ helped redefine the Solar System.
 
 <div class="content">
 
-
 <!-- DESCRIPTION -->
 
 <div class="description">
-
 
 <div class="description-title">
 
 THE DISTANT WORLD
 
 </div>
-
 
 <div class="description-text">
 
@@ -680,14 +674,13 @@ determine Eris's mass.
 
 </div>
 
-
 </div>
 
-
-<!-- STATS -->
+<!-- =========================================
+     STATS
+========================================= -->
 
 <div class="stats">
-
 
 <div class="stat">
 
@@ -701,7 +694,6 @@ DIAMETER
 
 </div>
 
-
 <div class="stat">
 
 <div class="stat-value">
@@ -713,7 +705,6 @@ ORBITAL PERIOD
 </div>
 
 </div>
-
 
 <div class="stat">
 
@@ -727,7 +718,6 @@ AVERAGE DISTANCE FROM SUN
 
 </div>
 
-
 <div class="stat">
 
 <div class="stat-value">
@@ -739,7 +729,6 @@ DISCOVERED
 </div>
 
 </div>
-
 
 <div class="stat">
 
@@ -753,7 +742,6 @@ KNOWN MOON
 
 </div>
 
-
 <div class="stat">
 
 <div class="stat-value">
@@ -766,11 +754,11 @@ CLASSIFICATION
 
 </div>
 
-
 </div>
 
-
-<!-- FEATURES -->
+<!-- =========================================
+     FEATURES
+========================================= -->
 
 <div class="features-title">
 
@@ -778,9 +766,7 @@ ERIS FEATURES
 
 </div>
 
-
 <div class="features">
-
 
 <div class="feature">
 
@@ -800,7 +786,6 @@ measure the mass of Eris.
 
 </div>
 
-
 <div class="feature">
 
 <div class="feature-title">
@@ -818,7 +803,6 @@ planetary region of the Solar System.
 </div>
 
 </div>
-
 
 <div class="feature">
 
@@ -838,21 +822,19 @@ count as a planet.
 
 </div>
 
-
 </div>
 
-
-<!-- FACT -->
+<!-- =========================================
+     FACT
+========================================= -->
 
 <div class="fact">
-
 
 <div class="fact-label">
 
 DID YOU KNOW?
 
 </div>
-
 
 <div class="fact-text">
 
@@ -862,52 +844,114 @@ a single orbit.
 
 </div>
 
-
 </div>
 
-
-<!-- NAVIGATION -->
+<!-- =========================================
+     NAVIGATION
+========================================= -->
 
 <div class="navigation">
 
-
 <a
-href="https://sites.google.com/view/kosmolearn/solar-system/dwarf-planets"
+href="#"
+onclick="goToPage('solar-system/dwarf-planets'); return false;"
 class="nav-button">
 
 ← RETURN TO DWARF PLANETS
 
 </a>
 
-
 <a
-href="https://sites.google.com/view/kosmolearn/solar-system"
+href="#"
+onclick="goToPage('solar-system'); return false;"
 class="nav-button">
 
 ← RETURN TO SOLAR SYSTEM
 
 </a>
 
-
 </div>
-
 
 <div class="credit">
 
-ORBONIX · SOLAR SYSTEM
-<br>
+ORBONIX · SOLAR SYSTEM <br>
 DWARF PLANET · ERIS
 
 </div>
 
-
 </div>
-
 
 </section>
 
-
 <script>
+
+/* =========================================
+   GOOGLE SITES / DOMAIN-SAFE NAVIGATION
+========================================= */
+
+function goToPage(page) {
+
+    /*
+       Google Sites:
+       https://sites.google.com/view/kosmolearn/...
+
+       Custom domain:
+       https://your-domain.com/...
+
+       При смене домена путь страницы
+       останется тем же.
+    */
+
+    const currentHost =
+        window.top.location.hostname;
+
+    let siteBase = "";
+
+
+    /*
+       Если сайт открыт через стандартный
+       адрес Google Sites, сохраняем
+       /view/kosmolearn
+    */
+
+    if (
+        currentHost === "sites.google.com" ||
+        currentHost.endsWith(".sites.google.com")
+    ) {
+
+        siteBase =
+            "/view/kosmolearn";
+
+    }
+
+
+    /*
+       Убираем лишние / в начале и конце
+    */
+
+    page =
+        String(page)
+        .replace(/^\/+/, "")
+        .replace(/\/+$/, "");
+
+
+    /*
+       Переход на страницу
+    */
+
+    const target =
+        siteBase + "/" + page;
+
+
+    window.top.location.href =
+        target;
+
+}
+
+
+/* =========================================
+   STAR PARALLAX
+========================================= */
 
 const stars =
 document.querySelector(".stars");
@@ -948,7 +992,6 @@ function(event) {
 });
 
 </script>
-
 
 </body>
 
