@@ -1,1 +1,2381 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: #010208;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   PAGE
+========================================= */
+
+.moons-quiz-page {
+
+    position: relative;
+
+    min-height: 100vh;
+
+    padding: 65px 20px 100px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 15%,
+            rgba(120,120,170,.16),
+            transparent 43%
+        ),
+        radial-gradient(
+            circle at 20% 70%,
+            rgba(70,90,160,.08),
+            transparent 35%
+        ),
+        #010208;
+}
+
+
+/* =========================================
+   STARS
+========================================= */
+
+.stars,
+.stars-small {
+
+    position: fixed;
+
+    inset: -25%;
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+.stars {
+
+    opacity: .38;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.9) 1px,
+            transparent 1px
+        );
+
+    background-size: 75px 75px;
+
+    transition:
+        transform 1.5s ease;
+}
+
+.stars-small {
+
+    opacity: .16;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.8) 1px,
+            transparent 1px
+        );
+
+    background-size: 32px 32px;
+
+    transition:
+        transform 2s ease;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header {
+
+    position: relative;
+
+    z-index: 5;
+
+    max-width: 900px;
+
+    margin: auto;
+
+    text-align: center;
+}
+
+
+.return {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 12px 20px;
+
+    margin-bottom: 40px;
+
+    color:
+        rgba(255,255,255,.7);
+
+    border:
+        1px solid
+        rgba(255,255,255,.22);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    transition: .35s ease;
+}
+
+
+.return:hover {
+
+    color: #010208;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-4px);
+}
+
+
+.label {
+
+    margin-bottom: 18px;
+
+    color:
+        rgba(255,255,255,.4);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+
+h1 {
+
+    margin: 0;
+
+    font-size:
+        clamp(43px,8vw,85px);
+
+    line-height: .9;
+
+    letter-spacing: 6px;
+}
+
+
+.subtitle {
+
+    max-width: 720px;
+
+    margin:
+        28px auto 0;
+
+    color:
+        rgba(255,255,255,.52);
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   QUIZ
+========================================= */
+
+.quiz-container {
+
+    position: relative;
+
+    z-index: 5;
+
+    width:
+        min(850px,100%);
+
+    margin:
+        70px auto 0;
+
+    padding: 35px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.025);
+
+    transition:
+        .8s ease;
+}
+
+
+/* =========================================
+   QUIZ TOP
+========================================= */
+
+.quiz-top {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 15px;
+}
+
+
+.question-number {
+
+    color:
+        rgba(255,255,255,.45);
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+}
+
+
+.difficulty {
+
+    padding:
+        7px 12px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.15);
+
+    color:
+        rgba(255,255,255,.5);
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================
+   PROGRESS
+========================================= */
+
+.progress {
+
+    width: 100%;
+
+    height: 2px;
+
+    margin-bottom: 45px;
+
+    background:
+        rgba(255,255,255,.08);
+
+    overflow: hidden;
+}
+
+
+.progress-bar {
+
+    width: 0%;
+
+    height: 100%;
+
+    background: white;
+
+    transition:
+        width .5s ease;
+}
+
+
+/* =========================================
+   QUESTION
+========================================= */
+
+.question {
+
+    margin-bottom: 35px;
+
+    font-size:
+        clamp(20px,3vw,30px);
+
+    line-height: 1.4;
+
+    letter-spacing: .4px;
+}
+
+
+/* =========================================
+   ANSWERS
+========================================= */
+
+.answers {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap: 12px;
+}
+
+
+.answer {
+
+    min-height: 70px;
+
+    padding:
+        18px 20px;
+
+    text-align: left;
+
+    color:
+        rgba(255,255,255,.7);
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    background:
+        rgba(255,255,255,.02);
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 12px;
+
+    cursor: pointer;
+
+    transition:
+        .3s ease;
+}
+
+
+.answer:hover {
+
+    color: white;
+
+    border-color:
+        rgba(255,255,255,.35);
+
+    background:
+        rgba(255,255,255,.05);
+
+    transform:
+        translateY(-3px);
+}
+
+
+.answer.correct {
+
+    color: white;
+
+    border-color:
+        rgba(100,220,150,.7);
+
+    background:
+        rgba(60,180,110,.12);
+}
+
+
+.answer.wrong {
+
+    color: white;
+
+    border-color:
+        rgba(255,90,90,.7);
+
+    background:
+        rgba(220,50,50,.12);
+}
+
+
+.answer.disabled {
+
+    pointer-events: none;
+}
+
+
+/* =========================================
+   NEXT
+========================================= */
+
+.next-area {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    margin-top: 25px;
+}
+
+
+.next-button {
+
+    display: none;
+
+    padding:
+        13px 25px;
+
+    color:
+        rgba(255,255,255,.8);
+
+    border:
+        1px solid
+        rgba(255,255,255,.2);
+
+    background:
+        transparent;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    cursor: pointer;
+
+    transition:
+        .3s ease;
+}
+
+
+.next-button:hover {
+
+    color: #010208;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-3px);
+}
+
+
+/* =========================================
+   RESULT
+========================================= */
+
+.result {
+
+    display: none;
+
+    position: relative;
+
+    text-align: center;
+
+    min-height: 500px;
+
+    padding:
+        25px 10px 15px;
+
+    overflow: hidden;
+}
+
+
+.result::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 350px;
+
+    height: 350px;
+
+    left: 50%;
+
+    top: 45%;
+
+    transform:
+        translate(-50%,-50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(170,180,220,.2),
+            rgba(100,110,180,.08) 35%,
+            transparent 70%
+        );
+
+    filter: blur(5px);
+
+    animation:
+        finalGlow 4s ease-in-out infinite;
+
+    pointer-events: none;
+}
+
+
+@keyframes finalGlow {
+
+    0%,100% {
+
+        transform:
+            translate(-50%,-50%)
+            scale(.85);
+
+        opacity: .5;
+    }
+
+    50% {
+
+        transform:
+            translate(-50%,-50%)
+            scale(1.15);
+
+        opacity: 1;
+    }
+}
+
+
+/* =========================================
+   MOON ICON
+========================================= */
+
+.completion-icon {
+
+    position: relative;
+
+    width: 100px;
+
+    height: 100px;
+
+    margin:
+        5px auto 30px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #ffffff,
+            #c9c9d0 45%,
+            #777985 100%
+        );
+
+    box-shadow:
+        0 0 30px
+        rgba(220,220,255,.35),
+
+        0 0 80px
+        rgba(140,150,220,.18);
+
+    animation:
+        moonAppear 1s ease forwards,
+        moonFloat 4s ease-in-out 1s infinite;
+
+    z-index: 2;
+}
+
+
+.completion-icon::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 18px;
+    height: 18px;
+
+    left: 22px;
+    top: 25px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(80,80,95,.3);
+
+    box-shadow:
+        30px 20px 0 5px rgba(80,80,95,.18),
+        12px 48px 0 2px rgba(80,80,95,.25),
+        50px 45px 0 3px rgba(80,80,95,.2);
+}
+
+
+.completion-icon::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: -13px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid
+        rgba(255,255,255,.16);
+
+    animation:
+        moonOrbit 8s linear infinite;
+}
+
+
+@keyframes moonAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            scale(.3)
+            rotate(-30deg);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            scale(1)
+            rotate(0);
+    }
+}
+
+
+@keyframes moonFloat {
+
+    0%,100% {
+
+        transform:
+            translateY(0);
+    }
+
+    50% {
+
+        transform:
+            translateY(-8px);
+    }
+}
+
+
+@keyframes moonOrbit {
+
+    from {
+
+        transform:
+            rotate(0deg);
+    }
+
+    to {
+
+        transform:
+            rotate(360deg);
+    }
+}
+
+
+/* =========================================
+   RESULT TEXT
+========================================= */
+
+.result-label {
+
+    position: relative;
+
+    z-index: 2;
+
+    margin-bottom: 18px;
+
+    color:
+        rgba(255,255,255,.45);
+
+    font-size: 10px;
+
+    letter-spacing: 6px;
+
+    animation:
+        fadeUp .8s ease .2s both;
+}
+
+
+.result-title {
+
+    position: relative;
+
+    z-index: 2;
+
+    margin-bottom: 12px;
+
+    font-size:
+        clamp(32px,7vw,65px);
+
+    letter-spacing: 5px;
+
+    animation:
+        titleAppear 1s ease .35s both;
+}
+
+
+@keyframes titleAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(20px);
+
+        letter-spacing: 15px;
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+        letter-spacing: 5px;
+    }
+}
+
+
+.score {
+
+    position: relative;
+
+    z-index: 2;
+
+    margin-bottom: 22px;
+
+    font-size: 25px;
+
+    font-weight: bold;
+
+    letter-spacing: 3px;
+
+    animation:
+        fadeUp .8s ease .55s both;
+}
+
+
+.result-text {
+
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 650px;
+
+    margin:
+        0 auto 30px;
+
+    color:
+        rgba(255,255,255,.5);
+
+    font-size: 13px;
+
+    line-height: 1.8;
+
+    animation:
+        fadeUp .8s ease .7s both;
+}
+
+
+@keyframes fadeUp {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(15px);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* =========================================
+   SCORE BAR
+========================================= */
+
+.final-score-bar {
+
+    position: relative;
+
+    z-index: 2;
+
+    width:
+        min(500px,90%);
+
+    height: 3px;
+
+    margin:
+        0 auto 35px;
+
+    background:
+        rgba(255,255,255,.08);
+
+    overflow: hidden;
+
+    animation:
+        fadeUp .8s ease .85s both;
+}
+
+
+.final-score-fill {
+
+    width: 0%;
+
+    height: 100%;
+
+    background: white;
+
+    box-shadow:
+        0 0 12px
+        rgba(255,255,255,.8);
+
+    transition:
+        width 1.8s cubic-bezier(.2,.8,.2,1);
+}
+
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.result-buttons {
+
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+
+    animation:
+        fadeUp .8s ease 1s both;
+}
+
+
+.result-button {
+
+    padding:
+        13px 23px;
+
+    color:
+        rgba(255,255,255,.75);
+
+    border:
+        1px solid
+        rgba(255,255,255,.2);
+
+    background:
+        transparent;
+
+    text-decoration: none;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    cursor: pointer;
+
+    transition:
+        .3s ease;
+}
+
+
+.result-button:hover {
+
+    color: #010208;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-3px);
+}
+
+
+/* =========================================
+   PARTICLES
+========================================= */
+
+.final-particle {
+
+    position: absolute;
+
+    width: 3px;
+
+    height: 3px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    pointer-events: none;
+
+    opacity: 0;
+
+    animation:
+        particleFly 2.5s ease-out forwards;
+}
+
+
+@keyframes particleFly {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            translate(0,0)
+            scale(.2);
+    }
+
+    15% {
+
+        opacity: 1;
+
+        transform:
+            translate(0,0)
+            scale(1);
+    }
+
+    100% {
+
+        opacity: 0;
+
+        transform:
+            translate(
+                var(--x),
+                var(--y)
+            )
+            scale(.2);
+    }
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.footer {
+
+    position: relative;
+
+    z-index: 5;
+
+    margin-top: 35px;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,.25);
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:600px) {
+
+    .moons-quiz-page {
+
+        padding:
+            50px 15px 80px;
+    }
+
+    .quiz-container {
+
+        padding: 25px;
+    }
+
+    .answers {
+
+        grid-template-columns:
+            1fr;
+    }
+
+    .question {
+
+        font-size: 20px;
+    }
+
+    .completion-icon {
+
+        width: 85px;
+
+        height: 85px;
+    }
+
+    .result {
+
+        min-height: 550px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<section class="moons-quiz-page">
+
+
+<div class="stars"></div>
+
+<div class="stars-small"></div>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<div class="header">
+
+
+<a
+href="https://sites.google.com/view/kosmolearn"
+class="return">
+
+← RETURN TO HOME
+
+</a>
+
+
+<div class="label">
+
+ORBONIX · SPACE KNOWLEDGE
+
+</div>
+
+
+<h1>
+
+MOONS QUIZ
+
+</h1>
+
+
+<div class="subtitle">
+
+30 questions about the natural satellites
+of the Solar System — from Earth's Moon
+to the strangest worlds orbiting giant planets.
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     QUIZ
+========================================= -->
+
+<div class="quiz-container">
+
+
+<div id="quiz">
+
+
+<div class="quiz-top">
+
+<div
+class="question-number"
+id="questionNumber">
+
+QUESTION 01 / 30
+
+</div>
+
+
+<div
+class="difficulty"
+id="difficulty">
+
+EASY
+
+</div>
+
+</div>
+
+
+<div class="progress">
+
+<div
+class="progress-bar"
+id="progressBar">
+</div>
+
+</div>
+
+
+<div
+class="question"
+id="question">
+
+Loading question...
+
+</div>
+
+
+<div
+class="answers"
+id="answers">
+</div>
+
+
+<div class="next-area">
+
+
+<button
+class="next-button"
+id="nextButton"
+onclick="nextQuestion()">
+
+NEXT QUESTION →
+
+</button>
+
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     FINAL RESULT
+========================================= -->
+
+<div
+class="result"
+id="result">
+
+
+<div class="completion-icon"></div>
+
+
+<div class="result-label">
+
+MOON MISSION COMPLETE
+
+</div>
+
+
+<div
+class="result-title"
+id="resultTitle">
+
+MOON EXPLORER
+
+</div>
+
+
+<div
+class="score"
+id="score">
+
+0 / 30
+
+</div>
+
+
+<div class="final-score-bar">
+
+<div
+class="final-score-fill"
+id="finalScoreFill">
+</div>
+
+</div>
+
+
+<div
+class="result-text"
+id="resultText">
+
+You have completed your journey
+through the moons of the Solar System.
+
+</div>
+
+
+<div class="result-buttons">
+
+
+<button
+class="result-button"
+onclick="restartQuiz()">
+
+↻ RESTART QUIZ
+
+</button>
+
+
+<a
+href="YOUR-QUIZ-SELECT-PAGE-LINK"
+class="result-button">
+
+← QUIZ SELECT
+
+</a>
+
+
+<a
+href="https://sites.google.com/view/kosmolearn"
+class="result-button">
+
+RETURN TO HOME
+
+</a>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+<div class="footer">
+
+ORBONIX · MOONS QUIZ · SPACE KNOWLEDGE
+
+</div>
+
+
+</section>
+
+
+<script>
+
+
+/* =========================================
+   QUESTIONS
+========================================= */
+
+const questions = [
+
+/* =========================================
+   EASY — 1-10
+========================================= */
+
+{
+question:
+"What is the natural satellite of Earth called?",
+answers:
+[
+"The Moon",
+"Europa",
+"Titan",
+"Phobos"
+],
+correct: 0,
+difficulty: "EASY"
+},
+
+{
+question:
+"Which planet has the Moon?",
+answers:
+[
+"Mars",
+"Earth",
+"Venus",
+"Jupiter"
+],
+correct: 1,
+difficulty: "EASY"
+},
+
+{
+question:
+"Which planet has the most famous large collection of moons?",
+answers:
+[
+"Jupiter",
+"Mercury",
+"Venus",
+"Earth"
+],
+correct: 0,
+difficulty: "EASY"
+},
+
+{
+question:
+"Which is the largest moon in the Solar System?",
+answers:
+[
+"Titan",
+"Europa",
+"Ganymede",
+"Callisto"
+],
+correct: 2,
+difficulty: "EASY"
+},
+
+{
+question:
+"Which planet does Titan orbit?",
+answers:
+[
+"Jupiter",
+"Saturn",
+"Uranus",
+"Neptune"
+],
+correct: 1,
+difficulty: "EASY"
+},
+
+{
+question:
+"Which moon is famous for its thick atmosphere and methane lakes?",
+answers:
+[
+"Titan",
+"Europa",
+"Io",
+"Enceladus"
+],
+correct: 0,
+difficulty: "EASY"
+},
+
+{
+question:
+"Which moon is famous for its icy surface and possible subsurface ocean?",
+answers:
+[
+"Europa",
+"Phobos",
+"Charon",
+"Deimos"
+],
+correct: 0,
+difficulty: "EASY"
+},
+
+{
+question:
+"Which planet is orbited by Europa?",
+answers:
+[
+"Saturn",
+"Neptune",
+"Jupiter",
+"Uranus"
+],
+correct: 2,
+difficulty: "EASY"
+},
+
+{
+question:
+"Which planet has the moons Phobos and Deimos?",
+answers:
+[
+"Mars",
+"Jupiter",
+"Saturn",
+"Venus"
+],
+correct: 0,
+difficulty: "EASY"
+},
+
+{
+question:
+"What causes the phases of Earth's Moon?",
+answers:
+[
+"The Moon changing shape",
+"Earth's shadow every night",
+"The changing positions of the Sun, Earth and Moon",
+"Clouds covering the Moon"
+],
+correct: 2,
+difficulty: "EASY"
+},
+
+
+/* =========================================
+   MEDIUM — 11-20
+========================================= */
+
+{
+question:
+"Which moon is the most volcanically active world known?",
+answers:
+[
+"Europa",
+"Io",
+"Titan",
+"Callisto"
+],
+correct: 1,
+difficulty: "MEDIUM"
+},
+
+{
+question:
+"Which moon has geysers that eject material into space?",
+answers:
+[
+"Enceladus",
+"Triton",
+"Io",
+"Ganymede"
+],
+correct: 0,
+difficulty: "MEDIUM"
+},
+
+{
+question:
+"Which moon is larger than the planet Mercury?",
+answers:
+[
+"Europa",
+"Titan",
+"Ganymede",
+"Enceladus"
+],
+correct: 2,
+difficulty: "MEDIUM"
+},
+
+{
+question:
+"Which moon is the largest moon of Saturn?",
+answers:
+[
+"Rhea",
+"Enceladus",
+"Titan",
+"Iapetus"
+],
+correct: 2,
+difficulty: "MEDIUM"
+},
+
+{
+question:
+"Which moon is known for its bright icy surface and subsurface ocean?",
+answers:
+[
+"Europa",
+"Io",
+"Callisto",
+"Phobos"
+],
+correct: 0,
+difficulty: "MEDIUM"
+},
+
+{
+question:
+"Which moon is Pluto's largest moon?",
+answers:
+[
+"Charon",
+"Triton",
+"Dysnomia",
+"Miranda"
+],
+correct: 0,
+difficulty: "MEDIUM"
+},
+
+{
+question:
+"What is unusual about the Pluto–Charon system?",
+answers:
+[
+"Charon has no gravity",
+"They orbit a point outside Pluto",
+"Pluto is much larger than the Sun",
+"Charon orbits the Moon"
+],
+correct: 1,
+difficulty: "MEDIUM"
+},
+
+{
+question:
+"Which moon of Neptune has a retrograde orbit?",
+answers:
+[
+"Triton",
+"Nereid",
+"Proteus",
+"Larissa"
+],
+correct: 0,
+difficulty: "MEDIUM"
+},
+
+{
+question:
+"Which moon is thought to have a global subsurface ocean beneath its icy crust?",
+answers:
+[
+"Europa",
+"Phobos",
+"Deimos",
+"Hyperion"
+],
+correct: 0,
+difficulty: "MEDIUM"
+},
+
+{
+question:
+"What is the main reason Io experiences extreme tidal heating?",
+answers:
+[
+"It is very close to the Sun",
+"Interactions with Jupiter and other moons continually distort it",
+"It has a very thick atmosphere",
+"It contains radioactive ice"
+],
+correct: 1,
+difficulty: "MEDIUM"
+},
+
+
+/* =========================================
+   HARD — 21-30
+========================================= */
+
+{
+question:
+"Why does the same side of Earth's Moon always face Earth?",
+answers:
+[
+"The Moon does not rotate",
+"The Moon is tidally locked",
+"Earth's gravity stops the Moon from rotating",
+"The Sun controls its rotation"
+],
+correct: 1,
+difficulty: "HARD"
+},
+
+{
+question:
+"What is tidal locking?",
+answers:
+[
+"When a moon stops orbiting",
+"When a moon's rotation period matches its orbital period",
+"When a moon loses all gravity",
+"When a planet captures a star"
+],
+correct: 1,
+difficulty: "HARD"
+},
+
+{
+question:
+"Which moon has a dense nitrogen-rich atmosphere?",
+answers:
+[
+"Titan",
+"Europa",
+"Io",
+"Callisto"
+],
+correct: 0,
+difficulty: "HARD"
+},
+
+{
+question:
+"Which moon has lakes and seas of liquid methane and ethane on its surface?",
+answers:
+[
+"Europa",
+"Titan",
+"Ganymede",
+"Triton"
+],
+correct: 1,
+difficulty: "HARD"
+},
+
+{
+question:
+"Which moon has a powerful magnetic field of its own?",
+answers:
+[
+"Ganymede",
+"Enceladus",
+"Europa",
+"Titan"
+],
+correct: 0,
+difficulty: "HARD"
+},
+
+{
+question:
+"What is unusual about Miranda, a moon of Uranus?",
+answers:
+[
+"It has an extremely varied surface with giant cliffs and geological features",
+"It has a thick oxygen atmosphere",
+"It is larger than Earth",
+"It has liquid methane oceans covering its entire surface"
+],
+correct: 0,
+difficulty: "HARD"
+},
+
+{
+question:
+"Which moon is believed to have a subsurface ocean that produces plumes containing water and other materials?",
+answers:
+[
+"Enceladus",
+"Callisto",
+"Phobos",
+"Charon"
+],
+correct: 0,
+difficulty: "HARD"
+},
+
+{
+question:
+"What is the likely source of Enceladus's plumes?",
+answers:
+[
+"Water-rich material escaping from fractures near its south pole",
+"Solar wind trapped in its atmosphere",
+"Volcanic lava from an iron core",
+"Atmospheric storms"
+],
+correct: 0,
+difficulty: "HARD"
+},
+
+{
+question:
+"Why is Triton's retrograde orbit scientifically interesting?",
+answers:
+[
+"It suggests Triton was likely captured by Neptune",
+"It means Triton formed inside Neptune",
+"It proves Triton was once a planet around the Sun",
+"It means Neptune has no gravity"
+],
+correct: 0,
+difficulty: "HARD"
+},
+
+{
+question:
+"Which statement about Ganymede is correct?",
+answers:
+[
+"It is the smallest moon in the Solar System",
+"It is larger than Mercury and has its own magnetic field",
+"It is a moon of Saturn",
+"It has a surface covered entirely by liquid methane"
+],
+correct: 1,
+difficulty: "HARD"
+}
+
+];
+
+
+/* =========================================
+   VARIABLES
+========================================= */
+
+let currentQuestion = 0;
+
+let score = 0;
+
+let answered = false;
+
+
+/* =========================================
+   SHUFFLE
+========================================= */
+
+function shuffleAnswers(question) {
+
+    const answerObjects =
+        question.answers.map(
+            (answer, index) => {
+
+                return {
+
+                    text: answer,
+
+                    correct:
+                        index === question.correct
+
+                };
+
+            }
+        );
+
+
+    for (
+        let i = answerObjects.length - 1;
+        i > 0;
+        i--
+    ) {
+
+        const j =
+            Math.floor(
+                Math.random() * (i + 1)
+            );
+
+
+        [
+            answerObjects[i],
+            answerObjects[j]
+        ] =
+        [
+            answerObjects[j],
+            answerObjects[i]
+        ];
+
+    }
+
+
+    return answerObjects;
+}
+
+
+/* =========================================
+   LOAD QUESTION
+========================================= */
+
+function loadQuestion() {
+
+    answered = false;
+
+
+    const q =
+        questions[currentQuestion];
+
+
+    document.getElementById(
+        "questionNumber"
+    ).textContent =
+        `QUESTION ${
+            String(currentQuestion + 1)
+            .padStart(2,"0")
+        } / ${questions.length}`;
+
+
+    document.getElementById(
+        "difficulty"
+    ).textContent =
+        q.difficulty;
+
+
+    document.getElementById(
+        "question"
+    ).textContent =
+        q.question;
+
+
+    document.getElementById(
+        "progressBar"
+    ).style.width =
+        `${(
+            currentQuestion /
+            questions.length
+        ) * 100}%`;
+
+
+    const answersContainer =
+        document.getElementById(
+            "answers"
+        );
+
+
+    answersContainer.innerHTML = "";
+
+
+    const shuffled =
+        shuffleAnswers(q);
+
+
+    shuffled.forEach(
+        answerObject => {
+
+            const button =
+                document.createElement(
+                    "button"
+                );
+
+
+            button.className =
+                "answer";
+
+
+            button.textContent =
+                answerObject.text;
+
+
+            button.dataset.correct =
+                answerObject.correct;
+
+
+            button.onclick =
+                function() {
+
+                    selectAnswer(
+                        answerObject.correct,
+                        button
+                    );
+
+                };
+
+
+            answersContainer.appendChild(
+                button
+            );
+
+        }
+    );
+
+
+    document.getElementById(
+        "nextButton"
+    ).style.display =
+        "none";
+}
+
+
+/* =========================================
+   ANSWER
+========================================= */
+
+function selectAnswer(
+    isCorrect,
+    selectedButton
+) {
+
+    if (answered)
+        return;
+
+
+    answered = true;
+
+
+    const buttons =
+        document.querySelectorAll(
+            ".answer"
+        );
+
+
+    buttons.forEach(
+        button => {
+
+            button.classList.add(
+                "disabled"
+            );
+
+        }
+    );
+
+
+    if (isCorrect) {
+
+        selectedButton.classList.add(
+            "correct"
+        );
+
+        score++;
+
+    }
+
+    else {
+
+        selectedButton.classList.add(
+            "wrong"
+        );
+
+
+        buttons.forEach(
+            button => {
+
+                if (
+                    button.dataset.correct
+                    === "true"
+                ) {
+
+                    button.classList.add(
+                        "correct"
+                    );
+
+                }
+
+            }
+        );
+
+    }
+
+
+    document.getElementById(
+        "nextButton"
+    ).style.display =
+        "inline-flex";
+}
+
+
+/* =========================================
+   NEXT
+========================================= */
+
+function nextQuestion() {
+
+    currentQuestion++;
+
+
+    if (
+        currentQuestion >=
+        questions.length
+    ) {
+
+        showResult();
+
+        return;
+
+    }
+
+
+    loadQuestion();
+}
+
+
+/* =========================================
+   RESULT
+========================================= */
+
+function showResult() {
+
+    document.getElementById(
+        "quiz"
+    ).style.display =
+        "none";
+
+
+    const result =
+        document.getElementById(
+            "result"
+        );
+
+
+    result.style.display =
+        "block";
+
+
+    document.getElementById(
+        "score"
+    ).textContent =
+        "0 / 30";
+
+
+    let title = "";
+
+    let text = "";
+
+
+    if (score <= 10) {
+
+        title =
+            "MOON BEGINNER";
+
+        text =
+            "Your journey through the moons of the Solar System has begun. There are hundreds of fascinating worlds still waiting to be explored.";
+
+    }
+
+    else if (score <= 17) {
+
+        title =
+            "MOON EXPLORER";
+
+        text =
+            "A solid result. You know many of the major moons and some of the fascinating worlds orbiting the giant planets.";
+
+    }
+
+    else if (score <= 23) {
+
+        title =
+            "LUNAR ASTRONOMER";
+
+        text =
+            "Very strong knowledge. You understand many of the physical properties and strange environments found on moons.";
+
+    }
+
+    else if (score <= 27) {
+
+        title =
+            "MOON EXPERT";
+
+        text =
+            "Excellent performance. You handled even many of the advanced questions about planetary satellites.";
+
+    }
+
+    else {
+
+        title =
+            "MOON MASTER";
+
+        text =
+            "Outstanding. Your knowledge of the moons of the Solar System is exceptional.";
+
+    }
+
+
+    document.getElementById(
+        "resultTitle"
+    ).textContent =
+        title;
+
+
+    document.getElementById(
+        "resultText"
+    ).textContent =
+        text;
+
+
+    animateScore();
+
+
+    setTimeout(
+        function() {
+
+            document.getElementById(
+                "finalScoreFill"
+            ).style.width =
+                `${(
+                    score /
+                    questions.length
+                ) * 100}%`;
+
+        },
+        600
+    );
+
+
+    createParticles();
+
+}
+
+
+/* =========================================
+   SCORE ANIMATION
+========================================= */
+
+function animateScore() {
+
+    let value = 0;
+
+    const scoreElement =
+        document.getElementById(
+            "score"
+        );
+
+
+    const duration = 1600;
+
+    const start =
+        performance.now();
+
+
+    function update(now) {
+
+        const progress =
+            Math.min(
+                (now - start) /
+                duration,
+                1
+            );
+
+
+        const eased =
+            1 -
+            Math.pow(
+                1 - progress,
+                3
+            );
+
+
+        value =
+            Math.floor(
+                eased * score
+            );
+
+
+        scoreElement.textContent =
+            `${value} / ${questions.length}`;
+
+
+        if (progress < 1) {
+
+            requestAnimationFrame(
+                update
+            );
+
+        }
+
+        else {
+
+            scoreElement.textContent =
+                `${score} / ${questions.length}`;
+
+        }
+
+    }
+
+
+    requestAnimationFrame(
+        update
+    );
+}
+
+
+/* =========================================
+   PARTICLES
+========================================= */
+
+function createParticles() {
+
+    const result =
+        document.getElementById(
+            "result"
+        );
+
+
+    for (
+        let i = 0;
+        i < 70;
+        i++
+    ) {
+
+        const particle =
+            document.createElement(
+                "div"
+            );
+
+
+        particle.className =
+            "final-particle";
+
+
+        particle.style.left =
+            Math.random() * 100 + "%";
+
+
+        particle.style.top =
+            45 +
+            Math.random() * 15 +
+            "%";
+
+
+        particle.style.setProperty(
+            "--x",
+            (
+                Math.random() * 500 -
+                250
+            ) + "px"
+        );
+
+
+        particle.style.setProperty(
+            "--y",
+            (
+                Math.random() * 500 -
+                250
+            ) + "px"
+        );
+
+
+        particle.style.animationDelay =
+            Math.random() * .8 +
+            "s";
+
+
+        result.appendChild(
+            particle
+        );
+
+
+        setTimeout(
+            function() {
+
+                particle.remove();
+
+            },
+            3500
+        );
+
+    }
+
+}
+
+
+/* =========================================
+   RESTART
+========================================= */
+
+function restartQuiz() {
+
+    currentQuestion = 0;
+
+    score = 0;
+
+
+    document.getElementById(
+        "quiz"
+    ).style.display =
+        "block";
+
+
+    document.getElementById(
+        "result"
+    ).style.display =
+        "none";
+
+
+    document.getElementById(
+        "finalScoreFill"
+    ).style.width =
+        "0%";
+
+
+    loadQuestion();
+}
+
+
+/* =========================================
+   STAR PARALLAX
+========================================= */
+
+const stars =
+document.querySelector(".stars");
+
+const smallStars =
+document.querySelector(".stars-small");
+
+
+document.addEventListener(
+"mousemove",
+
+function(event) {
+
+    const x =
+        event.clientX /
+        window.innerWidth -
+        0.5;
+
+    const y =
+        event.clientY /
+        window.innerHeight -
+        0.5;
+
+
+    stars.style.transform =
+        `translate(
+            ${x * 20}px,
+            ${y * 20}px
+        )`;
+
+
+    smallStars.style.transform =
+        `translate(
+            ${x * -12}px,
+            ${y * -12}px
+        )`;
+
+});
+
+
+/* =========================================
+   START
+========================================= */
+
+loadQuestion();
+
+</script>
+
+
+</body>
+
+</html>
