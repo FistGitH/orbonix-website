@@ -1,11 +1,20 @@
 ```javascript
 /* =========================================================
-   ORBONIX GLOBAL SEARCH
-   Real URLs for orbonix.net
+   ORBONIX GLOBAL SEARCH + UNIVERSAL BUTTON SYSTEM
+   Website: https://orbonix.net
 ========================================================= */
 
-const BASE = "https://orbonix.net";
 
+/* =========================================================
+   BASE URL
+========================================================= */
+
+const ORBONIX_BASE = "https://orbonix.net";
+
+
+/* =========================================================
+   ALL ORBONIX PAGES
+========================================================= */
 
 const ORBONIX_PAGES = [
 
@@ -15,7 +24,7 @@ const ORBONIX_PAGES = [
 
     {
         title: "Home",
-        url: `${BASE}/`,
+        url: `${ORBONIX_BASE}/`,
         category: "Main",
         keywords: "home orbonix space astronomy universe",
         description: "The main ORBONIX space and astronomy website."
@@ -23,7 +32,7 @@ const ORBONIX_PAGES = [
 
     {
         title: "Exploring Space",
-        url: `${BASE}/Exploring%20Space/`,
+        url: `${ORBONIX_BASE}/Exploring%20Space/`,
         category: "Exploring Space",
         keywords: "exploring space explore astronomy universe cosmos",
         description: "Explore the universe, astronomy and space."
@@ -31,7 +40,7 @@ const ORBONIX_PAGES = [
 
     {
         title: "Gallery",
-        url: `${BASE}/Gallery/`,
+        url: `${ORBONIX_BASE}/Gallery/`,
         category: "Gallery",
         keywords: "gallery photos images pictures observations telescope astronomy",
         description: "Explore the ORBONIX observation gallery."
@@ -39,15 +48,15 @@ const ORBONIX_PAGES = [
 
     {
         title: "Latest Space News",
-        url: `${BASE}/Latest%20Space%20News/`,
+        url: `${ORBONIX_BASE}/Latest%20Space%20News/`,
         category: "News",
-        keywords: "latest space news astronomy news nasa esa discovery discoveries science",
+        keywords: "latest space news astronomy nasa esa discoveries science",
         description: "Discover the latest space news and discoveries."
     },
 
     {
         title: "More About Orbonix",
-        url: `${BASE}/More%20About%20Orbonix/`,
+        url: `${ORBONIX_BASE}/More%20About%20Orbonix/`,
         category: "Orbonix",
         keywords: "about orbonix project website achievements photos telescope",
         description: "Learn more about the ORBONIX project."
@@ -55,9 +64,9 @@ const ORBONIX_PAGES = [
 
     {
         title: "Solar System Simulation",
-        url: `${BASE}/Solar%20System%20Simulation/`,
+        url: `${ORBONIX_BASE}/Solar%20System%20Simulation/`,
         category: "Simulation",
-        keywords: "solar system simulation interactive simulation planets moons orbit 3d",
+        keywords: "solar system simulation planets moons orbit interactive",
         description: "Explore the interactive Solar System simulation."
     },
 
@@ -68,7 +77,7 @@ const ORBONIX_PAGES = [
 
     {
         title: "Deep Space",
-        url: `${BASE}/Exploring%20Space/Deep%20Space/`,
+        url: `${ORBONIX_BASE}/Exploring%20Space/Deep%20Space/`,
         category: "Deep Space",
         keywords: "deep space universe cosmos strange objects",
         description: "Explore strange and mysterious objects in deep space."
@@ -76,33 +85,33 @@ const ORBONIX_PAGES = [
 
     {
         title: "Solar System",
-        url: `${BASE}/Exploring%20Space/Solar%20System/`,
+        url: `${ORBONIX_BASE}/Exploring%20Space/Solar%20System/`,
         category: "Solar System",
-        keywords: "solar system planets sun moons asteroids comets kuiper oort",
+        keywords: "solar system planets sun moons asteroids comets",
         description: "Explore the Solar System."
     },
 
     {
         title: "Space Missions",
-        url: `${BASE}/Exploring%20Space/Space%20Missions/`,
+        url: `${ORBONIX_BASE}/Exploring%20Space/Space%20Missions/`,
         category: "Space Missions",
-        keywords: "space missions nasa esa exploration spacecraft rockets",
+        keywords: "space missions nasa esa spacecraft rockets exploration",
         description: "Explore humanity's greatest space missions."
     },
 
     {
         title: "Quizzes",
-        url: `${BASE}/Exploring%20Space/Quizes/`,
+        url: `${ORBONIX_BASE}/Exploring%20Space/Quizes/`,
         category: "Quizzes",
-        keywords: "quiz quizzes test tests astronomy knowledge space knowledge",
+        keywords: "quiz quizzes test astronomy space knowledge",
         description: "Test your space and astronomy knowledge."
     },
 
     {
         title: "Terms",
-        url: `${BASE}/Exploring%20Space/Terms/`,
+        url: `${ORBONIX_BASE}/Exploring%20Space/Terms/`,
         category: "Terms",
-        keywords: "terms dictionary definitions glossary astronomy space",
+        keywords: "terms dictionary definitions glossary astronomy",
         description: "Learn important space and astronomy terms."
     },
 
@@ -113,129 +122,129 @@ const ORBONIX_PAGES = [
 
     {
         title: "Sun",
-        url: `${BASE}/Exploring%20Space/Solar%20System/Sun/`,
+        url: `${ORBONIX_BASE}/Exploring%20Space/Solar%20System/Sun/`,
         category: "Solar System",
-        keywords: "sun star solar solar wind solar flare sunspots corona",
-        description: "Explore the Sun, our Solar System's star."
+        keywords: "sun star solar wind solar flare sunspots corona",
+        description: "Explore the Sun."
     },
 
     {
         title: "Mercury",
-        url: `${BASE}/Exploring%20Space/Solar%20System/Mercury/`,
+        url: `${ORBONIX_BASE}/Exploring%20Space/Solar%20System/Mercury/`,
         category: "Planets",
         keywords: "mercury planet smallest closest sun inner planet",
-        description: "Explore Mercury, the smallest planet and closest to the Sun."
+        description: "Explore Mercury."
     },
 
     {
         title: "Venus",
-        url: `${BASE}/Exploring%20Space/Solar%20System/Venus/`,
+        url: `${ORBONIX_BASE}/Exploring%20Space/Solar%20System/Venus/`,
         category: "Planets",
         keywords: "venus planet hottest atmosphere clouds greenhouse",
-        description: "Explore Venus, the hottest planet in the Solar System."
+        description: "Explore Venus."
     },
 
     {
         title: "Earth",
-        url: `${BASE}/Exploring%20Space/Solar%20System/Earth/`,
+        url: `${ORBONIX_BASE}/Exploring%20Space/Solar%20System/Earth/`,
         category: "Planets",
-        keywords: "earth planet world home life atmosphere ocean",
-        description: "Explore Earth, our home planet."
+        keywords: "earth planet world life atmosphere ocean",
+        description: "Explore Earth."
     },
 
     {
         title: "Mars",
-        url: `${BASE}/Exploring%20Space/Solar%20System/Mars/`,
+        url: `${ORBONIX_BASE}/Exploring%20Space/Solar%20System/Mars/`,
         category: "Planets",
-        keywords: "mars planet red planet martian phobos deimos rover",
+        keywords: "mars planet red planet martian rover phobos deimos",
         description: "Explore Mars, the Red Planet."
     },
 
     {
         title: "Phobos",
-        url: `${BASE}/Exploring%20Space/Solar%20System/Mars/Phobos/`,
+        url: `${ORBONIX_BASE}/Exploring%20Space/Solar%20System/Mars/Phobos/`,
         category: "Mars",
         keywords: "phobos mars moon martian moon satellite",
-        description: "Explore Phobos, one of Mars' moons."
+        description: "Explore Phobos."
     },
 
     {
         title: "Deimos",
-        url: `${BASE}/Exploring%20Space/Solar%20System/Mars/Deimos/`,
+        url: `${ORBONIX_BASE}/Exploring%20Space/Solar%20System/Mars/Deimos/`,
         category: "Mars",
         keywords: "deimos mars moon martian moon satellite",
-        description: "Explore Deimos, one of Mars' moons."
+        description: "Explore Deimos."
     },
 
     {
         title: "Jupiter",
-        url: `${BASE}/Exploring%20Space/Solar%20System/Jupiter/`,
+        url: `${ORBONIX_BASE}/Exploring%20Space/Solar%20System/Jupiter/`,
         category: "Planets",
-        keywords: "jupiter planet gas giant largest planet great red spot io europa ganymede callisto",
-        description: "Explore Jupiter, the largest planet in the Solar System."
+        keywords: "jupiter planet gas giant largest planet great red spot moons",
+        description: "Explore Jupiter."
     },
 
     {
         title: "Saturn",
-        url: `${BASE}/Exploring%20Space/Solar%20System/Saturn/`,
+        url: `${ORBONIX_BASE}/Exploring%20Space/Solar%20System/Saturn/`,
         category: "Planets",
         keywords: "saturn planet rings gas giant titan enceladus",
-        description: "Explore Saturn and its spectacular rings."
+        description: "Explore Saturn and its rings."
     },
 
     {
         title: "Uranus",
-        url: `${BASE}/Exploring%20Space/Solar%20System/Uranus/`,
+        url: `${ORBONIX_BASE}/Exploring%20Space/Solar%20System/Uranus/`,
         category: "Planets",
         keywords: "uranus planet ice giant rings tilted planet",
-        description: "Explore Uranus, the tilted ice giant."
+        description: "Explore Uranus."
     },
 
     {
         title: "Neptune",
-        url: `${BASE}/Exploring%20Space/Solar%20System/Neptune/`,
+        url: `${ORBONIX_BASE}/Exploring%20Space/Solar%20System/Neptune/`,
         category: "Planets",
-        keywords: "neptune planet ice giant blue planet winds outer planet",
-        description: "Explore Neptune, the distant blue ice giant."
+        keywords: "neptune planet ice giant blue planet winds",
+        description: "Explore Neptune."
     },
 
     {
         title: "Dwarf Planets",
-        url: `${BASE}/Exploring%20Space/Solar%20System/Dwarf%20Planets/`,
+        url: `${ORBONIX_BASE}/Exploring%20Space/Solar%20System/Dwarf%20Planets/`,
         category: "Solar System",
         keywords: "dwarf planets pluto ceres eris haumea makemake",
-        description: "Explore the dwarf planets of the Solar System."
+        description: "Explore the dwarf planets."
     },
 
     {
         title: "Asteroid Belt",
-        url: `${BASE}/Exploring%20Space/Solar%20System/Asteroid%20Belt/`,
+        url: `${ORBONIX_BASE}/Exploring%20Space/Solar%20System/Asteroid%20Belt/`,
         category: "Solar System",
-        keywords: "asteroid belt asteroids rocks minor planets mars jupiter",
-        description: "Explore the asteroid belt between Mars and Jupiter."
+        keywords: "asteroid belt asteroids rocks mars jupiter",
+        description: "Explore the asteroid belt."
     },
 
     {
         title: "Kuiper Belt",
-        url: `${BASE}/Exploring%20Space/Solar%20System/Kuiper%20Belt/`,
+        url: `${ORBONIX_BASE}/Exploring%20Space/Solar%20System/Kuiper%20Belt/`,
         category: "Solar System",
-        keywords: "kuiper belt icy objects trans neptunian outer solar system",
-        description: "Explore the Kuiper Belt beyond Neptune."
+        keywords: "kuiper belt icy objects outer solar system",
+        description: "Explore the Kuiper Belt."
     },
 
     {
         title: "Oort Cloud",
-        url: `${BASE}/Exploring%20Space/Solar%20System/Oort%20Cloud/`,
+        url: `${ORBONIX_BASE}/Exploring%20Space/Solar%20System/Oort%20Cloud/`,
         category: "Solar System",
         keywords: "oort cloud comets long period comets outer solar system",
-        description: "Explore the distant Oort Cloud."
+        description: "Explore the Oort Cloud."
     },
 
     {
         title: "Planet X",
-        url: `${BASE}/Exploring%20Space/Solar%20System/Planet%20X/`,
+        url: `${ORBONIX_BASE}/Exploring%20Space/Solar%20System/Planet%20X/`,
         category: "Solar System",
-        keywords: "planet x planet nine planet 9 ninth planet hypothetical planet",
+        keywords: "planet x planet nine hypothetical ninth planet",
         description: "Explore the hypothetical Planet X."
     },
 
@@ -246,82 +255,82 @@ const ORBONIX_PAGES = [
 
     {
         title: "Black Holes",
-        url: `${BASE}/Exploring%20Space/Deep%20Space/Blackholes/`,
+        url: `${ORBONIX_BASE}/Exploring%20Space/Deep%20Space/Blackholes/`,
         category: "Deep Space",
-        keywords: "black hole black holes singularity event horizon gravity supermassive stellar",
-        description: "Explore black holes and their extreme physics."
+        keywords: "black holes black hole singularity event horizon gravity",
+        description: "Explore black holes."
     },
 
     {
         title: "Cosmic Voids",
-        url: `${BASE}/Exploring%20Space/Deep%20Space/Cosmic%20Voids/`,
+        url: `${ORBONIX_BASE}/Exploring%20Space/Deep%20Space/Cosmic%20Voids/`,
         category: "Deep Space",
         keywords: "cosmic void cosmic voids empty space universe galaxies",
-        description: "Explore enormous cosmic voids."
+        description: "Explore cosmic voids."
     },
 
     {
         title: "Dark Energy",
-        url: `${BASE}/Exploring%20Space/Deep%20Space/Dark%20Energy/`,
+        url: `${ORBONIX_BASE}/Exploring%20Space/Deep%20Space/Dark%20Energy/`,
         category: "Deep Space",
-        keywords: "dark energy expansion accelerating universe cosmology",
-        description: "Explore dark energy and the expansion of the Universe."
+        keywords: "dark energy universe expansion accelerating cosmology",
+        description: "Explore dark energy."
     },
 
     {
         title: "Dark Matter",
-        url: `${BASE}/Exploring%20Space/Deep%20Space/Dark%20Matter/`,
+        url: `${ORBONIX_BASE}/Exploring%20Space/Deep%20Space/Dark%20Matter/`,
         category: "Deep Space",
         keywords: "dark matter invisible matter gravity galaxies cosmology",
-        description: "Explore the mysterious dark matter."
+        description: "Explore dark matter."
     },
 
     {
         title: "Galaxies",
-        url: `${BASE}/Exploring%20Space/Deep%20Space/Galaxies/`,
+        url: `${ORBONIX_BASE}/Exploring%20Space/Deep%20Space/Galaxies/`,
         category: "Deep Space",
         keywords: "galaxy galaxies milky way andromeda spiral elliptical universe",
-        description: "Explore galaxies across the Universe."
+        description: "Explore galaxies."
     },
 
     {
         title: "Nebulae",
-        url: `${BASE}/Exploring%20Space/Deep%20Space/Nebulae/`,
+        url: `${ORBONIX_BASE}/Exploring%20Space/Deep%20Space/Nebulae/`,
         category: "Deep Space",
-        keywords: "nebula nebulae gas dust stars star formation emission planetary",
-        description: "Explore enormous clouds of gas and dust."
+        keywords: "nebula nebulae gas dust stars star formation",
+        description: "Explore nebulae."
     },
 
     {
         title: "Quasars",
-        url: `${BASE}/Exploring%20Space/Deep%20Space/Quasars/`,
+        url: `${ORBONIX_BASE}/Exploring%20Space/Deep%20Space/Quasars/`,
         category: "Deep Space",
-        keywords: "quasar quasars active galaxy active galactic nucleus black hole accretion",
-        description: "Explore quasars, among the brightest objects in the Universe."
+        keywords: "quasar quasars active galaxy black hole accretion",
+        description: "Explore quasars."
     },
 
     {
         title: "Rogue Planets",
-        url: `${BASE}/Exploring%20Space/Deep%20Space/Rouge%20Planets/`,
+        url: `${ORBONIX_BASE}/Exploring%20Space/Deep%20Space/Rouge%20Planets/`,
         category: "Deep Space",
-        keywords: "rogue planet rogue planets rouge planets free floating planet wandering planet",
-        description: "Explore planets wandering through space without a star."
+        keywords: "rogue planets rouge planets free floating wandering planets",
+        description: "Explore rogue planets."
     },
 
     {
         title: "Stars",
-        url: `${BASE}/Exploring%20Space/Deep%20Space/Stars/`,
+        url: `${ORBONIX_BASE}/Exploring%20Space/Deep%20Space/Stars/`,
         category: "Deep Space",
-        keywords: "star stars stellar sun red giant white dwarf neutron star supernova",
+        keywords: "stars star stellar sun red giant white dwarf neutron star supernova",
         description: "Explore stars and stellar evolution."
     },
 
     {
         title: "Wormholes",
-        url: `${BASE}/Exploring%20Space/Deep%20Space/Wormholes/`,
+        url: `${ORBONIX_BASE}/Exploring%20Space/Deep%20Space/Wormholes/`,
         category: "Deep Space",
-        keywords: "wormhole wormholes einstein rosen bridge spacetime space time theoretical",
-        description: "Explore theoretical wormholes and spacetime."
+        keywords: "wormholes wormhole einstein rosen bridge spacetime",
+        description: "Explore theoretical wormholes."
     },
 
 
@@ -331,49 +340,49 @@ const ORBONIX_PAGES = [
 
     {
         title: "Apollo",
-        url: `${BASE}/Exploring%20Space/Space%20Missions/Apollo/`,
+        url: `${ORBONIX_BASE}/Exploring%20Space/Space%20Missions/Apollo/`,
         category: "Space Missions",
-        keywords: "apollo apollo program apollo 11 moon moon landing lunar nasa",
-        description: "Explore NASA's Apollo program and the Moon landings."
+        keywords: "apollo apollo program apollo 11 moon nasa lunar",
+        description: "Explore the Apollo program."
     },
 
     {
         title: "Artemis",
-        url: `${BASE}/Exploring%20Space/Space%20Missions/Artemis/`,
+        url: `${ORBONIX_BASE}/Exploring%20Space/Space%20Missions/Artemis/`,
         category: "Space Missions",
-        keywords: "artemis artemis program moon lunar nasa moon mission",
-        description: "Explore NASA's Artemis program."
+        keywords: "artemis moon lunar nasa mission",
+        description: "Explore the Artemis program."
     },
 
     {
         title: "Cassini",
-        url: `${BASE}/Exploring%20Space/Space%20Missions/Cassini/`,
+        url: `${ORBONIX_BASE}/Exploring%20Space/Space%20Missions/Cassini/`,
         category: "Space Missions",
-        keywords: "cassini saturn titan saturn mission nasa esa",
-        description: "Explore the Cassini mission to Saturn."
+        keywords: "cassini saturn titan nasa esa mission",
+        description: "Explore Cassini."
     },
 
     {
         title: "James Webb Space Telescope",
-        url: `${BASE}/Exploring%20Space/Space%20Missions/James%20Webb/`,
+        url: `${ORBONIX_BASE}/Exploring%20Space/Space%20Missions/James%20Webb/`,
         category: "Space Missions",
-        keywords: "james webb jwst webb space telescope infrared telescope nasa esa csa galaxies nebulae exoplanets",
+        keywords: "james webb jwst telescope infrared nasa esa csa",
         description: "Explore the James Webb Space Telescope."
     },
 
     {
         title: "New Horizons",
-        url: `${BASE}/Exploring%20Space/Space%20Missions/New%20Horizonts/`,
+        url: `${ORBONIX_BASE}/Exploring%20Space/Space%20Missions/New%20Horizonts/`,
         category: "Space Missions",
-        keywords: "new horizons new horizonts pluto kuiper belt nasa spacecraft",
-        description: "Explore NASA's New Horizons mission."
+        keywords: "new horizons new horizonts pluto kuiper belt nasa",
+        description: "Explore New Horizons."
     },
 
     {
         title: "Voyager",
-        url: `${BASE}/Exploring%20Space/Space%20Missions/Voyager/`,
+        url: `${ORBONIX_BASE}/Exploring%20Space/Space%20Missions/Voyager/`,
         category: "Space Missions",
-        keywords: "voyager voyager 1 voyager 2 interstellar space nasa golden record jupiter saturn uranus neptune",
+        keywords: "voyager voyager 1 voyager 2 interstellar nasa",
         description: "Explore Voyager 1 and Voyager 2."
     },
 
@@ -384,55 +393,55 @@ const ORBONIX_PAGES = [
 
     {
         title: "Black Holes Quiz",
-        url: `${BASE}/Exploring%20Space/Quizes/Blackholes%20Quiz/`,
+        url: `${ORBONIX_BASE}/Exploring%20Space/Quizes/Blackholes%20Quiz/`,
         category: "Quiz",
-        keywords: "black holes quiz black hole test singularity event horizon",
+        keywords: "black holes quiz black hole test",
         description: "Test your knowledge of black holes."
     },
 
     {
         title: "Comets Quiz",
-        url: `${BASE}/Exploring%20Space/Quizes/Comets%20Quiz/`,
+        url: `${ORBONIX_BASE}/Exploring%20Space/Quizes/Comets%20Quiz/`,
         category: "Quiz",
-        keywords: "comets quiz comet test halley comet tail ice",
+        keywords: "comets quiz comet test halley",
         description: "Test your knowledge of comets."
     },
 
     {
         title: "Final Quiz",
-        url: `${BASE}/Exploring%20Space/Quizes/Final%20Quiz/`,
+        url: `${ORBONIX_BASE}/Exploring%20Space/Quizes/Final%20Quiz/`,
         category: "Quiz",
-        keywords: "final quiz mega quiz space quiz astronomy test ultimate test",
+        keywords: "final quiz mega quiz ultimate space quiz",
         description: "The ultimate ORBONIX space quiz."
     },
 
     {
         title: "Galactic Quiz",
-        url: `${BASE}/Exploring%20Space/Quizes/Galactic%20Quiz/`,
+        url: `${ORBONIX_BASE}/Exploring%20Space/Quizes/Galactic%20Quiz/`,
         category: "Quiz",
-        keywords: "galactic quiz galaxy quiz galaxies universe test",
-        description: "Test your knowledge of galaxies and the Universe."
+        keywords: "galactic quiz galaxy quiz galaxies universe",
+        description: "Test your knowledge of galaxies."
     },
 
     {
         title: "Moons Quiz",
-        url: `${BASE}/Exploring%20Space/Quizes/Moons%20Quiz/`,
+        url: `${ORBONIX_BASE}/Exploring%20Space/Quizes/Moons%20Quiz/`,
         category: "Quiz",
-        keywords: "moons quiz moon test natural satellites satellite",
+        keywords: "moons quiz moon test satellites",
         description: "Test your knowledge of moons."
     },
 
     {
         title: "Planet Quiz",
-        url: `${BASE}/Exploring%20Space/Quizes/Planet%20Quiz/`,
+        url: `${ORBONIX_BASE}/Exploring%20Space/Quizes/Planet%20Quiz/`,
         category: "Quiz",
-        keywords: "planet quiz planets solar system test mars jupiter saturn",
+        keywords: "planet quiz planets solar system test",
         description: "Test your knowledge of planets."
     },
 
     {
         title: "Stars Quiz",
-        url: `${BASE}/Exploring%20Space/Quizes/Stars%20Quiz/`,
+        url: `${ORBONIX_BASE}/Exploring%20Space/Quizes/Stars%20Quiz/`,
         category: "Quiz",
         keywords: "stars quiz star test stellar supernova",
         description: "Test your knowledge of stars."
@@ -440,46 +449,46 @@ const ORBONIX_PAGES = [
 
     {
         title: "Sun Quiz",
-        url: `${BASE}/Exploring%20Space/Quizes/Sun%20Quiz/`,
+        url: `${ORBONIX_BASE}/Exploring%20Space/Quizes/Sun%20Quiz/`,
         category: "Quiz",
-        keywords: "sun quiz solar quiz sunspots solar flares corona",
+        keywords: "sun quiz solar quiz sunspots solar flares",
         description: "Test your knowledge of the Sun."
     },
 
     {
         title: "Telescope Quiz",
-        url: `${BASE}/Exploring%20Space/Quizes/Telescope%20Quiz/`,
+        url: `${ORBONIX_BASE}/Exploring%20Space/Quizes/Telescope%20Quiz/`,
         category: "Quiz",
-        keywords: "telescope quiz telescope test astronomy equipment observation stargazing",
+        keywords: "telescope quiz telescope test astronomy observation",
         description: "Test your knowledge of telescopes."
     },
 
 
     /* =====================================================
-       MORE ABOUT ORBONIX
+       ORBONIX
     ===================================================== */
 
     {
         title: "Orbonix Fotos and Telescope",
-        url: `${BASE}/More%20About%20Orbonix/Orbonix%20fotos%20and%20telescope/`,
+        url: `${ORBONIX_BASE}/More%20About%20Orbonix/Orbonix%20fotos%20and%20telescope/`,
         category: "Orbonix",
-        keywords: "orbonix photos fotos telescope photography observations meade",
-        description: "Explore ORBONIX telescope photographs and observations."
+        keywords: "orbonix photos fotos telescope photography observations",
+        description: "Explore ORBONIX telescope photos."
     },
 
     {
         title: "Site Achievements",
-        url: `${BASE}/More%20About%20Orbonix/Site%20Achivments/`,
+        url: `${ORBONIX_BASE}/More%20About%20Orbonix/Site%20Achivments/`,
         category: "Orbonix",
-        keywords: "achievements achievements site achievements orbonix milestones",
-        description: "Explore ORBONIX website achievements."
+        keywords: "achievements site achievements orbonix milestones",
+        description: "Explore ORBONIX achievements."
     }
 
 ];
 
 
 /* =========================================================
-   NORMALIZE
+   NORMALIZE TEXT
 ========================================================= */
 
 function normalizeSearchText(text) {
@@ -496,7 +505,7 @@ function normalizeSearchText(text) {
 
 
 /* =========================================================
-   FUZZY MATCH
+   LEVENSHTEIN DISTANCE
 ========================================================= */
 
 function levenshtein(a, b) {
@@ -546,16 +555,20 @@ function levenshtein(a, b) {
 
 
 /* =========================================================
-   SCORE
+   SEARCH SCORE
 ========================================================= */
 
 function scoreSearchResult(page, query) {
 
-    const q = normalizeSearchText(query);
+    const q =
+        normalizeSearchText(query);
 
     if (!q) return 0;
 
-    const words = q.split(" ");
+
+    const words =
+        q.split(" ");
+
 
     const title =
         normalizeSearchText(page.title);
@@ -569,41 +582,42 @@ function scoreSearchResult(page, query) {
     const description =
         normalizeSearchText(page.description);
 
+
     let score = 0;
 
 
     /* Exact title */
 
     if (title === q) {
-        score += 2000;
+        score += 3000;
     }
 
 
-    /* Title */
+    /* Title contains query */
 
     if (title.includes(q)) {
-        score += 1000;
+        score += 1500;
     }
 
 
     /* Category */
 
     if (category.includes(q)) {
-        score += 500;
+        score += 700;
     }
 
 
     /* Keywords */
 
     if (keywords.includes(q)) {
-        score += 700;
+        score += 1000;
     }
 
 
     /* Description */
 
     if (description.includes(q)) {
-        score += 200;
+        score += 300;
     }
 
 
@@ -611,21 +625,23 @@ function scoreSearchResult(page, query) {
 
     for (const word of words) {
 
-        if (word.length < 2) continue;
+        if (word.length < 2) {
+            continue;
+        }
 
 
         if (title.includes(word)) {
-            score += 400;
+            score += 500;
         }
 
 
         if (category.includes(word)) {
-            score += 200;
+            score += 250;
         }
 
 
         if (keywords.includes(word)) {
-            score += 250;
+            score += 300;
         }
 
 
@@ -636,18 +652,25 @@ function scoreSearchResult(page, query) {
     }
 
 
-    /* Small spelling mistakes */
+    /* Typo tolerance */
 
     const titleWords =
         title.split(" ");
 
+
     for (const word of words) {
 
-        if (word.length < 4) continue;
+        if (word.length < 4) {
+            continue;
+        }
+
 
         for (const titleWord of titleWords) {
 
-            if (titleWord.length < 4) continue;
+            if (titleWord.length < 4) {
+                continue;
+            }
+
 
             const distance =
                 levenshtein(
@@ -655,15 +678,17 @@ function scoreSearchResult(page, query) {
                     titleWord
                 );
 
+
             if (distance === 1) {
-                score += 150;
+                score += 180;
             }
+
 
             if (
                 distance === 2 &&
                 word.length >= 6
             ) {
-                score += 75;
+                score += 80;
             }
 
         }
@@ -677,13 +702,14 @@ function scoreSearchResult(page, query) {
 
 
 /* =========================================================
-   SEARCH
+   SEARCH FUNCTION
 ========================================================= */
 
 function searchOrbonix(query) {
 
     const normalized =
         normalizeSearchText(query);
+
 
     if (!normalized) {
         return [];
@@ -712,13 +738,399 @@ function searchOrbonix(query) {
             b.score - a.score
         )
 
-        .slice(0, 12);
+        .slice(0, 15);
 
 }
 
 
 /* =========================================================
-   GLOBAL EXPORT
+   FIND PAGE BY NAME
+========================================================= */
+
+function findOrbonixPage(name) {
+
+    const normalized =
+        normalizeSearchText(name);
+
+
+    if (!normalized) {
+        return null;
+    }
+
+
+    /* First: exact title */
+
+    const exact =
+        ORBONIX_PAGES.find(page =>
+            normalizeSearchText(page.title)
+            === normalized
+        );
+
+
+    if (exact) {
+        return exact;
+    }
+
+
+    /* Second: search */
+
+    const results =
+        searchOrbonix(name);
+
+
+    if (results.length > 0) {
+        return results[0];
+    }
+
+
+    return null;
+
+}
+
+
+/* =========================================================
+   UNIVERSAL BUTTON SYSTEM
+========================================================= */
+
+function initializeOrbonixButtons() {
+
+    const buttons =
+        document.querySelectorAll(
+            "[data-page]"
+        );
+
+
+    buttons.forEach(button => {
+
+        if (
+            button.dataset.orbonixInitialized
+            === "true"
+        ) {
+            return;
+        }
+
+
+        button.dataset.orbonixInitialized =
+            "true";
+
+
+        const pageName =
+            button.getAttribute(
+                "data-page"
+            );
+
+
+        if (!pageName) {
+            return;
+        }
+
+
+        button.style.cursor =
+            "pointer";
+
+
+        button.addEventListener(
+            "click",
+            function(event) {
+
+                /*
+                 * Prevent the default <a href="#">
+                 * behaviour.
+                 */
+
+                if (
+                    this.tagName
+                    .toLowerCase()
+                    === "a"
+                ) {
+                    event.preventDefault();
+                }
+
+
+                const page =
+                    findOrbonixPage(
+                        pageName
+                    );
+
+
+                if (
+                    page &&
+                    page.url
+                ) {
+
+                    window.location.href =
+                        page.url;
+
+                } else {
+
+                    console.warn(
+                        "ORBONIX: Page not found:",
+                        pageName
+                    );
+
+                }
+
+            }
+        );
+
+    });
+
+}
+
+
+/* =========================================================
+   SEARCH UI
+========================================================= */
+
+function initializeOrbonixSearch() {
+
+    const searchInputs =
+        document.querySelectorAll(
+            "[data-orbonix-search]"
+        );
+
+
+    searchInputs.forEach(input => {
+
+        if (
+            input.dataset.orbonixSearchInitialized
+            === "true"
+        ) {
+            return;
+        }
+
+
+        input.dataset.orbonixSearchInitialized =
+            "true";
+
+
+        input.addEventListener(
+            "keydown",
+            function(event) {
+
+                if (
+                    event.key
+                    === "Enter"
+                ) {
+
+                    event.preventDefault();
+
+
+                    const query =
+                        this.value.trim();
+
+
+                    if (!query) {
+                        return;
+                    }
+
+
+                    const results =
+                        searchOrbonix(
+                            query
+                        );
+
+
+                    if (
+                        results.length > 0
+                    ) {
+
+                        window.location.href =
+                            results[0].url;
+
+                    } else {
+
+                        console.warn(
+                            "ORBONIX: Nothing found for:",
+                            query
+                        );
+
+                    }
+
+                }
+
+
+                /*
+                 * Escape clears the search.
+                 */
+
+                if (
+                    event.key
+                    === "Escape"
+                ) {
+
+                    this.value = "";
+
+                }
+
+            }
+        );
+
+
+        /*
+         * Live search support
+         */
+
+        input.addEventListener(
+            "input",
+            function() {
+
+                const query =
+                    this.value.trim();
+
+
+                if (!query) {
+                    return;
+                }
+
+
+                const results =
+                    searchOrbonix(
+                        query
+                    );
+
+
+                /*
+                 * If your page has an element
+                 * with this ID, results will be
+                 * displayed automatically.
+                 */
+
+                const container =
+                    document.getElementById(
+                        "orbonix-search-results"
+                    );
+
+
+                if (!container) {
+                    return;
+                }
+
+
+                container.innerHTML =
+                    "";
+
+
+                results.forEach(page => {
+
+                    const item =
+                        document.createElement(
+                            "a"
+                        );
+
+
+                    item.href =
+                        page.url;
+
+
+                    item.className =
+                        "orbonix-search-result";
+
+
+                    item.innerHTML = `
+                        <strong>
+                            ${escapeHTML(page.title)}
+                        </strong>
+
+                        <small>
+                            ${escapeHTML(page.category)}
+                        </small>
+
+                        <span>
+                            ${escapeHTML(page.description)}
+                        </span>
+                    `;
+
+
+                    container.appendChild(
+                        item
+                    );
+
+                });
+
+            }
+        );
+
+    });
+
+}
+
+
+/* =========================================================
+   HTML ESCAPE
+========================================================= */
+
+function escapeHTML(text) {
+
+    return String(text || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+}
+
+
+/* =========================================================
+   INITIALIZE
+========================================================= */
+
+function initializeOrbonix() {
+
+    initializeOrbonixButtons();
+
+    initializeOrbonixSearch();
+
+}
+
+
+/* =========================================================
+   PAGE LOAD
+========================================================= */
+
+if (
+    document.readyState
+    === "loading"
+) {
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        initializeOrbonix
+    );
+
+} else {
+
+    initializeOrbonix();
+
+}
+
+
+/* =========================================================
+   SUPPORT DYNAMICALLY ADDED BUTTONS
+========================================================= */
+
+const orbonixObserver =
+    new MutationObserver(() => {
+
+        initializeOrbonixButtons();
+
+        initializeOrbonixSearch();
+
+    });
+
+
+orbonixObserver.observe(
+    document.body,
+    {
+        childList: true,
+        subtree: true
+    }
+);
+
+
+/* =========================================================
+   GLOBAL API
 ========================================================= */
 
 window.ORBONIX_PAGES =
@@ -726,4 +1138,10 @@ window.ORBONIX_PAGES =
 
 window.searchOrbonix =
     searchOrbonix;
+
+window.findOrbonixPage =
+    findOrbonixPage;
+
+window.initializeOrbonix =
+    initializeOrbonix;
 ```
