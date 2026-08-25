@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,6 +8,8 @@
 
 <meta name="viewport"
 content="width=device-width, initial-scale=1.0">
+
+<title>Earth | ORBONIX</title>
 
 <style>
 
@@ -127,6 +130,8 @@ body {
     display: inline-flex;
 
     align-items: center;
+
+    justify-content: center;
 
     padding:
         12px 20px;
@@ -923,7 +928,7 @@ h1 {
 
 
 <a
-href="https://sites.google.com/view/kosmolearn/solar-system"
+href="?page=Solar%20System"
 class="return">
 
 ← RETURN TO SOLAR SYSTEM
@@ -985,7 +990,7 @@ alt="Earth">
 ========================================= -->
 
 <a
-href="https://sites.google.com/view/kosmolearn/moon"
+href="?page=Moon"
 class="moon">
 
 <img
@@ -1319,6 +1324,88 @@ NASA
 
 
 /* =========================================
+   PAGE NAVIGATION
+========================================= */
+
+/*
+   Используем названия страниц вместо
+   постоянных URL.
+
+   Примеры:
+
+   ?page=Solar%20System
+   ?page=Moon
+   ?page=Earth
+
+   При переносе сайта домен менять
+   не потребуется.
+*/
+
+function goToPage(pageName) {
+
+    const encodedPage =
+        encodeURIComponent(pageName);
+
+    /*
+       Если сайт работает через Google Sites,
+       используем текущий домен.
+    */
+
+    const currentUrl =
+        new URL(window.location.href);
+
+    /*
+       Сохраняем текущий сайт и меняем
+       только параметр page.
+    */
+
+    currentUrl.searchParams.set(
+        "page",
+        pageName
+    );
+
+    window.location.href =
+        currentUrl.toString();
+
+}
+
+
+/* =========================================
+   FIX NAVIGATION LINKS
+========================================= */
+
+document.querySelectorAll(
+    'a[href^="?page="]'
+).forEach(
+    link => {
+
+        link.addEventListener(
+            "click",
+            function(event) {
+
+                event.preventDefault();
+
+                const page =
+                    new URL(
+                        this.href
+                    ).searchParams.get(
+                        "page"
+                    );
+
+                if(page) {
+
+                    goToPage(page);
+
+                }
+
+            }
+        );
+
+    }
+);
+
+
+/* =========================================
    STAR PARALLAX
 ========================================= */
 
@@ -1331,7 +1418,6 @@ document.querySelector(".stars-small");
 
 document.addEventListener(
 "mousemove",
-
 function(event) {
 
     const x =
@@ -1371,7 +1457,6 @@ document.querySelector(".earth");
 
 document.addEventListener(
 "mousemove",
-
 function(event) {
 
     const x =
@@ -1393,9 +1478,11 @@ function(event) {
 
 });
 
+
 </script>
 
 
 </body>
 
 </html>
+```
