@@ -1,1 +1,1276 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: #010208;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   PAGE
+========================================= */
+
+.quasar-page {
+
+    position: relative;
+
+    min-height: 1650px;
+
+    padding: 65px 20px 100px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 20%,
+            rgba(80,80,200,.15),
+            transparent 44%
+        ),
+        radial-gradient(
+            circle at 50% 65%,
+            rgba(180,90,40,.08),
+            transparent 35%
+        ),
+        #010208;
+}
+
+
+/* =========================================
+   STARS
+========================================= */
+
+.stars {
+
+    position: absolute;
+
+    inset: -25%;
+
+    pointer-events: none;
+
+    opacity: .38;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.9) 1px,
+            transparent 1px
+        );
+
+    background-size: 75px 75px;
+
+    transition: transform 1.5s ease;
+}
+
+
+.stars-small {
+
+    position: absolute;
+
+    inset: -25%;
+
+    pointer-events: none;
+
+    opacity: .16;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.8) 1px,
+            transparent 1px
+        );
+
+    background-size: 32px 32px;
+
+    transition: transform 2s ease;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header {
+
+    position: relative;
+
+    z-index: 10;
+
+    max-width: 900px;
+
+    margin: auto;
+
+    text-align: center;
+}
+
+
+.return {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 12px 20px;
+
+    margin-bottom: 40px;
+
+    color: rgba(255,255,255,.7);
+
+    border:
+        1px solid
+        rgba(255,255,255,.22);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    transition: .35s ease;
+}
+
+
+.return:hover {
+
+    color: #010208;
+
+    background: white;
+
+    border-color: white;
+
+    transform: translateY(-4px);
+}
+
+
+.label {
+
+    margin-bottom: 18px;
+
+    color: rgba(255,255,255,.4);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+
+h1 {
+
+    margin: 0;
+
+    font-size:
+        clamp(48px,8vw,92px);
+
+    line-height: .9;
+
+    letter-spacing: 6px;
+}
+
+
+.subtitle {
+
+    max-width: 720px;
+
+    margin: 28px auto 0;
+
+    color: rgba(255,255,255,.52);
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   QUASAR VISUAL
+========================================= */
+
+.hero {
+
+    position: relative;
+
+    z-index: 5;
+
+    width:
+        min(900px,100%);
+
+    min-height: 370px;
+
+    margin:
+        75px auto 60px;
+
+    padding: 40px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    background:
+        rgba(255,255,255,.025);
+
+    overflow: hidden;
+}
+
+
+.quasar-core {
+
+    position: relative;
+
+    width: 125px;
+
+    height: 125px;
+
+    margin-bottom: 35px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            white 0%,
+            #d9e5ff 5%,
+            #7d8cff 13%,
+            rgba(100,80,255,.55) 28%,
+            rgba(80,50,220,.12) 48%,
+            transparent 70%
+        );
+
+    box-shadow:
+        0 0 35px
+        rgba(150,170,255,.8),
+
+        0 0 90px
+        rgba(100,80,255,.4),
+
+        0 0 170px
+        rgba(80,60,220,.18);
+
+    animation:
+        quasarPulse 4s ease-in-out infinite;
+}
+
+
+.quasar-core::before {
+
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 290px;
+    height: 55px;
+
+    transform:
+        translate(-50%,-50%)
+        rotate(-10deg);
+
+    border-radius: 50%;
+
+    border:
+        2px solid
+        rgba(150,160,255,.35);
+
+    box-shadow:
+        0 0 30px
+        rgba(120,120,255,.35);
+}
+
+
+.quasar-core::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 16px;
+    height: 16px;
+
+    transform:
+        translate(-50%,-50%);
+
+    border-radius: 50%;
+
+    background: #000;
+
+    box-shadow:
+        0 0 20px
+        rgba(0,0,0,.9);
+}
+
+
+@keyframes quasarPulse {
+
+    0%,100% {
+
+        transform: scale(1);
+
+    }
+
+    50% {
+
+        transform: scale(1.08);
+
+    }
+
+}
+
+
+.quasar-label {
+
+    color:
+        rgba(255,255,255,.4);
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+
+    margin-bottom: 12px;
+}
+
+
+.quasar-title {
+
+    font-size:
+        clamp(21px,4vw,32px);
+
+    letter-spacing: 3px;
+}
+
+
+.quasar-text {
+
+    max-width: 650px;
+
+    margin:
+        16px auto 0;
+
+    color:
+        rgba(255,255,255,.55);
+
+    font-size: 13px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   STATS
+========================================= */
+
+.stats {
+
+    position: relative;
+
+    z-index: 5;
+
+    width:
+        min(1050px,100%);
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap: 1px;
+
+    background:
+        rgba(255,255,255,.1);
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+}
+
+
+.stat {
+
+    padding: 28px;
+
+    background:
+        rgba(5,7,15,.94);
+
+    transition: .35s ease;
+}
+
+
+.stat:hover {
+
+    background:
+        rgba(255,255,255,.04);
+
+    transform:
+        translateY(-5px);
+}
+
+
+.stat-value {
+
+    margin-bottom: 9px;
+
+    font-size: 18px;
+
+    font-weight: bold;
+}
+
+
+.stat-label {
+
+    color:
+        rgba(255,255,255,.38);
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.content {
+
+    position: relative;
+
+    z-index: 5;
+
+    width:
+        min(1050px,100%);
+
+    margin:
+        65px auto 0;
+}
+
+
+.info-section {
+
+    margin-bottom: 18px;
+
+    padding: 35px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.025);
+
+    transition: .35s ease;
+}
+
+
+.info-section:hover {
+
+    border-color:
+        rgba(255,255,255,.22);
+
+    transform:
+        translateY(-4px);
+}
+
+
+.info-title {
+
+    margin-bottom: 18px;
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+}
+
+
+.info-text {
+
+    margin: 0;
+
+    color:
+        rgba(255,255,255,.56);
+
+    font-size: 13px;
+
+    line-height: 1.9;
+}
+
+
+/* =========================================
+   FEATURES
+========================================= */
+
+.features-title {
+
+    margin:
+        60px 0 25px;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,.42);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+
+.features {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 15px;
+}
+
+
+.feature {
+
+    padding: 27px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.02);
+
+    transition: .35s ease;
+}
+
+
+.feature:hover {
+
+    transform:
+        translateY(-6px);
+
+    border-color:
+        rgba(180,190,240,.3);
+
+    background:
+        rgba(255,255,255,.04);
+}
+
+
+.feature-name {
+
+    margin-bottom: 11px;
+
+    font-size: 14px;
+
+    letter-spacing: 2px;
+}
+
+
+.feature-text {
+
+    color:
+        rgba(255,255,255,.5);
+
+    font-size: 11px;
+
+    line-height: 1.75;
+}
+
+
+/* =========================================
+   FACT
+========================================= */
+
+.fact {
+
+    margin-top: 60px;
+
+    padding: 42px;
+
+    text-align: center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    background:
+        rgba(255,255,255,.025);
+}
+
+
+.fact-label {
+
+    margin-bottom: 17px;
+
+    color:
+        rgba(255,255,255,.4);
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+}
+
+
+.fact-text {
+
+    max-width: 800px;
+
+    margin: auto;
+
+    font-size:
+        clamp(18px,3vw,27px);
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   NAVIGATION
+========================================= */
+
+.navigation {
+
+    display: flex;
+
+    justify-content: center;
+
+    margin-top: 55px;
+}
+
+
+.nav-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding:
+        13px 24px;
+
+    color:
+        rgba(255,255,255,.75);
+
+    border:
+        1px solid
+        rgba(255,255,255,.2);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    transition: .35s ease;
+}
+
+
+.nav-button:hover {
+
+    color: #010208;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-4px);
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.footer {
+
+    margin-top: 30px;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,.25);
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:800px) {
+
+    .stats {
+
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .features {
+
+        grid-template-columns:
+            1fr;
+    }
+
+}
+
+
+@media(max-width:600px) {
+
+    .quasar-page {
+
+        padding:
+            50px 15px 80px;
+    }
+
+    .hero {
+
+        padding:
+            30px 20px;
+    }
+
+    .stats {
+
+        grid-template-columns:
+            1fr;
+    }
+
+    .info-section {
+
+        padding: 27px;
+    }
+
+    .fact {
+
+        padding:
+            30px 22px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<section class="quasar-page">
+
+
+<div class="stars"></div>
+
+<div class="stars-small"></div>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<div class="header">
+
+
+<a
+href="https://sites.google.com/view/kosmolearn"
+class="return">
+
+← RETURN TO HOME
+
+</a>
+
+
+<div class="label">
+
+ORBONIX · DEEP SPACE
+
+</div>
+
+
+<h1>
+
+QUASARS
+
+</h1>
+
+
+<div class="subtitle">
+
+Extremely luminous active galactic nuclei
+powered by matter falling toward
+supermassive black holes.
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     HERO
+========================================= -->
+
+<div class="hero">
+
+
+<div class="quasar-core"></div>
+
+
+<div class="quasar-label">
+
+ACTIVE GALACTIC NUCLEUS
+
+</div>
+
+
+<div class="quasar-title">
+
+THE UNIVERSE'S COSMIC BEACONS
+
+</div>
+
+
+<p class="quasar-text">
+
+A quasar can shine across billions of
+light-years because enormous amounts of
+energy are released as matter spirals
+into a supermassive black hole.
+
+</p>
+
+
+</div>
+
+
+<!-- =========================================
+     STATS
+========================================= -->
+
+<div class="stats">
+
+
+<div class="stat">
+
+<div class="stat-value">
+
+BILLIONS
+
+</div>
+
+<div class="stat-label">
+
+LIGHT-YEARS AWAY
+
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+
+10⁴⁷–10⁴⁸
+
+</div>
+
+<div class="stat-label">
+
+WATTS · POSSIBLE LUMINOSITY
+
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+
+SMBH
+
+</div>
+
+<div class="stat-label">
+
+POWER SOURCE
+
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+
+1963
+
+</div>
+
+<div class="stat-label">
+
+FIRST QUASAR IDENTIFIED
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     CONTENT
+========================================= -->
+
+<div class="content">
+
+
+<div class="info-section">
+
+
+<div class="info-title">
+
+WHAT IS A QUASAR?
+
+</div>
+
+
+<p class="info-text">
+
+A quasar is an extremely bright active
+galactic nucleus powered by a supermassive
+black hole at the center of a galaxy.
+
+Gas and dust falling toward the black hole
+form a rapidly rotating accretion disk.
+Friction and intense gravitational effects
+heat this material to enormous temperatures,
+causing it to release tremendous amounts
+of radiation.
+
+</p>
+
+
+</div>
+
+
+<div class="info-section">
+
+
+<div class="info-title">
+
+HOW DOES A QUASAR WORK?
+
+</div>
+
+
+<p class="info-text">
+
+Matter does not simply fall directly into
+the black hole. It usually forms a rotating
+accretion disk around it.
+
+As material moves inward, gravitational
+potential energy is converted into heat
+and radiation.
+
+This process can make the region around
+the black hole brighter than the combined
+light of all the stars in its host galaxy.
+
+</p>
+
+
+</div>
+
+
+<div class="info-section">
+
+
+<div class="info-title">
+
+WHY ARE QUASARS SO BRIGHT?
+
+</div>
+
+
+<p class="info-text">
+
+Quasars can convert matter into radiation
+with remarkable efficiency compared with
+ordinary nuclear fusion in stars.
+
+Their intense radiation can be detected
+across enormous cosmic distances.
+
+Some quasars are so distant that their
+light has travelled for billions of years
+before reaching Earth.
+
+</p>
+
+
+</div>
+
+
+<div class="info-section">
+
+
+<div class="info-title">
+
+QUASARS AS COSMIC TIME MACHINES
+
+</div>
+
+
+<p class="info-text">
+
+Because quasars can be extremely distant,
+astronomers observe them as they appeared
+when the Universe was much younger.
+
+Studying distant quasars therefore allows
+scientists to investigate the early growth
+of supermassive black holes and the
+evolution of galaxies.
+
+</p>
+
+
+</div>
+
+
+<!-- =========================================
+     FEATURES
+========================================= -->
+
+<div class="features-title">
+
+QUASAR FEATURES
+
+</div>
+
+
+<div class="features">
+
+
+<div class="feature">
+
+
+<div class="feature-name">
+
+ACCRETION DISK
+
+</div>
+
+
+<div class="feature-text">
+
+Superheated gas and dust orbiting the
+central black hole can produce enormous
+amounts of radiation.
+
+</div>
+
+
+</div>
+
+
+<div class="feature">
+
+
+<div class="feature-name">
+
+RELATIVISTIC JETS
+
+</div>
+
+
+<div class="feature-text">
+
+Some active galactic nuclei launch
+powerful jets of particles traveling
+close to the speed of light.
+
+</div>
+
+
+</div>
+
+
+<div class="feature">
+
+
+<div class="feature-name">
+
+SUPERMASSIVE BLACK HOLE
+
+</div>
+
+
+<div class="feature-text">
+
+The enormous gravitational source at
+the center powers the quasar by
+accreting surrounding matter.
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     FACT
+========================================= -->
+
+<div class="fact">
+
+
+<div class="fact-label">
+
+DID YOU KNOW?
+
+</div>
+
+
+<div class="fact-text">
+
+Some quasars are so luminous that they
+can outshine their entire host galaxy,
+even though the energy-producing region
+is comparatively compact.
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     NAVIGATION
+========================================= -->
+
+<div class="navigation">
+
+
+<a
+href="https://sites.google.com/view/kosmolearn"
+class="nav-button">
+
+← RETURN TO HOME
+
+</a>
+
+
+</div>
+
+
+<div class="footer">
+
+ORBONIX · DEEP SPACE · QUASARS
+
+</div>
+
+
+</section>
+
+
+<script>
+
+
+/* =========================================
+   STAR PARALLAX
+========================================= */
+
+const stars =
+document.querySelector(".stars");
+
+const smallStars =
+document.querySelector(".stars-small");
+
+
+document.addEventListener(
+"mousemove",
+
+function(event) {
+
+    const x =
+        event.clientX /
+        window.innerWidth -
+        0.5;
+
+    const y =
+        event.clientY /
+        window.innerHeight -
+        0.5;
+
+
+    stars.style.transform =
+        `translate(
+            ${x * 20}px,
+            ${y * 20}px
+        )`;
+
+
+    smallStars.style.transform =
+        `translate(
+            ${x * -12}px,
+            ${y * -12}px
+        )`;
+
+});
+
+</script>
+
+
+</body>
+
+</html>
+```
