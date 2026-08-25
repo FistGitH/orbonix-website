@@ -1,1 +1,1312 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: #010208;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   PAGE
+========================================= */
+
+.nebula-page {
+
+    position: relative;
+
+    min-height: 1650px;
+
+    padding: 65px 20px 100px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 25%,
+            rgba(120,80,180,.16),
+            transparent 45%
+        ),
+        radial-gradient(
+            circle at 25% 70%,
+            rgba(50,100,200,.08),
+            transparent 35%
+        ),
+        #010208;
+}
+
+
+/* =========================================
+   STARS
+========================================= */
+
+.stars {
+
+    position: absolute;
+
+    inset: -25%;
+
+    pointer-events: none;
+
+    opacity: .38;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.9) 1px,
+            transparent 1px
+        );
+
+    background-size: 75px 75px;
+
+    transition: transform 1.5s ease;
+}
+
+
+.stars-small {
+
+    position: absolute;
+
+    inset: -25%;
+
+    pointer-events: none;
+
+    opacity: .16;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.8) 1px,
+            transparent 1px
+        );
+
+    background-size: 32px 32px;
+
+    transition: transform 2s ease;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header {
+
+    position: relative;
+
+    z-index: 10;
+
+    max-width: 900px;
+
+    margin: auto;
+
+    text-align: center;
+}
+
+
+.return {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 12px 20px;
+
+    margin-bottom: 40px;
+
+    color: rgba(255,255,255,.7);
+
+    border:
+        1px solid
+        rgba(255,255,255,.22);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    transition: .35s ease;
+}
+
+
+.return:hover {
+
+    color: #010208;
+
+    background: white;
+
+    border-color: white;
+
+    transform: translateY(-4px);
+}
+
+
+.label {
+
+    margin-bottom: 18px;
+
+    color: rgba(255,255,255,.4);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+
+h1 {
+
+    margin: 0;
+
+    font-size:
+        clamp(48px,8vw,92px);
+
+    line-height: .9;
+
+    letter-spacing: 6px;
+}
+
+
+.subtitle {
+
+    max-width: 720px;
+
+    margin: 28px auto 0;
+
+    color: rgba(255,255,255,.52);
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   NEBULA VISUAL
+========================================= */
+
+.hero {
+
+    position: relative;
+
+    z-index: 5;
+
+    width:
+        min(900px,100%);
+
+    height: 390px;
+
+    margin:
+        75px auto 60px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    background:
+        rgba(255,255,255,.025);
+
+    overflow: hidden;
+}
+
+
+/* =========================================
+   NEBULA CLOUD
+========================================= */
+
+.nebula-cloud {
+
+    position: relative;
+
+    width: 430px;
+
+    height: 250px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            ellipse at 35% 45%,
+            rgba(255,180,230,.8),
+            transparent 22%
+        ),
+        radial-gradient(
+            ellipse at 65% 55%,
+            rgba(110,140,255,.75),
+            transparent 27%
+        ),
+        radial-gradient(
+            ellipse at 50% 45%,
+            rgba(180,70,210,.55),
+            transparent 48%
+        ),
+        radial-gradient(
+            ellipse at 50% 50%,
+            rgba(40,70,180,.3),
+            transparent 70%
+        );
+
+    filter: blur(8px);
+
+    box-shadow:
+        0 0 60px
+        rgba(150,100,240,.35),
+
+        0 0 130px
+        rgba(80,100,230,.18);
+
+    animation:
+        nebulaFloat 7s ease-in-out infinite;
+}
+
+
+.nebula-cloud::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 170px;
+    height: 100px;
+
+    left: 40px;
+    top: 75px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,.55);
+
+    filter: blur(28px);
+}
+
+
+.nebula-cloud::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 110px;
+    height: 65px;
+
+    right: 50px;
+    top: 45px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(120,160,255,.65);
+
+    filter: blur(22px);
+}
+
+
+@keyframes nebulaFloat {
+
+    0%,100% {
+
+        transform:
+            scale(1)
+            translateY(0);
+
+    }
+
+    50% {
+
+        transform:
+            scale(1.08)
+            translateY(-8px);
+
+    }
+
+}
+
+
+.hero-label {
+
+    position: absolute;
+
+    bottom: 35px;
+
+    color:
+        rgba(255,255,255,.42);
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+}
+
+
+/* =========================================
+   STATS
+========================================= */
+
+.stats {
+
+    position: relative;
+
+    z-index: 5;
+
+    width:
+        min(1050px,100%);
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap: 1px;
+
+    background:
+        rgba(255,255,255,.1);
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+}
+
+
+.stat {
+
+    padding: 28px;
+
+    background:
+        rgba(5,7,15,.94);
+
+    transition: .35s ease;
+}
+
+
+.stat:hover {
+
+    background:
+        rgba(255,255,255,.04);
+
+    transform:
+        translateY(-5px);
+}
+
+
+.stat-value {
+
+    margin-bottom: 9px;
+
+    font-size: 18px;
+
+    font-weight: bold;
+}
+
+
+.stat-label {
+
+    color:
+        rgba(255,255,255,.38);
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.content {
+
+    position: relative;
+
+    z-index: 5;
+
+    width:
+        min(1050px,100%);
+
+    margin:
+        65px auto 0;
+}
+
+
+.info-section {
+
+    margin-bottom: 18px;
+
+    padding: 35px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.025);
+
+    transition: .35s ease;
+}
+
+
+.info-section:hover {
+
+    border-color:
+        rgba(255,255,255,.22);
+
+    transform:
+        translateY(-4px);
+}
+
+
+.info-title {
+
+    margin-bottom: 18px;
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+}
+
+
+.info-text {
+
+    margin: 0;
+
+    color:
+        rgba(255,255,255,.56);
+
+    font-size: 13px;
+
+    line-height: 1.9;
+}
+
+
+/* =========================================
+   TYPES
+========================================= */
+
+.types-title {
+
+    margin:
+        60px 0 25px;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,.42);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+
+.types {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 15px;
+}
+
+
+.type {
+
+    padding: 27px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.02);
+
+    transition: .35s ease;
+}
+
+
+.type:hover {
+
+    transform:
+        translateY(-6px);
+
+    border-color:
+        rgba(190,180,240,.3);
+
+    background:
+        rgba(255,255,255,.04);
+}
+
+
+.type-name {
+
+    margin-bottom: 11px;
+
+    font-size: 14px;
+
+    letter-spacing: 2px;
+}
+
+
+.type-text {
+
+    color:
+        rgba(255,255,255,.5);
+
+    font-size: 11px;
+
+    line-height: 1.75;
+}
+
+
+/* =========================================
+   FACT
+========================================= */
+
+.fact {
+
+    margin-top: 60px;
+
+    padding: 42px;
+
+    text-align: center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    background:
+        rgba(255,255,255,.025);
+}
+
+
+.fact-label {
+
+    margin-bottom: 17px;
+
+    color:
+        rgba(255,255,255,.4);
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+}
+
+
+.fact-text {
+
+    max-width: 800px;
+
+    margin: auto;
+
+    font-size:
+        clamp(18px,3vw,27px);
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   NAVIGATION
+========================================= */
+
+.navigation {
+
+    display: flex;
+
+    justify-content: center;
+
+    margin-top: 55px;
+}
+
+
+.nav-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding:
+        13px 24px;
+
+    color:
+        rgba(255,255,255,.75);
+
+    border:
+        1px solid
+        rgba(255,255,255,.2);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    transition: .35s ease;
+}
+
+
+.nav-button:hover {
+
+    color: #010208;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-4px);
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.footer {
+
+    margin-top: 30px;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,.25);
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:800px) {
+
+    .stats {
+
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .types {
+
+        grid-template-columns:
+            1fr;
+    }
+
+    .nebula-cloud {
+
+        width: 330px;
+
+        height: 190px;
+    }
+
+}
+
+
+@media(max-width:600px) {
+
+    .nebula-page {
+
+        padding:
+            50px 15px 80px;
+    }
+
+    .hero {
+
+        height: 320px;
+    }
+
+    .stats {
+
+        grid-template-columns:
+            1fr;
+    }
+
+    .info-section {
+
+        padding: 27px;
+    }
+
+    .fact {
+
+        padding:
+            30px 22px;
+    }
+
+    .nebula-cloud {
+
+        width: 270px;
+
+        height: 155px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<section class="nebula-page">
+
+
+<div class="stars"></div>
+
+<div class="stars-small"></div>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<div class="header">
+
+
+<a
+href="https://sites.google.com/view/kosmolearn"
+class="return">
+
+← RETURN TO HOME
+
+</a>
+
+
+<div class="label">
+
+ORBONIX · DEEP SPACE
+
+</div>
+
+
+<h1>
+
+NEBULAE
+
+</h1>
+
+
+<div class="subtitle">
+
+Enormous clouds of gas and dust where
+stars are born, evolve and sometimes
+leave behind the remains of their deaths.
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     HERO
+========================================= -->
+
+<div class="hero">
+
+
+<div class="nebula-cloud"></div>
+
+
+<div class="hero-label">
+
+COSMIC CLOUD · STAR FORMATION
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     STATS
+========================================= -->
+
+<div class="stats">
+
+
+<div class="stat">
+
+<div class="stat-value">
+
+LIGHT-YEARS
+
+</div>
+
+<div class="stat-label">
+
+CAN SPAN HUGE DISTANCES
+
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+
+GAS + DUST
+
+</div>
+
+<div class="stat-label">
+
+MAIN MATERIAL
+
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+
+STAR BIRTH
+
+</div>
+
+<div class="stat-label">
+
+MAJOR ROLE
+
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+
+EMISSION
+
+</div>
+
+<div class="stat-label">
+
+ONE NEBULA TYPE
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     CONTENT
+========================================= -->
+
+<div class="content">
+
+
+<div class="info-section">
+
+
+<div class="info-title">
+
+WHAT IS A NEBULA?
+
+</div>
+
+
+<p class="info-text">
+
+A nebula is a huge region of gas and dust
+in space. Some nebulae are places where
+new stars are forming, while others are
+made from material expelled by dying stars.
+
+The gas can be illuminated by nearby stars,
+causing some nebulae to glow brilliantly
+across the night sky.
+
+</p>
+
+
+</div>
+
+
+<div class="info-section">
+
+
+<div class="info-title">
+
+HOW DO STARS FORM?
+
+</div>
+
+
+<p class="info-text">
+
+Inside some dense molecular clouds,
+gravity slowly pulls gas and dust together.
+
+As material collapses, the center becomes
+hotter and denser. Eventually, a protostar
+forms and can develop into a new star.
+
+These stellar nurseries can contain
+thousands of young stars.
+
+</p>
+
+
+</div>
+
+
+<div class="info-section">
+
+
+<div class="info-title">
+
+NEBULAE FROM DYING STARS
+
+</div>
+
+
+<p class="info-text">
+
+Not every nebula is a birthplace.
+
+When some stars reach the end of their
+lives, they eject material into space.
+Massive stars can explode as supernovae,
+creating expanding clouds of gas and dust.
+
+Other stars create planetary nebulae as
+they shed their outer layers.
+
+</p>
+
+
+</div>
+
+
+<div class="info-section">
+
+
+<div class="info-title">
+
+WHY DO NEBULAE HAVE DIFFERENT COLORS?
+
+</div>
+
+
+<p class="info-text">
+
+Different gases emit light at different
+wavelengths.
+
+Hydrogen, oxygen and other elements can
+produce characteristic colors when they
+are energized by nearby stars.
+
+The colors seen in astronomical images
+can also be enhanced or assigned to
+different wavelengths to reveal structures
+that human eyes cannot see directly.
+
+</p>
+
+
+</div>
+
+
+<!-- =========================================
+     TYPES
+========================================= -->
+
+<div class="types-title">
+
+MAJOR TYPES OF NEBULAE
+
+</div>
+
+
+<div class="types">
+
+
+<div class="type">
+
+
+<div class="type-name">
+
+EMISSION
+
+</div>
+
+
+<div class="type-text">
+
+Hot, energized gas emits its own light.
+These nebulae can glow brightly around
+young, massive stars.
+
+</div>
+
+
+</div>
+
+
+<div class="type">
+
+
+<div class="type-name">
+
+REFLECTION
+
+</div>
+
+
+<div class="type-text">
+
+Dust scatters light from nearby stars,
+creating a glowing cloud that shines
+mainly by reflected starlight.
+
+</div>
+
+
+</div>
+
+
+<div class="type">
+
+
+<div class="type-name">
+
+DARK
+
+</div>
+
+
+<div class="type-text">
+
+Dense clouds of dust block light from
+objects behind them, appearing as dark
+silhouettes against brighter regions.
+
+</div>
+
+
+</div>
+
+
+<div class="type">
+
+
+<div class="type-name">
+
+PLANETARY
+
+</div>
+
+
+<div class="type-text">
+
+Shells of gas expelled by dying
+low- to intermediate-mass stars.
+
+</div>
+
+
+</div>
+
+
+<div class="type">
+
+
+<div class="type-name">
+
+SUPERNOVA REMNANT
+
+</div>
+
+
+<div class="type-text">
+
+Expanding debris and shock-heated gas
+left behind after a massive star
+explodes.
+
+</div>
+
+
+</div>
+
+
+<div class="type">
+
+
+<div class="type-name">
+
+MOLECULAR CLOUD
+
+</div>
+
+
+<div class="type-text">
+
+Cold, dense regions rich in molecular
+gas and dust where new stars can form.
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     FACT
+========================================= -->
+
+<div class="fact">
+
+
+<div class="fact-label">
+
+DID YOU KNOW?
+
+</div>
+
+
+<div class="fact-text">
+
+The elements released by stars into
+nebulae can eventually become part of
+new stars, planets and other worlds.
+
+In that sense, nebulae are part of the
+cosmic cycle of matter.
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     NAVIGATION
+========================================= -->
+
+<div class="navigation">
+
+
+<a
+href="https://sites.google.com/view/kosmolearn"
+class="nav-button">
+
+← RETURN TO HOME
+
+</a>
+
+
+</div>
+
+
+<div class="footer">
+
+ORBONIX · DEEP SPACE · NEBULAE
+
+</div>
+
+
+</section>
+
+
+<script>
+
+
+/* =========================================
+   STAR PARALLAX
+========================================= */
+
+const stars =
+document.querySelector(".stars");
+
+const smallStars =
+document.querySelector(".stars-small");
+
+
+document.addEventListener(
+"mousemove",
+
+function(event) {
+
+    const x =
+        event.clientX /
+        window.innerWidth -
+        0.5;
+
+    const y =
+        event.clientY /
+        window.innerHeight -
+        0.5;
+
+
+    stars.style.transform =
+        `translate(
+            ${x * 20}px,
+            ${y * 20}px
+        )`;
+
+
+    smallStars.style.transform =
+        `translate(
+            ${x * -12}px,
+            ${y * -12}px
+        )`;
+
+});
+
+</script>
+
+
+</body>
+
+</html>
+```
