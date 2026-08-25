@@ -1,1 +1,3814 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
 
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ORBONIX | Real-Time Solar System</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+html,
+body{
+    margin:0;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    background:#000;
+    color:white;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    position:relative;
+}
+
+#space{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    display:block;
+    cursor:grab;
+}
+
+#space:active{
+    cursor:grabbing;
+}
+
+
+/* =========================================================
+   TOP
+========================================================= */
+
+.topbar{
+
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+
+    height:80px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 28px;
+
+    z-index:20;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0,0,0,.95),
+            rgba(0,0,0,.35),
+            transparent
+        );
+
+    pointer-events:none;
+}
+
+.brand{
+
+    font-size:19px;
+    font-weight:bold;
+
+    letter-spacing:7px;
+}
+
+.brand span{
+
+    opacity:.35;
+    font-weight:normal;
+    letter-spacing:2px;
+}
+
+.live{
+
+    display:flex;
+    align-items:center;
+    gap:8px;
+
+    font-size:10px;
+    letter-spacing:2px;
+
+    opacity:.8;
+}
+
+.liveDot{
+
+    width:7px;
+    height:7px;
+
+    border-radius:50%;
+
+    background:#65ffad;
+
+    box-shadow:
+        0 0 15px #65ffad;
+}
+
+
+/* =========================================================
+   PANEL
+========================================================= */
+
+.panel{
+
+    position:absolute;
+
+    top:95px;
+    left:20px;
+
+    width:300px;
+
+    max-height:
+        calc(100vh - 120px);
+
+    overflow-y:auto;
+
+    z-index:30;
+
+    padding:18px;
+
+    border-radius:16px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    background:
+        rgba(3,7,15,.78);
+
+    backdrop-filter:
+        blur(18px);
+
+    box-shadow:
+        0 20px 70px
+        rgba(0,0,0,.5);
+}
+
+.panel::-webkit-scrollbar{
+    width:4px;
+}
+
+.panel::-webkit-scrollbar-thumb{
+    background:rgba(255,255,255,.18);
+    border-radius:10px;
+}
+
+.title{
+
+    font-size:9px;
+
+    letter-spacing:3px;
+
+    opacity:.4;
+
+    margin-bottom:8px;
+}
+
+.objectName{
+
+    font-size:28px;
+
+    font-weight:bold;
+
+    margin-bottom:4px;
+}
+
+.objectType{
+
+    font-size:10px;
+
+    letter-spacing:2px;
+
+    color:#8ba1be;
+
+    margin-bottom:18px;
+}
+
+
+/* =========================================================
+   INFO
+========================================================= */
+
+.infoGrid{
+
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:7px;
+}
+
+.info{
+
+    padding:10px;
+
+    border-radius:10px;
+
+    background:
+        rgba(255,255,255,.045);
+
+    border:
+        1px solid
+        rgba(255,255,255,.06);
+}
+
+.info small{
+
+    display:block;
+
+    font-size:8px;
+
+    letter-spacing:1.5px;
+
+    opacity:.4;
+
+    margin-bottom:5px;
+}
+
+.info strong{
+
+    font-size:12px;
+
+    font-weight:normal;
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.section{
+
+    margin-top:20px;
+
+    margin-bottom:9px;
+
+    font-size:9px;
+
+    letter-spacing:2px;
+
+    opacity:.4;
+}
+
+button,
+select,
+input{
+
+    width:100%;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    background:
+        rgba(255,255,255,.05);
+
+    color:white;
+
+    border-radius:9px;
+
+    padding:9px;
+
+    outline:none;
+}
+
+button{
+
+    cursor:pointer;
+
+    transition:
+        .2s;
+}
+
+button:hover{
+
+    background:
+        rgba(255,255,255,.12);
+
+    border-color:
+        rgba(255,255,255,.3);
+}
+
+button:active{
+
+    transform:scale(.97);
+}
+
+select option{
+
+    background:#050910;
+}
+
+.row{
+
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:7px;
+
+    margin-bottom:7px;
+}
+
+
+/* =========================================================
+   FLIGHT INDICATOR
+========================================================= */
+
+#flight{
+
+    display:none;
+
+    position:absolute;
+
+    z-index:40;
+
+    top:90px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    padding:9px 18px;
+
+    border-radius:30px;
+
+    background:
+        rgba(4,8,16,.8);
+
+    border:
+        1px solid
+        rgba(255,255,255,.15);
+
+    backdrop-filter:
+        blur(12px);
+
+    font-size:10px;
+
+    letter-spacing:2px;
+}
+
+#flight.active{
+    display:block;
+}
+
+
+/* =========================================================
+   TIME
+========================================================= */
+
+.timebar{
+
+    position:absolute;
+
+    z-index:30;
+
+    bottom:20px;
+
+    left:50%;
+
+    transform:
+        translateX(-50%);
+
+    width:
+        min(720px,calc(100% - 40px));
+
+    padding:12px 15px;
+
+    border-radius:15px;
+
+    background:
+        rgba(3,7,15,.82);
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    backdrop-filter:
+        blur(16px);
+}
+
+.timeTop{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-bottom:9px;
+}
+
+#simDate{
+
+    font-size:11px;
+
+    letter-spacing:1px;
+}
+
+#speed{
+
+    font-size:10px;
+
+    color:#8195af;
+}
+
+.timeControls{
+
+    display:grid;
+
+    grid-template-columns:
+        45px 45px 45px 1fr
+        45px 45px 45px;
+
+    gap:6px;
+}
+
+
+/* =========================================================
+   HELP
+========================================================= */
+
+.help{
+
+    position:absolute;
+
+    right:20px;
+
+    bottom:20px;
+
+    z-index:20;
+
+    padding:10px 13px;
+
+    border-radius:10px;
+
+    background:
+        rgba(3,7,15,.65);
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+    font-size:9px;
+
+    color:#8b9ab0;
+
+    line-height:1.7;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:800px){
+
+    .panel{
+
+        width:245px;
+
+        left:10px;
+
+        top:78px;
+
+        max-height:43vh;
+    }
+
+    .help{
+        display:none;
+    }
+
+    .brand{
+        font-size:14px;
+        letter-spacing:4px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<canvas id="space"></canvas>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<div class="topbar">
+
+    <div class="brand">
+
+        ORBONIX
+
+        <span>
+            / REAL-TIME SOLAR SYSTEM
+        </span>
+
+    </div>
+
+    <div class="live">
+
+        <span class="liveDot"></span>
+
+        SIMULATION LIVE
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     FLIGHT
+===================================================== -->
+
+<div id="flight">
+    APPROACHING OBJECT
+</div>
+
+
+<!-- =====================================================
+     OBJECT PANEL
+===================================================== -->
+
+<div class="panel">
+
+    <div class="title">
+        SELECTED OBJECT
+    </div>
+
+    <div
+        class="objectName"
+        id="objectName"
+    >
+        Sun
+    </div>
+
+    <div
+        class="objectType"
+        id="objectType"
+    >
+        STAR
+    </div>
+
+
+    <div class="infoGrid">
+
+        <div class="info">
+
+            <small>
+                DISTANCE FROM SUN
+            </small>
+
+            <strong id="distance">
+                0 km
+            </strong>
+
+        </div>
+
+
+        <div class="info">
+
+            <small>
+                ORBIT
+            </small>
+
+            <strong id="orbit">
+                —
+            </strong>
+
+        </div>
+
+
+        <div class="info">
+
+            <small>
+                DIAMETER
+            </small>
+
+            <strong id="diameter">
+                1,392,700 km
+            </strong>
+
+        </div>
+
+
+        <div class="info">
+
+            <small>
+                ORBITAL SPEED
+            </small>
+
+            <strong id="velocity">
+                —
+            </strong>
+
+        </div>
+
+
+        <div class="info">
+
+            <small>
+                MOONS
+            </small>
+
+            <strong id="moons">
+                0
+            </strong>
+
+        </div>
+
+
+        <div class="info">
+
+            <small>
+                TYPE
+            </small>
+
+            <strong id="classType">
+                G-type star
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         SELECT
+    ================================================= -->
+
+    <div class="section">
+        OBJECT
+    </div>
+
+    <select id="objectSelect"></select>
+
+
+    <!-- =================================================
+         CAMERA
+    ================================================= -->
+
+    <div class="section">
+        CAMERA
+    </div>
+
+    <div class="row">
+
+        <button id="fly">
+            FLY TO
+        </button>
+
+        <button id="system">
+            SYSTEM
+        </button>
+
+    </div>
+
+
+    <!-- =================================================
+         SCALE
+    ================================================= -->
+
+    <div class="section">
+        SCALE
+    </div>
+
+    <div class="row">
+
+        <button id="scale">
+            REAL DISTANCE
+        </button>
+
+        <button id="orbits">
+            ORBITS ON
+        </button>
+
+    </div>
+
+
+    <!-- =================================================
+         DISPLAY
+    ================================================= -->
+
+    <div class="section">
+        DISPLAY
+    </div>
+
+    <div class="row">
+
+        <button id="labels">
+            LABELS ON
+        </button>
+
+        <button id="belts">
+            BELTS ON
+        </button>
+
+    </div>
+
+
+    <!-- =================================================
+         SEARCH
+    ================================================= -->
+
+    <div class="section">
+        SEARCH
+    </div>
+
+    <input
+        id="search"
+        placeholder="Search planet / moon..."
+    >
+
+</div>
+
+
+<!-- =====================================================
+     TIME BAR
+===================================================== -->
+
+<div class="timebar">
+
+    <div class="timeTop">
+
+        <div id="simDate">
+            24 AUG 2026
+        </div>
+
+        <div id="speed">
+            TIME ×1
+        </div>
+
+    </div>
+
+    <div class="timeControls">
+
+        <button id="back1000">
+            −1000
+        </button>
+
+        <button id="back100">
+            −100
+        </button>
+
+        <button id="pause">
+            Ⅱ
+        </button>
+
+        <input
+            id="timeline"
+            type="range"
+            min="-3650"
+            max="3650"
+            value="0"
+        >
+
+        <button id="forward100">
+            +100
+        </button>
+
+        <button id="forward1000">
+            +1000
+        </button>
+
+        <button id="now">
+            NOW
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     HELP
+===================================================== -->
+
+<div class="help">
+
+    DRAG — ROTATE CAMERA<br>
+    WHEEL — ZOOM<br>
+    CLICK OBJECT — SELECT<br>
+    SPACE — PAUSE<br>
+    +/- — TIME SPEED
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   ORBONIX REAL DISTANCE SOLAR SYSTEM
+========================================================= */
+
+
+/* =========================================================
+   CANVAS
+========================================================= */
+
+const canvas =
+    document.getElementById("space");
+
+const ctx =
+    canvas.getContext("2d");
+
+let width;
+let height;
+
+function resize(){
+
+    width =
+        canvas.width =
+        window.innerWidth;
+
+    height =
+        canvas.height =
+        window.innerHeight;
+
+}
+
+resize();
+
+window.addEventListener(
+    "resize",
+    resize
+);
+
+
+/* =========================================================
+   CONSTANTS
+========================================================= */
+
+const AU =
+    149597870.7;
+
+const DAY =
+    86400000;
+
+
+/*
+    REAL ORBITAL SEMI-MAJOR AXES
+
+    Values are AU.
+*/
+
+const planets = [
+
+    {
+        id:"sun",
+        name:"Sun",
+        type:"STAR",
+        radius:696340,
+        distance:0,
+        period:0,
+        speed:0,
+        color:"#fff3a8",
+        moons:0
+    },
+
+    {
+        id:"mercury",
+        name:"Mercury",
+        type:"PLANET",
+        radius:2439.7,
+        distance:.387098,
+        period:87.969,
+        speed:47.36,
+        color:"#96928a",
+        moons:0
+    },
+
+    {
+        id:"venus",
+        name:"Venus",
+        type:"PLANET",
+        radius:6051.8,
+        distance:.723336,
+        period:224.701,
+        speed:35.02,
+        color:"#d6ae76",
+        moons:0
+    },
+
+    {
+        id:"earth",
+        name:"Earth",
+        type:"PLANET",
+        radius:6371,
+        distance:1.000001,
+        period:365.256,
+        speed:29.78,
+        color:"#4f8cff",
+        moons:1
+    },
+
+    {
+        id:"mars",
+        name:"Mars",
+        type:"PLANET",
+        radius:3389.5,
+        distance:1.523679,
+        period:686.980,
+        speed:24.13,
+        color:"#c45b3d",
+        moons:2
+    },
+
+    {
+        id:"jupiter",
+        name:"Jupiter",
+        type:"PLANET",
+        radius:69911,
+        distance:5.20260,
+        period:4332.59,
+        speed:13.07,
+        color:"#caa27c",
+        moons:95
+    },
+
+    {
+        id:"saturn",
+        name:"Saturn",
+        type:"PLANET",
+        radius:58232,
+        distance:9.55491,
+        period:10759.22,
+        speed:9.68,
+        color:"#d2b982",
+        moons:274,
+        rings:true
+    },
+
+    {
+        id:"uranus",
+        name:"Uranus",
+        type:"PLANET",
+        radius:25362,
+        distance:19.2184,
+        period:30688.5,
+        speed:6.80,
+        color:"#83d8dc",
+        moons:28,
+        rings:true
+    },
+
+    {
+        id:"neptune",
+        name:"Neptune",
+        type:"PLANET",
+        radius:24622,
+        distance:30.1104,
+        period:60182,
+        speed:5.43,
+        color:"#4169df",
+        moons:16,
+        rings:true
+    },
+
+
+    /* DWARF PLANETS */
+
+    {
+        id:"ceres",
+        name:"Ceres",
+        type:"DWARF PLANET",
+        radius:469.7,
+        distance:2.7675,
+        period:1681.63,
+        speed:17.90,
+        color:"#999",
+        moons:0
+    },
+
+    {
+        id:"pluto",
+        name:"Pluto",
+        type:"DWARF PLANET",
+        radius:1188.3,
+        distance:39.482,
+        period:90560,
+        speed:4.74,
+        color:"#b69a85",
+        moons:5
+    },
+
+    {
+        id:"haumea",
+        name:"Haumea",
+        type:"DWARF PLANET",
+        radius:816,
+        distance:43.218,
+        period:103774,
+        speed:4.53,
+        color:"#bfc8d2",
+        moons:2
+    },
+
+    {
+        id:"makemake",
+        name:"Makemake",
+        type:"DWARF PLANET",
+        radius:715,
+        distance:45.430,
+        period:113183,
+        speed:4.41,
+        color:"#b8aa98",
+        moons:1
+    },
+
+    {
+        id:"eris",
+        name:"Eris",
+        type:"DWARF PLANET",
+        radius:1163,
+        distance:67.781,
+        period:203830,
+        speed:3.43,
+        color:"#d2d2d2",
+        moons:1
+    }
+
+];
+
+
+/* =========================================================
+   MAJOR MOONS
+========================================================= */
+
+const moons = [
+
+    {
+        id:"moon",
+        name:"Moon",
+        parent:"earth",
+        radius:1737.4,
+        distance:384400,
+        period:27.321661,
+        color:"#aaa"
+    },
+
+    {
+        id:"phobos",
+        name:"Phobos",
+        parent:"mars",
+        radius:11.1,
+        distance:9376,
+        period:.31891,
+        color:"#777"
+    },
+
+    {
+        id:"deimos",
+        name:"Deimos",
+        parent:"mars",
+        radius:6.2,
+        distance:23463,
+        period:1.263,
+        color:"#777"
+    },
+
+
+    /* JUPITER */
+
+    {
+        id:"io",
+        name:"Io",
+        parent:"jupiter",
+        radius:1821.6,
+        distance:421700,
+        period:1.769,
+        color:"#d7c44f"
+    },
+
+    {
+        id:"europa",
+        name:"Europa",
+        parent:"jupiter",
+        radius:1560.8,
+        distance:671034,
+        period:3.551,
+        color:"#d5c6a8"
+    },
+
+    {
+        id:"ganymede",
+        name:"Ganymede",
+        parent:"jupiter",
+        radius:2634.1,
+        distance:1070412,
+        period:7.155,
+        color:"#8e877b"
+    },
+
+    {
+        id:"callisto",
+        name:"Callisto",
+        parent:"jupiter",
+        radius:2410.3,
+        distance:1882709,
+        period:16.689,
+        color:"#746d65"
+    },
+
+
+    /* SATURN */
+
+    {
+        id:"titan",
+        name:"Titan",
+        parent:"saturn",
+        radius:2574.7,
+        distance:1221870,
+        period:15.945,
+        color:"#d29a56"
+    },
+
+    {
+        id:"enceladus",
+        name:"Enceladus",
+        parent:"saturn",
+        radius:252.1,
+        distance:237948,
+        period:1.370,
+        color:"#ddd"
+    },
+
+    {
+        id:"rhea",
+        name:"Rhea",
+        parent:"saturn",
+        radius:763.8,
+        distance:527108,
+        period:4.518,
+        color:"#aaa"
+    },
+
+    {
+        id:"iapetus",
+        name:"Iapetus",
+        parent:"saturn",
+        radius:734.5,
+        distance:3560820,
+        period:79.3215,
+        color:"#777"
+    },
+
+    {
+        id:"dione",
+        name:"Dione",
+        parent:"saturn",
+        radius:561.4,
+        distance:377396,
+        period:2.737,
+        color:"#aaa"
+    },
+
+    {
+        id:"tethys",
+        name:"Tethys",
+        parent:"saturn",
+        radius:531.1,
+        distance:294619,
+        period:1.888,
+        color:"#aaa"
+    },
+
+
+    /* URANUS */
+
+    {
+        id:"titania",
+        name:"Titania",
+        parent:"uranus",
+        radius:788.9,
+        distance:435910,
+        period:8.706,
+        color:"#aaa"
+    },
+
+    {
+        id:"oberon",
+        name:"Oberon",
+        parent:"uranus",
+        radius:761.4,
+        distance:583520,
+        period:13.463,
+        color:"#888"
+    },
+
+    {
+        id:"ariel",
+        name:"Ariel",
+        parent:"uranus",
+        radius:578.9,
+        distance:190900,
+        period:2.520,
+        color:"#aaa"
+    },
+
+    {
+        id:"umbriel",
+        name:"Umbriel",
+        parent:"uranus",
+        radius:584.7,
+        distance:266000,
+        period:4.144,
+        color:"#777"
+    },
+
+    {
+        id:"miranda",
+        name:"Miranda",
+        parent:"uranus",
+        radius:235.8,
+        distance:129900,
+        period:1.413,
+        color:"#aaa"
+    },
+
+
+    /* NEPTUNE */
+
+    {
+        id:"triton",
+        name:"Triton",
+        parent:"neptune",
+        radius:1353.4,
+        distance:354759,
+        period:5.877,
+        color:"#b8aaa0"
+    },
+
+    {
+        id:"nereid",
+        name:"Nereid",
+        parent:"neptune",
+        radius:170,
+        distance:5513818,
+        period:360.13,
+        color:"#777"
+    },
+
+
+    /* PLUTO */
+
+    {
+        id:"charon",
+        name:"Charon",
+        parent:"pluto",
+        radius:606,
+        distance:19571,
+        period:6.387,
+        color:"#999"
+    },
+
+    {
+        id:"styx",
+        name:"Styx",
+        parent:"pluto",
+        radius:5,
+        distance:42656,
+        period:20.16,
+        color:"#777"
+    },
+
+    {
+        id:"nix",
+        name:"Nix",
+        parent:"pluto",
+        radius:19,
+        distance:48694,
+        period:24.85,
+        color:"#888"
+    },
+
+    {
+        id:"kerberos",
+        name:"Kerberos",
+        parent:"pluto",
+        radius:6,
+        distance:57783,
+        period:32.17,
+        color:"#777"
+    },
+
+    {
+        id:"hydra",
+        name:"Hydra",
+        parent:"pluto",
+        radius:18,
+        distance:64738,
+        period:38.20,
+        color:"#888"
+    },
+
+
+    /* ERIS */
+
+    {
+        id:"dysnomia",
+        name:"Dysnomia",
+        parent:"eris",
+        radius:350,
+        distance:37350,
+        period:15.785,
+        color:"#777"
+    },
+
+
+    /* HAUMEA */
+
+    {
+        id:"hiʻiaka",
+        name:"Hiʻiaka",
+        parent:"haumea",
+        radius:80,
+        distance:49880,
+        period:49.12,
+        color:"#999"
+    },
+
+    {
+        id:"namaka",
+        name:"Namaka",
+        parent:"haumea",
+        radius:85,
+        distance:25657,
+        period:18.28,
+        color:"#777"
+    }
+
+];
+
+
+/* =========================================================
+   STATE
+========================================================= */
+
+let selected =
+    planets[0];
+
+let running =
+    true;
+
+let timeSpeed =
+    1;
+
+let showOrbits =
+    true;
+
+let showLabels =
+    true;
+
+let showBelts =
+    true;
+
+let realScale =
+    true;
+
+
+/*
+    Camera.
+
+    cameraTarget = actual solar-system coordinate.
+*/
+
+let cameraTarget = {
+    x:0,
+    y:0
+};
+
+let cameraPosition = {
+    x:0,
+    y:0
+};
+
+let cameraZoom =
+    .85;
+
+let targetZoom =
+    .85;
+
+
+/* =========================================================
+   DATE
+========================================================= */
+
+let simulationDate =
+    new Date();
+
+
+/* =========================================================
+   OBJECT LOOKUP
+========================================================= */
+
+function findObject(id){
+
+    return planets.find(
+        p => p.id === id
+    )
+    ||
+    moons.find(
+        m => m.id === id
+    );
+
+}
+
+
+/* =========================================================
+   SELECT DROPDOWN
+========================================================= */
+
+const select =
+    document.getElementById(
+        "objectSelect"
+    );
+
+function buildSelect(){
+
+    select.innerHTML="";
+
+    const categories = {
+
+        "STAR":[],
+        "PLANETS":[],
+        "DWARF PLANETS":[],
+        "MOONS":[]
+
+    };
+
+
+    planets.forEach(p=>{
+
+        if(p.type==="STAR")
+            categories.STAR.push(p);
+
+        else if(
+            p.type==="DWARF PLANET"
+        )
+            categories["DWARF PLANETS"].push(p);
+
+        else
+            categories.PLANETS.push(p);
+
+    });
+
+
+    moons.forEach(m=>{
+        categories.MOONS.push(m);
+    });
+
+
+    for(
+        const category in categories
+    ){
+
+        const group =
+            document.createElement(
+                "optgroup"
+            );
+
+        group.label =
+            category;
+
+        categories[category]
+            .forEach(o=>{
+
+                const option =
+                    document.createElement(
+                        "option"
+                    );
+
+                option.value =
+                    o.id;
+
+                option.textContent =
+                    o.name;
+
+                group.appendChild(
+                    option
+                );
+
+            });
+
+        select.appendChild(group);
+
+    }
+
+}
+
+buildSelect();
+
+
+/* =========================================================
+   PANEL
+========================================================= */
+
+function updatePanel(){
+
+    const o =
+        selected;
+
+    document
+        .getElementById(
+            "objectName"
+        )
+        .textContent =
+        o.name;
+
+
+    document
+        .getElementById(
+            "objectType"
+        )
+        .textContent =
+        o.type ||
+        "NATURAL SATELLITE";
+
+
+    document
+        .getElementById(
+            "diameter"
+        )
+        .textContent =
+        Math.round(
+            o.radius*2
+        ).toLocaleString()
+        +" km";
+
+
+    if(o.parent){
+
+        document
+            .getElementById(
+                "distance"
+            )
+            .textContent =
+            o.distance
+            .toLocaleString()
+            +" km";
+
+
+        document
+            .getElementById(
+                "orbit"
+            )
+            .textContent =
+            o.period
+            +" days";
+
+
+        document
+            .getElementById(
+                "velocity"
+            )
+            .textContent =
+            "—";
+
+
+        document
+            .getElementById(
+                "moons"
+            )
+            .textContent =
+            "—";
+
+
+        document
+            .getElementById(
+                "classType"
+            )
+            .textContent =
+            "Natural satellite";
+
+    }
+
+    else{
+
+        document
+            .getElementById(
+                "distance"
+            )
+            .textContent =
+            o.distance === 0
+            ? "0 km"
+            :
+            (
+                o.distance*AU
+            )
+            .toLocaleString(
+                undefined,
+                {
+                    maximumFractionDigits:0
+                }
+            )
+            +" km";
+
+
+        document
+            .getElementById(
+                "orbit"
+            )
+            .textContent =
+            o.period === 0
+            ? "—"
+            :
+            o.period.toLocaleString()
+            +" days";
+
+
+        document
+            .getElementById(
+                "velocity"
+            )
+            .textContent =
+            o.speed
+            ? o.speed+" km/s"
+            : "—";
+
+
+        document
+            .getElementById(
+                "moons"
+            )
+            .textContent =
+            o.moons;
+
+
+        document
+            .getElementById(
+                "classType"
+            )
+            .textContent =
+            o.type === "STAR"
+            ? "G-type star"
+            : o.type === "DWARF PLANET"
+            ? "Dwarf planet"
+            : "Planet";
+
+    }
+
+}
+
+updatePanel();
+
+
+/* =========================================================
+   SELECT
+========================================================= */
+
+select.addEventListener(
+    "change",
+    ()=>{
+
+        selected =
+            findObject(
+                select.value
+            );
+
+        updatePanel();
+
+        flyTo(
+            selected
+        );
+
+    }
+);
+
+
+/* =========================================================
+   REAL POSITION
+========================================================= */
+
+/*
+    This is the important part.
+
+    The orbital radius is directly
+    based on AU.
+
+    Earth:
+        1 AU
+
+    Jupiter:
+        ~5.2 AU
+
+    Neptune:
+        ~30.1 AU
+
+    Pluto:
+        ~39.5 AU
+*/
+
+
+function orbitalPosition(
+    planet
+){
+
+    if(
+        planet.distance === 0
+    ){
+
+        return {
+            x:0,
+            y:0
+        };
+
+    }
+
+
+    const days =
+        (
+            simulationDate -
+            new Date(
+                "2000-01-01T12:00:00Z"
+            )
+        )
+        /DAY;
+
+
+    /*
+        Approximate mean orbital phase.
+
+        The distance is real;
+        this is not yet a full
+        JPL ephemeris solution.
+    */
+
+    const angle =
+        (
+            days /
+            planet.period
+        )
+        *
+        Math.PI*2
+        +
+        planet.id.length;
+
+
+    return {
+
+        x:
+            planet.distance
+            *
+            Math.cos(angle),
+
+        y:
+            planet.distance
+            *
+            Math.sin(angle)
+
+    };
+
+}
+
+
+/* =========================================================
+   MOON POSITION
+========================================================= */
+
+function moonPosition(
+    moon
+){
+
+    const parent =
+        findObject(
+            moon.parent
+        );
+
+
+    const parentPosition =
+        orbitalPosition(
+            parent
+        );
+
+
+    const days =
+        (
+            simulationDate -
+            new Date(
+                "2000-01-01T12:00:00Z"
+            )
+        )
+        /DAY;
+
+
+    const angle =
+        days /
+        moon.period
+        *
+        Math.PI*2
+        +
+        moon.id.length;
+
+
+    /*
+        Convert km to AU.
+    */
+
+    const moonAU =
+        moon.distance /
+        AU;
+
+
+    return {
+
+        x:
+            parentPosition.x
+            +
+            moonAU *
+            Math.cos(angle),
+
+        y:
+            parentPosition.y
+            +
+            moonAU *
+            Math.sin(angle)
+
+    };
+
+}
+
+
+/* =========================================================
+   WORLD → SCREEN
+========================================================= */
+
+function worldToScreen(
+    x,
+    y
+){
+
+    /*
+        REAL DISTANCE MODE
+
+        1 AU is scaled relative
+        to the viewport.
+
+        Logarithmic projection prevents
+        Neptune from becoming impossible
+        to see.
+
+        The underlying coordinates are
+        still real AU.
+    */
+
+    let sx;
+    let sy;
+
+
+    if(realScale){
+
+        /*
+            Compress large distances
+            logarithmically.
+
+            This preserves ordering
+            and relative distance information
+            while keeping the system visible.
+        */
+
+        const signX =
+            x < 0 ? -1 : 1;
+
+        const signY =
+            y < 0 ? -1 : 1;
+
+
+        const ax =
+            Math.abs(x);
+
+        const ay =
+            Math.abs(y);
+
+
+        const scaleX =
+            Math.log10(
+                1 + ax
+            )
+            *
+            250;
+
+
+        const scaleY =
+            Math.log10(
+                1 + ay
+            )
+            *
+            250;
+
+
+        sx =
+            width/2
+            +
+            (scaleX*signX
+            -
+            cameraPosition.x)
+            *
+            cameraZoom;
+
+
+        sy =
+            height/2
+            +
+            (scaleY*signY
+            -
+            cameraPosition.y)
+            *
+            cameraZoom;
+
+    }
+
+    else{
+
+        sx =
+            width/2
+            +
+            (
+                x-cameraPosition.x
+            )
+            *
+            50
+            *
+            cameraZoom;
+
+
+        sy =
+            height/2
+            +
+            (
+                y-cameraPosition.y
+            )
+            *
+            50
+            *
+            cameraZoom;
+
+    }
+
+
+    return {
+        x:sx,
+        y:sy
+    };
+
+}
+
+
+/* =========================================================
+   STARS
+========================================================= */
+
+const stars=[];
+
+for(
+    let i=0;
+    i<900;
+    i++
+){
+
+    stars.push({
+
+        x:
+            Math.random()
+            *
+            window.innerWidth,
+
+        y:
+            Math.random()
+            *
+            window.innerHeight,
+
+        radius:
+            Math.random()
+            *
+            1.2
+            +.1,
+
+        alpha:
+            Math.random()
+            *.8
+            +.2
+
+    });
+
+}
+
+
+function drawStars(){
+
+    for(
+        const star
+        of stars
+    ){
+
+        ctx.globalAlpha =
+            star.alpha;
+
+        ctx.fillStyle =
+            "#ffffff";
+
+        ctx.beginPath();
+
+        ctx.arc(
+            star.x,
+            star.y,
+            star.radius,
+            0,
+            Math.PI*2
+        );
+
+        ctx.fill();
+
+    }
+
+    ctx.globalAlpha=1;
+
+}
+
+
+/* =========================================================
+   ORBITS
+========================================================= */
+
+function drawOrbits(){
+
+    if(!showOrbits)
+        return;
+
+
+    planets.forEach(
+        planet=>{
+
+            if(
+                planet.distance===0
+            )
+                return;
+
+
+            const points=[];
+
+            for(
+                let i=0;
+                i<=120;
+                i++
+            ){
+
+                const angle =
+                    i/120
+                    *
+                    Math.PI*2;
+
+
+                const x =
+                    planet.distance
+                    *
+                    Math.cos(angle);
+
+
+                const y =
+                    planet.distance
+                    *
+                    Math.sin(angle);
+
+
+                points.push(
+                    worldToScreen(
+                        x,
+                        y
+                    )
+                );
+
+            }
+
+
+            ctx.beginPath();
+
+
+            points.forEach(
+                (p,i)=>{
+
+                    if(i===0)
+                        ctx.moveTo(
+                            p.x,
+                            p.y
+                        );
+
+                    else
+                        ctx.lineTo(
+                            p.x,
+                            p.y
+                        );
+
+                }
+            );
+
+
+            ctx.strokeStyle =
+                planet.type ===
+                "DWARF PLANET"
+
+                ?
+
+                "rgba(160,120,255,.20)"
+
+                :
+
+                "rgba(255,255,255,.10)";
+
+
+            ctx.lineWidth=1;
+
+            ctx.stroke();
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   BELTS
+========================================================= */
+
+function drawBelts(){
+
+    if(!showBelts)
+        return;
+
+
+    drawBelt(
+        2.2,
+        3.3,
+        "rgba(180,160,120,.08)"
+    );
+
+
+    drawBelt(
+        30,
+        50,
+        "rgba(80,130,255,.045)"
+    );
+
+}
+
+
+function drawBelt(
+    inner,
+    outer,
+    color
+){
+
+    const r1 =
+        Math.log10(
+            1+inner
+        )
+        *250
+        *
+        cameraZoom;
+
+
+    const r2 =
+        Math.log10(
+            1+outer
+        )
+        *250
+        *
+        cameraZoom;
+
+
+    ctx.beginPath();
+
+    ctx.ellipse(
+        width/2,
+        height/2,
+        (r1+r2)/2,
+        (r1+r2)/2*.72,
+        0,
+        0,
+        Math.PI*2
+    );
+
+
+    ctx.strokeStyle =
+        color;
+
+    ctx.lineWidth =
+        Math.max(
+            3,
+            r2-r1
+        );
+
+    ctx.stroke();
+
+}
+
+
+/* =========================================================
+   SUN
+========================================================= */
+
+function drawSun(){
+
+    const position =
+        worldToScreen(
+            0,
+            0
+        );
+
+
+    const pulse =
+        Math.sin(
+            performance.now()
+            *.002
+        )
+        *2;
+
+
+    const radius =
+        17
+        *
+        cameraZoom
+        +
+        pulse;
+
+
+    const gradient =
+        ctx.createRadialGradient(
+            position.x,
+            position.y,
+            0,
+            position.x,
+            position.y,
+            radius*5
+        );
+
+
+    gradient.addColorStop(
+        0,
+        "rgba(255,255,220,1)"
+    );
+
+    gradient.addColorStop(
+        .15,
+        "rgba(255,220,90,.95)"
+    );
+
+    gradient.addColorStop(
+        .45,
+        "rgba(255,130,20,.25)"
+    );
+
+    gradient.addColorStop(
+        1,
+        "rgba(255,80,0,0)"
+    );
+
+
+    ctx.fillStyle =
+        gradient;
+
+
+    ctx.beginPath();
+
+    ctx.arc(
+        position.x,
+        position.y,
+        radius*5,
+        0,
+        Math.PI*2
+    );
+
+    ctx.fill();
+
+
+    ctx.fillStyle =
+        "#fff3a8";
+
+
+    ctx.beginPath();
+
+    ctx.arc(
+        position.x,
+        position.y,
+        radius,
+        0,
+        Math.PI*2
+    );
+
+    ctx.fill();
+
+}
+
+
+/* =========================================================
+   PLANET SIZE
+========================================================= */
+
+function visualRadius(
+    planet
+){
+
+    /*
+        Real planetary radii are used
+        for information.
+
+        Rendering radius is intentionally
+        enlarged so planets can be seen.
+    */
+
+    if(
+        planet.type==="DWARF PLANET"
+    ){
+
+        return Math.max(
+            3,
+            Math.log10(
+                planet.radius
+            )
+            *2
+        );
+
+    }
+
+
+    return Math.max(
+        4,
+        Math.log10(
+            planet.radius
+        )
+        *3
+    );
+
+}
+
+
+/* =========================================================
+   DRAW PLANETS
+========================================================= */
+
+function drawPlanets(){
+
+    planets.forEach(
+        planet=>{
+
+            if(
+                planet.id==="sun"
+            )
+                return;
+
+
+            const world =
+                orbitalPosition(
+                    planet
+                );
+
+
+            const screen =
+                worldToScreen(
+                    world.x,
+                    world.y
+                );
+
+
+            const radius =
+                visualRadius(
+                    planet
+                )
+                *
+                Math.min(
+                    2,
+                    cameraZoom
+                );
+
+
+            /*
+                Glow
+            */
+
+            if(
+                planet === selected
+            ){
+
+                ctx.shadowBlur =
+                    25;
+
+                ctx.shadowColor =
+                    planet.color;
+
+            }
+
+
+            ctx.fillStyle =
+                planet.color;
+
+
+            ctx.beginPath();
+
+            ctx.arc(
+                screen.x,
+                screen.y,
+                radius,
+                0,
+                Math.PI*2
+            );
+
+            ctx.fill();
+
+
+            ctx.shadowBlur=0;
+
+
+            /*
+                Rings
+            */
+
+            if(
+                planet.rings
+            ){
+
+                ctx.strokeStyle =
+                    "rgba(230,215,175,.65)";
+
+                ctx.lineWidth =
+                    Math.max(
+                        1,
+                        radius*.25
+                    );
+
+
+                ctx.beginPath();
+
+                ctx.ellipse(
+                    screen.x,
+                    screen.y,
+                    radius*2.2,
+                    radius*.65,
+                    -.18,
+                    0,
+                    Math.PI*2
+                );
+
+                ctx.stroke();
+
+            }
+
+
+            /*
+                Selected
+            */
+
+            if(
+                planet===selected
+            ){
+
+                ctx.strokeStyle =
+                    "rgba(255,255,255,.85)";
+
+                ctx.lineWidth=1;
+
+                ctx.beginPath();
+
+                ctx.arc(
+                    screen.x,
+                    screen.y,
+                    radius+8,
+                    0,
+                    Math.PI*2
+                );
+
+                ctx.stroke();
+
+            }
+
+
+            /*
+                Label
+            */
+
+            if(
+                showLabels
+            ){
+
+                ctx.font =
+                    "10px Arial";
+
+                ctx.fillStyle =
+                    "rgba(255,255,255,.75)";
+
+                ctx.fillText(
+                    planet.name,
+                    screen.x+
+                    radius+
+                    5,
+                    screen.y-3
+                );
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   DRAW MOONS
+========================================================= */
+
+function drawMoons(){
+
+    moons.forEach(
+        moon=>{
+
+            const world =
+                moonPosition(
+                    moon
+                );
+
+
+            const screen =
+                worldToScreen(
+                    world.x,
+                    world.y
+                );
+
+
+            const radius =
+                Math.max(
+                    1.2,
+                    Math.log10(
+                        moon.radius
+                    )
+                    *1.1
+                    *
+                    Math.min(
+                        2,
+                        cameraZoom
+                    )
+                );
+
+
+            ctx.fillStyle =
+                moon.color;
+
+
+            ctx.beginPath();
+
+            ctx.arc(
+                screen.x,
+                screen.y,
+                radius,
+                0,
+                Math.PI*2
+            );
+
+            ctx.fill();
+
+
+            if(
+                moon===selected
+            ){
+
+                ctx.strokeStyle =
+                    "white";
+
+                ctx.beginPath();
+
+                ctx.arc(
+                    screen.x,
+                    screen.y,
+                    radius+5,
+                    0,
+                    Math.PI*2
+                );
+
+                ctx.stroke();
+
+            }
+
+
+            if(
+                showLabels &&
+                radius>2
+            ){
+
+                ctx.font =
+                    "8px Arial";
+
+                ctx.fillStyle =
+                    "rgba(255,255,255,.6)";
+
+                ctx.fillText(
+                    moon.name,
+                    screen.x+
+                    radius+
+                    4,
+                    screen.y
+                );
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   FLY TO
+========================================================= */
+
+let flightAnimation =
+    null;
+
+
+function flyTo(
+    object
+){
+
+    if(!object)
+        return;
+
+
+    /*
+        Show flight UI
+    */
+
+    const flight =
+        document.getElementById(
+            "flight"
+        );
+
+    flight.classList.add(
+        "active"
+    );
+
+    flight.textContent =
+        "APPROACHING " +
+        object.name.toUpperCase();
+
+
+    /*
+        Calculate target coordinates.
+    */
+
+    let target;
+
+
+    if(object.parent){
+
+        target =
+            moonPosition(
+                object
+            );
+
+    }
+
+    else{
+
+        target =
+            orbitalPosition(
+                object
+            );
+
+    }
+
+
+    /*
+        Camera target.
+
+        We want selected object
+        to move to screen center.
+    */
+
+    const targetX =
+        realScale
+
+        ?
+
+        (
+            Math.sign(
+                target.x
+            )
+            *
+            Math.log10(
+                1+
+                Math.abs(
+                    target.x
+                )
+            )
+            *
+            250
+        )
+
+        :
+
+        target.x*50;
+
+
+    const targetY =
+        realScale
+
+        ?
+
+        (
+            Math.sign(
+                target.y
+            )
+            *
+            Math.log10(
+                1+
+                Math.abs(
+                    target.y
+                )
+            )
+            *
+            250
+        )
+
+        :
+
+        target.y*50;
+
+
+    /*
+        Desired camera position
+        is object position.
+    */
+
+    const startX =
+        cameraPosition.x;
+
+    const startY =
+        cameraPosition.y;
+
+    const startZoom =
+        cameraZoom;
+
+
+    /*
+        Determine zoom.
+
+        Moon = very close
+        planet = close
+        Sun/system = wide
+    */
+
+    let desiredZoom;
+
+
+    if(
+        object.parent
+    ){
+
+        desiredZoom =
+            10;
+
+    }
+
+    else if(
+        object.id==="sun"
+    ){
+
+        desiredZoom =
+            .85;
+
+    }
+
+    else if(
+        object.distance < 2
+    ){
+
+        desiredZoom =
+            5;
+
+    }
+
+    else if(
+        object.distance < 6
+    ){
+
+        desiredZoom =
+            3;
+
+    }
+
+    else if(
+        object.distance < 20
+    ){
+
+        desiredZoom =
+            2;
+
+    }
+
+    else{
+
+        desiredZoom =
+            1.6;
+
+    }
+
+
+    const start =
+        performance.now();
+
+
+    const duration =
+        1800;
+
+
+    function animateFlight(
+        now
+    ){
+
+        const progress =
+            Math.min(
+                1,
+                (now-start)
+                /duration
+            );
+
+
+        /*
+            Smoothstep
+        */
+
+        const eased =
+            progress*
+            progress*
+            (
+                3-
+                2*progress
+            );
+
+
+        cameraPosition.x =
+            startX+
+            (
+                targetX-
+                startX
+            )
+            *
+            eased;
+
+
+        cameraPosition.y =
+            startY+
+            (
+                targetY-
+                startY
+            )
+            *
+            eased;
+
+
+        cameraZoom =
+            startZoom+
+            (
+                desiredZoom-
+                startZoom
+            )
+            *
+            eased;
+
+
+        if(
+            progress<1
+        ){
+
+            flightAnimation =
+                requestAnimationFrame(
+                    animateFlight
+                );
+
+        }
+
+        else{
+
+            flight.classList.remove(
+                "active"
+            );
+
+        }
+
+    }
+
+
+    cancelAnimationFrame(
+        flightAnimation
+    );
+
+
+    flightAnimation =
+        requestAnimationFrame(
+            animateFlight
+        );
+
+}
+
+
+/* =========================================================
+   SYSTEM VIEW
+========================================================= */
+
+function systemView(){
+
+    const startX =
+        cameraPosition.x;
+
+    const startY =
+        cameraPosition.y;
+
+    const startZoom =
+        cameraZoom;
+
+
+    const start =
+        performance.now();
+
+    const duration =
+        1200;
+
+
+    function animate(now){
+
+        const p =
+            Math.min(
+                1,
+                (now-start)
+                /duration
+            );
+
+
+        const e =
+            p*p*(3-2*p);
+
+
+        cameraPosition.x =
+            startX*(1-e);
+
+
+        cameraPosition.y =
+            startY*(1-e);
+
+
+        cameraZoom =
+            startZoom+
+            (.85-startZoom)*e;
+
+
+        if(p<1){
+
+            requestAnimationFrame(
+                animate
+            );
+
+        }
+
+    }
+
+
+    requestAnimationFrame(
+        animate
+    );
+
+}
+
+
+/* =========================================================
+   CLICK OBJECT
+========================================================= */
+
+canvas.addEventListener(
+    "click",
+    e=>{
+
+        /*
+            Ignore click after dragging.
+        */
+
+        if(
+            movedDuringDrag
+        ){
+
+            movedDuringDrag=false;
+
+            return;
+
+        }
+
+
+        let closest=null;
+
+        let closestDistance=
+            Infinity;
+
+
+        planets.forEach(
+            planet=>{
+
+                if(
+                    planet.id==="sun"
+                )
+                    return;
+
+
+                const world =
+                    orbitalPosition(
+                        planet
+                    );
+
+
+                const screen =
+                    worldToScreen(
+                        world.x,
+                        world.y
+                    );
+
+
+                const d =
+                    Math.hypot(
+                        screen.x-e.clientX,
+                        screen.y-e.clientY
+                    );
+
+
+                if(
+                    d<
+                    Math.max(
+                        18,
+                        visualRadius(
+                            planet
+                        )+10
+                    )
+                    &&
+                    d<
+                    closestDistance
+                ){
+
+                    closest=
+                        planet;
+
+                    closestDistance=
+                        d;
+
+                }
+
+            }
+        );
+
+
+        moons.forEach(
+            moon=>{
+
+                const world =
+                    moonPosition(
+                        moon
+                    );
+
+
+                const screen =
+                    worldToScreen(
+                        world.x,
+                        world.y
+                    );
+
+
+                const d =
+                    Math.hypot(
+                        screen.x-e.clientX,
+                        screen.y-e.clientY
+                    );
+
+
+                if(
+                    d<15 &&
+                    d<closestDistance
+                ){
+
+                    closest=
+                        moon;
+
+                    closestDistance=
+                        d;
+
+                }
+
+            }
+        );
+
+
+        /*
+            Sun
+        */
+
+        const sunScreen =
+            worldToScreen(
+                0,
+                0
+            );
+
+
+        const sunDistance =
+            Math.hypot(
+                sunScreen.x-e.clientX,
+                sunScreen.y-e.clientY
+            );
+
+
+        if(
+            sunDistance<35 &&
+            sunDistance<
+            closestDistance
+        ){
+
+            closest=
+                planets[0];
+
+        }
+
+
+        if(closest){
+
+            selected=
+                closest;
+
+            select.value=
+                closest.id;
+
+            updatePanel();
+
+            flyTo(
+                closest
+            );
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   MOUSE DRAG
+========================================================= */
+
+let dragging=false;
+
+let lastMouseX=0;
+let lastMouseY=0;
+
+let movedDuringDrag=false;
+
+
+canvas.addEventListener(
+    "mousedown",
+    e=>{
+
+        dragging=true;
+
+        movedDuringDrag=false;
+
+        lastMouseX=
+            e.clientX;
+
+        lastMouseY=
+            e.clientY;
+
+    }
+);
+
+
+window.addEventListener(
+    "mouseup",
+    ()=>{
+
+        dragging=false;
+
+    }
+);
+
+
+window.addEventListener(
+    "mousemove",
+    e=>{
+
+        if(!dragging)
+            return;
+
+
+        const dx =
+            e.clientX-
+            lastMouseX;
+
+
+        const dy =
+            e.clientY-
+            lastMouseY;
+
+
+        if(
+            Math.abs(dx)>2 ||
+            Math.abs(dy)>2
+        ){
+
+            movedDuringDrag=
+                true;
+
+        }
+
+
+        /*
+            Pan camera.
+        */
+
+        cameraPosition.x -=
+            dx/
+            cameraZoom;
+
+        cameraPosition.y -=
+            dy/
+            cameraZoom;
+
+
+        lastMouseX=
+            e.clientX;
+
+        lastMouseY=
+            e.clientY;
+
+    }
+);
+
+
+/* =========================================================
+   WHEEL ZOOM
+========================================================= */
+
+canvas.addEventListener(
+    "wheel",
+    e=>{
+
+        e.preventDefault();
+
+
+        const factor =
+            e.deltaY>0
+            ? .88
+            : 1.14;
+
+
+        cameraZoom *=
+            factor;
+
+
+        cameraZoom =
+            Math.max(
+                .15,
+                Math.min(
+                    15,
+                    cameraZoom
+                )
+            );
+
+    },
+    {
+        passive:false
+    }
+);
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+document
+.getElementById("search")
+.addEventListener(
+    "input",
+    function(){
+
+        const query =
+            this.value
+            .toLowerCase()
+            .trim();
+
+
+        if(!query)
+            return;
+
+
+        const found =
+            [
+                ...planets,
+                ...moons
+            ]
+            .find(
+                object=>
+                    object.name
+                    .toLowerCase()
+                    .includes(
+                        query
+                    )
+            );
+
+
+        if(found){
+
+            selected=
+                found;
+
+            select.value=
+                found.id;
+
+            updatePanel();
+
+            flyTo(
+                found
+            );
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+document
+.getElementById("fly")
+.addEventListener(
+    "click",
+    ()=>{
+        flyTo(selected);
+    }
+);
+
+
+document
+.getElementById("system")
+.addEventListener(
+    "click",
+    ()=>{
+        systemView();
+    }
+);
+
+
+document
+.getElementById("scale")
+.addEventListener(
+    "click",
+    ()=>{
+
+        realScale=
+            !realScale;
+
+
+        document
+            .getElementById(
+                "scale"
+            )
+            .textContent =
+            realScale
+            ? "REAL DISTANCE"
+            : "OBSERVATION SCALE";
+
+    }
+);
+
+
+document
+.getElementById("orbits")
+.addEventListener(
+    "click",
+    ()=>{
+
+        showOrbits=
+            !showOrbits;
+
+
+        document
+            .getElementById(
+                "orbits"
+            )
+            .textContent =
+            showOrbits
+            ? "ORBITS ON"
+            : "ORBITS OFF";
+
+    }
+);
+
+
+document
+.getElementById("labels")
+.addEventListener(
+    "click",
+    ()=>{
+
+        showLabels=
+            !showLabels;
+
+
+        document
+            .getElementById(
+                "labels"
+            )
+            .textContent =
+            showLabels
+            ? "LABELS ON"
+            : "LABELS OFF";
+
+    }
+);
+
+
+document
+.getElementById("belts")
+.addEventListener(
+    "click",
+    ()=>{
+
+        showBelts=
+            !showBelts;
+
+
+        document
+            .getElementById(
+                "belts"
+            )
+            .textContent =
+            showBelts
+            ? "BELTS ON"
+            : "BELTS OFF";
+
+    }
+);
+
+
+/* =========================================================
+   TIME
+========================================================= */
+
+function addDays(
+    days
+){
+
+    simulationDate =
+        new Date(
+            simulationDate.getTime()
+            +
+            days*DAY
+        );
+
+    updateDate();
+
+}
+
+
+document
+.getElementById("back100")
+.addEventListener(
+    "click",
+    ()=>{
+        addDays(-100);
+    }
+);
+
+
+document
+.getElementById("back1000")
+.addEventListener(
+    "click",
+    ()=>{
+        addDays(-1000);
+    }
+);
+
+
+document
+.getElementById("forward100")
+.addEventListener(
+    "click",
+    ()=>{
+        addDays(100);
+    }
+);
+
+
+document
+.getElementById("forward1000")
+.addEventListener(
+    "click",
+    ()=>{
+        addDays(1000);
+    }
+);
+
+
+document
+.getElementById("now")
+.addEventListener(
+    "click",
+    ()=>{
+
+        simulationDate=
+            new Date();
+
+        updateDate();
+
+    }
+);
+
+
+/* =========================================================
+   PAUSE
+========================================================= */
+
+document
+.getElementById("pause")
+.addEventListener(
+    "click",
+    ()=>{
+
+        running=
+            !running;
+
+
+        document
+            .getElementById(
+                "pause"
+            )
+            .textContent =
+            running
+            ? "Ⅱ"
+            : "▶";
+
+    }
+);
+
+
+/* =========================================================
+   SPEED
+========================================================= */
+
+function updateSpeed(){
+
+    document
+        .getElementById(
+            "speed"
+        )
+        .textContent =
+        "TIME ×"+
+        timeSpeed.toLocaleString();
+
+}
+
+
+window.addEventListener(
+    "keydown",
+    e=>{
+
+        if(
+            e.code==="Space"
+        ){
+
+            running=
+                !running;
+
+            document
+                .getElementById(
+                    "pause"
+                )
+                .textContent =
+                running
+                ? "Ⅱ"
+                : "▶";
+
+        }
+
+
+        if(
+            e.key==="+"
+            ||
+            e.key==="="
+        ){
+
+            timeSpeed=
+                Math.min(
+                    100000,
+                    timeSpeed*10
+                );
+
+            updateSpeed();
+
+        }
+
+
+        if(
+            e.key==="-"
+        ){
+
+            timeSpeed=
+                Math.max(
+                    .1,
+                    timeSpeed/10
+                );
+
+            updateSpeed();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   DATE DISPLAY
+========================================================= */
+
+function updateDate(){
+
+    document
+        .getElementById(
+            "simDate"
+        )
+        .textContent =
+        simulationDate
+        .toLocaleDateString(
+            "en-GB",
+            {
+                day:"2-digit",
+                month:"short",
+                year:"numeric"
+            }
+        )
+        .toUpperCase();
+
+}
+
+updateDate();
+
+updateSpeed();
+
+
+/* =========================================================
+   MAIN LOOP
+========================================================= */
+
+let previousTime =
+    performance.now();
+
+
+function loop(){
+
+    const now =
+        performance.now();
+
+
+    const delta =
+        (now-previousTime)
+        /1000;
+
+
+    previousTime=
+        now;
+
+
+    /*
+        Simulation time.
+
+        1 real second =
+        timeSpeed simulated days.
+    */
+
+    if(running){
+
+        simulationDate =
+            new Date(
+                simulationDate.getTime()
+                +
+                delta*
+                timeSpeed*
+                DAY
+            );
+
+        updateDate();
+
+    }
+
+
+    draw();
+
+
+    requestAnimationFrame(
+        loop
+    );
+
+}
+
+
+/* =========================================================
+   DRAW
+========================================================= */
+
+function draw(){
+
+    ctx.clearRect(
+        0,
+        0,
+        width,
+        height
+    );
+
+
+    /*
+        Background
+    */
+
+    const gradient =
+        ctx.createRadialGradient(
+            width/2,
+            height/2,
+            0,
+            width/2,
+            height/2,
+            Math.max(
+                width,
+                height
+            )*.7
+        );
+
+
+    gradient.addColorStop(
+        0,
+        "#07101d"
+    );
+
+    gradient.addColorStop(
+        .5,
+        "#02050b"
+    );
+
+    gradient.addColorStop(
+        1,
+        "#000"
+    );
+
+
+    ctx.fillStyle=
+        gradient;
+
+
+    ctx.fillRect(
+        0,
+        0,
+        width,
+        height
+    );
+
+
+    drawStars();
+
+    drawBelts();
+
+    drawOrbits();
+
+    drawSun();
+
+    drawPlanets();
+
+    drawMoons();
+
+}
+
+
+/* =========================================================
+   START
+========================================================= */
+
+loop();
+
+</script>
+
+</body>
+</html>
