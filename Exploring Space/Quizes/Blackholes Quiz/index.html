@@ -1,1 +1,2508 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: #010106;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   PAGE
+========================================= */
+
+.blackholes-quiz-page {
+
+    position: relative;
+
+    min-height: 100vh;
+
+    padding: 65px 20px 100px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 20%,
+            rgba(100,60,180,.14),
+            transparent 38%
+        ),
+        radial-gradient(
+            circle at 15% 70%,
+            rgba(40,60,160,.08),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 85% 75%,
+            rgba(180,70,90,.06),
+            transparent 35%
+        ),
+        #010106;
+}
+
+
+/* =========================================
+   BACKGROUND STARS
+========================================= */
+
+.stars,
+.stars-small {
+
+    position: fixed;
+
+    inset: -25%;
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+.stars {
+
+    opacity: .4;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.9) 1px,
+            transparent 1px
+        );
+
+    background-size: 75px 75px;
+
+    transition:
+        transform 1.5s ease;
+}
+
+.stars-small {
+
+    opacity: .17;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.8) 1px,
+            transparent 1px
+        );
+
+    background-size: 32px 32px;
+
+    transition:
+        transform 2s ease;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header {
+
+    position: relative;
+
+    z-index: 5;
+
+    max-width: 900px;
+
+    margin: auto;
+
+    text-align: center;
+}
+
+
+.return {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 12px 20px;
+
+    margin-bottom: 40px;
+
+    color:
+        rgba(255,255,255,.7);
+
+    border:
+        1px solid
+        rgba(255,255,255,.22);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    transition: .35s ease;
+}
+
+
+.return:hover {
+
+    color: #010106;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-4px);
+}
+
+
+.label {
+
+    margin-bottom: 18px;
+
+    color:
+        rgba(180,160,255,.55);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+
+h1 {
+
+    margin: 0;
+
+    font-size:
+        clamp(40px,8vw,85px);
+
+    line-height: .9;
+
+    letter-spacing: 6px;
+}
+
+
+.subtitle {
+
+    max-width: 720px;
+
+    margin:
+        28px auto 0;
+
+    color:
+        rgba(255,255,255,.52);
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   QUIZ
+========================================= */
+
+.quiz-container {
+
+    position: relative;
+
+    z-index: 5;
+
+    width:
+        min(850px,100%);
+
+    margin:
+        70px auto 0;
+
+    padding: 35px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.025);
+
+    transition:
+        .8s ease;
+}
+
+
+/* =========================================
+   QUIZ TOP
+========================================= */
+
+.quiz-top {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 15px;
+}
+
+
+.question-number {
+
+    color:
+        rgba(255,255,255,.45);
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+}
+
+
+.difficulty {
+
+    padding:
+        7px 12px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.15);
+
+    color:
+        rgba(255,255,255,.5);
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================
+   PROGRESS
+========================================= */
+
+.progress {
+
+    width: 100%;
+
+    height: 2px;
+
+    margin-bottom: 45px;
+
+    background:
+        rgba(255,255,255,.08);
+
+    overflow: hidden;
+}
+
+
+.progress-bar {
+
+    width: 0%;
+
+    height: 100%;
+
+    background: white;
+
+    transition:
+        width .5s ease;
+}
+
+
+/* =========================================
+   QUESTION
+========================================= */
+
+.question {
+
+    margin-bottom: 35px;
+
+    font-size:
+        clamp(20px,3vw,30px);
+
+    line-height: 1.4;
+
+    letter-spacing: .4px;
+}
+
+
+/* =========================================
+   ANSWERS
+========================================= */
+
+.answers {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap: 12px;
+}
+
+
+.answer {
+
+    min-height: 70px;
+
+    padding:
+        18px 20px;
+
+    text-align: left;
+
+    color:
+        rgba(255,255,255,.7);
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    background:
+        rgba(255,255,255,.02);
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 12px;
+
+    cursor: pointer;
+
+    transition:
+        .3s ease;
+}
+
+
+.answer:hover {
+
+    color: white;
+
+    border-color:
+        rgba(150,110,255,.5);
+
+    background:
+        rgba(100,70,200,.08);
+
+    transform:
+        translateY(-3px);
+}
+
+
+.answer.correct {
+
+    color: white;
+
+    border-color:
+        rgba(100,220,150,.7);
+
+    background:
+        rgba(60,180,110,.12);
+}
+
+
+.answer.wrong {
+
+    color: white;
+
+    border-color:
+        rgba(255,90,90,.7);
+
+    background:
+        rgba(220,50,50,.12);
+}
+
+
+.answer.disabled {
+
+    pointer-events: none;
+}
+
+
+/* =========================================
+   NEXT
+========================================= */
+
+.next-area {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    margin-top: 25px;
+}
+
+
+.next-button {
+
+    display: none;
+
+    padding:
+        13px 25px;
+
+    color:
+        rgba(255,255,255,.8);
+
+    border:
+        1px solid
+        rgba(255,255,255,.2);
+
+    background:
+        transparent;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    cursor: pointer;
+
+    transition:
+        .3s ease;
+}
+
+
+.next-button:hover {
+
+    color: #010106;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-3px);
+}
+
+
+/* =========================================
+   RESULT
+========================================= */
+
+.result {
+
+    display: none;
+
+    position: relative;
+
+    text-align: center;
+
+    min-height: 500px;
+
+    padding:
+        25px 10px 15px;
+
+    overflow: hidden;
+}
+
+
+.result::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 390px;
+
+    height: 390px;
+
+    left: 50%;
+
+    top: 43%;
+
+    transform:
+        translate(-50%,-50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0,0,0,1) 0%,
+            rgba(5,5,15,1) 25%,
+            rgba(90,50,170,.2) 45%,
+            rgba(50,30,130,.08) 60%,
+            transparent 72%
+        );
+
+    box-shadow:
+        0 0 80px
+        rgba(90,50,200,.18);
+
+    animation:
+        blackHoleGlow 4s ease-in-out infinite;
+
+    pointer-events: none;
+}
+
+
+@keyframes blackHoleGlow {
+
+    0%,100% {
+
+        transform:
+            translate(-50%,-50%)
+            scale(.88);
+
+        opacity: .65;
+    }
+
+    50% {
+
+        transform:
+            translate(-50%,-50%)
+            scale(1.12);
+
+        opacity: 1;
+    }
+}
+
+
+/* =========================================
+   BLACK HOLE ICON
+========================================= */
+
+.completion-icon {
+
+    position: relative;
+
+    width: 105px;
+
+    height: 105px;
+
+    margin:
+        5px auto 32px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #000000 0%,
+            #000000 35%,
+            #171022 52%,
+            rgba(130,70,210,.7) 68%,
+            transparent 75%
+        );
+
+    box-shadow:
+        0 0 18px
+        rgba(170,100,255,.65),
+
+        0 0 45px
+        rgba(100,60,210,.45),
+
+        0 0 100px
+        rgba(80,40,180,.2);
+
+    animation:
+        blackHoleAppear 1s ease forwards,
+        blackHoleFloat 5s ease-in-out 1s infinite;
+
+    z-index: 2;
+}
+
+
+.completion-icon::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: -14px;
+
+    border-radius: 50%;
+
+    border:
+        5px solid
+        rgba(170,100,255,.15);
+
+    border-top-color:
+        rgba(230,190,255,.85);
+
+    border-right-color:
+        rgba(120,70,255,.65);
+
+    transform:
+        rotate(-25deg);
+
+    box-shadow:
+        0 0 20px
+        rgba(170,100,255,.55);
+
+    animation:
+        accretionSpin 3s linear infinite;
+}
+
+
+.completion-icon::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: -28px;
+
+    border-radius: 50%;
+
+    border:
+        1px dashed
+        rgba(200,170,255,.18);
+
+    animation:
+        outerSpin 12s linear infinite;
+}
+
+
+@keyframes blackHoleAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            scale(.15);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            scale(1);
+    }
+}
+
+
+@keyframes blackHoleFloat {
+
+    0%,100% {
+
+        transform:
+            translateY(0);
+    }
+
+    50% {
+
+        transform:
+            translateY(-8px);
+    }
+}
+
+
+@keyframes accretionSpin {
+
+    from {
+
+        transform:
+            rotate(0deg);
+    }
+
+    to {
+
+        transform:
+            rotate(360deg);
+    }
+}
+
+
+@keyframes outerSpin {
+
+    from {
+
+        transform:
+            rotate(360deg);
+    }
+
+    to {
+
+        transform:
+            rotate(0deg);
+    }
+}
+
+
+/* =========================================
+   RESULT TEXT
+========================================= */
+
+.result-label {
+
+    position: relative;
+
+    z-index: 2;
+
+    margin-bottom: 18px;
+
+    color:
+        rgba(190,165,255,.65);
+
+    font-size: 10px;
+
+    letter-spacing: 6px;
+
+    animation:
+        fadeUp .8s ease .2s both;
+}
+
+
+.result-title {
+
+    position: relative;
+
+    z-index: 2;
+
+    margin-bottom: 12px;
+
+    font-size:
+        clamp(32px,7vw,65px);
+
+    letter-spacing: 5px;
+
+    animation:
+        titleAppear 1s ease .35s both;
+}
+
+
+@keyframes titleAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(20px);
+
+        letter-spacing: 15px;
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+        letter-spacing: 5px;
+    }
+}
+
+
+.score {
+
+    position: relative;
+
+    z-index: 2;
+
+    margin-bottom: 22px;
+
+    font-size: 25px;
+
+    font-weight: bold;
+
+    letter-spacing: 3px;
+
+    animation:
+        fadeUp .8s ease .55s both;
+}
+
+
+.result-text {
+
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 650px;
+
+    margin:
+        0 auto 30px;
+
+    color:
+        rgba(255,255,255,.5);
+
+    font-size: 13px;
+
+    line-height: 1.8;
+
+    animation:
+        fadeUp .8s ease .7s both;
+}
+
+
+@keyframes fadeUp {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(15px);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* =========================================
+   SCORE BAR
+========================================= */
+
+.final-score-bar {
+
+    position: relative;
+
+    z-index: 2;
+
+    width:
+        min(500px,90%);
+
+    height: 3px;
+
+    margin:
+        0 auto 35px;
+
+    background:
+        rgba(255,255,255,.08);
+
+    overflow: hidden;
+
+    animation:
+        fadeUp .8s ease .85s both;
+}
+
+
+.final-score-fill {
+
+    width: 0%;
+
+    height: 100%;
+
+    background: white;
+
+    box-shadow:
+        0 0 12px
+        rgba(190,160,255,.9);
+
+    transition:
+        width 1.8s cubic-bezier(.2,.8,.2,1);
+}
+
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.result-buttons {
+
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+
+    animation:
+        fadeUp .8s ease 1s both;
+}
+
+
+.result-button {
+
+    padding:
+        13px 23px;
+
+    color:
+        rgba(255,255,255,.75);
+
+    border:
+        1px solid
+        rgba(255,255,255,.2);
+
+    background:
+        transparent;
+
+    text-decoration: none;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    cursor: pointer;
+
+    transition:
+        .3s ease;
+}
+
+
+.result-button:hover {
+
+    color: #010106;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-3px);
+}
+
+
+/* =========================================
+   PARTICLES
+========================================= */
+
+.final-particle {
+
+    position: absolute;
+
+    width: 3px;
+
+    height: 3px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    pointer-events: none;
+
+    opacity: 0;
+
+    animation:
+        particleFly 2.5s ease-out forwards;
+}
+
+
+@keyframes particleFly {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            translate(0,0)
+            scale(.2);
+    }
+
+    15% {
+
+        opacity: 1;
+
+        transform:
+            translate(0,0)
+            scale(1);
+    }
+
+    100% {
+
+        opacity: 0;
+
+        transform:
+            translate(
+                var(--x),
+                var(--y)
+            )
+            scale(.2);
+    }
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.footer {
+
+    position: relative;
+
+    z-index: 5;
+
+    margin-top: 35px;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,.25);
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:600px) {
+
+    .blackholes-quiz-page {
+
+        padding:
+            50px 15px 80px;
+    }
+
+    .quiz-container {
+
+        padding: 25px;
+    }
+
+    .answers {
+
+        grid-template-columns:
+            1fr;
+    }
+
+    .question {
+
+        font-size: 20px;
+    }
+
+    .completion-icon {
+
+        width: 85px;
+
+        height: 85px;
+    }
+
+    .result {
+
+        min-height: 550px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<section class="blackholes-quiz-page">
+
+
+<div class="stars"></div>
+
+<div class="stars-small"></div>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<div class="header">
+
+
+<a
+href="https://sites.google.com/view/kosmolearn"
+class="return">
+
+← RETURN TO HOME
+
+</a>
+
+
+<div class="label">
+
+ORBONIX · SPACE KNOWLEDGE
+
+</div>
+
+
+<h1>
+
+BLACK HOLES QUIZ
+
+</h1>
+
+
+<div class="subtitle">
+
+30 questions about black holes — from basic
+concepts to event horizons, accretion disks,
+relativity, gravitational waves and the most
+extreme black holes in the Universe.
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     QUIZ
+========================================= -->
+
+<div class="quiz-container">
+
+
+<div id="quiz">
+
+
+<div class="quiz-top">
+
+<div
+class="question-number"
+id="questionNumber">
+
+QUESTION 01 / 30
+
+</div>
+
+
+<div
+class="difficulty"
+id="difficulty">
+
+EASY
+
+</div>
+
+</div>
+
+
+<div class="progress">
+
+<div
+class="progress-bar"
+id="progressBar">
+</div>
+
+</div>
+
+
+<div
+class="question"
+id="question">
+
+Loading question...
+
+</div>
+
+
+<div
+class="answers"
+id="answers">
+</div>
+
+
+<div class="next-area">
+
+<button
+class="next-button"
+id="nextButton"
+onclick="nextQuestion()">
+
+NEXT QUESTION →
+
+</button>
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     RESULT
+========================================= -->
+
+<div
+class="result"
+id="result">
+
+
+<div class="completion-icon"></div>
+
+
+<div class="result-label">
+
+SINGULARITY MISSION COMPLETE
+
+</div>
+
+
+<div
+class="result-title"
+id="resultTitle">
+
+BLACK HOLE EXPLORER
+
+</div>
+
+
+<div
+class="score"
+id="score">
+
+0 / 30
+
+</div>
+
+
+<div class="final-score-bar">
+
+<div
+class="final-score-fill"
+id="finalScoreFill">
+</div>
+
+</div>
+
+
+<div
+class="result-text"
+id="resultText">
+
+You have completed your journey
+through the physics of black holes.
+
+</div>
+
+
+<div class="result-buttons">
+
+
+<button
+class="result-button"
+onclick="restartQuiz()">
+
+↻ RESTART QUIZ
+
+</button>
+
+
+<a
+href="YOUR-QUIZ-SELECT-PAGE-LINK"
+class="result-button">
+
+← QUIZ SELECT
+
+</a>
+
+
+<a
+href="https://sites.google.com/view/kosmolearn"
+class="result-button">
+
+RETURN TO HOME
+
+</a>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+<div class="footer">
+
+ORBONIX · BLACK HOLES QUIZ · SPACE KNOWLEDGE
+
+</div>
+
+
+</section>
+
+
+<script>
+
+
+/* =========================================
+   QUESTIONS
+========================================= */
+
+const questions = [
+
+/* =========================================
+   EASY 1-10
+========================================= */
+
+{
+question:
+"What is a black hole?",
+
+answers:
+[
+"A region of spacetime where gravity is so strong that nothing inside the event horizon can escape",
+"A giant empty planet",
+"A star made entirely of dark matter",
+"A hole in the surface of a galaxy"
+],
+
+correct: 0,
+difficulty: "EASY"
+},
+
+
+{
+question:
+"What is the event horizon?",
+
+answers:
+[
+"The boundary beyond which escape from a black hole is impossible",
+"The center of the black hole",
+"A ring of planets",
+"The outer edge of a galaxy"
+],
+
+correct: 0,
+difficulty: "EASY"
+},
+
+
+{
+question:
+"What is believed to be at the center of a classical black hole?",
+
+answers:
+[
+"A singularity",
+"A planet",
+"A normal star",
+"A nebula"
+],
+
+correct: 0,
+difficulty: "EASY"
+},
+
+
+{
+question:
+"Can light escape from inside the event horizon?",
+
+answers:
+[
+"No",
+"Yes, if it travels fast enough",
+"Only infrared light can escape",
+"Only radio waves can escape"
+],
+
+correct: 0,
+difficulty: "EASY"
+},
+
+
+{
+question:
+"What can form a stellar-mass black hole?",
+
+answers:
+[
+"The collapse of the core of a sufficiently massive star",
+"The collision of two planets",
+"The freezing of a nebula",
+"The explosion of a comet"
+],
+
+correct: 0,
+difficulty: "EASY"
+},
+
+
+{
+question:
+"What is Sagittarius A*?",
+
+answers:
+[
+"The supermassive black hole at the center of the Milky Way",
+"A neutron star near Earth",
+"A galaxy in Andromeda",
+"A quasar"
+],
+
+correct: 0,
+difficulty: "EASY"
+},
+
+
+{
+question:
+"What type of black hole is Sagittarius A*?",
+
+answers:
+[
+"Supermassive black hole",
+"Stellar-mass black hole",
+"Primordial black hole",
+"Micro black hole"
+],
+
+correct: 0,
+difficulty: "EASY"
+},
+
+
+{
+question:
+"What is an accretion disk?",
+
+answers:
+[
+"Hot material orbiting and falling toward a compact object",
+"A ring of planets around a star",
+"A layer inside a black hole",
+"A dark cloud made only of dust"
+],
+
+correct: 0,
+difficulty: "EASY"
+},
+
+
+{
+question:
+"Why can material around a black hole become extremely hot?",
+
+answers:
+[
+"Friction and gravitational energy release heat the infalling material",
+"Black holes produce normal sunlight",
+"The event horizon is radioactive",
+"Space itself burns"
+],
+
+correct: 0,
+difficulty: "EASY"
+},
+
+
+{
+question:
+"Which object can orbit a black hole without necessarily falling into it?",
+
+answers:
+[
+"A star",
+"Nothing",
+"Only photons",
+"Only planets made of gas"
+],
+
+correct: 0,
+difficulty: "EASY"
+},
+
+
+/* =========================================
+   MEDIUM 11-20
+========================================= */
+
+{
+question:
+"What causes the event horizon of a black hole to exist?",
+
+answers:
+[
+"The curvature of spacetime becomes strong enough that all future-directed paths remain inside",
+"A black hole is surrounded by a solid surface",
+"The black hole absorbs only visible light",
+"Dark matter forms a physical wall"
+],
+
+correct: 0,
+difficulty: "MEDIUM"
+},
+
+
+{
+question:
+"What is the Schwarzschild radius?",
+
+answers:
+[
+"The radius of the event horizon of a non-rotating, uncharged black hole",
+"The radius of the entire galaxy",
+"The distance between two black holes",
+"The radius of a neutron star"
+],
+
+correct: 0,
+difficulty: "MEDIUM"
+},
+
+
+{
+question:
+"What happens to clocks near a black hole, according to an observer far away?",
+
+answers:
+[
+"Time appears to pass more slowly near the strong gravitational field",
+"Time stops everywhere in the Universe",
+"Time runs infinitely faster",
+"Clocks become completely unaffected"
+],
+
+correct: 0,
+difficulty: "MEDIUM"
+},
+
+
+{
+question:
+"What is gravitational time dilation?",
+
+answers:
+[
+"The difference in elapsed time between observers in different gravitational fields",
+"The slowing of light inside a star",
+"The rotation of a galaxy",
+"The expansion of the Universe"
+],
+
+correct: 0,
+difficulty: "MEDIUM"
+},
+
+
+{
+question:
+"What is a rotating black hole called?",
+
+answers:
+[
+"A Kerr black hole",
+"A Newton black hole",
+"A Hubble black hole",
+"A Hawking star"
+],
+
+correct: 0,
+difficulty: "MEDIUM"
+},
+
+
+{
+question:
+"What is the ergosphere of a rotating black hole?",
+
+answers:
+[
+"A region outside the event horizon where spacetime is dragged by the black hole's rotation",
+"The center of the singularity",
+"A cloud of frozen gas",
+"The black hole's accretion disk"
+],
+
+correct: 0,
+difficulty: "MEDIUM"
+},
+
+
+{
+question:
+"What is frame dragging?",
+
+answers:
+[
+"The rotation of a massive object dragging nearby spacetime",
+"The movement of stars between galaxies",
+"The slowing of light by dust",
+"The expansion of space around a planet"
+],
+
+correct: 0,
+difficulty: "MEDIUM"
+},
+
+
+{
+question:
+"What happens when two black holes merge?",
+
+answers:
+[
+"They form a larger black hole and release gravitational waves",
+"They become two neutron stars",
+"They disappear completely",
+"They turn into ordinary stars"
+],
+
+correct: 0,
+difficulty: "MEDIUM"
+},
+
+
+{
+question:
+"What are gravitational waves?",
+
+answers:
+[
+"Ripples in spacetime produced by accelerating massive objects",
+"Sound waves traveling through space",
+"Radio waves from stars",
+"Waves inside black holes"
+],
+
+correct: 0,
+difficulty: "MEDIUM"
+},
+
+
+{
+question:
+"What was LIGO's historic 2015 detection?",
+
+answers:
+[
+"Gravitational waves from a binary black hole merger",
+"The first image of the Milky Way",
+"A signal from an alien civilization",
+"A solar flare"
+],
+
+correct: 0,
+difficulty: "MEDIUM"
+},
+
+
+/* =========================================
+   HARD 21-30
+========================================= */
+
+{
+question:
+"What is Hawking radiation?",
+
+answers:
+[
+"Quantum effects near a black hole horizon that can cause black holes to emit thermal radiation",
+"Radio signals emitted by stars",
+"Radiation produced by the singularity as a normal star",
+"Light reflected from the event horizon"
+],
+
+correct: 0,
+difficulty: "HARD"
+},
+
+
+{
+question:
+"What happens to a black hole's mass if it loses energy through Hawking radiation?",
+
+answers:
+[
+"It decreases",
+"It increases",
+"It stays exactly constant",
+"It immediately becomes a neutron star"
+],
+
+correct: 0,
+difficulty: "HARD"
+},
+
+
+{
+question:
+"Which black holes have the strongest tidal forces near their horizons for a given mass scale?",
+
+answers:
+[
+"Smaller black holes",
+"Supermassive black holes",
+"All black holes have identical tidal forces",
+"Only primordial black holes"
+],
+
+correct: 0,
+difficulty: "HARD"
+},
+
+
+{
+question:
+"What is the black hole information paradox about?",
+
+answers:
+[
+"The apparent conflict between quantum mechanics and the idea that information could be lost in black hole evaporation",
+"How black holes can become visible",
+"Why galaxies contain stars",
+"Why gravity exists"
+],
+
+correct: 0,
+difficulty: "HARD"
+},
+
+
+{
+question:
+"What powers many quasars?",
+
+answers:
+[
+"Rapid accretion of matter onto supermassive black holes",
+"Nuclear fusion inside planets",
+"Collisions between asteroids",
+"Supernovae occurring every second"
+],
+
+correct: 0,
+difficulty: "HARD"
+},
+
+
+{
+question:
+"What is a relativistic jet from an active black hole?",
+
+answers:
+[
+"A narrow, powerful outflow of particles moving at speeds close to the speed of light",
+"A stream of planets falling into the black hole",
+"A beam of ordinary sunlight",
+"A gravitational wave"
+],
+
+correct: 0,
+difficulty: "HARD"
+},
+
+
+{
+question:
+"Why can a black hole appear bright even though the black hole itself emits no ordinary light from inside its event horizon?",
+
+answers:
+[
+"Hot matter and magnetic processes outside the event horizon can emit enormous amounts of radiation",
+"The event horizon glows like a star",
+"The singularity produces visible light",
+"Black holes are actually made of photons"
+],
+
+correct: 0,
+difficulty: "HARD"
+},
+
+
+{
+question:
+"What is the photon sphere around a non-rotating black hole?",
+
+answers:
+[
+"A region where photons can travel on circular orbits",
+"The outer surface of the black hole",
+"A cloud of gamma rays",
+"The location of the singularity"
+],
+
+correct: 0,
+difficulty: "HARD"
+},
+
+
+{
+question:
+"What is the Event Horizon Telescope famous for?",
+
+answers:
+[
+"Producing horizon-scale images of black hole environments",
+"Detecting gravitational waves directly",
+"Photographing individual planets in other galaxies",
+"Discovering the first neutron star"
+],
+
+correct: 0,
+difficulty: "HARD"
+},
+
+
+{
+question:
+"What is the most important difference between a black hole and a neutron star?",
+
+answers:
+[
+"A black hole has an event horizon, while a neutron star has a physical surface",
+"Neutron stars have no gravity",
+"Black holes are made of ordinary gas",
+"Neutron stars are larger than galaxies"
+],
+
+correct: 0,
+difficulty: "HARD"
+}
+
+];
+
+
+/* =========================================
+   VARIABLES
+========================================= */
+
+let currentQuestion = 0;
+
+let score = 0;
+
+let answered = false;
+
+
+/* =========================================
+   SHUFFLE ANSWERS
+========================================= */
+
+function shuffleAnswers(question) {
+
+    const answerObjects =
+        question.answers.map(
+            (answer, index) => {
+
+                return {
+
+                    text: answer,
+
+                    correct:
+                        index === question.correct
+
+                };
+
+            }
+        );
+
+
+    for (
+        let i = answerObjects.length - 1;
+        i > 0;
+        i--
+    ) {
+
+        const j =
+            Math.floor(
+                Math.random() * (i + 1)
+            );
+
+
+        [
+            answerObjects[i],
+            answerObjects[j]
+        ] =
+        [
+            answerObjects[j],
+            answerObjects[i]
+        ];
+
+    }
+
+
+    return answerObjects;
+}
+
+
+/* =========================================
+   LOAD QUESTION
+========================================= */
+
+function loadQuestion() {
+
+    answered = false;
+
+
+    const q =
+        questions[currentQuestion];
+
+
+    document.getElementById(
+        "questionNumber"
+    ).textContent =
+        `QUESTION ${
+            String(currentQuestion + 1)
+            .padStart(2,"0")
+        } / ${questions.length}`;
+
+
+    document.getElementById(
+        "difficulty"
+    ).textContent =
+        q.difficulty;
+
+
+    document.getElementById(
+        "question"
+    ).textContent =
+        q.question;
+
+
+    document.getElementById(
+        "progressBar"
+    ).style.width =
+        `${
+            (currentQuestion /
+            questions.length) * 100
+        }%`;
+
+
+    const answersContainer =
+        document.getElementById(
+            "answers"
+        );
+
+
+    answersContainer.innerHTML = "";
+
+
+    const shuffled =
+        shuffleAnswers(q);
+
+
+    shuffled.forEach(
+        answerObject => {
+
+            const button =
+                document.createElement(
+                    "button"
+                );
+
+
+            button.className =
+                "answer";
+
+
+            button.textContent =
+                answerObject.text;
+
+
+            button.dataset.correct =
+                answerObject.correct;
+
+
+            button.onclick =
+                function() {
+
+                    selectAnswer(
+                        answerObject.correct,
+                        button
+                    );
+
+                };
+
+
+            answersContainer.appendChild(
+                button
+            );
+
+        }
+    );
+
+
+    document.getElementById(
+        "nextButton"
+    ).style.display =
+        "none";
+}
+
+
+/* =========================================
+   ANSWER
+========================================= */
+
+function selectAnswer(
+    isCorrect,
+    selectedButton
+) {
+
+    if (answered)
+        return;
+
+
+    answered = true;
+
+
+    const buttons =
+        document.querySelectorAll(
+            ".answer"
+        );
+
+
+    buttons.forEach(
+        button => {
+
+            button.classList.add(
+                "disabled"
+            );
+
+        }
+    );
+
+
+    if (isCorrect) {
+
+        selectedButton.classList.add(
+            "correct"
+        );
+
+        score++;
+
+    }
+
+    else {
+
+        selectedButton.classList.add(
+            "wrong"
+        );
+
+
+        buttons.forEach(
+            button => {
+
+                if (
+                    button.dataset.correct
+                    === "true"
+                ) {
+
+                    button.classList.add(
+                        "correct"
+                    );
+
+                }
+
+            }
+        );
+
+    }
+
+
+    document.getElementById(
+        "nextButton"
+    ).style.display =
+        "inline-flex";
+}
+
+
+/* =========================================
+   NEXT QUESTION
+========================================= */
+
+function nextQuestion() {
+
+    currentQuestion++;
+
+
+    if (
+        currentQuestion >=
+        questions.length
+    ) {
+
+        showResult();
+
+        return;
+
+    }
+
+
+    loadQuestion();
+}
+
+
+/* =========================================
+   RESULT
+========================================= */
+
+function showResult() {
+
+    document.getElementById(
+        "quiz"
+    ).style.display =
+        "none";
+
+
+    const result =
+        document.getElementById(
+            "result"
+        );
+
+
+    result.style.display =
+        "block";
+
+
+    document.getElementById(
+        "score"
+    ).textContent =
+        "0 / 30";
+
+
+    let title = "";
+
+    let text = "";
+
+
+    if (score <= 10) {
+
+        title =
+            "BLACK HOLE BEGINNER";
+
+        text =
+            "Your journey into extreme gravity has begun. There is an entire Universe of black hole physics still waiting to be explored.";
+
+    }
+
+    else if (score <= 17) {
+
+        title =
+            "BLACK HOLE EXPLORER";
+
+        text =
+            "A solid result. You understand the basic concepts of event horizons, accretion disks and black holes.";
+
+    }
+
+    else if (score <= 23) {
+
+        title =
+            "GRAVITY ASTRONOMER";
+
+        text =
+            "Very strong performance. You understand relativity, rotating black holes, gravitational waves and black hole mergers.";
+
+    }
+
+    else if (score <= 27) {
+
+        title =
+            "BLACK HOLE EXPERT";
+
+        text =
+            "Excellent. You handled advanced concepts involving Hawking radiation, quasars, photon spheres and relativistic jets.";
+
+    }
+
+    else {
+
+        title =
+            "SINGULARITY MASTER";
+
+        text =
+            "Outstanding. Your knowledge reaches from basic black hole physics to some of the deepest problems in modern theoretical physics.";
+
+    }
+
+
+    document.getElementById(
+        "resultTitle"
+    ).textContent =
+        title;
+
+
+    document.getElementById(
+        "resultText"
+    ).textContent =
+        text;
+
+
+    animateScore();
+
+
+    setTimeout(
+        function() {
+
+            document.getElementById(
+                "finalScoreFill"
+            ).style.width =
+                `${
+                    (score /
+                    questions.length) * 100
+                }%`;
+
+        },
+        600
+    );
+
+
+    createParticles();
+
+}
+
+
+/* =========================================
+   SCORE ANIMATION
+========================================= */
+
+function animateScore() {
+
+    let value = 0;
+
+
+    const scoreElement =
+        document.getElementById(
+            "score"
+        );
+
+
+    const duration = 1600;
+
+
+    const start =
+        performance.now();
+
+
+    function update(now) {
+
+        const progress =
+            Math.min(
+                (now - start) /
+                duration,
+                1
+            );
+
+
+        const eased =
+            1 -
+            Math.pow(
+                1 - progress,
+                3
+            );
+
+
+        value =
+            Math.floor(
+                eased * score
+            );
+
+
+        scoreElement.textContent =
+            `${value} / ${questions.length}`;
+
+
+        if (progress < 1) {
+
+            requestAnimationFrame(
+                update
+            );
+
+        }
+
+        else {
+
+            scoreElement.textContent =
+                `${score} / ${questions.length}`;
+
+        }
+
+    }
+
+
+    requestAnimationFrame(
+        update
+    );
+
+}
+
+
+/* =========================================
+   PARTICLES
+========================================= */
+
+function createParticles() {
+
+    const result =
+        document.getElementById(
+            "result"
+        );
+
+
+    for (
+        let i = 0;
+        i < 100;
+        i++
+    ) {
+
+        const particle =
+            document.createElement(
+                "div"
+            );
+
+
+        particle.className =
+            "final-particle";
+
+
+        particle.style.left =
+            Math.random() * 100 + "%";
+
+
+        particle.style.top =
+            40 +
+            Math.random() * 20 +
+            "%";
+
+
+        particle.style.setProperty(
+            "--x",
+            (
+                Math.random() * 650 -
+                325
+            ) + "px"
+        );
+
+
+        particle.style.setProperty(
+            "--y",
+            (
+                Math.random() * 650 -
+                325
+            ) + "px"
+        );
+
+
+        particle.style.animationDelay =
+            Math.random() * .8 +
+            "s";
+
+
+        result.appendChild(
+            particle
+        );
+
+
+        setTimeout(
+            function() {
+
+                particle.remove();
+
+            },
+            3500
+        );
+
+    }
+
+}
+
+
+/* =========================================
+   RESTART
+========================================= */
+
+function restartQuiz() {
+
+    currentQuestion = 0;
+
+    score = 0;
+
+
+    document.getElementById(
+        "quiz"
+    ).style.display =
+        "block";
+
+
+    document.getElementById(
+        "result"
+    ).style.display =
+        "none";
+
+
+    document.getElementById(
+        "finalScoreFill"
+    ).style.width =
+        "0%";
+
+
+    loadQuestion();
+}
+
+
+/* =========================================
+   STAR PARALLAX
+========================================= */
+
+const stars =
+document.querySelector(".stars");
+
+
+const smallStars =
+document.querySelector(".stars-small");
+
+
+document.addEventListener(
+"mousemove",
+
+function(event) {
+
+    const x =
+        event.clientX /
+        window.innerWidth -
+        0.5;
+
+
+    const y =
+        event.clientY /
+        window.innerHeight -
+        0.5;
+
+
+    stars.style.transform =
+        `translate(
+            ${x * 20}px,
+            ${y * 20}px
+        )`;
+
+
+    smallStars.style.transform =
+        `translate(
+            ${x * -12}px,
+            ${y * -12}px
+        )`;
+
+});
+
+
+/* =========================================
+   START
+========================================= */
+
+loadQuestion();
+
+</script>
+
+
+</body>
+
+</html>
