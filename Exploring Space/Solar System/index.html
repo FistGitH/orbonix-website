@@ -1,1 +1,3199 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Solar System | ORBONIX</title>
+
+<style>
+
+/* =========================================
+   RESET
+========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: #010208;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   PAGE
+========================================= */
+
+.solar-page {
+
+    position: relative;
+
+    min-height: 100vh;
+
+    padding:
+        65px 20px 100px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 10%,
+            rgba(90,120,255,.16),
+            transparent 42%
+        ),
+        radial-gradient(
+            circle at 15% 65%,
+            rgba(70,90,220,.07),
+            transparent 35%
+        ),
+        #010208;
+}
+
+
+/* =========================================
+   STARS
+========================================= */
+
+.stars,
+.stars-small {
+
+    position: fixed;
+
+    inset: -25%;
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+.stars {
+
+    opacity: .4;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.9) 1px,
+            transparent 1px
+        );
+
+    background-size: 75px 75px;
+
+    transition:
+        transform 1.5s ease;
+}
+
+.stars-small {
+
+    opacity: .18;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.8) 1px,
+            transparent 1px
+        );
+
+    background-size: 32px 32px;
+
+    transition:
+        transform 2s ease;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header {
+
+    position: relative;
+
+    z-index: 5;
+
+    max-width: 950px;
+
+    margin: auto;
+
+    text-align: center;
+}
+
+
+.return {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding:
+        12px 20px;
+
+    margin-bottom: 40px;
+
+    color:
+        rgba(255,255,255,.7);
+
+    border:
+        1px solid
+        rgba(255,255,255,.22);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    transition: .35s ease;
+}
+
+
+.return:hover {
+
+    color: #010208;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-4px);
+}
+
+
+.label {
+
+    margin-bottom: 18px;
+
+    color:
+        rgba(170,190,255,.55);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+
+h1 {
+
+    margin: 0;
+
+    font-size:
+        clamp(43px,8vw,85px);
+
+    line-height: .9;
+
+    letter-spacing: 6px;
+}
+
+
+.subtitle {
+
+    max-width: 760px;
+
+    margin:
+        28px auto 0;
+
+    color:
+        rgba(255,255,255,.52);
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   QUICK NAVIGATION
+========================================= */
+
+.quick-nav {
+
+    position: relative;
+
+    z-index: 5;
+
+    width:
+        min(1050px,100%);
+
+    margin:
+        55px auto 0;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap: 10px;
+}
+
+
+.quick-button {
+
+    min-height: 70px;
+
+    padding:
+        15px 10px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 7px;
+
+    color:
+        rgba(255,255,255,.68);
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    background:
+        rgba(255,255,255,.025);
+
+    text-decoration: none;
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+
+    transition:
+        .35s ease;
+}
+
+
+.quick-icon {
+
+    font-size: 20px;
+
+    line-height: 1;
+}
+
+
+.quick-button:hover {
+
+    color: white;
+
+    background:
+        rgba(100,130,255,.08);
+
+    border-color:
+        rgba(150,180,255,.45);
+
+    transform:
+        translateY(-5px);
+}
+
+
+/* =========================================
+   MAIN
+========================================= */
+
+.system-section {
+
+    position: relative;
+
+    z-index: 5;
+
+    width:
+        min(1100px,100%);
+
+    margin:
+        80px auto 0;
+}
+
+
+/* =========================================
+   SECTION TITLE
+========================================= */
+
+.section-title {
+
+    margin:
+        70px 0 30px;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,.78);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+
+/* =========================================
+   SUN
+========================================= */
+
+.sun-card {
+
+    position: relative;
+
+    overflow: hidden;
+
+    min-height: 500px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255,160,50,.12),
+            transparent 60%
+        );
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+.sun-photo {
+
+    width:
+        min(330px,70vw);
+
+    height:
+        min(330px,70vw);
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 35px
+        rgba(255,170,50,.75),
+
+        0 0 90px
+        rgba(255,100,20,.4),
+
+        0 0 160px
+        rgba(255,70,10,.18);
+
+    animation:
+        sunFloat 5s ease-in-out infinite;
+}
+
+
+@keyframes sunFloat {
+
+    0%,100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.035);
+    }
+}
+
+
+.sun-caption {
+
+    position: absolute;
+
+    bottom: 25px;
+
+    left: 20px;
+
+    right: 20px;
+
+    text-align: center;
+}
+
+
+.sun-caption h2 {
+
+    margin:
+        0 0 8px;
+
+    font-size: 28px;
+
+    letter-spacing: 5px;
+}
+
+
+.sun-caption p {
+
+    max-width: 650px;
+
+    margin: auto;
+
+    color:
+        rgba(255,255,255,.45);
+
+    font-size: 11px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   BUTTON
+========================================= */
+
+.explore-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-top: 18px;
+
+    padding:
+        13px 23px;
+
+    color:
+        rgba(255,255,255,.72);
+
+    border:
+        1px solid
+        rgba(255,255,255,.2);
+
+    background:
+        transparent;
+
+    text-decoration: none;
+
+    font-size: 8px;
+
+    letter-spacing: 3px;
+
+    transition:
+        .35s ease;
+}
+
+
+.explore-button:hover {
+
+    color: #010208;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-3px);
+}
+
+
+/* =========================================
+   PLANETS
+========================================= */
+
+.planets {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap: 15px;
+}
+
+
+.planet-card {
+
+    position: relative;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.025);
+
+    transition:
+        .45s ease;
+}
+
+
+.planet-card:hover {
+
+    transform:
+        translateY(-8px);
+
+    border-color:
+        rgba(150,180,255,.42);
+
+    box-shadow:
+        0 20px 50px
+        rgba(30,50,150,.15);
+}
+
+
+.planet-photo {
+
+    width: 100%;
+
+    height: 220px;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition:
+        .6s ease;
+}
+
+
+.planet-card:hover .planet-photo {
+
+    transform:
+        scale(1.08);
+}
+
+
+.planet-content {
+
+    padding:
+        22px 20px 24px;
+}
+
+
+.planet-number {
+
+    color:
+        rgba(170,190,255,.45);
+
+    font-size: 8px;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 8px;
+}
+
+
+.planet-name {
+
+    margin:
+        0 0 7px;
+
+    font-size: 20px;
+
+    letter-spacing: 3px;
+}
+
+
+.planet-type {
+
+    color:
+        rgba(255,255,255,.38);
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 13px;
+}
+
+
+.planet-description {
+
+    color:
+        rgba(255,255,255,.47);
+
+    font-size: 11px;
+
+    line-height: 1.75;
+
+    min-height: 75px;
+}
+
+
+/* =========================================
+   DWARF PLANETS
+========================================= */
+
+.dwarf-section {
+
+    padding:
+        55px 25px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(100,120,255,.09),
+            transparent 65%
+        );
+
+    text-align: center;
+
+    transition:
+        .4s ease;
+}
+
+
+.dwarf-section:hover {
+
+    border-color:
+        rgba(150,180,255,.4);
+
+    transform:
+        translateY(-5px);
+
+    box-shadow:
+        0 25px 70px
+        rgba(40,60,180,.12);
+}
+
+
+.dwarf-symbol {
+
+    font-size: 42px;
+
+    margin-bottom: 15px;
+
+    opacity: .7;
+}
+
+
+.dwarf-title {
+
+    margin: 0 0 12px;
+
+    font-size: 28px;
+
+    letter-spacing: 5px;
+}
+
+
+.dwarf-description {
+
+    max-width: 650px;
+
+    margin: auto;
+
+    color:
+        rgba(255,255,255,.45);
+
+    font-size: 11px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   PLANET X
+========================================= */
+
+.planet-x {
+
+    min-height: 360px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(80,90,255,.12),
+            transparent 65%
+        );
+}
+
+
+.planet-x-inner {
+
+    padding: 30px;
+
+    max-width: 700px;
+}
+
+
+.planet-x-symbol {
+
+    font-size: 55px;
+
+    margin-bottom: 18px;
+
+    opacity: .7;
+
+    animation:
+        planetXFloat 4s ease-in-out infinite;
+}
+
+
+@keyframes planetXFloat {
+
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+
+.planet-x h2 {
+
+    margin:
+        0 0 12px;
+
+    font-size: 30px;
+
+    letter-spacing: 6px;
+}
+
+
+.planet-x p {
+
+    color:
+        rgba(255,255,255,.45);
+
+    font-size: 11px;
+
+    line-height: 1.9;
+}
+
+
+.warning {
+
+    display: inline-block;
+
+    margin-top: 15px;
+
+    padding:
+        7px 12px;
+
+    border:
+        1px solid
+        rgba(255,190,80,.25);
+
+    color:
+        rgba(255,210,120,.65);
+
+    font-size: 7px;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================
+   SIMULATION GRID
+========================================= */
+
+.simulation-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap: 15px;
+}
+
+
+.sim-card {
+
+    position: relative;
+
+    min-height: 380px;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        #02030a;
+
+    transition:
+        .45s ease;
+}
+
+
+.sim-card:hover {
+
+    transform:
+        translateY(-7px);
+
+    border-color:
+        rgba(150,180,255,.45);
+
+    box-shadow:
+        0 25px 70px
+        rgba(30,50,150,.2);
+}
+
+
+.sim-card canvas {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    display: block;
+}
+
+
+.sim-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    padding: 25px;
+
+    pointer-events: none;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: flex-end;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(0,0,0,.9),
+            rgba(0,0,0,.1) 60%,
+            transparent
+        );
+}
+
+
+/* Buttons must remain clickable */
+
+.sim-overlay .explore-button {
+
+    pointer-events: auto;
+}
+
+
+.sim-label {
+
+    color:
+        rgba(170,190,255,.55);
+
+    font-size: 8px;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 8px;
+}
+
+
+.sim-title {
+
+    margin:
+        0 0 8px;
+
+    font-size: 24px;
+
+    letter-spacing: 4px;
+}
+
+
+.sim-text {
+
+    margin: 0;
+
+    color:
+        rgba(255,255,255,.5);
+
+    font-size: 10px;
+
+    line-height: 1.7;
+
+    max-width: 520px;
+}
+
+
+/* =========================================
+   OORT CLOUD
+========================================= */
+
+.oort-card {
+
+    grid-column:
+        1 / -1;
+
+    min-height: 500px;
+}
+
+
+/* =========================================
+   INFO
+========================================= */
+
+.info-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 15px;
+}
+
+
+.info-card {
+
+    min-height: 210px;
+
+    padding:
+        30px 25px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.025);
+
+    transition:
+        .4s ease;
+}
+
+
+.info-card:hover {
+
+    transform:
+        translateY(-6px);
+
+    border-color:
+        rgba(150,180,255,.35);
+}
+
+
+.info-icon {
+
+    font-size: 27px;
+
+    margin-bottom: 18px;
+}
+
+
+.info-card h3 {
+
+    margin:
+        0 0 12px;
+
+    font-size: 14px;
+
+    letter-spacing: 2px;
+}
+
+
+.info-card p {
+
+    margin: 0;
+
+    color:
+        rgba(255,255,255,.44);
+
+    font-size: 11px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   SCALE
+========================================= */
+
+.scale {
+
+    margin-top: 75px;
+
+    padding:
+        50px 30px;
+
+    text-align: center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(90,120,255,.08),
+            transparent 65%
+        );
+}
+
+
+.scale h2 {
+
+    margin:
+        0 0 15px;
+
+    font-size: 24px;
+
+    letter-spacing: 4px;
+}
+
+
+.scale p {
+
+    max-width: 700px;
+
+    margin: auto;
+
+    color:
+        rgba(255,255,255,.45);
+
+    font-size: 12px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   FINAL NAVIGATION
+========================================= */
+
+.final-navigation {
+
+    position: relative;
+
+    z-index: 5;
+
+    width:
+        min(1000px,100%);
+
+    margin:
+        70px auto 0;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap: 12px;
+}
+
+
+.final-button {
+
+    min-height: 60px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding:
+        12px;
+
+    color:
+        rgba(255,255,255,.68);
+
+    border:
+        1px solid
+        rgba(255,255,255,.18);
+
+    background:
+        transparent;
+
+    text-decoration: none;
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+
+    text-align: center;
+
+    transition:
+        .35s ease;
+}
+
+
+.final-button:hover {
+
+    color: #010208;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-4px);
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.footer {
+
+    position: relative;
+
+    z-index: 5;
+
+    margin-top: 45px;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,.25);
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:900px) {
+
+    .quick-nav {
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .planets {
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .info-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+    .final-navigation {
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .simulation-grid {
+        grid-template-columns:
+            1fr;
+    }
+}
+
+
+@media(max-width:600px) {
+
+    .solar-page {
+        padding:
+            50px 15px 80px;
+    }
+
+    .quick-nav {
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .planets {
+        grid-template-columns:
+            1fr;
+    }
+
+    .final-navigation {
+        grid-template-columns:
+            1fr;
+    }
+
+    .sun-card {
+        min-height: 420px;
+    }
+
+    .planet-photo {
+        height: 240px;
+    }
+
+    .sim-card {
+        min-height: 360px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<section class="solar-page">
+
+
+<div class="stars"></div>
+
+<div class="stars-small"></div>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<div class="header">
+
+
+<a
+href="javascript:goToHome()"
+class="return">
+
+← RETURN TO HOME
+
+</a>
+
+
+<div class="label">
+
+ORBONIX · SPACE KNOWLEDGE
+
+</div>
+
+
+<h1>
+
+SOLAR SYSTEM
+
+</h1>
+
+
+<div class="subtitle">
+
+Explore our cosmic neighborhood — from the
+Sun and eight planets to dwarf planets,
+asteroid belts, the Kuiper Belt, Planet X and
+the distant Oort Cloud.
+
+</div>
+
+</div>
+
+
+<!-- =========================================
+     QUICK NAVIGATION
+========================================= -->
+
+<div class="quick-nav">
+
+
+<a
+href="#sun"
+class="quick-button">
+
+<span class="quick-icon">☀</span>
+
+SUN
+
+</a>
+
+
+<a
+href="#planets"
+class="quick-button">
+
+<span class="quick-icon">🪐</span>
+
+SOLAR SYSTEM PLANETS
+
+</a>
+
+
+<a
+href="#dwarf-planets"
+class="quick-button">
+
+<span class="quick-icon">◉</span>
+
+DWARF PLANETS
+
+</a>
+
+
+<a
+href="#planet-x"
+class="quick-button">
+
+<span class="quick-icon">✦</span>
+
+PLANET X
+
+</a>
+
+
+<a
+href="#kuiper-belt"
+class="quick-button">
+
+<span class="quick-icon">❄</span>
+
+KUIPER BELT
+
+</a>
+
+
+<a
+href="#asteroid-belt"
+class="quick-button">
+
+<span class="quick-icon">●</span>
+
+ASTEROID BELT
+
+</a>
+
+
+<a
+href="#oort-cloud"
+class="quick-button">
+
+<span class="quick-icon">∞</span>
+
+OORT CLOUD
+
+</a>
+
+
+<a
+href="javascript:goToPage('Solar System Quiz')"
+class="quick-button">
+
+<span class="quick-icon">?</span>
+
+SOLAR SYSTEM QUIZ
+
+</a>
+
+
+</div>
+
+
+<!-- =========================================
+     MAIN
+========================================= -->
+
+<div class="system-section">
+
+
+<!-- =========================================
+     SUN
+========================================= -->
+
+<div
+class="section-title"
+id="sun">
+
+THE STAR AT THE CENTER
+
+</div>
+
+
+<div class="sun-card">
+
+
+<img
+class="sun-photo"
+src="https://images-assets.nasa.gov/image/PIA26681/PIA26681~orig.jpg"
+alt="The Sun photographed by NASA's Solar Dynamics Observatory"
+loading="lazy"
+>
+
+
+<div class="sun-caption">
+
+
+<h2>SUN</h2>
+
+
+<p>
+
+The Sun is the star at the center of our
+Solar System. Its gravity controls the
+orbits of the planets, dwarf planets,
+asteroids and comets.
+
+</p>
+
+
+<a
+href="javascript:goToPage('Sun')"
+class="explore-button">
+
+EXPLORE THE SUN →
+
+</a>
+
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     PLANETS
+========================================= -->
+
+<div
+class="section-title"
+id="planets">
+
+THE EIGHT PLANETS
+
+</div>
+
+
+<div class="planets">
+
+
+<!-- MERCURY -->
+
+<div class="planet-card">
+
+<img
+class="planet-photo"
+src="https://commons.wikimedia.org/wiki/Special:FilePath/Mercury%20Mariner10.jpg"
+alt="Mercury"
+loading="lazy"
+>
+
+<div class="planet-content">
+
+<div class="planet-number">
+01 · INNER PLANET
+</div>
+
+<h2 class="planet-name">
+MERCURY
+</h2>
+
+<div class="planet-type">
+TERRESTRIAL WORLD
+</div>
+
+<div class="planet-description">
+The smallest planet and the closest
+planet to the Sun. Mercury is covered
+with impact craters.
+</div>
+
+<a
+href="javascript:goToPage('Mercury')"
+class="explore-button">
+EXPLORE →
+</a>
+
+</div>
+
+</div>
+
+
+<!-- VENUS -->
+
+<div class="planet-card">
+
+<img
+class="planet-photo"
+src="https://commons.wikimedia.org/wiki/Special:FilePath/Venus%20from%20Mariner%2010.jpg"
+alt="Venus"
+loading="lazy"
+>
+
+<div class="planet-content">
+
+<div class="planet-number">
+02 · INNER PLANET
+</div>
+
+<h2 class="planet-name">
+VENUS
+</h2>
+
+<div class="planet-type">
+TERRESTRIAL WORLD
+</div>
+
+<div class="planet-description">
+Venus is wrapped in a dense atmosphere
+of carbon dioxide and has the hottest
+surface of any planet.
+</div>
+
+<a
+href="javascript:goToPage('Venus')"
+class="explore-button">
+EXPLORE →
+</a>
+
+</div>
+
+</div>
+
+
+<!-- EARTH -->
+
+<div class="planet-card">
+
+<img
+class="planet-photo"
+src="https://commons.wikimedia.org/wiki/Special:FilePath/The%20Blue%20Marble.jpg"
+alt="Earth"
+loading="lazy"
+>
+
+<div class="planet-content">
+
+<div class="planet-number">
+03 · INNER PLANET
+</div>
+
+<h2 class="planet-name">
+EARTH
+</h2>
+
+<div class="planet-type">
+TERRESTRIAL WORLD
+</div>
+
+<div class="planet-description">
+Our home planet and the only world
+currently known to support life.
+</div>
+
+<a
+href="javascript:goToPage('Earth')"
+class="explore-button">
+EXPLORE →
+</a>
+
+</div>
+
+</div>
+
+
+<!-- MARS -->
+
+<div class="planet-card">
+
+<img
+class="planet-photo"
+src="https://commons.wikimedia.org/wiki/Special:FilePath/MARS-Viking.jpg"
+alt="Mars"
+loading="lazy"
+>
+
+<div class="planet-content">
+
+<div class="planet-number">
+04 · INNER PLANET
+</div>
+
+<h2 class="planet-name">
+MARS
+</h2>
+
+<div class="planet-type">
+TERRESTRIAL WORLD
+</div>
+
+<div class="planet-description">
+The Red Planet contains enormous
+volcanoes, deep canyons and evidence
+of ancient water activity.
+</div>
+
+<a
+href="javascript:goToPage('Mars')"
+class="explore-button">
+EXPLORE →
+</a>
+
+</div>
+
+</div>
+
+
+<!-- JUPITER -->
+
+<div class="planet-card">
+
+<img
+class="planet-photo"
+src="https://commons.wikimedia.org/wiki/Special:FilePath/Voyager%201%20Image%20of%20Jupiter.jpg"
+alt="Jupiter"
+loading="lazy"
+>
+
+<div class="planet-content">
+
+<div class="planet-number">
+05 · OUTER PLANET
+</div>
+
+<h2 class="planet-name">
+JUPITER
+</h2>
+
+<div class="planet-type">
+GAS GIANT
+</div>
+
+<div class="planet-description">
+The largest planet in the Solar System,
+famous for its enormous storms and
+Great Red Spot.
+</div>
+
+<a
+href="javascript:goToPage('Jupiter')"
+class="explore-button">
+EXPLORE →
+</a>
+
+</div>
+
+</div>
+
+
+<!-- SATURN -->
+
+<div class="planet-card">
+
+<img
+class="planet-photo"
+src="https://commons.wikimedia.org/wiki/Special:FilePath/Saturno.jpg"
+alt="Saturn"
+loading="lazy"
+>
+
+<div class="planet-content">
+
+<div class="planet-number">
+06 · OUTER PLANET
+</div>
+
+<h2 class="planet-name">
+SATURN
+</h2>
+
+<div class="planet-type">
+GAS GIANT
+</div>
+
+<div class="planet-description">
+Saturn is surrounded by a spectacular
+system of icy rings and has a huge
+collection of moons.
+</div>
+
+<a
+href="javascript:goToPage('Saturn')"
+class="explore-button">
+EXPLORE →
+</a>
+
+</div>
+
+</div>
+
+
+<!-- URANUS -->
+
+<div class="planet-card">
+
+<img
+class="planet-photo"
+src="https://commons.wikimedia.org/wiki/Special:FilePath/Uranus2.jpg"
+alt="Uranus"
+loading="lazy"
+>
+
+<div class="planet-content">
+
+<div class="planet-number">
+07 · OUTER PLANET
+</div>
+
+<h2 class="planet-name">
+URANUS
+</h2>
+
+<div class="planet-type">
+ICE GIANT
+</div>
+
+<div class="planet-description">
+An ice giant with a blue-green
+atmosphere. Its axis is tilted by
+approximately 98 degrees.
+</div>
+
+<a
+href="javascript:goToPage('Uranus')"
+class="explore-button">
+EXPLORE →
+</a>
+
+</div>
+
+</div>
+
+
+<!-- NEPTUNE -->
+
+<div class="planet-card">
+
+<img
+class="planet-photo"
+src="https://commons.wikimedia.org/wiki/Special:FilePath/Neptune%20from%20Voyager%202%20%285278071676%29.jpg"
+alt="Neptune"
+loading="lazy"
+>
+
+<div class="planet-content">
+
+<div class="planet-number">
+08 · OUTER PLANET
+</div>
+
+<h2 class="planet-name">
+NEPTUNE
+</h2>
+
+<div class="planet-type">
+ICE GIANT
+</div>
+
+<div class="planet-description">
+The most distant of the eight planets
+and a world with extremely powerful
+winds.
+</div>
+
+<a
+href="javascript:goToPage('Neptune')"
+class="explore-button">
+EXPLORE →
+</a>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     DWARF PLANETS
+========================================= -->
+
+<div
+class="section-title"
+id="dwarf-planets">
+
+DWARF PLANETS
+
+</div>
+
+
+<div class="dwarf-section">
+
+
+<div class="dwarf-symbol">
+◉
+</div>
+
+
+<h2 class="dwarf-title">
+DWARF PLANETS
+</h2>
+
+
+<p class="dwarf-description">
+
+Explore Pluto, Ceres, Eris, Haumea,
+Makemake and other fascinating worlds
+that do not dominate their orbital
+neighborhoods.
+
+</p>
+
+
+<a
+href="javascript:goToPage('Dwarf Planets')"
+class="explore-button">
+
+EXPLORE DWARF PLANETS →
+
+</a>
+
+
+</div>
+
+
+<!-- =========================================
+     OUTER FRONTIER
+========================================= -->
+
+<div class="section-title">
+
+THE OUTER FRONTIER
+
+</div>
+
+
+<div class="simulation-grid">
+
+
+<!-- ASTEROID BELT -->
+
+<div
+class="sim-card"
+id="asteroid-belt">
+
+<canvas
+id="asteroidCanvas">
+</canvas>
+
+
+<div class="sim-overlay">
+
+
+<div class="sim-label">
+BETWEEN MARS AND JUPITER
+</div>
+
+
+<h2 class="sim-title">
+ASTEROID BELT
+</h2>
+
+
+<p class="sim-text">
+
+A simulation of rocky bodies orbiting
+the Sun in the main asteroid belt.
+
+</p>
+
+
+<a
+href="javascript:goToPage('Asteroid Belt')"
+class="explore-button">
+
+EXPLORE ASTEROID BELT →
+
+</a>
+
+
+</div>
+
+</div>
+
+
+<!-- KUIPER BELT -->
+
+<div
+class="sim-card"
+id="kuiper-belt">
+
+<canvas
+id="kuiperCanvas">
+</canvas>
+
+
+<div class="sim-overlay">
+
+
+<div class="sim-label">
+BEYOND NEPTUNE
+</div>
+
+
+<h2 class="sim-title">
+KUIPER BELT
+</h2>
+
+
+<p class="sim-text">
+
+A simulation of icy objects orbiting
+in the distant Kuiper Belt.
+
+</p>
+
+
+<a
+href="javascript:goToPage('Kuiper Belt')"
+class="explore-button">
+
+EXPLORE KUIPER BELT →
+
+</a>
+
+
+</div>
+
+</div>
+
+
+<!-- PLANET X -->
+
+<div
+class="sim-card planet-x"
+id="planet-x">
+
+
+<div class="planet-x-inner">
+
+
+<div class="planet-x-symbol">
+✦
+</div>
+
+
+<h2>
+PLANET X
+</h2>
+
+
+<p>
+
+Planet X, often called Planet Nine,
+is a hypothetical planet that some
+researchers propose may exist far
+beyond Neptune.
+
+No direct image of Planet X exists
+because it has not been discovered.
+
+</p>
+
+
+<span class="warning">
+HYPOTHETICAL WORLD · NO DIRECT PHOTO
+</span>
+
+
+<br>
+
+
+<a
+href="javascript:goToPage('Planet X')"
+class="explore-button">
+
+EXPLORE PLANET X →
+
+</a>
+
+
+</div>
+
+
+</div>
+
+
+<!-- OORT CLOUD -->
+
+<div
+class="sim-card oort-card"
+id="oort-cloud">
+
+<canvas
+id="oortCanvas">
+</canvas>
+
+
+<div class="sim-overlay">
+
+
+<div class="sim-label">
+EXTREME OUTER SOLAR SYSTEM
+</div>
+
+
+<h2 class="sim-title">
+OORT CLOUD
+</h2>
+
+
+<p class="sim-text">
+
+A visualization of the enormous
+hypothetical spherical reservoir of
+icy objects surrounding the Solar System.
+
+</p>
+
+
+<a
+href="javascript:goToPage('Oort Cloud')"
+class="explore-button">
+
+EXPLORE OORT CLOUD →
+
+</a>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     INFORMATION
+========================================= -->
+
+<div class="section-title">
+
+SOLAR SYSTEM STRUCTURE
+
+</div>
+
+
+<div class="info-grid">
+
+
+<div class="info-card">
+
+<div class="info-icon">
+☀
+</div>
+
+<h3>
+THE SUN
+</h3>
+
+<p>
+The Sun contains roughly 99.8% of the
+mass of the Solar System and provides
+the energy that drives Earth's climate
+and supports life.
+</p>
+
+</div>
+
+
+<div class="info-card">
+
+<div class="info-icon">
+🪐
+</div>
+
+<h3>
+INNER PLANETS
+</h3>
+
+<p>
+Mercury, Venus, Earth and Mars are
+rocky terrestrial planets with solid
+surfaces.
+</p>
+
+</div>
+
+
+<div class="info-card">
+
+<div class="info-icon">
+◉
+</div>
+
+<h3>
+GIANT PLANETS
+</h3>
+
+<p>
+Jupiter and Saturn are gas giants,
+while Uranus and Neptune are ice
+giants.
+</p>
+
+</div>
+
+
+<div class="info-card">
+
+<div class="info-icon">
+●
+</div>
+
+<h3>
+ASTEROID BELT
+</h3>
+
+<p>
+The main asteroid belt lies between
+the orbits of Mars and Jupiter.
+</p>
+
+</div>
+
+
+<div class="info-card">
+
+<div class="info-icon">
+❄
+</div>
+
+<h3>
+KUIPER BELT
+</h3>
+
+<p>
+The Kuiper Belt begins beyond Neptune
+and contains many frozen remnants from
+the formation of the Solar System.
+</p>
+
+</div>
+
+
+<div class="info-card">
+
+<div class="info-icon">
+∞
+</div>
+
+<h3>
+OORT CLOUD
+</h3>
+
+<p>
+The Oort Cloud is thought to extend
+far beyond the Kuiper Belt and may be
+the source of many long-period comets.
+</p>
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     SCALE
+========================================= -->
+
+<div class="scale">
+
+
+<h2>
+A VAST COSMIC NEIGHBORHOOD
+</h2>
+
+
+<p>
+
+The Solar System is much larger than the
+region occupied by the eight planets.
+Beyond Neptune lie the Kuiper Belt and
+possibly the enormous Oort Cloud. The
+entire system is only one tiny part of
+the Milky Way Galaxy.
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     FINAL NAVIGATION
+========================================= -->
+
+<div class="final-navigation">
+
+
+<a
+href="#planets"
+class="final-button">
+
+PLANETS →
+
+</a>
+
+
+<a
+href="#dwarf-planets"
+class="final-button">
+
+DWARF PLANETS →
+
+</a>
+
+
+<a
+href="#sun"
+class="final-button">
+
+SUN →
+
+</a>
+
+
+<a
+href="#planet-x"
+class="final-button">
+
+PLANET X →
+
+</a>
+
+
+<a
+href="#kuiper-belt"
+class="final-button">
+
+KUIPER BELT →
+
+</a>
+
+
+<a
+href="#asteroid-belt"
+class="final-button">
+
+ASTEROID BELT →
+
+</a>
+
+
+<a
+href="#oort-cloud"
+class="final-button">
+
+OORT CLOUD →
+
+</a>
+
+
+<a
+href="javascript:goToPage('Solar System Quiz')"
+class="final-button">
+
+SOLAR SYSTEM QUIZ →
+
+</a>
+
+
+</div>
+
+
+<div class="footer">
+
+ORBONIX · SOLAR SYSTEM · SPACE KNOWLEDGE
+
+</div>
+
+
+</section>
+
+
+<script>
+
+/* =========================================
+   ORBONIX PAGE NAVIGATION
+========================================= */
+
+function makeSlug(pageName) {
+
+    return pageName
+        .trim()
+        .toLowerCase()
+        .replace(/&/g, "and")
+        .replace(/[^\w\s-]/g, "")
+        .replace(/\s+/g, "-")
+        .replace(/-+/g, "-");
+
+}
+
+
+function getSiteBase() {
+
+    const currentURL =
+        window.location.href;
+
+    /*
+       Google Sites normally has a structure like:
+
+       https://sites.google.com/view/kosmolearn/page-name
+
+       We keep the first part of the site URL
+       and replace only the page part.
+    */
+
+    const match =
+        currentURL.match(
+            /^(https?:\/\/[^\/]+\/view\/[^\/]+)/
+        );
+
+    if(match) {
+
+        return match[1];
+
+    }
+
+
+    /*
+       Fallback for other hosting.
+    */
+
+    return window.location.origin;
+
+}
+
+
+function goToPage(pageName) {
+
+    const base =
+        getSiteBase();
+
+    const slug =
+        makeSlug(pageName);
+
+
+    /*
+       Prevent duplicate navigation
+       if the requested page is already open.
+    */
+
+    const currentSlug =
+        window.location.pathname
+        .split("/")
+        .filter(Boolean)
+        .pop();
+
+
+    if(
+        currentSlug &&
+        currentSlug.toLowerCase() ===
+        slug.toLowerCase()
+    ) {
+
+        return;
+
+    }
+
+
+    window.location.href =
+        base + "/" + slug;
+
+}
+
+
+function goToHome() {
+
+    const base =
+        getSiteBase();
+
+    window.location.href =
+        base;
+
+}
+
+
+/* =========================================
+   STAR PARALLAX
+========================================= */
+
+const stars =
+document.querySelector(".stars");
+
+const smallStars =
+document.querySelector(".stars-small");
+
+
+document.addEventListener(
+"mousemove",
+function(event) {
+
+    const x =
+        event.clientX /
+        window.innerWidth -
+        0.5;
+
+    const y =
+        event.clientY /
+        window.innerHeight -
+        0.5;
+
+
+    stars.style.transform =
+        `translate(
+            ${x * 20}px,
+            ${y * 20}px
+        )`;
+
+
+    smallStars.style.transform =
+        `translate(
+            ${x * -12}px,
+            ${y * -12}px
+        )`;
+
+});
+
+
+/* =========================================
+   GENERIC PARTICLE SIMULATION
+========================================= */
+
+function createSimulation(
+    canvasId,
+    amount,
+    mode
+) {
+
+    const canvas =
+        document.getElementById(canvasId);
+
+    const ctx =
+        canvas.getContext("2d");
+
+    let width;
+    let height;
+
+    let particles = [];
+
+
+    function resize() {
+
+        const rect =
+            canvas.getBoundingClientRect();
+
+        width =
+            rect.width;
+
+        height =
+            rect.height;
+
+        const dpr =
+            window.devicePixelRatio || 1;
+
+        canvas.width =
+            width * dpr;
+
+        canvas.height =
+            height * dpr;
+
+        ctx.setTransform(
+            dpr,
+            0,
+            0,
+            dpr,
+            0,
+            0
+        );
+
+    }
+
+
+    function random(min,max) {
+
+        return Math.random() *
+            (max - min) + min;
+
+    }
+
+
+    function createParticles() {
+
+        particles = [];
+
+
+        for(
+            let i = 0;
+            i < amount;
+            i++
+        ) {
+
+            if(
+                mode ===
+                "asteroid"
+            ) {
+
+                particles.push({
+
+                    angle:
+                        Math.random() *
+                        Math.PI * 2,
+
+                    radius:
+                        random(
+                            Math.min(width,height) * .22,
+                            Math.min(width,height) * .43
+                        ),
+
+                    speed:
+                        random(.0005,.0018),
+
+                    size:
+                        random(1,3.5),
+
+                    alpha:
+                        random(.35,.95),
+
+                    offset:
+                        random(
+                            0,
+                            Math.PI * 2
+                        )
+
+                });
+
+            }
+
+
+            if(
+                mode ===
+                "kuiper"
+            ) {
+
+                particles.push({
+
+                    angle:
+                        Math.random() *
+                        Math.PI * 2,
+
+                    radius:
+                        random(
+                            Math.min(width,height) * .25,
+                            Math.min(width,height) * .48
+                        ),
+
+                    speed:
+                        random(.00015,.00055),
+
+                    size:
+                        random(1,3),
+
+                    alpha:
+                        random(.3,.9),
+
+                    offset:
+                        random(
+                            0,
+                            Math.PI * 2
+                        )
+
+                });
+
+            }
+
+
+            if(
+                mode ===
+                "oort"
+            ) {
+
+                particles.push({
+
+                    angle:
+                        Math.random() *
+                        Math.PI * 2,
+
+                    phi:
+                        Math.acos(
+                            random(-1,1)
+                        ),
+
+                    radius:
+                        random(
+                            Math.min(width,height) * .25,
+                            Math.min(width,height) * .49
+                        ),
+
+                    speed:
+                        random(.00008,.00025),
+
+                    size:
+                        random(.7,2.5),
+
+                    alpha:
+                        random(.25,.85),
+
+                    offset:
+                        random(
+                            0,
+                            Math.PI * 2
+                        )
+
+                });
+
+            }
+
+        }
+
+    }
+
+
+    function drawSun() {
+
+        const cx =
+            width / 2;
+
+        const cy =
+            height / 2;
+
+        const radius =
+            Math.min(width,height) * .07;
+
+
+        const gradient =
+            ctx.createRadialGradient(
+                cx,
+                cy,
+                0,
+                cx,
+                cy,
+                radius * 3
+            );
+
+
+        gradient.addColorStop(
+            0,
+            "rgba(255,245,180,1)"
+        );
+
+        gradient.addColorStop(
+            .25,
+            "rgba(255,190,60,.95)"
+        );
+
+        gradient.addColorStop(
+            .6,
+            "rgba(255,100,20,.25)"
+        );
+
+        gradient.addColorStop(
+            1,
+            "rgba(255,80,0,0)"
+        );
+
+
+        ctx.beginPath();
+
+        ctx.fillStyle =
+            gradient;
+
+        ctx.arc(
+            cx,
+            cy,
+            radius * 3,
+            0,
+            Math.PI * 2
+        );
+
+        ctx.fill();
+
+
+        ctx.beginPath();
+
+        ctx.fillStyle =
+            "#ffb52e";
+
+        ctx.arc(
+            cx,
+            cy,
+            radius,
+            0,
+            Math.PI * 2
+        );
+
+        ctx.fill();
+
+    }
+
+
+    function drawAsteroid(
+        particle,
+        time
+    ) {
+
+        const cx =
+            width / 2;
+
+        const cy =
+            height / 2;
+
+
+        particle.angle +=
+            particle.speed;
+
+
+        const wobble =
+            Math.sin(
+                time * .001 +
+                particle.offset
+            ) * 5;
+
+
+        const r =
+            particle.radius +
+            wobble;
+
+
+        const x =
+            cx +
+            Math.cos(
+                particle.angle
+            ) * r;
+
+
+        const y =
+            cy +
+            Math.sin(
+                particle.angle
+            ) * r * .48;
+
+
+        ctx.beginPath();
+
+        ctx.fillStyle =
+            `rgba(
+                180,
+                190,
+                215,
+                ${particle.alpha}
+            )`;
+
+        ctx.arc(
+            x,
+            y,
+            particle.size,
+            0,
+            Math.PI * 2
+        );
+
+        ctx.fill();
+
+    }
+
+
+    function drawKuiper(
+        particle,
+        time
+    ) {
+
+        const cx =
+            width / 2;
+
+        const cy =
+            height / 2;
+
+
+        particle.angle +=
+            particle.speed;
+
+
+        const wobble =
+            Math.sin(
+                time * .0005 +
+                particle.offset
+            ) * 8;
+
+
+        const r =
+            particle.radius +
+            wobble;
+
+
+        const x =
+            cx +
+            Math.cos(
+                particle.angle
+            ) * r;
+
+
+        const y =
+            cy +
+            Math.sin(
+                particle.angle
+            ) * r * .45;
+
+
+        ctx.beginPath();
+
+        ctx.fillStyle =
+            `rgba(
+                130,
+                180,
+                255,
+                ${particle.alpha}
+            )`;
+
+        ctx.arc(
+            x,
+            y,
+            particle.size,
+            0,
+            Math.PI * 2
+        );
+
+        ctx.fill();
+
+    }
+
+
+    function drawOort(
+        particle,
+        time
+    ) {
+
+        const cx =
+            width / 2;
+
+        const cy =
+            height / 2;
+
+
+        particle.angle +=
+            particle.speed;
+
+
+        const x3 =
+            Math.sin(
+                particle.phi
+            ) *
+            Math.cos(
+                particle.angle
+            );
+
+
+        const y3 =
+            Math.cos(
+                particle.phi
+            );
+
+
+        const z3 =
+            Math.sin(
+                particle.phi
+            ) *
+            Math.sin(
+                particle.angle
+            );
+
+
+        const r =
+            particle.radius;
+
+
+        const perspective =
+            0.72 +
+            z3 * .35;
+
+
+        const x =
+            cx +
+            x3 *
+            r *
+            perspective;
+
+
+        const y =
+            cy +
+            y3 *
+            r *
+            perspective;
+
+
+        const size =
+            particle.size *
+            perspective;
+
+
+        ctx.beginPath();
+
+        ctx.fillStyle =
+            `rgba(
+                150,
+                170,
+                255,
+                ${particle.alpha *
+                perspective}
+            )`;
+
+        ctx.arc(
+            x,
+            y,
+            size,
+            0,
+            Math.PI * 2
+        );
+
+        ctx.fill();
+
+    }
+
+
+    function draw(time) {
+
+        ctx.clearRect(
+            0,
+            0,
+            width,
+            height
+        );
+
+
+        const bg =
+            ctx.createRadialGradient(
+                width/2,
+                height/2,
+                0,
+                width/2,
+                height/2,
+                Math.max(width,height)*.7
+            );
+
+
+        bg.addColorStop(
+            0,
+            "rgba(50,60,140,.10)"
+        );
+
+        bg.addColorStop(
+            1,
+            "rgba(0,0,0,0)"
+        );
+
+
+        ctx.fillStyle =
+            bg;
+
+        ctx.fillRect(
+            0,
+            0,
+            width,
+            height
+        );
+
+
+        drawSun();
+
+
+        particles.forEach(
+            particle => {
+
+                if(
+                    mode ===
+                    "asteroid"
+                ) {
+
+                    drawAsteroid(
+                        particle,
+                        time
+                    );
+
+                }
+
+
+                if(
+                    mode ===
+                    "kuiper"
+                ) {
+
+                    drawKuiper(
+                        particle,
+                        time
+                    );
+
+                }
+
+
+                if(
+                    mode ===
+                    "oort"
+                ) {
+
+                    drawOort(
+                        particle,
+                        time
+                    );
+
+                }
+
+            }
+        );
+
+
+        requestAnimationFrame(draw);
+
+    }
+
+
+    window.addEventListener(
+        "resize",
+        function() {
+
+            resize();
+
+            createParticles();
+
+        }
+    );
+
+
+    resize();
+
+    createParticles();
+
+    requestAnimationFrame(draw);
+
+}
+
+
+/* =========================================
+   START SIMULATIONS
+========================================= */
+
+createSimulation(
+    "asteroidCanvas",
+    150,
+    "asteroid"
+);
+
+
+createSimulation(
+    "kuiperCanvas",
+    180,
+    "kuiper"
+);
+
+
+createSimulation(
+    "oortCanvas",
+    330,
+    "oort"
+);
+
+
+/* =========================================
+   SCROLL REVEAL
+========================================= */
+
+const elements =
+document.querySelectorAll(
+    ".planet-card, .dwarf-section, .sim-card, .info-card, .sun-card"
+);
+
+
+const observer =
+new IntersectionObserver(
+    entries => {
+
+        entries.forEach(
+            entry => {
+
+                if(
+                    entry.isIntersecting
+                ) {
+
+                    entry.target.animate(
+                        [
+                            {
+                                opacity: 0,
+
+                                transform:
+                                    "translateY(25px)"
+                            },
+
+                            {
+                                opacity: 1,
+
+                                transform:
+                                    "translateY(0)"
+                            }
+                        ],
+                        {
+                            duration: 700,
+
+                            easing:
+                                "cubic-bezier(.2,.8,.2,1)",
+
+                            fill:
+                                "forwards"
+                        }
+                    );
+
+
+                    observer.unobserve(
+                        entry.target
+                    );
+
+                }
+
+            }
+        );
+
+    },
+    {
+        threshold: .12
+    }
+);
+
+
+elements.forEach(
+    element => {
+
+        element.style.opacity =
+            "0";
+
+        observer.observe(
+            element
+        );
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>
