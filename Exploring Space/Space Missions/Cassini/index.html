@@ -1,1 +1,1377 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: #020308;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   PAGE
+========================================= */
+
+.cassini-page {
+
+    position: relative;
+
+    min-height: 1750px;
+
+    padding: 55px 20px 100px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 25%,
+            rgba(170,130,70,.18),
+            transparent 45%
+        ),
+        #020308;
+}
+
+
+/* =========================================
+   STARS
+========================================= */
+
+.stars {
+
+    position: absolute;
+
+    inset: -20%;
+
+    pointer-events: none;
+
+    opacity: .38;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.9) 1px,
+            transparent 1px
+        );
+
+    background-size: 75px 75px;
+
+    transition:
+        transform 1.5s ease;
+}
+
+
+.stars-small {
+
+    position: absolute;
+
+    inset: -20%;
+
+    pointer-events: none;
+
+    opacity: .14;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.8) 1px,
+            transparent 1px
+        );
+
+    background-size: 32px 32px;
+
+    transition:
+        transform 2s ease;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header {
+
+    position: relative;
+
+    z-index: 100;
+
+    max-width: 950px;
+
+    margin: auto;
+
+    text-align: center;
+}
+
+
+.return {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    padding: 12px 20px;
+
+    margin-bottom: 35px;
+
+    color:
+        rgba(255,255,255,.7);
+
+    border:
+        1px solid
+        rgba(255,255,255,.22);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    transition:
+        .35s ease;
+}
+
+
+.return:hover {
+
+    color: #020308;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-4px);
+}
+
+
+.label {
+
+    margin-bottom: 18px;
+
+    color:
+        rgba(255,255,255,.4);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+
+h1 {
+
+    margin: 0;
+
+    font-size:
+        clamp(55px,9vw,105px);
+
+    line-height: .9;
+
+    letter-spacing: 7px;
+}
+
+
+.subtitle {
+
+    max-width: 720px;
+
+    margin:
+        25px auto 0;
+
+    color:
+        rgba(255,255,255,.52);
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   CASSINI AREA
+========================================= */
+
+.cassini-area {
+
+    position: relative;
+
+    width: 720px;
+
+    height: 620px;
+
+    margin:
+        65px auto 90px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+/* =========================================
+   SATURN
+========================================= */
+
+.saturn {
+
+    position: relative;
+
+    z-index: 20;
+
+    width: 245px;
+
+    height: 245px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #f5dfae,
+            #c8a86d 45%,
+            #876d42 72%,
+            #30271b 100%
+        );
+
+    box-shadow:
+        0 0 45px
+        rgba(220,180,105,.35),
+
+        0 0 120px
+        rgba(180,130,55,.16);
+
+    transition:
+        .5s ease;
+}
+
+
+.saturn:hover {
+
+    transform: scale(1.07);
+
+    box-shadow:
+        0 0 65px
+        rgba(240,200,120,.5),
+
+        0 0 150px
+        rgba(190,140,65,.22);
+}
+
+
+/* Saturn rings */
+
+.ring {
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 50%;
+
+    width: 430px;
+
+    height: 125px;
+
+    transform:
+        translate(-50%,-50%)
+        rotate(-13deg);
+
+    border-radius: 50%;
+
+    border:
+        17px solid
+        rgba(210,185,135,.65);
+
+    box-shadow:
+        0 0 20px
+        rgba(230,205,155,.22);
+
+    pointer-events: none;
+}
+
+
+.ring-inner {
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 50%;
+
+    width: 335px;
+
+    height: 75px;
+
+    transform:
+        translate(-50%,-50%);
+
+    border-radius: 50%;
+
+    border:
+        8px solid
+        rgba(75,60,40,.9);
+}
+
+
+/* =========================================
+   CASSINI SPACECRAFT
+========================================= */
+
+.cassini {
+
+    position: absolute;
+
+    z-index: 30;
+
+    width: 190px;
+
+    height: 120px;
+
+    right: 80px;
+
+    top: 80px;
+
+    transform:
+        rotate(-18deg);
+
+    transition:
+        .5s ease;
+}
+
+
+.cassini:hover {
+
+    transform:
+        rotate(-18deg)
+        scale(1.1);
+}
+
+
+/* Main body */
+
+.cassini-body {
+
+    position: absolute;
+
+    left: 60px;
+
+    top: 38px;
+
+    width: 70px;
+
+    height: 50px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #e0e2df,
+            #777b7d
+        );
+
+    border:
+        1px solid
+        rgba(255,255,255,.5);
+
+    box-shadow:
+        0 0 20px
+        rgba(190,200,210,.18);
+}
+
+
+/* Dish */
+
+.dish {
+
+    position: absolute;
+
+    left: 5px;
+
+    top: 8px;
+
+    width: 70px;
+
+    height: 70px;
+
+    border-radius: 50%;
+
+    border:
+        3px solid
+        rgba(225,225,220,.8);
+
+    background:
+        radial-gradient(
+            circle,
+            #d8d5c7 0%,
+            #8d8a80 60%,
+            #46433d 100%
+        );
+
+    box-shadow:
+        0 0 15px
+        rgba(220,210,185,.2);
+}
+
+
+.dish::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 50%;
+
+    width: 5px;
+
+    height: 5px;
+
+    transform:
+        translate(-50%,-50%);
+
+    border-radius: 50%;
+
+    background: #333;
+}
+
+
+/* Solar panels */
+
+.panel {
+
+    position: absolute;
+
+    top: 52px;
+
+    width: 75px;
+
+    height: 42px;
+
+    border:
+        1px solid
+        rgba(120,160,200,.55);
+
+    background:
+        repeating-linear-gradient(
+            90deg,
+            #17263b 0px,
+            #17263b 7px,
+            #405875 8px,
+            #405875 9px
+        );
+}
+
+
+.panel-left {
+
+    left: -15px;
+}
+
+
+.panel-right {
+
+    right: -15px;
+}
+
+
+/* Antenna boom */
+
+.boom {
+
+    position: absolute;
+
+    right: -45px;
+
+    top: 60px;
+
+    width: 55px;
+
+    height: 3px;
+
+    background:
+        rgba(220,220,215,.75);
+}
+
+
+/* =========================================
+   ORBIT LINES
+========================================= */
+
+.orbit {
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 50%;
+
+    transform:
+        translate(-50%,-50%);
+
+    border:
+        1px solid
+        rgba(210,175,100,.15);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+
+.orbit-1 {
+
+    width: 380px;
+
+    height: 190px;
+
+    transform:
+        translate(-50%,-50%)
+        rotate(-13deg);
+}
+
+
+.orbit-2 {
+
+    width: 560px;
+
+    height: 290px;
+
+    transform:
+        translate(-50%,-50%)
+        rotate(-13deg);
+}
+
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.content {
+
+    position: relative;
+
+    z-index: 10;
+
+    width:
+        min(1050px,100%);
+
+    margin: auto;
+}
+
+
+/* =========================================
+   STATS
+========================================= */
+
+.stats {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 1px;
+
+    background:
+        rgba(255,255,255,.1);
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+}
+
+
+.stat {
+
+    padding: 30px;
+
+    background:
+        rgba(5,7,13,.96);
+
+    transition:
+        .35s ease;
+}
+
+
+.stat:hover {
+
+    transform:
+        translateY(-5px);
+
+    background:
+        rgba(255,255,255,.04);
+}
+
+
+.stat-value {
+
+    margin-bottom: 9px;
+
+    font-size: 21px;
+
+    font-weight: bold;
+}
+
+
+.stat-label {
+
+    color:
+        rgba(255,255,255,.4);
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================
+   DESCRIPTION
+========================================= */
+
+.description {
+
+    margin-top: 60px;
+
+    padding: 40px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.025);
+}
+
+
+.description-title {
+
+    margin-bottom: 20px;
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+}
+
+
+.description-text {
+
+    max-width: 900px;
+
+    color:
+        rgba(255,255,255,.58);
+
+    font-size: 14px;
+
+    line-height: 1.9;
+}
+
+
+/* =========================================
+   FEATURES
+========================================= */
+
+.features-title {
+
+    margin-top: 60px;
+
+    margin-bottom: 25px;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,.45);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+
+.features {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 15px;
+}
+
+
+.feature {
+
+    padding: 28px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.02);
+
+    transition:
+        .35s ease;
+}
+
+
+.feature:hover {
+
+    transform:
+        translateY(-6px);
+
+    border-color:
+        rgba(220,185,115,.4);
+
+    background:
+        rgba(255,255,255,.04);
+}
+
+
+.feature-title {
+
+    margin-bottom: 12px;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+}
+
+
+.feature-text {
+
+    color:
+        rgba(255,255,255,.5);
+
+    font-size: 12px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   FACT
+========================================= */
+
+.fact {
+
+    margin-top: 60px;
+
+    padding: 40px;
+
+    text-align: center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    background:
+        rgba(255,255,255,.025);
+}
+
+
+.fact-label {
+
+    margin-bottom: 16px;
+
+    color:
+        rgba(255,255,255,.42);
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+}
+
+
+.fact-text {
+
+    max-width: 800px;
+
+    margin: auto;
+
+    font-size:
+        clamp(18px,3vw,27px);
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   NAVIGATION
+========================================= */
+
+.navigation {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    margin-top: 55px;
+
+    flex-wrap: wrap;
+}
+
+
+.nav-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 13px 22px;
+
+    color:
+        rgba(255,255,255,.75);
+
+    border:
+        1px solid
+        rgba(255,255,255,.2);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    transition:
+        .35s ease;
+}
+
+
+.nav-button:hover {
+
+    color: #020308;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-4px);
+}
+
+
+/* =========================================
+   CREDIT
+========================================= */
+
+.credit {
+
+    margin-top: 30px;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,.3);
+
+    font-size: 9px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:800px) {
+
+    .cassini-area {
+
+        width: 500px;
+
+        height: 500px;
+    }
+
+
+    .stats {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .features {
+
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media(max-width:500px) {
+
+    .cassini-page {
+
+        padding:
+            45px 15px 70px;
+    }
+
+
+    .cassini-area {
+
+        width: 320px;
+
+        height: 390px;
+
+        margin-top: 45px;
+
+        transform:
+            scale(.7);
+    }
+
+
+    .description {
+
+        padding: 25px;
+    }
+
+
+    .fact {
+
+        padding:
+            28px 20px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<section class="cassini-page">
+
+
+<div class="stars"></div>
+
+<div class="stars-small"></div>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<div class="header">
+
+
+<a
+href="https://sites.google.com/view/kosmolearn"
+class="return">
+
+← RETURN TO HOME
+
+</a>
+
+
+<div class="label">
+
+ORBONIX · SPACE MISSIONS
+
+</div>
+
+
+<h1>
+
+CASSINI
+
+</h1>
+
+
+<div class="subtitle">
+
+A legendary robotic mission that spent more than
+13 years exploring Saturn, its magnificent rings,
+and its extraordinary moons.
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     CASSINI VISUAL
+========================================= -->
+
+<div class="cassini-area">
+
+
+<div class="orbit orbit-1"></div>
+
+<div class="orbit orbit-2"></div>
+
+
+<div class="saturn">
+
+<div class="ring">
+
+<div class="ring-inner"></div>
+
+</div>
+
+</div>
+
+
+<div class="cassini">
+
+
+<div class="dish"></div>
+
+<div class="panel panel-left"></div>
+
+<div class="panel panel-right"></div>
+
+<div class="cassini-body"></div>
+
+<div class="boom"></div>
+
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     CONTENT
+========================================= -->
+
+<div class="content">
+
+
+<!-- STATS -->
+
+<div class="stats">
+
+
+<div class="stat">
+
+<div class="stat-value">
+1997
+</div>
+
+<div class="stat-label">
+LAUNCHED
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+2004–2017
+</div>
+
+<div class="stat-label">
+SATURN MISSION
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+SATURN
+</div>
+
+<div class="stat-label">
+PRIMARY TARGET
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+13 YEARS
+</div>
+
+<div class="stat-label">
+IN SATURN ORBIT
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+TITAN</div>
+
+<div class="stat-label">
+MAJOR MOON STUDIED
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+22
+</div>
+
+<div class="stat-label">
+FINAL ORBITS
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- DESCRIPTION -->
+
+<div class="description">
+
+
+<div class="description-title">
+
+THE SATURN EXPLORER
+
+</div>
+
+
+<div class="description-text">
+
+Cassini was a robotic spacecraft launched
+in 1997 as part of a joint NASA, ESA and
+Italian Space Agency mission.
+
+After a journey of almost seven years,
+Cassini entered orbit around Saturn in 2004.
+
+For more than a decade, the spacecraft
+studied Saturn, its rings, atmosphere and
+many moons in unprecedented detail.
+
+One of its most important discoveries
+came at Enceladus, where Cassini detected
+evidence of a global subsurface ocean and
+water-rich plumes erupting from the moon's
+south polar region.
+
+Cassini also carried the Huygens probe,
+which descended through the atmosphere
+of Titan and landed on its surface in 2005.
+
+In 2017, Cassini ended its mission by
+deliberately entering Saturn's atmosphere.
+This final phase became known as the
+<strong>Grand Finale</strong>.
+
+</div>
+
+
+</div>
+
+
+<!-- FEATURES -->
+
+<div class="features-title">
+
+CASSINI DISCOVERIES
+
+</div>
+
+
+<div class="features">
+
+
+<div class="feature">
+
+<div class="feature-title">
+
+TITAN
+
+</div>
+
+<div class="feature-text">
+
+Cassini revealed Titan's complex surface,
+including lakes and seas of liquid methane
+and ethane. The Huygens probe also landed
+there in 2005.
+
+</div>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-title">
+
+ENCELADUS
+
+</div>
+
+<div class="feature-text">
+
+Cassini discovered powerful water-rich
+plumes erupting from Enceladus, revealing
+a hidden ocean beneath its icy crust.
+
+</div>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-title">
+
+SATURN'S RINGS
+
+</div>
+
+<div class="feature-text">
+
+The spacecraft studied the rings in detail,
+revealing their structure, composition,
+waves and interactions with Saturn's moons.
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- FACT -->
+
+<div class="fact">
+
+
+<div class="fact-label">
+
+DID YOU KNOW?
+
+</div>
+
+
+<div class="fact-text">
+
+Cassini's final mission phase sent the
+spacecraft between Saturn and its innermost
+ring before it <strong>burned up in Saturn's atmosphere</strong>.
+
+</div>
+
+
+</div>
+
+
+<!-- NAVIGATION -->
+
+<div class="navigation">
+
+
+<a
+href="https://sites.google.com/view/kosmolearn"
+class="nav-button">
+
+← RETURN TO HOME
+
+</a>
+
+
+<a
+href="https://sites.google.com/view/kosmolearn/space-missions"
+class="nav-button">
+
+← RETURN TO SPACE MISSIONS
+
+</a>
+
+
+</div>
+
+
+<div class="credit">
+
+CASSINI-HUYGENS MISSION
+<br>
+NASA / ESA / ASI
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+<script>
+
+const stars =
+document.querySelector(".stars");
+
+const smallStars =
+document.querySelector(".stars-small");
+
+
+document.addEventListener(
+"mousemove",
+
+function(event) {
+
+    const x =
+        event.clientX /
+        window.innerWidth - 0.5;
+
+
+    const y =
+        event.clientY /
+        window.innerHeight - 0.5;
+
+
+    stars.style.transform =
+        `translate(
+            ${x * 20}px,
+            ${y * 20}px
+        )`;
+
+
+    smallStars.style.transform =
+        `translate(
+            ${x * -12}px,
+            ${y * -12}px
+        )`;
+
+});
+
+</script>
+
+
+</body>
+
+</html>
