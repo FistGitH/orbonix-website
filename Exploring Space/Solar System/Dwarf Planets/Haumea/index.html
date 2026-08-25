@@ -1,1 +1,1209 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: #020308;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   PAGE
+========================================= */
+
+.haumea-page {
+
+    position: relative;
+
+    min-height: 1850px;
+
+    padding: 55px 20px 100px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 25%,
+            rgba(120,145,175,.16),
+            transparent 45%
+        ),
+        #020308;
+}
+
+
+/* =========================================
+   STARS
+========================================= */
+
+.stars {
+
+    position: absolute;
+
+    inset: -20%;
+
+    pointer-events: none;
+
+    opacity: .38;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.9) 1px,
+            transparent 1px
+        );
+
+    background-size: 75px 75px;
+
+    transition:
+        transform 1.5s ease;
+}
+
+
+.stars-small {
+
+    position: absolute;
+
+    inset: -20%;
+
+    pointer-events: none;
+
+    opacity: .14;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.8) 1px,
+            transparent 1px
+        );
+
+    background-size: 32px 32px;
+
+    transition:
+        transform 2s ease;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header {
+
+    position: relative;
+
+    z-index: 100;
+
+    max-width: 950px;
+
+    margin: auto;
+
+    text-align: center;
+}
+
+
+.return {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    padding: 12px 20px;
+
+    margin-bottom: 35px;
+
+    color:
+        rgba(255,255,255,.7);
+
+    border:
+        1px solid
+        rgba(255,255,255,.22);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    transition:
+        .35s ease;
+}
+
+
+.return:hover {
+
+    color: #020308;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-4px);
+}
+
+
+.label {
+
+    margin-bottom: 18px;
+
+    color:
+        rgba(255,255,255,.4);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+
+h1 {
+
+    margin: 0;
+
+    font-size:
+        clamp(50px,9vw,105px);
+
+    line-height: .9;
+
+    letter-spacing: 7px;
+}
+
+
+.subtitle {
+
+    max-width: 720px;
+
+    margin:
+        25px auto 0;
+
+    color:
+        rgba(255,255,255,.52);
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   HAUMEA TEXT AREA
+========================================= */
+
+.haumea-area {
+
+    position: relative;
+
+    width:
+        min(900px,100%);
+
+    margin:
+        100px auto 110px;
+
+    text-align: center;
+}
+
+
+.haumea-title {
+
+    font-size:
+        clamp(35px,7vw,75px);
+
+    letter-spacing: 12px;
+
+    color:
+        rgba(255,255,255,.9);
+
+    margin-bottom: 20px;
+}
+
+
+.haumea-line {
+
+    width: 180px;
+
+    height: 1px;
+
+    margin: auto;
+
+    background:
+        rgba(255,255,255,.25);
+}
+
+
+.haumea-description {
+
+    max-width: 650px;
+
+    margin:
+        25px auto 0;
+
+    color:
+        rgba(255,255,255,.42);
+
+    font-size: 12px;
+
+    line-height: 1.8;
+
+    letter-spacing: 1px;
+}
+
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.content {
+
+    position: relative;
+
+    z-index: 10;
+
+    width:
+        min(1050px,100%);
+
+    margin: auto;
+}
+
+
+/* =========================================
+   STATS
+========================================= */
+
+.stats {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 1px;
+
+    background:
+        rgba(255,255,255,.1);
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+}
+
+
+.stat {
+
+    padding: 30px;
+
+    background:
+        rgba(5,7,13,.96);
+
+    transition:
+        .35s ease;
+}
+
+
+.stat:hover {
+
+    transform:
+        translateY(-5px);
+
+    background:
+        rgba(255,255,255,.04);
+}
+
+
+.stat-value {
+
+    margin-bottom: 9px;
+
+    font-size: 21px;
+
+    font-weight: bold;
+}
+
+
+.stat-label {
+
+    color:
+        rgba(255,255,255,.4);
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================
+   DESCRIPTION
+========================================= */
+
+.description {
+
+    margin-top: 60px;
+
+    padding: 40px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.025);
+}
+
+
+.description-title {
+
+    margin-bottom: 20px;
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+}
+
+
+.description-text {
+
+    max-width: 900px;
+
+    color:
+        rgba(255,255,255,.58);
+
+    font-size: 14px;
+
+    line-height: 1.9;
+}
+
+
+/* =========================================
+   FEATURES
+========================================= */
+
+.features-title {
+
+    margin-top: 60px;
+
+    margin-bottom: 25px;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,.45);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+
+.features {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 15px;
+}
+
+
+.feature {
+
+    padding: 28px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.02);
+
+    transition:
+        .35s ease;
+}
+
+
+.feature:hover {
+
+    transform:
+        translateY(-6px);
+
+    border-color:
+        rgba(170,200,230,.4);
+
+    background:
+        rgba(255,255,255,.04);
+}
+
+
+.feature-title {
+
+    margin-bottom: 12px;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+}
+
+
+.feature-text {
+
+    color:
+        rgba(255,255,255,.5);
+
+    font-size: 12px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   FACT
+========================================= */
+
+.fact {
+
+    margin-top: 60px;
+
+    padding: 40px;
+
+    text-align: center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    background:
+        rgba(255,255,255,.025);
+}
+
+
+.fact-label {
+
+    margin-bottom: 16px;
+
+    color:
+        rgba(255,255,255,.42);
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+}
+
+
+.fact-text {
+
+    max-width: 800px;
+
+    margin: auto;
+
+    font-size:
+        clamp(18px,3vw,27px);
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   MOONS
+========================================= */
+
+.moons-title {
+
+    margin-top: 70px;
+
+    margin-bottom: 25px;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,.45);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+
+.moons {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap: 15px;
+}
+
+
+.moon-button {
+
+    display: block;
+
+    padding: 35px 25px;
+
+    color: white;
+
+    text-decoration: none;
+
+    text-align: center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    background:
+        rgba(255,255,255,.025);
+
+    transition:
+        .35s ease;
+}
+
+
+.moon-button:hover {
+
+    transform:
+        translateY(-7px);
+
+    border-color:
+        rgba(180,205,235,.5);
+
+    background:
+        rgba(255,255,255,.06);
+}
+
+
+.moon-name {
+
+    margin-bottom: 12px;
+
+    font-size: 17px;
+
+    letter-spacing: 4px;
+}
+
+
+.moon-description {
+
+    color:
+        rgba(255,255,255,.45);
+
+    font-size: 11px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   NAVIGATION
+========================================= */
+
+.navigation {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    margin-top: 55px;
+
+    flex-wrap: wrap;
+}
+
+
+.nav-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 13px 22px;
+
+    color:
+        rgba(255,255,255,.75);
+
+    border:
+        1px solid
+        rgba(255,255,255,.2);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    transition:
+        .35s ease;
+}
+
+
+.nav-button:hover {
+
+    color: #020308;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-4px);
+}
+
+
+/* =========================================
+   CREDIT
+========================================= */
+
+.credit {
+
+    margin-top: 30px;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,.3);
+
+    font-size: 9px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:800px) {
+
+    .stats {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .features {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .moons {
+
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media(max-width:500px) {
+
+    .haumea-page {
+
+        padding:
+            45px 15px 70px;
+    }
+
+
+    .description {
+
+        padding: 25px;
+    }
+
+
+    .fact {
+
+        padding:
+            28px 20px;
+    }
+
+
+    .haumea-title {
+
+        letter-spacing: 7px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<section class="haumea-page">
+
+
+<div class="stars"></div>
+
+<div class="stars-small"></div>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<div class="header">
+
+
+<a
+href="https://sites.google.com/view/kosmolearn/solar-system"
+class="return">
+
+← RETURN TO SOLAR SYSTEM
+
+</a>
+
+
+<div class="label">
+
+ORBONIX · DWARF PLANETS
+
+</div>
+
+
+<h1>
+
+HAUMEA
+
+</h1>
+
+
+<div class="subtitle">
+
+A rapidly rotating dwarf planet in the
+Kuiper Belt, famous for its unusual
+elongated shape and two known moons.
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     HAUMEA TEXT
+========================================= -->
+
+<div class="haumea-area">
+
+
+<div class="haumea-title">
+
+HAUMEA
+
+</div>
+
+
+<div class="haumea-line"></div>
+
+
+<div class="haumea-description">
+
+KUIPER BELT · DWARF PLANET · TWO KNOWN MOONS
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     CONTENT
+========================================= -->
+
+<div class="content">
+
+
+<!-- STATS -->
+
+<div class="stats">
+
+
+<div class="stat">
+
+<div class="stat-value">
+~1,560 km
+</div>
+
+<div class="stat-label">
+LONGEST DIMENSION
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+3.9 HOURS
+</div>
+
+<div class="stat-label">
+ROTATION PERIOD
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+~43 AU
+</div>
+
+<div class="stat-label">
+AVERAGE DISTANCE FROM SUN
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+2003
+</div>
+
+<div class="stat-label">
+DISCOVERY / IDENTIFICATION
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+2
+</div>
+
+<div class="stat-label">
+KNOWN MOONS
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+HIʻIAKA + NAMAKA
+</div>
+
+<div class="stat-label">
+SATELLITES
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- DESCRIPTION -->
+
+<div class="description">
+
+
+<div class="description-title">
+
+THE RAPID ROTATOR
+
+</div>
+
+
+<div class="description-text">
+
+Haumea is a dwarf planet located in
+the Kuiper Belt beyond the orbit of
+Neptune.
+
+It is one of the most unusual known
+objects in the Solar System because
+it rotates extremely quickly, completing
+one rotation in only about four hours.
+
+This rapid rotation causes Haumea to
+be strongly elongated rather than
+spherical.
+
+Haumea is also surrounded by a thin
+ring and has two known moons:
+Hiʻiaka and Namaka.
+
+Its surface is thought to contain a large
+amount of crystalline water ice.
+
+</div>
+
+
+</div>
+
+
+<!-- FEATURES -->
+
+<div class="features-title">
+
+HAUMEA FEATURES
+
+</div>
+
+
+<div class="features">
+
+
+<div class="feature">
+
+<div class="feature-title">
+
+FAST ROTATION
+
+</div>
+
+<div class="feature-text">
+
+Haumea rotates once approximately
+every four hours, making it one of the
+fastest rotating large Solar System
+objects.
+
+</div>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-title">
+
+TWO MOONS
+
+</div>
+
+<div class="feature-text">
+
+Haumea has two known natural
+satellites: Hiʻiaka and Namaka.
+
+</div>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-title">
+
+RING SYSTEM
+
+</div>
+
+<div class="feature-text">
+
+Haumea has a narrow ring surrounding
+the dwarf planet, making it one of the
+few known dwarf planets with a ring.
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- FACT -->
+
+<div class="fact">
+
+
+<div class="fact-label">
+
+DID YOU KNOW?
+
+</div>
+
+
+<div class="fact-text">
+
+Haumea is so elongated because its
+<strong>extremely rapid rotation</strong>
+stretches the dwarf planet into an
+unusual oval shape.
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     MOONS
+========================================= -->
+
+<div class="moons-title">
+
+HAUMEA'S MOONS
+
+</div>
+
+
+<div class="moons">
+
+
+<a
+href="https://sites.google.com/view/kosmolearn/solar-system/dwarf-planets/haumea/hiaka"
+class="moon-button">
+
+
+<div class="moon-name">
+
+HIʻIAKA
+
+</div>
+
+
+<div class="moon-description">
+
+The larger and outer moon of Haumea.
+Click to explore Hiʻiaka.
+
+</div>
+
+
+</a>
+
+
+<a
+href="https://sites.google.com/view/kosmolearn/solar-system/dwarf-planets/haumea/namaka"
+class="moon-button">
+
+
+<div class="moon-name">
+
+NAMAKA
+
+</div>
+
+
+<div class="moon-description">
+
+The smaller and inner moon of Haumea.
+Click to explore Namaka.
+
+</div>
+
+
+</a>
+
+
+</div>
+
+
+<!-- =========================================
+     NAVIGATION
+========================================= -->
+
+<div class="navigation">
+
+
+<a
+href="https://sites.google.com/view/kosmolearn/solar-system"
+class="nav-button">
+
+← RETURN TO SOLAR SYSTEM
+
+</a>
+
+
+<a
+href="https://sites.google.com/view/kosmolearn/solar-system/dwarf-planets"
+class="nav-button">
+
+← RETURN TO DWARF PLANETS
+
+</a>
+
+
+</div>
+
+
+<div class="credit">
+
+ORBONIX · DWARF PLANETS
+<br>
+HAUMEA · HIʻIAKA · NAMAKA
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+<script>
+
+const stars =
+document.querySelector(".stars");
+
+
+const smallStars =
+document.querySelector(".stars-small");
+
+
+document.addEventListener(
+"mousemove",
+
+function(event) {
+
+    const x =
+        event.clientX /
+        window.innerWidth - 0.5;
+
+
+    const y =
+        event.clientY /
+        window.innerHeight - 0.5;
+
+
+    stars.style.transform =
+        `translate(
+            ${x * 20}px,
+            ${y * 20}px
+        )`;
+
+
+    smallStars.style.transform =
+        `translate(
+            ${x * -12}px,
+            ${y * -12}px
+        )`;
+
+});
+
+</script>
+
+
+</body>
+
+</html>
