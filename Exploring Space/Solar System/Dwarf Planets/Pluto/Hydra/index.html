@@ -1,1 +1,1044 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: #020308;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   PAGE
+========================================= */
+
+.hydra-page {
+
+    position: relative;
+
+    min-height: 1500px;
+
+    padding: 55px 20px 100px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 25%,
+            rgba(105,125,150,.13),
+            transparent 45%
+        ),
+        #020308;
+}
+
+
+/* =========================================
+   STARS
+========================================= */
+
+.stars {
+
+    position: absolute;
+
+    inset: -20%;
+
+    pointer-events: none;
+
+    opacity: .32;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.9) 1px,
+            transparent 1px
+        );
+
+    background-size: 75px 75px;
+
+    transition:
+        transform 1.5s ease;
+}
+
+
+.stars-small {
+
+    position: absolute;
+
+    inset: -20%;
+
+    pointer-events: none;
+
+    opacity: .12;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.8) 1px,
+            transparent 1px
+        );
+
+    background-size: 32px 32px;
+
+    transition:
+        transform 2s ease;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header {
+
+    position: relative;
+
+    z-index: 10;
+
+    max-width: 950px;
+
+    margin: auto;
+
+    text-align: center;
+}
+
+
+.return {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    padding: 12px 20px;
+
+    margin-bottom: 35px;
+
+    color:
+        rgba(255,255,255,.7);
+
+    border:
+        1px solid
+        rgba(255,255,255,.22);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    transition:
+        .35s ease;
+}
+
+
+.return:hover {
+
+    color: #020308;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-4px);
+}
+
+
+.label {
+
+    margin-bottom: 18px;
+
+    color:
+        rgba(255,255,255,.4);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+
+h1 {
+
+    margin: 0;
+
+    font-size:
+        clamp(55px,9vw,105px);
+
+    line-height: .9;
+
+    letter-spacing: 7px;
+}
+
+
+.subtitle {
+
+    max-width: 720px;
+
+    margin:
+        25px auto 0;
+
+    color:
+        rgba(255,255,255,.52);
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   INTRO
+========================================= */
+
+.intro {
+
+    position: relative;
+
+    z-index: 5;
+
+    max-width: 900px;
+
+    margin:
+        90px auto 0;
+
+    padding: 40px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.025);
+}
+
+
+.intro-title {
+
+    margin-bottom: 20px;
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+}
+
+
+.intro-text {
+
+    color:
+        rgba(255,255,255,.58);
+
+    font-size: 14px;
+
+    line-height: 1.9;
+}
+
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.content {
+
+    position: relative;
+
+    z-index: 5;
+
+    width:
+        min(1050px,100%);
+
+    margin:
+        60px auto 0;
+}
+
+
+/* =========================================
+   STATS
+========================================= */
+
+.stats {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 1px;
+
+    background:
+        rgba(255,255,255,.1);
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+}
+
+
+.stat {
+
+    padding: 30px;
+
+    background:
+        rgba(5,7,13,.96);
+
+    transition:
+        .35s ease;
+}
+
+
+.stat:hover {
+
+    transform:
+        translateY(-5px);
+
+    background:
+        rgba(255,255,255,.04);
+}
+
+
+.stat-value {
+
+    margin-bottom: 9px;
+
+    font-size: 21px;
+
+    font-weight: bold;
+}
+
+
+.stat-label {
+
+    color:
+        rgba(255,255,255,.4);
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================
+   DESCRIPTION
+========================================= */
+
+.description {
+
+    margin-top: 60px;
+
+    padding: 40px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.025);
+}
+
+
+.description-title {
+
+    margin-bottom: 20px;
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+}
+
+
+.description-text {
+
+    max-width: 900px;
+
+    color:
+        rgba(255,255,255,.58);
+
+    font-size: 14px;
+
+    line-height: 1.9;
+}
+
+
+/* =========================================
+   FEATURES
+========================================= */
+
+.features-title {
+
+    margin-top: 60px;
+
+    margin-bottom: 25px;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,.45);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+
+.features {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 15px;
+}
+
+
+.feature {
+
+    padding: 28px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.02);
+
+    transition:
+        .35s ease;
+}
+
+
+.feature:hover {
+
+    transform:
+        translateY(-6px);
+
+    border-color:
+        rgba(170,195,225,.4);
+
+    background:
+        rgba(255,255,255,.04);
+}
+
+
+.feature-title {
+
+    margin-bottom: 12px;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+}
+
+
+.feature-text {
+
+    color:
+        rgba(255,255,255,.5);
+
+    font-size: 12px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   FACT
+========================================= */
+
+.fact {
+
+    margin-top: 60px;
+
+    padding: 40px;
+
+    text-align: center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    background:
+        rgba(255,255,255,.025);
+}
+
+
+.fact-label {
+
+    margin-bottom: 16px;
+
+    color:
+        rgba(255,255,255,.42);
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+}
+
+
+.fact-text {
+
+    max-width: 800px;
+
+    margin: auto;
+
+    font-size:
+        clamp(18px,3vw,27px);
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   NAVIGATION
+========================================= */
+
+.navigation {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    margin-top: 55px;
+
+    flex-wrap: wrap;
+}
+
+
+.nav-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 13px 22px;
+
+    color:
+        rgba(255,255,255,.75);
+
+    border:
+        1px solid
+        rgba(255,255,255,.2);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    transition:
+        .35s ease;
+}
+
+
+.nav-button:hover {
+
+    color: #020308;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-4px);
+}
+
+
+/* =========================================
+   CREDIT
+========================================= */
+
+.credit {
+
+    margin-top: 30px;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,.3);
+
+    font-size: 9px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:800px) {
+
+    .stats {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .features {
+
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media(max-width:500px) {
+
+    .hydra-page {
+
+        padding:
+            45px 15px 70px;
+    }
+
+
+    .intro,
+    .description,
+    .fact {
+
+        padding: 25px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<section class="hydra-page">
+
+
+<div class="stars"></div>
+
+<div class="stars-small"></div>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<div class="header">
+
+
+<a
+href="https://sites.google.com/view/kosmolearn/solar-system/dwarf-planets/pluto"
+class="return">
+
+← RETURN TO PLUTO
+
+</a>
+
+
+<div class="label">
+
+ORBONIX · PLUTO MOONS
+
+</div>
+
+
+<h1>
+
+HYDRA
+
+</h1>
+
+
+<div class="subtitle">
+
+A small, elongated moon of Pluto discovered
+with the Hubble Space Telescope and observed
+by New Horizons in 2015.
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     INTRO
+========================================= -->
+
+<div class="intro">
+
+
+<div class="intro-title">
+
+THE OUTER MOON
+
+</div>
+
+
+<div class="intro-text">
+
+Hydra is one of Pluto's five known moons.
+It was discovered in 2005 using the
+Hubble Space Telescope.
+
+The moon is named after the Hydra, a
+many-headed serpent from Greek mythology.
+
+Hydra has an elongated, irregular shape
+and is located farther from Pluto than
+Charon, Styx and Nix.
+
+The New Horizons spacecraft photographed
+Hydra during its historic flyby of the
+Pluto system in July 2015.
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     CONTENT
+========================================= -->
+
+<div class="content">
+
+
+<!-- STATS -->
+
+<div class="stats">
+
+
+<div class="stat">
+
+<div class="stat-value">
+~65 × 45 km
+</div>
+
+<div class="stat-label">
+APPROXIMATE DIMENSIONS
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+38.2 DAYS
+</div>
+
+<div class="stat-label">
+ORBITAL PERIOD
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+~64,700 km
+</div>
+
+<div class="stat-label">
+AVERAGE DISTANCE FROM PLUTO
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+2005
+</div>
+
+<div class="stat-label">
+DISCOVERED
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+IRREGULAR
+</div>
+
+<div class="stat-label">
+SHAPE
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+2015
+</div>
+
+<div class="stat-label">
+NEW HORIZONS OBSERVATION
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     DESCRIPTION
+========================================= -->
+
+<div class="description">
+
+
+<div class="description-title">
+
+AN ICY AND ELONGATED WORLD
+
+</div>
+
+
+<div class="description-text">
+
+Hydra is a small icy moon orbiting the
+Pluto-Charon system.
+
+Its elongated shape shows that Hydra is
+not massive enough for its own gravity
+to make it spherical.
+
+New Horizons revealed that Hydra has
+a highly reflective surface, suggesting
+that it is covered with relatively clean
+water ice.
+
+Hydra also rotates in a chaotic way.
+Unlike Earth's Moon, it does not keep
+the same side facing Pluto.
+
+Its rotation is affected by the complex
+gravitational field created by Pluto and
+Charon.
+
+Hydra is the outermost of Pluto's five
+known moons.
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     FEATURES
+========================================= -->
+
+<div class="features-title">
+
+HYDRA FEATURES
+
+</div>
+
+
+<div class="features">
+
+
+<div class="feature">
+
+<div class="feature-title">
+
+WATER ICE
+
+</div>
+
+<div class="feature-text">
+
+Hydra has a highly reflective surface
+that is consistent with abundant
+water ice.
+
+</div>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-title">
+
+CHAOTIC ROTATION
+
+</div>
+
+<div class="feature-text">
+
+Hydra can change its orientation
+unpredictably because of the
+gravitational influence of Pluto
+and Charon.
+
+</div>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-title">
+
+NEW HORIZONS
+
+</div>
+
+<div class="feature-text">
+
+New Horizons photographed Hydra
+during its 2015 flyby, providing the
+first close-up observations of the moon.
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     FACT
+========================================= -->
+
+<div class="fact">
+
+
+<div class="fact-label">
+
+DID YOU KNOW?
+
+</div>
+
+
+<div class="fact-text">
+
+Hydra is the
+<strong>outermost known moon of Pluto</strong>
+and has a surface that reflects a large
+amount of sunlight.
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     NAVIGATION
+========================================= -->
+
+<div class="navigation">
+
+
+<a
+href="https://sites.google.com/view/kosmolearn/solar-system/dwarf-planets/pluto"
+class="nav-button">
+
+← RETURN TO PLUTO
+
+</a>
+
+
+<a
+href="https://sites.google.com/view/kosmolearn/solar-system/dwarf-planets/pluto"
+class="nav-button">
+
+← RETURN TO DWARF PLANETS
+
+</a>
+
+
+</div>
+
+
+<div class="credit">
+
+ORBONIX · DWARF PLANETS
+<br>
+HYDRA · PLUTO SYSTEM
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+<script>
+
+const stars =
+document.querySelector(".stars");
+
+
+const smallStars =
+document.querySelector(".stars-small");
+
+
+document.addEventListener(
+"mousemove",
+
+function(event) {
+
+    const x =
+        event.clientX /
+        window.innerWidth - 0.5;
+
+
+    const y =
+        event.clientY /
+        window.innerHeight - 0.5;
+
+
+    stars.style.transform =
+        `translate(
+            ${x * 20}px,
+            ${y * 20}px
+        )`;
+
+
+    smallStars.style.transform =
+        `translate(
+            ${x * -12}px,
+            ${y * -12}px
+        )`;
+
+});
+
+</script>
+
+
+</body>
+
+</html>
