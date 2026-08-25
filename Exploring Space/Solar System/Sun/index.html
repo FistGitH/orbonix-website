@@ -1,10 +1,13 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Sun | ORBONIX</title>
 
 <style>
 
@@ -26,20 +29,27 @@ body {
 
 
 /* =========================================
-   PAGE
+   MAIN
 ========================================= */
 
 .sun-page {
 
     position: relative;
 
+    width: 100%;
     min-height: 1200px;
 
     padding: 55px 20px 100px;
 
     overflow: hidden;
 
-    background: #020308;
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(255,130,20,.10),
+            transparent 45%
+        ),
+        #020308;
 }
 
 
@@ -220,6 +230,59 @@ h1 {
 
 
 /* =========================================
+   SUN GLOW
+========================================= */
+
+.sun-area::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 430px;
+
+    height: 430px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,170,40,.20),
+            rgba(255,100,20,.08) 45%,
+            transparent 72%
+        );
+
+    filter: blur(20px);
+
+    z-index: 1;
+
+    animation:
+        sunGlow 4s ease-in-out infinite;
+}
+
+
+@keyframes sunGlow {
+
+    0%,
+    100% {
+
+        transform: scale(.96);
+
+        opacity: .7;
+    }
+
+    50% {
+
+        transform: scale(1.05);
+
+        opacity: 1;
+    }
+
+}
+
+
+/* =========================================
    SUN IMAGE
 ========================================= */
 
@@ -240,6 +303,14 @@ h1 {
     z-index: 2;
 
     background: #111;
+
+    box-shadow:
+
+        0 0 35px
+        rgba(255,160,40,.18),
+
+        0 0 80px
+        rgba(255,100,20,.12);
 
     transition:
         transform .7s ease;
@@ -428,6 +499,9 @@ h1 {
         1px solid
         rgba(255,255,255,.1);
 
+    background:
+        rgba(255,255,255,.015);
+
     font-size: 9px;
 
     letter-spacing: 2px;
@@ -444,6 +518,9 @@ h1 {
 
     border-color:
         rgba(255,170,50,.5);
+
+    background:
+        rgba(255,170,50,.04);
 }
 
 
@@ -504,6 +581,14 @@ h1 {
     }
 
 
+    .sun-area::before {
+
+        width: 330px;
+
+        height: 330px;
+    }
+
+
     .sun-image {
 
         width: 300px;
@@ -543,6 +628,16 @@ h1 {
         height: 300px;
 
         margin-top: 50px;
+
+        margin-bottom: 70px;
+    }
+
+
+    .sun-area::before {
+
+        width: 250px;
+
+        height: 250px;
     }
 
 
@@ -567,18 +662,31 @@ h1 {
         padding: 25px;
     }
 
+
+    .layers {
+
+        gap: 8px;
+    }
+
+
+    .layer {
+
+        padding: 17px 5px;
+
+        font-size: 8px;
+
+        letter-spacing: 1.5px;
+    }
+
 }
 
 </style>
 
 </head>
 
-
 <body>
 
-
 <section class="sun-page">
-
 
 <!-- =========================================
      BACKGROUND
@@ -588,13 +696,11 @@ h1 {
 
 <div class="stars-small"></div>
 
-
 <!-- =========================================
      HEADER
 ========================================= -->
 
 <div class="header">
-
 
 <a
 href="https://sites.google.com/view/kosmolearn/exploring-space"
@@ -604,20 +710,17 @@ class="return">
 
 </a>
 
-
 <div class="label">
 
 ORBONIX · SOLAR SYSTEM
 
 </div>
 
-
 <h1>
 
 SUN
 
 </h1>
-
 
 <div class="subtitle">
 
@@ -627,9 +730,7 @@ asteroid and comet around it.
 
 </div>
 
-
 </div>
-
 
 <!-- =========================================
      SUN
@@ -637,15 +738,12 @@ asteroid and comet around it.
 
 <div class="sun-area">
 
-
 <img
-
 class="sun-image"
-
 src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Image_of_Sun_From_NASA%E2%80%99s_Solar_Dynamics_Observatory_(PIA26681).jpg"
-
 alt="Sun photographed by NASA's Solar Dynamics Observatory"
 
+>
 
 <div class="image-credit">
 
@@ -653,9 +751,7 @@ IMAGE: NASA / SDO
 
 </div>
 
-
 </div>
-
 
 <!-- =========================================
      INFORMATION
@@ -663,9 +759,7 @@ IMAGE: NASA / SDO
 
 <div class="info">
 
-
 <div class="info-grid">
-
 
 <div class="card">
 
@@ -679,7 +773,6 @@ DIAMETER
 
 </div>
 
-
 <div class="card">
 
 <div class="number">
@@ -691,7 +784,6 @@ AGE
 </div>
 
 </div>
-
 
 <div class="card">
 
@@ -705,7 +797,6 @@ PHOTOSPHERE TEMPERATURE
 
 </div>
 
-
 <div class="card">
 
 <div class="number">
@@ -717,7 +808,6 @@ MASS
 </div>
 
 </div>
-
 
 <div class="card">
 
@@ -731,7 +821,6 @@ ROTATION PERIOD
 
 </div>
 
-
 <div class="card">
 
 <div class="number">
@@ -744,9 +833,7 @@ STELLAR TYPE
 
 </div>
 
-
 </div>
-
 
 <!-- =========================================
      DESCRIPTION
@@ -754,13 +841,11 @@ STELLAR TYPE
 
 <div class="description">
 
-
 <div class="description-title">
 
 WHAT IS THE SUN?
 
 </div>
-
 
 <div class="description-text">
 
@@ -787,44 +872,35 @@ coronal mass ejections.
 
 </div>
 
-
 <!-- =========================================
      LAYERS
 ========================================= -->
 
 <div class="layers">
 
-
 <div class="layer">
 CORE
 </div>
-
 
 <div class="layer">
 RADIATIVE ZONE
 </div>
 
-
 <div class="layer">
 CONVECTIVE ZONE
 </div>
-
 
 <div class="layer">
 PHOTOSPHERE
 </div>
 
-
 <div class="layer">
 CORONA
 </div>
 
-
 </div>
 
-
 </div>
-
 
 <!-- =========================================
      FACT
@@ -832,31 +908,32 @@ CORONA
 
 <div class="fact">
 
-
 <div class="fact-label">
 
 DID YOU KNOW?
 
 </div>
 
-
 <div class="fact-text">
 
-Sunlight takes approximately
-<strong>8 minutes 20 seconds</strong>
+Sunlight takes approximately <strong>8 minutes 20 seconds</strong>
 to travel from the Sun to Earth.
 
 </div>
 
+</div>
+
+<div class="credit">
+
+SUN IMAGE:
+NASA / SOLAR DYNAMICS OBSERVATORY <br>
+IMAGE VIA WIKIMEDIA COMMONS
 
 </div>
 
-
 </div>
-
 
 </section>
-
 
 <script>
 
@@ -902,8 +979,8 @@ function(event) {
 
 });
 
-</script>
 
+</script>
 
 </body>
 
