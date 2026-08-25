@@ -1,1 +1,2389 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: #010208;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   PAGE
+========================================= */
+
+.planet-quiz-page {
+
+    position: relative;
+
+    min-height: 100vh;
+
+    padding: 65px 20px 100px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 15%,
+            rgba(70,100,200,.16),
+            transparent 43%
+        ),
+        radial-gradient(
+            circle at 20% 70%,
+            rgba(40,80,180,.08),
+            transparent 35%
+        ),
+        #010208;
+}
+
+
+/* =========================================
+   STARS
+========================================= */
+
+.stars,
+.stars-small {
+
+    position: fixed;
+
+    inset: -25%;
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+.stars {
+
+    opacity: .38;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.9) 1px,
+            transparent 1px
+        );
+
+    background-size: 75px 75px;
+
+    transition:
+        transform 1.5s ease;
+}
+
+.stars-small {
+
+    opacity: .16;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.8) 1px,
+            transparent 1px
+        );
+
+    background-size: 32px 32px;
+
+    transition:
+        transform 2s ease;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header {
+
+    position: relative;
+
+    z-index: 5;
+
+    max-width: 900px;
+
+    margin: auto;
+
+    text-align: center;
+}
+
+.return {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 12px 20px;
+
+    margin-bottom: 40px;
+
+    color:
+        rgba(255,255,255,.7);
+
+    border:
+        1px solid
+        rgba(255,255,255,.22);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    transition: .35s ease;
+}
+
+.return:hover {
+
+    color: #010208;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-4px);
+}
+
+.label {
+
+    margin-bottom: 18px;
+
+    color:
+        rgba(255,255,255,.4);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+h1 {
+
+    margin: 0;
+
+    font-size:
+        clamp(43px,8vw,85px);
+
+    line-height: .9;
+
+    letter-spacing: 6px;
+}
+
+.subtitle {
+
+    max-width: 720px;
+
+    margin:
+        28px auto 0;
+
+    color:
+        rgba(255,255,255,.52);
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   QUIZ CONTAINER
+========================================= */
+
+.quiz-container {
+
+    position: relative;
+
+    z-index: 5;
+
+    width:
+        min(850px,100%);
+
+    margin:
+        70px auto 0;
+
+    padding: 35px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.025);
+
+    transition:
+        .8s ease;
+}
+
+
+/* =========================================
+   QUIZ TOP
+========================================= */
+
+.quiz-top {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 15px;
+}
+
+.question-number {
+
+    color:
+        rgba(255,255,255,.45);
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+}
+
+.difficulty {
+
+    padding:
+        7px 12px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.15);
+
+    color:
+        rgba(255,255,255,.5);
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================
+   PROGRESS
+========================================= */
+
+.progress {
+
+    width: 100%;
+
+    height: 2px;
+
+    margin-bottom: 45px;
+
+    background:
+        rgba(255,255,255,.08);
+
+    overflow: hidden;
+}
+
+.progress-bar {
+
+    width: 0%;
+
+    height: 100%;
+
+    background: white;
+
+    transition:
+        width .5s ease;
+}
+
+
+/* =========================================
+   QUESTION
+========================================= */
+
+.question {
+
+    margin-bottom: 35px;
+
+    font-size:
+        clamp(20px,3vw,30px);
+
+    line-height: 1.4;
+
+    letter-spacing: .4px;
+}
+
+
+/* =========================================
+   ANSWERS
+========================================= */
+
+.answers {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap: 12px;
+}
+
+.answer {
+
+    min-height: 70px;
+
+    padding:
+        18px 20px;
+
+    text-align: left;
+
+    color:
+        rgba(255,255,255,.7);
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    background:
+        rgba(255,255,255,.02);
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 12px;
+
+    cursor: pointer;
+
+    transition:
+        .3s ease;
+}
+
+.answer:hover {
+
+    color: white;
+
+    border-color:
+        rgba(255,255,255,.35);
+
+    background:
+        rgba(255,255,255,.05);
+
+    transform:
+        translateY(-3px);
+}
+
+.answer.correct {
+
+    color: white;
+
+    border-color:
+        rgba(100,220,150,.7);
+
+    background:
+        rgba(60,180,110,.12);
+}
+
+.answer.wrong {
+
+    color: white;
+
+    border-color:
+        rgba(255,90,90,.7);
+
+    background:
+        rgba(220,50,50,.12);
+}
+
+.answer.disabled {
+
+    pointer-events: none;
+}
+
+
+/* =========================================
+   NEXT
+========================================= */
+
+.next-area {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    margin-top: 25px;
+}
+
+.next-button {
+
+    display: none;
+
+    padding:
+        13px 25px;
+
+    color:
+        rgba(255,255,255,.8);
+
+    border:
+        1px solid
+        rgba(255,255,255,.2);
+
+    background:
+        transparent;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    cursor: pointer;
+
+    transition:
+        .3s ease;
+}
+
+.next-button:hover {
+
+    color: #010208;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-3px);
+}
+
+
+/* =========================================
+   FINAL RESULT
+========================================= */
+
+.result {
+
+    display: none;
+
+    position: relative;
+
+    text-align: center;
+
+    min-height: 500px;
+
+    padding:
+        25px 10px 15px;
+
+    overflow: hidden;
+}
+
+
+/* =========================================
+   FINAL GLOW
+========================================= */
+
+.result::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 350px;
+
+    height: 350px;
+
+    left: 50%;
+
+    top: 45%;
+
+    transform:
+        translate(-50%,-50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(100,120,255,.22),
+            rgba(70,80,180,.08) 35%,
+            transparent 70%
+        );
+
+    filter:
+        blur(5px);
+
+    animation:
+        finalGlow 4s ease-in-out infinite;
+
+    pointer-events: none;
+}
+
+@keyframes finalGlow {
+
+    0%,100% {
+
+        transform:
+            translate(-50%,-50%)
+            scale(.85);
+
+        opacity: .5;
+    }
+
+    50% {
+
+        transform:
+            translate(-50%,-50%)
+            scale(1.15);
+
+        opacity: 1;
+    }
+}
+
+
+/* =========================================
+   COMPLETION ICON
+========================================= */
+
+.completion-icon {
+
+    position: relative;
+
+    width: 100px;
+
+    height: 100px;
+
+    margin:
+        5px auto 30px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid
+        rgba(255,255,255,.5);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 32px;
+
+    animation:
+        iconAppear 1s ease forwards,
+        iconFloat 4s ease-in-out 1s infinite;
+
+    box-shadow:
+        0 0 30px
+        rgba(130,140,255,.25),
+
+        inset 0 0 25px
+        rgba(120,130,255,.12);
+
+    z-index: 2;
+}
+
+.completion-icon::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: -13px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    animation:
+        orbitSpin 8s linear infinite;
+}
+
+.completion-icon::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 6px;
+
+    height: 6px;
+
+    top: -16px;
+
+    left: 50%;
+
+    border-radius: 50%;
+
+    background: white;
+
+    box-shadow:
+        0 0 10px white;
+
+    animation:
+        orbitSpin 8s linear infinite;
+    transform-origin:
+        0 66px;
+}
+
+@keyframes iconAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            scale(.3)
+            rotate(-30deg);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            scale(1)
+            rotate(0);
+    }
+}
+
+@keyframes iconFloat {
+
+    0%,100% {
+
+        transform:
+            translateY(0);
+    }
+
+    50% {
+
+        transform:
+            translateY(-8px);
+    }
+}
+
+@keyframes orbitSpin {
+
+    from {
+
+        transform:
+            rotate(0deg);
+    }
+
+    to {
+
+        transform:
+            rotate(360deg);
+    }
+}
+
+
+/* =========================================
+   FINAL TEXT
+========================================= */
+
+.result-label {
+
+    position: relative;
+
+    z-index: 2;
+
+    margin-bottom: 18px;
+
+    color:
+        rgba(255,255,255,.45);
+
+    font-size: 10px;
+
+    letter-spacing: 6px;
+
+    animation:
+        fadeUp .8s ease .2s both;
+}
+
+.result-title {
+
+    position: relative;
+
+    z-index: 2;
+
+    margin-bottom: 12px;
+
+    font-size:
+        clamp(32px,7vw,65px);
+
+    letter-spacing: 5px;
+
+    animation:
+        titleAppear 1s ease .35s both;
+}
+
+@keyframes titleAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(20px);
+
+        letter-spacing: 15px;
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+        letter-spacing: 5px;
+    }
+}
+
+.score {
+
+    position: relative;
+
+    z-index: 2;
+
+    margin-bottom: 22px;
+
+    font-size: 25px;
+
+    font-weight: bold;
+
+    letter-spacing: 3px;
+
+    animation:
+        fadeUp .8s ease .55s both;
+}
+
+.result-text {
+
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 650px;
+
+    margin:
+        0 auto 30px;
+
+    color:
+        rgba(255,255,255,.5);
+
+    font-size: 13px;
+
+    line-height: 1.8;
+
+    animation:
+        fadeUp .8s ease .7s both;
+}
+
+@keyframes fadeUp {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(15px);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* =========================================
+   SCORE BAR
+========================================= */
+
+.final-score-bar {
+
+    position: relative;
+
+    z-index: 2;
+
+    width:
+        min(500px,90%);
+
+    height: 3px;
+
+    margin:
+        0 auto 35px;
+
+    background:
+        rgba(255,255,255,.08);
+
+    overflow: hidden;
+
+    animation:
+        fadeUp .8s ease .85s both;
+}
+
+.final-score-fill {
+
+    width: 0%;
+
+    height: 100%;
+
+    background: white;
+
+    box-shadow:
+        0 0 12px
+        rgba(255,255,255,.8);
+
+    transition:
+        width 1.8s cubic-bezier(.2,.8,.2,1);
+}
+
+
+/* =========================================
+   RESULT BUTTONS
+========================================= */
+
+.result-buttons {
+
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+
+    animation:
+        fadeUp .8s ease 1s both;
+}
+
+.result-button {
+
+    padding:
+        13px 23px;
+
+    color:
+        rgba(255,255,255,.75);
+
+    border:
+        1px solid
+        rgba(255,255,255,.2);
+
+    background:
+        transparent;
+
+    text-decoration: none;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    cursor: pointer;
+
+    transition:
+        .3s ease;
+}
+
+.result-button:hover {
+
+    color: #010208;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-3px);
+}
+
+
+/* =========================================
+   CONFETTI / PARTICLES
+========================================= */
+
+.final-particle {
+
+    position: absolute;
+
+    width: 3px;
+
+    height: 3px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    pointer-events: none;
+
+    opacity: 0;
+
+    animation:
+        particleFly 2.5s ease-out forwards;
+}
+
+@keyframes particleFly {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            translate(0,0)
+            scale(.2);
+    }
+
+    15% {
+
+        opacity: 1;
+
+        transform:
+            translate(0,0)
+            scale(1);
+    }
+
+    100% {
+
+        opacity: 0;
+
+        transform:
+            translate(
+                var(--x),
+                var(--y)
+            )
+            scale(.2);
+    }
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.footer {
+
+    position: relative;
+
+    z-index: 5;
+
+    margin-top: 35px;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,.25);
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:600px) {
+
+    .planet-quiz-page {
+
+        padding:
+            50px 15px 80px;
+    }
+
+    .quiz-container {
+
+        padding: 25px;
+    }
+
+    .answers {
+
+        grid-template-columns:
+            1fr;
+    }
+
+    .question {
+
+        font-size: 20px;
+    }
+
+    .completion-icon {
+
+        width: 85px;
+
+        height: 85px;
+    }
+
+    .result {
+
+        min-height: 550px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<section class="planet-quiz-page">
+
+
+<div class="stars"></div>
+
+<div class="stars-small"></div>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<div class="header">
+
+<a
+href="https://sites.google.com/view/kosmolearn"
+class="return">
+
+← RETURN TO HOME
+
+</a>
+
+<div class="label">
+
+ORBONIX · SPACE KNOWLEDGE
+
+</div>
+
+<h1>
+
+PLANET QUIZ
+
+</h1>
+
+<div class="subtitle">
+
+30 questions about the worlds of our
+Solar System. The mission begins easy
+and gradually reaches advanced astronomy.
+
+</div>
+
+</div>
+
+
+<!-- =========================================
+     QUIZ
+========================================= -->
+
+<div class="quiz-container">
+
+
+<div id="quiz">
+
+
+<div class="quiz-top">
+
+<div
+class="question-number"
+id="questionNumber">
+
+QUESTION 01 / 30
+
+</div>
+
+<div
+class="difficulty"
+id="difficulty">
+
+EASY
+
+</div>
+
+</div>
+
+
+<div class="progress">
+
+<div
+class="progress-bar"
+id="progressBar">
+</div>
+
+</div>
+
+
+<div
+class="question"
+id="question">
+
+Loading question...
+
+</div>
+
+
+<div
+class="answers"
+id="answers">
+</div>
+
+
+<div class="next-area">
+
+<button
+class="next-button"
+id="nextButton"
+onclick="nextQuestion()">
+
+NEXT QUESTION →
+
+</button>
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     FINAL RESULT
+========================================= -->
+
+<div
+class="result"
+id="result">
+
+
+<div class="completion-icon">
+
+✓
+
+</div>
+
+
+<div class="result-label">
+
+QUIZ COMPLETE
+
+</div>
+
+
+<div
+class="result-title"
+id="resultTitle">
+
+PLANET EXPLORER
+
+</div>
+
+
+<div
+class="score"
+id="score">
+
+0 / 30
+
+</div>
+
+
+<div class="final-score-bar">
+
+<div
+class="final-score-fill"
+id="finalScoreFill">
+</div>
+
+</div>
+
+
+<div
+class="result-text"
+id="resultText">
+
+You have completed your journey
+through the Solar System.
+
+</div>
+
+
+<div class="result-buttons">
+
+
+<button
+class="result-button"
+onclick="restartQuiz()">
+
+↻ RESTART QUIZ
+
+</button>
+
+
+<a
+href="YOUR-QUIZ-SELECT-PAGE-LINK"
+class="result-button">
+
+← QUIZ SELECT
+
+</a>
+
+
+<a
+href="https://sites.google.com/view/kosmolearn"
+class="result-button">
+
+RETURN TO HOME
+
+</a>
+
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<div class="footer">
+
+ORBONIX · PLANET QUIZ · SPACE KNOWLEDGE
+
+</div>
+
+
+</section>
+
+
+<script>
+
+
+/* =========================================
+   QUESTIONS
+========================================= */
+
+const questions = [
+
+{
+question:
+"Which planet is closest to the Sun?",
+answers:
+[
+"Mercury",
+"Venus",
+"Earth",
+"Mars"
+],
+correct: 0,
+difficulty: "EASY"
+},
+
+{
+question:
+"Which planet is known as the Red Planet?",
+answers:
+[
+"Jupiter",
+"Mars",
+"Venus",
+"Mercury"
+],
+correct: 1,
+difficulty: "EASY"
+},
+
+{
+question:
+"Which is the largest planet in the Solar System?",
+answers:
+[
+"Saturn",
+"Neptune",
+"Jupiter",
+"Uranus"
+],
+correct: 2,
+difficulty: "EASY"
+},
+
+{
+question:
+"Which planet do we live on?",
+answers:
+[
+"Mars",
+"Earth",
+"Venus",
+"Mercury"
+],
+correct: 1,
+difficulty: "EASY"
+},
+
+{
+question:
+"Which planet is famous for its prominent ring system?",
+answers:
+[
+"Saturn",
+"Jupiter",
+"Uranus",
+"Neptune"
+],
+correct: 0,
+difficulty: "EASY"
+},
+
+{
+question:
+"How many planets are officially recognized in our Solar System?",
+answers:
+[
+"7",
+"8",
+"9",
+"10"
+],
+correct: 1,
+difficulty: "EASY"
+},
+
+{
+question:
+"Which planet is the hottest on average?",
+answers:
+[
+"Mercury",
+"Venus",
+"Mars",
+"Jupiter"
+],
+correct: 1,
+difficulty: "EASY"
+},
+
+{
+question:
+"Which planet is farthest from the Sun?",
+answers:
+[
+"Saturn",
+"Uranus",
+"Neptune",
+"Jupiter"
+],
+correct: 2,
+difficulty: "EASY"
+},
+
+{
+question:
+"Which planet is famous for its Great Red Spot?",
+answers:
+[
+"Jupiter",
+"Mars",
+"Saturn",
+"Neptune"
+],
+correct: 0,
+difficulty: "EASY"
+},
+
+{
+question:
+"Which planet is often called Earth's sister planet because of its similar size?",
+answers:
+[
+"Mars",
+"Venus",
+"Mercury",
+"Neptune"
+],
+correct: 1,
+difficulty: "EASY"
+},
+
+
+/* =========================================
+   MEDIUM
+========================================= */
+
+{
+question:
+"Which planet has the shortest year?",
+answers:
+[
+"Mercury",
+"Venus",
+"Earth",
+"Mars"
+],
+correct: 0,
+difficulty: "MEDIUM"
+},
+
+{
+question:
+"Which planet has the longest year of the eight planets?",
+answers:
+[
+"Uranus",
+"Neptune",
+"Saturn",
+"Jupiter"
+],
+correct: 1,
+difficulty: "MEDIUM"
+},
+
+{
+question:
+"Which planet rotates in the opposite direction to most planets?",
+answers:
+[
+"Mars",
+"Venus",
+"Jupiter",
+"Neptune"
+],
+correct: 1,
+difficulty: "MEDIUM"
+},
+
+{
+question:
+"Which planet has the shortest rotation period?",
+answers:
+[
+"Earth",
+"Jupiter",
+"Saturn",
+"Neptune"
+],
+correct: 1,
+difficulty: "MEDIUM"
+},
+
+{
+question:
+"Which planet has the strongest greenhouse effect?",
+answers:
+[
+"Mars",
+"Venus",
+"Mercury",
+"Earth"
+],
+correct: 1,
+difficulty: "MEDIUM"
+},
+
+{
+question:
+"Which planet has a day that is longer than its year?",
+answers:
+[
+"Mercury",
+"Venus",
+"Mars",
+"Neptune"
+],
+correct: 1,
+difficulty: "MEDIUM"
+},
+
+{
+question:
+"Which planet has the highest average density?",
+answers:
+[
+"Earth",
+"Mercury",
+"Venus",
+"Mars"
+],
+correct: 0,
+difficulty: "MEDIUM"
+},
+
+{
+question:
+"Which planet has an extreme axial tilt of about 98 degrees?",
+answers:
+[
+"Neptune",
+"Uranus",
+"Saturn",
+"Mars"
+],
+correct: 1,
+difficulty: "MEDIUM"
+},
+
+{
+question:
+"Which planet is the least dense of all eight planets?",
+answers:
+[
+"Jupiter",
+"Saturn",
+"Uranus",
+"Neptune"
+],
+correct: 1,
+difficulty: "MEDIUM"
+},
+
+{
+question:
+"Which planet has the strongest surface winds measured in the Solar System?",
+answers:
+[
+"Jupiter",
+"Neptune",
+"Saturn",
+"Uranus"
+],
+correct: 1,
+difficulty: "MEDIUM"
+},
+
+
+/* =========================================
+   HARD
+========================================= */
+
+{
+question:
+"Why is Venus hotter than Mercury even though Mercury is closer to the Sun?",
+answers:
+[
+"Venus is much larger",
+"Venus has a powerful greenhouse effect",
+"Venus rotates faster",
+"Venus receives more sunlight"
+],
+correct: 1,
+difficulty: "HARD"
+},
+
+{
+question:
+"What is the primary reason Mercury has such large temperature differences between day and night?",
+answers:
+[
+"It has almost no substantial atmosphere",
+"It has no magnetic field",
+"It rotates extremely fast",
+"It is farther from the Sun"
+],
+correct: 0,
+difficulty: "HARD"
+},
+
+{
+question:
+"Which planet has a relatively weak global magnetic field compared with Earth?",
+answers:
+[
+"Jupiter",
+"Mars",
+"Neptune",
+"Saturn"
+],
+correct: 1,
+difficulty: "HARD"
+},
+
+{
+question:
+"What is unusual about Uranus's rotation axis?",
+answers:
+[
+"It points almost directly at the Sun",
+"It is tilted by about 98 degrees",
+"It does not rotate",
+"It changes direction every year"
+],
+correct: 1,
+difficulty: "HARD"
+},
+
+{
+question:
+"Which planet has the strongest planetary magnetic field in the Solar System?",
+answers:
+[
+"Earth",
+"Saturn",
+"Jupiter",
+"Neptune"
+],
+correct: 2,
+difficulty: "HARD"
+},
+
+{
+question:
+"What distinguishes the outer planets as gas or ice giants?",
+answers:
+[
+"They are made almost entirely of liquid water",
+"They contain large amounts of hydrogen, helium and/or volatile ices",
+"They have no solid material anywhere inside",
+"They are composed mainly of metals"
+],
+correct: 1,
+difficulty: "HARD"
+},
+
+{
+question:
+"Which planet has a famous hexagonal jet-stream pattern near its north pole?",
+answers:
+[
+"Jupiter",
+"Saturn",
+"Uranus",
+"Neptune"
+],
+correct: 1,
+difficulty: "HARD"
+},
+
+{
+question:
+"Which planet's atmosphere contains clouds of sulfuric acid?",
+answers:
+[
+"Venus",
+"Mars",
+"Jupiter",
+"Neptune"
+],
+correct: 0,
+difficulty: "HARD"
+},
+
+{
+question:
+"Why does Jupiter's moon Io have intense volcanic activity?",
+answers:
+[
+"Because it is heated by tidal forces",
+"Because it is the closest moon to the Sun",
+"Because its atmosphere traps solar radiation",
+"Because it has a very large ocean"
+],
+correct: 0,
+difficulty: "HARD"
+},
+
+{
+question:
+"Which statement about Neptune and Uranus is correct?",
+answers:
+[
+"Neptune is closer to the Sun than Uranus",
+"Uranus is more massive than Neptune",
+"Neptune is slightly more massive than Uranus",
+"They have exactly the same mass"
+],
+correct: 2,
+difficulty: "HARD"
+}
+
+];
+
+
+/* =========================================
+   VARIABLES
+========================================= */
+
+let currentQuestion = 0;
+
+let score = 0;
+
+let answered = false;
+
+
+/* =========================================
+   SHUFFLE ANSWERS
+========================================= */
+
+function shuffleAnswers(question) {
+
+    const answerObjects =
+        question.answers.map(
+            (answer, index) => {
+
+                return {
+
+                    text: answer,
+
+                    correct:
+                        index === question.correct
+
+                };
+
+            }
+        );
+
+
+    for (
+        let i = answerObjects.length - 1;
+        i > 0;
+        i--
+    ) {
+
+        const j =
+            Math.floor(
+                Math.random() * (i + 1)
+            );
+
+
+        [
+            answerObjects[i],
+            answerObjects[j]
+        ] =
+        [
+            answerObjects[j],
+            answerObjects[i]
+        ];
+
+    }
+
+
+    return answerObjects;
+}
+
+
+/* =========================================
+   LOAD QUESTION
+========================================= */
+
+function loadQuestion() {
+
+    answered = false;
+
+
+    const q =
+        questions[currentQuestion];
+
+
+    document.getElementById(
+        "questionNumber"
+    ).textContent =
+        `QUESTION ${
+            String(currentQuestion + 1)
+            .padStart(2,"0")
+        } / ${questions.length}`;
+
+
+    document.getElementById(
+        "difficulty"
+    ).textContent =
+        q.difficulty;
+
+
+    document.getElementById(
+        "question"
+    ).textContent =
+        q.question;
+
+
+    document.getElementById(
+        "progressBar"
+    ).style.width =
+        `${(
+            currentQuestion /
+            questions.length
+        ) * 100}%`;
+
+
+    const answersContainer =
+        document.getElementById(
+            "answers"
+        );
+
+
+    answersContainer.innerHTML = "";
+
+
+    const shuffled =
+        shuffleAnswers(q);
+
+
+    shuffled.forEach(
+        answerObject => {
+
+            const button =
+                document.createElement(
+                    "button"
+                );
+
+
+            button.className =
+                "answer";
+
+
+            button.textContent =
+                answerObject.text;
+
+
+            button.dataset.correct =
+                answerObject.correct;
+
+
+            button.onclick =
+                function() {
+
+                    selectAnswer(
+                        answerObject.correct,
+                        button
+                    );
+
+                };
+
+
+            answersContainer.appendChild(
+                button
+            );
+
+        }
+    );
+
+
+    document.getElementById(
+        "nextButton"
+    ).style.display =
+        "none";
+}
+
+
+/* =========================================
+   SELECT ANSWER
+========================================= */
+
+function selectAnswer(
+    isCorrect,
+    selectedButton
+) {
+
+    if (answered)
+        return;
+
+
+    answered = true;
+
+
+    const buttons =
+        document.querySelectorAll(
+            ".answer"
+        );
+
+
+    buttons.forEach(
+        button => {
+
+            button.classList.add(
+                "disabled"
+            );
+
+        }
+    );
+
+
+    if (isCorrect) {
+
+        selectedButton.classList.add(
+            "correct"
+        );
+
+        score++;
+
+    }
+
+    else {
+
+        selectedButton.classList.add(
+            "wrong"
+        );
+
+
+        buttons.forEach(
+            button => {
+
+                if (
+                    button.dataset.correct
+                    === "true"
+                ) {
+
+                    button.classList.add(
+                        "correct"
+                    );
+
+                }
+
+            }
+        );
+
+    }
+
+
+    document.getElementById(
+        "nextButton"
+    ).style.display =
+        "inline-flex";
+}
+
+
+/* =========================================
+   NEXT QUESTION
+========================================= */
+
+function nextQuestion() {
+
+    currentQuestion++;
+
+
+    if (
+        currentQuestion >=
+        questions.length
+    ) {
+
+        showResult();
+
+        return;
+
+    }
+
+
+    loadQuestion();
+}
+
+
+/* =========================================
+   FINAL RESULT
+========================================= */
+
+function showResult() {
+
+    document.getElementById(
+        "quiz"
+    ).style.display =
+        "none";
+
+
+    const result =
+        document.getElementById(
+            "result"
+        );
+
+
+    result.style.display =
+        "block";
+
+
+    /* 100% PROGRESS */
+
+    document.getElementById(
+        "progressBar"
+    ).style.width =
+        "100%";
+
+
+    /* SCORE */
+
+    document.getElementById(
+        "score"
+    ).textContent =
+        "0 / 30";
+
+
+    /* TITLE */
+
+    let title = "";
+
+    let text = "";
+
+
+    if (score <= 10) {
+
+        title =
+            "PLANET BEGINNER";
+
+        text =
+            "Your journey through the Solar System has begun. Keep exploring — the Universe still has countless worlds to discover.";
+
+    }
+
+    else if (score <= 17) {
+
+        title =
+            "PLANET EXPLORER";
+
+        text =
+            "A solid result. You know the basic worlds of the Solar System and many of their important characteristics.";
+
+    }
+
+    else if (score <= 23) {
+
+        title =
+            "PLANET ASTRONOMER";
+
+        text =
+            "Very strong knowledge. You understand many of the physical and orbital differences between the planets.";
+
+    }
+
+    else if (score <= 27) {
+
+        title =
+            "PLANET EXPERT";
+
+        text =
+            "Excellent performance. You handled most of the advanced planetary questions.";
+
+    }
+
+    else {
+
+        title =
+            "PLANET MASTER";
+
+        text =
+            "Outstanding. You have demonstrated exceptional knowledge of the planets and planetary science.";
+
+    }
+
+
+    document.getElementById(
+        "resultTitle"
+    ).textContent =
+        title;
+
+
+    document.getElementById(
+        "resultText"
+    ).textContent =
+        text;
+
+
+    /* SCORE COUNTER */
+
+    animateScore();
+
+
+    /* SCORE BAR */
+
+    setTimeout(
+        function() {
+
+            document.getElementById(
+                "finalScoreFill"
+            ).style.width =
+                `${(
+                    score /
+                    questions.length
+                ) * 100}%`;
+
+        },
+        600
+    );
+
+
+    /* PARTICLES */
+
+    createParticles();
+
+}
+
+
+/* =========================================
+   ANIMATED SCORE
+========================================= */
+
+function animateScore() {
+
+    let value = 0;
+
+    const scoreElement =
+        document.getElementById(
+            "score"
+        );
+
+
+    const duration = 1600;
+
+    const start =
+        performance.now();
+
+
+    function update(now) {
+
+        const progress =
+            Math.min(
+                (now - start) /
+                duration,
+                1
+            );
+
+
+        /* smooth easing */
+
+        const eased =
+            1 -
+            Math.pow(
+                1 - progress,
+                3
+            );
+
+
+        value =
+            Math.floor(
+                eased * score
+            );
+
+
+        scoreElement.textContent =
+            `${value} / ${questions.length}`;
+
+
+        if (progress < 1) {
+
+            requestAnimationFrame(
+                update
+            );
+
+        }
+
+        else {
+
+            scoreElement.textContent =
+                `${score} / ${questions.length}`;
+
+        }
+
+    }
+
+
+    requestAnimationFrame(
+        update
+    );
+}
+
+
+/* =========================================
+   PARTICLES
+========================================= */
+
+function createParticles() {
+
+    const result =
+        document.getElementById(
+            "result"
+        );
+
+
+    for (
+        let i = 0;
+        i < 70;
+        i++
+    ) {
+
+        const particle =
+            document.createElement(
+                "div"
+            );
+
+
+        particle.className =
+            "final-particle";
+
+
+        const startX =
+            Math.random() * 100;
+
+
+        const startY =
+            45 +
+            Math.random() * 15;
+
+
+        const moveX =
+            (
+                Math.random() * 500
+            ) - 250;
+
+
+        const moveY =
+            (
+                Math.random() * 500
+            ) - 250;
+
+
+        particle.style.left =
+            startX + "%";
+
+
+        particle.style.top =
+            startY + "%";
+
+
+        particle.style.setProperty(
+            "--x",
+            moveX + "px"
+        );
+
+
+        particle.style.setProperty(
+            "--y",
+            moveY + "px"
+        );
+
+
+        particle.style.animationDelay =
+            (
+                Math.random() * .8
+            ) + "s";
+
+
+        result.appendChild(
+            particle
+        );
+
+
+        setTimeout(
+            function() {
+
+                particle.remove();
+
+            },
+            3500
+        );
+
+    }
+
+}
+
+
+/* =========================================
+   RESTART
+========================================= */
+
+function restartQuiz() {
+
+    currentQuestion = 0;
+
+    score = 0;
+
+
+    document.getElementById(
+        "quiz"
+    ).style.display =
+        "block";
+
+
+    document.getElementById(
+        "result"
+    ).style.display =
+        "none";
+
+
+    document.getElementById(
+        "finalScoreFill"
+    ).style.width =
+        "0%";
+
+
+    loadQuestion();
+}
+
+
+/* =========================================
+   STAR PARALLAX
+========================================= */
+
+const stars =
+document.querySelector(".stars");
+
+const smallStars =
+document.querySelector(".stars-small");
+
+
+document.addEventListener(
+"mousemove",
+
+function(event) {
+
+    const x =
+        event.clientX /
+        window.innerWidth -
+        0.5;
+
+    const y =
+        event.clientY /
+        window.innerHeight -
+        0.5;
+
+
+    stars.style.transform =
+        `translate(
+            ${x * 20}px,
+            ${y * 20}px
+        )`;
+
+
+    smallStars.style.transform =
+        `translate(
+            ${x * -12}px,
+            ${y * -12}px
+        )`;
+
+});
+
+
+/* =========================================
+   START
+========================================= */
+
+loadQuestion();
+
+</script>
+
+
+</body>
+
+</html>
