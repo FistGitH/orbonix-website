@@ -1,1 +1,2669 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Latest Space News | ORBONIX</title>
+
+<style>
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: #010208;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.news-page {
+
+    min-height: 100vh;
+
+    padding:
+        65px 20px 100px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(80,110,255,.16),
+            transparent 40%
+        ),
+        radial-gradient(
+            circle at 10% 55%,
+            rgba(50,80,220,.08),
+            transparent 35%
+        ),
+        #010208;
+}
+
+
+/* =========================================================
+   STARS
+========================================================= */
+
+.stars,
+.stars-small {
+
+    position: fixed;
+
+    inset: -25%;
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+.stars {
+
+    opacity: .4;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.9) 1px,
+            transparent 1px
+        );
+
+    background-size: 75px 75px;
+
+    transition:
+        transform 1.5s ease;
+}
+
+.stars-small {
+
+    opacity: .18;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.8) 1px,
+            transparent 1px
+        );
+
+    background-size: 32px 32px;
+
+    transition:
+        transform 2s ease;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header {
+
+    position: relative;
+
+    z-index: 5;
+
+    max-width: 950px;
+
+    margin: auto;
+
+    text-align: center;
+}
+
+
+.return {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding:
+        12px 20px;
+
+    margin-bottom: 40px;
+
+    color:
+        rgba(255,255,255,.7);
+
+    border:
+        1px solid
+        rgba(255,255,255,.22);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    transition: .35s ease;
+}
+
+
+.return:hover {
+
+    color: #010208;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-4px);
+}
+
+
+.label {
+
+    margin-bottom: 18px;
+
+    color:
+        rgba(170,190,255,.55);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+
+h1 {
+
+    margin: 0;
+
+    font-size:
+        clamp(43px,8vw,82px);
+
+    line-height: .9;
+
+    letter-spacing: 6px;
+}
+
+
+.subtitle {
+
+    max-width: 760px;
+
+    margin:
+        28px auto 0;
+
+    color:
+        rgba(255,255,255,.52);
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   LIVE STATUS
+========================================================= */
+
+.live-status {
+
+    margin:
+        35px auto 0;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    padding:
+        9px 15px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    background:
+        rgba(255,255,255,.025);
+
+    color:
+        rgba(255,255,255,.55);
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+}
+
+
+.live-dot {
+
+    width: 7px;
+
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #7cffb2;
+
+    box-shadow:
+        0 0 12px
+        rgba(124,255,178,.8);
+
+    animation:
+        pulse 1.8s infinite;
+}
+
+
+@keyframes pulse {
+
+    0%,100% {
+        opacity: .5;
+        transform: scale(.8);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.15);
+    }
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.news-container {
+
+    position: relative;
+
+    z-index: 5;
+
+    width:
+        min(1150px,100%);
+
+    margin:
+        70px auto 0;
+}
+
+
+/* =========================================================
+   FEATURED NEWS
+========================================================= */
+
+.featured {
+
+    position: relative;
+
+    min-height: 470px;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        rgba(255,255,255,.14);
+
+    background:
+        #080b16;
+
+    margin-bottom: 65px;
+}
+
+
+.featured-image {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    opacity: .58;
+
+    transition:
+        transform 1s ease,
+        opacity .6s ease;
+}
+
+
+.featured:hover .featured-image {
+
+    transform: scale(1.045);
+
+    opacity: .68;
+}
+
+
+.featured-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(1,2,8,.97) 0%,
+            rgba(1,2,8,.82) 42%,
+            rgba(1,2,8,.2) 100%
+        );
+}
+
+
+.featured-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 650px;
+
+    padding:
+        70px 55px;
+}
+
+
+.featured-label {
+
+    display: inline-block;
+
+    padding:
+        7px 11px;
+
+    margin-bottom: 20px;
+
+    border:
+        1px solid
+        rgba(170,190,255,.35);
+
+    color:
+        rgba(190,205,255,.75);
+
+    font-size: 8px;
+
+    letter-spacing: 3px;
+}
+
+
+.featured h2 {
+
+    margin:
+        0 0 18px;
+
+    font-size:
+        clamp(30px,5vw,55px);
+
+    line-height: 1.05;
+
+    letter-spacing: 2px;
+}
+
+
+.featured p {
+
+    max-width: 600px;
+
+    margin: 0 0 22px;
+
+    color:
+        rgba(255,255,255,.57);
+
+    font-size: 13px;
+
+    line-height: 1.8;
+}
+
+
+.meta {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 15px;
+
+    color:
+        rgba(255,255,255,.38);
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+}
+
+
+.read-button {
+
+    display: inline-flex;
+
+    margin-top: 27px;
+
+    padding:
+        13px 22px;
+
+    color:
+        rgba(255,255,255,.75);
+
+    border:
+        1px solid
+        rgba(255,255,255,.25);
+
+    text-decoration: none;
+
+    font-size: 8px;
+
+    letter-spacing: 3px;
+
+    transition: .35s ease;
+}
+
+
+.read-button:hover {
+
+    color: #010208;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-4px);
+}
+
+
+/* =========================================================
+   SECTION TITLE
+========================================================= */
+
+.section-title {
+
+    margin:
+        60px 0 25px;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,.75);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+
+/* =========================================================
+   FILTERS
+========================================================= */
+
+.filters {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    gap: 9px;
+
+    margin-bottom: 40px;
+}
+
+
+.filter {
+
+    padding:
+        10px 15px;
+
+    color:
+        rgba(255,255,255,.5);
+
+    border:
+        1px solid
+        rgba(255,255,255,.13);
+
+    background:
+        rgba(255,255,255,.025);
+
+    cursor: pointer;
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+
+    transition: .3s ease;
+}
+
+
+.filter:hover,
+.filter.active {
+
+    color: white;
+
+    border-color:
+        rgba(150,180,255,.5);
+
+    background:
+        rgba(100,130,255,.1);
+}
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+.search-box {
+
+    width:
+        min(550px,100%);
+
+    margin:
+        0 auto 40px;
+
+    position: relative;
+}
+
+
+.search-box input {
+
+    width: 100%;
+
+    padding:
+        15px 18px;
+
+    outline: none;
+
+    border:
+        1px solid
+        rgba(255,255,255,.15);
+
+    background:
+        rgba(255,255,255,.025);
+
+    color: white;
+
+    font-size: 11px;
+
+    letter-spacing: 1px;
+
+    transition: .3s ease;
+}
+
+
+.search-box input::placeholder {
+
+    color:
+        rgba(255,255,255,.3);
+}
+
+
+.search-box input:focus {
+
+    border-color:
+        rgba(150,180,255,.5);
+
+    background:
+        rgba(100,130,255,.04);
+}
+
+
+/* =========================================================
+   NEWS GRID
+========================================================= */
+
+.news-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 16px;
+}
+
+
+/* =========================================================
+   NEWS CARD
+========================================================= */
+
+.news-card {
+
+    position: relative;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.025);
+
+    transition:
+        .45s ease;
+
+    opacity: 0;
+
+    transform:
+        translateY(25px);
+}
+
+
+.news-card.show {
+
+    opacity: 1;
+
+    transform:
+        translateY(0);
+}
+
+
+.news-card:hover {
+
+    transform:
+        translateY(-8px);
+
+    border-color:
+        rgba(150,180,255,.4);
+
+    box-shadow:
+        0 25px 60px
+        rgba(20,40,130,.16);
+}
+
+
+.news-image-wrapper {
+
+    height: 205px;
+
+    overflow: hidden;
+
+    position: relative;
+}
+
+
+.news-image {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition:
+        transform .7s ease;
+}
+
+
+.news-card:hover .news-image {
+
+    transform:
+        scale(1.08);
+}
+
+
+.news-category {
+
+    position: absolute;
+
+    left: 13px;
+
+    top: 13px;
+
+    padding:
+        7px 9px;
+
+    background:
+        rgba(1,2,8,.75);
+
+    border:
+        1px solid
+        rgba(255,255,255,.18);
+
+    backdrop-filter:
+        blur(8px);
+
+    color:
+        rgba(255,255,255,.72);
+
+    font-size: 7px;
+
+    letter-spacing: 2px;
+}
+
+
+.news-content {
+
+    padding:
+        22px 20px 24px;
+}
+
+
+.news-date {
+
+    margin-bottom: 10px;
+
+    color:
+        rgba(170,190,255,.5);
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+}
+
+
+.news-title {
+
+    margin:
+        0 0 12px;
+
+    font-size: 19px;
+
+    line-height: 1.25;
+
+    letter-spacing: 1px;
+}
+
+
+.news-description {
+
+    margin:
+        0 0 17px;
+
+    min-height: 70px;
+
+    color:
+        rgba(255,255,255,.43);
+
+    font-size: 10px;
+
+    line-height: 1.75;
+}
+
+
+.news-source {
+
+    color:
+        rgba(255,255,255,.32);
+
+    font-size: 7px;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================================
+   LOAD MORE
+========================================================= */
+
+.load-more-wrapper {
+
+    text-align: center;
+
+    margin:
+        45px 0 70px;
+}
+
+
+.load-more {
+
+    padding:
+        14px 28px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.22);
+
+    background:
+        transparent;
+
+    color:
+        rgba(255,255,255,.7);
+
+    cursor: pointer;
+
+    font-size: 8px;
+
+    letter-spacing: 3px;
+
+    transition: .35s ease;
+}
+
+
+.load-more:hover {
+
+    color: #010208;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-4px);
+}
+
+
+/* =========================================================
+   EMPTY STATE
+========================================================= */
+
+.no-results {
+
+    display: none;
+
+    padding:
+        60px 20px;
+
+    text-align: center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    color:
+        rgba(255,255,255,.35);
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+}
+
+
+/* =========================================================
+   NEWS SOURCES
+========================================================= */
+
+.sources {
+
+    margin-top: 70px;
+
+    padding:
+        45px 25px;
+
+    text-align: center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(90,120,255,.08),
+            transparent 70%
+        );
+}
+
+
+.sources h2 {
+
+    margin:
+        0 0 15px;
+
+    font-size: 22px;
+
+    letter-spacing: 4px;
+}
+
+
+.sources p {
+
+    max-width: 650px;
+
+    margin:
+        0 auto 25px;
+
+    color:
+        rgba(255,255,255,.4);
+
+    font-size: 11px;
+
+    line-height: 1.8;
+}
+
+
+.source-buttons {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    gap: 10px;
+}
+
+
+.source-button {
+
+    padding:
+        12px 18px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.17);
+
+    color:
+        rgba(255,255,255,.6);
+
+    text-decoration: none;
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+
+    transition: .3s ease;
+}
+
+
+.source-button:hover {
+
+    color: #010208;
+
+    background: white;
+
+    border-color: white;
+}
+
+
+/* =========================================================
+   FINAL NAVIGATION
+========================================================= */
+
+.final-navigation {
+
+    width:
+        min(1000px,100%);
+
+    margin:
+        70px auto 0;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap: 12px;
+}
+
+
+.final-button {
+
+    min-height: 60px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 12px;
+
+    color:
+        rgba(255,255,255,.65);
+
+    border:
+        1px solid
+        rgba(255,255,255,.17);
+
+    text-decoration: none;
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+
+    text-align: center;
+
+    transition: .35s ease;
+}
+
+
+.final-button:hover {
+
+    color: #010208;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-4px);
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer {
+
+    margin-top: 45px;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,.25);
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:950px) {
+
+    .news-grid {
+
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .final-navigation {
+
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+}
+
+
+@media(max-width:600px) {
+
+    .news-page {
+
+        padding:
+            50px 15px 80px;
+    }
+
+    .news-grid {
+
+        grid-template-columns:
+            1fr;
+    }
+
+    .featured {
+
+        min-height: 540px;
+    }
+
+    .featured-content {
+
+        padding:
+            45px 25px;
+    }
+
+    .featured-overlay {
+
+        background:
+            linear-gradient(
+                0deg,
+                rgba(1,2,8,.98),
+                rgba(1,2,8,.45)
+            );
+    }
+
+    .final-navigation {
+
+        grid-template-columns:
+            1fr;
+    }
+
+    .news-image-wrapper {
+
+        height: 230px;
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media(prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration: .01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        scroll-behavior: auto !important;
+
+        transition-duration: .01ms !important;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<section class="news-page">
+
+
+<div class="stars"></div>
+
+<div class="stars-small"></div>
+
+
+<!-- =======================================================
+     HEADER
+======================================================= -->
+
+<header class="header">
+
+
+<a
+href="https://sites.google.com/view/kosmolearn"
+class="return">
+
+← RETURN TO HOME
+
+</a>
+
+
+<div class="label">
+
+ORBONIX · SPACE NEWS
+
+</div>
+
+
+<h1>
+
+LATEST SPACE NEWS
+
+</h1>
+
+
+<div class="subtitle">
+
+Discover the newest discoveries, missions,
+spacecraft, astronomical events and mysteries
+from across the Universe.
+
+</div>
+
+
+<div class="live-status">
+
+<span class="live-dot"></span>
+
+UPDATED · AUGUST 24, 2026
+
+</div>
+
+
+</header>
+
+
+
+<!-- =======================================================
+     NEWS CONTAINER
+======================================================= -->
+
+<main class="news-container">
+
+
+
+<!-- =======================================================
+     FEATURED
+======================================================= -->
+
+<section class="featured">
+
+
+<img
+class="featured-image"
+src="https://images-assets.nasa.gov/image/iss066e079244/iss066e079244~large.jpg"
+alt="International Space Station"
+>
+
+
+<div class="featured-overlay"></div>
+
+
+<div class="featured-content">
+
+
+<div class="featured-label">
+
+FEATURED · NASA
+
+</div>
+
+
+<h2>
+
+NASA PREPARES FOR ANOTHER MAJOR SPACE MILESTONE
+
+</h2>
+
+
+<p>
+
+NASA's Nancy Grace Roman Space Telescope is
+approaching its planned launch window, while
+teams continue final preparations for one of
+the most important new observatories of the
+decade.
+
+</p>
+
+
+<div class="meta">
+
+<span>24 AUG 2026</span>
+
+<span>NASA</span>
+
+<span>SPACE TELESCOPES</span>
+
+</div>
+
+
+<a
+href="https://science.nasa.gov/"
+target="_blank"
+class="read-button">
+
+READ THE LATEST →
+
+
+</a>
+
+
+</div>
+
+
+</section>
+
+
+
+<!-- =======================================================
+     SECTION TITLE
+======================================================= -->
+
+<div class="section-title">
+
+LATEST DISCOVERIES & MISSIONS
+
+</div>
+
+
+
+<!-- =======================================================
+     FILTERS
+======================================================= -->
+
+<div class="filters">
+
+
+<button
+class="filter active"
+data-filter="all">
+
+ALL
+
+</button>
+
+
+<button
+class="filter"
+data-filter="missions">
+
+MISSIONS
+
+</button>
+
+
+<button
+class="filter"
+data-filter="astronomy">
+
+ASTRONOMY
+
+</button>
+
+
+<button
+class="filter"
+data-filter="telescopes">
+
+TELESCOPES
+
+</button>
+
+
+<button
+class="filter"
+data-filter="planets">
+
+PLANETS
+
+</button>
+
+
+<button
+class="filter"
+data-filter="human-spaceflight">
+
+HUMAN SPACEFLIGHT
+
+</button>
+
+
+</div>
+
+
+
+<!-- =======================================================
+     SEARCH
+======================================================= -->
+
+<div class="search-box">
+
+
+<input
+type="text"
+id="search"
+placeholder="SEARCH SPACE NEWS..."
+autocomplete="off"
+>
+
+
+</div>
+
+
+
+<!-- =======================================================
+     NEWS GRID
+======================================================= -->
+
+<div
+class="news-grid"
+id="newsGrid">
+
+
+
+<!-- 01 -->
+
+<article
+class="news-card"
+data-category="human-spaceflight"
+data-title="Artemis II crew receives Congressional Space Medal of Honor">
+
+
+<div class="news-image-wrapper">
+
+
+<img
+class="news-image"
+src="https://images-assets.nasa.gov/image/jsc2024e002177/jsc2024e002177~large.jpg"
+alt="Artemis II crew"
+loading="lazy"
+>
+
+
+<div class="news-category">
+
+HUMAN SPACEFLIGHT
+
+</div>
+
+
+</div>
+
+
+<div class="news-content">
+
+
+<div class="news-date">
+
+24 AUG 2026
+
+</div>
+
+
+<h2 class="news-title">
+
+ARTEMIS II CREW TO RECEIVE CONGRESSIONAL SPACE MEDAL OF HONOR
+
+</h2>
+
+
+<p class="news-description">
+
+The Artemis II astronauts are set to receive
+the Congressional Space Medal of Honor after
+their historic journey beyond the Moon.
+
+</p>
+
+
+<div class="news-source">
+
+SOURCE · NASA
+
+</div>
+
+
+<a
+href="https://www.nasa.gov/news/"
+target="_blank"
+class="read-button">
+
+READ STORY →
+
+</a>
+
+
+</div>
+
+
+</article>
+
+
+
+<!-- 02 -->
+
+<article
+class="news-card"
+data-category="telescopes"
+data-title="Roman Space Telescope flight readiness review">
+
+
+<div class="news-image-wrapper">
+
+
+<img
+class="news-image"
+src="https://images-assets.nasa.gov/image/roman-space-telescope/roman-space-telescope~large.jpg"
+alt="Nancy Grace Roman Space Telescope"
+loading="lazy"
+>
+
+
+<div class="news-category">
+
+TELESCOPES
+
+</div>
+
+
+</div>
+
+
+<div class="news-content">
+
+
+<div class="news-date">
+
+21 AUG 2026
+
+</div>
+
+
+<h2 class="news-title">
+
+ROMAN SPACE TELESCOPE PASSES MAJOR PRE-LAUNCH REVIEW
+
+</h2>
+
+
+<p class="news-description">
+
+NASA and SpaceX have completed an important
+Flight Readiness Review as the Nancy Grace Roman
+Space Telescope approaches launch.
+
+</p>
+
+
+<div class="news-source">
+
+SOURCE · NASA
+
+</div>
+
+
+<a
+href="https://www.nasa.gov/news/"
+target="_blank"
+class="read-button">
+
+READ STORY →
+
+</a>
+
+
+</div>
+
+
+</article>
+
+
+
+<!-- 03 -->
+
+<article
+class="news-card"
+data-category="astronomy"
+data-title="Hubble discovers ancient Milky Way merger">
+
+
+<div class="news-image-wrapper">
+
+
+<img
+class="news-image"
+src="https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e001420/GSFC_20171208_Archive_e001420~large.jpg"
+alt="Hubble telescope"
+loading="lazy"
+>
+
+
+<div class="news-category">
+
+ASTRONOMY
+
+</div>
+
+
+</div>
+
+
+<div class="news-content">
+
+
+<div class="news-date">
+
+17 AUG 2026
+
+</div>
+
+
+<h2 class="news-title">
+
+HUBBLE REVEALS ANCIENT MILKY WAY MERGER
+
+</h2>
+
+
+<p class="news-description">
+
+New Hubble and Gaia observations provide
+evidence that the young Milky Way merged with
+a smaller dwarf galaxy billions of years ago.
+
+</p>
+
+
+<div class="news-source">
+
+SOURCE · ESA / NASA
+
+</div>
+
+
+<a
+href="https://esahubble.org/news/archive/year/2026/"
+target="_blank"
+class="read-button">
+
+READ STORY →
+
+</a>
+
+
+</div>
+
+
+</article>
+
+
+
+<!-- 04 -->
+
+<article
+class="news-card"
+data-category="planets"
+data-title="Mars Express Schiaparelli crater flyover">
+
+
+<div class="news-image-wrapper">
+
+
+<img
+class="news-image"
+src="https://images-assets.nasa.gov/image/PIA20845/PIA20845~large.jpg"
+alt="Mars surface"
+loading="lazy"
+>
+
+
+<div class="news-category">
+
+PLANETS
+
+</div>
+
+
+</div>
+
+
+<div class="news-content">
+
+
+<div class="news-date">
+
+19 AUG 2026
+
+</div>
+
+
+<h2 class="news-title">
+
+MARS EXPRESS CREATES A NEW FLYOVER OF SCHIAPARELLI CRATER
+
+</h2>
+
+
+<p class="news-description">
+
+ESA's Mars Express spacecraft has produced a
+detailed visualization of one of Mars' enormous
+ancient impact regions.
+
+</p>
+
+
+<div class="news-source">
+
+SOURCE · ESA
+
+</div>
+
+
+<a
+href="https://www.esa.int/ESA_Multimedia/Videos/2026/08/Fly_around_Schiaparelli_Crater_with_Mars_Express"
+target="_blank"
+class="read-button">
+
+READ STORY →
+
+</a>
+
+
+</div>
+
+
+</article>
+
+
+
+<!-- 05 -->
+
+<article
+class="news-card"
+data-category="astronomy"
+data-title="Black hole star James Webb">
+
+
+<div class="news-image-wrapper">
+
+
+<img
+class="news-image"
+src="https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e001420/GSFC_20171208_Archive_e001420~large.jpg"
+alt="Deep space"
+loading="lazy"
+>
+
+
+<div class="news-category">
+
+BLACK HOLES
+
+</div>
+
+
+</div>
+
+
+<div class="news-content">
+
+
+<div class="news-date">
+
+12 AUG 2026
+
+</div>
+
+
+<h2 class="news-title">
+
+ASTRONOMERS INVESTIGATE A POSSIBLE NEW COSMIC OBJECT
+
+</h2>
+
+
+<p class="news-description">
+
+Researchers studying an extremely distant red
+source observed by JWST are investigating whether
+it represents a previously unknown class of object.
+
+</p>
+
+
+<div class="news-source">
+
+SOURCE · JWST / ASTRONOMY
+
+</div>
+
+
+<a
+href="https://science.nasa.gov/mission/webb/"
+target="_blank"
+class="read-button">
+
+READ STORY →
+
+</a>
+
+
+</div>
+
+
+</article>
+
+
+
+<!-- 06 -->
+
+<article
+class="news-card"
+data-category="astronomy"
+data-title="Webb Treasure Chest Carina Nebula">
+
+
+<div class="news-image-wrapper">
+
+
+<img
+class="news-image"
+src="https://images-assets.nasa.gov/image/Carina_Nebula/Carina_Nebula~large.jpg"
+alt="Carina Nebula"
+loading="lazy"
+>
+
+
+<div class="news-category">
+
+JAMES WEBB
+
+</div>
+
+
+</div>
+
+
+<div class="news-content">
+
+
+<div class="news-date">
+
+06 AUG 2026
+
+</div>
+
+
+<h2 class="news-title">
+
+WEBB OPENS A COSMIC TREASURE CHEST OF STARS
+
+</h2>
+
+
+<p class="news-description">
+
+The James Webb Space Telescope captured a
+spectacular region of the Carina Nebula filled
+with young stars, dust and glowing gas.
+
+</p>
+
+
+<div class="news-source">
+
+SOURCE · ESA / NASA / CSA
+
+</div>
+
+
+<a
+href="https://www.esa.int/ESA_Multimedia/Images/2026/08/Webb_opens_a_Treasure_Chest_filled_with_stars"
+target="_blank"
+class="read-button">
+
+READ STORY →
+
+</a>
+
+
+</div>
+
+
+</article>
+
+
+
+<!-- 07 -->
+
+<article
+class="news-card"
+data-category="astronomy"
+data-title="Perseids August 2026">
+
+
+<div class="news-image-wrapper">
+
+
+<img
+class="news-image"
+src="https://apod.nasa.gov/apod/image/2608/PerseidsLittlePlanet_Strott_960.jpg"
+alt="Perseid meteor shower"
+loading="lazy"
+>
+
+
+<div class="news-category">
+
+SKYWATCHING
+
+</div>
+
+
+</div>
+
+
+<div class="news-content">
+
+
+<div class="news-date">
+
+12 AUG 2026
+
+</div>
+
+
+<h2 class="news-title">
+
+THE 2026 PERSEIDS LIGHT UP THE NIGHT SKY
+
+</h2>
+
+
+<p class="news-description">
+
+The annual Perseid meteor shower reached its
+peak in August, with dark skies and the new Moon
+providing excellent observing conditions.
+
+</p>
+
+
+<div class="news-source">
+
+SOURCE · NASA APOD
+
+</div>
+
+
+<a
+href="https://apod.nasa.gov/"
+target="_blank"
+class="read-button">
+
+VIEW APOD →
+
+</a>
+
+
+</div>
+
+
+</article>
+
+
+
+<!-- 08 -->
+
+<article
+class="news-card"
+data-category="astronomy"
+data-title="August total solar eclipse">
+
+
+<div class="news-image-wrapper">
+
+
+<img
+class="news-image"
+src="https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e001420/GSFC_20171208_Archive_e001420~large.jpg"
+alt="Solar eclipse"
+loading="lazy"
+>
+
+
+<div class="news-category">
+
+SOLAR ECLIPSE
+
+</div>
+
+
+</div>
+
+
+<div class="news-content">
+
+
+<div class="news-date">
+
+12 AUG 2026
+
+</div>
+
+
+<h2 class="news-title">
+
+TOTAL SOLAR ECLIPSE CROSSES EUROPE
+
+</h2>
+
+
+<p class="news-description">
+
+A total solar eclipse crossed parts of Greenland,
+Iceland, Spain and Portugal while much of Europe
+experienced a partial eclipse.
+
+</p>
+
+
+<div class="news-source">
+
+SOURCE · NASA / ESA
+
+</div>
+
+
+<a
+href="https://science.nasa.gov/eclipses/future-eclipses/total-solar-eclipse-on-august-12-2026/"
+target="_blank"
+class="read-button">
+
+EXPLORE ECLIPSE →
+
+</a>
+
+
+</div>
+
+
+</article>
+
+
+
+<!-- 09 -->
+
+<article
+class="news-card"
+data-category="missions"
+data-title="Proba-3 artificial eclipse">
+
+
+<div class="news-image-wrapper">
+
+
+<img
+class="news-image"
+src="https://images-assets.nasa.gov/image/PIA12348/PIA12348~large.jpg"
+alt="Spacecraft"
+loading="lazy"
+>
+
+
+<div class="news-category">
+
+MISSIONS
+
+</div>
+
+
+</div>
+
+
+<div class="news-content">
+
+
+<div class="news-date">
+
+14 AUG 2026
+
+</div>
+
+
+<h2 class="news-title">
+
+PROBA-3 CREATES ITS OWN ARTIFICIAL ECLIPSE
+
+</h2>
+
+
+<p class="news-description">
+
+ESA's Proba-3 spacecraft pair performed another
+artificial eclipse, allowing scientists to study
+the Sun's faint corona.
+
+</p>
+
+
+<div class="news-source">
+
+SOURCE · ESA
+
+</div>
+
+
+<a
+href="https://www.esa.int/ESA_Multimedia/Images/2026/08/Proba-3_s_eclipse_hours_before_totality_in_Europe"
+target="_blank"
+class="read-button">
+
+READ STORY →
+
+</a>
+
+
+</div>
+
+
+</article>
+
+
+
+</div>
+
+
+
+<div
+class="no-results"
+id="noResults">
+
+NO SPACE STORIES FOUND
+
+</div>
+
+
+
+<!-- =======================================================
+     LOAD MORE
+======================================================= -->
+
+<div class="load-more-wrapper">
+
+
+<button
+class="load-more"
+id="loadMore">
+
+LOAD MORE STORIES ↓
+
+</button>
+
+
+</div>
+
+
+
+<!-- =======================================================
+     SOURCES
+======================================================= -->
+
+<section class="sources">
+
+
+<h2>
+
+TRUSTED SPACE SOURCES
+
+</h2>
+
+
+<p>
+
+ORBONIX follows major space agencies and
+scientific observatories to keep the news
+focused on real missions, discoveries and
+astronomical events.
+
+</p>
+
+
+<div class="source-buttons">
+
+
+<a
+href="https://www.nasa.gov/"
+target="_blank"
+class="source-button">
+
+NASA
+
+</a>
+
+
+<a
+href="https://science.nasa.gov/"
+target="_blank"
+class="source-button">
+
+NASA SCIENCE
+
+</a>
+
+
+<a
+href="https://www.esa.int/"
+target="_blank"
+class="source-button">
+
+ESA
+
+</a>
+
+
+<a
+href="https://esahubble.org/"
+target="_blank"
+class="source-button">
+
+ESA / HUBBLE
+
+</a>
+
+
+<a
+href="https://science.nasa.gov/mission/webb/"
+target="_blank"
+class="source-button">
+
+JAMES WEBB
+
+</a>
+
+
+<a
+href="https://apod.nasa.gov/"
+target="_blank"
+class="source-button">
+
+NASA APOD
+
+</a>
+
+
+</div>
+
+
+</section>
+
+
+</main>
+
+
+
+<!-- =======================================================
+     FINAL NAVIGATION
+======================================================= -->
+
+<div class="final-navigation">
+
+
+<a
+href="YOUR-SOLAR-SYSTEM-LINK"
+class="final-button">
+
+SOLAR SYSTEM →
+
+</a>
+
+
+<a
+href="YOUR-DEEP-SPACE-LINK"
+class="final-button">
+
+DEEP SPACE →
+
+</a>
+
+
+<a
+href="YOUR-TELESCOPE-LINK"
+class="final-button">
+
+TELESCOPE →
+
+</a>
+
+
+<a
+href="YOUR-QUIZ-LINK"
+class="final-button">
+
+SPACE QUIZ →
+
+</a>
+
+
+<a
+href="YOUR-MOONS-LINK"
+class="final-button">
+
+MOONS →
+
+</a>
+
+
+<a
+href="YOUR-STARS-LINK"
+class="final-button">
+
+STARS →
+
+</a>
+
+
+<a
+href="YOUR-GALAXIES-LINK"
+class="final-button">
+
+GALAXIES →
+
+</a>
+
+
+<a
+href="YOUR-NASA-LINK"
+class="final-button">
+
+NASA →
+
+</a>
+
+
+</div>
+
+
+
+<div class="footer">
+
+ORBONIX · LATEST SPACE NEWS · 2026
+
+</div>
+
+
+</section>
+
+
+
+<script>
+
+/* =========================================================
+   STAR PARALLAX
+========================================================= */
+
+const stars =
+document.querySelector(".stars");
+
+const smallStars =
+document.querySelector(".stars-small");
+
+
+document.addEventListener(
+"mousemove",
+function(event) {
+
+    const x =
+        event.clientX /
+        window.innerWidth -
+        0.5;
+
+    const y =
+        event.clientY /
+        window.innerHeight -
+        0.5;
+
+
+    stars.style.transform =
+        `translate(
+            ${x * 20}px,
+            ${y * 20}px
+        )`;
+
+
+    smallStars.style.transform =
+        `translate(
+            ${x * -12}px,
+            ${y * -12}px
+        )`;
+
+});
+
+
+
+/* =========================================================
+   NEWS CARDS
+========================================================= */
+
+const cards =
+document.querySelectorAll(".news-card");
+
+const filters =
+document.querySelectorAll(".filter");
+
+const search =
+document.getElementById("search");
+
+const noResults =
+document.getElementById("noResults");
+
+const loadMore =
+document.getElementById("loadMore");
+
+
+let currentFilter = "all";
+
+let visibleCount = 6;
+
+
+
+/* =========================================================
+   SHOW CARDS
+========================================================= */
+
+function updateCards() {
+
+    const query =
+        search.value
+        .toLowerCase()
+        .trim();
+
+
+    let visible = 0;
+
+
+    cards.forEach((card, index) => {
+
+        const category =
+            card.dataset.category;
+
+        const title =
+            card.dataset.title
+            .toLowerCase();
+
+
+        const matchesFilter =
+            currentFilter === "all" ||
+            category === currentFilter;
+
+
+        const matchesSearch =
+            title.includes(query);
+
+
+        const shouldShow =
+            matchesFilter &&
+            matchesSearch &&
+            index < visibleCount;
+
+
+        if (shouldShow) {
+
+            card.style.display =
+                "block";
+
+            setTimeout(() => {
+
+                card.classList.add("show");
+
+            }, index * 45);
+
+            visible++;
+
+        }
+
+        else {
+
+            card.classList.remove("show");
+
+            card.style.display =
+                "none";
+
+        }
+
+    });
+
+
+    if (visible === 0) {
+
+        noResults.style.display =
+            "block";
+
+    }
+
+    else {
+
+        noResults.style.display =
+            "none";
+
+    }
+
+
+    const totalMatching =
+        [...cards].filter(card => {
+
+            const category =
+                card.dataset.category;
+
+            const title =
+                card.dataset.title
+                .toLowerCase();
+
+            return (
+                (
+                    currentFilter === "all" ||
+                    category === currentFilter
+                )
+                &&
+                title.includes(query)
+            );
+
+        }).length;
+
+
+    if (visibleCount >= totalMatching) {
+
+        loadMore.style.display =
+            "none";
+
+    }
+
+    else {
+
+        loadMore.style.display =
+            "inline-block";
+
+    }
+
+}
+
+
+
+/* =========================================================
+   FILTER BUTTONS
+========================================================= */
+
+filters.forEach(filter => {
+
+    filter.addEventListener(
+        "click",
+        function() {
+
+            filters.forEach(
+                item =>
+                    item.classList.remove("active")
+            );
+
+
+            this.classList.add("active");
+
+
+            currentFilter =
+                this.dataset.filter;
+
+
+            visibleCount = 6;
+
+
+            updateCards();
+
+        }
+    );
+
+});
+
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+search.addEventListener(
+"input",
+function() {
+
+    visibleCount = 6;
+
+    updateCards();
+
+});
+
+
+
+/* =========================================================
+   LOAD MORE
+========================================================= */
+
+loadMore.addEventListener(
+"click",
+function() {
+
+    visibleCount += 3;
+
+    updateCards();
+
+});
+
+
+
+/* =========================================================
+   INITIAL ANIMATION
+========================================================= */
+
+window.addEventListener(
+"load",
+function() {
+
+    updateCards();
+
+});
+
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+const observer =
+new IntersectionObserver(
+entries => {
+
+    entries.forEach(entry => {
+
+        if (
+            entry.isIntersecting
+        ) {
+
+            entry.target.classList.add(
+                "show"
+            );
+
+            observer.unobserve(
+                entry.target
+            );
+
+        }
+
+    });
+
+},
+{
+    threshold: .12
+});
+
+
+cards.forEach(card => {
+
+    observer.observe(card);
+
+});
+
+</script>
+
+
+</body>
+
+</html>
