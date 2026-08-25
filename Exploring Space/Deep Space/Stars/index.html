@@ -1,1 +1,1234 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: #010208;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   PAGE
+========================================= */
+
+.stars-page {
+
+    position: relative;
+
+    min-height: 1500px;
+
+    padding: 65px 20px 100px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 25%,
+            rgba(100,130,200,.15),
+            transparent 45%
+        ),
+        radial-gradient(
+            circle at 20% 70%,
+            rgba(150,80,60,.06),
+            transparent 35%
+        ),
+        #010208;
+}
+
+
+/* =========================================
+   STAR FIELD
+========================================= */
+
+.space-stars,
+.space-stars-small {
+
+    position: absolute;
+
+    inset: -25%;
+
+    pointer-events: none;
+}
+
+
+.space-stars {
+
+    opacity: .38;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.9) 1px,
+            transparent 1px
+        );
+
+    background-size: 75px 75px;
+
+    transition:
+        transform 1.5s ease;
+}
+
+
+.space-stars-small {
+
+    opacity: .16;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.8) 1px,
+            transparent 1px
+        );
+
+    background-size: 32px 32px;
+
+    transition:
+        transform 2s ease;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header {
+
+    position: relative;
+
+    z-index: 10;
+
+    max-width: 850px;
+
+    margin: auto;
+
+    text-align: center;
+}
+
+
+.return {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 12px 20px;
+
+    margin-bottom: 38px;
+
+    color:
+        rgba(255,255,255,.7);
+
+    border:
+        1px solid
+        rgba(255,255,255,.22);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    transition: .35s ease;
+}
+
+
+.return:hover {
+
+    color: #010208;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-4px);
+}
+
+
+.label {
+
+    margin-bottom: 18px;
+
+    color:
+        rgba(255,255,255,.4);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+
+h1 {
+
+    margin: 0;
+
+    font-size:
+        clamp(48px,8vw,90px);
+
+    line-height: .9;
+
+    letter-spacing: 7px;
+}
+
+
+.subtitle {
+
+    max-width: 700px;
+
+    margin:
+        28px auto 0;
+
+    color:
+        rgba(255,255,255,.52);
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   SUN HERO
+========================================= */
+
+.sun-area {
+
+    position: relative;
+
+    z-index: 5;
+
+    width: 300px;
+
+    height: 300px;
+
+    margin:
+        75px auto 80px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+.sun {
+
+    width: 170px;
+
+    height: 170px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #fff4c4,
+            #ffd15c 22%,
+            #ff9c22 48%,
+            #e75b12 72%,
+            #9d2e08 100%
+        );
+
+    box-shadow:
+
+        0 0 35px
+        rgba(255,190,60,.8),
+
+        0 0 80px
+        rgba(255,130,30,.45),
+
+        0 0 150px
+        rgba(255,80,10,.18);
+
+    animation:
+        sunPulse 5s ease-in-out infinite;
+}
+
+
+.sun::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 170px;
+
+    height: 170px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            transparent 55%,
+            rgba(255,150,40,.15) 70%,
+            transparent 75%
+        );
+
+    animation:
+        sunRotate 12s linear infinite;
+}
+
+
+@keyframes sunPulse {
+
+    0%,100% {
+
+        transform:
+            scale(.96);
+    }
+
+    50% {
+
+        transform:
+            scale(1.05);
+    }
+
+}
+
+
+@keyframes sunRotate {
+
+    from {
+
+        transform:
+            rotate(0deg);
+    }
+
+    to {
+
+        transform:
+            rotate(360deg);
+    }
+
+}
+
+
+.sun-label {
+
+    position: absolute;
+
+    bottom: -20px;
+
+    color:
+        rgba(255,255,255,.38);
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+}
+
+
+/* =========================================
+   INTRO
+========================================= */
+
+.intro {
+
+    position: relative;
+
+    z-index: 5;
+
+    width:
+        min(850px,100%);
+
+    margin:
+        0 auto 65px;
+
+    padding: 32px;
+
+    text-align: center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.025);
+}
+
+
+.intro p {
+
+    margin: 0;
+
+    color:
+        rgba(255,255,255,.55);
+
+    font-size: 13px;
+
+    line-height: 1.9;
+}
+
+
+/* =========================================
+   TITLE
+========================================= */
+
+.section-title {
+
+    position: relative;
+
+    z-index: 5;
+
+    margin:
+        0 auto 30px;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,.42);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+
+/* =========================================
+   CARDS
+========================================= */
+
+.stars-grid {
+
+    position: relative;
+
+    z-index: 5;
+
+    width:
+        min(1100px,100%);
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 15px;
+}
+
+
+.star-card {
+
+    position: relative;
+
+    min-height: 220px;
+
+    padding: 28px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.025);
+
+    overflow: hidden;
+
+    transition:
+        transform .4s ease,
+        border-color .4s ease,
+        background .4s ease;
+}
+
+
+.star-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 80px;
+
+    height: 80px;
+
+    top: -35px;
+
+    right: -35px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,.04);
+
+    transition: .4s ease;
+}
+
+
+.star-card:hover {
+
+    transform:
+        translateY(-8px);
+
+    border-color:
+        rgba(255,255,255,.32);
+
+    background:
+        rgba(255,255,255,.045);
+}
+
+
+.star-card:hover::before {
+
+    transform:
+        scale(2.5);
+
+    opacity: .5;
+}
+
+
+/* =========================================
+   CARD NUMBER
+========================================= */
+
+.star-number {
+
+    margin-bottom: 18px;
+
+    color:
+        rgba(255,255,255,.25);
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+}
+
+
+/* =========================================
+   CARD TITLE
+========================================= */
+
+.star-name {
+
+    margin: 0 0 13px;
+
+    font-size: 18px;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================
+   CARD TEXT
+========================================= */
+
+.star-text {
+
+    margin: 0;
+
+    color:
+        rgba(255,255,255,.5);
+
+    font-size: 11px;
+
+    line-height: 1.75;
+}
+
+
+/* =========================================
+   CARD TAG
+========================================= */
+
+.star-tag {
+
+    display: inline-block;
+
+    margin-top: 20px;
+
+    padding:
+        6px 9px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.15);
+
+    color:
+        rgba(255,255,255,.4);
+
+    font-size: 7px;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================
+   FACT
+========================================= */
+
+.fact {
+
+    position: relative;
+
+    z-index: 5;
+
+    width:
+        min(950px,100%);
+
+    margin:
+        65px auto 0;
+
+    padding: 42px;
+
+    text-align: center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    background:
+        rgba(255,255,255,.025);
+}
+
+
+.fact-label {
+
+    margin-bottom: 17px;
+
+    color:
+        rgba(255,255,255,.38);
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+}
+
+
+.fact-text {
+
+    max-width: 800px;
+
+    margin: auto;
+
+    font-size:
+        clamp(18px,3vw,27px);
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   NAVIGATION
+========================================= */
+
+.navigation {
+
+    position: relative;
+
+    z-index: 5;
+
+    display: flex;
+
+    justify-content: center;
+
+    margin-top: 55px;
+}
+
+
+.nav-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding:
+        13px 24px;
+
+    color:
+        rgba(255,255,255,.75);
+
+    border:
+        1px solid
+        rgba(255,255,255,.2);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    transition: .35s ease;
+}
+
+
+.nav-button:hover {
+
+    color: #010208;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-4px);
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.footer {
+
+    position: relative;
+
+    z-index: 5;
+
+    margin-top: 30px;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,.25);
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:850px) {
+
+    .stars-grid {
+
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+}
+
+
+@media(max-width:600px) {
+
+    .stars-page {
+
+        padding:
+            50px 15px 80px;
+    }
+
+    .stars-grid {
+
+        grid-template-columns:
+            1fr;
+    }
+
+    .sun-area {
+
+        margin-top: 55px;
+
+        margin-bottom: 65px;
+    }
+
+    .intro {
+
+        padding: 26px;
+    }
+
+    .fact {
+
+        padding:
+            30px 22px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<section class="stars-page">
+
+
+<div class="space-stars"></div>
+
+<div class="space-stars-small"></div>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<div class="header">
+
+
+<a
+href="https://sites.google.com/view/kosmolearn"
+class="return">
+
+← RETURN TO HOME
+
+</a>
+
+
+<div class="label">
+
+ORBONIX · DEEP SPACE
+
+</div>
+
+
+<h1>
+
+STARS
+
+</h1>
+
+
+<div class="subtitle">
+
+From ordinary stars like our Sun to pulsars,
+magnetars, supernovae and enormous stellar
+giants, stars are among the most powerful
+objects in the Universe.
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     SUN
+========================================= -->
+
+<div class="sun-area">
+
+
+<div class="sun"></div>
+
+
+<div class="sun-label">
+
+OUR STAR · THE SUN
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     INTRO
+========================================= -->
+
+<div class="intro">
+
+<p>
+
+Stars are massive balls of plasma held
+together by gravity. Deep inside their
+cores, nuclear fusion releases enormous
+amounts of energy and creates many of the
+elements found throughout the Universe.
+
+</p>
+
+</div>
+
+
+<div class="section-title">
+
+EXPLORE THE STARS
+
+</div>
+
+
+<!-- =========================================
+     STAR CARDS
+========================================= -->
+
+<div class="stars-grid">
+
+
+<!-- PULSAR -->
+
+<div class="star-card">
+
+<div class="star-number">
+01 · NEUTRON STAR
+</div>
+
+<h2 class="star-name">
+PULSAR
+</h2>
+
+<p class="star-text">
+
+A pulsar is a rapidly rotating neutron
+star that emits beams of electromagnetic
+radiation. As the beam sweeps across Earth,
+astronomers can detect regular pulses.
+
+</p>
+
+<div class="star-tag">
+RAPID ROTATION
+</div>
+
+</div>
+
+
+<!-- SUPERNOVAE -->
+
+<div class="star-card">
+
+<div class="star-number">
+02 · STELLAR EXPLOSION
+</div>
+
+<h2 class="star-name">
+SUPERNOVAE
+</h2>
+
+<p class="star-text">
+
+A supernova is an enormous stellar
+explosion. Some occur when massive stars
+collapse, while others involve the
+thermonuclear destruction of white dwarfs.
+
+</p>
+
+<div class="star-tag">
+COSMIC EXPLOSION
+</div>
+
+</div>
+
+
+<!-- GIANT STARS -->
+
+<div class="star-card">
+
+<div class="star-number">
+03 · STELLAR GIANTS
+</div>
+
+<h2 class="star-name">
+GIANT STARS
+</h2>
+
+<p class="star-text">
+
+Giant and supergiant stars can become
+hundreds or even more than a thousand
+times larger than the Sun during later
+stages of stellar evolution.
+
+</p>
+
+<div class="star-tag">
+MASSIVE STARS
+</div>
+
+</div>
+
+
+<!-- BRIGHTEST STAR -->
+
+<div class="star-card">
+
+<div class="star-number">
+04 · BRIGHTEST FROM EARTH
+</div>
+
+<h2 class="star-name">
+THE BRIGHTEST STAR
+</h2>
+
+<p class="star-text">
+
+Sirius is the brightest star in Earth's
+night sky. It is actually a binary system
+located about 8.6 light-years away.
+
+</p>
+
+<div class="star-tag">
+SIRIUS
+</div>
+
+</div>
+
+
+<!-- LARGEST KNOWN -->
+
+<div class="star-card">
+
+<div class="star-number">
+05 · EXTREME STAR
+</div>
+
+<h2 class="star-name">
+THE LARGEST KNOWN STAR
+</h2>
+
+<p class="star-text">
+
+Some red supergiants have enormous
+estimated radii. Their exact sizes are
+difficult to determine because their
+outer atmospheres are diffuse and variable.
+
+</p>
+
+<div class="star-tag">
+RED SUPERGIANTS
+</div>
+
+</div>
+
+
+<!-- STRANGE STARS -->
+
+<div class="star-card">
+
+<div class="star-number">
+06 · EXOTIC OBJECTS
+</div>
+
+<h2 class="star-name">
+STRANGE STARS
+</h2>
+
+<p class="star-text">
+
+Strange stars are hypothetical compact
+objects that could contain strange quark
+matter. Their existence has not yet been
+confirmed.
+
+</p>
+
+<div class="star-tag">
+HYPOTHETICAL
+</div>
+
+</div>
+
+
+<!-- MAGNETARS -->
+
+<div class="star-card">
+
+<div class="star-number">
+07 · EXTREME MAGNETISM
+</div>
+
+<h2 class="star-name">
+MAGNETARS
+</h2>
+
+<p class="star-text">
+
+Magnetars are neutron stars with
+extraordinarily powerful magnetic fields.
+They can produce intense bursts of
+X-rays and gamma rays.
+
+</p>
+
+<div class="star-tag">
+ULTRA-STRONG FIELD
+</div>
+
+</div>
+
+
+<!-- WHITE DWARFS -->
+
+<div class="star-card">
+
+<div class="star-number">
+08 · STELLAR REMNANT
+</div>
+
+<h2 class="star-name">
+WHITE DWARFS
+</h2>
+
+<p class="star-text">
+
+A white dwarf is the dense remnant left
+behind by a low- or medium-mass star after
+it has exhausted its nuclear fuel.
+
+</p>
+
+<div class="star-tag">
+STELLAR REMNANT
+</div>
+
+</div>
+
+
+<!-- BROWN DWARFS -->
+
+<div class="star-card">
+
+<div class="star-number">
+09 · SUBSTELLAR OBJECT
+</div>
+
+<h2 class="star-name">
+BROWN DWARFS
+</h2>
+
+<p class="star-text">
+
+Brown dwarfs are objects too small to
+sustain ordinary hydrogen fusion like
+true stars, occupying a category between
+giant planets and stars.
+
+</p>
+
+<div class="star-tag">
+FAILED STAR
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     FACT
+========================================= -->
+
+<div class="fact">
+
+
+<div class="fact-label">
+
+DID YOU KNOW?
+
+</div>
+
+
+<div class="fact-text">
+
+The Sun is only one ordinary star among
+hundreds of billions in the Milky Way —
+and the Universe contains vastly more
+galaxies beyond our own.
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     NAVIGATION
+========================================= -->
+
+<div class="navigation">
+
+
+<a
+href="https://sites.google.com/view/kosmolearn"
+class="nav-button">
+
+← RETURN TO HOME
+
+</a>
+
+
+</div>
+
+
+<div class="footer">
+
+ORBONIX · DEEP SPACE · STARS
+
+</div>
+
+
+</section>
+
+
+<script>
+
+/* =========================================
+   STAR PARALLAX
+========================================= */
+
+const stars =
+document.querySelector(".space-stars");
+
+const smallStars =
+document.querySelector(".space-stars-small");
+
+
+document.addEventListener(
+"mousemove",
+
+function(event) {
+
+    const x =
+        event.clientX /
+        window.innerWidth -
+        0.5;
+
+    const y =
+        event.clientY /
+        window.innerHeight -
+        0.5;
+
+
+    stars.style.transform =
+        `translate(
+            ${x * 20}px,
+            ${y * 20}px
+        )`;
+
+
+    smallStars.style.transform =
+        `translate(
+            ${x * -12}px,
+            ${y * -12}px
+        )`;
+
+});
+
+</script>
+
+
+</body>
+
+</html>
+```
