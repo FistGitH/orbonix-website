@@ -1,1 +1,1162 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: #020308;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   PAGE
+========================================= */
+
+.kuiper-page {
+
+    position: relative;
+
+    min-height: 1750px;
+
+    padding: 55px 20px 100px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 30%,
+            rgba(80,100,145,.18),
+            transparent 45%
+        ),
+        #020308;
+}
+
+
+/* =========================================
+   STARS
+========================================= */
+
+.stars {
+
+    position: absolute;
+
+    inset: -20%;
+
+    pointer-events: none;
+
+    opacity: .38;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.9) 1px,
+            transparent 1px
+        );
+
+    background-size: 75px 75px;
+
+    transition:
+        transform 1.5s ease;
+}
+
+
+.stars-small {
+
+    position: absolute;
+
+    inset: -20%;
+
+    pointer-events: none;
+
+    opacity: .14;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.8) 1px,
+            transparent 1px
+        );
+
+    background-size: 32px 32px;
+
+    transition:
+        transform 2s ease;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header {
+
+    position: relative;
+
+    z-index: 100;
+
+    max-width: 950px;
+
+    margin: auto;
+
+    text-align: center;
+}
+
+
+.return {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    padding: 12px 20px;
+
+    margin-bottom: 35px;
+
+    color:
+        rgba(255,255,255,.7);
+
+    border:
+        1px solid
+        rgba(255,255,255,.22);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    transition:
+        .35s ease;
+}
+
+
+.return:hover {
+
+    color: #020308;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-4px);
+}
+
+
+.label {
+
+    margin-bottom: 18px;
+
+    color:
+        rgba(255,255,255,.4);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+
+h1 {
+
+    margin: 0;
+
+    font-size:
+        clamp(48px,8vw,100px);
+
+    line-height: .9;
+
+    letter-spacing: 6px;
+}
+
+
+.subtitle {
+
+    max-width: 720px;
+
+    margin:
+        25px auto 0;
+
+    color:
+        rgba(255,255,255,.52);
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   KUIPER BELT VISUAL
+========================================= */
+
+.kuiper-area {
+
+    position: relative;
+
+    width: min(1000px,100%);
+
+    height: 620px;
+
+    margin:
+        65px auto 90px;
+
+    overflow: hidden;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border:
+        1px solid
+        rgba(120,150,190,.15);
+
+    background:
+        #010205;
+
+    box-shadow:
+        0 0 90px
+        rgba(50,80,130,.1);
+
+    transition:
+        transform .5s ease,
+        box-shadow .5s ease;
+}
+
+
+.kuiper-area:hover {
+
+    transform:
+        scale(1.015);
+
+    box-shadow:
+        0 0 120px
+        rgba(70,100,160,.15);
+}
+
+
+/* =========================================
+   REALISTIC VISUAL
+========================================= */
+
+.kuiper-visual {
+
+    width: 100%;
+
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    object-position: center;
+
+    filter:
+        brightness(.7)
+        contrast(1.12)
+        saturate(.85);
+
+    transition:
+        transform 1.2s ease,
+        filter 1.2s ease;
+}
+
+
+.kuiper-area:hover .kuiper-visual {
+
+    transform:
+        scale(1.035);
+
+    filter:
+        brightness(.8)
+        contrast(1.16)
+        saturate(.95);
+}
+
+
+/* =========================================
+   OVERLAY
+========================================= */
+
+.kuiper-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+
+        radial-gradient(
+            ellipse at center,
+            transparent 35%,
+            rgba(1,2,6,.25) 65%,
+            rgba(1,2,6,.75) 100%
+        ),
+
+        linear-gradient(
+            to bottom,
+            rgba(2,3,8,.15),
+            transparent 35%,
+            transparent 65%,
+            rgba(2,3,8,.55)
+        );
+}
+
+
+/* =========================================
+   VISUAL LABEL
+========================================= */
+
+.visual-label {
+
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 22px;
+
+    transform:
+        translateX(-50%);
+
+    padding:
+        9px 16px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.2);
+
+    background:
+        rgba(0,0,0,.55);
+
+    backdrop-filter:
+        blur(8px);
+
+    color:
+        rgba(255,255,255,.72);
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.content {
+
+    position: relative;
+
+    z-index: 10;
+
+    width:
+        min(1050px,100%);
+
+    margin: auto;
+}
+
+
+/* =========================================
+   STATS
+========================================= */
+
+.stats {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 1px;
+
+    background:
+        rgba(255,255,255,.1);
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+}
+
+
+.stat {
+
+    padding: 30px;
+
+    background:
+        rgba(5,7,13,.96);
+
+    transition:
+        .35s ease;
+}
+
+
+.stat:hover {
+
+    transform:
+        translateY(-5px);
+
+    background:
+        rgba(255,255,255,.04);
+}
+
+
+.stat-value {
+
+    margin-bottom: 9px;
+
+    font-size: 21px;
+
+    font-weight: bold;
+}
+
+
+.stat-label {
+
+    color:
+        rgba(255,255,255,.4);
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================
+   DESCRIPTION
+========================================= */
+
+.description {
+
+    margin-top: 60px;
+
+    padding: 40px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.025);
+}
+
+
+.description-title {
+
+    margin-bottom: 20px;
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+}
+
+
+.description-text {
+
+    max-width: 900px;
+
+    color:
+        rgba(255,255,255,.58);
+
+    font-size: 14px;
+
+    line-height: 1.9;
+}
+
+
+/* =========================================
+   FEATURES
+========================================= */
+
+.features-title {
+
+    margin-top: 60px;
+
+    margin-bottom: 25px;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,.45);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+
+.features {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 15px;
+}
+
+
+.feature {
+
+    padding: 28px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.02);
+
+    transition:
+        .35s ease;
+}
+
+
+.feature:hover {
+
+    transform:
+        translateY(-6px);
+
+    border-color:
+        rgba(150,180,220,.4);
+
+    background:
+        rgba(255,255,255,.04);
+}
+
+
+.feature-title {
+
+    margin-bottom: 12px;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+}
+
+
+.feature-text {
+
+    color:
+        rgba(255,255,255,.5);
+
+    font-size: 12px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   FACT
+========================================= */
+
+.fact {
+
+    margin-top: 60px;
+
+    padding: 40px;
+
+    text-align: center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    background:
+        rgba(255,255,255,.025);
+}
+
+
+.fact-label {
+
+    margin-bottom: 16px;
+
+    color:
+        rgba(255,255,255,.42);
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+}
+
+
+.fact-text {
+
+    max-width: 800px;
+
+    margin: auto;
+
+    font-size:
+        clamp(18px,3vw,27px);
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   NAVIGATION
+========================================= */
+
+.navigation {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    margin-top: 55px;
+
+    flex-wrap: wrap;
+}
+
+
+.nav-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 13px 22px;
+
+    color:
+        rgba(255,255,255,.75);
+
+    border:
+        1px solid
+        rgba(255,255,255,.2);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    transition:
+        .35s ease;
+}
+
+
+.nav-button:hover {
+
+    color: #020308;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-4px);
+}
+
+
+/* =========================================
+   CREDIT
+========================================= */
+
+.credit {
+
+    margin-top: 30px;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,.3);
+
+    font-size: 9px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:800px) {
+
+    .kuiper-area {
+
+        height: 500px;
+    }
+
+
+    .stats {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .features {
+
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media(max-width:500px) {
+
+    .kuiper-page {
+
+        padding:
+            45px 15px 70px;
+    }
+
+
+    .kuiper-area {
+
+        height: 360px;
+
+        margin-top: 45px;
+    }
+
+
+    .visual-label {
+
+        font-size: 8px;
+
+        letter-spacing: 2px;
+
+        bottom: 15px;
+    }
+
+
+    .description {
+
+        padding: 25px;
+    }
+
+
+    .fact {
+
+        padding:
+            28px 20px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<section class="kuiper-page">
+
+
+<div class="stars"></div>
+
+<div class="stars-small"></div>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<div class="header">
+
+
+<a
+href="https://sites.google.com/view/kosmolearn/solar-system"
+class="return">
+
+← RETURN TO SOLAR SYSTEM
+
+</a>
+
+
+<div class="label">
+
+ORBONIX · SOLAR SYSTEM
+
+</div>
+
+
+<h1>
+
+KUIPER BELT
+
+</h1>
+
+
+<div class="subtitle">
+
+A vast region of icy worlds beyond Neptune,
+containing millions of frozen objects and
+preserving some of the oldest material from
+the formation of the Solar System.
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     KUIPER BELT VISUAL
+========================================= -->
+
+<div class="kuiper-area">
+
+
+<img
+class="kuiper-visual"
+src="https://upload.wikimedia.org/wikipedia/commons/5/5a/Kuiper_belt.png"
+alt="Kuiper Belt visualization">
+
+
+<div class="kuiper-overlay"></div>
+
+
+<div class="visual-label">
+
+KUIPER BELT · OUTER SOLAR SYSTEM
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     CONTENT
+========================================= -->
+
+<div class="content">
+
+
+<!-- STATS -->
+
+<div class="stats">
+
+
+<div class="stat">
+
+<div class="stat-value">
+30–55 AU
+</div>
+
+<div class="stat-label">
+DISTANCE FROM SUN
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+MILLIONS
+</div>
+
+<div class="stat-label">
+ESTIMATED OBJECTS
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+~165 YEARS
+</div>
+
+<div class="stat-label">
+PLUTO'S ORBITAL PERIOD
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+~4.6 BILLION YEARS
+</div>
+
+<div class="stat-label">
+AGE</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+PLUTO</div>
+
+<div class="stat-label">
+FAMOUS DWARF PLANET
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+NEPTUNE ↔ OUTER SYSTEM
+</div>
+
+<div class="stat-label">
+LOCATION
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- DESCRIPTION -->
+
+<div class="description">
+
+
+<div class="description-title">
+
+THE ICY FRONTIER
+
+</div>
+
+
+<div class="description-text">
+
+The Kuiper Belt is a vast region of
+the Solar System beyond the orbit of
+Neptune.
+
+It contains millions of icy bodies,
+including dwarf planets, comets and
+other trans-Neptunian objects.
+
+Pluto is one of the most famous
+objects in the Kuiper Belt. Other
+important worlds include Eris, Haumea,
+Makemake and Quaoar.
+
+The objects of the Kuiper Belt are
+made largely of frozen materials such
+as water ice, methane and ammonia,
+mixed with rock and complex organic
+compounds.
+
+Because these objects formed far from
+the Sun and have remained extremely
+cold, many preserve material from the
+early Solar System.
+
+The Kuiper Belt is also an important
+source of short-period comets that can
+enter the inner Solar System.
+
+</div>
+
+
+</div>
+
+
+<!-- FEATURES -->
+
+<div class="features-title">
+
+KUIPER BELT FEATURES
+
+</div>
+
+
+<div class="features">
+
+
+<div class="feature">
+
+<div class="feature-title">
+
+PLUTO
+
+</div>
+
+<div class="feature-text">
+
+Pluto is one of the best-known Kuiper
+Belt objects and was reclassified as
+a dwarf planet in 2006.
+
+</div>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-title">
+
+ICY WORLDS
+
+</div>
+
+<div class="feature-text">
+
+The region contains enormous numbers
+of frozen bodies made from ice,
+rock and complex materials.
+
+</div>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-title">
+
+ANCIENT MATERIAL
+
+</div>
+
+<div class="feature-text">
+
+Kuiper Belt objects preserve some of
+the most primitive material remaining
+from the formation of our Solar System.
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- FACT -->
+
+<div class="fact">
+
+
+<div class="fact-label">
+
+DID YOU KNOW?
+
+</div>
+
+
+<div class="fact-text">
+
+Pluto takes about <strong>248 Earth years</strong>
+to complete a single orbit around
+the Sun.
+
+</div>
+
+
+</div>
+
+
+<!-- NAVIGATION -->
+
+<div class="navigation">
+
+
+<a
+href="https://sites.google.com/view/kosmolearn/solar-system"
+class="nav-button">
+
+← RETURN TO SOLAR SYSTEM
+
+</a>
+
+
+</div>
+
+
+<div class="credit">
+
+VISUALIZATION:
+NASA / ESA / WIKIMEDIA COMMONS
+
+<br>
+
+ORBONIX · SOLAR SYSTEM
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+<script>
+
+const stars =
+document.querySelector(".stars");
+
+
+const smallStars =
+document.querySelector(".stars-small");
+
+
+document.addEventListener(
+"mousemove",
+
+function(event) {
+
+    const x =
+        event.clientX /
+        window.innerWidth - 0.5;
+
+
+    const y =
+        event.clientY /
+        window.innerHeight - 0.5;
+
+
+    stars.style.transform =
+        `translate(
+            ${x * 20}px,
+            ${y * 20}px
+        )`;
+
+
+    smallStars.style.transform =
+        `translate(
+            ${x * -12}px,
+            ${y * -12}px
+        )`;
+
+});
+
+</script>
+
+
+</body>
+
+</html>
