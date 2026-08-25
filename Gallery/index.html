@@ -1,1 +1,1413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>ORBONIX — Space Gallery & Sources</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    background:
+        radial-gradient(
+            circle at 50% -20%,
+            #18244a 0%,
+            #080b18 45%,
+            #020308 100%
+        );
+
+    color:white;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+}
+
+
+/* ========================================
+   HEADER
+======================================== */
+
+.header{
+    text-align:center;
+    padding:65px 20px 35px;
+}
+
+.header .mini{
+    color:#7095ff;
+    font-size:11px;
+    letter-spacing:4px;
+    font-weight:bold;
+}
+
+.header h1{
+    margin:12px 0;
+
+    font-size:
+        clamp(36px,6vw,72px);
+
+    letter-spacing:-2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #8db1ff
+        );
+
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.header p{
+    max-width:680px;
+    margin:auto;
+
+    color:#8d99b2;
+
+    line-height:1.7;
+
+    font-size:15px;
+}
+
+
+/* ========================================
+   FILTERS
+======================================== */
+
+.filters{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+
+    gap:9px;
+
+    padding:
+        10px
+        20px
+        35px;
+}
+
+.filter{
+    border:1px solid
+        rgba(255,255,255,.12);
+
+    background:
+        rgba(255,255,255,.04);
+
+    color:#aeb8ca;
+
+    padding:10px 16px;
+
+    border-radius:100px;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+    font-size:12px;
+}
+
+.filter:hover,
+.filter.active{
+    background:
+        rgba(88,125,255,.18);
+
+    border-color:
+        rgba(100,145,255,.5);
+
+    color:white;
+}
+
+
+/* ========================================
+   GALLERY
+======================================== */
+
+.gallery{
+
+    max-width:1250px;
+
+    margin:auto;
+
+    padding:
+        0 20px
+        70px;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(290px,1fr)
+        );
+
+    gap:22px;
+}
+
+
+/* ========================================
+   CARD
+======================================== */
+
+.card{
+
+    position:relative;
+
+    overflow:hidden;
+
+    min-height:420px;
+
+    border-radius:22px;
+
+    background:
+        rgba(9,13,27,.88);
+
+    border:
+        1px solid
+        rgba(255,255,255,.09);
+
+    box-shadow:
+        0 20px 60px
+        rgba(0,0,0,.25);
+
+    transition:
+        transform .35s ease,
+        border-color .35s ease,
+        box-shadow .35s ease;
+}
+
+.card:hover{
+
+    transform:
+        translateY(-8px);
+
+    border-color:
+        rgba(110,150,255,.4);
+
+    box-shadow:
+        0 30px 80px
+        rgba(20,60,150,.25);
+}
+
+
+/* ========================================
+   IMAGE
+======================================== */
+
+.card-image{
+
+    height:220px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:#050711;
+}
+
+.card-image img{
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    display:block;
+
+    transition:
+        transform .6s ease;
+}
+
+.card:hover .card-image img{
+
+    transform:
+        scale(1.08);
+}
+
+
+/* image gradient */
+
+.card-image::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent 45%,
+            rgba(5,7,15,.9)
+        );
+
+    pointer-events:none;
+}
+
+
+/* ========================================
+   TYPE BADGE
+======================================== */
+
+.badge{
+
+    position:absolute;
+
+    top:14px;
+    left:14px;
+
+    z-index:2;
+
+    padding:7px 10px;
+
+    border-radius:8px;
+
+    background:
+        rgba(0,0,0,.55);
+
+    border:
+        1px solid
+        rgba(255,255,255,.14);
+
+    backdrop-filter:
+        blur(10px);
+
+    color:#c7d5ff;
+
+    font-size:9px;
+
+    letter-spacing:1.4px;
+
+    text-transform:uppercase;
+}
+
+
+/* ========================================
+   CONTENT
+======================================== */
+
+.card-content{
+
+    padding:20px;
+}
+
+.card-content h2{
+
+    margin:
+        0 0 7px;
+
+    font-size:23px;
+}
+
+.description{
+
+    margin:0 0 18px;
+
+    color:#8d99ad;
+
+    line-height:1.6;
+
+    font-size:13px;
+}
+
+
+/* ========================================
+   SOURCE INFO
+======================================== */
+
+.source-box{
+
+    padding:13px;
+
+    border-radius:12px;
+
+    background:
+        rgba(255,255,255,.035);
+
+    border:
+        1px solid
+        rgba(255,255,255,.06);
+
+    margin-bottom:12px;
+}
+
+.source-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:10px;
+
+    margin-bottom:7px;
+
+    font-size:11px;
+}
+
+.source-row:last-child{
+    margin-bottom:0;
+}
+
+.source-label{
+
+    color:#69758c;
+
+    text-transform:uppercase;
+
+    letter-spacing:.8px;
+}
+
+.source-value{
+
+    color:#c5cede;
+
+    text-align:right;
+}
+
+
+/* ========================================
+   BUTTON
+======================================== */
+
+.source-button{
+
+    display:block;
+
+    text-align:center;
+
+    padding:11px;
+
+    border-radius:10px;
+
+    background:
+        rgba(79,120,255,.12);
+
+    border:
+        1px solid
+        rgba(90,130,255,.25);
+
+    color:#9ebcff;
+
+    text-decoration:none;
+
+    font-size:11px;
+
+    font-weight:bold;
+
+    letter-spacing:1px;
+
+    transition:.25s;
+}
+
+.source-button:hover{
+
+    background:
+        rgba(79,120,255,.25);
+
+    color:white;
+}
+
+
+/* ========================================
+   FOOTER
+======================================== */
+
+.footer{
+
+    text-align:center;
+
+    padding:
+        10px
+        20px
+        70px;
+
+    color:#59657c;
+
+    font-size:11px;
+
+    line-height:1.7;
+}
+
+.footer strong{
+    color:#8b9ac0;
+}
+
+
+/* ========================================
+   NO RESULTS
+======================================== */
+
+.no-results{
+
+    display:none;
+
+    grid-column:
+        1/-1;
+
+    text-align:center;
+
+    padding:60px;
+
+    color:#68748b;
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================
+     HEADER
+===================================== -->
+
+<section class="header">
+
+    <div class="mini">
+        ORBONIX / ARCHIVE
+    </div>
+
+    <h1>
+        SPACE GALLERY
+    </h1>
+
+    <p>
+        Explore astronomical objects and discover
+        where the images, scientific data and
+        information used by ORBONIX come from.
+    </p>
+
+</section>
+
+
+
+<!-- =====================================
+     FILTERS
+===================================== -->
+
+<div class="filters">
+
+    <button
+        class="filter active"
+        data-filter="all">
+        ALL
+    </button>
+
+    <button
+        class="filter"
+        data-filter="planet">
+        PLANETS
+    </button>
+
+    <button
+        class="filter"
+        data-filter="moon">
+        MOONS
+    </button>
+
+    <button
+        class="filter"
+        data-filter="star">
+        STARS
+    </button>
+
+    <button
+        class="filter"
+        data-filter="galaxy">
+        GALAXIES
+    </button>
+
+    <button
+        class="filter"
+        data-filter="nebula">
+        NEBULAE
+    </button>
+
+    <button
+        class="filter"
+        data-filter="deep">
+        DEEP SPACE
+    </button>
+
+</div>
+
+
+
+<!-- =====================================
+     GALLERY
+===================================== -->
+
+<div class="gallery" id="gallery">
+
+
+
+<!-- SUN -->
+
+<article
+    class="card"
+    data-category="star">
+
+    <div class="card-image">
+
+        <span class="badge">
+            STAR
+        </span>
+
+        <img
+            src="https://science.nasa.gov/wp-content/uploads/2023/05/sun.jpg"
+            alt="Sun">
+
+    </div>
+
+    <div class="card-content">
+
+        <h2>Sun</h2>
+
+        <p class="description">
+            The star at the center of our Solar System.
+        </p>
+
+        <div class="source-box">
+
+            <div class="source-row">
+
+                <span class="source-label">
+                    Image
+                </span>
+
+                <span class="source-value">
+                    NASA
+                </span>
+
+            </div>
+
+            <div class="source-row">
+
+                <span class="source-label">
+                    Data
+                </span>
+
+                <span class="source-value">
+                    NASA / JPL
+                </span>
+
+            </div>
+
+            <div class="source-row">
+
+                <span class="source-label">
+                    Updated
+                </span>
+
+                <span class="source-value">
+                    2026
+                </span>
+
+            </div>
+
+        </div>
+
+        <a
+            class="source-button"
+            href="https://science.nasa.gov/sun/"
+            target="_blank">
+
+            VIEW OFFICIAL SOURCE →
+
+        </a>
+
+    </div>
+
+</article>
+
+
+
+<!-- EARTH -->
+
+<article
+    class="card"
+    data-category="planet">
+
+    <div class="card-image">
+
+        <span class="badge">
+            PLANET
+        </span>
+
+        <img
+            src="https://science.nasa.gov/wp-content/uploads/2023/09/earth-1-jpg.webp"
+            alt="Earth">
+
+    </div>
+
+    <div class="card-content">
+
+        <h2>Earth</h2>
+
+        <p class="description">
+            Our home world and the third planet
+            from the Sun.
+        </p>
+
+        <div class="source-box">
+
+            <div class="source-row">
+
+                <span class="source-label">
+                    Image
+                </span>
+
+                <span class="source-value">
+                    NASA
+                </span>
+
+            </div>
+
+            <div class="source-row">
+
+                <span class="source-label">
+                    Data
+                </span>
+
+                <span class="source-value">
+                    NASA
+                </span>
+
+            </div>
+
+            <div class="source-row">
+
+                <span class="source-label">
+                    Updated
+                </span>
+
+                <span class="source-value">
+                    2026
+                </span>
+
+            </div>
+
+        </div>
+
+        <a
+            class="source-button"
+            href="https://science.nasa.gov/earth/"
+            target="_blank">
+
+            VIEW OFFICIAL SOURCE →
+
+        </a>
+
+    </div>
+
+</article>
+
+
+
+<!-- MARS -->
+
+<article
+    class="card"
+    data-category="planet">
+
+    <div class="card-image">
+
+        <span class="badge">
+            PLANET
+        </span>
+
+        <img
+            src="https://science.nasa.gov/wp-content/uploads/2024/03/mars-full-globe.jpg"
+            alt="Mars">
+
+    </div>
+
+    <div class="card-content">
+
+        <h2>Mars</h2>
+
+        <p class="description">
+            The fourth planet and one of the most
+            extensively explored worlds beyond Earth.
+        </p>
+
+        <div class="source-box">
+
+            <div class="source-row">
+
+                <span class="source-label">
+                    Image
+                </span>
+
+                <span class="source-value">
+                    NASA
+                </span>
+
+            </div>
+
+            <div class="source-row">
+
+                <span class="source-label">
+                    Data
+                </span>
+
+                <span class="source-value">
+                    NASA / JPL
+                </span>
+
+            </div>
+
+            <div class="source-row">
+
+                <span class="source-label">
+                    Missions
+                </span>
+
+                <span class="source-value">
+                    NASA
+                </span>
+
+            </div>
+
+        </div>
+
+        <a
+            class="source-button"
+            href="https://science.nasa.gov/mars/"
+            target="_blank">
+
+            VIEW OFFICIAL SOURCE →
+
+        </a>
+
+    </div>
+
+</article>
+
+
+
+<!-- JUPITER -->
+
+<article
+    class="card"
+    data-category="planet">
+
+    <div class="card-image">
+
+        <span class="badge">
+            PLANET
+        </span>
+
+        <img
+            src="https://science.nasa.gov/wp-content/uploads/2024/03/jupiter-1.jpg"
+            alt="Jupiter">
+
+    </div>
+
+    <div class="card-content">
+
+        <h2>Jupiter</h2>
+
+        <p class="description">
+            The largest planet in our Solar System,
+            surrounded by a complex system of moons.
+        </p>
+
+        <div class="source-box">
+
+            <div class="source-row">
+
+                <span class="source-label">
+                    Image
+                </span>
+
+                <span class="source-value">
+                    NASA
+                </span>
+
+            </div>
+
+            <div class="source-row">
+
+                <span class="source-label">
+                    Data
+                </span>
+
+                <span class="source-value">
+                    NASA / JPL
+                </span>
+
+            </div>
+
+            <div class="source-row">
+
+                <span class="source-label">
+                    Moons
+                </span>
+
+                <span class="source-value">
+                    NASA / JPL
+                </span>
+
+            </div>
+
+        </div>
+
+        <a
+            class="source-button"
+            href="https://science.nasa.gov/jupiter/"
+            target="_blank">
+
+            VIEW OFFICIAL SOURCE →
+
+        </a>
+
+    </div>
+
+</article>
+
+
+
+<!-- SATURN -->
+
+<article
+    class="card"
+    data-category="planet">
+
+    <div class="card-image">
+
+        <span class="badge">
+            PLANET
+        </span>
+
+        <img
+            src="https://science.nasa.gov/wp-content/uploads/2023/09/saturn.jpg"
+            alt="Saturn">
+
+    </div>
+
+    <div class="card-content">
+
+        <h2>Saturn</h2>
+
+        <p class="description">
+            A gas giant famous for its spectacular
+            system of icy rings and numerous moons.
+        </p>
+
+        <div class="source-box">
+
+            <div class="source-row">
+
+                <span class="source-label">
+                    Image
+                </span>
+
+                <span class="source-value">
+                    NASA
+                </span>
+
+            </div>
+
+            <div class="source-row">
+
+                <span class="source-label">
+                    Data
+                </span>
+
+                <span class="source-value">
+                    NASA / JPL
+                </span>
+
+            </div>
+
+            <div class="source-row">
+
+                <span class="source-label">
+                    Mission
+                </span>
+
+                <span class="source-value">
+                    Cassini
+                </span>
+
+            </div>
+
+        </div>
+
+        <a
+            class="source-button"
+            href="https://science.nasa.gov/saturn/"
+            target="_blank">
+
+            VIEW OFFICIAL SOURCE →
+
+        </a>
+
+    </div>
+
+</article>
+
+
+
+<!-- MOON -->
+
+<article
+    class="card"
+    data-category="moon">
+
+    <div class="card-image">
+
+        <span class="badge">
+            MOON
+        </span>
+
+        <img
+            src="https://science.nasa.gov/wp-content/uploads/2024/03/moon.jpg"
+            alt="Moon">
+
+    </div>
+
+    <div class="card-content">
+
+        <h2>Moon</h2>
+
+        <p class="description">
+            Earth's natural satellite and the only
+            extraterrestrial world visited by humans.
+        </p>
+
+        <div class="source-box">
+
+            <div class="source-row">
+
+                <span class="source-label">
+                    Image
+                </span>
+
+                <span class="source-value">
+                    NASA
+                </span>
+
+            </div>
+
+            <div class="source-row">
+
+                <span class="source-label">
+                    Data
+                </span>
+
+                <span class="source-value">
+                    NASA
+                </span>
+
+            </div>
+
+            <div class="source-row">
+
+                <span class="source-label">
+                    Missions
+                </span>
+
+                <span class="source-value">
+                    Apollo / LRO
+                </span>
+
+            </div>
+
+        </div>
+
+        <a
+            class="source-button"
+            href="https://science.nasa.gov/moon/"
+            target="_blank">
+
+            VIEW OFFICIAL SOURCE →
+
+        </a>
+
+    </div>
+
+</article>
+
+
+
+<!-- ANDROMEDA -->
+
+<article
+    class="card"
+    data-category="galaxy">
+
+    <div class="card-image">
+
+        <span class="badge">
+            GALAXY
+        </span>
+
+        <img
+            src="https://science.nasa.gov/wp-content/uploads/2023/09/andromeda-galaxy-jpg.webp"
+            alt="Andromeda Galaxy">
+
+    </div>
+
+    <div class="card-content">
+
+        <h2>Andromeda Galaxy</h2>
+
+        <p class="description">
+            The nearest major galaxy to the Milky Way,
+            located about 2.5 million light-years away.
+        </p>
+
+        <div class="source-box">
+
+            <div class="source-row">
+
+                <span class="source-label">
+                    Image
+                </span>
+
+                <span class="source-value">
+                    NASA
+                </span>
+
+            </div>
+
+            <div class="source-row">
+
+                <span class="source-label">
+                    Telescope
+                </span>
+
+                <span class="source-value">
+                    NASA / ESA
+                </span>
+
+            </div>
+
+            <div class="source-row">
+
+                <span class="source-label">
+                    Data
+                </span>
+
+                <span class="source-value">
+                    NASA
+                </span>
+
+            </div>
+
+        </div>
+
+        <a
+            class="source-button"
+            href="https://science.nasa.gov/missions/hubble/hubble-focuses-on-the-andromeda-galaxy/"
+            target="_blank">
+
+            VIEW OFFICIAL SOURCE →
+
+        </a>
+
+    </div>
+
+</article>
+
+
+
+<!-- CRAB NEBULA -->
+
+<article
+    class="card"
+    data-category="nebula">
+
+    <div class="card-image">
+
+        <span class="badge">
+            NEBULA
+        </span>
+
+        <img
+            src="https://science.nasa.gov/wp-content/uploads/2023/09/crab-nebula.jpg"
+            alt="Crab Nebula">
+
+    </div>
+
+    <div class="card-content">
+
+        <h2>Crab Nebula</h2>
+
+        <p class="description">
+            The expanding remnant of a stellar explosion
+            observed in the year 1054.
+        </p>
+
+        <div class="source-box">
+
+            <div class="source-row">
+
+                <span class="source-label">
+                    Image
+                </span>
+
+                <span class="source-value">
+                    NASA
+                </span>
+
+            </div>
+
+            <div class="source-row">
+
+                <span class="source-label">
+                    Telescope
+                </span>
+
+                <span class="source-value">
+                    Hubble
+                </span>
+
+            </div>
+
+            <div class="source-row">
+
+                <span class="source-label">
+                    Data
+                </span>
+
+                <span class="source-value">
+                    NASA / ESA
+                </span>
+
+            </div>
+
+        </div>
+
+        <a
+            class="source-button"
+            href="https://science.nasa.gov/mission/hubble/science/explore-the-night-sky/hubble-messier-catalog/messier-1/"
+            target="_blank">
+
+            VIEW OFFICIAL SOURCE →
+
+        </a>
+
+    </div>
+
+</article>
+
+
+
+<!-- JWST DEEP SPACE -->
+
+<article
+    class="card"
+    data-category="deep">
+
+    <div class="card-image">
+
+        <span class="badge">
+            DEEP SPACE
+        </span>
+
+        <img
+            src="https://science.nasa.gov/wp-content/uploads/2023/09/webb-first-deep-field.jpg"
+            alt="James Webb Deep Field">
+
+    </div>
+
+    <div class="card-content">
+
+        <h2>Webb Deep Field</h2>
+
+        <p class="description">
+            A deep-field observation revealing galaxies
+            across an enormous range of cosmic distances.
+        </p>
+
+        <div class="source-box">
+
+            <div class="source-row">
+
+                <span class="source-label">
+                    Telescope
+                </span>
+
+                <span class="source-value">
+                    James Webb
+                </span>
+
+            </div>
+
+            <div class="source-row">
+
+                <span class="source-label">
+                    Agencies
+                </span>
+
+                <span class="source-value">
+                    NASA / ESA / CSA
+                </span>
+
+            </div>
+
+            <div class="source-row">
+
+                <span class="source-label">
+                    Instrument
+                </span>
+
+                <span class="source-value">
+                    NIRCam
+                </span>
+
+            </div>
+
+        </div>
+
+        <a
+            class="source-button"
+            href="https://science.nasa.gov/mission/webb/"
+            target="_blank">
+
+            VIEW OFFICIAL SOURCE →
+
+        </a>
+
+    </div>
+
+</article>
+
+
+<div
+    class="no-results"
+    id="noResults">
+
+    No objects found in this category.
+
+</div>
+
+</div>
+
+
+
+<!-- =====================================
+     FOOTER
+===================================== -->
+
+<div class="footer">
+
+    <strong>ORBONIX SOURCE POLICY</strong>
+    <br><br>
+
+    Images and scientific information should be
+    attributed to their original mission,
+    observatory, agency or data archive.
+
+    <br>
+
+    ORBONIX does not claim ownership of
+    third-party scientific imagery.
+
+</div>
+
+
+
+<script>
+
+/* ========================================
+   FILTER SYSTEM
+======================================== */
+
+const filters =
+    document.querySelectorAll(
+        ".filter"
+    );
+
+const cards =
+    document.querySelectorAll(
+        ".card"
+    );
+
+const noResults =
+    document.getElementById(
+        "noResults"
+    );
+
+
+filters.forEach(
+    filter => {
+
+        filter.addEventListener(
+            "click",
+            ()=>{
+
+                filters.forEach(
+                    f =>
+                    f.classList.remove(
+                        "active"
+                    )
+                );
+
+                filter.classList.add(
+                    "active"
+                );
+
+
+                const category =
+                    filter.dataset.filter;
+
+                let visible = 0;
+
+
+                cards.forEach(
+                    card => {
+
+                        const match =
+                            category === "all" ||
+                            card.dataset.category ===
+                            category;
+
+
+                        if(match){
+
+                            card.style.display =
+                                "";
+
+                            visible++;
+
+                        }
+                        else{
+
+                            card.style.display =
+                                "none";
+
+                        }
+
+                    }
+                );
+
+
+                noResults.style.display =
+                    visible === 0
+                    ? "block"
+                    : "none";
+
+            }
+        );
+
+    }
+);
+
+</script>
+
+</body>
+</html>
