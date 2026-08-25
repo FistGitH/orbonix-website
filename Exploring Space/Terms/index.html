@@ -1,1 +1,1024 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ORBONIX · SPACE TERMS</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: #01030a;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   PAGE
+========================================= */
+
+.terms-page {
+
+    position: relative;
+
+    min-height: 100vh;
+
+    padding: 55px 20px 100px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 15%,
+            rgba(55,90,170,.18),
+            transparent 42%
+        ),
+        #01030a;
+}
+
+
+/* =========================================
+   STARS
+========================================= */
+
+.stars {
+
+    position: fixed;
+
+    inset: -20%;
+
+    pointer-events: none;
+
+    opacity: .35;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.9) 1px,
+            transparent 1px
+        );
+
+    background-size: 75px 75px;
+
+    transition:
+        transform 1.5s ease;
+}
+
+
+.stars-small {
+
+    position: fixed;
+
+    inset: -20%;
+
+    pointer-events: none;
+
+    opacity: .14;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.8) 1px,
+            transparent 1px
+        );
+
+    background-size: 32px 32px;
+
+    transition:
+        transform 2s ease;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header {
+
+    position: relative;
+
+    z-index: 10;
+
+    max-width: 900px;
+
+    margin: auto;
+
+    text-align: center;
+}
+
+
+.return {
+
+    display: inline-flex;
+
+    padding: 12px 20px;
+
+    margin-bottom: 35px;
+
+    color:
+        rgba(255,255,255,.7);
+
+    border:
+        1px solid
+        rgba(255,255,255,.2);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    transition: .35s ease;
+}
+
+
+.return:hover {
+
+    color: #01030a;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-4px);
+}
+
+
+.label {
+
+    margin-bottom: 18px;
+
+    color:
+        rgba(255,255,255,.4);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+
+h1 {
+
+    margin: 0;
+
+    font-size:
+        clamp(48px,8vw,90px);
+
+    line-height: .95;
+
+    letter-spacing: 6px;
+}
+
+
+.subtitle {
+
+    max-width: 680px;
+
+    margin: 25px auto 0;
+
+    color:
+        rgba(255,255,255,.5);
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   TERMS
+========================================= */
+
+.terms {
+
+    position: relative;
+
+    z-index: 5;
+
+    width:
+        min(1100px,100%);
+
+    margin: 75px auto 0;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 15px;
+}
+
+
+/* =========================================
+   CARD
+========================================= */
+
+.term-card {
+
+    position: relative;
+
+    padding: 30px;
+
+    min-height: 180px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.025);
+
+    overflow: hidden;
+
+    transition:
+        transform .4s ease,
+        border-color .4s ease,
+        background .4s ease;
+}
+
+
+.term-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(150,190,255,.5),
+            transparent
+        );
+
+    opacity: .5;
+
+    transition: .4s ease;
+}
+
+
+.term-card:hover {
+
+    transform:
+        translateY(-7px);
+
+    border-color:
+        rgba(150,190,255,.35);
+
+    background:
+        rgba(255,255,255,.045);
+}
+
+
+.term-card:hover::before {
+
+    opacity: 1;
+}
+
+
+.term-number {
+
+    margin-bottom: 18px;
+
+    color:
+        rgba(150,180,230,.45);
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+}
+
+
+.term-name {
+
+    margin-bottom: 13px;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+}
+
+
+.term-description {
+
+    color:
+        rgba(255,255,255,.52);
+
+    font-size: 12px;
+
+    line-height: 1.75;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.footer {
+
+    position: relative;
+
+    z-index: 5;
+
+    margin-top: 70px;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,.25);
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:850px) {
+
+    .terms {
+
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+}
+
+
+@media(max-width:550px) {
+
+    .terms-page {
+
+        padding:
+            45px 15px 70px;
+    }
+
+    .terms {
+
+        grid-template-columns: 1fr;
+
+        margin-top: 50px;
+    }
+
+    .term-card {
+
+        min-height: auto;
+
+        padding: 25px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<section class="terms-page">
+
+
+<div class="stars"></div>
+
+<div class="stars-small"></div>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<header class="header">
+
+
+<a
+href="https://sites.google.com/view/kosmolearn"
+class="return">
+
+← RETURN TO HOME
+
+</a>
+
+
+<div class="label">
+
+ORBONIX · SPACE KNOWLEDGE
+
+</div>
+
+
+<h1>
+
+SPACE TERMS
+
+</h1>
+
+
+<div class="subtitle">
+
+A collection of important astronomical terms
+used throughout the Orbonix space explorer.
+Learn the language of the Universe.
+
+</div>
+
+
+</header>
+
+
+<!-- =========================================
+     TERMS
+========================================= -->
+
+<main class="terms">
+
+
+<div class="term-card">
+
+<div class="term-number">01 · DISTANCE</div>
+
+<div class="term-name">ASTRONOMICAL UNIT</div>
+
+<div class="term-description">
+
+An astronomical unit, or AU, is the average
+distance between Earth and the Sun.
+1 AU is about 149.6 million kilometers.
+
+</div>
+
+</div>
+
+
+<div class="term-card">
+
+<div class="term-number">02 · MOTION</div>
+
+<div class="term-name">ORBIT</div>
+
+<div class="term-description">
+
+An orbit is the curved path an object follows
+around another object because of gravity.
+
+</div>
+
+</div>
+
+
+<div class="term-card">
+
+<div class="term-number">03 · FORCE</div>
+
+<div class="term-name">GRAVITY</div>
+
+<div class="term-description">
+
+Gravity is the force that attracts objects
+with mass toward one another.
+
+</div>
+
+</div>
+
+
+<div class="term-card">
+
+<div class="term-number">04 · PLANETS</div>
+
+<div class="term-name">ATMOSPHERE</div>
+
+<div class="term-description">
+
+An atmosphere is a layer of gases surrounding
+a planet, moon, or other astronomical object.
+
+</div>
+
+</div>
+
+
+<div class="term-card">
+
+<div class="term-number">05 · MOONS</div>
+
+<div class="term-name">SATELLITE</div>
+
+<div class="term-description">
+
+A satellite is an object that orbits another
+object. Natural satellites include moons.
+
+</div>
+
+</div>
+
+
+<div class="term-card">
+
+<div class="term-number">06 · PLANET CLASS</div>
+
+<div class="term-name">DWARF PLANET</div>
+
+<div class="term-description">
+
+A dwarf planet orbits the Sun and is nearly
+round, but has not cleared its orbital region.
+
+</div>
+
+</div>
+
+
+<div class="term-card">
+
+<div class="term-number">07 · SMALL BODIES</div>
+
+<div class="term-name">ASTEROID</div>
+
+<div class="term-description">
+
+An asteroid is a rocky or metallic body
+that orbits the Sun.
+
+</div>
+
+</div>
+
+
+<div class="term-card">
+
+<div class="term-number">08 · SMALL BODIES</div>
+
+<div class="term-name">COMET</div>
+
+<div class="term-description">
+
+A comet is an icy body that can develop
+a glowing coma and tail when it approaches
+the Sun.
+
+</div>
+
+</div>
+
+
+<div class="term-card">
+
+<div class="term-number">09 · SOLAR SYSTEM</div>
+
+<div class="term-name">KUIPER BELT</div>
+
+<div class="term-description">
+
+The Kuiper Belt is a distant region beyond
+Neptune containing icy bodies and dwarf planets.
+
+</div>
+
+</div>
+
+
+<div class="term-card">
+
+<div class="term-number">10 · OUTER SOLAR SYSTEM</div>
+
+<div class="term-name">OORT CLOUD</div>
+
+<div class="term-description">
+
+The Oort Cloud is a theoretical enormous shell
+of icy objects surrounding the Solar System.
+
+</div>
+
+</div>
+
+
+<div class="term-card">
+
+<div class="term-number">11 · DISTANCE</div>
+
+<div class="term-name">LIGHT-YEAR</div>
+
+<div class="term-description">
+
+A light-year is the distance light travels
+through space in one year: about 9.46 trillion km.
+
+</div>
+
+</div>
+
+
+<div class="term-card">
+
+<div class="term-number">12 · DEEP SPACE</div>
+
+<div class="term-name">NEBULA</div>
+
+<div class="term-description">
+
+A nebula is a huge cloud of gas and dust
+in space. Some are regions where stars form.
+
+</div>
+
+</div>
+
+
+<div class="term-card">
+
+<div class="term-number">13 · GALACTIC STRUCTURE</div>
+
+<div class="term-name">GALAXY</div>
+
+<div class="term-description">
+
+A galaxy is a massive system of stars, gas,
+dust, dark matter, and other objects held
+together by gravity.
+
+</div>
+
+</div>
+
+
+<div class="term-card">
+
+<div class="term-number">14 · EXTREME OBJECTS</div>
+
+<div class="term-name">BLACK HOLE</div>
+
+<div class="term-description">
+
+A black hole is a region of spacetime where
+gravity is so strong that nothing, including
+light, can escape from inside the event horizon.
+
+</div>
+
+</div>
+
+
+<div class="term-card">
+
+<div class="term-number">15 · BLACK HOLES</div>
+
+<div class="term-name">EVENT HORIZON</div>
+
+<div class="term-description">
+
+The event horizon is the boundary around
+a black hole beyond which escape is impossible.
+
+</div>
+
+</div>
+
+
+<div class="term-card">
+
+<div class="term-number">16 · BLACK HOLES</div>
+
+<div class="term-name">SINGULARITY</div>
+
+<div class="term-description">
+
+A singularity is the theoretical central region
+of a classical black-hole model where spacetime
+curvature becomes extreme.
+
+</div>
+
+</div>
+
+
+<div class="term-card">
+
+<div class="term-number">17 · OTHER WORLDS</div>
+
+<div class="term-name">EXOPLANET</div>
+
+<div class="term-description">
+
+An exoplanet is a planet that orbits a star
+outside our Solar System.
+
+</div>
+
+</div>
+
+
+<div class="term-card">
+
+<div class="term-number">18 · STELLAR DEATH</div>
+
+<div class="term-name">SUPERNOVA</div>
+
+<div class="term-description">
+
+A supernova is an extremely powerful stellar
+explosion that can briefly outshine an entire galaxy.
+
+</div>
+
+</div>
+
+
+<div class="term-card">
+
+<div class="term-number">19 · STELLAR REMNANTS</div>
+
+<div class="term-name">NEUTRON STAR</div>
+
+<div class="term-description">
+
+A neutron star is the incredibly dense remnant
+left after certain massive stars explode.
+
+</div>
+
+</div>
+
+
+<div class="term-card">
+
+<div class="term-number">20 · STELLAR REMNANTS</div>
+
+<div class="term-name">WHITE DWARF</div>
+
+<div class="term-description">
+
+A white dwarf is the hot, dense remnant
+of a Sun-like star after it has shed its outer layers.
+
+</div>
+
+</div>
+
+
+<div class="term-card">
+
+<div class="term-number">21 · COSMOLOGY</div>
+
+<div class="term-name">DARK MATTER</div>
+
+<div class="term-description">
+
+Dark matter is invisible matter inferred from
+its gravitational effects on visible matter
+and cosmic structures.
+
+</div>
+
+</div>
+
+
+<div class="term-card">
+
+<div class="term-number">22 · COSMOLOGY</div>
+
+<div class="term-name">DARK ENERGY</div>
+
+<div class="term-description">
+
+Dark energy is the name given to whatever
+is driving the accelerated expansion of the Universe.
+
+</div>
+
+</div>
+
+
+<div class="term-card">
+
+<div class="term-number">23 · THE SUN</div>
+
+<div class="term-name">SOLAR WIND</div>
+
+<div class="term-description">
+
+Solar wind is a continuous flow of charged
+particles released by the Sun into space.
+
+</div>
+
+</div>
+
+
+<div class="term-card">
+
+<div class="term-number">24 · SOLAR SYSTEM</div>
+
+<div class="term-name">HELIOSPHERE</div>
+
+<div class="term-description">
+
+The heliosphere is the enormous bubble around
+the Sun created by the solar wind.
+
+</div>
+
+</div>
+
+
+<div class="term-card">
+
+<div class="term-number">25 · SOLAR SYSTEM</div>
+
+<div class="term-name">HELIOPAUSE</div>
+
+<div class="term-description">
+
+The heliopause is the outer boundary of the
+heliosphere where the solar wind meets interstellar space.
+
+</div>
+
+</div>
+
+
+<div class="term-card">
+
+<div class="term-number">26 · DISTANCE</div>
+
+<div class="term-name">PARSEC</div>
+
+<div class="term-description">
+
+A parsec is an astronomical distance unit equal
+to about 3.26 light-years.
+
+</div>
+
+</div>
+
+
+<div class="term-card">
+
+<div class="term-number">27 · STARS</div>
+
+<div class="term-name">RED GIANT</div>
+
+<div class="term-description">
+
+A red giant is an evolved star that has expanded
+enormously after exhausting hydrogen in its core.
+
+</div>
+
+</div>
+
+
+<div class="term-card">
+
+<div class="term-number">28 · STARS</div>
+
+<div class="term-name">MAIN SEQUENCE</div>
+
+<div class="term-description">
+
+The main sequence is the stage where a star
+fuses hydrogen into helium in its core.
+
+</div>
+
+</div>
+
+
+<div class="term-card">
+
+<div class="term-number">29 · PLANETS</div>
+
+<div class="term-name">HABITABLE ZONE</div>
+
+<div class="term-description">
+
+The habitable zone is the region around a star
+where temperatures could allow liquid water
+on a planet's surface.
+
+</div>
+
+</div>
+
+
+<div class="term-card">
+
+<div class="term-number">30 · GRAVITY</div>
+
+<div class="term-name">ROCHE LIMIT</div>
+
+<div class="term-description">
+
+The Roche limit is the distance within which
+tidal forces can break apart a smaller object
+held together mainly by gravity.
+
+</div>
+
+</div>
+
+
+<div class="term-card">
+
+<div class="term-number">31 · GRAVITY</div>
+
+<div class="term-name">TIDAL FORCES</div>
+
+<div class="term-description">
+
+Tidal forces are differences in gravitational
+pull across an object that can stretch or deform it.
+
+</div>
+
+</div>
+
+
+</main>
+
+
+<footer class="footer">
+
+ORBONIX · SPACE KNOWLEDGE
+
+</footer>
+
+
+</section>
+
+
+<script>
+
+const stars =
+document.querySelector(".stars");
+
+const smallStars =
+document.querySelector(".stars-small");
+
+
+document.addEventListener(
+"mousemove",
+function(event) {
+
+    const x =
+        event.clientX /
+        window.innerWidth - 0.5;
+
+    const y =
+        event.clientY /
+        window.innerHeight - 0.5;
+
+
+    stars.style.transform =
+        `translate(
+            ${x * 20}px,
+            ${y * 20}px
+        )`;
+
+
+    smallStars.style.transform =
+        `translate(
+            ${x * -12}px,
+            ${y * -12}px
+        )`;
+
+});
+
+</script>
+
+
+</body>
+
+</html>
+```
