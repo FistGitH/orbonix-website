@@ -1,1 +1,1303 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: #020308;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   PAGE
+========================================= */
+
+.voyager-page {
+
+    position: relative;
+
+    min-height: 1750px;
+
+    padding: 55px 20px 100px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 25%,
+            rgba(70,95,150,.18),
+            transparent 45%
+        ),
+        #020308;
+}
+
+
+/* =========================================
+   STARS
+========================================= */
+
+.stars {
+
+    position: absolute;
+
+    inset: -20%;
+
+    pointer-events: none;
+
+    opacity: .38;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.9) 1px,
+            transparent 1px
+        );
+
+    background-size: 75px 75px;
+
+    transition:
+        transform 1.5s ease;
+}
+
+
+.stars-small {
+
+    position: absolute;
+
+    inset: -20%;
+
+    pointer-events: none;
+
+    opacity: .14;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.8) 1px,
+            transparent 1px
+        );
+
+    background-size: 32px 32px;
+
+    transition:
+        transform 2s ease;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header {
+
+    position: relative;
+
+    z-index: 100;
+
+    max-width: 950px;
+
+    margin: auto;
+
+    text-align: center;
+}
+
+
+.return {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    padding: 12px 20px;
+
+    margin-bottom: 35px;
+
+    color:
+        rgba(255,255,255,.7);
+
+    border:
+        1px solid
+        rgba(255,255,255,.22);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    transition:
+        .35s ease;
+}
+
+
+.return:hover {
+
+    color: #020308;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-4px);
+}
+
+
+.label {
+
+    margin-bottom: 18px;
+
+    color:
+        rgba(255,255,255,.4);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+
+h1 {
+
+    margin: 0;
+
+    font-size:
+        clamp(55px,9vw,105px);
+
+    line-height: .9;
+
+    letter-spacing: 7px;
+}
+
+
+.subtitle {
+
+    max-width: 720px;
+
+    margin:
+        25px auto 0;
+
+    color:
+        rgba(255,255,255,.52);
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   VOYAGER VISUAL
+========================================= */
+
+.voyager-area {
+
+    position: relative;
+
+    width: 720px;
+
+    height: 600px;
+
+    margin:
+        65px auto 90px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+/* =========================================
+   SIGNAL WAVES
+========================================= */
+
+.signal {
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 50%;
+
+    transform:
+        translate(-50%,-50%);
+
+    border:
+        1px solid
+        rgba(130,165,220,.15);
+
+    border-radius: 50%;
+
+    animation:
+        pulse 4s infinite ease-out;
+}
+
+
+.signal-1 {
+    width: 260px;
+    height: 260px;
+}
+
+
+.signal-2 {
+    width: 420px;
+    height: 420px;
+
+    animation-delay: 1s;
+}
+
+
+.signal-3 {
+    width: 590px;
+    height: 590px;
+
+    animation-delay: 2s;
+}
+
+
+@keyframes pulse {
+
+    0% {
+        opacity: .05;
+        transform:
+            translate(-50%,-50%)
+            scale(.92);
+    }
+
+    50% {
+        opacity: .25;
+    }
+
+    100% {
+        opacity: 0;
+        transform:
+            translate(-50%,-50%)
+            scale(1.05);
+    }
+
+}
+
+
+/* =========================================
+   SPACECRAFT
+========================================= */
+
+.spacecraft {
+
+    position: relative;
+
+    z-index: 20;
+
+    width: 270px;
+
+    height: 130px;
+
+    transform:
+        rotate(-8deg);
+
+    transition:
+        .5s ease;
+}
+
+
+.spacecraft:hover {
+
+    transform:
+        rotate(-8deg)
+        scale(1.08);
+}
+
+
+/* antenna */
+
+.antenna {
+
+    position: absolute;
+
+    left: 40px;
+
+    top: -55px;
+
+    width: 3px;
+
+    height: 70px;
+
+    background:
+        rgba(220,230,245,.8);
+
+    transform:
+        rotate(28deg);
+}
+
+
+.antenna::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: -32px;
+
+    top: -5px;
+
+    width: 65px;
+
+    height: 65px;
+
+    border:
+        2px solid
+        rgba(220,230,245,.75);
+
+    border-radius: 50%;
+}
+
+
+/* main body */
+
+.body-spacecraft {
+
+    position: absolute;
+
+    left: 80px;
+
+    top: 40px;
+
+    width: 105px;
+
+    height: 55px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #d7dce3,
+            #737b88
+        );
+
+    border:
+        1px solid
+        rgba(255,255,255,.5);
+
+    box-shadow:
+        0 0 25px
+        rgba(150,180,230,.2);
+}
+
+
+/* golden record */
+
+.record {
+
+    position: absolute;
+
+    left: 35px;
+
+    top: 13px;
+
+    width: 30px;
+
+    height: 30px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #ffe38b,
+            #c79a35
+        );
+
+    border:
+        2px solid
+        rgba(255,230,140,.7);
+
+    box-shadow:
+        0 0 15px
+        rgba(255,205,80,.25);
+}
+
+
+/* solar panels */
+
+.panel {
+
+    position: absolute;
+
+    top: 45px;
+
+    width: 85px;
+
+    height: 48px;
+
+    border:
+        1px solid
+        rgba(150,190,235,.5);
+
+    background:
+        repeating-linear-gradient(
+            90deg,
+            #18283e 0px,
+            #18283e 8px,
+            #365271 9px,
+            #365271 10px
+        );
+}
+
+
+.panel-left {
+    left: -15px;
+}
+
+
+.panel-right {
+    right: -15px;
+}
+
+
+/* boom */
+
+.boom {
+
+    position: absolute;
+
+    right: -50px;
+
+    top: 62px;
+
+    width: 55px;
+
+    height: 3px;
+
+    background:
+        rgba(210,215,225,.7);
+}
+
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.content {
+
+    position: relative;
+
+    z-index: 10;
+
+    width:
+        min(1050px,100%);
+
+    margin: auto;
+}
+
+
+/* =========================================
+   STATS
+========================================= */
+
+.stats {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 1px;
+
+    background:
+        rgba(255,255,255,.1);
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+}
+
+
+.stat {
+
+    padding: 30px;
+
+    background:
+        rgba(5,7,13,.96);
+
+    transition:
+        .35s ease;
+}
+
+
+.stat:hover {
+
+    transform:
+        translateY(-5px);
+
+    background:
+        rgba(255,255,255,.04);
+}
+
+
+.stat-value {
+
+    margin-bottom: 9px;
+
+    font-size: 21px;
+
+    font-weight: bold;
+}
+
+
+.stat-label {
+
+    color:
+        rgba(255,255,255,.4);
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================
+   DESCRIPTION
+========================================= */
+
+.description {
+
+    margin-top: 60px;
+
+    padding: 40px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.025);
+}
+
+
+.description-title {
+
+    margin-bottom: 20px;
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+}
+
+
+.description-text {
+
+    max-width: 900px;
+
+    color:
+        rgba(255,255,255,.58);
+
+    font-size: 14px;
+
+    line-height: 1.9;
+}
+
+
+/* =========================================
+   FEATURES
+========================================= */
+
+.features-title {
+
+    margin-top: 60px;
+
+    margin-bottom: 25px;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,.45);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+
+.features {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 15px;
+}
+
+
+.feature {
+
+    padding: 28px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.02);
+
+    transition:
+        .35s ease;
+}
+
+
+.feature:hover {
+
+    transform:
+        translateY(-6px);
+
+    border-color:
+        rgba(150,190,235,.4);
+
+    background:
+        rgba(255,255,255,.04);
+}
+
+
+.feature-title {
+
+    margin-bottom: 12px;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+}
+
+
+.feature-text {
+
+    color:
+        rgba(255,255,255,.5);
+
+    font-size: 12px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   FACT
+========================================= */
+
+.fact {
+
+    margin-top: 60px;
+
+    padding: 40px;
+
+    text-align: center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    background:
+        rgba(255,255,255,.025);
+}
+
+
+.fact-label {
+
+    margin-bottom: 16px;
+
+    color:
+        rgba(255,255,255,.42);
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+}
+
+
+.fact-text {
+
+    max-width: 800px;
+
+    margin: auto;
+
+    font-size:
+        clamp(18px,3vw,27px);
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   NAVIGATION
+========================================= */
+
+.navigation {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    margin-top: 55px;
+
+    flex-wrap: wrap;
+}
+
+
+.nav-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 13px 22px;
+
+    color:
+        rgba(255,255,255,.75);
+
+    border:
+        1px solid
+        rgba(255,255,255,.2);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    transition:
+        .35s ease;
+}
+
+
+.nav-button:hover {
+
+    color: #020308;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-4px);
+}
+
+
+/* =========================================
+   CREDIT
+========================================= */
+
+.credit {
+
+    margin-top: 30px;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,.3);
+
+    font-size: 9px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:800px) {
+
+    .voyager-area {
+
+        width: 500px;
+
+        height: 500px;
+    }
+
+
+    .stats {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .features {
+
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media(max-width:500px) {
+
+    .voyager-page {
+
+        padding:
+            45px 15px 70px;
+    }
+
+
+    .voyager-area {
+
+        width: 320px;
+
+        height: 350px;
+
+        margin-top: 45px;
+
+        transform:
+            scale(.72);
+    }
+
+
+    .description {
+
+        padding: 25px;
+    }
+
+
+    .fact {
+
+        padding:
+            28px 20px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<section class="voyager-page">
+
+
+<div class="stars"></div>
+
+<div class="stars-small"></div>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<div class="header">
+
+
+<a
+href="https://sites.google.com/view/kosmolearn"
+class="return">
+
+← RETURN TO HOME
+
+</a>
+
+
+<div class="label">
+
+ORBONIX · SPACE MISSIONS
+
+</div>
+
+
+<h1>
+
+VOYAGER
+
+</h1>
+
+
+<div class="subtitle">
+
+Humanity's longest-running deep-space mission,
+sending two spacecraft beyond the outer planets
+and carrying a message from Earth into interstellar space.
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     VOYAGER
+========================================= -->
+
+<div class="voyager-area">
+
+
+<div class="signal signal-1"></div>
+
+<div class="signal signal-2"></div>
+
+<div class="signal signal-3"></div>
+
+
+<div class="spacecraft">
+
+
+<div class="antenna"></div>
+
+<div class="panel panel-left"></div>
+
+<div class="panel panel-right"></div>
+
+<div class="body-spacecraft">
+
+<div class="record"></div>
+
+</div>
+
+<div class="boom"></div>
+
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     CONTENT
+========================================= -->
+
+<div class="content">
+
+
+<!-- STATS -->
+
+<div class="stats">
+
+
+<div class="stat">
+
+<div class="stat-value">
+1977
+</div>
+
+<div class="stat-label">
+LAUNCHED
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+2 SPACECRAFT
+</div>
+
+<div class="stat-label">
+VOYAGER 1 + 2
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+INTERSTELLAR
+</div>
+
+<div class="stat-label">
+MISSION REGION
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+JUPITER
+</div>
+
+<div class="stat-label">
+FIRST PLANETARY ENCOUNTER
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+SATURN</div>
+
+<div class="stat-label">
+MAJOR ENCOUNTER
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+GOLDEN RECORD
+</div>
+
+<div class="stat-label">
+MESSAGE FROM EARTH
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- DESCRIPTION -->
+
+<div class="description">
+
+
+<div class="description-title">
+
+THE JOURNEY BEYOND THE PLANETS
+
+</div>
+
+
+<div class="description-text">
+
+The Voyager program consists of two robotic
+spacecraft, Voyager 1 and Voyager 2,
+launched in 1977 to explore the outer Solar
+System.
+
+Voyager 1 visited Jupiter and Saturn before
+continuing on a trajectory out of the Solar
+System. Voyager 2 made the first and only
+close flybys of Uranus and Neptune.
+
+Both spacecraft used gravity-assist maneuvers
+to gain speed by passing close to planets.
+
+After completing their planetary missions,
+the spacecraft continued into the outer
+heliosphere and eventually entered
+interstellar space.
+
+Voyager 1 became the first human-made object
+to enter interstellar space, followed by
+Voyager 2.
+
+Even after decades in space, the spacecraft
+continue to provide unique measurements of
+the environment far beyond the planets.
+
+</div>
+
+
+</div>
+
+
+<!-- FEATURES -->
+
+<div class="features-title">
+
+VOYAGER FEATURES
+
+</div>
+
+
+<div class="features">
+
+
+<div class="feature">
+
+<div class="feature-title">
+
+VOYAGER 1
+
+</div>
+
+<div class="feature-text">
+
+Voyager 1 explored Jupiter and Saturn
+and is now traveling through interstellar
+space farther from Earth than any other
+human-made spacecraft.
+
+</div>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-title">
+
+VOYAGER 2
+
+</div>
+
+<div class="feature-text">
+
+Voyager 2 is the only spacecraft to have
+visited all four giant planets:
+Jupiter, Saturn, Uranus and Neptune.
+
+</div>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-title">
+
+GOLDEN RECORD
+
+</div>
+
+<div class="feature-text">
+
+Each Voyager carries a golden record
+containing sounds, images and greetings
+representing life and civilization on Earth.
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- FACT -->
+
+<div class="fact">
+
+
+<div class="fact-label">
+
+DID YOU KNOW?
+
+</div>
+
+
+<div class="fact-text">
+
+The Voyager spacecraft are traveling so far
+from Earth that their radio signals take
+<strong>many hours</strong> to reach us.
+
+</div>
+
+
+</div>
+
+
+<!-- NAVIGATION -->
+
+<div class="navigation">
+
+
+<a
+href="https://sites.google.com/view/kosmolearn"
+class="nav-button">
+
+← RETURN TO HOME
+
+</a>
+
+
+<a
+href="https://sites.google.com/view/kosmolearn/space-missions"
+class="nav-button">
+
+← RETURN TO SPACE MISSIONS
+
+</a>
+
+
+</div>
+
+
+<div class="credit">
+
+VOYAGER PROGRAM
+<br>
+NASA / JPL
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+<script>
+
+const stars =
+document.querySelector(".stars");
+
+const smallStars =
+document.querySelector(".stars-small");
+
+
+document.addEventListener(
+"mousemove",
+
+function(event) {
+
+    const x =
+        event.clientX /
+        window.innerWidth - 0.5;
+
+
+    const y =
+        event.clientY /
+        window.innerHeight - 0.5;
+
+
+    stars.style.transform =
+        `translate(
+            ${x * 20}px,
+            ${y * 20}px
+        )`;
+
+
+    smallStars.style.transform =
+        `translate(
+            ${x * -12}px,
+            ${y * -12}px
+        )`;
+
+});
+
+</script>
+
+
+</body>
+
+</html>
