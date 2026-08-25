@@ -1,1 +1,1322 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: #020308;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   PAGE
+========================================= */
+
+.newhorizons-page {
+
+    position: relative;
+
+    min-height: 1750px;
+
+    padding: 55px 20px 100px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 25%,
+            rgba(65,100,180,.18),
+            transparent 45%
+        ),
+        #020308;
+}
+
+
+/* =========================================
+   STARS
+========================================= */
+
+.stars {
+
+    position: absolute;
+
+    inset: -20%;
+
+    pointer-events: none;
+
+    opacity: .38;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.9) 1px,
+            transparent 1px
+        );
+
+    background-size: 75px 75px;
+
+    transition:
+        transform 1.5s ease;
+}
+
+
+.stars-small {
+
+    position: absolute;
+
+    inset: -20%;
+
+    pointer-events: none;
+
+    opacity: .14;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.8) 1px,
+            transparent 1px
+        );
+
+    background-size: 32px 32px;
+
+    transition:
+        transform 2s ease;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header {
+
+    position: relative;
+
+    z-index: 100;
+
+    max-width: 950px;
+
+    margin: auto;
+
+    text-align: center;
+}
+
+
+.return {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    padding: 12px 20px;
+
+    margin-bottom: 35px;
+
+    color:
+        rgba(255,255,255,.7);
+
+    border:
+        1px solid
+        rgba(255,255,255,.22);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    transition:
+        .35s ease;
+}
+
+
+.return:hover {
+
+    color: #020308;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-4px);
+}
+
+
+.label {
+
+    margin-bottom: 18px;
+
+    color:
+        rgba(255,255,255,.4);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+
+h1 {
+
+    margin: 0;
+
+    font-size:
+        clamp(45px,8vw,100px);
+
+    line-height: .9;
+
+    letter-spacing: 5px;
+}
+
+
+.subtitle {
+
+    max-width: 720px;
+
+    margin:
+        25px auto 0;
+
+    color:
+        rgba(255,255,255,.52);
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   SPACECRAFT AREA
+========================================= */
+
+.spacecraft-area {
+
+    position: relative;
+
+    width: 720px;
+
+    height: 600px;
+
+    margin:
+        65px auto 90px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+/* =========================================
+   TRAJECTORY
+========================================= */
+
+.orbit {
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 50%;
+
+    transform:
+        translate(-50%,-50%)
+        rotate(-18deg);
+
+    width: 650px;
+
+    height: 270px;
+
+    border:
+        1px solid
+        rgba(110,150,230,.16);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+
+.orbit-2 {
+
+    width: 500px;
+
+    height: 190px;
+
+    border-color:
+        rgba(110,150,230,.10);
+}
+
+
+/* =========================================
+   PLUTO
+========================================= */
+
+.pluto {
+
+    position: absolute;
+
+    z-index: 10;
+
+    width: 190px;
+
+    height: 190px;
+
+    left: 100px;
+
+    top: 190px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #d7c5ad,
+            #8e7968 48%,
+            #493d36 78%,
+            #171310 100%
+        );
+
+    box-shadow:
+        0 0 45px
+        rgba(160,140,125,.3),
+
+        0 0 110px
+        rgba(90,110,160,.12);
+}
+
+
+.pluto::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 65px;
+
+    height: 45px;
+
+    left: 50px;
+
+    top: 55px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(220,210,190,.45);
+
+    transform:
+        rotate(-18deg);
+
+    filter: blur(3px);
+}
+
+
+/* =========================================
+   SPACECRAFT
+========================================= */
+
+.spacecraft {
+
+    position: absolute;
+
+    z-index: 30;
+
+    right: 110px;
+
+    top: 125px;
+
+    width: 180px;
+
+    height: 150px;
+
+    transform:
+        rotate(-12deg);
+
+    transition:
+        .5s ease;
+}
+
+
+.spacecraft:hover {
+
+    transform:
+        rotate(-12deg)
+        scale(1.08);
+}
+
+
+/* Main body */
+
+.body {
+
+    position: absolute;
+
+    left: 65px;
+
+    top: 50px;
+
+    width: 65px;
+
+    height: 70px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #d9d9d5,
+            #747775
+        );
+
+    border:
+        1px solid
+        rgba(255,255,255,.4);
+
+    box-shadow:
+        0 0 18px
+        rgba(180,190,200,.2);
+}
+
+
+/* Dish antenna */
+
+.dish {
+
+    position: absolute;
+
+    left: 5px;
+
+    top: 20px;
+
+    width: 75px;
+
+    height: 75px;
+
+    border-radius: 50%;
+
+    border:
+        3px solid
+        rgba(220,220,215,.8);
+
+    background:
+        radial-gradient(
+            circle,
+            #d8d6ce,
+            #89877e 65%,
+            #45433e
+        );
+
+    box-shadow:
+        0 0 18px
+        rgba(200,210,220,.18);
+}
+
+
+.dish::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 50%;
+
+    width: 6px;
+
+    height: 6px;
+
+    transform:
+        translate(-50%,-50%);
+
+    border-radius: 50%;
+
+    background: #333;
+}
+
+
+/* Radioisotope generator */
+
+.generator {
+
+    position: absolute;
+
+    right: 0;
+
+    top: 62px;
+
+    width: 35px;
+
+    height: 18px;
+
+    background:
+        #34383a;
+
+    border:
+        1px solid
+        rgba(255,255,255,.25);
+}
+
+
+/* Boom */
+
+.boom {
+
+    position: absolute;
+
+    right: -45px;
+
+    top: 45px;
+
+    width: 65px;
+
+    height: 4px;
+
+    background:
+        rgba(190,195,195,.7);
+}
+
+
+/* Camera boom */
+
+.camera {
+
+    position: absolute;
+
+    right: -60px;
+
+    top: 30px;
+
+    width: 25px;
+
+    height: 25px;
+
+    background:
+        #24292d;
+
+    border:
+        1px solid
+        rgba(255,255,255,.35);
+}
+
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.content {
+
+    position: relative;
+
+    z-index: 10;
+
+    width:
+        min(1050px,100%);
+
+    margin: auto;
+}
+
+
+/* =========================================
+   STATS
+========================================= */
+
+.stats {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 1px;
+
+    background:
+        rgba(255,255,255,.1);
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+}
+
+
+.stat {
+
+    padding: 30px;
+
+    background:
+        rgba(5,7,13,.96);
+
+    transition:
+        .35s ease;
+}
+
+
+.stat:hover {
+
+    transform:
+        translateY(-5px);
+
+    background:
+        rgba(255,255,255,.04);
+}
+
+
+.stat-value {
+
+    margin-bottom: 9px;
+
+    font-size: 21px;
+
+    font-weight: bold;
+}
+
+
+.stat-label {
+
+    color:
+        rgba(255,255,255,.4);
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================
+   DESCRIPTION
+========================================= */
+
+.description {
+
+    margin-top: 60px;
+
+    padding: 40px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.025);
+}
+
+
+.description-title {
+
+    margin-bottom: 20px;
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+}
+
+
+.description-text {
+
+    max-width: 900px;
+
+    color:
+        rgba(255,255,255,.58);
+
+    font-size: 14px;
+
+    line-height: 1.9;
+}
+
+
+/* =========================================
+   FEATURES
+========================================= */
+
+.features-title {
+
+    margin-top: 60px;
+
+    margin-bottom: 25px;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,.45);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+
+.features {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 15px;
+}
+
+
+.feature {
+
+    padding: 28px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.02);
+
+    transition:
+        .35s ease;
+}
+
+
+.feature:hover {
+
+    transform:
+        translateY(-6px);
+
+    border-color:
+        rgba(130,170,240,.4);
+
+    background:
+        rgba(255,255,255,.04);
+}
+
+
+.feature-title {
+
+    margin-bottom: 12px;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+}
+
+
+.feature-text {
+
+    color:
+        rgba(255,255,255,.5);
+
+    font-size: 12px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   FACT
+========================================= */
+
+.fact {
+
+    margin-top: 60px;
+
+    padding: 40px;
+
+    text-align: center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    background:
+        rgba(255,255,255,.025);
+}
+
+
+.fact-label {
+
+    margin-bottom: 16px;
+
+    color:
+        rgba(255,255,255,.42);
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+}
+
+
+.fact-text {
+
+    max-width: 800px;
+
+    margin: auto;
+
+    font-size:
+        clamp(18px,3vw,27px);
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   NAVIGATION
+========================================= */
+
+.navigation {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    margin-top: 55px;
+
+    flex-wrap: wrap;
+}
+
+
+.nav-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 13px 22px;
+
+    color:
+        rgba(255,255,255,.75);
+
+    border:
+        1px solid
+        rgba(255,255,255,.2);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    transition:
+        .35s ease;
+}
+
+
+.nav-button:hover {
+
+    color: #020308;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-4px);
+}
+
+
+/* =========================================
+   CREDIT
+========================================= */
+
+.credit {
+
+    margin-top: 30px;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,.3);
+
+    font-size: 9px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:800px) {
+
+    .spacecraft-area {
+
+        width: 500px;
+
+        height: 500px;
+    }
+
+
+    .stats {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .features {
+
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media(max-width:500px) {
+
+    .newhorizons-page {
+
+        padding:
+            45px 15px 70px;
+    }
+
+
+    .spacecraft-area {
+
+        width: 320px;
+
+        height: 390px;
+
+        margin-top: 45px;
+
+        transform:
+            scale(.65);
+    }
+
+
+    .description {
+
+        padding: 25px;
+    }
+
+
+    .fact {
+
+        padding:
+            28px 20px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<section class="newhorizons-page">
+
+
+<div class="stars"></div>
+
+<div class="stars-small"></div>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<div class="header">
+
+
+<a
+href="https://sites.google.com/view/kosmolearn"
+class="return">
+
+← RETURN TO HOME
+
+</a>
+
+
+<div class="label">
+
+ORBONIX · SPACE MISSIONS
+
+</div>
+
+
+<h1>
+
+NEW HORIZONS
+
+</h1>
+
+
+<div class="subtitle">
+
+The first spacecraft to explore Pluto and
+the distant Kuiper Belt, revealing a world
+far more complex than scientists expected.
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     SPACECRAFT VISUAL
+========================================= -->
+
+<div class="spacecraft-area">
+
+
+<div class="orbit"></div>
+
+<div class="orbit orbit-2"></div>
+
+
+<div class="pluto"></div>
+
+
+<div class="spacecraft">
+
+<div class="dish"></div>
+
+<div class="body"></div>
+
+<div class="generator"></div>
+
+<div class="boom"></div>
+
+<div class="camera"></div>
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     CONTENT
+========================================= -->
+
+<div class="content">
+
+
+<!-- STATS -->
+
+<div class="stats">
+
+
+<div class="stat">
+
+<div class="stat-value">
+2006
+</div>
+
+<div class="stat-label">
+LAUNCHED
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+2015
+</div>
+
+<div class="stat-label">
+PLUTO FLYBY
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+2019
+</div>
+
+<div class="stat-label">
+ARROKOTH FLYBY
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+~5 BILLION KM
+</div>
+
+<div class="stat-label">
+DISTANCE TO EARTH AT PLUTO FLYBY
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+PLUTO
+</div>
+
+<div class="stat-label">
+PRIMARY TARGET
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div class="stat-value">
+KUIPER BELT</div>
+
+<div class="stat-label">
+CURRENT REGION
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- DESCRIPTION -->
+
+<div class="description">
+
+
+<div class="description-title">
+
+BEYOND PLUTO
+
+</div>
+
+
+<div class="description-text">
+
+New Horizons was launched by NASA in
+January 2006 on a mission to explore Pluto
+and the distant Kuiper Belt.
+
+After a journey of more than nine years,
+the spacecraft flew past Pluto on July 14,
+2015, becoming the first spacecraft to
+explore the dwarf planet up close.
+
+New Horizons revealed enormous mountains,
+vast icy plains, deep canyons and a
+surprisingly complex atmosphere.
+
+The spacecraft then continued deeper into
+the Kuiper Belt. On January 1, 2019, it
+performed the first close flyby of a Kuiper
+Belt object, Arrokoth.
+
+The mission continues to travel through
+the outer Solar System and study the
+environment far beyond Pluto.
+
+</div>
+
+
+</div>
+
+
+<!-- FEATURES -->
+
+<div class="features-title">
+
+NEW HORIZONS DISCOVERIES
+
+</div>
+
+
+<div class="features">
+
+
+<div class="feature">
+
+<div class="feature-title">
+
+PLUTO
+
+</div>
+
+<div class="feature-text">
+
+New Horizons revealed Pluto's diverse
+surface, including Sputnik Planitia,
+mountains of water ice and possible
+evidence of geological activity.
+
+</div>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-title">
+
+ARROKOTH
+
+</div>
+
+<div class="feature-text">
+
+The spacecraft flew past Arrokoth in
+2019, providing humanity's first close
+look at a primordial Kuiper Belt object.
+
+</div>
+
+</div>
+
+
+<div class="feature">
+
+<div class="feature-title">
+
+KUIPER BELT
+
+</div>
+
+<div class="feature-text">
+
+New Horizons is continuing to explore
+the distant outer Solar System and study
+dust, plasma and the environment beyond
+Pluto.
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- FACT -->
+
+<div class="fact">
+
+
+<div class="fact-label">
+
+DID YOU KNOW?
+
+</div>
+
+
+<div class="fact-text">
+
+New Horizons crossed the distance from
+Earth to Pluto in just over <strong>nine years</strong>
+and reached Pluto at about <strong>14 km/s</strong>.
+
+</div>
+
+
+</div>
+
+
+<!-- NAVIGATION -->
+
+<div class="navigation">
+
+
+<a
+href="https://sites.google.com/view/kosmolearn"
+class="nav-button">
+
+← RETURN TO HOME
+
+</a>
+
+
+<a
+href="https://sites.google.com/view/kosmolearn/space-missions"
+class="nav-button">
+
+← RETURN TO SPACE MISSIONS
+
+</a>
+
+
+</div>
+
+
+<div class="credit">
+
+NEW HORIZONS MISSION
+<br>
+NASA / JOHNS HOPKINS APL / SWRI
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+<script>
+
+const stars =
+document.querySelector(".stars");
+
+const smallStars =
+document.querySelector(".stars-small");
+
+
+document.addEventListener(
+"mousemove",
+
+function(event) {
+
+    const x =
+        event.clientX /
+        window.innerWidth - 0.5;
+
+
+    const y =
+        event.clientY /
+        window.innerHeight - 0.5;
+
+
+    stars.style.transform =
+        `translate(
+            ${x * 20}px,
+            ${y * 20}px
+        )`;
+
+
+    smallStars.style.transform =
+        `translate(
+            ${x * -12}px,
+            ${y * -12}px
+        )`;
+
+});
+
+</script>
+
+
+</body>
+
+</html>
