@@ -1,1 +1,1274 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: #010208;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   PAGE
+========================================= */
+
+.deep-space {
+
+    position: relative;
+
+    min-height: 1800px;
+
+    padding: 70px 20px 100px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 25%,
+            rgba(70,90,180,.16),
+            transparent 42%
+        ),
+        radial-gradient(
+            circle at 20% 80%,
+            rgba(120,50,180,.08),
+            transparent 35%
+        ),
+        #010208;
+}
+
+
+/* =========================================
+   STARS
+========================================= */
+
+.stars {
+
+    position: absolute;
+
+    inset: -25%;
+
+    pointer-events: none;
+
+    opacity: .38;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.9) 1px,
+            transparent 1px
+        );
+
+    background-size: 75px 75px;
+
+    transition:
+        transform 1.5s ease;
+}
+
+
+.stars-small {
+
+    position: absolute;
+
+    inset: -25%;
+
+    pointer-events: none;
+
+    opacity: .16;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.8) 1px,
+            transparent 1px
+        );
+
+    background-size: 32px 32px;
+
+    transition:
+        transform 2s ease;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header {
+
+    position: relative;
+
+    z-index: 10;
+
+    max-width: 900px;
+
+    margin: auto;
+
+    text-align: center;
+}
+
+
+.return {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 12px 20px;
+
+    margin-bottom: 40px;
+
+    color:
+        rgba(255,255,255,.7);
+
+    border:
+        1px solid
+        rgba(255,255,255,.22);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    transition: .35s ease;
+}
+
+
+.return:hover {
+
+    color: #010208;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-4px);
+}
+
+
+.label {
+
+    margin-bottom: 18px;
+
+    color:
+        rgba(255,255,255,.4);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+
+h1 {
+
+    margin: 0;
+
+    font-size:
+        clamp(50px,9vw,100px);
+
+    line-height: .9;
+
+    letter-spacing: 7px;
+}
+
+
+.subtitle {
+
+    max-width: 720px;
+
+    margin:
+        28px auto 0;
+
+    color:
+        rgba(255,255,255,.52);
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   INTRO
+========================================= */
+
+.intro {
+
+    position: relative;
+
+    z-index: 5;
+
+    width:
+        min(950px,100%);
+
+    margin:
+        75px auto 70px;
+
+    padding: 38px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.025);
+
+    text-align: center;
+}
+
+
+.intro-title {
+
+    margin-bottom: 18px;
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+}
+
+
+.intro-text {
+
+    max-width: 820px;
+
+    margin: auto;
+
+    color:
+        rgba(255,255,255,.55);
+
+    font-size: 13px;
+
+    line-height: 1.9;
+}
+
+
+/* =========================================
+   OBJECT GRID
+========================================= */
+
+.objects {
+
+    position: relative;
+
+    z-index: 5;
+
+    width:
+        min(1050px,100%);
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap: 18px;
+}
+
+
+/* =========================================
+   OBJECT CARD
+========================================= */
+
+.object-card {
+
+    position: relative;
+
+    min-height: 270px;
+
+    padding: 32px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.11);
+
+    background:
+        rgba(5,8,18,.72);
+
+    backdrop-filter:
+        blur(12px);
+
+    overflow: hidden;
+
+    text-decoration: none;
+
+    color: white;
+
+    transition:
+        transform .45s ease,
+        border-color .45s ease,
+        background .45s ease;
+}
+
+
+.object-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 190px;
+
+    height: 190px;
+
+    right: -75px;
+
+    top: -75px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(100,130,255,.18),
+            transparent 70%
+        );
+
+    transition:
+        transform .6s ease;
+}
+
+
+.object-card:hover {
+
+    transform:
+        translateY(-8px);
+
+    border-color:
+        rgba(170,190,255,.35);
+
+    background:
+        rgba(10,15,30,.86);
+}
+
+
+.object-card:hover::before {
+
+    transform:
+        scale(1.5);
+}
+
+
+/* =========================================
+   NUMBER
+========================================= */
+
+.object-number {
+
+    position: absolute;
+
+    top: 25px;
+
+    right: 28px;
+
+    color:
+        rgba(255,255,255,.18);
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+}
+
+
+/* =========================================
+   SYMBOL
+========================================= */
+
+.object-symbol {
+
+    width: 65px;
+
+    height: 65px;
+
+    margin-bottom: 25px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 40% 35%,
+            #20294d,
+            #080b18 55%,
+            #000 100%
+        );
+
+    box-shadow:
+        0 0 30px
+        rgba(90,120,255,.18);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 16px;
+
+    color:
+        rgba(255,255,255,.8);
+
+    transition:
+        .45s ease;
+}
+
+
+.object-card:hover
+.object-symbol {
+
+    transform:
+        scale(1.12);
+
+    box-shadow:
+        0 0 45px
+        rgba(100,140,255,.35);
+}
+
+
+/* =========================================
+   TITLE
+========================================= */
+
+.object-title {
+
+    margin:
+        0 0 9px;
+
+    font-size: 22px;
+
+    letter-spacing: 2px;
+}
+
+
+.object-category {
+
+    margin-bottom: 17px;
+
+    color:
+        rgba(255,255,255,.35);
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+}
+
+
+.object-text {
+
+    margin: 0;
+
+    color:
+        rgba(255,255,255,.52);
+
+    font-size: 12px;
+
+    line-height: 1.75;
+}
+
+
+/* =========================================
+   EXPLORE
+========================================= */
+
+.explore {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-top: 22px;
+
+    color:
+        rgba(255,255,255,.65);
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+
+    transition: .3s ease;
+}
+
+
+.object-card:hover .explore {
+
+    color: white;
+
+    gap: 16px;
+}
+
+
+/* =========================================
+   FACT
+========================================= */
+
+.fact {
+
+    position: relative;
+
+    z-index: 5;
+
+    width:
+        min(900px,100%);
+
+    margin:
+        70px auto 0;
+
+    padding: 42px;
+
+    text-align: center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    background:
+        rgba(255,255,255,.025);
+}
+
+
+.fact-label {
+
+    margin-bottom: 16px;
+
+    color:
+        rgba(255,255,255,.4);
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+}
+
+
+.fact-text {
+
+    max-width: 760px;
+
+    margin: auto;
+
+    font-size:
+        clamp(18px,3vw,27px);
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   NAVIGATION
+========================================= */
+
+.navigation {
+
+    position: relative;
+
+    z-index: 5;
+
+    display: flex;
+
+    justify-content: center;
+
+    margin-top: 55px;
+}
+
+
+.nav-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding:
+        13px 24px;
+
+    color:
+        rgba(255,255,255,.75);
+
+    border:
+        1px solid
+        rgba(255,255,255,.2);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    transition: .35s ease;
+}
+
+
+.nav-button:hover {
+
+    color: #010208;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-4px);
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.footer {
+
+    position: relative;
+
+    z-index: 5;
+
+    margin-top: 30px;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,.25);
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:750px) {
+
+    .deep-space {
+
+        padding:
+            55px 15px 80px;
+    }
+
+
+    .objects {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .object-card {
+
+        min-height: 240px;
+
+        padding: 27px;
+    }
+
+
+    .intro {
+
+        padding:
+            28px 22px;
+    }
+
+
+    .fact {
+
+        padding:
+            30px 22px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<section class="deep-space">
+
+
+<div class="stars"></div>
+
+<div class="stars-small"></div>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<div class="header">
+
+
+<a
+href="https://sites.google.com/view/kosmolearn"
+class="return">
+
+← RETURN TO HOME
+
+</a>
+
+
+<div class="label">
+
+ORBONIX · BEYOND THE SOLAR SYSTEM
+
+</div>
+
+
+<h1>
+
+DEEP SPACE
+
+</h1>
+
+
+<div class="subtitle">
+
+Explore the most fascinating objects
+and phenomena found throughout the
+Universe beyond our Solar System.
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     INTRO
+========================================= -->
+
+<div class="intro">
+
+
+<div class="intro-title">
+
+THE DEEP UNIVERSE
+
+</div>
+
+
+<div class="intro-text">
+
+Beyond the planets and moons of our
+Solar System lies an enormous Universe
+filled with galaxies, stars, mysterious
+phenomena and structures on scales that
+are difficult to imagine.
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     OBJECTS
+========================================= -->
+
+<div class="objects">
+
+
+<!-- 01 BLACK HOLES -->
+
+<a
+href="#BLACK-HOLES"
+class="object-card">
+
+<div class="object-number">
+01
+</div>
+
+<div class="object-symbol">
+BH
+</div>
+
+<h2 class="object-title">
+BLACK HOLES
+</h2>
+
+<div class="object-category">
+EXTREME GRAVITY
+</div>
+
+<p class="object-text">
+
+Regions of spacetime where gravity is
+so strong that nothing, not even light,
+can escape once it crosses the event horizon.
+
+</p>
+
+<div class="explore">
+EXPLORE →
+</div>
+
+</a>
+
+
+<!-- 02 GALAXIES -->
+
+<a
+href="#GALAXIES"
+class="object-card">
+
+<div class="object-number">
+02
+</div>
+
+<div class="object-symbol">
+GX
+</div>
+
+<h2 class="object-title">
+GALAXIES
+</h2>
+
+<div class="object-category">
+COSMIC STRUCTURES
+</div>
+
+<p class="object-text">
+
+Enormous systems containing stars, gas,
+dust, dark matter and other objects,
+held together by gravity.
+
+</p>
+
+<div class="explore">
+EXPLORE →
+</div>
+
+</a>
+
+
+<!-- 03 STARS -->
+
+<a
+href="#STARS"
+class="object-card">
+
+<div class="object-number">
+03
+</div>
+
+<div class="object-symbol">
+ST
+</div>
+
+<h2 class="object-title">
+STARS
+</h2>
+
+<div class="object-category">
+STELLAR OBJECTS
+</div>
+
+<p class="object-text">
+
+Massive spheres of plasma powered by
+nuclear fusion. Stars produce much of
+the light and energy visible across space.
+
+</p>
+
+<div class="explore">
+EXPLORE →
+</div>
+
+</a>
+
+
+<!-- 04 QUASARS -->
+
+<a
+href="#QUASARS"
+class="object-card">
+
+<div class="object-number">
+04
+</div>
+
+<div class="object-symbol">
+QS
+</div>
+
+<h2 class="object-title">
+QUASARS
+</h2>
+
+<div class="object-category">
+ACTIVE GALACTIC NUCLEI
+</div>
+
+<p class="object-text">
+
+Extremely luminous galactic centers powered
+by material falling toward supermassive
+black holes.
+
+</p>
+
+<div class="explore">
+EXPLORE →
+</div>
+
+</a>
+
+
+<!-- 05 NEBULAE -->
+
+<a
+href="#NEBULAE"
+class="object-card">
+
+<div class="object-number">
+05
+</div>
+
+<div class="object-symbol">
+NB
+</div>
+
+<h2 class="object-title">
+NEBULAE
+</h2>
+
+<div class="object-category">
+COSMIC CLOUDS
+</div>
+
+<p class="object-text">
+
+Huge clouds of gas and dust where stars
+can form, or where material from dying
+stars spreads through space.
+
+</p>
+
+<div class="explore">
+EXPLORE →
+</div>
+
+</a>
+
+
+<!-- 06 ROGUE PLANETS -->
+
+<a
+href="#ROGUE-PLANETS"
+class="object-card">
+
+<div class="object-number">
+06
+</div>
+
+<div class="object-symbol">
+RP
+</div>
+
+<h2 class="object-title">
+ROGUE PLANETS
+</h2>
+
+<div class="object-category">
+FREE-FLOATING WORLDS
+</div>
+
+<p class="object-text">
+
+Planetary-mass objects that travel through
+space without being gravitationally bound
+to a star.
+
+</p>
+
+<div class="explore">
+EXPLORE →
+</div>
+
+</a>
+
+
+<!-- 07 COSMIC VOIDS -->
+
+<a
+href="#COSMIC-VOIDS"
+class="object-card">
+
+<div class="object-number">
+07
+</div>
+
+<div class="object-symbol">
+CV
+</div>
+
+<h2 class="object-title">
+COSMIC VOIDS
+</h2>
+
+<div class="object-category">
+LARGE-SCALE STRUCTURE
+</div>
+
+<p class="object-text">
+
+Enormous regions of the cosmic web that
+contain far fewer galaxies than the
+surrounding regions.
+
+</p>
+
+<div class="explore">
+EXPLORE →
+</div>
+
+</a>
+
+
+<!-- 08 DARK MATTER -->
+
+<a
+href="#DARK-MATTER"
+class="object-card">
+
+<div class="object-number">
+08
+</div>
+
+<div class="object-symbol">
+DM
+</div>
+
+<h2 class="object-title">
+DARK MATTER
+</h2>
+
+<div class="object-category">
+INVISIBLE MASS
+</div>
+
+<p class="object-text">
+
+A mysterious form of matter that does not
+appear to interact with light, but its
+gravitational effects can be observed.
+
+</p>
+
+<div class="explore">
+EXPLORE →
+</div>
+
+</a>
+
+
+<!-- 09 DARK ENERGY -->
+
+<a
+href="#DARK-ENERGY"
+class="object-card">
+
+<div class="object-number">
+09
+</div>
+
+<div class="object-symbol">
+DE
+</div>
+
+<h2 class="object-title">
+DARK ENERGY
+</h2>
+
+<div class="object-category">
+COSMIC EXPANSION
+</div>
+
+<p class="object-text">
+
+The name given to the unknown phenomenon
+associated with the accelerating expansion
+of the Universe.
+
+</p>
+
+<div class="explore">
+EXPLORE →
+</div>
+
+</a>
+
+
+<!-- 10 WORMHOLES -->
+
+<a
+href="#WORMHOLES"
+class="object-card">
+
+<div class="object-number">
+10
+</div>
+
+<div class="object-symbol">
+WH
+</div>
+
+<h2 class="object-title">
+WORMHOLES
+</h2>
+
+<div class="object-category">
+THEORETICAL OBJECTS
+</div>
+
+<p class="object-text">
+
+Hypothetical structures that could connect
+distant regions of spacetime through a
+shortcut known as a wormhole.
+
+</p>
+
+<div class="explore">
+EXPLORE →
+</div>
+
+</a>
+
+
+</div>
+
+
+<!-- =========================================
+     FACT
+========================================= -->
+
+<div class="fact">
+
+
+<div class="fact-label">
+
+DID YOU KNOW?
+
+</div>
+
+
+<div class="fact-text">
+
+The observable Universe contains
+<strong>hundreds of billions of galaxies</strong>,
+each potentially containing billions
+of stars.
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     NAVIGATION
+========================================= -->
+
+<div class="navigation">
+
+
+<a
+href="https://sites.google.com/view/kosmolearn"
+class="nav-button">
+
+← RETURN TO HOME
+
+</a>
+
+
+</div>
+
+
+<div class="footer">
+
+ORBONIX · DEEP SPACE
+
+</div>
+
+
+</section>
+
+
+<script>
+
+
+/* =========================================
+   STAR PARALLAX
+========================================= */
+
+const stars =
+document.querySelector(".stars");
+
+const smallStars =
+document.querySelector(".stars-small");
+
+
+document.addEventListener(
+"mousemove",
+
+function(event) {
+
+    const x =
+        event.clientX /
+        window.innerWidth -
+        0.5;
+
+    const y =
+        event.clientY /
+        window.innerHeight -
+        0.5;
+
+
+    stars.style.transform =
+        `translate(
+            ${x * 20}px,
+            ${y * 20}px
+        )`;
+
+
+    smallStars.style.transform =
+        `translate(
+            ${x * -12}px,
+            ${y * -12}px
+        )`;
+
+});
+
+</script>
+
+
+</body>
+
+</html>
+```
