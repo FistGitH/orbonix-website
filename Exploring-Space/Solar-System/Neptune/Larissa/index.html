@@ -6,6 +6,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Triton | ORBONIX</title>
+
 <style>
 
 * {
@@ -224,6 +226,10 @@ h1 {
     justify-content: center;
 }
 
+
+/* =========================================
+   TRITON IMAGE
+========================================= */
 
 .triton-image {
 
@@ -468,6 +474,9 @@ h1 {
 
     border-color:
         rgba(90,130,255,.4);
+
+    background:
+        rgba(255,255,255,.04);
 }
 
 
@@ -536,12 +545,71 @@ h1 {
 
 
 /* =========================================
+   NAVIGATION
+========================================= */
+
+.navigation {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    margin-top: 55px;
+
+    flex-wrap: wrap;
+}
+
+
+.nav-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 13px 22px;
+
+    color:
+        rgba(255,255,255,.75);
+
+    border:
+        1px solid
+        rgba(255,255,255,.2);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    transition:
+        .35s ease;
+}
+
+
+.nav-button:hover {
+
+    color: #020308;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-4px);
+}
+
+
+/* =========================================
    CREDIT
 ========================================= */
 
 .credit {
 
-    margin-top: 25px;
+    margin-top: 30px;
 
     text-align: center;
 
@@ -640,6 +708,13 @@ h1 {
         padding: 25px;
     }
 
+
+    .fact {
+
+        padding:
+            28px 20px;
+    }
+
 }
 
 </style>
@@ -666,7 +741,7 @@ h1 {
 
 
 <a
-href="https://sites.google.com/view/kosmolearn/solar-system"
+href="https://orbonix.net/solar-system/neptune"
 class="return">
 
 ← RETURN TO NEPTUNE
@@ -732,15 +807,11 @@ alt="Triton — Voyager 2">
 <div class="card">
 
 <div class="number">
-
 2,706 km
-
 </div>
 
 <div class="card-label">
-
 DIAMETER
-
 </div>
 
 </div>
@@ -749,15 +820,11 @@ DIAMETER
 <div class="card">
 
 <div class="number">
-
 5.88 DAYS
-
 </div>
 
 <div class="card-label">
-
 ORBITAL PERIOD
-
 </div>
 
 </div>
@@ -766,15 +833,11 @@ ORBITAL PERIOD
 <div class="card">
 
 <div class="number">
-
 −235°C
-
 </div>
 
 <div class="card-label">
-
 APPROX. SURFACE TEMPERATURE
-
 </div>
 
 </div>
@@ -783,15 +846,11 @@ APPROX. SURFACE TEMPERATURE
 <div class="card">
 
 <div class="number">
-
 355,000 km
-
 </div>
 
 <div class="card-label">
-
 AVERAGE DISTANCE FROM NEPTUNE
-
 </div>
 
 </div>
@@ -800,13 +859,11 @@ AVERAGE DISTANCE FROM NEPTUNE
 <div class="card">
 
 <div class="number">
-
-RETROGRADE</div>
+RETROGRADE
+</div>
 
 <div class="card-label">
-
 ORBIT DIRECTION
-
 </div>
 
 </div>
@@ -815,13 +872,11 @@ ORBIT DIRECTION
 <div class="card">
 
 <div class="number">
-
-1846</div>
+1846
+</div>
 
 <div class="card-label">
-
 DISCOVERED
-
 </div>
 
 </div>
@@ -969,6 +1024,25 @@ originated in the Kuiper Belt.
 </div>
 
 
+<!-- =========================================
+     NAVIGATION
+========================================= -->
+
+<div class="navigation">
+
+
+<a
+href="https://orbonix.net/solar-system/neptune"
+class="nav-button">
+
+← RETURN TO NEPTUNE
+
+</a>
+
+
+</div>
+
+
 <div class="credit">
 
 IMAGE:
@@ -1008,7 +1082,6 @@ document.addEventListener(
 
 function(event) {
 
-
     const x =
         event.clientX /
         window.innerWidth - 0.5;
@@ -1031,7 +1104,6 @@ function(event) {
             ${x * -12}px,
             ${y * -12}px
         )`;
-
 
 });
 
