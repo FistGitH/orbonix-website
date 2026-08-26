@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,6 +5,8 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Dark Energy | ORBONIX</title>
 
 <style>
 
@@ -25,19 +26,14 @@ body {
     overflow-x: hidden;
 }
 
-
 /* =========================================
    PAGE
 ========================================= */
 
 .dark-energy-page {
-
     position: relative;
-
     min-height: 1550px;
-
     padding: 65px 20px 100px;
-
     overflow: hidden;
 
     background:
@@ -54,24 +50,19 @@ body {
         #010208;
 }
 
-
 /* =========================================
    STARS
 ========================================= */
 
 .stars,
 .stars-small {
-
     position: absolute;
-
     inset: -25%;
-
     pointer-events: none;
+    will-change: transform;
 }
 
-
 .stars {
-
     opacity: .38;
 
     background-image:
@@ -87,9 +78,7 @@ body {
         transform 1.5s ease;
 }
 
-
 .stars-small {
-
     opacity: .16;
 
     background-image:
@@ -105,154 +94,116 @@ body {
         transform 2s ease;
 }
 
-
 /* =========================================
    HEADER
 ========================================= */
 
 .header {
-
     position: relative;
-
     z-index: 10;
 
     max-width: 900px;
-
     margin: auto;
 
     text-align: center;
 }
 
-
 .return {
-
     display: inline-flex;
-
     align-items: center;
-
     justify-content: center;
 
     padding: 12px 20px;
-
     margin-bottom: 40px;
 
-    color:
-        rgba(255,255,255,.7);
+    color: rgba(255,255,255,.7);
 
-    border:
-        1px solid
-        rgba(255,255,255,.22);
+    border: 1px solid rgba(255,255,255,.22);
 
     text-decoration: none;
 
     font-size: 9px;
-
     letter-spacing: 3px;
 
     transition: .35s ease;
 }
 
-
 .return:hover {
-
     color: #010208;
-
     background: white;
-
     border-color: white;
 
-    transform:
-        translateY(-4px);
+    transform: translateY(-4px);
 }
 
-
 .label {
-
     margin-bottom: 18px;
 
-    color:
-        rgba(255,255,255,.4);
+    color: rgba(255,255,255,.4);
 
     font-size: 10px;
-
     letter-spacing: 5px;
 }
 
-
 h1 {
-
     margin: 0;
 
     font-size:
         clamp(45px,8vw,90px);
 
     line-height: .9;
-
     letter-spacing: 6px;
 }
 
-
 .subtitle {
-
     max-width: 720px;
 
-    margin:
-        28px auto 0;
+    margin: 28px auto 0;
 
-    color:
-        rgba(255,255,255,.52);
+    color: rgba(255,255,255,.52);
 
     font-size: 14px;
-
     line-height: 1.8;
 }
-
 
 /* =========================================
    HERO
 ========================================= */
 
 .hero {
-
     position: relative;
-
     z-index: 5;
 
-    width:
-        min(900px,100%);
-
+    width: min(900px,100%);
     height: 420px;
 
-    margin:
-        75px auto 60px;
+    margin: 75px auto 60px;
 
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 
-    border:
-        1px solid
-        rgba(255,255,255,.1);
+    border: 1px solid rgba(255,255,255,.1);
 
     background:
-        rgba(255,255,255,.02);
+        radial-gradient(
+            circle at center,
+            rgba(70,100,190,.035),
+            rgba(255,255,255,.015) 45%,
+            transparent 75%
+        );
 
     overflow: hidden;
 }
-
 
 /* =========================================
    DARK ENERGY VISUAL
 ========================================= */
 
 .energy {
-
     position: relative;
 
     width: 230px;
-
     height: 230px;
 
     border-radius: 50%;
@@ -260,28 +211,50 @@ h1 {
     background:
         radial-gradient(
             circle,
-            rgba(255,255,255,.04),
-            rgba(80,110,210,.08) 35%,
-            rgba(60,90,190,.12) 55%,
-            transparent 72%
+            rgba(255,255,255,.04) 0%,
+            rgba(80,110,210,.08) 30%,
+            rgba(60,90,190,.12) 50%,
+            rgba(40,60,150,.06) 65%,
+            transparent 73%
         );
 
     box-shadow:
-        0 0 50px
-        rgba(80,120,255,.2),
-
-        0 0 120px
-        rgba(60,80,190,.12);
+        0 0 50px rgba(80,120,255,.2),
+        0 0 120px rgba(60,80,190,.12);
 
     animation:
         energyPulse 5s ease-in-out infinite;
+
+    will-change: transform;
 }
 
+/* INNER ENERGY FIELD */
 
-/* EXPANSION RINGS */
+.energy-inner {
+    position: absolute;
+
+    inset: 24%;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(160,190,255,.08),
+            rgba(80,120,255,.04) 45%,
+            transparent 75%
+        );
+
+    box-shadow:
+        0 0 35px rgba(100,140,255,.12);
+
+    animation:
+        innerPulse 4s ease-in-out infinite;
+}
+
+/* EXPANSION RING 1 */
 
 .energy::before {
-
     content: "";
 
     position: absolute;
@@ -302,11 +275,9 @@ h1 {
         expandRing 5s ease-out infinite;
 }
 
-
-/* OUTER FIELD */
+/* EXPANSION RING 2 */
 
 .energy::after {
-
     content: "";
 
     position: absolute;
@@ -323,82 +294,72 @@ h1 {
         expandRing 5s ease-out 1.5s infinite;
 }
 
-
 @keyframes energyPulse {
 
     0%,100% {
-
-        transform:
-            scale(.95);
-
+        transform: scale(.95);
         opacity: .7;
     }
 
     50% {
-
-        transform:
-            scale(1.08);
-
+        transform: scale(1.08);
         opacity: 1;
     }
 
 }
 
+@keyframes innerPulse {
+
+    0%,100% {
+        transform: scale(.85);
+        opacity: .5;
+    }
+
+    50% {
+        transform: scale(1.15);
+        opacity: 1;
+    }
+
+}
 
 @keyframes expandRing {
 
     0% {
-
-        transform:
-            scale(.7);
-
+        transform: scale(.7);
         opacity: 0;
     }
 
     35% {
-
         opacity: 1;
     }
 
     100% {
-
-        transform:
-            scale(1.25);
-
+        transform: scale(1.25);
         opacity: 0;
     }
 
 }
 
-
 .hero-label {
-
     position: absolute;
 
     bottom: 35px;
 
-    color:
-        rgba(255,255,255,.4);
+    color: rgba(255,255,255,.4);
 
     font-size: 9px;
-
     letter-spacing: 4px;
 }
-
 
 /* =========================================
    STATS
 ========================================= */
 
 .stats {
-
     position: relative;
-
     z-index: 5;
 
-    width:
-        min(1050px,100%);
-
+    width: min(1050px,100%);
     margin: auto;
 
     display: grid;
@@ -408,17 +369,14 @@ h1 {
 
     gap: 1px;
 
-    background:
-        rgba(255,255,255,.1);
+    background: rgba(255,255,255,.1);
 
     border:
         1px solid
         rgba(255,255,255,.1);
 }
 
-
 .stat {
-
     padding: 28px;
 
     background:
@@ -427,58 +385,47 @@ h1 {
     transition: .35s ease;
 }
 
-
 .stat:hover {
-
-    transform:
-        translateY(-5px);
+    transform: translateY(-5px);
 
     background:
         rgba(255,255,255,.04);
 }
 
-
 .stat-value {
-
     margin-bottom: 9px;
 
     font-size: 18px;
-
     font-weight: bold;
 }
 
-
 .stat-label {
-
     color:
         rgba(255,255,255,.38);
 
     font-size: 8px;
-
     letter-spacing: 2px;
 }
-
 
 /* =========================================
    CONTENT
 ========================================= */
 
 .content {
-
     position: relative;
-
     z-index: 5;
 
-    width:
-        min(1050px,100%);
+    width: min(1050px,100%);
 
     margin:
         65px auto 0;
 }
 
+/* =========================================
+   INFO
+========================================= */
 
 .info {
-
     margin-bottom: 18px;
 
     padding: 35px;
@@ -493,46 +440,35 @@ h1 {
     transition: .35s ease;
 }
 
-
 .info:hover {
-
-    transform:
-        translateY(-4px);
+    transform: translateY(-4px);
 
     border-color:
         rgba(255,255,255,.22);
 }
 
-
 .info-title {
-
     margin-bottom: 18px;
 
     font-size: 11px;
-
     letter-spacing: 4px;
 }
 
-
 .info-text {
-
     margin: 0;
 
     color:
         rgba(255,255,255,.56);
 
     font-size: 13px;
-
     line-height: 1.9;
 }
-
 
 /* =========================================
    FEATURES
 ========================================= */
 
 .features-title {
-
     margin:
         60px 0 25px;
 
@@ -542,13 +478,10 @@ h1 {
         rgba(255,255,255,.42);
 
     font-size: 10px;
-
     letter-spacing: 5px;
 }
 
-
 .features {
-
     display: grid;
 
     grid-template-columns:
@@ -557,9 +490,7 @@ h1 {
     gap: 15px;
 }
 
-
 .feature {
-
     padding: 27px;
 
     border:
@@ -572,9 +503,7 @@ h1 {
     transition: .35s ease;
 }
 
-
 .feature:hover {
-
     transform:
         translateY(-6px);
 
@@ -585,34 +514,26 @@ h1 {
         rgba(255,255,255,.04);
 }
 
-
 .feature-title {
-
     margin-bottom: 11px;
 
     font-size: 13px;
-
     letter-spacing: 2px;
 }
 
-
 .feature-text {
-
     color:
         rgba(255,255,255,.5);
 
     font-size: 11px;
-
     line-height: 1.75;
 }
-
 
 /* =========================================
    FACT
 ========================================= */
 
 .fact {
-
     margin-top: 60px;
 
     padding: 42px;
@@ -627,22 +548,17 @@ h1 {
         rgba(255,255,255,.025);
 }
 
-
 .fact-label {
-
     margin-bottom: 17px;
 
     color:
         rgba(255,255,255,.4);
 
     font-size: 9px;
-
     letter-spacing: 4px;
 }
 
-
 .fact-text {
-
     max-width: 820px;
 
     margin: auto;
@@ -653,13 +569,11 @@ h1 {
     line-height: 1.5;
 }
 
-
 /* =========================================
    NAVIGATION
 ========================================= */
 
 .navigation {
-
     display: flex;
 
     justify-content: center;
@@ -667,13 +581,10 @@ h1 {
     margin-top: 55px;
 }
 
-
 .nav-button {
-
     display: inline-flex;
 
     align-items: center;
-
     justify-content: center;
 
     padding:
@@ -689,15 +600,12 @@ h1 {
     text-decoration: none;
 
     font-size: 9px;
-
     letter-spacing: 2px;
 
     transition: .35s ease;
 }
 
-
 .nav-button:hover {
-
     color: #010208;
 
     background: white;
@@ -708,13 +616,11 @@ h1 {
         translateY(-4px);
 }
 
-
 /* =========================================
    FOOTER
 ========================================= */
 
 .footer {
-
     margin-top: 30px;
 
     text-align: center;
@@ -723,10 +629,8 @@ h1 {
         rgba(255,255,255,.25);
 
     font-size: 9px;
-
     letter-spacing: 4px;
 }
-
 
 /* =========================================
    MOBILE
@@ -735,55 +639,71 @@ h1 {
 @media(max-width:800px) {
 
     .stats {
-
         grid-template-columns:
             repeat(2,1fr);
     }
 
     .features {
-
         grid-template-columns:
             1fr;
     }
 
 }
 
-
 @media(max-width:600px) {
 
     .dark-energy-page {
-
         padding:
             50px 15px 80px;
     }
 
     .hero {
-
         height: 340px;
     }
 
     .energy {
-
         width: 180px;
-
         height: 180px;
     }
 
-    .stats {
+    .energy::before {
+        inset: -45px;
+    }
 
+    .energy::after {
+        inset: -85px;
+    }
+
+    .stats {
         grid-template-columns:
             1fr;
     }
 
     .info {
-
         padding: 27px;
     }
 
     .fact {
-
         padding:
             30px 22px;
+    }
+
+    .hero-label {
+        font-size: 8px;
+        letter-spacing: 2px;
+        text-align: center;
+    }
+
+}
+
+@media(prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
     }
 
 }
@@ -792,24 +712,18 @@ h1 {
 
 </head>
 
-
 <body>
-
 
 <section class="dark-energy-page">
 
-
 <div class="stars"></div>
-
 <div class="stars-small"></div>
-
 
 <!-- =========================================
      HEADER
 ========================================= -->
 
 <div class="header">
-
 
 <a
 href="https://sites.google.com/view/kosmolearn"
@@ -819,20 +733,13 @@ class="return">
 
 </a>
 
-
 <div class="label">
-
 ORBONIX · DEEP SPACE
-
 </div>
 
-
 <h1>
-
 DARK ENERGY
-
 </h1>
-
 
 <div class="subtitle">
 
@@ -842,9 +749,7 @@ expansion of space itself.
 
 </div>
 
-
 </div>
-
 
 <!-- =========================================
      HERO
@@ -852,9 +757,11 @@ expansion of space itself.
 
 <div class="hero">
 
+<div class="energy">
 
-<div class="energy"></div>
+<div class="energy-inner"></div>
 
+</div>
 
 <div class="hero-label">
 
@@ -862,16 +769,13 @@ COSMIC EXPANSION · ACCELERATION · UNKNOWN
 
 </div>
 
-
 </div>
-
 
 <!-- =========================================
      STATS
 ========================================= -->
 
 <div class="stats">
-
 
 <div class="stat">
 
@@ -885,7 +789,6 @@ OF THE UNIVERSE'S ENERGY DENSITY
 
 </div>
 
-
 <div class="stat">
 
 <div class="stat-value">
@@ -897,7 +800,6 @@ EXPANSION OF THE UNIVERSE
 </div>
 
 </div>
-
 
 <div class="stat">
 
@@ -911,7 +813,6 @@ PHYSICAL NATURE
 
 </div>
 
-
 <div class="stat">
 
 <div class="stat-value">
@@ -924,9 +825,7 @@ ACCELERATED EXPANSION DISCOVERED
 
 </div>
 
-
 </div>
-
 
 <!-- =========================================
      CONTENT
@@ -934,16 +833,11 @@ ACCELERATED EXPANSION DISCOVERED
 
 <div class="content">
 
-
 <div class="info">
 
-
 <div class="info-title">
-
 WHAT IS DARK ENERGY?
-
 </div>
-
 
 <p class="info-text">
 
@@ -959,19 +853,13 @@ new field of physics.
 
 </p>
 
-
 </div>
-
 
 <div class="info">
 
-
 <div class="info-title">
-
 THE UNIVERSE IS EXPANDING
-
 </div>
-
 
 <p class="info-text">
 
@@ -988,19 +876,13 @@ is accelerating.
 
 </p>
 
-
 </div>
-
 
 <div class="info">
 
-
 <div class="info-title">
-
 DARK ENERGY IS NOT DARK MATTER
-
 </div>
-
 
 <p class="info-text">
 
@@ -1016,19 +898,13 @@ accelerating expansion of the Universe.
 
 </p>
 
-
 </div>
-
 
 <div class="info">
 
-
 <div class="info-title">
-
 THE COSMOLOGICAL CONSTANT
-
 </div>
-
 
 <p class="info-text">
 
@@ -1043,9 +919,7 @@ affect the overall expansion.
 
 </p>
 
-
 </div>
-
 
 <!-- =========================================
      FEATURES
@@ -1057,16 +931,12 @@ WHAT WE KNOW ABOUT DARK ENERGY
 
 </div>
 
-
 <div class="features">
-
 
 <div class="feature">
 
 <div class="feature-title">
-
 ACCELERATED EXPANSION
-
 </div>
 
 <div class="feature-text">
@@ -1078,13 +948,10 @@ expansion of the Universe is speeding up.
 
 </div>
 
-
 <div class="feature">
 
 <div class="feature-title">
-
 COSMIC SCALE
-
 </div>
 
 <div class="feature-text">
@@ -1097,13 +964,10 @@ more spread out.
 
 </div>
 
-
 <div class="feature">
 
 <div class="feature-title">
-
 SUPERNOVAE
-
 </div>
 
 <div class="feature-text">
@@ -1115,13 +979,10 @@ cosmic expansion is accelerating.
 
 </div>
 
-
 <div class="feature">
 
 <div class="feature-title">
-
 COSMIC MICROWAVE BACKGROUND
-
 </div>
 
 <div class="feature-text">
@@ -1133,13 +994,10 @@ constrain models of dark energy.
 
 </div>
 
-
 <div class="feature">
 
 <div class="feature-title">
-
 GALAXY DISTRIBUTION
-
 </div>
 
 <div class="feature-text">
@@ -1152,13 +1010,10 @@ expansion.
 
 </div>
 
-
 <div class="feature">
 
 <div class="feature-title">
-
 BIG MYSTERY
-
 </div>
 
 <div class="feature-text">
@@ -1171,9 +1026,7 @@ or something more complicated.
 
 </div>
 
-
 </div>
-
 
 <!-- =========================================
      FACT
@@ -1181,13 +1034,9 @@ or something more complicated.
 
 <div class="fact">
 
-
 <div class="fact-label">
-
 DID YOU KNOW?
-
 </div>
-
 
 <div class="fact-text">
 
@@ -1200,19 +1049,15 @@ questions in modern cosmology.
 
 </div>
 
-
 </div>
 
-
 </div>
-
 
 <!-- =========================================
      NAVIGATION
 ========================================= -->
 
 <div class="navigation">
-
 
 <a
 href="https://sites.google.com/view/kosmolearn"
@@ -1222,9 +1067,7 @@ class="nav-button">
 
 </a>
 
-
 </div>
-
 
 <div class="footer">
 
@@ -1232,9 +1075,7 @@ ORBONIX · DEEP SPACE · DARK ENERGY
 
 </div>
 
-
 </section>
-
 
 <script>
 
@@ -1248,42 +1089,76 @@ document.querySelector(".stars");
 const smallStars =
 document.querySelector(".stars-small");
 
+let mouseX = 0;
+let mouseY = 0;
+
+let currentX = 0;
+let currentY = 0;
 
 document.addEventListener(
 "mousemove",
-
 function(event) {
 
-    const x =
+    mouseX =
         event.clientX /
         window.innerWidth -
         0.5;
 
-    const y =
+    mouseY =
         event.clientY /
         window.innerHeight -
         0.5;
 
+});
+
+function animateStars() {
+
+    currentX +=
+        (mouseX * 20 - currentX) * 0.04;
+
+    currentY +=
+        (mouseY * 20 - currentY) * 0.04;
 
     stars.style.transform =
-        `translate(
-            ${x * 20}px,
-            ${y * 20}px
-        )`;
-
+        `translate(${currentX}px, ${currentY}px)`;
 
     smallStars.style.transform =
-        `translate(
-            ${x * -12}px,
-            ${y * -12}px
-        )`;
+        `translate(${-currentX * 0.6}px, ${-currentY * 0.6}px)`;
+
+    requestAnimationFrame(animateStars);
+
+}
+
+animateStars();
+
+/* =========================================
+   CLICK RIPPLE EFFECT
+========================================= */
+
+document.querySelectorAll(
+".return, .nav-button"
+).forEach(button => {
+
+    button.addEventListener(
+        "click",
+        function() {
+
+            this.style.transform =
+                "translateY(-2px) scale(.97)";
+
+            setTimeout(() => {
+
+                this.style.transform = "";
+
+            }, 150);
+
+        }
+    );
 
 });
 
 </script>
 
-
 </body>
 
 </html>
-```
