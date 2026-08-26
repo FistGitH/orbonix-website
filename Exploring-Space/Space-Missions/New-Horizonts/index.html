@@ -6,6 +6,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>New Horizons | ORBONIX</title>
+
 <style>
 
 * {
@@ -301,6 +303,22 @@ h1 {
 
         0 0 110px
         rgba(90,110,160,.12);
+
+    transition:
+        .5s ease;
+}
+
+
+.pluto:hover {
+
+    transform: scale(1.06);
+
+    box-shadow:
+        0 0 60px
+        rgba(190,170,150,.4),
+
+        0 0 130px
+        rgba(100,130,190,.18);
 }
 
 
@@ -364,7 +382,9 @@ h1 {
 }
 
 
-/* Main body */
+/* =========================================
+   MAIN BODY
+========================================= */
 
 .body {
 
@@ -395,7 +415,9 @@ h1 {
 }
 
 
-/* Dish antenna */
+/* =========================================
+   DISH ANTENNA
+========================================= */
 
 .dish {
 
@@ -452,7 +474,9 @@ h1 {
 }
 
 
-/* Radioisotope generator */
+/* =========================================
+   RADIOISOTOPE GENERATOR
+========================================= */
 
 .generator {
 
@@ -475,7 +499,9 @@ h1 {
 }
 
 
-/* Boom */
+/* =========================================
+   BOOM
+========================================= */
 
 .boom {
 
@@ -494,7 +520,9 @@ h1 {
 }
 
 
-/* Camera boom */
+/* =========================================
+   CAMERA
+========================================= */
 
 .camera {
 
@@ -935,7 +963,7 @@ h1 {
 
 
 <a
-href="https://sites.google.com/view/kosmolearn"
+href="/"
 class="return">
 
 ← RETURN TO HOME
@@ -1056,11 +1084,11 @@ ARROKOTH FLYBY
 <div class="stat">
 
 <div class="stat-value">
-~5 BILLION KM
+~4.8 BILLION KM
 </div>
 
 <div class="stat-label">
-DISTANCE TO EARTH AT PLUTO FLYBY
+DISTANCE FROM EARTH AT PLUTO FLYBY
 </div>
 
 </div>
@@ -1082,7 +1110,8 @@ PRIMARY TARGET
 <div class="stat">
 
 <div class="stat-value">
-KUIPER BELT</div>
+KUIPER BELT
+</div>
 
 <div class="stat-label">
 CURRENT REGION
@@ -1136,7 +1165,9 @@ environment far beyond Pluto.
 </div>
 
 
-<!-- FEATURES -->
+<!-- =========================================
+     FEATURES
+========================================= -->
 
 <div class="features-title">
 
@@ -1210,7 +1241,9 @@ Pluto.
 </div>
 
 
-<!-- FACT -->
+<!-- =========================================
+     FACT
+========================================= -->
 
 <div class="fact">
 
@@ -1234,13 +1267,15 @@ and reached Pluto at about <strong>14 km/s</strong>.
 </div>
 
 
-<!-- NAVIGATION -->
+<!-- =========================================
+     NAVIGATION
+========================================= -->
 
 <div class="navigation">
 
 
 <a
-href="https://sites.google.com/view/kosmolearn"
+href="/"
 class="nav-button">
 
 ← RETURN TO HOME
@@ -1249,7 +1284,7 @@ class="nav-button">
 
 
 <a
-href="https://sites.google.com/view/kosmolearn/space-missions"
+href="/space-missions"
 class="nav-button">
 
 ← RETURN TO SPACE MISSIONS
@@ -1276,6 +1311,10 @@ NASA / JOHNS HOPKINS APL / SWRI
 
 
 <script>
+
+/* =========================================
+   STAR PARALLAX
+========================================= */
 
 const stars =
 document.querySelector(".stars");
