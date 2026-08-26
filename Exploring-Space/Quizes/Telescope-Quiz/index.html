@@ -4,9 +4,19 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Telescope Quiz | ORBONIX</title>
 
 <style>
+
+/* =========================================================
+   RESET
+========================================================= */
 
 * {
     box-sizing: border-box;
@@ -25,14 +35,18 @@ body {
 }
 
 
-/* =========================================
+/* =========================================================
    PAGE
-========================================= */
+========================================================= */
 
 .telescope-quiz-page {
+
     position: relative;
+
     min-height: 100vh;
+
     padding: 65px 20px 100px;
+
     overflow: hidden;
 
     background:
@@ -50,19 +64,24 @@ body {
 }
 
 
-/* =========================================
-   BACKGROUND STARS
-========================================= */
+/* =========================================================
+   STARS
+========================================================= */
 
 .stars,
 .stars-small {
+
     position: fixed;
+
     inset: -25%;
+
     pointer-events: none;
+
     z-index: 0;
 }
 
 .stars {
+
     opacity: .4;
 
     background-image:
@@ -73,10 +92,13 @@ body {
         );
 
     background-size: 75px 75px;
-    transition: transform 1.5s ease;
+
+    transition:
+        transform 1.5s ease;
 }
 
 .stars-small {
+
     opacity: .17;
 
     background-image:
@@ -87,283 +109,415 @@ body {
         );
 
     background-size: 32px 32px;
-    transition: transform 2s ease;
+
+    transition:
+        transform 2s ease;
 }
 
 
-/* =========================================
+/* =========================================================
    HEADER
-========================================= */
+========================================================= */
 
 .header {
+
     position: relative;
+
     z-index: 5;
+
     max-width: 900px;
+
     margin: auto;
+
     text-align: center;
 }
 
+
 .return {
+
     display: inline-flex;
+
     align-items: center;
+
     justify-content: center;
 
     padding: 12px 20px;
+
     margin-bottom: 40px;
 
-    color: rgba(255,255,255,.7);
+    color:
+        rgba(255,255,255,.7);
 
-    border: 1px solid rgba(255,255,255,.22);
+    border:
+        1px solid
+        rgba(255,255,255,.22);
 
     text-decoration: none;
 
     font-size: 9px;
+
     letter-spacing: 3px;
 
-    transition: .35s ease;
+    transition:
+        .35s ease;
 }
+
 
 .return:hover {
+
     color: #010208;
+
     background: white;
+
     border-color: white;
-    transform: translateY(-4px);
+
+    transform:
+        translateY(-4px);
 }
 
+
 .label {
+
     margin-bottom: 18px;
 
-    color: rgba(170,190,255,.55);
+    color:
+        rgba(170,190,255,.55);
 
     font-size: 10px;
+
     letter-spacing: 5px;
 }
 
+
 h1 {
+
     margin: 0;
 
-    font-size: clamp(43px,8vw,85px);
+    font-size:
+        clamp(43px,8vw,85px);
 
     line-height: .9;
+
     letter-spacing: 6px;
 }
 
+
 .subtitle {
+
     max-width: 720px;
 
-    margin: 28px auto 0;
+    margin:
+        28px auto 0;
 
-    color: rgba(255,255,255,.52);
+    color:
+        rgba(255,255,255,.52);
 
     font-size: 14px;
+
     line-height: 1.8;
 }
 
 
-/* =========================================
-   QUIZ
-========================================= */
+/* =========================================================
+   QUIZ CONTAINER
+========================================================= */
 
 .quiz-container {
+
     position: relative;
+
     z-index: 5;
 
-    width: min(850px,100%);
+    width:
+        min(850px,100%);
 
-    margin: 70px auto 0;
+    margin:
+        70px auto 0;
+
     padding: 35px;
 
-    border: 1px solid rgba(255,255,255,.1);
+    border:
+        1px solid
+        rgba(255,255,255,.1);
 
-    background: rgba(255,255,255,.025);
+    background:
+        rgba(255,255,255,.025);
 
-    transition: .8s ease;
+    backdrop-filter:
+        blur(4px);
+
+    transition:
+        .8s ease;
 }
 
 
-/* =========================================
+/* =========================================================
    QUIZ TOP
-========================================= */
+========================================================= */
 
 .quiz-top {
+
     display: flex;
+
     justify-content: space-between;
+
     align-items: center;
 
     margin-bottom: 15px;
 }
 
+
 .question-number {
-    color: rgba(255,255,255,.45);
+
+    color:
+        rgba(255,255,255,.45);
 
     font-size: 9px;
+
     letter-spacing: 3px;
 }
 
+
 .difficulty {
-    padding: 7px 12px;
 
-    border: 1px solid rgba(255,255,255,.15);
+    padding:
+        7px 12px;
 
-    color: rgba(255,255,255,.5);
+    border:
+        1px solid
+        rgba(255,255,255,.15);
+
+    color:
+        rgba(255,255,255,.5);
 
     font-size: 8px;
+
     letter-spacing: 2px;
 }
 
 
-/* =========================================
+/* =========================================================
    PROGRESS
-========================================= */
+========================================================= */
 
 .progress {
+
     width: 100%;
+
     height: 2px;
 
     margin-bottom: 45px;
 
-    background: rgba(255,255,255,.08);
+    background:
+        rgba(255,255,255,.08);
 
     overflow: hidden;
 }
 
+
 .progress-bar {
+
     width: 0%;
+
     height: 100%;
 
     background: white;
 
-    transition: width .5s ease;
+    transition:
+        width .5s ease;
 }
 
 
-/* =========================================
+/* =========================================================
    QUESTION
-========================================= */
+========================================================= */
 
 .question {
+
     margin-bottom: 35px;
 
-    font-size: clamp(20px,3vw,30px);
+    font-size:
+        clamp(20px,3vw,30px);
 
     line-height: 1.4;
+
     letter-spacing: .4px;
 }
 
 
-/* =========================================
+/* =========================================================
    ANSWERS
-========================================= */
+========================================================= */
 
 .answers {
+
     display: grid;
 
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns:
+        repeat(2,1fr);
 
     gap: 12px;
 }
 
+
 .answer {
+
     min-height: 70px;
 
-    padding: 18px 20px;
+    padding:
+        18px 20px;
 
     text-align: left;
 
-    color: rgba(255,255,255,.7);
+    color:
+        rgba(255,255,255,.7);
 
-    border: 1px solid rgba(255,255,255,.12);
+    border:
+        1px solid
+        rgba(255,255,255,.12);
 
-    background: rgba(255,255,255,.02);
+    background:
+        rgba(255,255,255,.02);
 
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
 
     font-size: 12px;
 
+    line-height: 1.5;
+
     cursor: pointer;
 
-    transition: .3s ease;
+    transition:
+        .3s ease;
 }
+
 
 .answer:hover {
+
     color: white;
 
-    border-color: rgba(150,180,255,.45);
+    border-color:
+        rgba(150,180,255,.45);
 
-    background: rgba(100,130,255,.06);
+    background:
+        rgba(100,130,255,.06);
 
-    transform: translateY(-3px);
+    transform:
+        translateY(-3px);
 }
+
 
 .answer.correct {
+
     color: white;
 
-    border-color: rgba(100,220,150,.7);
+    border-color:
+        rgba(100,220,150,.7);
 
-    background: rgba(60,180,110,.12);
+    background:
+        rgba(60,180,110,.12);
+
+    box-shadow:
+        0 0 20px
+        rgba(60,180,110,.08);
 }
+
 
 .answer.wrong {
+
     color: white;
 
-    border-color: rgba(255,90,90,.7);
+    border-color:
+        rgba(255,90,90,.7);
 
-    background: rgba(220,50,50,.12);
+    background:
+        rgba(220,50,50,.12);
+
+    box-shadow:
+        0 0 20px
+        rgba(220,50,50,.08);
 }
 
+
 .answer.disabled {
+
     pointer-events: none;
 }
 
 
-/* =========================================
-   NEXT
-========================================= */
+/* =========================================================
+   NEXT BUTTON
+========================================================= */
 
 .next-area {
+
     display: flex;
+
     justify-content: flex-end;
 
     margin-top: 25px;
 }
 
+
 .next-button {
+
     display: none;
 
-    padding: 13px 25px;
+    align-items: center;
 
-    color: rgba(255,255,255,.8);
+    justify-content: center;
 
-    border: 1px solid rgba(255,255,255,.2);
+    padding:
+        13px 25px;
 
-    background: transparent;
+    color:
+        rgba(255,255,255,.8);
 
-    font-family: Arial, Helvetica, sans-serif;
+    border:
+        1px solid
+        rgba(255,255,255,.2);
+
+    background:
+        transparent;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
 
     font-size: 9px;
+
     letter-spacing: 3px;
 
     cursor: pointer;
 
-    transition: .3s ease;
+    transition:
+        .3s ease;
 }
 
+
 .next-button:hover {
+
     color: #010208;
 
     background: white;
 
     border-color: white;
 
-    transform: translateY(-3px);
+    transform:
+        translateY(-3px);
 }
 
 
-/* =========================================
+/* =========================================================
    RESULT
-========================================= */
+========================================================= */
 
 .result {
+
     display: none;
 
     position: relative;
@@ -372,23 +526,29 @@ h1 {
 
     min-height: 500px;
 
-    padding: 25px 10px 15px;
+    padding:
+        25px 10px 15px;
 
     overflow: hidden;
 }
 
+
 .result::before {
+
     content: "";
 
     position: absolute;
 
     width: 360px;
+
     height: 360px;
 
     left: 50%;
+
     top: 43%;
 
-    transform: translate(-50%,-50%);
+    transform:
+        translate(-50%,-50%);
 
     border-radius: 50%;
 
@@ -400,38 +560,52 @@ h1 {
             transparent 70%
         );
 
-    filter: blur(5px);
+    filter:
+        blur(5px);
 
-    animation: cosmicGlow 4s ease-in-out infinite;
+    animation:
+        cosmicGlow 4s ease-in-out infinite;
 
     pointer-events: none;
 }
 
+
 @keyframes cosmicGlow {
 
     0%,100% {
-        transform: translate(-50%,-50%) scale(.82);
+
+        transform:
+            translate(-50%,-50%)
+            scale(.82);
+
         opacity: .55;
     }
 
     50% {
-        transform: translate(-50%,-50%) scale(1.18);
+
+        transform:
+            translate(-50%,-50%)
+            scale(1.18);
+
         opacity: 1;
     }
 }
 
 
-/* =========================================
-   TELESCOPE COMPLETION ICON
-========================================= */
+/* =========================================================
+   COMPLETION ICON
+========================================================= */
 
 .completion-icon {
+
     position: relative;
 
     width: 105px;
+
     height: 105px;
 
-    margin: 5px auto 32px;
+    margin:
+        5px auto 32px;
 
     border-radius: 50%;
 
@@ -445,9 +619,15 @@ h1 {
         );
 
     box-shadow:
-        0 0 25px rgba(150,180,255,.75),
-        0 0 65px rgba(90,120,255,.4),
-        0 0 120px rgba(60,80,255,.18);
+
+        0 0 25px
+        rgba(150,180,255,.75),
+
+        0 0 65px
+        rgba(90,120,255,.4),
+
+        0 0 120px
+        rgba(60,80,255,.18);
 
     animation:
         starAppear 1s ease forwards,
@@ -456,7 +636,9 @@ h1 {
     z-index: 2;
 }
 
+
 .completion-icon::before {
+
     content: "";
 
     position: absolute;
@@ -465,15 +647,21 @@ h1 {
 
     border-radius: 50%;
 
-    border: 1px solid rgba(160,190,255,.4);
+    border:
+        1px solid
+        rgba(160,190,255,.4);
 
     box-shadow:
-        0 0 20px rgba(130,160,255,.3);
+        0 0 20px
+        rgba(130,160,255,.3);
 
-    animation: starRing 7s linear infinite;
+    animation:
+        starRing 7s linear infinite;
 }
 
+
 .completion-icon::after {
+
     content: "";
 
     position: absolute;
@@ -482,14 +670,19 @@ h1 {
 
     border-radius: 50%;
 
-    border: 1px dashed rgba(190,210,255,.16);
+    border:
+        1px dashed
+        rgba(190,210,255,.16);
 
-    animation: starRingReverse 12s linear infinite;
+    animation:
+        starRingReverse 12s linear infinite;
 }
+
 
 @keyframes starAppear {
 
     from {
+
         opacity: 0;
 
         transform:
@@ -498,6 +691,7 @@ h1 {
     }
 
     to {
+
         opacity: 1;
 
         transform:
@@ -506,92 +700,125 @@ h1 {
     }
 }
 
+
 @keyframes starFloat {
 
     0%,100% {
-        transform: translateY(0);
+
+        transform:
+            translateY(0);
     }
 
     50% {
-        transform: translateY(-8px);
+
+        transform:
+            translateY(-8px);
     }
 }
+
 
 @keyframes starRing {
 
     from {
-        transform: rotate(0deg);
+
+        transform:
+            rotate(0deg);
     }
 
     to {
-        transform: rotate(360deg);
+
+        transform:
+            rotate(360deg);
     }
 }
+
 
 @keyframes starRingReverse {
 
     from {
-        transform: rotate(360deg);
+
+        transform:
+            rotate(360deg);
     }
 
     to {
-        transform: rotate(0deg);
+
+        transform:
+            rotate(0deg);
     }
 }
 
 
-/* =========================================
+/* =========================================================
    RESULT TEXT
-========================================= */
+========================================================= */
 
 .result-label {
+
     position: relative;
+
     z-index: 2;
 
     margin-bottom: 18px;
 
-    color: rgba(170,190,255,.6);
+    color:
+        rgba(170,190,255,.6);
 
     font-size: 10px;
+
     letter-spacing: 6px;
 
-    animation: fadeUp .8s ease .2s both;
+    animation:
+        fadeUp .8s ease .2s both;
 }
 
+
 .result-title {
+
     position: relative;
+
     z-index: 2;
 
     margin-bottom: 12px;
 
-    font-size: clamp(32px,7vw,65px);
+    font-size:
+        clamp(32px,7vw,65px);
 
     letter-spacing: 5px;
 
-    animation: titleAppear 1s ease .35s both;
+    animation:
+        titleAppear 1s ease .35s both;
 }
+
 
 @keyframes titleAppear {
 
     from {
+
         opacity: 0;
 
-        transform: translateY(20px);
+        transform:
+            translateY(20px);
 
         letter-spacing: 15px;
     }
 
     to {
+
         opacity: 1;
 
-        transform: translateY(0);
+        transform:
+            translateY(0);
 
         letter-spacing: 5px;
     }
 }
 
+
 .score {
+
     position: relative;
+
     z-index: 2;
 
     margin-bottom: 22px;
@@ -602,80 +829,108 @@ h1 {
 
     letter-spacing: 3px;
 
-    animation: fadeUp .8s ease .55s both;
+    animation:
+        fadeUp .8s ease .55s both;
 }
 
+
 .result-text {
+
     position: relative;
+
     z-index: 2;
 
     max-width: 650px;
 
-    margin: 0 auto 30px;
+    margin:
+        0 auto 30px;
 
-    color: rgba(255,255,255,.5);
+    color:
+        rgba(255,255,255,.5);
 
     font-size: 13px;
+
     line-height: 1.8;
 
-    animation: fadeUp .8s ease .7s both;
+    animation:
+        fadeUp .8s ease .7s both;
 }
+
 
 @keyframes fadeUp {
 
     from {
+
         opacity: 0;
-        transform: translateY(15px);
+
+        transform:
+            translateY(15px);
     }
 
     to {
+
         opacity: 1;
-        transform: translateY(0);
+
+        transform:
+            translateY(0);
     }
 }
 
 
-/* =========================================
+/* =========================================================
    SCORE BAR
-========================================= */
+========================================================= */
 
 .final-score-bar {
+
     position: relative;
+
     z-index: 2;
 
-    width: min(500px,90%);
+    width:
+        min(500px,90%);
 
     height: 3px;
 
-    margin: 0 auto 35px;
+    margin:
+        0 auto 35px;
 
-    background: rgba(255,255,255,.08);
+    background:
+        rgba(255,255,255,.08);
 
     overflow: hidden;
 
-    animation: fadeUp .8s ease .85s both;
+    animation:
+        fadeUp .8s ease .85s both;
 }
 
+
 .final-score-fill {
+
     width: 0%;
+
     height: 100%;
 
     background: white;
 
     box-shadow:
-        0 0 12px rgba(180,200,255,.9);
+        0 0 12px
+        rgba(180,200,255,.9);
 
     transition:
-        width 1.8s cubic-bezier(.2,.8,.2,1);
+        width 1.8s
+        cubic-bezier(.2,.8,.2,1);
 }
 
 
-/* =========================================
-   BUTTONS
-========================================= */
+/* =========================================================
+   RESULT BUTTONS
+========================================================= */
 
 .result-buttons {
+
     position: relative;
+
     z-index: 2;
 
     display: flex;
@@ -686,21 +941,32 @@ h1 {
 
     flex-wrap: wrap;
 
-    animation: fadeUp .8s ease 1s both;
+    animation:
+        fadeUp .8s ease 1s both;
 }
 
+
 .result-button {
-    padding: 13px 23px;
 
-    color: rgba(255,255,255,.75);
+    padding:
+        13px 23px;
 
-    border: 1px solid rgba(255,255,255,.2);
+    color:
+        rgba(255,255,255,.75);
 
-    background: transparent;
+    border:
+        1px solid
+        rgba(255,255,255,.2);
+
+    background:
+        transparent;
 
     text-decoration: none;
 
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
 
     font-size: 9px;
 
@@ -708,28 +974,34 @@ h1 {
 
     cursor: pointer;
 
-    transition: .3s ease;
+    transition:
+        .3s ease;
 }
 
+
 .result-button:hover {
+
     color: #010208;
 
     background: white;
 
     border-color: white;
 
-    transform: translateY(-3px);
+    transform:
+        translateY(-3px);
 }
 
 
-/* =========================================
+/* =========================================================
    PARTICLES
-========================================= */
+========================================================= */
 
 .final-particle {
+
     position: absolute;
 
     width: 3px;
+
     height: 3px;
 
     border-radius: 50%;
@@ -744,9 +1016,11 @@ h1 {
         particleFly 2.5s ease-out forwards;
 }
 
+
 @keyframes particleFly {
 
     0% {
+
         opacity: 0;
 
         transform:
@@ -755,6 +1029,7 @@ h1 {
     }
 
     15% {
+
         opacity: 1;
 
         transform:
@@ -763,6 +1038,7 @@ h1 {
     }
 
     100% {
+
         opacity: 0;
 
         transform:
@@ -775,54 +1051,100 @@ h1 {
 }
 
 
-/* =========================================
+/* =========================================================
    FOOTER
-========================================= */
+========================================================= */
 
 .footer {
+
     position: relative;
+
     z-index: 5;
 
     margin-top: 35px;
 
     text-align: center;
 
-    color: rgba(255,255,255,.25);
+    color:
+        rgba(255,255,255,.25);
 
     font-size: 9px;
+
     letter-spacing: 4px;
 }
 
 
-/* =========================================
+/* =========================================================
    MOBILE
-========================================= */
+========================================================= */
 
 @media(max-width:600px) {
 
     .telescope-quiz-page {
-        padding: 50px 15px 80px;
+
+        padding:
+            50px 15px 80px;
     }
+
 
     .quiz-container {
-        padding: 25px;
+
+        padding: 25px 20px;
     }
+
 
     .answers {
-        grid-template-columns: 1fr;
+
+        grid-template-columns:
+            1fr;
     }
 
+
     .question {
+
         font-size: 20px;
     }
 
+
+    .quiz-top {
+
+        gap: 15px;
+
+        align-items: flex-start;
+    }
+
+
     .completion-icon {
+
         width: 85px;
+
         height: 85px;
     }
 
+
     .result {
+
         min-height: 550px;
+    }
+
+
+    .result-title {
+
+        font-size: 36px;
+    }
+
+
+    .result-buttons {
+
+        flex-direction: column;
+
+        align-items: center;
+    }
+
+
+    .result-button {
+
+        width: min(280px,100%);
     }
 
 }
@@ -839,19 +1161,21 @@ h1 {
 
 
 <div class="stars"></div>
+
 <div class="stars-small"></div>
 
 
-<!-- =========================================
+<!-- =========================================================
      HEADER
-========================================= -->
+========================================================= -->
 
 <div class="header">
 
 
 <a
-href="https://sites.google.com/view/kosmolearn"
-class="return">
+href="/"
+class="return"
+>
 
 ← RETURN TO HOME
 
@@ -884,9 +1208,9 @@ astronomical observing and telescope physics.
 </div>
 
 
-<!-- =========================================
+<!-- =========================================================
      QUIZ
-========================================= -->
+========================================================= -->
 
 <div class="quiz-container">
 
@@ -896,9 +1220,11 @@ astronomical observing and telescope physics.
 
 <div class="quiz-top">
 
+
 <div
 class="question-number"
-id="questionNumber">
+id="questionNumber"
+>
 
 QUESTION 01 / 30
 
@@ -907,11 +1233,13 @@ QUESTION 01 / 30
 
 <div
 class="difficulty"
-id="difficulty">
+id="difficulty"
+>
 
 EASY
 
 </div>
+
 
 </div>
 
@@ -920,15 +1248,16 @@ EASY
 
 <div
 class="progress-bar"
-id="progressBar">
-</div>
+id="progressBar"
+></div>
 
 </div>
 
 
 <div
 class="question"
-id="question">
+id="question"
+>
 
 Loading question...
 
@@ -937,34 +1266,38 @@ Loading question...
 
 <div
 class="answers"
-id="answers">
-</div>
+id="answers"
+></div>
 
 
 <div class="next-area">
 
+
 <button
 class="next-button"
 id="nextButton"
-onclick="nextQuestion()">
+onclick="nextQuestion()"
+>
 
 NEXT QUESTION →
 
 </button>
 
-</div>
-
 
 </div>
 
 
-<!-- =========================================
+</div>
+
+
+<!-- =========================================================
      RESULT
-========================================= -->
+========================================================= -->
 
 <div
 class="result"
-id="result">
+id="result"
+>
 
 
 <div class="completion-icon"></div>
@@ -979,7 +1312,8 @@ OBSERVATION MISSION COMPLETE
 
 <div
 class="result-title"
-id="resultTitle">
+id="resultTitle"
+>
 
 TELESCOPE EXPLORER
 
@@ -988,7 +1322,8 @@ TELESCOPE EXPLORER
 
 <div
 class="score"
-id="score">
+id="score"
+>
 
 0 / 30
 
@@ -999,15 +1334,16 @@ id="score">
 
 <div
 class="final-score-fill"
-id="finalScoreFill">
-</div>
+id="finalScoreFill"
+></div>
 
 </div>
 
 
 <div
 class="result-text"
-id="resultText">
+id="resultText"
+>
 
 You have completed your journey through
 the science and technology of telescopes.
@@ -1020,7 +1356,8 @@ the science and technology of telescopes.
 
 <button
 class="result-button"
-onclick="restartQuiz()">
+onclick="restartQuiz()"
+>
 
 ↻ RESTART QUIZ
 
@@ -1028,8 +1365,9 @@ onclick="restartQuiz()">
 
 
 <a
-href="YOUR-QUIZ-SELECT-PAGE-LINK"
-class="result-button">
+href="/quizzes"
+class="result-button"
+>
 
 ← QUIZ SELECT
 
@@ -1037,8 +1375,9 @@ class="result-button">
 
 
 <a
-href="https://sites.google.com/view/kosmolearn"
-class="result-button">
+href="/"
+class="result-button"
+>
 
 RETURN TO HOME
 
@@ -1066,513 +1405,569 @@ ORBONIX · TELESCOPE QUIZ · SPACE KNOWLEDGE
 
 <script>
 
-
-/* =========================================
+/* =========================================================
    QUESTIONS
-========================================= */
+========================================================= */
 
 const questions = [
 
-/* =========================================
-   EASY 1-10
-========================================= */
+/* =========================================================
+   EASY — 1-10
+========================================================= */
 
 {
-question:
-"What is the main purpose of an astronomical telescope?",
+    question:
+    "What is the main purpose of an astronomical telescope?",
 
-answers:
-[
-"To collect and magnify light from distant objects",
-"To create planets",
-"To measure Earth's temperature",
-"To produce radio signals"
-],
+    answers:
+    [
+        "To collect and magnify light from distant objects",
+        "To create planets",
+        "To measure Earth's temperature",
+        "To produce radio signals"
+    ],
 
-correct: 0,
-difficulty: "EASY"
-},
+    correct: 0,
 
-{
-question:
-"What does a telescope's aperture refer to?",
-
-answers:
-[
-"The diameter of its main light-collecting opening",
-"The length of the telescope tube",
-"The weight of the tripod",
-"The magnification of the eyepiece"
-],
-
-correct: 0,
-difficulty: "EASY"
-},
-
-{
-question:
-"What does an eyepiece do?",
-
-answers:
-[
-"It magnifies the image produced by the telescope",
-"It creates sunlight",
-"It increases the telescope's weight",
-"It measures atmospheric pressure"
-],
-
-correct: 0,
-difficulty: "EASY"
-},
-
-{
-question:
-"What happens when you use a higher magnification?",
-
-answers:
-[
-"The object appears larger, but the field of view usually becomes smaller",
-"The object becomes brighter automatically",
-"The telescope collects more light",
-"The atmosphere disappears"
-],
-
-correct: 0,
-difficulty: "EASY"
-},
-
-{
-question:
-"Which telescope type uses mirrors to collect and focus light?",
-
-answers:
-[
-"Reflector",
-"Refractor",
-"Binocular",
-"Periscope"
-],
-
-correct: 0,
-difficulty: "EASY"
-},
-
-{
-question:
-"Which telescope type primarily uses lenses?",
-
-answers:
-[
-"Refractor",
-"Reflector",
-"Radio telescope",
-"X-ray telescope"
-],
-
-correct: 0,
-difficulty: "EASY"
-},
-
-{
-question:
-"What is the largest source of light pollution for many astronomers?",
-
-answers:
-[
-"Artificial light from cities and buildings",
-"The Moon",
-"Stars",
-"Clouds in space"
-],
-
-correct: 0,
-difficulty: "EASY"
-},
-
-{
-question:
-"Which object is usually easiest to observe with a small telescope?",
-
-answers:
-[
-"The Moon",
-"A distant galaxy billions of light-years away",
-"The Oort Cloud",
-"A single exoplanet surface"
-],
-
-correct: 0,
-difficulty: "EASY"
-},
-
-{
-question:
-"What is a telescope mount used for?",
-
-answers:
-[
-"Supporting and moving the telescope",
-"Producing electricity",
-"Changing the color of stars",
-"Cleaning the atmosphere"
-],
-
-correct: 0,
-difficulty: "EASY"
-},
-
-{
-question:
-"Why are stars usually seen as points of light through small telescopes?",
-
-answers:
-[
-"They are extremely far away and usually remain unresolved",
-"They have no physical size",
-"They are actually tiny",
-"They only exist as points"
-],
-
-correct: 0,
-difficulty: "EASY"
+    difficulty: "EASY"
 },
 
 
-/* =========================================
-   MEDIUM 11-20
-========================================= */
-
 {
-question:
-"What determines a telescope's light-gathering power most directly?",
+    question:
+    "What does a telescope's aperture refer to?",
 
-answers:
-[
-"The area of its aperture",
-"The color of its tube",
-"The length of its tripod",
-"The number of eyepieces"
-],
+    answers:
+    [
+        "The diameter of its main light-collecting opening",
+        "The length of the telescope tube",
+        "The weight of the tripod",
+        "The magnification of the eyepiece"
+    ],
 
-correct: 0,
-difficulty: "MEDIUM"
-},
+    correct: 0,
 
-{
-question:
-"What is angular resolution?",
-
-answers:
-[
-"The ability to distinguish fine details or closely separated objects",
-"The maximum weight of a telescope",
-"The brightness of the Moon",
-"The length of an eyepiece"
-],
-
-correct: 0,
-difficulty: "MEDIUM"
-},
-
-{
-question:
-"Which formula gives the approximate magnification of a telescope?",
-
-answers:
-[
-"Telescope focal length ÷ eyepiece focal length",
-"Eyepiece focal length ÷ telescope focal length",
-"Aperture × temperature",
-"Weight ÷ aperture"
-],
-
-correct: 0,
-difficulty: "MEDIUM"
-},
-
-{
-question:
-"A telescope has a 1000 mm focal length and a 10 mm eyepiece. What is the magnification?",
-
-answers:
-[
-"100×",
-"10×",
-"1000×",
-"0.1×"
-],
-
-correct: 0,
-difficulty: "MEDIUM"
-},
-
-{
-question:
-"What generally happens when telescope aperture increases?",
-
-answers:
-[
-"It gathers more light and can potentially resolve finer details",
-"It always makes the telescope lighter",
-"It decreases light-gathering power",
-"It prevents magnification"
-],
-
-correct: 0,
-difficulty: "MEDIUM"
-},
-
-{
-question:
-"Why is observing from a dark location useful?",
-
-answers:
-[
-"It reduces interference from artificial skyglow",
-"It makes gravity weaker",
-"It makes stars physically closer",
-"It increases Earth's rotation"
-],
-
-correct: 0,
-difficulty: "MEDIUM"
-},
-
-{
-question:
-"What is a Dobsonian telescope?",
-
-answers:
-[
-"A type of Newtonian reflector usually placed on a simple alt-azimuth mount",
-"A type of space telescope",
-"A refractor with two lenses",
-"A radio antenna"
-],
-
-correct: 0,
-difficulty: "MEDIUM"
-},
-
-{
-question:
-"What is chromatic aberration in a refracting telescope?",
-
-answers:
-[
-"Different wavelengths of light focus at slightly different positions",
-"The telescope cannot collect enough light",
-"The mirror becomes magnetic",
-"The tripod vibrates"
-],
-
-correct: 0,
-difficulty: "MEDIUM"
-},
-
-{
-question:
-"Why can very high magnification sometimes produce a worse image?",
-
-answers:
-[
-"The image becomes dimmer and atmospheric turbulence becomes more noticeable",
-"The telescope becomes larger",
-"Stars stop emitting light",
-"The Moon becomes farther away"
-],
-
-correct: 0,
-difficulty: "MEDIUM"
-},
-
-{
-question:
-"What is a GoTo telescope mount designed to do?",
-
-answers:
-[
-"Automatically point the telescope toward selected celestial objects",
-"Make the telescope waterproof",
-"Change a reflector into a refractor",
-"Increase the aperture"
-],
-
-correct: 0,
-difficulty: "MEDIUM"
+    difficulty: "EASY"
 },
 
 
-/* =========================================
-   HARD 21-30
-========================================= */
-
 {
-question:
-"What is the Dawes limit related to?",
+    question:
+    "What does an eyepiece do?",
 
-answers:
-[
-"The theoretical resolving power of a telescope based mainly on aperture",
-"The maximum magnification of an eyepiece",
-"The brightness of the Sun",
-"The age of a telescope"
-],
+    answers:
+    [
+        "It magnifies the image produced by the telescope",
+        "It creates sunlight",
+        "It increases the telescope's weight",
+        "It measures atmospheric pressure"
+    ],
 
-correct: 0,
-difficulty: "HARD"
+    correct: 0,
+
+    difficulty: "EASY"
 },
 
+
 {
-question:
-"Why does a larger aperture improve theoretical angular resolution?",
+    question:
+    "What happens when you use a higher magnification?",
 
-answers:
-[
-"It allows the telescope to distinguish smaller angular details",
-"It increases the distance to the object",
-"It removes Earth's atmosphere",
-"It changes the object's physical size"
-],
+    answers:
+    [
+        "The object appears larger, but the field of view usually becomes smaller",
+        "The object becomes brighter automatically",
+        "The telescope collects more light",
+        "The atmosphere disappears"
+    ],
 
-correct: 0,
-difficulty: "HARD"
+    correct: 0,
+
+    difficulty: "EASY"
 },
 
+
 {
-question:
-"What is the focal ratio of a telescope?",
+    question:
+    "Which telescope type uses mirrors to collect and focus light?",
 
-answers:
-[
-"Its focal length divided by its aperture",
-"Its aperture divided by its magnification",
-"Its weight divided by its length",
-"Its focal length multiplied by its aperture"
-],
+    answers:
+    [
+        "Reflector",
+        "Refractor",
+        "Binocular",
+        "Periscope"
+    ],
 
-correct: 0,
-difficulty: "HARD"
+    correct: 0,
+
+    difficulty: "EASY"
 },
 
+
 {
-question:
-"What is a telescope's exit pupil?",
+    question:
+    "Which telescope type primarily uses lenses?",
 
-answers:
-[
-"The diameter of the beam of light leaving the eyepiece",
-"The diameter of the primary mirror",
-"The length of the telescope tube",
-"The distance between Earth and the object"
-],
+    answers:
+    [
+        "Refractor",
+        "Reflector",
+        "Radio telescope",
+        "X-ray telescope"
+    ],
 
-correct: 0,
-difficulty: "HARD"
+    correct: 0,
+
+    difficulty: "EASY"
 },
 
+
 {
-question:
-"What problem does adaptive optics help correct in ground-based astronomy?",
+    question:
+    "What is the largest source of light pollution for many astronomers?",
 
-answers:
-[
-"Blurring caused by Earth's atmosphere",
-"Light pollution from cities",
-"The phases of the Moon",
-"The rotation of galaxies"
-],
+    answers:
+    [
+        "Artificial light from cities and buildings",
+        "The Moon",
+        "Stars",
+        "Clouds in space"
+    ],
 
-correct: 0,
-difficulty: "HARD"
+    correct: 0,
+
+    difficulty: "EASY"
 },
 
+
 {
-question:
-"Why are many professional telescopes built at high-altitude observatories?",
+    question:
+    "Which object is usually easiest to observe with a small telescope?",
 
-answers:
-[
-"Thinner, drier and more stable air can improve observing conditions",
-"Stars are physically closer there",
-"Gravity disappears at high altitude",
-"The Sun becomes dimmer"
-],
+    answers:
+    [
+        "The Moon",
+        "A distant galaxy billions of light-years away",
+        "The Oort Cloud",
+        "A single exoplanet surface"
+    ],
 
-correct: 0,
-difficulty: "HARD"
+    correct: 0,
+
+    difficulty: "EASY"
 },
 
+
 {
-question:
-"What is an interferometer in astronomy?",
+    question:
+    "What is a telescope mount used for?",
 
-answers:
-[
-"A system that combines signals from multiple telescopes to achieve very high angular resolution",
-"A telescope with two eyepieces",
-"A device that increases a star's brightness",
-"A type of optical filter only"
-],
+    answers:
+    [
+        "Supporting and moving the telescope",
+        "Producing electricity",
+        "Changing the color of stars",
+        "Cleaning the atmosphere"
+    ],
 
-correct: 0,
-difficulty: "HARD"
+    correct: 0,
+
+    difficulty: "EASY"
 },
 
+
 {
-question:
-"Why are radio telescopes often built as large dishes or arrays?",
+    question:
+    "Why are stars usually seen as points of light through small telescopes?",
 
-answers:
-[
-"Radio wavelengths are much longer than visible light, requiring large collecting structures for high resolution and sensitivity",
-"Radio waves cannot travel through space",
-"Stars only emit radio waves",
-"Large dishes create radio waves"
-],
+    answers:
+    [
+        "They are extremely far away and usually remain unresolved",
+        "They have no physical size",
+        "They are actually tiny",
+        "They only exist as points"
+    ],
 
-correct: 0,
-difficulty: "HARD"
+    correct: 0,
+
+    difficulty: "EASY"
 },
 
+
+/* =========================================================
+   MEDIUM — 11-20
+========================================================= */
+
 {
-question:
-"Why are infrared telescopes often placed above Earth's atmosphere?",
+    question:
+    "What determines a telescope's light-gathering power most directly?",
 
-answers:
-[
-"Water vapor in the atmosphere absorbs many infrared wavelengths",
-"Infrared light cannot exist on Earth",
-"They need zero gravity to work",
-"Stars are invisible from Earth"
-],
+    answers:
+    [
+        "The area of its aperture",
+        "The color of its tube",
+        "The length of its tripod",
+        "The number of eyepieces"
+    ],
 
-correct: 0,
-difficulty: "HARD"
+    correct: 0,
+
+    difficulty: "MEDIUM"
 },
 
+
 {
-question:
-"What is one major advantage of a space telescope over a ground-based optical telescope?",
+    question:
+    "What is angular resolution?",
 
-answers:
-[
-"It can observe without atmospheric turbulence and many atmospheric absorption effects",
-"It always has a larger mirror",
-"It can see through planets",
-"It does not need optics"
-],
+    answers:
+    [
+        "The ability to distinguish fine details or closely separated objects",
+        "The maximum weight of a telescope",
+        "The brightness of the Moon",
+        "The length of an eyepiece"
+    ],
 
-correct: 0,
-difficulty: "HARD"
+    correct: 0,
+
+    difficulty: "MEDIUM"
+},
+
+
+{
+    question:
+    "Which formula gives the approximate magnification of a telescope?",
+
+    answers:
+    [
+        "Telescope focal length ÷ eyepiece focal length",
+        "Eyepiece focal length ÷ telescope focal length",
+        "Aperture × temperature",
+        "Weight ÷ aperture"
+    ],
+
+    correct: 0,
+
+    difficulty: "MEDIUM"
+},
+
+
+{
+    question:
+    "A telescope has a 1000 mm focal length and a 10 mm eyepiece. What is the magnification?",
+
+    answers:
+    [
+        "100×",
+        "10×",
+        "1000×",
+        "0.1×"
+    ],
+
+    correct: 0,
+
+    difficulty: "MEDIUM"
+},
+
+
+{
+    question:
+    "What generally happens when telescope aperture increases?",
+
+    answers:
+    [
+        "It gathers more light and can potentially resolve finer details",
+        "It always makes the telescope lighter",
+        "It decreases light-gathering power",
+        "It prevents magnification"
+    ],
+
+    correct: 0,
+
+    difficulty: "MEDIUM"
+},
+
+
+{
+    question:
+    "Why is observing from a dark location useful?",
+
+    answers:
+    [
+        "It reduces interference from artificial skyglow",
+        "It makes gravity weaker",
+        "It makes stars physically closer",
+        "It increases Earth's rotation"
+    ],
+
+    correct: 0,
+
+    difficulty: "MEDIUM"
+},
+
+
+{
+    question:
+    "What is a Dobsonian telescope?",
+
+    answers:
+    [
+        "A type of Newtonian reflector usually placed on a simple alt-azimuth mount",
+        "A type of space telescope",
+        "A refractor with two lenses",
+        "A radio antenna"
+    ],
+
+    correct: 0,
+
+    difficulty: "MEDIUM"
+},
+
+
+{
+    question:
+    "What is chromatic aberration in a refracting telescope?",
+
+    answers:
+    [
+        "Different wavelengths of light focus at slightly different positions",
+        "The telescope cannot collect enough light",
+        "The mirror becomes magnetic",
+        "The tripod vibrates"
+    ],
+
+    correct: 0,
+
+    difficulty: "MEDIUM"
+},
+
+
+{
+    question:
+    "Why can very high magnification sometimes produce a worse image?",
+
+    answers:
+    [
+        "The image becomes dimmer and atmospheric turbulence becomes more noticeable",
+        "The telescope becomes larger",
+        "Stars stop emitting light",
+        "The Moon becomes farther away"
+    ],
+
+    correct: 0,
+
+    difficulty: "MEDIUM"
+},
+
+
+{
+    question:
+    "What is a GoTo telescope mount designed to do?",
+
+    answers:
+    [
+        "Automatically point the telescope toward selected celestial objects",
+        "Make the telescope waterproof",
+        "Change a reflector into a refractor",
+        "Increase the aperture"
+    ],
+
+    correct: 0,
+
+    difficulty: "MEDIUM"
+},
+
+
+/* =========================================================
+   HARD — 21-30
+========================================================= */
+
+{
+    question:
+    "What is the Dawes limit related to?",
+
+    answers:
+    [
+        "The theoretical resolving power of a telescope based mainly on aperture",
+        "The maximum magnification of an eyepiece",
+        "The brightness of the Sun",
+        "The age of a telescope"
+    ],
+
+    correct: 0,
+
+    difficulty: "HARD"
+},
+
+
+{
+    question:
+    "Why does a larger aperture improve theoretical angular resolution?",
+
+    answers:
+    [
+        "It allows the telescope to distinguish smaller angular details",
+        "It increases the distance to the object",
+        "It removes Earth's atmosphere",
+        "It changes the object's physical size"
+    ],
+
+    correct: 0,
+
+    difficulty: "HARD"
+},
+
+
+{
+    question:
+    "What is the focal ratio of a telescope?",
+
+    answers:
+    [
+        "Its focal length divided by its aperture",
+        "Its aperture divided by its magnification",
+        "Its weight divided by its length",
+        "Its focal length multiplied by its aperture"
+    ],
+
+    correct: 0,
+
+    difficulty: "HARD"
+},
+
+
+{
+    question:
+    "What is a telescope's exit pupil?",
+
+    answers:
+    [
+        "The diameter of the beam of light leaving the eyepiece",
+        "The diameter of the primary mirror",
+        "The length of the telescope tube",
+        "The distance between Earth and the object"
+    ],
+
+    correct: 0,
+
+    difficulty: "HARD"
+},
+
+
+{
+    question:
+    "What problem does adaptive optics help correct in ground-based astronomy?",
+
+    answers:
+    [
+        "Blurring caused by Earth's atmosphere",
+        "Light pollution from cities",
+        "The phases of the Moon",
+        "The rotation of galaxies"
+    ],
+
+    correct: 0,
+
+    difficulty: "HARD"
+},
+
+
+{
+    question:
+    "Why are many professional telescopes built at high-altitude observatories?",
+
+    answers:
+    [
+        "Thinner, drier and more stable air can improve observing conditions",
+        "Stars are physically closer there",
+        "Gravity disappears at high altitude",
+        "The Sun becomes dimmer"
+    ],
+
+    correct: 0,
+
+    difficulty: "HARD"
+},
+
+
+{
+    question:
+    "What is an interferometer in astronomy?",
+
+    answers:
+    [
+        "A system that combines signals from multiple telescopes to achieve very high angular resolution",
+        "A telescope with two eyepieces",
+        "A device that increases a star's brightness",
+        "A type of optical filter only"
+    ],
+
+    correct: 0,
+
+    difficulty: "HARD"
+},
+
+
+{
+    question:
+    "Why are radio telescopes often built as large dishes or arrays?",
+
+    answers:
+    [
+        "Radio wavelengths are much longer than visible light, requiring large collecting structures for high resolution and sensitivity",
+        "Radio waves cannot travel through space",
+        "Stars only emit radio waves",
+        "Large dishes create radio waves"
+    ],
+
+    correct: 0,
+
+    difficulty: "HARD"
+},
+
+
+{
+    question:
+    "Why are infrared telescopes often placed above Earth's atmosphere?",
+
+    answers:
+    [
+        "Water vapor in the atmosphere absorbs many infrared wavelengths",
+        "Infrared light cannot exist on Earth",
+        "They need zero gravity to work",
+        "Stars are invisible from Earth"
+    ],
+
+    correct: 0,
+
+    difficulty: "HARD"
+},
+
+
+{
+    question:
+    "What is one major advantage of a space telescope over a ground-based optical telescope?",
+
+    answers:
+    [
+        "It can observe without atmospheric turbulence and many atmospheric absorption effects",
+        "It always has a larger mirror",
+        "It can see through planets",
+        "It does not need optics"
+    ],
+
+    correct: 0,
+
+    difficulty: "HARD"
 }
 
 ];
 
 
-/* =========================================
+/* =========================================================
    VARIABLES
-========================================= */
+========================================================= */
 
 let currentQuestion = 0;
 
@@ -1581,15 +1976,15 @@ let score = 0;
 let answered = false;
 
 
-/* =========================================
-   SHUFFLE ANSWERS
-========================================= */
+/* =========================================================
+   SHUFFLE
+========================================================= */
 
 function shuffleAnswers(question) {
 
     const answerObjects =
         question.answers.map(
-            (answer,index) => {
+            (answer, index) => {
 
                 return {
 
@@ -1632,9 +2027,9 @@ function shuffleAnswers(question) {
 }
 
 
-/* =========================================
+/* =========================================================
    LOAD QUESTION
-========================================= */
+========================================================= */
 
 function loadQuestion() {
 
@@ -1645,14 +2040,18 @@ function loadQuestion() {
         questions[currentQuestion];
 
 
+    /* QUESTION NUMBER */
+
     document.getElementById(
         "questionNumber"
     ).textContent =
         `QUESTION ${
             String(currentQuestion + 1)
-            .padStart(2,"0")
+            .padStart(2, "0")
         } / ${questions.length}`;
 
+
+    /* DIFFICULTY */
 
     document.getElementById(
         "difficulty"
@@ -1660,20 +2059,28 @@ function loadQuestion() {
         q.difficulty;
 
 
+    /* QUESTION */
+
     document.getElementById(
         "question"
     ).textContent =
         q.question;
 
 
+    /* PROGRESS */
+
+    const progress =
+        (currentQuestion /
+        questions.length) * 100;
+
+
     document.getElementById(
         "progressBar"
     ).style.width =
-        `${
-            (currentQuestion /
-            questions.length) * 100
-        }%`;
+        `${progress}%`;
 
+
+    /* ANSWERS */
 
     const answersContainer =
         document.getElementById(
@@ -1681,7 +2088,8 @@ function loadQuestion() {
         );
 
 
-    answersContainer.innerHTML = "";
+    answersContainer.innerHTML =
+        "";
 
 
     const shuffled =
@@ -1699,6 +2107,10 @@ function loadQuestion() {
 
             button.className =
                 "answer";
+
+
+            button.type =
+                "button";
 
 
             button.textContent =
@@ -1728,6 +2140,8 @@ function loadQuestion() {
     );
 
 
+    /* HIDE NEXT */
+
     document.getElementById(
         "nextButton"
     ).style.display =
@@ -1735,17 +2149,20 @@ function loadQuestion() {
 }
 
 
-/* =========================================
-   ANSWER
-========================================= */
+/* =========================================================
+   SELECT ANSWER
+========================================================= */
 
 function selectAnswer(
     isCorrect,
     selectedButton
 ) {
 
-    if (answered)
+    if (answered) {
+
         return;
+
+    }
 
 
     answered = true;
@@ -1812,9 +2229,9 @@ function selectAnswer(
 }
 
 
-/* =========================================
+/* =========================================================
    NEXT QUESTION
-========================================= */
+========================================================= */
 
 function nextQuestion() {
 
@@ -1834,12 +2251,13 @@ function nextQuestion() {
 
 
     loadQuestion();
+
 }
 
 
-/* =========================================
+/* =========================================================
    RESULT
-========================================= */
+========================================================= */
 
 function showResult() {
 
@@ -1859,16 +2277,22 @@ function showResult() {
         "block";
 
 
+    /* RESET RESULT BAR */
+
     document.getElementById(
-        "score"
-    ).textContent =
-        "0 / 30";
+        "finalScoreFill"
+    ).style.width =
+        "0%";
 
 
     let title = "";
 
     let text = "";
 
+
+    /* =====================================================
+       RESULT LEVELS
+    ===================================================== */
 
     if (score <= 10) {
 
@@ -1936,6 +2360,8 @@ function showResult() {
     animateScore();
 
 
+    /* SCORE BAR */
+
     setTimeout(
         function() {
 
@@ -1957,9 +2383,9 @@ function showResult() {
 }
 
 
-/* =========================================
+/* =========================================================
    SCORE ANIMATION
-========================================= */
+========================================================= */
 
 function animateScore() {
 
@@ -1972,7 +2398,8 @@ function animateScore() {
         );
 
 
-    const duration = 1600;
+    const duration =
+        1600;
 
 
     const start =
@@ -2031,9 +2458,9 @@ function animateScore() {
 }
 
 
-/* =========================================
+/* =========================================================
    PARTICLES
-========================================= */
+========================================================= */
 
 function createParticles() {
 
@@ -2042,6 +2469,19 @@ function createParticles() {
             "result"
         );
 
+
+    /* REMOVE OLD PARTICLES */
+
+    result
+        .querySelectorAll(
+            ".final-particle"
+        )
+        .forEach(
+            particle => particle.remove()
+        );
+
+
+    /* CREATE NEW PARTICLES */
 
     for (
         let i = 0;
@@ -2060,7 +2500,8 @@ function createParticles() {
 
 
         particle.style.left =
-            Math.random() * 100 + "%";
+            Math.random() * 100 +
+            "%";
 
 
         particle.style.top =
@@ -2111,9 +2552,9 @@ function createParticles() {
 }
 
 
-/* =========================================
+/* =========================================================
    RESTART
-========================================= */
+========================================================= */
 
 function restartQuiz() {
 
@@ -2121,6 +2562,10 @@ function restartQuiz() {
 
     score = 0;
 
+    answered = false;
+
+
+    /* SHOW QUIZ */
 
     document.getElementById(
         "quiz"
@@ -2128,11 +2573,15 @@ function restartQuiz() {
         "block";
 
 
+    /* HIDE RESULT */
+
     document.getElementById(
         "result"
     ).style.display =
         "none";
 
+
+    /* RESET SCORE BAR */
 
     document.getElementById(
         "finalScoreFill"
@@ -2140,58 +2589,84 @@ function restartQuiz() {
         "0%";
 
 
+    /* RESET SCORE TEXT */
+
+    document.getElementById(
+        "score"
+    ).textContent =
+        "0 / 30";
+
+
+    /* LOAD FIRST QUESTION */
+
     loadQuestion();
+
+
+    /* SCROLL TO QUIZ */
+
+    window.scrollTo({
+
+        top: 0,
+
+        behavior: "smooth"
+
+    });
+
 }
 
 
-/* =========================================
+/* =========================================================
    STAR PARALLAX
-========================================= */
+========================================================= */
 
 const stars =
-document.querySelector(".stars");
+    document.querySelector(
+        ".stars"
+    );
 
 
 const smallStars =
-document.querySelector(".stars-small");
+    document.querySelector(
+        ".stars-small"
+    );
 
 
 document.addEventListener(
-"mousemove",
+    "mousemove",
+    function(event) {
 
-function(event) {
-
-    const x =
-        event.clientX /
-        window.innerWidth -
-        0.5;
-
-
-    const y =
-        event.clientY /
-        window.innerHeight -
-        0.5;
+        const x =
+            event.clientX /
+            window.innerWidth -
+            0.5;
 
 
-    stars.style.transform =
-        `translate(
-            ${x * 20}px,
-            ${y * 20}px
-        )`;
+        const y =
+            event.clientY /
+            window.innerHeight -
+            0.5;
 
 
-    smallStars.style.transform =
-        `translate(
-            ${x * -12}px,
-            ${y * -12}px
-        )`;
-
-});
+        stars.style.transform =
+            `translate(
+                ${x * 20}px,
+                ${y * 20}px
+            )`;
 
 
-/* =========================================
+        smallStars.style.transform =
+            `translate(
+                ${x * -12}px,
+                ${y * -12}px
+            )`;
+
+    }
+);
+
+
+/* =========================================================
    START
-========================================= */
+========================================================= */
 
 loadQuestion();
 
