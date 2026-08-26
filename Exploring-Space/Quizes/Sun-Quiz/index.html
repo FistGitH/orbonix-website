@@ -6,6 +6,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Sun Quiz | ORBONIX</title>
+
 <style>
 
 * {
@@ -885,7 +887,7 @@ h1 {
 
     box-shadow:
         0 0 12px
-        rgba(255,255,255,.8);
+        rgba(255,180,70,.9);
 
     transition:
         width 1.8s cubic-bezier(.2,.8,.2,1);
@@ -1109,7 +1111,7 @@ h1 {
 
 
 <a
-href="https://sites.google.com/view/kosmolearn"
+href="/"
 class="return">
 
 ← RETURN TO HOME
@@ -1289,7 +1291,7 @@ onclick="restartQuiz()">
 
 
 <a
-href="YOUR-QUIZ-SELECT-PAGE-LINK"
+href="/Exploring-Space/Quizzes"
 class="result-button">
 
 ← QUIZ SELECT
@@ -1298,7 +1300,7 @@ class="result-button">
 
 
 <a
-href="https://sites.google.com/view/kosmolearn"
+href="/"
 class="result-button">
 
 RETURN TO HOME
@@ -1867,11 +1869,13 @@ function loadQuestion() {
         q.question;
 
 
+    /* FULL PROGRESS INCLUDING CURRENT QUESTION */
+
     document.getElementById(
         "progressBar"
     ).style.width =
         `${(
-            currentQuestion /
+            (currentQuestion + 1) /
             questions.length
         ) * 100}%`;
 
@@ -2063,7 +2067,7 @@ function showResult() {
     document.getElementById(
         "score"
     ).textContent =
-        "0 / 30";
+        `0 / ${questions.length}`;
 
 
     let title = "";
