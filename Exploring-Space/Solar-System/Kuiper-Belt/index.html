@@ -144,6 +144,8 @@ body {
 
     transition:
         .35s ease;
+
+    cursor: pointer;
 }
 
 
@@ -658,6 +660,8 @@ h1 {
 
     transition:
         .35s ease;
+
+    cursor: pointer;
 }
 
 
@@ -783,8 +787,9 @@ h1 {
 
 
 <a
-href="https://sites.google.com/view/kosmolearn/solar-system"
-class="return">
+href="#"
+class="return"
+data-page="Solar System">
 
 ← RETURN TO SOLAR SYSTEM
 
@@ -902,7 +907,8 @@ PLUTO'S ORBITAL PERIOD
 </div>
 
 <div class="stat-label">
-AGE</div>
+AGE
+</div>
 
 </div>
 
@@ -910,7 +916,8 @@ AGE</div>
 <div class="stat">
 
 <div class="stat-value">
-PLUTO</div>
+PLUTO
+</div>
 
 <div class="stat-label">
 FAMOUS DWARF PLANET
@@ -1079,14 +1086,17 @@ the Sun.
 </div>
 
 
-<!-- NAVIGATION -->
+<!-- =========================================
+     NAVIGATION
+========================================= -->
 
 <div class="navigation">
 
 
 <a
-href="https://sites.google.com/view/kosmolearn/solar-system"
-class="nav-button">
+href="#"
+class="nav-button"
+data-page="Solar System">
 
 ← RETURN TO SOLAR SYSTEM
 
@@ -1114,7 +1124,19 @@ ORBONIX · SOLAR SYSTEM
 </section>
 
 
+<!-- =========================================
+     ORBONIX SEARCH.JS
+========================================= -->
+
+<script src="/search.js"></script>
+
+
 <script>
+
+
+/* =========================================
+   STAR PARALLAX
+========================================= */
 
 const stars =
 document.querySelector(".stars");
@@ -1153,6 +1175,103 @@ function(event) {
         )`;
 
 });
+
+
+/* =========================================
+   ORBONIX UNIVERSAL NAVIGATION
+========================================= */
+
+function setupOrbonixNavigation() {
+
+    const buttons =
+        document.querySelectorAll(
+            "[data-page]"
+        );
+
+
+    buttons.forEach(function(button) {
+
+        button.addEventListener(
+            "click",
+
+            function(event) {
+
+                event.preventDefault();
+
+                const requestedPage =
+                    button.dataset.page;
+
+
+                if (
+                    typeof ORBONIX_PAGES ===
+                    "undefined"
+                ) {
+
+                    console.error(
+                        "ORBONIX_PAGES was not found. Check search.js."
+                    );
+
+                    return;
+                }
+
+
+                const page =
+                    ORBONIX_PAGES.find(
+                        function(item) {
+
+                            return (
+                                item.title &&
+                                item.title
+                                    .trim()
+                                    .toLowerCase() ===
+                                requestedPage
+                                    .trim()
+                                    .toLowerCase()
+                            );
+
+                        }
+                    );
+
+
+                if (page && page.url) {
+
+                    window.location.href =
+                        page.url;
+
+                } else {
+
+                    console.error(
+                        "ORBONIX page not found:",
+                        requestedPage
+                    );
+
+                }
+
+            }
+
+        );
+
+    });
+
+}
+
+
+if (
+    document.readyState ===
+    "loading"
+) {
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        setupOrbonixNavigation
+    );
+
+} else {
+
+    setupOrbonixNavigation();
+
+}
+
 
 </script>
 
