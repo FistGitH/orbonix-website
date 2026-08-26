@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Hiʻiaka | ORBONIX</title>
+
 <style>
+
 * {
     box-sizing: border-box;
 }
@@ -21,10 +26,19 @@ body {
     overflow-x: hidden;
 }
 
+
+/* =========================================
+   PAGE
+========================================= */
+
 .hiaka-page {
+
     position: relative;
+
     min-height: 1500px;
+
     padding: 55px 20px 100px;
+
     overflow: hidden;
 
     background:
@@ -36,12 +50,19 @@ body {
         #020308;
 }
 
-/* STARS */
+
+/* =========================================
+   STARS
+========================================= */
 
 .stars {
+
     position: absolute;
+
     inset: -20%;
+
     pointer-events: none;
+
     opacity: .38;
 
     background-image:
@@ -52,13 +73,20 @@ body {
         );
 
     background-size: 75px 75px;
-    transition: transform 1.5s ease;
+
+    transition:
+        transform 1.5s ease;
 }
 
+
 .stars-small {
+
     position: absolute;
+
     inset: -20%;
+
     pointer-events: none;
+
     opacity: .14;
 
     background-image:
@@ -69,137 +97,217 @@ body {
         );
 
     background-size: 32px 32px;
-    transition: transform 2s ease;
+
+    transition:
+        transform 2s ease;
 }
 
-/* HEADER */
+
+/* =========================================
+   HEADER
+========================================= */
 
 .header {
+
     position: relative;
+
     z-index: 100;
+
     max-width: 950px;
+
     margin: auto;
+
     text-align: center;
 }
 
+
 .return {
+
     display: inline-flex;
+
     align-items: center;
 
     padding: 12px 20px;
+
     margin-bottom: 35px;
 
-    color: rgba(255,255,255,.7);
+    color:
+        rgba(255,255,255,.7);
 
-    border: 1px solid rgba(255,255,255,.22);
+    border:
+        1px solid
+        rgba(255,255,255,.22);
 
     text-decoration: none;
 
     font-size: 9px;
+
     letter-spacing: 3px;
 
-    transition: .35s ease;
+    transition:
+        .35s ease;
 }
+
 
 .return:hover {
+
     color: #020308;
+
     background: white;
+
     border-color: white;
-    transform: translateY(-4px);
+
+    transform:
+        translateY(-4px);
 }
 
+
 .label {
+
     margin-bottom: 18px;
 
-    color: rgba(255,255,255,.4);
+    color:
+        rgba(255,255,255,.4);
 
     font-size: 10px;
+
     letter-spacing: 5px;
 }
 
+
 h1 {
+
     margin: 0;
 
-    font-size: clamp(55px,9vw,105px);
+    font-size:
+        clamp(55px,9vw,105px);
+
     line-height: .9;
+
     letter-spacing: 7px;
 }
 
-.subtitle {
-    max-width: 720px;
-    margin: 25px auto 0;
 
-    color: rgba(255,255,255,.52);
+.subtitle {
+
+    max-width: 720px;
+
+    margin:
+        25px auto 0;
+
+    color:
+        rgba(255,255,255,.52);
 
     font-size: 14px;
+
     line-height: 1.8;
 }
 
-/* MAIN */
+
+/* =========================================
+   MAIN
+========================================= */
 
 .hiaka-area {
+
     position: relative;
 
-    width: min(900px,100%);
+    width:
+        min(900px,100%);
+
     min-height: 520px;
 
-    margin: 70px auto 90px;
+    margin:
+        70px auto 90px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 }
 
-/* LARGE TEXT */
+
+/* =========================================
+   LARGE TEXT
+========================================= */
 
 .hiaka-symbol {
+
     position: relative;
+
     z-index: 10;
 
     text-align: center;
 }
 
+
 .hiaka-symbol-title {
-    font-size: clamp(70px,15vw,150px);
+
+    font-size:
+        clamp(70px,15vw,150px);
+
     font-weight: bold;
+
     letter-spacing: 12px;
 
-    color: rgba(255,255,255,.92);
+    color:
+        rgba(255,255,255,.92);
 
     text-shadow:
-        0 0 30px rgba(190,205,230,.15),
-        0 0 80px rgba(140,160,190,.1);
+        0 0 30px
+        rgba(190,205,230,.15),
+
+        0 0 80px
+        rgba(140,160,190,.1);
 }
 
+
 .hiaka-symbol-subtitle {
+
     margin-top: 18px;
 
-    color: rgba(255,255,255,.35);
+    color:
+        rgba(255,255,255,.35);
 
     font-size: 10px;
+
     letter-spacing: 5px;
 }
 
-/* DECORATIVE LINES */
+
+/* =========================================
+   DECORATIVE LINES
+========================================= */
 
 .line {
+
     position: absolute;
 
     left: 50%;
+
     top: 50%;
 
     width: 620px;
+
     height: 620px;
 
-    transform: translate(-50%,-50%) rotate(18deg);
+    transform:
+        translate(-50%,-50%)
+        rotate(18deg);
 
-    border: 1px solid rgba(170,180,200,.1);
+    border:
+        1px solid
+        rgba(170,180,200,.1);
 
     pointer-events: none;
 }
 
+
 .line-2 {
+
     width: 450px;
+
     height: 450px;
 
     transform:
@@ -207,8 +315,11 @@ h1 {
         rotate(-27deg);
 }
 
+
 .line-3 {
+
     width: 760px;
+
     height: 300px;
 
     transform:
@@ -216,170 +327,266 @@ h1 {
         rotate(12deg);
 }
 
-/* CONTENT */
+
+/* =========================================
+   CONTENT
+========================================= */
 
 .content {
+
     position: relative;
+
     z-index: 10;
 
-    width: min(1050px,100%);
+    width:
+        min(1050px,100%);
+
     margin: auto;
 }
 
-/* STATS */
+
+/* =========================================
+   STATS
+========================================= */
 
 .stats {
+
     display: grid;
-    grid-template-columns: repeat(3,1fr);
+
+    grid-template-columns:
+        repeat(3,1fr);
 
     gap: 1px;
 
-    background: rgba(255,255,255,.1);
+    background:
+        rgba(255,255,255,.1);
 
-    border: 1px solid rgba(255,255,255,.1);
+    border:
+        1px solid
+        rgba(255,255,255,.1);
 }
+
 
 .stat {
+
     padding: 30px;
 
-    background: rgba(5,7,13,.96);
+    background:
+        rgba(5,7,13,.96);
 
-    transition: .35s ease;
+    transition:
+        .35s ease;
 }
+
 
 .stat:hover {
-    transform: translateY(-5px);
-    background: rgba(255,255,255,.04);
+
+    transform:
+        translateY(-5px);
+
+    background:
+        rgba(255,255,255,.04);
 }
 
+
 .stat-value {
+
     margin-bottom: 9px;
 
     font-size: 21px;
+
     font-weight: bold;
 }
 
+
 .stat-label {
-    color: rgba(255,255,255,.4);
+
+    color:
+        rgba(255,255,255,.4);
 
     font-size: 9px;
+
     letter-spacing: 2px;
 }
 
-/* DESCRIPTION */
+
+/* =========================================
+   DESCRIPTION
+========================================= */
 
 .description {
+
     margin-top: 60px;
+
     padding: 40px;
 
-    border: 1px solid rgba(255,255,255,.1);
+    border:
+        1px solid
+        rgba(255,255,255,.1);
 
-    background: rgba(255,255,255,.025);
+    background:
+        rgba(255,255,255,.025);
 }
 
+
 .description-title {
+
     margin-bottom: 20px;
 
     font-size: 11px;
+
     letter-spacing: 4px;
 }
 
+
 .description-text {
+
     max-width: 900px;
 
-    color: rgba(255,255,255,.58);
+    color:
+        rgba(255,255,255,.58);
 
     font-size: 14px;
+
     line-height: 1.9;
 }
 
-/* FEATURES */
+
+/* =========================================
+   FEATURES
+========================================= */
 
 .features-title {
+
     margin-top: 60px;
+
     margin-bottom: 25px;
 
     text-align: center;
 
-    color: rgba(255,255,255,.45);
+    color:
+        rgba(255,255,255,.45);
 
     font-size: 10px;
+
     letter-spacing: 5px;
 }
 
+
 .features {
+
     display: grid;
-    grid-template-columns: repeat(3,1fr);
+
+    grid-template-columns:
+        repeat(3,1fr);
 
     gap: 15px;
 }
 
+
 .feature {
+
     padding: 28px;
 
-    border: 1px solid rgba(255,255,255,.1);
+    border:
+        1px solid
+        rgba(255,255,255,.1);
 
-    background: rgba(255,255,255,.02);
+    background:
+        rgba(255,255,255,.02);
 
-    transition: .35s ease;
+    transition:
+        .35s ease;
 }
+
 
 .feature:hover {
-    transform: translateY(-6px);
 
-    border-color: rgba(190,205,230,.4);
+    transform:
+        translateY(-6px);
 
-    background: rgba(255,255,255,.04);
+    border-color:
+        rgba(190,205,230,.4);
+
+    background:
+        rgba(255,255,255,.04);
 }
 
+
 .feature-title {
+
     margin-bottom: 12px;
 
     font-size: 11px;
+
     letter-spacing: 2px;
 }
 
+
 .feature-text {
-    color: rgba(255,255,255,.5);
+
+    color:
+        rgba(255,255,255,.5);
 
     font-size: 12px;
+
     line-height: 1.7;
 }
 
-/* FACT */
+
+/* =========================================
+   FACT
+========================================= */
 
 .fact {
+
     margin-top: 60px;
+
     padding: 40px;
 
     text-align: center;
 
-    border: 1px solid rgba(255,255,255,.12);
+    border:
+        1px solid
+        rgba(255,255,255,.12);
 
-    background: rgba(255,255,255,.025);
+    background:
+        rgba(255,255,255,.025);
 }
 
+
 .fact-label {
+
     margin-bottom: 16px;
 
-    color: rgba(255,255,255,.42);
+    color:
+        rgba(255,255,255,.42);
 
     font-size: 9px;
+
     letter-spacing: 4px;
 }
 
+
 .fact-text {
+
     max-width: 800px;
 
     margin: auto;
 
-    font-size: clamp(18px,3vw,27px);
+    font-size:
+        clamp(18px,3vw,27px);
+
     line-height: 1.5;
 }
 
-/* NAVIGATION */
+
+/* =========================================
+   NAVIGATION
+========================================= */
 
 .navigation {
+
     display: flex;
 
     justify-content: center;
@@ -391,152 +598,225 @@ h1 {
     flex-wrap: wrap;
 }
 
+
 .nav-button {
+
     display: inline-flex;
 
     align-items: center;
+
     justify-content: center;
 
     padding: 13px 22px;
 
-    color: rgba(255,255,255,.75);
+    color:
+        rgba(255,255,255,.75);
 
-    border: 1px solid rgba(255,255,255,.2);
+    border:
+        1px solid
+        rgba(255,255,255,.2);
 
     text-decoration: none;
 
     font-size: 9px;
+
     letter-spacing: 2px;
 
-    transition: .35s ease;
+    transition:
+        .35s ease;
 }
 
+
 .nav-button:hover {
+
     color: #020308;
 
     background: white;
 
     border-color: white;
 
-    transform: translateY(-4px);
+    transform:
+        translateY(-4px);
 }
 
-/* CREDIT */
+
+/* =========================================
+   CREDIT
+========================================= */
 
 .credit {
+
     margin-top: 30px;
 
     text-align: center;
 
-    color: rgba(255,255,255,.3);
+    color:
+        rgba(255,255,255,.3);
 
     font-size: 9px;
+
     line-height: 1.7;
 }
 
-/* MOBILE */
+
+/* =========================================
+   MOBILE
+========================================= */
 
 @media(max-width:800px) {
 
     .hiaka-area {
+
         min-height: 420px;
     }
 
+
     .line {
+
         width: 480px;
+
         height: 480px;
     }
 
+
     .line-2 {
+
         width: 350px;
+
         height: 350px;
     }
 
+
     .line-3 {
+
         width: 550px;
+
         height: 240px;
     }
 
+
     .stats {
+
         grid-template-columns: 1fr;
     }
 
+
     .features {
+
         grid-template-columns: 1fr;
     }
+
 }
+
 
 @media(max-width:500px) {
 
     .hiaka-page {
-        padding: 45px 15px 70px;
+
+        padding:
+            45px 15px 70px;
     }
 
+
     .hiaka-area {
+
         min-height: 330px;
+
         margin-top: 45px;
     }
 
+
     .line {
+
         width: 330px;
+
         height: 330px;
     }
 
+
     .line-2 {
+
         width: 240px;
+
         height: 240px;
     }
 
+
     .line-3 {
+
         width: 350px;
+
         height: 170px;
     }
 
+
     .hiaka-symbol-title {
+
         font-size: 65px;
+
         letter-spacing: 7px;
     }
 
+
     .description {
+
         padding: 25px;
     }
 
+
     .fact {
-        padding: 28px 20px;
+
+        padding:
+            28px 20px;
     }
+
 }
 
 </style>
+
 </head>
 
 
 <body>
 
+
 <section class="hiaka-page">
 
+
 <div class="stars"></div>
+
 <div class="stars-small"></div>
 
 
-<!-- HEADER -->
+<!-- =========================================
+     HEADER
+========================================= -->
 
 <div class="header">
 
+
 <a
-href="https://sites.google.com/view/kosmolearn/solar-system/dwarf-planets/haumea"
+href="../"
 class="return">
 
 ← RETURN TO HAUMEA
 
 </a>
 
+
 <div class="label">
+
 ORBONIX · HAUMEA MOONS
+
 </div>
 
+
 <h1>
+
 HIIAKA
+
 </h1>
+
 
 <div class="subtitle">
 
@@ -546,49 +826,73 @@ from its rapidly rotating parent world.
 
 </div>
 
+
 </div>
 
 
-<!-- MAIN -->
+<!-- =========================================
+     MAIN
+========================================= -->
 
 <div class="hiaka-area">
 
+
 <div class="line"></div>
+
 <div class="line line-2"></div>
+
 <div class="line line-3"></div>
+
 
 <div class="hiaka-symbol">
 
+
 <div class="hiaka-symbol-title">
+
 HIIAKA
+
 </div>
+
 
 <div class="hiaka-symbol-subtitle">
+
 MOON OF HAUMEA
-</div>
 
 </div>
 
+
 </div>
 
 
-<!-- CONTENT -->
+</div>
+
+
+<!-- =========================================
+     CONTENT
+========================================= -->
 
 <div class="content">
 
 
-<!-- STATS -->
+<!-- =========================================
+     STATS
+========================================= -->
 
 <div class="stats">
 
+
 <div class="stat">
 
 <div class="stat-value">
+
 ~310 km
+
 </div>
 
 <div class="stat-label">
+
 ESTIMATED DIAMETER
+
 </div>
 
 </div>
@@ -597,11 +901,15 @@ ESTIMATED DIAMETER
 <div class="stat">
 
 <div class="stat-value">
+
 49.5 DAYS
+
 </div>
 
 <div class="stat-label">
+
 ORBITAL PERIOD
+
 </div>
 
 </div>
@@ -610,11 +918,15 @@ ORBITAL PERIOD
 <div class="stat">
 
 <div class="stat-value">
+
 ~49,880 km
+
 </div>
 
 <div class="stat-label">
+
 DISTANCE FROM HAUMEA
+
 </div>
 
 </div>
@@ -623,11 +935,15 @@ DISTANCE FROM HAUMEA
 <div class="stat">
 
 <div class="stat-value">
+
 2005
+
 </div>
 
 <div class="stat-label">
+
 DISCOVERED
+
 </div>
 
 </div>
@@ -636,10 +952,16 @@ DISCOVERED
 <div class="stat">
 
 <div class="stat-value">
-OUTER</div>
+
+OUTER
+
+</div>
 
 <div class="stat-label">
-HAUMEA MOON</div>
+
+HAUMEA MOON
+
+</div>
 
 </div>
 
@@ -647,23 +969,36 @@ HAUMEA MOON</div>
 <div class="stat">
 
 <div class="stat-value">
-LARGER</div>
+
+LARGER
+
+</div>
 
 <div class="stat-label">
-HAUMEA'S TWO KNOWN MOONS</div>
+
+HAUMEA'S TWO KNOWN MOONS
 
 </div>
 
 </div>
 
 
-<!-- DESCRIPTION -->
+</div>
+
+
+<!-- =========================================
+     DESCRIPTION
+========================================= -->
 
 <div class="description">
 
+
 <div class="description-title">
+
 THE LARGER MOON
+
 </div>
+
 
 <div class="description-text">
 
@@ -693,20 +1028,29 @@ history of the Haumea system.
 </div>
 
 
-<!-- FEATURES -->
+<!-- =========================================
+     FEATURES
+========================================= -->
 
 <div class="features-title">
+
 HIIAKA FEATURES
+
 </div>
 
 
 <div class="features">
 
+
 <div class="feature">
 
+
 <div class="feature-title">
+
 LARGER MOON
+
 </div>
+
 
 <div class="feature-text">
 
@@ -716,14 +1060,19 @@ Namaka.
 
 </div>
 
+
 </div>
 
 
 <div class="feature">
 
+
 <div class="feature-title">
+
 WATER ICE
+
 </div>
+
 
 <div class="feature-text">
 
@@ -732,14 +1081,19 @@ surface is rich in crystalline water ice.
 
 </div>
 
+
 </div>
 
 
 <div class="feature">
 
+
 <div class="feature-title">
+
 HAUMEA SYSTEM
+
 </div>
+
 
 <div class="feature-text">
 
@@ -749,18 +1103,26 @@ history of the Haumea system.
 
 </div>
 
-</div>
 
 </div>
 
 
-<!-- FACT -->
+</div>
+
+
+<!-- =========================================
+     FACT
+========================================= -->
 
 <div class="fact">
 
+
 <div class="fact-label">
+
 DID YOU KNOW?
+
 </div>
+
 
 <div class="fact-text">
 
@@ -770,28 +1132,34 @@ moons of a dwarf planet.
 
 </div>
 
+
 </div>
 
 
-<!-- NAVIGATION -->
+<!-- =========================================
+     NAVIGATION
+========================================= -->
 
 <div class="navigation">
 
+
 <a
-href="https://sites.google.com/view/kosmolearn/solar-system/dwarf-planets/haumea"
+href="../"
 class="nav-button">
 
 ← RETURN TO HAUMEA
 
 </a>
 
+
 <a
-href="https://sites.google.com/view/kosmolearn/solar-system/dwarf-planets/haumea/namaka"
+href="../namaka/"
 class="nav-button">
 
 → NAMAKA
 
 </a>
+
 
 </div>
 
@@ -804,18 +1172,25 @@ HIIAKA · MOON OF HAUMEA
 
 </div>
 
+
 </div>
+
 
 </section>
 
 
 <script>
 
+/* =========================================
+   STAR PARALLAX
+========================================= */
+
 const stars =
 document.querySelector(".stars");
 
 const smallStars =
 document.querySelector(".stars-small");
+
 
 document.addEventListener(
 "mousemove",
@@ -829,11 +1204,13 @@ function(event) {
         event.clientY /
         window.innerHeight - 0.5;
 
+
     stars.style.transform =
         `translate(
             ${x * 20}px,
             ${y * 20}px
         )`;
+
 
     smallStars.style.transform =
         `translate(
@@ -843,7 +1220,46 @@ function(event) {
 
 });
 
+
+/* =========================================
+   TOUCH SUPPORT
+========================================= */
+
+document.addEventListener(
+"touchmove",
+function(event) {
+
+    if (!event.touches.length) return;
+
+    const x =
+        event.touches[0].clientX /
+        window.innerWidth - 0.5;
+
+    const y =
+        event.touches[0].clientY /
+        window.innerHeight - 0.5;
+
+
+    stars.style.transform =
+        `translate(
+            ${x * 12}px,
+            ${y * 12}px
+        )`;
+
+
+    smallStars.style.transform =
+        `translate(
+            ${x * -8}px,
+            ${y * -8}px
+        )`;
+
+},
+{ passive: true }
+);
+
 </script>
 
+
 </body>
+
 </html>
