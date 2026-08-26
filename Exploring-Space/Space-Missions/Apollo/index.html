@@ -418,6 +418,18 @@ h1 {
 
     background:
         rgba(255,255,255,.025);
+
+    transition: .35s ease;
+}
+
+
+.description:hover {
+
+    border-color:
+        rgba(255,255,255,.2);
+
+    transform:
+        translateY(-3px);
 }
 
 
@@ -800,7 +812,7 @@ h1 {
 
 
 <a
-href="https://sites.google.com/view/kosmolearn"
+href="/"
 class="return">
 
 ← RETURN TO HOME
@@ -864,7 +876,9 @@ alt="Apollo 11 Saturn V launch">
 <div class="content">
 
 
-<!-- STATS -->
+<!-- =========================================
+     STATS
+========================================= -->
 
 <div class="stats">
 
@@ -947,10 +961,12 @@ LAUNCH VEHICLE
 </div>
 
 
-<!-- DESCRIPTION -->
-
 </div>
 
+
+<!-- =========================================
+     DESCRIPTION
+========================================= -->
 
 <div class="description">
 
@@ -1000,7 +1016,9 @@ walked on the Moon.
 </div>
 
 
-<!-- FEATURES -->
+<!-- =========================================
+     FEATURES
+========================================= -->
 
 <div class="features-title">
 
@@ -1072,7 +1090,9 @@ the Moon.
 </div>
 
 
-<!-- FACT -->
+<!-- =========================================
+     FACT
+========================================= -->
 
 <div class="fact">
 
@@ -1097,13 +1117,15 @@ their first steps on another world.
 </div>
 
 
-<!-- NAVIGATION -->
+<!-- =========================================
+     NAVIGATION
+========================================= -->
 
 <div class="navigation">
 
 
 <a
-href="https://sites.google.com/view/kosmolearn"
+href="/"
 class="nav-button">
 
 ← RETURN TO HOME
@@ -1112,7 +1134,7 @@ class="nav-button">
 
 
 <a
-href="https://sites.google.com/view/kosmolearn/space-missions"
+href="/space-missions/"
 class="nav-button">
 
 ← SPACE MISSIONS
@@ -1140,6 +1162,10 @@ ORBONIX · SPACE MISSIONS
 
 
 <script>
+
+/* =========================================
+   STAR PARALLAX
+========================================= */
 
 const stars =
 document.querySelector(".stars");
@@ -1177,6 +1203,23 @@ function(event) {
         )`;
 
 });
+
+
+/* =========================================
+   IMAGE FALLBACK
+========================================= */
+
+const missionImage =
+document.querySelector(".mission-image");
+
+missionImage.addEventListener(
+"error",
+function() {
+
+    this.style.display = "none";
+
+});
+
 
 </script>
 
