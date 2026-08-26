@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,13 +32,9 @@ body {
 ========================================= */
 
 .terms-page {
-
     position: relative;
-
     min-height: 100vh;
-
     padding: 55px 20px 100px;
-
     overflow: hidden;
 
     background:
@@ -56,14 +51,15 @@ body {
    STARS
 ========================================= */
 
-.stars {
-
+.stars,
+.stars-small {
     position: fixed;
-
     inset: -20%;
-
     pointer-events: none;
+    z-index: 0;
+}
 
+.stars {
     opacity: .35;
 
     background-image:
@@ -79,15 +75,7 @@ body {
         transform 1.5s ease;
 }
 
-
 .stars-small {
-
-    position: fixed;
-
-    inset: -20%;
-
-    pointer-events: none;
-
     opacity: .14;
 
     background-image:
@@ -109,9 +97,7 @@ body {
 ========================================= */
 
 .header {
-
     position: relative;
-
     z-index: 10;
 
     max-width: 900px;
@@ -122,9 +108,15 @@ body {
 }
 
 
-.return {
+/* =========================================
+   RETURN BUTTON
+========================================= */
 
+.return {
     display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
 
     padding: 12px 20px;
 
@@ -146,9 +138,7 @@ body {
     transition: .35s ease;
 }
 
-
 .return:hover {
-
     color: #01030a;
 
     background: white;
@@ -160,8 +150,11 @@ body {
 }
 
 
-.label {
+/* =========================================
+   HEADER TEXT
+========================================= */
 
+.label {
     margin-bottom: 18px;
 
     color:
@@ -172,9 +165,7 @@ body {
     letter-spacing: 5px;
 }
 
-
 h1 {
-
     margin: 0;
 
     font-size:
@@ -185,9 +176,7 @@ h1 {
     letter-spacing: 6px;
 }
 
-
 .subtitle {
-
     max-width: 680px;
 
     margin: 25px auto 0;
@@ -206,7 +195,6 @@ h1 {
 ========================================= */
 
 .terms {
-
     position: relative;
 
     z-index: 5;
@@ -230,7 +218,6 @@ h1 {
 ========================================= */
 
 .term-card {
-
     position: relative;
 
     padding: 30px;
@@ -252,9 +239,7 @@ h1 {
         background .4s ease;
 }
 
-
 .term-card::before {
-
     content: "";
 
     position: absolute;
@@ -278,9 +263,7 @@ h1 {
     transition: .4s ease;
 }
 
-
 .term-card:hover {
-
     transform:
         translateY(-7px);
 
@@ -291,15 +274,16 @@ h1 {
         rgba(255,255,255,.045);
 }
 
-
 .term-card:hover::before {
-
     opacity: 1;
 }
 
 
-.term-number {
+/* =========================================
+   TERM CONTENT
+========================================= */
 
+.term-number {
     margin-bottom: 18px;
 
     color:
@@ -310,9 +294,7 @@ h1 {
     letter-spacing: 3px;
 }
 
-
 .term-name {
-
     margin-bottom: 13px;
 
     font-size: 17px;
@@ -322,9 +304,7 @@ h1 {
     letter-spacing: 1px;
 }
 
-
 .term-description {
-
     color:
         rgba(255,255,255,.52);
 
@@ -339,7 +319,6 @@ h1 {
 ========================================= */
 
 .footer {
-
     position: relative;
 
     z-index: 5;
@@ -364,7 +343,6 @@ h1 {
 @media(max-width:850px) {
 
     .terms {
-
         grid-template-columns:
             repeat(2,1fr);
     }
@@ -375,23 +353,45 @@ h1 {
 @media(max-width:550px) {
 
     .terms-page {
-
         padding:
             45px 15px 70px;
     }
 
     .terms {
-
         grid-template-columns: 1fr;
 
         margin-top: 50px;
     }
 
     .term-card {
-
         min-height: auto;
 
         padding: 25px;
+    }
+
+    h1 {
+        letter-spacing: 4px;
+    }
+
+}
+
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media(prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        scroll-behavior: auto !important;
+
+        transition-duration: .01ms !important;
     }
 
 }
@@ -420,7 +420,7 @@ h1 {
 
 
 <a
-href="https://sites.google.com/view/kosmolearn"
+href="/"
 class="return">
 
 ← RETURN TO HOME
@@ -454,6 +454,7 @@ Learn the language of the Universe.
 </header>
 
 
+
 <!-- =========================================
      TERMS
 ========================================= -->
@@ -461,11 +462,21 @@ Learn the language of the Universe.
 <main class="terms">
 
 
+<!-- 01 -->
+
 <div class="term-card">
 
-<div class="term-number">01 · DISTANCE</div>
+<div class="term-number">
 
-<div class="term-name">ASTRONOMICAL UNIT</div>
+01 · DISTANCE
+
+</div>
+
+<div class="term-name">
+
+ASTRONOMICAL UNIT
+
+</div>
 
 <div class="term-description">
 
@@ -478,11 +489,21 @@ distance between Earth and the Sun.
 </div>
 
 
+<!-- 02 -->
+
 <div class="term-card">
 
-<div class="term-number">02 · MOTION</div>
+<div class="term-number">
 
-<div class="term-name">ORBIT</div>
+02 · MOTION
+
+</div>
+
+<div class="term-name">
+
+ORBIT
+
+</div>
 
 <div class="term-description">
 
@@ -494,11 +515,21 @@ around another object because of gravity.
 </div>
 
 
+<!-- 03 -->
+
 <div class="term-card">
 
-<div class="term-number">03 · FORCE</div>
+<div class="term-number">
 
-<div class="term-name">GRAVITY</div>
+03 · FORCE
+
+</div>
+
+<div class="term-name">
+
+GRAVITY
+
+</div>
 
 <div class="term-description">
 
@@ -510,11 +541,21 @@ with mass toward one another.
 </div>
 
 
+<!-- 04 -->
+
 <div class="term-card">
 
-<div class="term-number">04 · PLANETS</div>
+<div class="term-number">
 
-<div class="term-name">ATMOSPHERE</div>
+04 · PLANETS
+
+</div>
+
+<div class="term-name">
+
+ATMOSPHERE
+
+</div>
 
 <div class="term-description">
 
@@ -526,11 +567,21 @@ a planet, moon, or other astronomical object.
 </div>
 
 
+<!-- 05 -->
+
 <div class="term-card">
 
-<div class="term-number">05 · MOONS</div>
+<div class="term-number">
 
-<div class="term-name">SATELLITE</div>
+05 · MOONS
+
+</div>
+
+<div class="term-name">
+
+SATELLITE
+
+</div>
 
 <div class="term-description">
 
@@ -542,11 +593,21 @@ object. Natural satellites include moons.
 </div>
 
 
+<!-- 06 -->
+
 <div class="term-card">
 
-<div class="term-number">06 · PLANET CLASS</div>
+<div class="term-number">
 
-<div class="term-name">DWARF PLANET</div>
+06 · PLANET CLASS
+
+</div>
+
+<div class="term-name">
+
+DWARF PLANET
+
+</div>
 
 <div class="term-description">
 
@@ -558,11 +619,21 @@ round, but has not cleared its orbital region.
 </div>
 
 
+<!-- 07 -->
+
 <div class="term-card">
 
-<div class="term-number">07 · SMALL BODIES</div>
+<div class="term-number">
 
-<div class="term-name">ASTEROID</div>
+07 · SMALL BODIES
+
+</div>
+
+<div class="term-name">
+
+ASTEROID
+
+</div>
 
 <div class="term-description">
 
@@ -574,11 +645,21 @@ that orbits the Sun.
 </div>
 
 
+<!-- 08 -->
+
 <div class="term-card">
 
-<div class="term-number">08 · SMALL BODIES</div>
+<div class="term-number">
 
-<div class="term-name">COMET</div>
+08 · SMALL BODIES
+
+</div>
+
+<div class="term-name">
+
+COMET
+
+</div>
 
 <div class="term-description">
 
@@ -591,11 +672,21 @@ the Sun.
 </div>
 
 
+<!-- 09 -->
+
 <div class="term-card">
 
-<div class="term-number">09 · SOLAR SYSTEM</div>
+<div class="term-number">
 
-<div class="term-name">KUIPER BELT</div>
+09 · SOLAR SYSTEM
+
+</div>
+
+<div class="term-name">
+
+KUIPER BELT
+
+</div>
 
 <div class="term-description">
 
@@ -607,11 +698,21 @@ Neptune containing icy bodies and dwarf planets.
 </div>
 
 
+<!-- 10 -->
+
 <div class="term-card">
 
-<div class="term-number">10 · OUTER SOLAR SYSTEM</div>
+<div class="term-number">
 
-<div class="term-name">OORT CLOUD</div>
+10 · OUTER SOLAR SYSTEM
+
+</div>
+
+<div class="term-name">
+
+OORT CLOUD
+
+</div>
 
 <div class="term-description">
 
@@ -623,11 +724,21 @@ of icy objects surrounding the Solar System.
 </div>
 
 
+<!-- 11 -->
+
 <div class="term-card">
 
-<div class="term-number">11 · DISTANCE</div>
+<div class="term-number">
 
-<div class="term-name">LIGHT-YEAR</div>
+11 · DISTANCE
+
+</div>
+
+<div class="term-name">
+
+LIGHT-YEAR
+
+</div>
 
 <div class="term-description">
 
@@ -639,11 +750,21 @@ through space in one year: about 9.46 trillion km.
 </div>
 
 
+<!-- 12 -->
+
 <div class="term-card">
 
-<div class="term-number">12 · DEEP SPACE</div>
+<div class="term-number">
 
-<div class="term-name">NEBULA</div>
+12 · DEEP SPACE
+
+</div>
+
+<div class="term-name">
+
+NEBULA
+
+</div>
 
 <div class="term-description">
 
@@ -655,11 +776,21 @@ in space. Some are regions where stars form.
 </div>
 
 
+<!-- 13 -->
+
 <div class="term-card">
 
-<div class="term-number">13 · GALACTIC STRUCTURE</div>
+<div class="term-number">
 
-<div class="term-name">GALAXY</div>
+13 · GALACTIC STRUCTURE
+
+</div>
+
+<div class="term-name">
+
+GALAXY
+
+</div>
 
 <div class="term-description">
 
@@ -672,11 +803,21 @@ together by gravity.
 </div>
 
 
+<!-- 14 -->
+
 <div class="term-card">
 
-<div class="term-number">14 · EXTREME OBJECTS</div>
+<div class="term-number">
 
-<div class="term-name">BLACK HOLE</div>
+14 · EXTREME OBJECTS
+
+</div>
+
+<div class="term-name">
+
+BLACK HOLE
+
+</div>
 
 <div class="term-description">
 
@@ -689,11 +830,21 @@ light, can escape from inside the event horizon.
 </div>
 
 
+<!-- 15 -->
+
 <div class="term-card">
 
-<div class="term-number">15 · BLACK HOLES</div>
+<div class="term-number">
 
-<div class="term-name">EVENT HORIZON</div>
+15 · BLACK HOLES
+
+</div>
+
+<div class="term-name">
+
+EVENT HORIZON
+
+</div>
 
 <div class="term-description">
 
@@ -705,11 +856,21 @@ a black hole beyond which escape is impossible.
 </div>
 
 
+<!-- 16 -->
+
 <div class="term-card">
 
-<div class="term-number">16 · BLACK HOLES</div>
+<div class="term-number">
 
-<div class="term-name">SINGULARITY</div>
+16 · BLACK HOLES
+
+</div>
+
+<div class="term-name">
+
+SINGULARITY
+
+</div>
 
 <div class="term-description">
 
@@ -722,11 +883,21 @@ curvature becomes extreme.
 </div>
 
 
+<!-- 17 -->
+
 <div class="term-card">
 
-<div class="term-number">17 · OTHER WORLDS</div>
+<div class="term-number">
 
-<div class="term-name">EXOPLANET</div>
+17 · OTHER WORLDS
+
+</div>
+
+<div class="term-name">
+
+EXOPLANET
+
+</div>
 
 <div class="term-description">
 
@@ -738,11 +909,21 @@ outside our Solar System.
 </div>
 
 
+<!-- 18 -->
+
 <div class="term-card">
 
-<div class="term-number">18 · STELLAR DEATH</div>
+<div class="term-number">
 
-<div class="term-name">SUPERNOVA</div>
+18 · STELLAR DEATH
+
+</div>
+
+<div class="term-name">
+
+SUPERNOVA
+
+</div>
 
 <div class="term-description">
 
@@ -754,11 +935,21 @@ explosion that can briefly outshine an entire galaxy.
 </div>
 
 
+<!-- 19 -->
+
 <div class="term-card">
 
-<div class="term-number">19 · STELLAR REMNANTS</div>
+<div class="term-number">
 
-<div class="term-name">NEUTRON STAR</div>
+19 · STELLAR REMNANTS
+
+</div>
+
+<div class="term-name">
+
+NEUTRON STAR
+
+</div>
 
 <div class="term-description">
 
@@ -770,11 +961,21 @@ left after certain massive stars explode.
 </div>
 
 
+<!-- 20 -->
+
 <div class="term-card">
 
-<div class="term-number">20 · STELLAR REMNANTS</div>
+<div class="term-number">
 
-<div class="term-name">WHITE DWARF</div>
+20 · STELLAR REMNANTS
+
+</div>
+
+<div class="term-name">
+
+WHITE DWARF
+
+</div>
 
 <div class="term-description">
 
@@ -786,11 +987,21 @@ of a Sun-like star after it has shed its outer layers.
 </div>
 
 
+<!-- 21 -->
+
 <div class="term-card">
 
-<div class="term-number">21 · COSMOLOGY</div>
+<div class="term-number">
 
-<div class="term-name">DARK MATTER</div>
+21 · COSMOLOGY
+
+</div>
+
+<div class="term-name">
+
+DARK MATTER
+
+</div>
 
 <div class="term-description">
 
@@ -803,11 +1014,21 @@ and cosmic structures.
 </div>
 
 
+<!-- 22 -->
+
 <div class="term-card">
 
-<div class="term-number">22 · COSMOLOGY</div>
+<div class="term-number">
 
-<div class="term-name">DARK ENERGY</div>
+22 · COSMOLOGY
+
+</div>
+
+<div class="term-name">
+
+DARK ENERGY
+
+</div>
 
 <div class="term-description">
 
@@ -819,11 +1040,21 @@ is driving the accelerated expansion of the Universe.
 </div>
 
 
+<!-- 23 -->
+
 <div class="term-card">
 
-<div class="term-number">23 · THE SUN</div>
+<div class="term-number">
 
-<div class="term-name">SOLAR WIND</div>
+23 · THE SUN
+
+</div>
+
+<div class="term-name">
+
+SOLAR WIND
+
+</div>
 
 <div class="term-description">
 
@@ -835,11 +1066,21 @@ particles released by the Sun into space.
 </div>
 
 
+<!-- 24 -->
+
 <div class="term-card">
 
-<div class="term-number">24 · SOLAR SYSTEM</div>
+<div class="term-number">
 
-<div class="term-name">HELIOSPHERE</div>
+24 · SOLAR SYSTEM
+
+</div>
+
+<div class="term-name">
+
+HELIOSPHERE
+
+</div>
 
 <div class="term-description">
 
@@ -851,11 +1092,21 @@ the Sun created by the solar wind.
 </div>
 
 
+<!-- 25 -->
+
 <div class="term-card">
 
-<div class="term-number">25 · SOLAR SYSTEM</div>
+<div class="term-number">
 
-<div class="term-name">HELIOPAUSE</div>
+25 · SOLAR SYSTEM
+
+</div>
+
+<div class="term-name">
+
+HELIOPAUSE
+
+</div>
 
 <div class="term-description">
 
@@ -867,11 +1118,21 @@ heliosphere where the solar wind meets interstellar space.
 </div>
 
 
+<!-- 26 -->
+
 <div class="term-card">
 
-<div class="term-number">26 · DISTANCE</div>
+<div class="term-number">
 
-<div class="term-name">PARSEC</div>
+26 · DISTANCE
+
+</div>
+
+<div class="term-name">
+
+PARSEC
+
+</div>
 
 <div class="term-description">
 
@@ -883,11 +1144,21 @@ to about 3.26 light-years.
 </div>
 
 
+<!-- 27 -->
+
 <div class="term-card">
 
-<div class="term-number">27 · STARS</div>
+<div class="term-number">
 
-<div class="term-name">RED GIANT</div>
+27 · STARS
+
+</div>
+
+<div class="term-name">
+
+RED GIANT
+
+</div>
 
 <div class="term-description">
 
@@ -899,11 +1170,21 @@ enormously after exhausting hydrogen in its core.
 </div>
 
 
+<!-- 28 -->
+
 <div class="term-card">
 
-<div class="term-number">28 · STARS</div>
+<div class="term-number">
 
-<div class="term-name">MAIN SEQUENCE</div>
+28 · STARS
+
+</div>
+
+<div class="term-name">
+
+MAIN SEQUENCE
+
+</div>
 
 <div class="term-description">
 
@@ -915,11 +1196,21 @@ fuses hydrogen into helium in its core.
 </div>
 
 
+<!-- 29 -->
+
 <div class="term-card">
 
-<div class="term-number">29 · PLANETS</div>
+<div class="term-number">
 
-<div class="term-name">HABITABLE ZONE</div>
+29 · PLANETS
+
+</div>
+
+<div class="term-name">
+
+HABITABLE ZONE
+
+</div>
 
 <div class="term-description">
 
@@ -932,11 +1223,21 @@ on a planet's surface.
 </div>
 
 
+<!-- 30 -->
+
 <div class="term-card">
 
-<div class="term-number">30 · GRAVITY</div>
+<div class="term-number">
 
-<div class="term-name">ROCHE LIMIT</div>
+30 · GRAVITY
+
+</div>
+
+<div class="term-name">
+
+ROCHE LIMIT
+
+</div>
 
 <div class="term-description">
 
@@ -949,11 +1250,21 @@ held together mainly by gravity.
 </div>
 
 
+<!-- 31 -->
+
 <div class="term-card">
 
-<div class="term-number">31 · GRAVITY</div>
+<div class="term-number">
 
-<div class="term-name">TIDAL FORCES</div>
+31 · GRAVITY
+
+</div>
+
+<div class="term-name">
+
+TIDAL FORCES
+
+</div>
 
 <div class="term-description">
 
@@ -980,6 +1291,10 @@ ORBONIX · SPACE KNOWLEDGE
 
 <script>
 
+/* =========================================
+   STAR PARALLAX
+========================================= */
+
 const stars =
 document.querySelector(".stars");
 
@@ -988,32 +1303,96 @@ document.querySelector(".stars-small");
 
 
 document.addEventListener(
-"mousemove",
-function(event) {
+    "mousemove",
+    function(event) {
 
-    const x =
-        event.clientX /
-        window.innerWidth - 0.5;
+        const x =
+            event.clientX /
+            window.innerWidth -
+            0.5;
 
-    const y =
-        event.clientY /
-        window.innerHeight - 0.5;
-
-
-    stars.style.transform =
-        `translate(
-            ${x * 20}px,
-            ${y * 20}px
-        )`;
+        const y =
+            event.clientY /
+            window.innerHeight -
+            0.5;
 
 
-    smallStars.style.transform =
-        `translate(
-            ${x * -12}px,
-            ${y * -12}px
-        )`;
+        stars.style.transform =
+            `translate(
+                ${x * 20}px,
+                ${y * 20}px
+            )`;
 
-});
+
+        smallStars.style.transform =
+            `translate(
+                ${x * -12}px,
+                ${y * -12}px
+            )`;
+
+    }
+);
+
+
+/* =========================================
+   CARD REVEAL
+========================================= */
+
+const cards =
+document.querySelectorAll(".term-card");
+
+
+const revealObserver =
+new IntersectionObserver(
+    entries => {
+
+        entries.forEach(
+            entry => {
+
+                if (
+                    entry.isIntersecting
+                ) {
+
+                    entry.target.style.opacity =
+                        "1";
+
+                    entry.target.style.transform =
+                        "translateY(0)";
+
+                    revealObserver.unobserve(
+                        entry.target
+                    );
+
+                }
+
+            }
+        );
+
+    },
+    {
+        threshold: 0.08
+    }
+);
+
+
+cards.forEach(
+    (card, index) => {
+
+        card.style.opacity = "0";
+
+        card.style.transform =
+            "translateY(25px)";
+
+        card.style.transition =
+            `opacity .6s ease ${index * 0.025}s,
+             transform .6s ease ${index * 0.025}s,
+             border-color .4s ease,
+             background .4s ease`;
+
+        revealObserver.observe(card);
+
+    }
+);
 
 </script>
 
@@ -1021,4 +1400,3 @@ function(event) {
 </body>
 
 </html>
-```
