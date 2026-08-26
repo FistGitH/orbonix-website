@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,6 +5,8 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Galatea | ORBONIX</title>
 
 <style>
 
@@ -125,6 +126,7 @@ body {
     display: inline-flex;
 
     align-items: center;
+    justify-content: center;
 
     padding: 12px 20px;
 
@@ -145,6 +147,8 @@ body {
 
     transition:
         .35s ease;
+
+    cursor: pointer;
 }
 
 
@@ -276,7 +280,7 @@ h1 {
 
 
 /* =========================================
-   GALATEA IMAGE
+   GALATEA
 ========================================= */
 
 .galatea {
@@ -295,7 +299,7 @@ h1 {
 
     text-decoration: none;
 
-    overflow: hidden;
+    overflow: visible;
 
     transition:
         transform .45s ease;
@@ -719,6 +723,8 @@ h1 {
 
     transition:
         .35s ease;
+
+    cursor: pointer;
 }
 
 
@@ -932,7 +938,7 @@ h1 {
 
 
 <a
-href="https://sites.google.com/view/kosmolearn/solar-system/neptune"
+href="/solar-system/neptune"
 class="return">
 
 ← RETURN TO NEPTUNE
@@ -987,15 +993,13 @@ its gravitational influence.
 <div class="dot dot-3"></div>
 
 
-<a
-href="#GALATEA"
-class="galatea">
-
+<div
+class="galatea"
+id="galatea">
 
 <img
 src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Galatea_moon.jpg"
 alt="Galatea - Neptune moon">
-
 
 <div class="galatea-name">
 
@@ -1003,8 +1007,7 @@ GALATEA
 
 </div>
 
-
-</a>
+</div>
 
 
 </div>
@@ -1017,7 +1020,9 @@ GALATEA
 <div class="content">
 
 
-<!-- STATS -->
+<!-- =========================================
+     STATS
+========================================= -->
 
 <div class="stats">
 
@@ -1077,7 +1082,8 @@ DISCOVERED
 <div class="stat">
 
 <div class="stat-value">
-INNER</div>
+INNER
+</div>
 
 <div class="stat-label">
 MOON TYPE
@@ -1089,10 +1095,12 @@ MOON TYPE
 <div class="stat">
 
 <div class="stat-value">
-RING SHEPHERD</div>
+RING SHEPHERD
+</div>
 
 <div class="stat-label">
-ROLE</div>
+ROLE
+</div>
 
 </div>
 
@@ -1100,7 +1108,9 @@ ROLE</div>
 </div>
 
 
-<!-- DESCRIPTION -->
+<!-- =========================================
+     DESCRIPTION
+========================================= -->
 
 <div class="description">
 
@@ -1141,7 +1151,9 @@ Solar System moons.
 </div>
 
 
-<!-- FEATURES -->
+<!-- =========================================
+     FEATURES
+========================================= -->
 
 <div class="features-title">
 
@@ -1213,7 +1225,9 @@ flyby of Neptune.
 </div>
 
 
-<!-- FACT -->
+<!-- =========================================
+     FACT
+========================================= -->
 
 <div class="fact">
 
@@ -1238,22 +1252,15 @@ Neptune ring system.
 </div>
 
 
-<!-- NAVIGATION -->
+<!-- =========================================
+     NAVIGATION
+========================================= -->
 
 <div class="navigation">
 
 
 <a
-href="https://sites.google.com/view/kosmolearn/solar-system/neptune"
-class="nav-button">
-
-← RETURN TO NEPTUNE
-
-</a>
-
-
-<a
-href="https://sites.google.com/view/kosmolearn/solar-system/neptune"
+href="/solar-system/neptune"
 class="nav-button">
 
 ← RETURN TO NEPTUNE
@@ -1268,7 +1275,9 @@ class="nav-button">
 
 IMAGE:
 NASA / JPL / VOYAGER 2
+
 <br>
+
 GALATEA IMAGE VIA WIKIMEDIA COMMONS
 
 </div>
@@ -1282,9 +1291,12 @@ GALATEA IMAGE VIA WIKIMEDIA COMMONS
 
 <script>
 
+/* =========================================
+   STAR PARALLAX
+========================================= */
+
 const stars =
 document.querySelector(".stars");
-
 
 const smallStars =
 document.querySelector(".stars-small");
@@ -1298,7 +1310,6 @@ function(event) {
     const x =
         event.clientX /
         window.innerWidth - 0.5;
-
 
     const y =
         event.clientY /
@@ -1320,10 +1331,68 @@ function(event) {
 
 });
 
+
+/* =========================================
+   GALATEA PARALLAX
+========================================= */
+
+const galatea =
+document.querySelector(".galatea");
+
+
+document.addEventListener(
+"mousemove",
+
+function(event) {
+
+    const x =
+        event.clientX /
+        window.innerWidth - 0.5;
+
+    const y =
+        event.clientY /
+        window.innerHeight - 0.5;
+
+
+    galatea.style.transform =
+        `translate(
+            ${x * 8}px,
+            ${y * 8}px
+        )`;
+
+});
+
+
+/* =========================================
+   UNIVERSAL ORBONIX LINKS
+========================================= */
+
+document.querySelectorAll(
+    'a[href^="/"]'
+).forEach(function(link) {
+
+    link.addEventListener(
+        "click",
+        function(event) {
+
+            const path =
+                link.getAttribute("href");
+
+            if (!path) return;
+
+            event.preventDefault();
+
+            window.location.href =
+                window.location.origin + path;
+
+        }
+    );
+
+});
+
 </script>
 
 
 </body>
 
 </html>
-```
