@@ -6,6 +6,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>White Dwarfs | ORBONIX</title>
+
 <style>
 
 * {
@@ -73,7 +75,6 @@ body {
     pointer-events: none;
 }
 
-
 .stars {
 
     opacity: .38;
@@ -90,7 +91,6 @@ body {
     transition:
         transform 1.5s ease;
 }
-
 
 .stars-small {
 
@@ -127,7 +127,6 @@ body {
     text-align: center;
 }
 
-
 .return {
 
     display: inline-flex;
@@ -156,7 +155,6 @@ body {
     transition: .35s ease;
 }
 
-
 .return:hover {
 
     color: #010208;
@@ -168,7 +166,6 @@ body {
     transform:
         translateY(-4px);
 }
-
 
 .label {
 
@@ -182,7 +179,6 @@ body {
     letter-spacing: 5px;
 }
 
-
 h1 {
 
     margin: 0;
@@ -194,7 +190,6 @@ h1 {
 
     letter-spacing: 6px;
 }
-
 
 .subtitle {
 
@@ -270,7 +265,9 @@ h1 {
 }
 
 
-/* OUTER GLOW */
+/* =========================================
+   OUTER GLOW
+========================================= */
 
 .glow {
 
@@ -299,7 +296,9 @@ h1 {
 }
 
 
-/* OUTER SHELL */
+/* =========================================
+   OUTER SHELL
+========================================= */
 
 .shell {
 
@@ -324,7 +323,9 @@ h1 {
 }
 
 
-/* STAR */
+/* =========================================
+   CORE
+========================================= */
 
 .core {
 
@@ -365,7 +366,9 @@ h1 {
 }
 
 
-/* HOT SURFACE */
+/* =========================================
+   HOT SURFACE
+========================================= */
 
 .core::before {
 
@@ -394,7 +397,9 @@ h1 {
 }
 
 
-/* BRIGHT REGION */
+/* =========================================
+   BRIGHT REGION
+========================================= */
 
 .core::after {
 
@@ -425,7 +430,9 @@ h1 {
 }
 
 
-/* PARTICLES */
+/* =========================================
+   PARTICLES
+========================================= */
 
 .particles {
 
@@ -454,7 +461,9 @@ h1 {
 }
 
 
-/* ORBIT RINGS */
+/* =========================================
+   ORBIT RINGS
+========================================= */
 
 .ring {
 
@@ -476,7 +485,6 @@ h1 {
     animation:
         ringRotate 14s linear infinite;
 }
-
 
 .ring-two {
 
@@ -502,143 +510,113 @@ h1 {
 @keyframes dwarfFloat {
 
     0%,100% {
-
         transform:
             translateY(0);
-
     }
 
     50% {
-
         transform:
             translateY(-8px);
-
     }
 
 }
-
 
 @keyframes glowPulse {
 
     0%,100% {
-
         transform:
             scale(.88);
 
         opacity: .65;
-
     }
 
     50% {
-
         transform:
             scale(1.1);
 
         opacity: 1;
-
     }
 
 }
-
 
 @keyframes shellPulse {
 
     0%,100% {
-
         transform:
             scale(.92);
 
         opacity: .5;
-
     }
 
     50% {
-
         transform:
             scale(1.08);
 
         opacity: 1;
-
     }
 
 }
-
 
 @keyframes corePulse {
 
     0%,100% {
-
         transform:
             scale(.96);
-
     }
 
     50% {
-
         transform:
             scale(1.05);
-
     }
 
 }
-
 
 @keyframes surfaceRotate {
 
     from {
-
         transform:
             rotate(0deg);
-
     }
 
     to {
-
         transform:
             rotate(360deg);
-
     }
 
 }
-
 
 @keyframes particlesRotate {
 
     from {
-
         transform:
             rotate(0deg);
-
     }
 
     to {
-
         transform:
             rotate(-360deg);
-
     }
 
 }
-
 
 @keyframes ringRotate {
 
     from {
-
         transform:
             rotate(0deg);
-
     }
 
     to {
-
         transform:
             rotate(360deg);
-
     }
 
 }
 
+
+/* =========================================
+   HERO LABEL
+========================================= */
 
 .hero-label {
 
@@ -652,6 +630,8 @@ h1 {
     font-size: 9px;
 
     letter-spacing: 4px;
+
+    text-align: center;
 }
 
 
@@ -685,7 +665,6 @@ h1 {
         rgba(255,255,255,.1);
 }
 
-
 .stat {
 
     padding: 28px;
@@ -696,7 +675,6 @@ h1 {
     transition: .35s ease;
 }
 
-
 .stat:hover {
 
     transform:
@@ -706,7 +684,6 @@ h1 {
         rgba(255,255,255,.04);
 }
 
-
 .stat-value {
 
     margin-bottom: 9px;
@@ -715,7 +692,6 @@ h1 {
 
     font-weight: bold;
 }
-
 
 .stat-label {
 
@@ -745,7 +721,6 @@ h1 {
         65px auto 0;
 }
 
-
 .info {
 
     margin-bottom: 18px;
@@ -762,7 +737,6 @@ h1 {
     transition: .35s ease;
 }
 
-
 .info:hover {
 
     transform:
@@ -772,7 +746,6 @@ h1 {
         rgba(255,255,255,.22);
 }
 
-
 .info-title {
 
     margin-bottom: 18px;
@@ -781,7 +754,6 @@ h1 {
 
     letter-spacing: 4px;
 }
-
 
 .info-text {
 
@@ -815,7 +787,6 @@ h1 {
     letter-spacing: 5px;
 }
 
-
 .features {
 
     display: grid;
@@ -825,7 +796,6 @@ h1 {
 
     gap: 15px;
 }
-
 
 .feature {
 
@@ -841,7 +811,6 @@ h1 {
     transition: .35s ease;
 }
 
-
 .feature:hover {
 
     transform:
@@ -854,7 +823,6 @@ h1 {
         rgba(255,255,255,.04);
 }
 
-
 .feature-title {
 
     margin-bottom: 11px;
@@ -863,7 +831,6 @@ h1 {
 
     letter-spacing: 2px;
 }
-
 
 .feature-text {
 
@@ -896,7 +863,6 @@ h1 {
         rgba(255,255,255,.025);
 }
 
-
 .fact-label {
 
     margin-bottom: 17px;
@@ -908,7 +874,6 @@ h1 {
 
     letter-spacing: 4px;
 }
-
 
 .fact-text {
 
@@ -936,7 +901,6 @@ h1 {
     margin-top: 55px;
 }
 
-
 .nav-button {
 
     display: inline-flex;
@@ -963,7 +927,6 @@ h1 {
 
     transition: .35s ease;
 }
-
 
 .nav-button:hover {
 
@@ -1054,6 +1017,15 @@ h1 {
             30px 22px;
     }
 
+    .hero-label {
+
+        width: 90%;
+
+        font-size: 7px;
+
+        letter-spacing: 2px;
+    }
+
 }
 
 </style>
@@ -1063,9 +1035,7 @@ h1 {
 
 <body>
 
-
 <section class="white-dwarf-page">
-
 
 <div class="stars"></div>
 
@@ -1078,7 +1048,6 @@ h1 {
 
 <div class="header">
 
-
 <a
 href="https://sites.google.com/view/kosmolearn"
 class="return">
@@ -1087,20 +1056,17 @@ class="return">
 
 </a>
 
-
 <div class="label">
 
 ORBONIX · DEEP SPACE
 
 </div>
 
-
 <h1>
 
 WHITE DWARFS
 
 </h1>
-
 
 <div class="subtitle">
 
@@ -1111,7 +1077,6 @@ most stars.
 
 </div>
 
-
 </div>
 
 
@@ -1120,7 +1085,6 @@ most stars.
 ========================================= -->
 
 <div class="hero">
-
 
 <div class="white-dwarf">
 
@@ -1138,13 +1102,11 @@ most stars.
 
 </div>
 
-
 <div class="hero-label">
 
 STELLAR REMNANT · DEGENERATE MATTER · EXTREME DENSITY
 
 </div>
-
 
 </div>
 
@@ -1154,7 +1116,6 @@ STELLAR REMNANT · DEGENERATE MATTER · EXTREME DENSITY
 ========================================= -->
 
 <div class="stats">
-
 
 <div class="stat">
 
@@ -1207,6 +1168,8 @@ COOLS OVER TIME
 
 </div>
 
+</div>
+
 
 <!-- =========================================
      CONTENT
@@ -1217,13 +1180,11 @@ COOLS OVER TIME
 
 <div class="info">
 
-
 <div class="info-title">
 
 WHAT IS A WHITE DWARF?
 
 </div>
-
 
 <p class="info-text">
 
@@ -1243,19 +1204,16 @@ stored inside it.
 
 </p>
 
-
 </div>
 
 
 <div class="info">
-
 
 <div class="info-title">
 
 HOW DOES A WHITE DWARF FORM?
 
 </div>
-
 
 <p class="info-text">
 
@@ -1272,19 +1230,16 @@ fraction of the original star's mass.
 
 </p>
 
-
 </div>
 
 
 <div class="info">
-
 
 <div class="info-title">
 
 DEGENERATE MATTER
 
 </div>
-
 
 <p class="info-text">
 
@@ -1301,19 +1256,16 @@ to resist further gravitational collapse.
 
 </p>
 
-
 </div>
 
 
 <div class="info">
-
 
 <div class="info-title">
 
 THE CHANDRASEKHAR LIMIT
 
 </div>
-
 
 <p class="info-text">
 
@@ -1333,6 +1285,8 @@ catastrophic transformation rather than
 remaining stable.
 
 </p>
+
+</div>
 
 
 <!-- =========================================
@@ -1460,7 +1414,6 @@ black dwarf.
 
 </div>
 
-
 </div>
 
 
@@ -1470,13 +1423,11 @@ black dwarf.
 
 <div class="fact">
 
-
 <div class="fact-label">
 
 DID YOU KNOW?
 
 </div>
-
 
 <div class="fact-text">
 
@@ -1487,10 +1438,6 @@ dense.
 
 </div>
 
-
-</div>
-
-
 </div>
 
 
@@ -1500,7 +1447,6 @@ dense.
 
 <div class="navigation">
 
-
 <a
 href="https://sites.google.com/view/kosmolearn"
 class="nav-button">
@@ -1508,7 +1454,6 @@ class="nav-button">
 ← RETURN TO HOME
 
 </a>
-
 
 </div>
 
@@ -1519,6 +1464,7 @@ ORBONIX · DEEP SPACE · WHITE DWARFS
 
 </div>
 
+</div>
 
 </section>
 
@@ -1568,7 +1514,6 @@ function(event) {
 });
 
 </script>
-
 
 </body>
 
