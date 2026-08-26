@@ -1,7 +1,15 @@
+```javascript
 /* =========================================================
-   ORBONIX GLOBAL SYSTEM
-   SEARCH + BUTTONS + AUTOMATIC NAVIGATION
+   ORBONIX GLOBAL SEARCH + UNIVERSAL BUTTONS + AUTO NAVIGATION
    Website: https://orbonix.net
+
+   ONE FILE:
+   - Global Search
+   - Universal Buttons
+   - Automatic Navigation
+   - Dropdown Subpages
+   - Typo-tolerant Search
+   - Dynamic Content Support
 ========================================================= */
 
 
@@ -488,6 +496,253 @@ const ORBONIX_PAGES = [
 
 
 /* =========================================================
+   NAVIGATION STRUCTURE
+========================================================= */
+
+const ORBONIX_NAVIGATION = [
+
+    {
+        title: "Home",
+        page: "Home"
+    },
+
+    {
+        title: "Exploring Space",
+        page: "Exploring Space",
+        children: [
+
+            {
+                title: "Deep Space",
+                page: "Deep Space"
+            },
+
+            {
+                title: "Solar System",
+                page: "Solar System",
+                children: [
+
+                    {
+                        title: "Sun",
+                        page: "Sun"
+                    },
+
+                    {
+                        title: "Mercury",
+                        page: "Mercury"
+                    },
+
+                    {
+                        title: "Venus",
+                        page: "Venus"
+                    },
+
+                    {
+                        title: "Earth",
+                        page: "Earth"
+                    },
+
+                    {
+                        title: "Mars",
+                        page: "Mars",
+                        children: [
+
+                            {
+                                title: "Phobos",
+                                page: "Phobos"
+                            },
+
+                            {
+                                title: "Deimos",
+                                page: "Deimos"
+                            }
+
+                        ]
+                    },
+
+                    {
+                        title: "Jupiter",
+                        page: "Jupiter"
+                    },
+
+                    {
+                        title: "Saturn",
+                        page: "Saturn"
+                    },
+
+                    {
+                        title: "Uranus",
+                        page: "Uranus"
+                    },
+
+                    {
+                        title: "Neptune",
+                        page: "Neptune"
+                    },
+
+                    {
+                        title: "Dwarf Planets",
+                        page: "Dwarf Planets"
+                    },
+
+                    {
+                        title: "Asteroid Belt",
+                        page: "Asteroid Belt"
+                    },
+
+                    {
+                        title: "Kuiper Belt",
+                        page: "Kuiper Belt"
+                    },
+
+                    {
+                        title: "Oort Cloud",
+                        page: "Oort Cloud"
+                    },
+
+                    {
+                        title: "Planet X",
+                        page: "Planet X"
+                    }
+
+                ]
+            },
+
+            {
+                title: "Space Missions",
+                page: "Space Missions",
+                children: [
+
+                    {
+                        title: "Apollo",
+                        page: "Apollo"
+                    },
+
+                    {
+                        title: "Artemis",
+                        page: "Artemis"
+                    },
+
+                    {
+                        title: "Cassini",
+                        page: "Cassini"
+                    },
+
+                    {
+                        title: "James Webb Space Telescope",
+                        page: "James Webb Space Telescope"
+                    },
+
+                    {
+                        title: "New Horizons",
+                        page: "New Horizons"
+                    },
+
+                    {
+                        title: "Voyager",
+                        page: "Voyager"
+                    }
+
+                ]
+            },
+
+            {
+                title: "Quizzes",
+                page: "Quizzes",
+                children: [
+
+                    {
+                        title: "Black Holes Quiz",
+                        page: "Black Holes Quiz"
+                    },
+
+                    {
+                        title: "Comets Quiz",
+                        page: "Comets Quiz"
+                    },
+
+                    {
+                        title: "Final Quiz",
+                        page: "Final Quiz"
+                    },
+
+                    {
+                        title: "Galactic Quiz",
+                        page: "Galactic Quiz"
+                    },
+
+                    {
+                        title: "Moons Quiz",
+                        page: "Moons Quiz"
+                    },
+
+                    {
+                        title: "Planet Quiz",
+                        page: "Planet Quiz"
+                    },
+
+                    {
+                        title: "Stars Quiz",
+                        page: "Stars Quiz"
+                    },
+
+                    {
+                        title: "Sun Quiz",
+                        page: "Sun Quiz"
+                    },
+
+                    {
+                        title: "Telescope Quiz",
+                        page: "Telescope Quiz"
+                    }
+
+                ]
+            },
+
+            {
+                title: "Terms",
+                page: "Terms"
+            }
+
+        ]
+    },
+
+    {
+        title: "Gallery",
+        page: "Gallery"
+    },
+
+    {
+        title: "Latest Space News",
+        page: "Latest Space News"
+    },
+
+    {
+        title: "More About Orbonix",
+        page: "More About Orbonix",
+        children: [
+
+            {
+                title: "Orbonix Fotos and Telescope",
+                page: "Orbonix Fotos and Telescope"
+            },
+
+            {
+                title: "Site Achievements",
+                page: "Site Achievements"
+            }
+
+        ]
+    },
+
+    {
+        title: "Solar System Simulation",
+        page: "Solar System Simulation"
+    }
+
+];
+
+
+/* =========================================================
    NORMALIZE TEXT
 ========================================================= */
 
@@ -505,7 +760,7 @@ function normalizeSearchText(text) {
 
 
 /* =========================================================
-   LEVENSHTEIN
+   LEVENSHTEIN DISTANCE
 ========================================================= */
 
 function levenshtein(a, b) {
@@ -582,6 +837,7 @@ function scoreSearchResult(page, query) {
 
     let score = 0;
 
+
     if (title === q) {
         score += 3000;
     }
@@ -601,6 +857,7 @@ function scoreSearchResult(page, query) {
     if (description.includes(q)) {
         score += 300;
     }
+
 
     for (const word of words) {
 
@@ -625,6 +882,7 @@ function scoreSearchResult(page, query) {
         }
 
     }
+
 
     const titleWords =
         title.split(" ");
@@ -668,7 +926,7 @@ function scoreSearchResult(page, query) {
 
 
 /* =========================================================
-   SEARCH
+   SEARCH FUNCTION
 ========================================================= */
 
 function searchOrbonix(query) {
@@ -681,6 +939,7 @@ function searchOrbonix(query) {
     }
 
     return ORBONIX_PAGES
+
         .map(page => ({
 
             ...page,
@@ -692,19 +951,22 @@ function searchOrbonix(query) {
                 )
 
         }))
+
         .filter(page =>
             page.score > 0
         )
+
         .sort((a, b) =>
             b.score - a.score
         )
+
         .slice(0, 15);
 
 }
 
 
 /* =========================================================
-   FIND PAGE
+   FIND PAGE BY NAME
 ========================================================= */
 
 function findOrbonixPage(name) {
@@ -716,6 +978,7 @@ function findOrbonixPage(name) {
         return null;
     }
 
+
     const exact =
         ORBONIX_PAGES.find(page =>
             normalizeSearchText(page.title)
@@ -725,6 +988,7 @@ function findOrbonixPage(name) {
     if (exact) {
         return exact;
     }
+
 
     const results =
         searchOrbonix(name);
@@ -837,6 +1101,7 @@ function initializeOrbonixSearch() {
         input.dataset.orbonixSearchInitialized =
             "true";
 
+
         input.addEventListener(
             "keydown",
             function(event) {
@@ -877,11 +1142,21 @@ function initializeOrbonixSearch() {
 
                 }
 
+
                 if (
                     event.key === "Escape"
                 ) {
 
                     this.value = "";
+
+                    const container =
+                        document.getElementById(
+                            "orbonix-search-results"
+                        );
+
+                    if (container) {
+                        container.innerHTML = "";
+                    }
 
                 }
 
@@ -907,20 +1182,20 @@ function initializeOrbonixSearch() {
 
                 if (!query) {
 
-                    container.innerHTML =
-                        "";
+                    container.innerHTML = "";
 
                     return;
 
                 }
+
 
                 const results =
                     searchOrbonix(
                         query
                     );
 
-                container.innerHTML =
-                    "";
+                container.innerHTML = "";
+
 
                 results.forEach(page => {
 
@@ -936,6 +1211,7 @@ function initializeOrbonixSearch() {
                         "orbonix-search-result";
 
                     item.innerHTML = `
+
                         <strong>
                             ${escapeHTML(page.title)}
                         </strong>
@@ -947,6 +1223,7 @@ function initializeOrbonixSearch() {
                         <span>
                             ${escapeHTML(page.description)}
                         </span>
+
                     `;
 
                     container.appendChild(
@@ -959,6 +1236,501 @@ function initializeOrbonixSearch() {
         );
 
     });
+
+}
+
+
+/* =========================================================
+   AUTOMATIC NAVIGATION
+========================================================= */
+
+function createOrbonixNavigation() {
+
+    if (
+        document.getElementById(
+            "orbonix-auto-navigation"
+        )
+    ) {
+        return;
+    }
+
+
+    const navigation =
+        document.createElement("nav");
+
+    navigation.id =
+        "orbonix-auto-navigation";
+
+    navigation.className =
+        "orbonix-navigation";
+
+
+    const menu =
+        document.createElement("div");
+
+    menu.className =
+        "orbonix-navigation-menu";
+
+
+    ORBONIX_NAVIGATION.forEach(item => {
+
+        menu.appendChild(
+            createNavigationItem(item)
+        );
+
+    });
+
+
+    navigation.appendChild(menu);
+
+
+    document.body.insertBefore(
+        navigation,
+        document.body.firstChild
+    );
+
+
+    addNavigationStyles();
+
+}
+
+
+/* =========================================================
+   CREATE NAVIGATION ITEM
+========================================================= */
+
+function createNavigationItem(item) {
+
+    const wrapper =
+        document.createElement("div");
+
+    wrapper.className =
+        "orbonix-nav-item";
+
+
+    const row =
+        document.createElement("div");
+
+    row.className =
+        "orbonix-nav-row";
+
+
+    const link =
+        document.createElement("a");
+
+    link.className =
+        "orbonix-nav-link";
+
+    link.textContent =
+        item.title;
+
+    link.href =
+        "#";
+
+
+    link.addEventListener(
+        "click",
+        function(event) {
+
+            event.preventDefault();
+
+            const page =
+                findOrbonixPage(
+                    item.page
+                );
+
+            if (
+                page &&
+                page.url
+            ) {
+
+                window.location.href =
+                    page.url;
+
+            }
+
+        }
+    );
+
+
+    row.appendChild(link);
+
+
+    if (
+        item.children &&
+        item.children.length > 0
+    ) {
+
+        const arrow =
+            document.createElement("button");
+
+        arrow.type =
+            "button";
+
+        arrow.className =
+            "orbonix-nav-arrow";
+
+        arrow.innerHTML =
+            "▾";
+
+        arrow.setAttribute(
+            "aria-label",
+            `Open ${item.title} submenu`
+        );
+
+
+        const submenu =
+            document.createElement("div");
+
+        submenu.className =
+            "orbonix-nav-submenu";
+
+
+        item.children.forEach(child => {
+
+            submenu.appendChild(
+                createNavigationItem(child)
+            );
+
+        });
+
+
+        arrow.addEventListener(
+            "click",
+            function(event) {
+
+                event.stopPropagation();
+
+                wrapper.classList.toggle(
+                    "orbonix-nav-open"
+                );
+
+            }
+        );
+
+
+        row.appendChild(arrow);
+
+        wrapper.appendChild(row);
+
+        wrapper.appendChild(submenu);
+
+    } else {
+
+        wrapper.appendChild(row);
+
+    }
+
+
+    return wrapper;
+
+}
+
+
+/* =========================================================
+   NAVIGATION STYLES
+========================================================= */
+
+function addNavigationStyles() {
+
+    if (
+        document.getElementById(
+            "orbonix-navigation-styles"
+        )
+    ) {
+        return;
+    }
+
+
+    const style =
+        document.createElement("style");
+
+    style.id =
+        "orbonix-navigation-styles";
+
+
+    style.textContent = `
+
+        #orbonix-auto-navigation {
+
+            width: 100%;
+            position: relative;
+            z-index: 999999;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background:
+                rgba(5, 8, 20, 0.96);
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,0.12);
+
+            box-shadow:
+                0 5px 25px
+                rgba(0,0,0,0.35);
+
+        }
+
+
+        .orbonix-navigation-menu {
+
+            width: 100%;
+            max-width: 1500px;
+
+            margin: 0 auto;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            flex-wrap: wrap;
+
+            gap: 4px;
+
+            padding: 8px 12px;
+
+        }
+
+
+        .orbonix-nav-item {
+
+            position: relative;
+
+        }
+
+
+        .orbonix-nav-row {
+
+            display: flex;
+
+            align-items: center;
+
+            border-radius: 8px;
+
+            transition:
+                background 0.2s ease;
+
+        }
+
+
+        .orbonix-nav-row:hover {
+
+            background:
+                rgba(255,255,255,0.08);
+
+        }
+
+
+        .orbonix-nav-link {
+
+            display: block;
+
+            padding:
+                10px 8px;
+
+            color: white;
+
+            text-decoration: none;
+
+            font-size: 14px;
+
+            font-weight: 500;
+
+            white-space: nowrap;
+
+            cursor: pointer;
+
+        }
+
+
+        .orbonix-nav-arrow {
+
+            width: 30px;
+            height: 36px;
+
+            border: 0;
+
+            background: transparent;
+
+            color: white;
+
+            font-size: 16px;
+
+            cursor: pointer;
+
+            border-radius: 6px;
+
+            transition:
+                transform 0.2s ease,
+                background 0.2s ease;
+
+        }
+
+
+        .orbonix-nav-arrow:hover {
+
+            background:
+                rgba(255,255,255,0.12);
+
+        }
+
+
+        .orbonix-nav-open >
+        .orbonix-nav-row
+        .orbonix-nav-arrow {
+
+            transform:
+                rotate(180deg);
+
+        }
+
+
+        .orbonix-nav-submenu {
+
+            display: none;
+
+            position: absolute;
+
+            top: calc(100% + 4px);
+
+            left: 0;
+
+            min-width: 220px;
+
+            max-height: 70vh;
+
+            overflow-y: auto;
+
+            padding: 6px;
+
+            background:
+                rgba(8,12,28,0.98);
+
+            border:
+                1px solid
+                rgba(255,255,255,0.12);
+
+            border-radius: 10px;
+
+            box-shadow:
+                0 12px 35px
+                rgba(0,0,0,0.5);
+
+        }
+
+
+        .orbonix-nav-open >
+        .orbonix-nav-submenu {
+
+            display: block;
+
+        }
+
+
+        .orbonix-nav-submenu
+        .orbonix-nav-item {
+
+            width: 100%;
+
+        }
+
+
+        .orbonix-nav-submenu
+        .orbonix-nav-row {
+
+            width: 100%;
+
+            justify-content:
+                space-between;
+
+        }
+
+
+        .orbonix-nav-submenu
+        .orbonix-nav-link {
+
+            width: 100%;
+
+            padding:
+                9px 10px;
+
+        }
+
+
+        .orbonix-nav-submenu
+        .orbonix-nav-submenu {
+
+            top: 0;
+
+            left: 100%;
+
+            margin-left: 4px;
+
+        }
+
+
+        .orbonix-nav-submenu
+        .orbonix-nav-item
+        .orbonix-nav-arrow {
+
+            flex-shrink: 0;
+
+        }
+
+
+        @media (max-width: 800px) {
+
+            .orbonix-navigation-menu {
+
+                justify-content:
+                    flex-start;
+
+                overflow-x: auto;
+
+                flex-wrap: nowrap;
+
+            }
+
+            .orbonix-nav-submenu {
+
+                position: fixed;
+
+                left: 10px !important;
+
+                right: 10px;
+
+                top: auto;
+
+                max-width:
+                    calc(100vw - 20px);
+
+                min-width: 0;
+
+            }
+
+            .orbonix-nav-submenu
+            .orbonix-nav-submenu {
+
+                position: relative;
+
+                left: 0 !important;
+
+                margin-left: 12px;
+
+            }
+
+        }
+
+    `;
+
+
+    document.head.appendChild(style);
 
 }
 
@@ -980,650 +1752,59 @@ function escapeHTML(text) {
 
 
 /* =========================================================
-   NAVIGATION STRUCTURE
+   CLOSE NAVIGATION WHEN CLICKING OUTSIDE
 ========================================================= */
 
-const ORBONIX_NAVIGATION = [
-
-    {
-        title: "Home",
-        page: "Home"
-    },
-
-    {
-        title: "Exploring Space",
-        page: "Exploring Space",
-        children: [
-            {
-                title: "Deep Space",
-                page: "Deep Space"
-            },
-            {
-                title: "Solar System",
-                page: "Solar System"
-            },
-            {
-                title: "Space Missions",
-                page: "Space Missions"
-            },
-            {
-                title: "Quizzes",
-                page: "Quizzes"
-            },
-            {
-                title: "Terms",
-                page: "Terms"
-            }
-        ]
-    },
-
-    {
-        title: "Gallery",
-        page: "Gallery"
-    },
-
-    {
-        title: "Latest Space News",
-        page: "Latest Space News"
-    },
-
-    {
-        title: "More About Orbonix",
-        page: "More About Orbonix"
-    },
-
-    {
-        title: "Solar System Simulation",
-        page: "Solar System Simulation"
-    }
-
-];
-
-
-/* =========================================================
-   NAVIGATION CSS
-========================================================= */
-
-function addOrbonixNavigationCSS() {
+function initializeNavigationOutsideClick() {
 
     if (
-        document.getElementById(
-            "orbonix-navigation-css"
-        )
-    ) {
-        return;
-    }
-
-    const style =
-        document.createElement("style");
-
-    style.id =
-        "orbonix-navigation-css";
-
-    style.textContent = `
-
-        .orbonix-navigation {
-
-            width: 100%;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            gap: 8px;
-
-            padding: 12px 20px;
-
-            background:
-                rgba(8, 10, 18, 0.96);
-
-            border-bottom:
-                1px solid rgba(255,255,255,0.08);
-
-            backdrop-filter:
-                blur(14px);
-
-            position: relative;
-
-            z-index: 999999;
-
-            font-family:
-                Arial, sans-serif;
-
-        }
-
-
-        .orbonix-nav-item {
-
-            position: relative;
-
-        }
-
-
-        .orbonix-nav-main {
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 3px;
-
-        }
-
-
-        .orbonix-nav-link {
-
-            display: block;
-
-            padding:
-                10px 12px;
-
-            color: #ffffff;
-
-            text-decoration: none;
-
-            font-size: 14px;
-
-            font-weight: 600;
-
-            border-radius: 8px;
-
-            transition:
-                background .2s ease,
-                color .2s ease;
-
-            cursor: pointer;
-
-            white-space: nowrap;
-
-        }
-
-
-        .orbonix-nav-link:hover {
-
-            background:
-                rgba(255,255,255,0.08);
-
-            color: #ffffff;
-
-        }
-
-
-        .orbonix-nav-arrow {
-
-            border: none;
-
-            background: transparent;
-
-            color: #ffffff;
-
-            cursor: pointer;
-
-            font-size: 11px;
-
-            padding:
-                8px 7px;
-
-            border-radius: 6px;
-
-            transition:
-                transform .2s ease,
-                background .2s ease;
-
-        }
-
-
-        .orbonix-nav-arrow:hover {
-
-            background:
-                rgba(255,255,255,0.08);
-
-        }
-
-
-        .orbonix-nav-item.open
-        .orbonix-nav-arrow {
-
-            transform:
-                rotate(180deg);
-
-        }
-
-
-        .orbonix-nav-submenu {
-
-            position: absolute;
-
-            top: calc(100% + 8px);
-
-            left: 0;
-
-            min-width: 220px;
-
-            padding: 8px;
-
-            background:
-                rgba(10, 13, 23, 0.98);
-
-            border:
-                1px solid rgba(255,255,255,0.10);
-
-            border-radius: 12px;
-
-            box-shadow:
-                0 18px 50px
-                rgba(0,0,0,0.45);
-
-            backdrop-filter:
-                blur(18px);
-
-            opacity: 0;
-
-            visibility: hidden;
-
-            transform:
-                translateY(-8px);
-
-            transition:
-                opacity .2s ease,
-                transform .2s ease,
-                visibility .2s ease;
-
-        }
-
-
-        .orbonix-nav-item.open
-        .orbonix-nav-submenu {
-
-            opacity: 1;
-
-            visibility: visible;
-
-            transform:
-                translateY(0);
-
-        }
-
-
-        .orbonix-nav-sub-link {
-
-            display: block;
-
-            padding:
-                10px 12px;
-
-            color:
-                rgba(255,255,255,0.88);
-
-            text-decoration: none;
-
-            border-radius: 8px;
-
-            font-size: 14px;
-
-            transition:
-                background .2s ease,
-                color .2s ease;
-
-            cursor: pointer;
-
-        }
-
-
-        .orbonix-nav-sub-link:hover {
-
-            background:
-                rgba(255,255,255,0.08);
-
-            color:
-                #ffffff;
-
-        }
-
-
-        @media (max-width: 900px) {
-
-            .orbonix-navigation {
-
-                justify-content:
-                    flex-start;
-
-                overflow-x: auto;
-
-                flex-wrap: nowrap;
-
-                scrollbar-width: none;
-
-            }
-
-            .orbonix-navigation::-webkit-scrollbar {
-
-                display: none;
-
-            }
-
-        }
-
-
-        @media (max-width: 600px) {
-
-            .orbonix-navigation {
-
-                padding:
-                    8px 10px;
-
-                gap: 4px;
-
-            }
-
-            .orbonix-nav-link {
-
-                font-size: 13px;
-
-                padding:
-                    9px 10px;
-
-            }
-
-            .orbonix-nav-submenu {
-
-                position: fixed;
-
-                top: auto;
-
-                left: 10px;
-
-                right: 10px;
-
-                min-width: auto;
-
-            }
-
-        }
-
-    `;
-
-    document.head.appendChild(style);
-
-}
-
-
-/* =========================================================
-   CREATE NAVIGATION
-========================================================= */
-
-function createOrbonixNavigation() {
-
-    if (
-        document.getElementById(
-            "orbonix-navigation"
-        )
+        document.body.dataset
+            .orbonixNavigationOutsideClick
+            === "true"
     ) {
         return;
     }
 
 
-    addOrbonixNavigationCSS();
+    document.body.dataset
+        .orbonixNavigationOutsideClick
+        = "true";
 
-
-    const nav =
-        document.createElement("nav");
-
-    nav.id =
-        "orbonix-navigation";
-
-    nav.className =
-        "orbonix-navigation";
-
-
-    ORBONIX_NAVIGATION.forEach(
-        navItem => {
-
-            const item =
-                document.createElement("div");
-
-            item.className =
-                "orbonix-nav-item";
-
-
-            const main =
-                document.createElement("div");
-
-            main.className =
-                "orbonix-nav-main";
-
-
-            const link =
-                document.createElement("a");
-
-            link.className =
-                "orbonix-nav-link";
-
-            link.href = "#";
-
-            link.textContent =
-                navItem.title;
-
-
-            link.addEventListener(
-                "click",
-                function(event) {
-
-                    event.preventDefault();
-
-                    const page =
-                        findOrbonixPage(
-                            navItem.page
-                        );
-
-                    if (
-                        page &&
-                        page.url
-                    ) {
-
-                        window.location.href =
-                            page.url;
-
-                    }
-
-                }
-            );
-
-
-            main.appendChild(link);
-
-
-            if (
-                navItem.children &&
-                navItem.children.length
-            ) {
-
-                const arrow =
-                    document.createElement(
-                        "button"
-                    );
-
-                arrow.className =
-                    "orbonix-nav-arrow";
-
-                arrow.type =
-                    "button";
-
-                arrow.setAttribute(
-                    "aria-label",
-                    "Open submenu"
-                );
-
-                arrow.textContent =
-                    "▼";
-
-
-                arrow.addEventListener(
-                    "click",
-                    function(event) {
-
-                        event.preventDefault();
-
-                        event.stopPropagation();
-
-
-                        document
-                            .querySelectorAll(
-                                ".orbonix-nav-item.open"
-                            )
-                            .forEach(
-                                otherItem => {
-
-                                    if (
-                                        otherItem !== item
-                                    ) {
-
-                                        otherItem.classList
-                                            .remove(
-                                                "open"
-                                            );
-
-                                    }
-
-                                }
-                            );
-
-
-                        item.classList.toggle(
-                            "open"
-                        );
-
-                    }
-                );
-
-
-                main.appendChild(arrow);
-
-
-                const submenu =
-                    document.createElement(
-                        "div"
-                    );
-
-                submenu.className =
-                    "orbonix-nav-submenu";
-
-
-                navItem.children.forEach(
-                    child => {
-
-                        const subLink =
-                            document.createElement(
-                                "a"
-                            );
-
-                        subLink.className =
-                            "orbonix-nav-sub-link";
-
-                        subLink.href =
-                            "#";
-
-                        subLink.textContent =
-                            child.title;
-
-
-                        subLink.addEventListener(
-                            "click",
-                            function(event) {
-
-                                event.preventDefault();
-
-                                const page =
-                                    findOrbonixPage(
-                                        child.page
-                                    );
-
-                                if (
-                                    page &&
-                                    page.url
-                                ) {
-
-                                    window.location.href =
-                                        page.url;
-
-                                }
-
-                            }
-                        );
-
-
-                        submenu.appendChild(
-                            subLink
-                        );
-
-                    }
-                );
-
-
-                item.appendChild(
-                    submenu
-                );
-
-            }
-
-
-            item.insertBefore(
-                main,
-                item.firstChild
-            );
-
-
-            nav.appendChild(item);
-
-        }
-    );
-
-
-    /* =====================================================
-       INSERT NAVIGATION
-    ===================================================== */
-
-    if (document.body.firstChild) {
-
-        document.body.insertBefore(
-            nav,
-            document.body.firstChild
-        );
-
-    } else {
-
-        document.body.appendChild(nav);
-
-    }
-
-
-    /* =====================================================
-       CLOSE WHEN CLICKING OUTSIDE
-    ===================================================== */
 
     document.addEventListener(
         "click",
         function(event) {
 
-            if (
-                !nav.contains(event.target)
-            ) {
+            const navigation =
+                document.getElementById(
+                    "orbonix-auto-navigation"
+                );
 
-                nav
-                    .querySelectorAll(
-                        ".orbonix-nav-item.open"
-                    )
-                    .forEach(item => {
-
-                        item.classList.remove(
-                            "open"
-                        );
-
-                    });
-
+            if (!navigation) {
+                return;
             }
+
+
+            if (
+                navigation.contains(
+                    event.target
+                )
+            ) {
+                return;
+            }
+
+
+            navigation
+                .querySelectorAll(
+                    ".orbonix-nav-open"
+                )
+                .forEach(item => {
+
+                    item.classList.remove(
+                        "orbonix-nav-open"
+                    );
+
+                });
 
         }
     );
@@ -1632,16 +1813,96 @@ function createOrbonixNavigation() {
 
 
 /* =========================================================
-   INITIALIZE EVERYTHING
+   CLOSE OTHER DROPDOWNS AT SAME LEVEL
+========================================================= */
+
+function initializeNavigationDropdownLogic() {
+
+    if (
+        document.body.dataset
+            .orbonixNavigationDropdownLogic
+            === "true"
+    ) {
+        return;
+    }
+
+
+    document.body.dataset
+        .orbonixNavigationDropdownLogic
+        = "true";
+
+
+    document.addEventListener(
+        "click",
+        function(event) {
+
+            const arrow =
+                event.target.closest(
+                    ".orbonix-nav-arrow"
+                );
+
+            if (!arrow) {
+                return;
+            }
+
+
+            const currentItem =
+                arrow.closest(
+                    ".orbonix-nav-item"
+                );
+
+            if (!currentItem) {
+                return;
+            }
+
+
+            const parent =
+                currentItem.parentElement;
+
+            if (!parent) {
+                return;
+            }
+
+
+            parent
+                .querySelectorAll(
+                    ":scope > .orbonix-nav-item.orbonix-nav-open"
+                )
+                .forEach(item => {
+
+                    if (
+                        item !== currentItem
+                    ) {
+
+                        item.classList.remove(
+                            "orbonix-nav-open"
+                        );
+
+                    }
+
+                });
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   MAIN INITIALIZATION
 ========================================================= */
 
 function initializeOrbonix() {
 
-    createOrbonixNavigation();
-
     initializeOrbonixButtons();
 
     initializeOrbonixSearch();
+
+    createOrbonixNavigation();
+
+    initializeNavigationOutsideClick();
+
+    initializeNavigationDropdownLogic();
 
 }
 
@@ -1667,7 +1928,7 @@ if (
 
 
 /* =========================================================
-   DYNAMIC CONTENT SUPPORT
+   SUPPORT DYNAMICALLY ADDED CONTENT
 ========================================================= */
 
 const orbonixObserver =
@@ -1677,16 +1938,34 @@ const orbonixObserver =
 
         initializeOrbonixSearch();
 
+        if (
+            !document.getElementById(
+                "orbonix-auto-navigation"
+            )
+        ) {
+
+            createOrbonixNavigation();
+
+        }
+
     });
 
 
-orbonixObserver.observe(
-    document.documentElement,
-    {
-        childList: true,
-        subtree: true
-    }
-);
+/* =========================================================
+   OBSERVER START
+========================================================= */
+
+if (document.body) {
+
+    orbonixObserver.observe(
+        document.body,
+        {
+            childList: true,
+            subtree: true
+        }
+    );
+
+}
 
 
 /* =========================================================
@@ -1707,3 +1986,7 @@ window.findOrbonixPage =
 
 window.initializeOrbonix =
     initializeOrbonix;
+
+window.createOrbonixNavigation =
+    createOrbonixNavigation;
+```
