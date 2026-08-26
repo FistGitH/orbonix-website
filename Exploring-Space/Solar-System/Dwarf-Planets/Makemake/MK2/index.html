@@ -912,7 +912,7 @@ h1 {
 
 
 <a
-href="https://sites.google.com/view/kosmolearn/solar-system/makemake"
+href="/solar-system/makemake"
 class="return">
 
 ← RETURN TO MAKEMAKE
@@ -1216,7 +1216,7 @@ much brighter <strong>Makemake</strong>.
 
 
 <a
-href="https://sites.google.com/view/kosmolearn/solar-system/makemake"
+href="/solar-system/makemake"
 class="nav-button">
 
 ← RETURN TO MAKEMAKE
@@ -1225,7 +1225,7 @@ class="nav-button">
 
 
 <a
-href="https://sites.google.com/view/kosmolearn/solar-system"
+href="/solar-system"
 class="nav-button">
 
 ← RETURN TO SOLAR SYSTEM
@@ -1253,9 +1253,12 @@ S/2015 (136472) 1 · MK2
 
 <script>
 
+/* =========================================
+   STAR PARALLAX
+========================================= */
+
 const stars =
 document.querySelector(".stars");
-
 
 const smallStars =
 document.querySelector(".stars-small");
@@ -1290,6 +1293,40 @@ function(event) {
         )`;
 
 });
+
+
+/* =========================================
+   UNIVERSAL ORBONIX NAVIGATION
+========================================= */
+
+document.querySelectorAll("a[href^='/']").forEach(
+    link => {
+
+        link.addEventListener(
+            "click",
+            function(event) {
+
+                const target =
+                    this.getAttribute("href");
+
+                if (
+                    target &&
+                    target.startsWith("/")
+                ) {
+
+                    event.preventDefault();
+
+                    window.location.href =
+                        window.location.origin +
+                        target;
+
+                }
+
+            }
+        );
+
+    }
+);
 
 </script>
 
