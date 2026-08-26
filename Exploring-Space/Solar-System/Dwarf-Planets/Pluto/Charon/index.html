@@ -6,6 +6,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Charon | ORBONIX</title>
+
 <style>
 
 * {
@@ -203,7 +205,7 @@ h1 {
 
 
 /* =========================================
-   TEXT INTRO
+   INTRO
 ========================================= */
 
 .intro {
@@ -318,6 +320,8 @@ h1 {
     font-size: 21px;
 
     font-weight: bold;
+
+    overflow-wrap: anywhere;
 }
 
 
@@ -617,6 +621,18 @@ h1 {
         padding: 25px;
     }
 
+
+    .stat {
+
+        padding: 24px;
+    }
+
+
+    .stat-value {
+
+        font-size: 18px;
+    }
+
 }
 
 </style>
@@ -642,7 +658,7 @@ h1 {
 
 
 <a
-href="https://sites.google.com/view/kosmolearn/solar-system/dwarf-planets/pluto"
+href="../"
 class="return">
 
 ← RETURN TO PLUTO
@@ -960,7 +976,7 @@ that their centre of mass lies
 
 
 <a
-href="https://sites.google.com/view/kosmolearn/solar-system/dwarf-planets/pluto"
+href="../"
 class="nav-button">
 
 ← RETURN TO PLUTO
@@ -969,7 +985,7 @@ class="nav-button">
 
 
 <a
-href="https://sites.google.com/view/kosmolearn/solar-system/dwarf-planets"
+href="../../"
 class="nav-button">
 
 ← RETURN TO DWARF PLANETS
@@ -997,9 +1013,12 @@ CHARON · PLUTO SYSTEM
 
 <script>
 
+/* =========================================
+   STAR PARALLAX
+========================================= */
+
 const stars =
 document.querySelector(".stars");
-
 
 const smallStars =
 document.querySelector(".stars-small");
@@ -1013,7 +1032,6 @@ function(event) {
     const x =
         event.clientX /
         window.innerWidth - 0.5;
-
 
     const y =
         event.clientY /
@@ -1034,6 +1052,17 @@ function(event) {
         )`;
 
 });
+
+
+/* =========================================
+   MOBILE PARALLAX DISABLE
+========================================= */
+
+if (window.matchMedia("(max-width: 800px)").matches) {
+
+    document.removeEventListener("mousemove", function(){});
+
+}
 
 </script>
 
