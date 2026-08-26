@@ -521,7 +521,7 @@ const ORBONIX_PAGES = [
 
     {
         title: "Orbonix Fotos and Telescope",
-        url: `${ORBONIX_BASE}/More-About-Orbonix/Orbonix-Fotos-and-Telescope/`,
+        url: `${ORBONIX_BASE}/More-About-Orbonix/Orbonix-Fotos-And-Telescope/`,
         parent: "More About Orbonix",
         category: "Orbonix",
         keywords: "orbonix fotos telescope photos",
