@@ -6,6 +6,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Moons Quiz | ORBONIX</title>
+
 <style>
 
 * {
@@ -1090,7 +1092,7 @@ h1 {
 
 
 <a
-href="https://sites.google.com/view/kosmolearn"
+href="/"
 class="return">
 
 ← RETURN TO HOME
@@ -1270,7 +1272,7 @@ onclick="restartQuiz()">
 
 
 <a
-href="YOUR-QUIZ-SELECT-PAGE-LINK"
+href="/quizzes"
 class="result-button">
 
 ← QUIZ SELECT
@@ -1279,7 +1281,7 @@ class="result-button">
 
 
 <a
-href="https://sites.google.com/view/kosmolearn"
+href="/"
 class="result-button">
 
 RETURN TO HOME
@@ -1322,6 +1324,7 @@ const questions = [
 {
 question:
 "What is the natural satellite of Earth called?",
+
 answers:
 [
 "The Moon",
@@ -1329,13 +1332,17 @@ answers:
 "Titan",
 "Phobos"
 ],
+
 correct: 0,
+
 difficulty: "EASY"
 },
+
 
 {
 question:
 "Which planet has the Moon?",
+
 answers:
 [
 "Mars",
@@ -1343,13 +1350,17 @@ answers:
 "Venus",
 "Jupiter"
 ],
+
 correct: 1,
+
 difficulty: "EASY"
 },
+
 
 {
 question:
 "Which planet has the most famous large collection of moons?",
+
 answers:
 [
 "Jupiter",
@@ -1357,13 +1368,17 @@ answers:
 "Venus",
 "Earth"
 ],
+
 correct: 0,
+
 difficulty: "EASY"
 },
+
 
 {
 question:
 "Which is the largest moon in the Solar System?",
+
 answers:
 [
 "Titan",
@@ -1371,13 +1386,17 @@ answers:
 "Ganymede",
 "Callisto"
 ],
+
 correct: 2,
+
 difficulty: "EASY"
 },
+
 
 {
 question:
 "Which planet does Titan orbit?",
+
 answers:
 [
 "Jupiter",
@@ -1385,13 +1404,17 @@ answers:
 "Uranus",
 "Neptune"
 ],
+
 correct: 1,
+
 difficulty: "EASY"
 },
+
 
 {
 question:
 "Which moon is famous for its thick atmosphere and methane lakes?",
+
 answers:
 [
 "Titan",
@@ -1399,13 +1422,17 @@ answers:
 "Io",
 "Enceladus"
 ],
+
 correct: 0,
+
 difficulty: "EASY"
 },
+
 
 {
 question:
 "Which moon is famous for its icy surface and possible subsurface ocean?",
+
 answers:
 [
 "Europa",
@@ -1413,13 +1440,17 @@ answers:
 "Charon",
 "Deimos"
 ],
+
 correct: 0,
+
 difficulty: "EASY"
 },
+
 
 {
 question:
 "Which planet is orbited by Europa?",
+
 answers:
 [
 "Saturn",
@@ -1427,13 +1458,17 @@ answers:
 "Jupiter",
 "Uranus"
 ],
+
 correct: 2,
+
 difficulty: "EASY"
 },
+
 
 {
 question:
 "Which planet has the moons Phobos and Deimos?",
+
 answers:
 [
 "Mars",
@@ -1441,13 +1476,17 @@ answers:
 "Saturn",
 "Venus"
 ],
+
 correct: 0,
+
 difficulty: "EASY"
 },
+
 
 {
 question:
 "What causes the phases of Earth's Moon?",
+
 answers:
 [
 "The Moon changing shape",
@@ -1455,7 +1494,9 @@ answers:
 "The changing positions of the Sun, Earth and Moon",
 "Clouds covering the Moon"
 ],
+
 correct: 2,
+
 difficulty: "EASY"
 },
 
@@ -1467,6 +1508,7 @@ difficulty: "EASY"
 {
 question:
 "Which moon is the most volcanically active world known?",
+
 answers:
 [
 "Europa",
@@ -1474,13 +1516,17 @@ answers:
 "Titan",
 "Callisto"
 ],
+
 correct: 1,
+
 difficulty: "MEDIUM"
 },
+
 
 {
 question:
 "Which moon has geysers that eject material into space?",
+
 answers:
 [
 "Enceladus",
@@ -1488,13 +1534,17 @@ answers:
 "Io",
 "Ganymede"
 ],
+
 correct: 0,
+
 difficulty: "MEDIUM"
 },
+
 
 {
 question:
 "Which moon is larger than the planet Mercury?",
+
 answers:
 [
 "Europa",
@@ -1502,13 +1552,17 @@ answers:
 "Ganymede",
 "Enceladus"
 ],
+
 correct: 2,
+
 difficulty: "MEDIUM"
 },
+
 
 {
 question:
 "Which moon is the largest moon of Saturn?",
+
 answers:
 [
 "Rhea",
@@ -1516,13 +1570,17 @@ answers:
 "Titan",
 "Iapetus"
 ],
+
 correct: 2,
+
 difficulty: "MEDIUM"
 },
+
 
 {
 question:
 "Which moon is known for its bright icy surface and subsurface ocean?",
+
 answers:
 [
 "Europa",
@@ -1530,13 +1588,17 @@ answers:
 "Callisto",
 "Phobos"
 ],
+
 correct: 0,
+
 difficulty: "MEDIUM"
 },
+
 
 {
 question:
 "Which moon is Pluto's largest moon?",
+
 answers:
 [
 "Charon",
@@ -1544,13 +1606,17 @@ answers:
 "Dysnomia",
 "Miranda"
 ],
+
 correct: 0,
+
 difficulty: "MEDIUM"
 },
+
 
 {
 question:
 "What is unusual about the Pluto–Charon system?",
+
 answers:
 [
 "Charon has no gravity",
@@ -1558,13 +1624,17 @@ answers:
 "Pluto is much larger than the Sun",
 "Charon orbits the Moon"
 ],
+
 correct: 1,
+
 difficulty: "MEDIUM"
 },
+
 
 {
 question:
 "Which moon of Neptune has a retrograde orbit?",
+
 answers:
 [
 "Triton",
@@ -1572,13 +1642,17 @@ answers:
 "Proteus",
 "Larissa"
 ],
+
 correct: 0,
+
 difficulty: "MEDIUM"
 },
+
 
 {
 question:
 "Which moon is thought to have a global subsurface ocean beneath its icy crust?",
+
 answers:
 [
 "Europa",
@@ -1586,13 +1660,17 @@ answers:
 "Deimos",
 "Hyperion"
 ],
+
 correct: 0,
+
 difficulty: "MEDIUM"
 },
+
 
 {
 question:
 "What is the main reason Io experiences extreme tidal heating?",
+
 answers:
 [
 "It is very close to the Sun",
@@ -1600,7 +1678,9 @@ answers:
 "It has a very thick atmosphere",
 "It contains radioactive ice"
 ],
+
 correct: 1,
+
 difficulty: "MEDIUM"
 },
 
@@ -1612,6 +1692,7 @@ difficulty: "MEDIUM"
 {
 question:
 "Why does the same side of Earth's Moon always face Earth?",
+
 answers:
 [
 "The Moon does not rotate",
@@ -1619,13 +1700,17 @@ answers:
 "Earth's gravity stops the Moon from rotating",
 "The Sun controls its rotation"
 ],
+
 correct: 1,
+
 difficulty: "HARD"
 },
+
 
 {
 question:
 "What is tidal locking?",
+
 answers:
 [
 "When a moon stops orbiting",
@@ -1633,13 +1718,17 @@ answers:
 "When a moon loses all gravity",
 "When a planet captures a star"
 ],
+
 correct: 1,
+
 difficulty: "HARD"
 },
+
 
 {
 question:
 "Which moon has a dense nitrogen-rich atmosphere?",
+
 answers:
 [
 "Titan",
@@ -1647,13 +1736,17 @@ answers:
 "Io",
 "Callisto"
 ],
+
 correct: 0,
+
 difficulty: "HARD"
 },
+
 
 {
 question:
 "Which moon has lakes and seas of liquid methane and ethane on its surface?",
+
 answers:
 [
 "Europa",
@@ -1661,13 +1754,17 @@ answers:
 "Ganymede",
 "Triton"
 ],
+
 correct: 1,
+
 difficulty: "HARD"
 },
+
 
 {
 question:
 "Which moon has a powerful magnetic field of its own?",
+
 answers:
 [
 "Ganymede",
@@ -1675,13 +1772,17 @@ answers:
 "Europa",
 "Titan"
 ],
+
 correct: 0,
+
 difficulty: "HARD"
 },
+
 
 {
 question:
 "What is unusual about Miranda, a moon of Uranus?",
+
 answers:
 [
 "It has an extremely varied surface with giant cliffs and geological features",
@@ -1689,13 +1790,17 @@ answers:
 "It is larger than Earth",
 "It has liquid methane oceans covering its entire surface"
 ],
+
 correct: 0,
+
 difficulty: "HARD"
 },
+
 
 {
 question:
 "Which moon is believed to have a subsurface ocean that produces plumes containing water and other materials?",
+
 answers:
 [
 "Enceladus",
@@ -1703,13 +1808,17 @@ answers:
 "Phobos",
 "Charon"
 ],
+
 correct: 0,
+
 difficulty: "HARD"
 },
+
 
 {
 question:
 "What is the likely source of Enceladus's plumes?",
+
 answers:
 [
 "Water-rich material escaping from fractures near its south pole",
@@ -1717,13 +1826,17 @@ answers:
 "Volcanic lava from an iron core",
 "Atmospheric storms"
 ],
+
 correct: 0,
+
 difficulty: "HARD"
 },
+
 
 {
 question:
 "Why is Triton's retrograde orbit scientifically interesting?",
+
 answers:
 [
 "It suggests Triton was likely captured by Neptune",
@@ -1731,13 +1844,17 @@ answers:
 "It proves Triton was once a planet around the Sun",
 "It means Neptune has no gravity"
 ],
+
 correct: 0,
+
 difficulty: "HARD"
 },
+
 
 {
 question:
 "Which statement about Ganymede is correct?",
+
 answers:
 [
 "It is the smallest moon in the Solar System",
@@ -1745,7 +1862,9 @@ answers:
 "It is a moon of Saturn",
 "It has a surface covered entirely by liquid methane"
 ],
+
 correct: 1,
+
 difficulty: "HARD"
 }
 
@@ -1764,7 +1883,7 @@ let answered = false;
 
 
 /* =========================================
-   SHUFFLE
+   SHUFFLE ANSWERS
 ========================================= */
 
 function shuffleAnswers(question) {
@@ -1848,11 +1967,13 @@ function loadQuestion() {
         q.question;
 
 
+    /* Progress now reaches 100% */
+
     document.getElementById(
         "progressBar"
     ).style.width =
         `${(
-            currentQuestion /
+            (currentQuestion + 1) /
             questions.length
         ) * 100}%`;
 
@@ -1995,7 +2116,7 @@ function selectAnswer(
 
 
 /* =========================================
-   NEXT
+   NEXT QUESTION
 ========================================= */
 
 function nextQuestion() {
@@ -2044,7 +2165,7 @@ function showResult() {
     document.getElementById(
         "score"
     ).textContent =
-        "0 / 30";
+        `0 / ${questions.length}`;
 
 
     let title = "";
@@ -2147,6 +2268,7 @@ function animateScore() {
 
     let value = 0;
 
+
     const scoreElement =
         document.getElementById(
             "score"
@@ -2154,6 +2276,7 @@ function animateScore() {
 
 
     const duration = 1600;
+
 
     const start =
         performance.now();
@@ -2301,6 +2424,8 @@ function restartQuiz() {
 
     score = 0;
 
+    answered = false;
+
 
     document.getElementById(
         "quiz"
@@ -2320,7 +2445,21 @@ function restartQuiz() {
         "0%";
 
 
+    /* Remove old particles */
+
+    document
+        .querySelectorAll(
+            ".final-particle"
+        )
+        .forEach(
+            particle => {
+                particle.remove();
+            }
+        );
+
+
     loadQuestion();
+
 }
 
 
@@ -2329,42 +2468,49 @@ function restartQuiz() {
 ========================================= */
 
 const stars =
-document.querySelector(".stars");
+    document.querySelector(
+        ".stars"
+    );
+
 
 const smallStars =
-document.querySelector(".stars-small");
+    document.querySelector(
+        ".stars-small"
+    );
 
 
 document.addEventListener(
-"mousemove",
+    "mousemove",
 
-function(event) {
+    function(event) {
 
-    const x =
-        event.clientX /
-        window.innerWidth -
-        0.5;
-
-    const y =
-        event.clientY /
-        window.innerHeight -
-        0.5;
+        const x =
+            event.clientX /
+            window.innerWidth -
+            0.5;
 
 
-    stars.style.transform =
-        `translate(
-            ${x * 20}px,
-            ${y * 20}px
-        )`;
+        const y =
+            event.clientY /
+            window.innerHeight -
+            0.5;
 
 
-    smallStars.style.transform =
-        `translate(
-            ${x * -12}px,
-            ${y * -12}px
-        )`;
+        stars.style.transform =
+            `translate(
+                ${x * 20}px,
+                ${y * 20}px
+            )`;
 
-});
+
+        smallStars.style.transform =
+            `translate(
+                ${x * -12}px,
+                ${y * -12}px
+            )`;
+
+    }
+);
 
 
 /* =========================================
