@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,22 +7,24 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Stars Quiz | ORBONIX</title>
+
 <style>
 
-* {
-    box-sizing: border-box;
+*{
+    box-sizing:border-box;
 }
 
-html {
-    scroll-behavior: smooth;
+html{
+    scroll-behavior:smooth;
 }
 
-body {
-    margin: 0;
-    background: #010208;
-    color: white;
-    font-family: Arial, Helvetica, sans-serif;
-    overflow-x: hidden;
+body{
+    margin:0;
+    background:#010208;
+    color:white;
+    font-family:Arial,Helvetica,sans-serif;
+    overflow-x:hidden;
 }
 
 
@@ -29,15 +32,15 @@ body {
    PAGE
 ========================================= */
 
-.stars-quiz-page {
+.stars-quiz-page{
 
-    position: relative;
+    position:relative;
 
-    min-height: 100vh;
+    min-height:100vh;
 
-    padding: 65px 20px 100px;
+    padding:65px 20px 100px;
 
-    overflow: hidden;
+    overflow:hidden;
 
     background:
         radial-gradient(
@@ -55,24 +58,24 @@ body {
 
 
 /* =========================================
-   BACKGROUND STARS
+   STARS
 ========================================= */
 
 .stars,
-.stars-small {
+.stars-small{
 
-    position: fixed;
+    position:fixed;
 
-    inset: -25%;
+    inset:-25%;
 
-    pointer-events: none;
+    pointer-events:none;
 
-    z-index: 0;
+    z-index:0;
 }
 
-.stars {
+.stars{
 
-    opacity: .4;
+    opacity:.4;
 
     background-image:
         radial-gradient(
@@ -81,15 +84,14 @@ body {
             transparent 1px
         );
 
-    background-size: 75px 75px;
+    background-size:75px 75px;
 
-    transition:
-        transform 1.5s ease;
+    transition:transform 1.5s ease;
 }
 
-.stars-small {
+.stars-small{
 
-    opacity: .17;
+    opacity:.17;
 
     background-image:
         radial-gradient(
@@ -98,10 +100,9 @@ body {
             transparent 1px
         );
 
-    background-size: 32px 32px;
+    background-size:32px 32px;
 
-    transition:
-        transform 2s ease;
+    transition:transform 2s ease;
 }
 
 
@@ -109,131 +110,112 @@ body {
    HEADER
 ========================================= */
 
-.header {
+.header{
 
-    position: relative;
+    position:relative;
 
-    z-index: 5;
+    z-index:5;
 
-    max-width: 900px;
+    max-width:900px;
 
-    margin: auto;
+    margin:auto;
 
-    text-align: center;
+    text-align:center;
 }
 
+.return{
 
-.return {
+    display:inline-flex;
 
-    display: inline-flex;
+    align-items:center;
 
-    align-items: center;
+    justify-content:center;
 
-    justify-content: center;
+    padding:12px 20px;
 
-    padding: 12px 20px;
+    margin-bottom:40px;
 
-    margin-bottom: 40px;
+    color:rgba(255,255,255,.7);
 
-    color:
-        rgba(255,255,255,.7);
+    border:1px solid rgba(255,255,255,.22);
 
-    border:
-        1px solid
-        rgba(255,255,255,.22);
+    text-decoration:none;
 
-    text-decoration: none;
+    font-size:9px;
 
-    font-size: 9px;
+    letter-spacing:3px;
 
-    letter-spacing: 3px;
-
-    transition: .35s ease;
+    transition:.35s ease;
 }
 
+.return:hover{
 
-.return:hover {
+    color:#010208;
 
-    color: #010208;
+    background:white;
 
-    background: white;
+    border-color:white;
 
-    border-color: white;
-
-    transform:
-        translateY(-4px);
+    transform:translateY(-4px);
 }
 
+.label{
 
-.label {
+    margin-bottom:18px;
 
-    margin-bottom: 18px;
+    color:rgba(170,190,255,.55);
 
-    color:
-        rgba(170,190,255,.55);
+    font-size:10px;
 
-    font-size: 10px;
-
-    letter-spacing: 5px;
+    letter-spacing:5px;
 }
 
+h1{
 
-h1 {
+    margin:0;
 
-    margin: 0;
+    font-size:clamp(43px,8vw,85px);
 
-    font-size:
-        clamp(43px,8vw,85px);
+    line-height:.9;
 
-    line-height: .9;
-
-    letter-spacing: 6px;
+    letter-spacing:6px;
 }
 
+.subtitle{
 
-.subtitle {
+    max-width:720px;
 
-    max-width: 720px;
+    margin:28px auto 0;
 
-    margin:
-        28px auto 0;
+    color:rgba(255,255,255,.52);
 
-    color:
-        rgba(255,255,255,.52);
+    font-size:14px;
 
-    font-size: 14px;
-
-    line-height: 1.8;
+    line-height:1.8;
 }
 
 
 /* =========================================
-   QUIZ
+   QUIZ CONTAINER
 ========================================= */
 
-.quiz-container {
+.quiz-container{
 
-    position: relative;
+    position:relative;
 
-    z-index: 5;
+    z-index:5;
 
-    width:
-        min(850px,100%);
+    width:min(850px,100%);
 
-    margin:
-        70px auto 0;
+    margin:70px auto 0;
 
-    padding: 35px;
+    padding:35px;
 
-    border:
-        1px solid
-        rgba(255,255,255,.1);
+    border:1px solid rgba(255,255,255,.1);
 
-    background:
-        rgba(255,255,255,.025);
+    background:rgba(255,255,255,.025);
 
-    transition:
-        .8s ease;
+    transition:.8s ease;
 }
 
 
@@ -241,44 +223,37 @@ h1 {
    QUIZ TOP
 ========================================= */
 
-.quiz-top {
+.quiz-top{
 
-    display: flex;
+    display:flex;
 
-    justify-content: space-between;
+    justify-content:space-between;
 
-    align-items: center;
+    align-items:center;
 
-    margin-bottom: 15px;
+    margin-bottom:15px;
 }
 
+.question-number{
 
-.question-number {
+    color:rgba(255,255,255,.45);
 
-    color:
-        rgba(255,255,255,.45);
+    font-size:9px;
 
-    font-size: 9px;
-
-    letter-spacing: 3px;
+    letter-spacing:3px;
 }
 
+.difficulty{
 
-.difficulty {
+    padding:7px 12px;
 
-    padding:
-        7px 12px;
+    border:1px solid rgba(255,255,255,.15);
 
-    border:
-        1px solid
-        rgba(255,255,255,.15);
+    color:rgba(255,255,255,.5);
 
-    color:
-        rgba(255,255,255,.5);
+    font-size:8px;
 
-    font-size: 8px;
-
-    letter-spacing: 2px;
+    letter-spacing:2px;
 }
 
 
@@ -286,31 +261,30 @@ h1 {
    PROGRESS
 ========================================= */
 
-.progress {
+.progress{
 
-    width: 100%;
+    width:100%;
 
-    height: 2px;
+    height:2px;
 
-    margin-bottom: 45px;
+    margin-bottom:45px;
 
-    background:
-        rgba(255,255,255,.08);
+    background:rgba(255,255,255,.08);
 
-    overflow: hidden;
+    overflow:hidden;
 }
 
+.progress-bar{
 
-.progress-bar {
+    width:0%;
 
-    width: 0%;
+    height:100%;
 
-    height: 100%;
+    background:white;
 
-    background: white;
+    box-shadow:0 0 10px rgba(255,255,255,.5);
 
-    transition:
-        width .5s ease;
+    transition:width .5s ease;
 }
 
 
@@ -318,16 +292,15 @@ h1 {
    QUESTION
 ========================================= */
 
-.question {
+.question{
 
-    margin-bottom: 35px;
+    margin-bottom:35px;
 
-    font-size:
-        clamp(20px,3vw,30px);
+    font-size:clamp(20px,3vw,30px);
 
-    line-height: 1.4;
+    line-height:1.4;
 
-    letter-spacing: .4px;
+    letter-spacing:.4px;
 }
 
 
@@ -335,92 +308,74 @@ h1 {
    ANSWERS
 ========================================= */
 
-.answers {
+.answers{
 
-    display: grid;
+    display:grid;
 
-    grid-template-columns:
-        repeat(2,1fr);
+    grid-template-columns:repeat(2,1fr);
 
-    gap: 12px;
+    gap:12px;
 }
 
+.answer{
 
-.answer {
+    min-height:70px;
 
-    min-height: 70px;
+    padding:18px 20px;
 
-    padding:
-        18px 20px;
+    text-align:left;
 
-    text-align: left;
+    color:rgba(255,255,255,.7);
 
-    color:
-        rgba(255,255,255,.7);
+    border:1px solid rgba(255,255,255,.12);
 
-    border:
-        1px solid
-        rgba(255,255,255,.12);
+    background:rgba(255,255,255,.02);
 
-    background:
-        rgba(255,255,255,.02);
+    font-family:Arial,Helvetica,sans-serif;
 
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
+    font-size:12px;
 
-    font-size: 12px;
+    cursor:pointer;
 
-    cursor: pointer;
-
-    transition:
-        .3s ease;
+    transition:.3s ease;
 }
 
+.answer:hover{
 
-.answer:hover {
+    color:white;
 
-    color: white;
+    border-color:rgba(150,180,255,.45);
 
-    border-color:
-        rgba(150,180,255,.45);
+    background:rgba(100,130,255,.06);
 
-    background:
-        rgba(100,130,255,.06);
-
-    transform:
-        translateY(-3px);
+    transform:translateY(-3px);
 }
 
+.answer.correct{
 
-.answer.correct {
+    color:white;
 
-    color: white;
+    border-color:rgba(100,220,150,.7);
 
-    border-color:
-        rgba(100,220,150,.7);
+    background:rgba(60,180,110,.12);
 
-    background:
-        rgba(60,180,110,.12);
+    box-shadow:0 0 20px rgba(60,180,110,.08);
 }
 
+.answer.wrong{
 
-.answer.wrong {
+    color:white;
 
-    color: white;
+    border-color:rgba(255,90,90,.7);
 
-    border-color:
-        rgba(255,90,90,.7);
+    background:rgba(220,50,50,.12);
 
-    background:
-        rgba(220,50,50,.12);
+    box-shadow:0 0 20px rgba(220,50,50,.08);
 }
 
+.answer.disabled{
 
-.answer.disabled {
-
-    pointer-events: none;
+    pointer-events:none;
 }
 
 
@@ -428,59 +383,47 @@ h1 {
    NEXT
 ========================================= */
 
-.next-area {
+.next-area{
 
-    display: flex;
+    display:flex;
 
-    justify-content: flex-end;
+    justify-content:flex-end;
 
-    margin-top: 25px;
+    margin-top:25px;
 }
 
+.next-button{
 
-.next-button {
+    display:none;
 
-    display: none;
+    padding:13px 25px;
 
-    padding:
-        13px 25px;
+    color:rgba(255,255,255,.8);
 
-    color:
-        rgba(255,255,255,.8);
+    border:1px solid rgba(255,255,255,.2);
 
-    border:
-        1px solid
-        rgba(255,255,255,.2);
+    background:transparent;
 
-    background:
-        transparent;
+    font-family:Arial,Helvetica,sans-serif;
 
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
+    font-size:9px;
 
-    font-size: 9px;
+    letter-spacing:3px;
 
-    letter-spacing: 3px;
+    cursor:pointer;
 
-    cursor: pointer;
-
-    transition:
-        .3s ease;
+    transition:.3s ease;
 }
 
+.next-button:hover{
 
-.next-button:hover {
+    color:#010208;
 
-    color: #010208;
+    background:white;
 
-    background: white;
+    border-color:white;
 
-    border-color: white;
-
-    transform:
-        translateY(-3px);
+    transform:translateY(-3px);
 }
 
 
@@ -488,41 +431,38 @@ h1 {
    RESULT
 ========================================= */
 
-.result {
+.result{
 
-    display: none;
+    display:none;
 
-    position: relative;
+    position:relative;
 
-    text-align: center;
+    text-align:center;
 
-    min-height: 500px;
+    min-height:500px;
 
-    padding:
-        25px 10px 15px;
+    padding:25px 10px 15px;
 
-    overflow: hidden;
+    overflow:hidden;
 }
 
+.result::before{
 
-.result::before {
+    content:"";
 
-    content: "";
+    position:absolute;
 
-    position: absolute;
+    width:360px;
 
-    width: 360px;
+    height:360px;
 
-    height: 360px;
+    left:50%;
 
-    left: 50%;
+    top:43%;
 
-    top: 43%;
+    transform:translate(-50%,-50%);
 
-    transform:
-        translate(-50%,-50%);
-
-    border-radius: 50%;
+    border-radius:50%;
 
     background:
         radial-gradient(
@@ -532,53 +472,50 @@ h1 {
             transparent 70%
         );
 
-    filter: blur(5px);
+    filter:blur(5px);
 
-    animation:
-        cosmicGlow 4s ease-in-out infinite;
+    animation:cosmicGlow 4s ease-in-out infinite;
 
-    pointer-events: none;
+    pointer-events:none;
 }
 
+@keyframes cosmicGlow{
 
-@keyframes cosmicGlow {
-
-    0%,100% {
+    0%,100%{
 
         transform:
             translate(-50%,-50%)
             scale(.82);
 
-        opacity: .55;
+        opacity:.55;
     }
 
-    50% {
+    50%{
 
         transform:
             translate(-50%,-50%)
             scale(1.18);
 
-        opacity: 1;
+        opacity:1;
     }
 }
 
 
 /* =========================================
-   STAR COMPLETION ICON
+   STAR ICON
 ========================================= */
 
-.completion-icon {
+.completion-icon{
 
-    position: relative;
+    position:relative;
 
-    width: 105px;
+    width:105px;
 
-    height: 105px;
+    height:105px;
 
-    margin:
-        5px auto 32px;
+    margin:5px auto 32px;
 
-    border-radius: 50%;
+    border-radius:50%;
 
     background:
         radial-gradient(
@@ -590,79 +527,63 @@ h1 {
         );
 
     box-shadow:
-        0 0 25px
-        rgba(150,180,255,.75),
-
-        0 0 65px
-        rgba(90,120,255,.4),
-
-        0 0 120px
-        rgba(60,80,255,.18);
+        0 0 25px rgba(150,180,255,.75),
+        0 0 65px rgba(90,120,255,.4),
+        0 0 120px rgba(60,80,255,.18);
 
     animation:
         starAppear 1s ease forwards,
         starFloat 4s ease-in-out 1s infinite;
 
-    z-index: 2;
+    z-index:2;
 }
 
+.completion-icon::before{
 
-.completion-icon::before {
+    content:"";
 
-    content: "";
+    position:absolute;
 
-    position: absolute;
+    inset:-17px;
 
-    inset: -17px;
+    border-radius:50%;
 
-    border-radius: 50%;
+    border:1px solid rgba(160,190,255,.4);
 
-    border:
-        1px solid
-        rgba(160,190,255,.4);
+    box-shadow:0 0 20px rgba(130,160,255,.3);
 
-    box-shadow:
-        0 0 20px
-        rgba(130,160,255,.3);
-
-    animation:
-        starRing 7s linear infinite;
+    animation:starRing 7s linear infinite;
 }
 
+.completion-icon::after{
 
-.completion-icon::after {
+    content:"";
 
-    content: "";
+    position:absolute;
 
-    position: absolute;
+    inset:-29px;
 
-    inset: -29px;
+    border-radius:50%;
 
-    border-radius: 50%;
+    border:1px dashed rgba(190,210,255,.16);
 
-    border:
-        1px dashed
-        rgba(190,210,255,.16);
-
-    animation:
-        starRingReverse 12s linear infinite;
+    animation:starRingReverse 12s linear infinite;
 }
 
+@keyframes starAppear{
 
-@keyframes starAppear {
+    from{
 
-    from {
-
-        opacity: 0;
+        opacity:0;
 
         transform:
             scale(.2)
             rotate(-60deg);
     }
 
-    to {
+    to{
 
-        opacity: 1;
+        opacity:1;
 
         transform:
             scale(1)
@@ -670,51 +591,42 @@ h1 {
     }
 }
 
+@keyframes starFloat{
 
-@keyframes starFloat {
+    0%,100%{
 
-    0%,100% {
-
-        transform:
-            translateY(0);
+        transform:translateY(0);
     }
 
-    50% {
+    50%{
 
-        transform:
-            translateY(-8px);
+        transform:translateY(-8px);
     }
 }
 
+@keyframes starRing{
 
-@keyframes starRing {
+    from{
 
-    from {
-
-        transform:
-            rotate(0deg);
+        transform:rotate(0deg);
     }
 
-    to {
+    to{
 
-        transform:
-            rotate(360deg);
+        transform:rotate(360deg);
     }
 }
 
+@keyframes starRingReverse{
 
-@keyframes starRingReverse {
+    from{
 
-    from {
-
-        transform:
-            rotate(360deg);
+        transform:rotate(360deg);
     }
 
-    to {
+    to{
 
-        transform:
-            rotate(0deg);
+        transform:rotate(0deg);
     }
 }
 
@@ -723,126 +635,109 @@ h1 {
    RESULT TEXT
 ========================================= */
 
-.result-label {
+.result-label{
 
-    position: relative;
+    position:relative;
 
-    z-index: 2;
+    z-index:2;
 
-    margin-bottom: 18px;
+    margin-bottom:18px;
 
-    color:
-        rgba(170,190,255,.6);
+    color:rgba(170,190,255,.6);
 
-    font-size: 10px;
+    font-size:10px;
 
-    letter-spacing: 6px;
+    letter-spacing:6px;
 
-    animation:
-        fadeUp .8s ease .2s both;
+    animation:fadeUp .8s ease .2s both;
 }
 
+.result-title{
 
-.result-title {
+    position:relative;
 
-    position: relative;
+    z-index:2;
 
-    z-index: 2;
+    margin-bottom:12px;
 
-    margin-bottom: 12px;
+    font-size:clamp(32px,7vw,65px);
 
-    font-size:
-        clamp(32px,7vw,65px);
+    letter-spacing:5px;
 
-    letter-spacing: 5px;
-
-    animation:
-        titleAppear 1s ease .35s both;
+    animation:titleAppear 1s ease .35s both;
 }
 
+@keyframes titleAppear{
 
-@keyframes titleAppear {
+    from{
 
-    from {
+        opacity:0;
 
-        opacity: 0;
+        transform:translateY(20px);
 
-        transform:
-            translateY(20px);
-
-        letter-spacing: 15px;
+        letter-spacing:15px;
     }
 
-    to {
+    to{
 
-        opacity: 1;
+        opacity:1;
 
-        transform:
-            translateY(0);
+        transform:translateY(0);
 
-        letter-spacing: 5px;
+        letter-spacing:5px;
     }
 }
 
+.score{
 
-.score {
+    position:relative;
 
-    position: relative;
+    z-index:2;
 
-    z-index: 2;
+    margin-bottom:22px;
 
-    margin-bottom: 22px;
+    font-size:25px;
 
-    font-size: 25px;
+    font-weight:bold;
 
-    font-weight: bold;
+    letter-spacing:3px;
 
-    letter-spacing: 3px;
-
-    animation:
-        fadeUp .8s ease .55s both;
+    animation:fadeUp .8s ease .55s both;
 }
 
+.result-text{
 
-.result-text {
+    position:relative;
 
-    position: relative;
+    z-index:2;
 
-    z-index: 2;
+    max-width:650px;
 
-    max-width: 650px;
+    margin:0 auto 30px;
 
-    margin:
-        0 auto 30px;
+    color:rgba(255,255,255,.5);
 
-    color:
-        rgba(255,255,255,.5);
+    font-size:13px;
 
-    font-size: 13px;
+    line-height:1.8;
 
-    line-height: 1.8;
-
-    animation:
-        fadeUp .8s ease .7s both;
+    animation:fadeUp .8s ease .7s both;
 }
 
+@keyframes fadeUp{
 
-@keyframes fadeUp {
+    from{
 
-    from {
+        opacity:0;
 
-        opacity: 0;
-
-        transform:
-            translateY(15px);
+        transform:translateY(15px);
     }
 
-    to {
+    to{
 
-        opacity: 1;
+        opacity:1;
 
-        transform:
-            translateY(0);
+        transform:translateY(0);
     }
 }
 
@@ -851,37 +746,32 @@ h1 {
    SCORE BAR
 ========================================= */
 
-.final-score-bar {
+.final-score-bar{
 
-    position: relative;
+    position:relative;
 
-    z-index: 2;
+    z-index:2;
 
-    width:
-        min(500px,90%);
+    width:min(500px,90%);
 
-    height: 3px;
+    height:3px;
 
-    margin:
-        0 auto 35px;
+    margin:0 auto 35px;
 
-    background:
-        rgba(255,255,255,.08);
+    background:rgba(255,255,255,.08);
 
-    overflow: hidden;
+    overflow:hidden;
 
-    animation:
-        fadeUp .8s ease .85s both;
+    animation:fadeUp .8s ease .85s both;
 }
 
+.final-score-fill{
 
-.final-score-fill {
+    width:0%;
 
-    width: 0%;
+    height:100%;
 
-    height: 100%;
-
-    background: white;
+    background:white;
 
     box-shadow:
         0 0 12px
@@ -893,71 +783,58 @@ h1 {
 
 
 /* =========================================
-   BUTTONS
+   RESULT BUTTONS
 ========================================= */
 
-.result-buttons {
+.result-buttons{
 
-    position: relative;
+    position:relative;
 
-    z-index: 2;
+    z-index:2;
 
-    display: flex;
+    display:flex;
 
-    justify-content: center;
+    justify-content:center;
 
-    gap: 12px;
+    gap:12px;
 
-    flex-wrap: wrap;
+    flex-wrap:wrap;
 
-    animation:
-        fadeUp .8s ease 1s both;
+    animation:fadeUp .8s ease 1s both;
 }
 
+.result-button{
 
-.result-button {
+    padding:13px 23px;
 
-    padding:
-        13px 23px;
+    color:rgba(255,255,255,.75);
 
-    color:
-        rgba(255,255,255,.75);
+    border:1px solid rgba(255,255,255,.2);
 
-    border:
-        1px solid
-        rgba(255,255,255,.2);
+    background:transparent;
 
-    background:
-        transparent;
+    text-decoration:none;
 
-    text-decoration: none;
+    font-family:Arial,Helvetica,sans-serif;
 
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
+    font-size:9px;
 
-    font-size: 9px;
+    letter-spacing:2px;
 
-    letter-spacing: 2px;
+    cursor:pointer;
 
-    cursor: pointer;
-
-    transition:
-        .3s ease;
+    transition:.3s ease;
 }
 
+.result-button:hover{
 
-.result-button:hover {
+    color:#010208;
 
-    color: #010208;
+    background:white;
 
-    background: white;
+    border-color:white;
 
-    border-color: white;
-
-    transform:
-        translateY(-3px);
+    transform:translateY(-3px);
 }
 
 
@@ -965,50 +842,48 @@ h1 {
    PARTICLES
 ========================================= */
 
-.final-particle {
+.final-particle{
 
-    position: absolute;
+    position:absolute;
 
-    width: 3px;
+    width:3px;
 
-    height: 3px;
+    height:3px;
 
-    border-radius: 50%;
+    border-radius:50%;
 
-    background: white;
+    background:white;
 
-    pointer-events: none;
+    pointer-events:none;
 
-    opacity: 0;
+    opacity:0;
 
-    animation:
-        particleFly 2.5s ease-out forwards;
+    animation:particleFly 2.5s ease-out forwards;
 }
 
+@keyframes particleFly{
 
-@keyframes particleFly {
+    0%{
 
-    0% {
-
-        opacity: 0;
+        opacity:0;
 
         transform:
             translate(0,0)
             scale(.2);
     }
 
-    15% {
+    15%{
 
-        opacity: 1;
+        opacity:1;
 
         transform:
             translate(0,0)
             scale(1);
     }
 
-    100% {
+    100%{
 
-        opacity: 0;
+        opacity:0;
 
         transform:
             translate(
@@ -1024,22 +899,21 @@ h1 {
    FOOTER
 ========================================= */
 
-.footer {
+.footer{
 
-    position: relative;
+    position:relative;
 
-    z-index: 5;
+    z-index:5;
 
-    margin-top: 35px;
+    margin-top:35px;
 
-    text-align: center;
+    text-align:center;
 
-    color:
-        rgba(255,255,255,.25);
+    color:rgba(255,255,255,.25);
 
-    font-size: 9px;
+    font-size:9px;
 
-    letter-spacing: 4px;
+    letter-spacing:4px;
 }
 
 
@@ -1047,40 +921,38 @@ h1 {
    MOBILE
 ========================================= */
 
-@media(max-width:600px) {
+@media(max-width:600px){
 
-    .stars-quiz-page {
+    .stars-quiz-page{
 
-        padding:
-            50px 15px 80px;
+        padding:50px 15px 80px;
     }
 
-    .quiz-container {
+    .quiz-container{
 
-        padding: 25px;
+        padding:25px;
     }
 
-    .answers {
+    .answers{
 
-        grid-template-columns:
-            1fr;
+        grid-template-columns:1fr;
     }
 
-    .question {
+    .question{
 
-        font-size: 20px;
+        font-size:20px;
     }
 
-    .completion-icon {
+    .completion-icon{
 
-        width: 85px;
+        width:85px;
 
-        height: 85px;
+        height:85px;
     }
 
-    .result {
+    .result{
 
-        min-height: 550px;
+        min-height:550px;
     }
 
 }
@@ -1092,9 +964,7 @@ h1 {
 
 <body>
 
-
 <section class="stars-quiz-page">
-
 
 <div class="stars"></div>
 
@@ -1107,15 +977,13 @@ h1 {
 
 <div class="header">
 
-
 <a
-href="https://sites.google.com/view/kosmolearn"
+href="https://orbonix.net"
 class="return">
 
 ← RETURN TO HOME
 
 </a>
-
 
 <div class="label">
 
@@ -1123,13 +991,11 @@ ORBONIX · SPACE KNOWLEDGE
 
 </div>
 
-
 <h1>
 
 STARS QUIZ
 
 </h1>
-
 
 <div class="subtitle">
 
@@ -1138,7 +1004,6 @@ facts to stellar evolution, supernovae and
 the most extreme stars in the Universe.
 
 </div>
-
 
 </div>
 
@@ -1149,9 +1014,7 @@ the most extreme stars in the Universe.
 
 <div class="quiz-container">
 
-
 <div id="quiz">
-
 
 <div class="quiz-top">
 
@@ -1162,7 +1025,6 @@ id="questionNumber">
 QUESTION 01 / 30
 
 </div>
-
 
 <div
 class="difficulty"
@@ -1213,7 +1075,6 @@ NEXT QUESTION →
 
 </div>
 
-
 </div>
 
 
@@ -1225,16 +1086,13 @@ NEXT QUESTION →
 class="result"
 id="result">
 
-
 <div class="completion-icon"></div>
-
 
 <div class="result-label">
 
 STELLAR MISSION COMPLETE
 
 </div>
-
 
 <div
 class="result-title"
@@ -1244,7 +1102,6 @@ STAR EXPLORER
 
 </div>
 
-
 <div
 class="score"
 id="score">
@@ -1252,7 +1109,6 @@ id="score">
 0 / 30
 
 </div>
-
 
 <div class="final-score-bar">
 
@@ -1263,7 +1119,6 @@ id="finalScoreFill">
 
 </div>
 
-
 <div
 class="result-text"
 id="resultText">
@@ -1273,9 +1128,7 @@ through the life and physics of stars.
 
 </div>
 
-
 <div class="result-buttons">
-
 
 <button
 class="result-button"
@@ -1285,30 +1138,25 @@ onclick="restartQuiz()">
 
 </button>
 
-
 <a
-href="YOUR-QUIZ-SELECT-PAGE-LINK"
+href="https://orbonix.net/exploring-space/quizzes"
 class="result-button">
 
 ← QUIZ SELECT
 
 </a>
 
-
 <a
-href="https://sites.google.com/view/kosmolearn"
+href="https://orbonix.net"
 class="result-button">
 
 RETURN TO HOME
 
 </a>
 
-
 </div>
 
-
 </div>
-
 
 </div>
 
@@ -1319,12 +1167,10 @@ ORBONIX · STARS QUIZ · SPACE KNOWLEDGE
 
 </div>
 
-
 </section>
 
 
 <script>
-
 
 /* =========================================
    QUESTIONS
@@ -1332,438 +1178,374 @@ ORBONIX · STARS QUIZ · SPACE KNOWLEDGE
 
 const questions = [
 
-/* =========================================
-   EASY 1-10
-========================================= */
-
 {
-question:
-"What is a star?",
-answers:
-[
+question:"What is a star?",
+answers:[
 "A giant ball of hot plasma held together by gravity",
 "A large planet",
 "A cloud of ice",
 "A moon"
 ],
-correct: 0,
-difficulty: "EASY"
+correct:0,
+difficulty:"EASY"
 },
 
 {
-question:
-"What force holds a star together?",
-answers:
-[
+question:"What force holds a star together?",
+answers:[
 "Magnetism",
 "Gravity",
 "Electricity",
 "Wind"
 ],
-correct: 1,
-difficulty: "EASY"
+correct:1,
+difficulty:"EASY"
 },
 
 {
-question:
-"What do stars primarily produce in their cores?",
-answers:
-[
+question:"What do stars primarily produce in their cores?",
+answers:[
 "Water",
 "Energy through nuclear fusion",
 "Ice",
 "Sound"
 ],
-correct: 1,
-difficulty: "EASY"
+correct:1,
+difficulty:"EASY"
 },
 
 {
-question:
-"What is the closest star to Earth?",
-answers:
-[
+question:"What is the closest star to Earth?",
+answers:[
 "Sirius",
 "Betelgeuse",
 "The Sun",
 "Polaris"
 ],
-correct: 2,
-difficulty: "EASY"
+correct:2,
+difficulty:"EASY"
 },
 
 {
-question:
-"What is the Sun?",
-answers:
-[
+question:"What is the Sun?",
+answers:[
 "A red giant",
 "A neutron star",
 "A main-sequence star",
 "A white dwarf"
 ],
-correct: 2,
-difficulty: "EASY"
+correct:2,
+difficulty:"EASY"
 },
 
 {
-question:
-"Which star is famously the brightest star in the night sky?",
-answers:
-[
+question:"Which star is famously the brightest star in the night sky?",
+answers:[
 "Sirius",
 "Vega",
 "Rigel",
 "Deneb"
 ],
-correct: 0,
-difficulty: "EASY"
+correct:0,
+difficulty:"EASY"
 },
 
 {
-question:
-"What are stars mostly made of?",
-answers:
-[
+question:"What are stars mostly made of?",
+answers:[
 "Rock and metal",
 "Hydrogen and helium",
 "Water and oxygen",
 "Carbon and iron"
 ],
-correct: 1,
-difficulty: "EASY"
+correct:1,
+difficulty:"EASY"
 },
 
 {
-question:
-"What color are the hottest stars usually?",
-answers:
-[
+question:"What color are the hottest stars usually?",
+answers:[
 "Blue",
 "Red",
 "Orange",
 "Brown"
 ],
-correct: 0,
-difficulty: "EASY"
+correct:0,
+difficulty:"EASY"
 },
 
 {
-question:
-"What color are cooler stars generally?",
-answers:
-[
+question:"What color are cooler stars generally?",
+answers:[
 "Blue",
 "White",
 "Red",
 "Violet"
 ],
-correct: 2,
-difficulty: "EASY"
+correct:2,
+difficulty:"EASY"
 },
 
 {
-question:
-"What galaxy contains our Sun?",
-answers:
-[
+question:"What galaxy contains our Sun?",
+answers:[
 "Andromeda Galaxy",
 "Triangulum Galaxy",
 "Milky Way Galaxy",
 "Whirlpool Galaxy"
 ],
-correct: 2,
-difficulty: "EASY"
+correct:2,
+difficulty:"EASY"
 },
 
 
 /* =========================================
-   MEDIUM 11-20
+   MEDIUM
 ========================================= */
 
 {
-question:
-"What process powers most main-sequence stars?",
-answers:
-[
+question:"What process powers most main-sequence stars?",
+answers:[
 "Nuclear fusion",
 "Nuclear fission",
 "Chemical combustion",
 "Radioactive decay"
 ],
-correct: 0,
-difficulty: "MEDIUM"
+correct:0,
+difficulty:"MEDIUM"
 },
 
 {
-question:
-"What is the main sequence?",
-answers:
-[
+question:"What is the main sequence?",
+answers:[
 "A stage where stars spend most of their active lives fusing hydrogen",
 "A group of galaxies",
 "A type of black hole",
 "A region without stars"
 ],
-correct: 0,
-difficulty: "MEDIUM"
+correct:0,
+difficulty:"MEDIUM"
 },
 
 {
-question:
-"What happens when a Sun-like star runs out of hydrogen in its core?",
-answers:
-[
+question:"What happens when a Sun-like star runs out of hydrogen in its core?",
+answers:[
 "It becomes a planet",
 "It eventually expands into a red giant",
 "It instantly becomes a black hole",
 "It disappears"
 ],
-correct: 1,
-difficulty: "MEDIUM"
+correct:1,
+difficulty:"MEDIUM"
 },
 
 {
-question:
-"What is a red giant?",
-answers:
-[
+question:"What is a red giant?",
+answers:[
 "A large, evolved star with an expanded outer envelope",
 "A newborn blue star",
 "A neutron star",
 "A planet covered in red clouds"
 ],
-correct: 0,
-difficulty: "MEDIUM"
+correct:0,
+difficulty:"MEDIUM"
 },
 
 {
-question:
-"What is a white dwarf?",
-answers:
-[
+question:"What is a white dwarf?",
+answers:[
 "The hot, dense remnant of a low- or intermediate-mass star",
 "A young massive star",
 "A small black hole",
 "A gas giant"
 ],
-correct: 0,
-difficulty: "MEDIUM"
+correct:0,
+difficulty:"MEDIUM"
 },
 
 {
-question:
-"What determines a star's evolution most strongly?",
-answers:
-[
+question:"What determines a star's evolution most strongly?",
+answers:[
 "Its initial mass",
 "Its distance from Earth",
 "Its color only",
 "The number of planets around it"
 ],
-correct: 0,
-difficulty: "MEDIUM"
+correct:0,
+difficulty:"MEDIUM"
 },
 
 {
-question:
-"What is a supernova?",
-answers:
-[
+question:"What is a supernova?",
+answers:[
 "A powerful stellar explosion or explosive stellar event",
 "A new planet",
 "A type of asteroid",
 "A solar eclipse"
 ],
-correct: 0,
-difficulty: "MEDIUM"
+correct:0,
+difficulty:"MEDIUM"
 },
 
 {
-question:
-"What can remain after the supernova of a massive star?",
-answers:
-[
+question:"What can remain after the supernova of a massive star?",
+answers:[
 "A neutron star or black hole",
 "A white dwarf only",
 "A planet",
 "Nothing can ever remain"
 ],
-correct: 0,
-difficulty: "MEDIUM"
+correct:0,
+difficulty:"MEDIUM"
 },
 
 {
-question:
-"What is a binary star system?",
-answers:
-[
+question:"What is a binary star system?",
+answers:[
 "Two stars gravitationally bound to each other",
 "One star with two cores",
 "A star with two planets",
 "Two galaxies colliding"
 ],
-correct: 0,
-difficulty: "MEDIUM"
+correct:0,
+difficulty:"MEDIUM"
 },
 
 {
-question:
-"What does a star's luminosity describe?",
-answers:
-[
+question:"What does a star's luminosity describe?",
+answers:[
 "How much energy it emits per unit time",
 "How close it is to Earth",
 "How fast it rotates",
 "Its surface temperature only"
 ],
-correct: 0,
-difficulty: "MEDIUM"
+correct:0,
+difficulty:"MEDIUM"
 },
 
 
 /* =========================================
-   HARD 21-30
+   HARD
 ========================================= */
 
 {
-question:
-"Why do massive stars generally live shorter lives than low-mass stars?",
-answers:
-[
+question:"Why do massive stars generally live shorter lives than low-mass stars?",
+answers:[
 "They consume their nuclear fuel much faster",
 "They contain no hydrogen",
 "They are always unstable",
 "They rotate too slowly"
 ],
-correct: 0,
-difficulty: "HARD"
+correct:0,
+difficulty:"HARD"
 },
 
 {
-question:
-"What is the Hertzsprung–Russell diagram used to compare?",
-answers:
-[
+question:"What is the Hertzsprung–Russell diagram used to compare?",
+answers:[
 "Stars by properties such as luminosity and temperature",
 "Galaxies by distance",
 "Planets by mass",
 "Black holes by size"
 ],
-correct: 0,
-difficulty: "HARD"
+correct:0,
+difficulty:"HARD"
 },
 
 {
-question:
-"What is stellar nucleosynthesis?",
-answers:
-[
+question:"What is stellar nucleosynthesis?",
+answers:[
 "The creation of chemical elements through nuclear processes in stars",
 "The formation of galaxies",
 "The birth of planets",
 "The collapse of space itself"
 ],
-correct: 0,
-difficulty: "HARD"
+correct:0,
+difficulty:"HARD"
 },
 
 {
-question:
-"Why are elements heavier than iron generally not produced by ordinary fusion in stellar cores?",
-answers:
-[
+question:"Why are elements heavier than iron generally not produced by ordinary fusion in stellar cores?",
+answers:[
 "Fusing them does not provide the same energy gain",
 "They cannot exist inside stars",
 "Iron is radioactive",
 "Stars contain no heavy elements"
 ],
-correct: 0,
-difficulty: "HARD"
+correct:0,
+difficulty:"HARD"
 },
 
 {
-question:
-"What is a neutron star?",
-answers:
-[
+question:"What is a neutron star?",
+answers:[
 "An extremely dense remnant composed primarily of neutrons",
 "A star made of liquid hydrogen",
 "A small white dwarf",
 "A failed planet"
 ],
-correct: 0,
-difficulty: "HARD"
+correct:0,
+difficulty:"HARD"
 },
 
 {
-question:
-"What is a pulsar?",
-answers:
-[
+question:"What is a pulsar?",
+answers:[
 "A rapidly rotating neutron star whose emission sweeps past Earth like a beam",
 "A rotating black hole",
 "A young red giant",
 "A planet emitting radio waves"
 ],
-correct: 0,
-difficulty: "HARD"
+correct:0,
+difficulty:"HARD"
 },
 
 {
-question:
-"What makes a magnetar especially extreme?",
-answers:
-[
+question:"What makes a magnetar especially extreme?",
+answers:[
 "It has an extraordinarily strong magnetic field",
 "It is the largest star",
 "It has no gravity",
 "It is made entirely of antimatter"
 ],
-correct: 0,
-difficulty: "HARD"
+correct:0,
+difficulty:"HARD"
 },
 
 {
-question:
-"What is the Chandrasekhar limit approximately associated with?",
-answers:
-[
+question:"What is the Chandrasekhar limit approximately associated with?",
+answers:[
 "The maximum mass of a stable electron-degenerate white dwarf",
 "The maximum mass of a galaxy",
 "The temperature of a neutron star",
 "The radius of the Sun"
 ],
-correct: 0,
-difficulty: "HARD"
+correct:0,
+difficulty:"HARD"
 },
 
 {
-question:
-"What is one possible fate of a very massive star after core collapse?",
-answers:
-[
+question:"What is one possible fate of a very massive star after core collapse?",
+answers:[
 "Formation of a black hole",
 "Formation of an asteroid",
 "Formation of a white dwarf",
 "Formation of a comet"
 ],
-correct: 0,
-difficulty: "HARD"
+correct:0,
+difficulty:"HARD"
 },
 
 {
-question:
-"Which statement about the most massive stars is correct?",
-answers:
-[
+question:"Which statement about the most massive stars is correct?",
+answers:[
 "They can be hundreds of times more massive than the Sun",
 "They are always smaller than the Sun",
 "They cannot produce heavy elements",
 "They live for trillions of years"
 ],
-correct: 0,
-difficulty: "HARD"
+correct:0,
+difficulty:"HARD"
 }
 
 ];
@@ -1781,33 +1563,28 @@ let answered = false;
 
 
 /* =========================================
-   SHUFFLE ANSWERS
+   SHUFFLE
 ========================================= */
 
-function shuffleAnswers(question) {
+function shuffleAnswers(question){
 
     const answerObjects =
         question.answers.map(
-            (answer, index) => {
+            (answer,index)=>({
 
-                return {
+                text:answer,
 
-                    text: answer,
+                correct:index === question.correct
 
-                    correct:
-                        index === question.correct
-
-                };
-
-            }
+            })
         );
 
 
-    for (
+    for(
         let i = answerObjects.length - 1;
         i > 0;
         i--
-    ) {
+    ){
 
         const j =
             Math.floor(
@@ -1835,7 +1612,7 @@ function shuffleAnswers(question) {
    LOAD QUESTION
 ========================================= */
 
-function loadQuestion() {
+function loadQuestion(){
 
     answered = false;
 
@@ -1865,11 +1642,13 @@ function loadQuestion() {
         q.question;
 
 
+    /* Correct progress calculation */
+
     document.getElementById(
         "progressBar"
     ).style.width =
         `${(
-            currentQuestion /
+            (currentQuestion + 1) /
             questions.length
         ) * 100}%`;
 
@@ -1896,6 +1675,8 @@ function loadQuestion() {
                 );
 
 
+            button.type = "button";
+
             button.className =
                 "answer";
 
@@ -1909,7 +1690,7 @@ function loadQuestion() {
 
 
             button.onclick =
-                function() {
+                function(){
 
                     selectAnswer(
                         answerObject.correct,
@@ -1935,15 +1716,15 @@ function loadQuestion() {
 
 
 /* =========================================
-   ANSWER
+   SELECT ANSWER
 ========================================= */
 
 function selectAnswer(
     isCorrect,
     selectedButton
-) {
+){
 
-    if (answered)
+    if(answered)
         return;
 
 
@@ -1967,7 +1748,7 @@ function selectAnswer(
     );
 
 
-    if (isCorrect) {
+    if(isCorrect){
 
         selectedButton.classList.add(
             "correct"
@@ -1977,7 +1758,7 @@ function selectAnswer(
 
     }
 
-    else {
+    else{
 
         selectedButton.classList.add(
             "wrong"
@@ -1987,10 +1768,10 @@ function selectAnswer(
         buttons.forEach(
             button => {
 
-                if (
+                if(
                     button.dataset.correct
                     === "true"
-                ) {
+                ){
 
                     button.classList.add(
                         "correct"
@@ -2015,15 +1796,19 @@ function selectAnswer(
    NEXT QUESTION
 ========================================= */
 
-function nextQuestion() {
+function nextQuestion(){
+
+    if(!answered)
+        return;
+
 
     currentQuestion++;
 
 
-    if (
+    if(
         currentQuestion >=
         questions.length
-    ) {
+    ){
 
         showResult();
 
@@ -2040,7 +1825,7 @@ function nextQuestion() {
    RESULT
 ========================================= */
 
-function showResult() {
+function showResult(){
 
     document.getElementById(
         "quiz"
@@ -2059,9 +1844,15 @@ function showResult() {
 
 
     document.getElementById(
+        "progressBar"
+    ).style.width =
+        "100%";
+
+
+    document.getElementById(
         "score"
     ).textContent =
-        "0 / 30";
+        `0 / ${questions.length}`;
 
 
     let title = "";
@@ -2069,7 +1860,7 @@ function showResult() {
     let text = "";
 
 
-    if (score <= 10) {
+    if(score <= 10){
 
         title =
             "STAR BEGINNER";
@@ -2079,7 +1870,7 @@ function showResult() {
 
     }
 
-    else if (score <= 17) {
+    else if(score <= 17){
 
         title =
             "STAR EXPLORER";
@@ -2089,7 +1880,7 @@ function showResult() {
 
     }
 
-    else if (score <= 23) {
+    else if(score <= 23){
 
         title =
             "STELLAR ASTRONOMER";
@@ -2099,7 +1890,7 @@ function showResult() {
 
     }
 
-    else if (score <= 27) {
+    else if(score <= 27){
 
         title =
             "STELLAR EXPERT";
@@ -2109,7 +1900,7 @@ function showResult() {
 
     }
 
-    else {
+    else{
 
         title =
             "STELLAR MASTER";
@@ -2136,7 +1927,7 @@ function showResult() {
 
 
     setTimeout(
-        function() {
+        function(){
 
             document.getElementById(
                 "finalScoreFill"
@@ -2160,9 +1951,10 @@ function showResult() {
    SCORE ANIMATION
 ========================================= */
 
-function animateScore() {
+function animateScore(){
 
     let value = 0;
+
 
     const scoreElement =
         document.getElementById(
@@ -2176,7 +1968,7 @@ function animateScore() {
         performance.now();
 
 
-    function update(now) {
+    function update(now){
 
         const progress =
             Math.min(
@@ -2204,7 +1996,7 @@ function animateScore() {
             `${value} / ${questions.length}`;
 
 
-        if (progress < 1) {
+        if(progress < 1){
 
             requestAnimationFrame(
                 update
@@ -2212,7 +2004,7 @@ function animateScore() {
 
         }
 
-        else {
+        else{
 
             scoreElement.textContent =
                 `${score} / ${questions.length}`;
@@ -2232,7 +2024,7 @@ function animateScore() {
    PARTICLES
 ========================================= */
 
-function createParticles() {
+function createParticles(){
 
     const result =
         document.getElementById(
@@ -2240,11 +2032,11 @@ function createParticles() {
         );
 
 
-    for (
+    for(
         let i = 0;
         i < 80;
         i++
-    ) {
+    ){
 
         const particle =
             document.createElement(
@@ -2295,7 +2087,7 @@ function createParticles() {
 
 
         setTimeout(
-            function() {
+            function(){
 
                 particle.remove();
 
@@ -2312,11 +2104,13 @@ function createParticles() {
    RESTART
 ========================================= */
 
-function restartQuiz() {
+function restartQuiz(){
 
     currentQuestion = 0;
 
     score = 0;
+
+    answered = false;
 
 
     document.getElementById(
@@ -2338,6 +2132,13 @@ function restartQuiz() {
 
 
     loadQuestion();
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
 }
 
 
@@ -2346,42 +2147,47 @@ function restartQuiz() {
 ========================================= */
 
 const stars =
-document.querySelector(".stars");
+    document.querySelector(
+        ".stars"
+    );
 
 const smallStars =
-document.querySelector(".stars-small");
+    document.querySelector(
+        ".stars-small"
+    );
 
 
 document.addEventListener(
-"mousemove",
+    "mousemove",
+    function(event){
 
-function(event) {
-
-    const x =
-        event.clientX /
-        window.innerWidth -
-        0.5;
-
-    const y =
-        event.clientY /
-        window.innerHeight -
-        0.5;
+        const x =
+            event.clientX /
+            window.innerWidth -
+            0.5;
 
 
-    stars.style.transform =
-        `translate(
-            ${x * 20}px,
-            ${y * 20}px
-        )`;
+        const y =
+            event.clientY /
+            window.innerHeight -
+            0.5;
 
 
-    smallStars.style.transform =
-        `translate(
-            ${x * -12}px,
-            ${y * -12}px
-        )`;
+        stars.style.transform =
+            `translate(
+                ${x * 20}px,
+                ${y * 20}px
+            )`;
 
-});
+
+        smallStars.style.transform =
+            `translate(
+                ${x * -12}px,
+                ${y * -12}px
+            )`;
+
+    }
+);
 
 
 /* =========================================
@@ -2392,7 +2198,7 @@ loadQuestion();
 
 </script>
 
-
 </body>
 
 </html>
+```
