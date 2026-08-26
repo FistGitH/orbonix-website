@@ -6,6 +6,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Radiative Zone | ORBONIX</title>
+
 <style>
 
 * {
@@ -29,7 +31,7 @@ body {
    PAGE
 ========================================= */
 
-.radiative-page {
+.orbonix-radiative-page {
 
     position: relative;
 
@@ -47,7 +49,7 @@ body {
    STARS
 ========================================= */
 
-.stars {
+.orbonix-radiative-stars {
 
     position: absolute;
 
@@ -71,7 +73,7 @@ body {
 }
 
 
-.stars-small {
+.orbonix-radiative-stars-small {
 
     position: absolute;
 
@@ -99,7 +101,7 @@ body {
    HEADER
 ========================================= */
 
-.header {
+.orbonix-radiative-header {
 
     position: relative;
 
@@ -113,11 +115,13 @@ body {
 }
 
 
-.return {
+.orbonix-radiative-return {
 
     display: inline-flex;
 
     align-items: center;
+
+    justify-content: center;
 
     padding: 12px 20px;
 
@@ -141,7 +145,7 @@ body {
 }
 
 
-.return:hover {
+.orbonix-radiative-return:hover {
 
     background: white;
 
@@ -154,7 +158,7 @@ body {
 }
 
 
-.label {
+.orbonix-radiative-label {
 
     margin-bottom: 18px;
 
@@ -167,7 +171,7 @@ body {
 }
 
 
-h1 {
+.orbonix-radiative-title {
 
     margin: 0;
 
@@ -180,7 +184,7 @@ h1 {
 }
 
 
-.subtitle {
+.orbonix-radiative-subtitle {
 
     max-width: 720px;
 
@@ -200,7 +204,7 @@ h1 {
    MAIN VISUAL
 ========================================= */
 
-.zone-area {
+.orbonix-radiative-zone-area {
 
     position: relative;
 
@@ -216,14 +220,16 @@ h1 {
     align-items: center;
 
     justify-content: center;
+
+    perspective: 900px;
 }
 
 
 /* =========================================
-   SUN
+   OUTER SUN
 ========================================= */
 
-.sun {
+.orbonix-radiative-sun {
 
     position: absolute;
 
@@ -243,8 +249,35 @@ h1 {
         );
 
     box-shadow:
+
         0 0 35px
-        rgba(255,120,20,.22);
+        rgba(255,120,20,.22),
+
+        0 0 80px
+        rgba(255,80,0,.08);
+
+    animation:
+        orbonixRadiativeSunPulse 6s
+        ease-in-out infinite;
+
+    transition:
+        transform .25s ease-out;
+}
+
+
+@keyframes orbonixRadiativeSunPulse {
+
+    0%,100% {
+
+        transform:
+            scale(1);
+    }
+
+    50% {
+
+        transform:
+            scale(1.018);
+    }
 }
 
 
@@ -252,7 +285,7 @@ h1 {
    RADIATIVE ZONE
 ========================================= */
 
-.radiative-zone {
+.orbonix-radiative-zone {
 
     position: absolute;
 
@@ -264,39 +297,121 @@ h1 {
 
     background:
         radial-gradient(
-            circle,
-            rgba(255,240,160,.95) 0%,
-            rgba(255,190,50,.9) 30%,
-            rgba(255,120,10,.75) 62%,
-            rgba(200,45,0,.55) 100%
+            circle at 45% 40%,
+            rgba(255,250,190,.98) 0%,
+            rgba(255,220,100,.95) 18%,
+            rgba(255,174,35,.9) 42%,
+            rgba(246,105,5,.72) 72%,
+            rgba(160,35,0,.58) 100%
         );
 
     box-shadow:
+
         inset 0 0 45px
-        rgba(255,240,120,.35);
+        rgba(255,240,120,.45),
+
+        0 0 45px
+        rgba(255,170,20,.18);
 
     animation:
-        radiativePulse 5s
+        orbonixRadiativeZonePulse 5s
         ease-in-out infinite;
+
+    transition:
+        transform .3s ease-out;
 }
 
 
-@keyframes radiativePulse {
+@keyframes orbonixRadiativeZonePulse {
 
     0%,100% {
 
         transform:
             scale(.98);
 
-        opacity: .9;
+        opacity: .92;
     }
 
     50% {
 
         transform:
-            scale(1.02);
+            scale(1.025);
 
         opacity: 1;
+    }
+}
+
+
+/* =========================================
+   RADIATIVE TEXTURE
+========================================= */
+
+.orbonix-radiative-texture {
+
+    position: absolute;
+
+    width: 300px;
+
+    height: 300px;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    opacity: .3;
+
+    background-image:
+
+        radial-gradient(
+            circle at 20% 30%,
+            rgba(255,255,255,.8) 0 2px,
+            transparent 5px
+        ),
+
+        radial-gradient(
+            circle at 70% 20%,
+            rgba(255,255,255,.65) 0 2px,
+            transparent 5px
+        ),
+
+        radial-gradient(
+            circle at 35% 70%,
+            rgba(255,255,255,.7) 0 2px,
+            transparent 5px
+        ),
+
+        radial-gradient(
+            circle at 80% 75%,
+            rgba(255,255,255,.55) 0 2px,
+            transparent 5px
+        );
+
+    background-size:
+        55px 55px,
+        70px 65px,
+        65px 60px,
+        75px 70px;
+
+    animation:
+        orbonixRadiativeTextureMove 8s
+        linear infinite;
+}
+
+
+@keyframes orbonixRadiativeTextureMove {
+
+    from {
+
+        transform:
+            rotate(0deg)
+            scale(1);
+    }
+
+    to {
+
+        transform:
+            rotate(360deg)
+            scale(1.05);
     }
 }
 
@@ -305,7 +420,7 @@ h1 {
    CORE
 ========================================= */
 
-.core {
+.orbonix-radiative-core {
 
     position: absolute;
 
@@ -317,16 +432,43 @@ h1 {
 
     background:
         radial-gradient(
-            circle,
-            #fffbd0,
-            #ffe064 30%,
-            #ff9b00 65%,
-            #e84b00 100%
+            circle at 42% 38%,
+            #fffde0 0%,
+            #ffe96d 25%,
+            #ffad08 58%,
+            #ed5200 82%,
+            #9e2100 100%
         );
 
     box-shadow:
+
         0 0 30px
-        rgba(255,210,60,.55);
+        rgba(255,220,80,.7),
+
+        0 0 65px
+        rgba(255,130,0,.4);
+
+    z-index: 5;
+
+    animation:
+        orbonixRadiativeCorePulse 3.5s
+        ease-in-out infinite;
+}
+
+
+@keyframes orbonixRadiativeCorePulse {
+
+    0%,100% {
+
+        transform:
+            scale(.97);
+    }
+
+    50% {
+
+        transform:
+            scale(1.04);
+    }
 }
 
 
@@ -334,7 +476,7 @@ h1 {
    PHOTON PARTICLES
 ========================================= */
 
-.photon {
+.orbonix-radiative-photon {
 
     position: absolute;
 
@@ -348,79 +490,184 @@ h1 {
 
     box-shadow:
         0 0 8px
-        rgba(255,255,255,.9);
+        rgba(255,255,255,.95),
+
+        0 0 16px
+        rgba(255,190,70,.7);
+
+    z-index: 7;
+
+    pointer-events: none;
 
     animation:
-        photonMove
+        orbonixRadiativePhotonMove
         linear infinite;
 }
 
 
-.p1 {
-    animation-duration: 4s;
+.orbonix-radiative-p1 {
+
+    animation-duration: 4.2s;
 }
 
-.p2 {
-    animation-duration: 6s;
-    animation-delay: -2s;
+
+.orbonix-radiative-p2 {
+
+    animation-duration: 5.7s;
+
+    animation-delay: -1.8s;
 }
 
-.p3 {
-    animation-duration: 5s;
+
+.orbonix-radiative-p3 {
+
+    animation-duration: 6.4s;
+
+    animation-delay: -3.2s;
+}
+
+
+.orbonix-radiative-p4 {
+
+    animation-duration: 4.8s;
+
+    animation-delay: -2.5s;
+}
+
+
+.orbonix-radiative-p5 {
+
+    animation-duration: 7s;
+
+    animation-delay: -4.5s;
+}
+
+
+.orbonix-radiative-p6 {
+
+    animation-duration: 5.2s;
+
     animation-delay: -1s;
 }
 
-.p4 {
-    animation-duration: 7s;
-    animation-delay: -4s;
-}
 
-.p5 {
-    animation-duration: 5.5s;
-    animation-delay: -3s;
-}
-
-
-@keyframes photonMove {
+@keyframes orbonixRadiativePhotonMove {
 
     0% {
 
         transform:
             rotate(0deg)
-            translateX(70px)
+            translateX(75px)
             rotate(0deg);
 
-        opacity: .2;
+        opacity: .15;
     }
 
-    25% {
+    20% {
+
+        opacity: .9;
+    }
+
+    40% {
+
+        transform:
+            rotate(145deg)
+            translateX(105px)
+            rotate(-145deg);
 
         opacity: 1;
     }
 
-    50% {
+    65% {
 
         transform:
-            rotate(180deg)
-            translateX(130px)
-            rotate(-180deg);
+            rotate(245deg)
+            translateX(125px)
+            rotate(-245deg);
 
-        opacity: .8;
-    }
-
-    75% {
-
-        opacity: .4;
+        opacity: .65;
     }
 
     100% {
 
         transform:
             rotate(360deg)
-            translateX(70px)
+            translateX(75px)
             rotate(-360deg);
 
-        opacity: .2;
+        opacity: .15;
+    }
+}
+
+
+/* =========================================
+   ENERGY RINGS
+========================================= */
+
+.orbonix-radiative-ring {
+
+    position: absolute;
+
+    border:
+        1px solid
+        rgba(255,230,150,.16);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    animation:
+        orbonixRadiativeRingPulse
+        5s ease-in-out infinite;
+}
+
+
+.orbonix-radiative-ring-one {
+
+    width: 355px;
+
+    height: 355px;
+}
+
+
+.orbonix-radiative-ring-two {
+
+    width: 410px;
+
+    height: 410px;
+
+    transform:
+        rotate(35deg);
+}
+
+
+.orbonix-radiative-ring-three {
+
+    width: 480px;
+
+    height: 185px;
+
+    transform:
+        rotate(-20deg);
+}
+
+
+@keyframes orbonixRadiativeRingPulse {
+
+    0%,100% {
+
+        opacity: .25;
+
+        transform:
+            scale(.98);
+    }
+
+    50% {
+
+        opacity: .6;
+
+        transform:
+            scale(1.025);
     }
 }
 
@@ -429,11 +676,11 @@ h1 {
    ZONE LABEL
 ========================================= */
 
-.zone-label {
+.orbonix-radiative-zone-label {
 
     position: absolute;
 
-    z-index: 10;
+    z-index: 15;
 
     bottom: 0;
 
@@ -450,7 +697,7 @@ h1 {
         rgba(255,255,255,.18);
 
     background:
-        rgba(2,3,8,.88);
+        rgba(2,3,8,.9);
 
     backdrop-filter:
         blur(8px);
@@ -467,7 +714,7 @@ h1 {
    INFO
 ========================================= */
 
-.info {
+.orbonix-radiative-info {
 
     position: relative;
 
@@ -480,7 +727,7 @@ h1 {
 }
 
 
-.info-grid {
+.orbonix-radiative-info-grid {
 
     display: grid;
 
@@ -498,7 +745,7 @@ h1 {
 }
 
 
-.card {
+.orbonix-radiative-card {
 
     padding: 30px;
 
@@ -510,7 +757,7 @@ h1 {
 }
 
 
-.card:hover {
+.orbonix-radiative-card:hover {
 
     transform:
         translateY(-5px);
@@ -520,7 +767,7 @@ h1 {
 }
 
 
-.number {
+.orbonix-radiative-number {
 
     margin-bottom: 8px;
 
@@ -530,7 +777,7 @@ h1 {
 }
 
 
-.card-label {
+.orbonix-radiative-card-label {
 
     color:
         rgba(255,255,255,.4);
@@ -545,7 +792,7 @@ h1 {
    DESCRIPTION
 ========================================= */
 
-.description {
+.orbonix-radiative-description {
 
     margin-top: 60px;
 
@@ -560,7 +807,7 @@ h1 {
 }
 
 
-.description-title {
+.orbonix-radiative-description-title {
 
     margin-bottom: 20px;
 
@@ -570,7 +817,7 @@ h1 {
 }
 
 
-.description-text {
+.orbonix-radiative-description-text {
 
     max-width: 900px;
 
@@ -587,7 +834,7 @@ h1 {
    PHOTON JOURNEY
 ========================================= */
 
-.journey {
+.orbonix-radiative-journey {
 
     margin-top: 45px;
 
@@ -602,7 +849,7 @@ h1 {
 }
 
 
-.journey-title {
+.orbonix-radiative-journey-title {
 
     margin-bottom: 20px;
 
@@ -615,7 +862,7 @@ h1 {
 }
 
 
-.journey-line {
+.orbonix-radiative-journey-line {
 
     position: relative;
 
@@ -625,19 +872,24 @@ h1 {
         35px 10px;
 
     background:
-        rgba(255,255,255,.15);
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.08),
+            rgba(255,210,90,.35),
+            rgba(255,255,255,.08)
+        );
 }
 
 
-.journey-line::before {
+.orbonix-radiative-journey-line::before {
 
     content: "";
 
     position: absolute;
 
-    left: 0;
+    top: 50%;
 
-    top: -4px;
+    left: 0;
 
     width: 10px;
 
@@ -648,27 +900,33 @@ h1 {
     background: white;
 
     box-shadow:
-        0 0 12px white;
+        0 0 12px white,
+        0 0 25px rgba(255,190,50,.8);
+
+    transform:
+        translate(-50%,-50%);
 
     animation:
-        journeyMove 4s
-        linear infinite;
+        orbonixRadiativeJourneyMove
+        4s linear infinite;
 }
 
 
-@keyframes journeyMove {
+@keyframes orbonixRadiativeJourneyMove {
 
-    from {
+    0% {
+
         left: 0%;
     }
 
-    to {
+    100% {
+
         left: 100%;
     }
 }
 
 
-.journey-text {
+.orbonix-radiative-journey-text {
 
     color:
         rgba(255,255,255,.55);
@@ -683,7 +941,7 @@ h1 {
    STRUCTURE
 ========================================= */
 
-.layers {
+.orbonix-radiative-layers {
 
     display: grid;
 
@@ -696,7 +954,7 @@ h1 {
 }
 
 
-.layer {
+.orbonix-radiative-layer {
 
     padding: 22px 10px;
 
@@ -705,6 +963,9 @@ h1 {
     border:
         1px solid
         rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.015);
 
     font-size: 9px;
 
@@ -715,13 +976,16 @@ h1 {
 }
 
 
-.layer:hover {
+.orbonix-radiative-layer:hover {
 
     transform:
         translateY(-5px);
 
     border-color:
         rgba(255,180,50,.45);
+
+    background:
+        rgba(255,180,50,.035);
 }
 
 
@@ -729,7 +993,7 @@ h1 {
    FACT
 ========================================= */
 
-.fact {
+.orbonix-radiative-fact {
 
     margin-top: 60px;
 
@@ -746,7 +1010,7 @@ h1 {
 }
 
 
-.fact-label {
+.orbonix-radiative-fact-label {
 
     margin-bottom: 15px;
 
@@ -759,7 +1023,7 @@ h1 {
 }
 
 
-.fact-text {
+.orbonix-radiative-fact-text {
 
     font-size:
         clamp(18px,3vw,27px);
@@ -774,7 +1038,7 @@ h1 {
 
 @media(max-width:800px) {
 
-    .zone-area {
+    .orbonix-radiative-zone-area {
 
         width: 400px;
 
@@ -782,7 +1046,7 @@ h1 {
     }
 
 
-    .sun {
+    .orbonix-radiative-sun {
 
         width: 330px;
 
@@ -790,7 +1054,7 @@ h1 {
     }
 
 
-    .radiative-zone {
+    .orbonix-radiative-zone {
 
         width: 235px;
 
@@ -798,7 +1062,15 @@ h1 {
     }
 
 
-    .core {
+    .orbonix-radiative-texture {
+
+        width: 235px;
+
+        height: 235px;
+    }
+
+
+    .orbonix-radiative-core {
 
         width: 105px;
 
@@ -806,13 +1078,38 @@ h1 {
     }
 
 
-    .info-grid {
+    .orbonix-radiative-ring-one {
 
-        grid-template-columns: 1fr;
+        width: 280px;
+
+        height: 280px;
     }
 
 
-    .layers {
+    .orbonix-radiative-ring-two {
+
+        width: 330px;
+
+        height: 330px;
+    }
+
+
+    .orbonix-radiative-ring-three {
+
+        width: 360px;
+
+        height: 140px;
+    }
+
+
+    .orbonix-radiative-info-grid {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .orbonix-radiative-layers {
 
         grid-template-columns:
             repeat(2,1fr);
@@ -823,14 +1120,14 @@ h1 {
 
 @media(max-width:500px) {
 
-    .radiative-page {
+    .orbonix-radiative-page {
 
         padding:
             45px 15px 70px;
     }
 
 
-    .zone-area {
+    .orbonix-radiative-zone-area {
 
         width: 300px;
 
@@ -840,7 +1137,7 @@ h1 {
     }
 
 
-    .sun {
+    .orbonix-radiative-sun {
 
         width: 245px;
 
@@ -848,7 +1145,7 @@ h1 {
     }
 
 
-    .radiative-zone {
+    .orbonix-radiative-zone {
 
         width: 175px;
 
@@ -856,7 +1153,15 @@ h1 {
     }
 
 
-    .core {
+    .orbonix-radiative-texture {
+
+        width: 175px;
+
+        height: 175px;
+    }
+
+
+    .orbonix-radiative-core {
 
         width: 80px;
 
@@ -864,9 +1169,51 @@ h1 {
     }
 
 
-    .description {
+    .orbonix-radiative-ring-one {
+
+        width: 215px;
+
+        height: 215px;
+    }
+
+
+    .orbonix-radiative-ring-two {
+
+        width: 250px;
+
+        height: 250px;
+    }
+
+
+    .orbonix-radiative-ring-three {
+
+        width: 275px;
+
+        height: 105px;
+    }
+
+
+    .orbonix-radiative-description {
 
         padding: 25px;
+    }
+
+
+    .orbonix-radiative-card {
+
+        padding: 25px;
+    }
+
+
+    .orbonix-radiative-journey {
+
+        padding: 25px;
+    }
+
+
+    .orbonix-radiative-fact {
+
+        padding: 25px 20px;
     }
 
 }
@@ -879,45 +1226,45 @@ h1 {
 <body>
 
 
-<section class="radiative-page">
+<section class="orbonix-radiative-page">
 
 
-<div class="stars"></div>
+<div class="orbonix-radiative-stars"></div>
 
-<div class="stars-small"></div>
+<div class="orbonix-radiative-stars-small"></div>
 
 
 <!-- =========================================
      HEADER
 ========================================= -->
 
-<div class="header">
+<div class="orbonix-radiative-header">
 
 
 <a
-href="https://sites.google.com/view/kosmolearn/sun"
-class="return">
+href="/sun"
+class="orbonix-radiative-return">
 
 ← RETURN TO SUN
 
 </a>
 
 
-<div class="label">
+<div class="orbonix-radiative-label">
 
 ORBONIX · SUN STRUCTURE
 
 </div>
 
 
-<h1>
+<h1 class="orbonix-radiative-title">
 
 RADIATIVE ZONE
 
 </h1>
 
 
-<div class="subtitle">
+<div class="orbonix-radiative-subtitle">
 
 The region surrounding the solar core
 where energy travels outward primarily
@@ -933,32 +1280,44 @@ through the diffusion of photons.
      VISUAL
 ========================================= -->
 
-<div class="zone-area">
+<div class="orbonix-radiative-zone-area">
 
 
-<div class="sun"></div>
+<div class="orbonix-radiative-sun"></div>
 
 
-<div class="radiative-zone"></div>
+<div class="orbonix-radiative-zone"></div>
 
 
-<div class="core"></div>
+<div class="orbonix-radiative-texture"></div>
 
 
-<div class="photon p1"></div>
+<div class="orbonix-radiative-ring orbonix-radiative-ring-one"></div>
 
-<div class="photon p2"></div>
+<div class="orbonix-radiative-ring orbonix-radiative-ring-two"></div>
 
-<div class="photon p3"></div>
-
-<div class="photon p4"></div>
-
-<div class="photon p5"></div>
+<div class="orbonix-radiative-ring orbonix-radiative-ring-three"></div>
 
 
-<div class="zone-label">
+<div class="orbonix-radiative-core"></div>
 
-RADIATIVE ZONE
+
+<div class="orbonix-radiative-photon orbonix-radiative-p1"></div>
+
+<div class="orbonix-radiative-photon orbonix-radiative-p2"></div>
+
+<div class="orbonix-radiative-photon orbonix-radiative-p3"></div>
+
+<div class="orbonix-radiative-photon orbonix-radiative-p4"></div>
+
+<div class="orbonix-radiative-photon orbonix-radiative-p5"></div>
+
+<div class="orbonix-radiative-photon orbonix-radiative-p6"></div>
+
+
+<div class="orbonix-radiative-zone-label">
+
+RADIATIVE ZONE · ENERGY DIFFUSION
 
 </div>
 
@@ -970,85 +1329,85 @@ RADIATIVE ZONE
      INFORMATION
 ========================================= -->
 
-<div class="info">
+<div class="orbonix-radiative-info">
 
 
-<div class="info-grid">
+<div class="orbonix-radiative-info-grid">
 
 
-<div class="card">
+<div class="orbonix-radiative-card">
 
-<div class="number">
+<div class="orbonix-radiative-number">
 ≈ 25–70%
 </div>
 
-<div class="card-label">
+<div class="orbonix-radiative-card-label">
 SOLAR RADIUS
 </div>
 
 </div>
 
 
-<div class="card">
+<div class="orbonix-radiative-card">
 
-<div class="number">
-~7,000,000 K → 2,000,000 K
+<div class="orbonix-radiative-number">
+≈ 7M → 2M K
 </div>
 
-<div class="card-label">
-APPROX. TEMPERATURE RANGE
+<div class="orbonix-radiative-card-label">
+APPROX. TEMPERATURE
 </div>
 
 </div>
 
 
-<div class="card">
+<div class="orbonix-radiative-card">
 
-<div class="number">
+<div class="orbonix-radiative-number">
 PHOTONS
 </div>
 
-<div class="card-label">
+<div class="orbonix-radiative-card-label">
 PRIMARY ENERGY TRANSFER
 </div>
 
 </div>
 
 
-<div class="card">
+<div class="orbonix-radiative-card">
 
-<div class="number">
+<div class="orbonix-radiative-number">
 HIGH
 </div>
 
-<div class="card-label">
+<div class="orbonix-radiative-card-label">
 PLASMA DENSITY
 </div>
 
 </div>
 
 
-<div class="card">
+<div class="orbonix-radiative-card">
 
-<div class="number">
-NO CONVECTION
+<div class="orbonix-radiative-number">
+RADIATION
 </div>
 
-<div class="card-label">
+<div class="orbonix-radiative-card-label">
 ENERGY TRANSPORT
 </div>
 
 </div>
 
 
-<div class="card">
+<div class="orbonix-radiative-card">
 
-<div class="number">
-~45%
+<div class="orbonix-radiative-number">
+≈ 45%
 </div>
 
-<div class="card-label">
-APPROX. SOLAR RADIUS THICKNESS
+<div class="orbonix-radiative-card-label">
+RADIAL THICKNESS
 </div>
 
 </div>
@@ -1061,17 +1420,17 @@ APPROX. SOLAR RADIUS THICKNESS
      DESCRIPTION
 ========================================= -->
 
-<div class="description">
+<div class="orbonix-radiative-description">
 
 
-<div class="description-title">
+<div class="orbonix-radiative-description-title">
 
 WHAT IS THE RADIATIVE ZONE?
 
 </div>
 
 
-<div class="description-text">
+<div class="orbonix-radiative-description-text">
 
 The radiative zone extends outward from
 approximately 25% to 70% of the Sun's
@@ -1084,14 +1443,18 @@ primarily through large-scale convection.
 Instead, energy moves outward mainly
 through radiation.
 
-Photons are repeatedly absorbed and
-reemitted by particles in the extremely
-dense plasma. Their path is therefore
-far from a straight line.
+Photons are repeatedly absorbed,
+scattered and re-emitted by particles in
+the extremely dense plasma. Their paths
+are therefore far from straight lines.
 
 A photon can change direction countless
 times before its energy gradually moves
 toward the outer layers of the Sun.
+
+The transport of energy through this
+region is therefore best described as
+radiative diffusion.
 
 </div>
 
@@ -1100,20 +1463,20 @@ toward the outer layers of the Sun.
      PHOTON JOURNEY
 ========================================= -->
 
-<div class="journey">
+<div class="orbonix-radiative-journey">
 
 
-<div class="journey-title">
+<div class="orbonix-radiative-journey-title">
 
-ENERGY TRANSPORT
+PHOTON JOURNEY
 
 </div>
 
 
-<div class="journey-line"></div>
+<div class="orbonix-radiative-journey-line"></div>
 
 
-<div class="journey-text">
+<div class="orbonix-radiative-journey-text">
 
 Energy generated by nuclear fusion in
 the core gradually diffuses outward.
@@ -1121,6 +1484,10 @@ Photons interact with the surrounding
 plasma again and again, transferring
 energy toward the boundary with the
 convective zone.
+
+The animated line represents the general
+outward movement of energy rather than
+the path of one individual photon.
 
 </div>
 
@@ -1132,25 +1499,25 @@ convective zone.
      SOLAR STRUCTURE
 ========================================= -->
 
-<div class="layers">
+<div class="orbonix-radiative-layers">
 
 
-<div class="layer">
+<div class="orbonix-radiative-layer">
 CORE
 </div>
 
 
-<div class="layer">
+<div class="orbonix-radiative-layer">
 RADIATIVE ZONE
 </div>
 
 
-<div class="layer">
+<div class="orbonix-radiative-layer">
 CONVECTIVE ZONE
 </div>
 
 
-<div class="layer">
+<div class="orbonix-radiative-layer">
 PHOTOSPHERE
 </div>
 
@@ -1165,22 +1532,22 @@ PHOTOSPHERE
      FACT
 ========================================= -->
 
-<div class="fact">
+<div class="orbonix-radiative-fact">
 
 
-<div class="fact-label">
+<div class="orbonix-radiative-fact-label">
 
 DID YOU KNOW?
 
 </div>
 
 
-<div class="fact-text">
+<div class="orbonix-radiative-fact-text">
 
 In the radiative zone, energy can take
 an enormous amount of time to travel
-outward because photons are constantly
-interacting with the plasma.
+outward because photons constantly
+interact with the dense plasma.
 
 </div>
 
@@ -1200,43 +1567,125 @@ interacting with the plasma.
    STAR PARALLAX
 ========================================= */
 
-const stars =
-document.querySelector(".stars");
+const orbonixRadiativeStars =
+document.querySelector(
+    ".orbonix-radiative-stars"
+);
 
-const smallStars =
-document.querySelector(".stars-small");
+const orbonixRadiativeSmallStars =
+document.querySelector(
+    ".orbonix-radiative-stars-small"
+);
 
 
 document.addEventListener(
-"mousemove",
+    "mousemove",
+    function(event) {
 
-function(event) {
+        const x =
+            event.clientX /
+            window.innerWidth -
+            0.5;
 
-    const x =
-        event.clientX /
-        window.innerWidth -
-        0.5;
-
-    const y =
-        event.clientY /
-        window.innerHeight -
-        0.5;
-
-
-    stars.style.transform =
-        `translate(
-            ${x * 20}px,
-            ${y * 20}px
-        )`;
+        const y =
+            event.clientY /
+            window.innerHeight -
+            0.5;
 
 
-    smallStars.style.transform =
-        `translate(
-            ${x * -12}px,
-            ${y * -12}px
-        )`;
+        orbonixRadiativeStars.style.transform =
+            `translate(
+                ${x * 20}px,
+                ${y * 20}px
+            )`;
 
-});
+
+        orbonixRadiativeSmallStars.style.transform =
+            `translate(
+                ${x * -12}px,
+                ${y * -12}px
+            )`;
+
+    }
+);
+
+
+/* =========================================
+   SUN PARALLAX
+========================================= */
+
+const orbonixRadiativeSun =
+document.querySelector(
+    ".orbonix-radiative-sun"
+);
+
+
+const orbonixRadiativeZone =
+document.querySelector(
+    ".orbonix-radiative-zone"
+);
+
+
+const orbonixRadiativeCore =
+document.querySelector(
+    ".orbonix-radiative-core"
+);
+
+
+document.addEventListener(
+    "mousemove",
+    function(event) {
+
+        const x =
+            event.clientX /
+            window.innerWidth -
+            0.5;
+
+        const y =
+            event.clientY /
+            window.innerHeight -
+            0.5;
+
+
+        orbonixRadiativeSun.style.transform =
+            `translate(
+                ${x * 8}px,
+                ${y * 8}px
+            )`;
+
+
+        orbonixRadiativeZone.style.transform =
+            `translate(
+                ${x * 5}px,
+                ${y * 5}px
+            )`;
+
+
+        orbonixRadiativeCore.style.transform =
+            `translate(
+                ${x * -3}px,
+                ${y * -3}px
+            )`;
+
+    }
+);
+
+
+/* =========================================
+   TOUCH / MOBILE SAFETY
+========================================= */
+
+if (
+    window.matchMedia(
+        "(pointer: coarse)"
+    ).matches
+) {
+
+    document.body.classList.add(
+        "orbonix-touch-device"
+    );
+
+}
 
 </script>
 
