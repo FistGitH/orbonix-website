@@ -6,6 +6,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Kerberos | ORBONIX</title>
+
 <style>
 
 * {
@@ -144,6 +146,8 @@ body {
 
     transition:
         .35s ease;
+
+    cursor: pointer;
 }
 
 
@@ -499,6 +503,8 @@ h1 {
 
     transition:
         .35s ease;
+
+    cursor: pointer;
 }
 
 
@@ -600,8 +606,9 @@ h1 {
 
 
 <a
-href="https://sites.google.com/view/kosmolearn/solar-system/dwarf-planets/pluto"
-class="return">
+href="#"
+class="return orbonix-link"
+data-page="pluto">
 
 ← RETURN TO PLUTO
 
@@ -641,7 +648,9 @@ of the underworld in Greek mythology.
 <div class="content">
 
 
-<!-- DESCRIPTION -->
+<!-- =========================================
+     DESCRIPTION
+========================================= -->
 
 <div class="info">
 
@@ -681,7 +690,9 @@ and internal structure.
 </div>
 
 
-<!-- STATS -->
+<!-- =========================================
+     STATS
+========================================= -->
 
 <div class="stats">
 
@@ -732,7 +743,8 @@ PLUTO
 </div>
 
 <div class="stat-label">
-PRIMARY</div>
+PRIMARY
+</div>
 
 </div>
 
@@ -766,7 +778,9 @@ KNOWN PLUTO MOON
 </div>
 
 
-<!-- FEATURES -->
+<!-- =========================================
+     FEATURES
+========================================= -->
 
 <div class="features-title">
 
@@ -838,7 +852,9 @@ underworld in Greek mythology.
 </div>
 
 
-<!-- FACT -->
+<!-- =========================================
+     FACT
+========================================= -->
 
 <div class="fact">
 
@@ -862,14 +878,17 @@ yet it is one of Pluto's five known moons.
 </div>
 
 
-<!-- NAVIGATION -->
+<!-- =========================================
+     NAVIGATION
+========================================= -->
 
 <div class="navigation">
 
 
 <a
-href="https://sites.google.com/view/kosmolearn/solar-system/dwarf-planets/pluto"
-class="nav-button">
+href="#"
+class="nav-button orbonix-link"
+data-page="pluto">
 
 ← RETURN TO PLUTO
 
@@ -877,8 +896,9 @@ class="nav-button">
 
 
 <a
-href="https://sites.google.com/view/kosmolearn/solar-system/dwarf-planets"
-class="nav-button">
+href="#"
+class="nav-button orbonix-link"
+data-page="dwarf-planets">
 
 ← RETURN TO DWARF PLANETS
 
@@ -905,9 +925,91 @@ PLUTO SYSTEM · KERBEROS
 
 <script>
 
+/* =========================================
+   ORBONIX UNIVERSAL PAGE SYSTEM
+   =========================================
+
+   Buttons use page IDs instead of permanent
+   Google Sites URLs.
+
+   If the hosting/domain changes, only the
+   ORBONIX_PAGES table needs to be updated.
+========================================= */
+
+const ORBONIX_BASE = window.location.origin;
+
+
+/* =========================================
+   ORBONIX PAGES
+========================================= */
+
+const ORBONIX_PAGES = {
+
+    "pluto":
+        "/solar-system/dwarf-planets/pluto",
+
+    "dwarf-planets":
+        "/solar-system/dwarf-planets",
+
+    "solar-system":
+        "/solar-system",
+
+    "home":
+        "/",
+
+    "exploring-space":
+        "/exploring-space",
+
+    "deep-space":
+        "/exploring-space/deep-space"
+
+};
+
+
+/* =========================================
+   UNIVERSAL NAVIGATION
+========================================= */
+
+document.querySelectorAll(".orbonix-link")
+.forEach(function(button) {
+
+    button.addEventListener("click", function(event) {
+
+        event.preventDefault();
+
+        const page =
+            button.getAttribute("data-page");
+
+        if (!page) {
+            return;
+        }
+
+        const target =
+            ORBONIX_PAGES[page];
+
+        if (!target) {
+
+            console.warn(
+                "ORBONIX page not found:",
+                page
+            );
+
+            return;
+        }
+
+        window.location.href = target;
+
+    });
+
+});
+
+
+/* =========================================
+   STAR PARALLAX
+========================================= */
+
 const stars =
 document.querySelector(".stars");
-
 
 const smallStars =
 document.querySelector(".stars-small");
@@ -921,7 +1023,6 @@ function(event) {
     const x =
         event.clientX /
         window.innerWidth - 0.5;
-
 
     const y =
         event.clientY /
