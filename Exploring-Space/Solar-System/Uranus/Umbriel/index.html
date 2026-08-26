@@ -7,6 +7,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Umbriel | ORBONIX</title>
+
 <style>
 
 * {
@@ -67,7 +69,6 @@ body {
 
     transition: transform 1.5s ease;
 }
-
 
 .stars-small {
     position: absolute;
@@ -264,7 +265,6 @@ h1 {
     background: #11151a;
 
     box-shadow:
-
         0 0 40px
         rgba(150,160,190,.28),
 
@@ -283,12 +283,35 @@ h1 {
 
 .umbriel:hover img {
     box-shadow:
-
         0 0 55px
         rgba(190,200,220,.42),
 
         0 0 120px
         rgba(120,130,170,.2);
+}
+
+
+/* =========================================
+   UMBRIEL NAME
+========================================= */
+
+.umbriel-name {
+    position: absolute;
+
+    left: 50%;
+    bottom: -45px;
+
+    transform:
+        translateX(-50%);
+
+    white-space: nowrap;
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+
+    color:
+        rgba(255,255,255,.75);
 }
 
 
@@ -799,7 +822,7 @@ h1 {
 
 
 <a
-href="https://sites.google.com/view/kosmolearn/solar-system/uranus"
+href="/solar-system/uranus"
 class="return">
 
 ← RETURN TO URANUS
@@ -861,8 +884,15 @@ class="umbriel">
 
 <img
 src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Umbriel_%28moon%29.jpg"
-alt="Umbriel"
+alt="Umbriel — moon of Uranus"
 loading="eager">
+
+
+<div class="umbriel-name">
+
+UMBRIEL
+
+</div>
 
 
 </a>
@@ -877,6 +907,10 @@ loading="eager">
 
 <div class="content">
 
+
+<!-- =========================================
+     STATS
+========================================= -->
 
 <div class="stats">
 
@@ -1117,7 +1151,7 @@ of the sunlight that reaches it.
 
 
 <a
-href="https://sites.google.com/view/kosmolearn/solar-system/uranus"
+href="/solar-system/uranus"
 class="nav-button">
 
 ← RETURN TO URANUS
@@ -1126,7 +1160,7 @@ class="nav-button">
 
 
 <a
-href="https://sites.google.com/view/kosmolearn/solar-system"
+href="/solar-system"
 class="nav-button">
 
 ← RETURN TO SOLAR SYSTEM
@@ -1136,6 +1170,10 @@ class="nav-button">
 
 </div>
 
+
+<!-- =========================================
+     CREDIT
+========================================= -->
 
 <div class="credit">
 
@@ -1154,6 +1192,10 @@ IMAGE SOURCE: WIKIMEDIA COMMONS
 
 
 <script>
+
+/* =========================================
+   STAR PARALLAX
+========================================= */
 
 const stars =
 document.querySelector(".stars");
@@ -1190,6 +1232,38 @@ function(event) {
         )`;
 
 });
+
+
+/* =========================================
+   TOUCH / MOBILE PARALLAX RESET
+========================================= */
+
+window.addEventListener(
+"touchstart",
+function() {
+
+    stars.style.transform = "translate(0,0)";
+    smallStars.style.transform = "translate(0,0)";
+
+});
+
+
+/* =========================================
+   PREVENT IMAGE DRAGGING
+========================================= */
+
+document.querySelectorAll("img").forEach(
+function(image) {
+
+    image.addEventListener(
+        "dragstart",
+        function(event) {
+            event.preventDefault();
+        }
+    );
+
+});
+
 
 </script>
 
