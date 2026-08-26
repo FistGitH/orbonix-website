@@ -6,6 +6,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Oort Cloud | ORBONIX</title>
+
 <style>
 
 * {
@@ -983,6 +985,7 @@ h1 {
         height: 500px;
     }
 
+
     .oort-cloud {
 
         width: 470px;
@@ -990,10 +993,12 @@ h1 {
         height: 470px;
     }
 
+
     .stats {
 
         grid-template-columns: 1fr;
     }
+
 
     .features {
 
@@ -1064,17 +1069,21 @@ h1 {
 
     .comet-large-1 {
 
-        left: calc(50% - 145px);
+        left:
+            calc(50% - 145px);
 
-        top: calc(50% - 85px);
+        top:
+            calc(50% - 85px);
     }
 
 
     .comet-large-2 {
 
-        left: calc(50% + 125px);
+        left:
+            calc(50% + 125px);
 
-        top: calc(50% + 70px);
+        top:
+            calc(50% + 70px);
     }
 
 
@@ -1115,7 +1124,7 @@ h1 {
 
 
 <a
-href="https://sites.google.com/view/kosmolearn/solar-system"
+href="https://orbonix.net/solar-system"
 class="return">
 
 ← RETURN TO SOLAR SYSTEM
@@ -1266,7 +1275,8 @@ POSSIBLE ICY OBJECTS
 </div>
 
 <div class="stat-label">
-AGE</div>
+AGE
+</div>
 
 </div>
 
@@ -1278,7 +1288,8 @@ COMETS
 </div>
 
 <div class="stat-label">
-MAIN OBJECTS</div>
+MAIN OBJECTS
+</div>
 
 </div>
 
@@ -1290,7 +1301,11 @@ HYPOTHETICAL
 </div>
 
 <div class="stat-label">
-DIRECTLY UNOBSERVED</div>
+DIRECTLY UNOBSERVED
+</div>
+
+</div>
+
 
 </div>
 
@@ -1451,7 +1466,7 @@ to complete a single orbit around the Sun.
 
 
 <a
-href="https://sites.google.com/view/kosmolearn/solar-system"
+href="https://orbonix.net/solar-system"
 class="nav-button">
 
 ← RETURN TO SOLAR SYSTEM
@@ -1480,6 +1495,10 @@ THE OORT CLOUD HAS NOT BEEN DIRECTLY OBSERVED
 
 
 <script>
+
+/* =========================================
+   STAR PARALLAX
+========================================= */
 
 const stars =
 document.querySelector(".stars");
@@ -1516,6 +1535,30 @@ function(event) {
             ${x * -12}px,
             ${y * -12}px
         )`;
+
+});
+
+
+/* =========================================
+   REDIRECT PROTECTION
+========================================= */
+
+document.querySelectorAll("a").forEach(link => {
+
+    link.addEventListener("click", function(event) {
+
+        const href = this.getAttribute("href");
+
+        if (
+            href &&
+            href.startsWith("https://orbonix.net")
+        ) {
+
+            return;
+
+        }
+
+    });
 
 });
 
