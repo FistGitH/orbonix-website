@@ -6,6 +6,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Ceres | ORBONIX</title>
+
 <style>
 
 * {
@@ -73,6 +75,7 @@ body {
     background-size: 75px 75px;
 
     transition: transform 1.5s ease;
+
 }
 
 
@@ -96,6 +99,7 @@ body {
     background-size: 32px 32px;
 
     transition: transform 2s ease;
+
 }
 
 
@@ -114,6 +118,7 @@ body {
     margin: auto;
 
     text-align: center;
+
 }
 
 
@@ -122,6 +127,8 @@ body {
     display: inline-flex;
 
     align-items: center;
+
+    justify-content: center;
 
     padding: 12px 20px;
 
@@ -138,6 +145,7 @@ body {
     letter-spacing: 3px;
 
     transition: .35s ease;
+
 }
 
 
@@ -150,6 +158,7 @@ body {
     border-color: white;
 
     transform: translateY(-4px);
+
 }
 
 
@@ -162,6 +171,7 @@ body {
     font-size: 10px;
 
     letter-spacing: 5px;
+
 }
 
 
@@ -174,6 +184,7 @@ h1 {
     line-height: .9;
 
     letter-spacing: 7px;
+
 }
 
 
@@ -188,6 +199,7 @@ h1 {
     font-size: 14px;
 
     line-height: 1.8;
+
 }
 
 
@@ -210,8 +222,13 @@ h1 {
     align-items: center;
 
     justify-content: center;
+
 }
 
+
+/* =========================================
+   ORBITS
+========================================= */
 
 .orbit {
 
@@ -226,29 +243,41 @@ h1 {
     border: 1px solid rgba(170,175,195,.15);
 
     border-radius: 50%;
+
+    pointer-events: none;
+
 }
 
 
 .orbit-1 {
+
     width: 280px;
+
     height: 280px;
+
 }
 
 
 .orbit-2 {
+
     width: 440px;
+
     height: 440px;
+
 }
 
 
 .orbit-3 {
+
     width: 600px;
+
     height: 600px;
+
 }
 
 
 /* =========================================
-   CERES TEXT CORE
+   CERES CORE
 ========================================= */
 
 .ceres-core {
@@ -280,10 +309,17 @@ h1 {
         );
 
     box-shadow:
-        0 0 45px rgba(170,175,195,.28),
-        0 0 100px rgba(110,115,145,.14);
 
-    transition: .45s ease;
+        0 0 45px
+        rgba(170,175,195,.28),
+
+        0 0 100px
+        rgba(110,115,145,.14);
+
+    transition:
+        transform .45s ease,
+        box-shadow .45s ease;
+
 }
 
 
@@ -292,8 +328,13 @@ h1 {
     transform: scale(1.07);
 
     box-shadow:
-        0 0 65px rgba(195,200,220,.4),
-        0 0 130px rgba(135,140,170,.2);
+
+        0 0 65px
+        rgba(195,200,220,.4),
+
+        0 0 130px
+        rgba(135,140,170,.2);
+
 }
 
 
@@ -304,6 +345,7 @@ h1 {
     letter-spacing: 6px;
 
     font-weight: bold;
+
 }
 
 
@@ -318,6 +360,7 @@ h1 {
     letter-spacing: 3px;
 
     color: rgba(255,255,255,.55);
+
 }
 
 
@@ -334,6 +377,7 @@ h1 {
     width: min(1050px,100%);
 
     margin: auto;
+
 }
 
 
@@ -345,13 +389,18 @@ h1 {
 
     display: grid;
 
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns:
+        repeat(3,1fr);
 
     gap: 1px;
 
-    background: rgba(255,255,255,.1);
+    background:
+        rgba(255,255,255,.1);
 
-    border: 1px solid rgba(255,255,255,.1);
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
 }
 
 
@@ -359,17 +408,22 @@ h1 {
 
     padding: 30px;
 
-    background: rgba(5,7,13,.96);
+    background:
+        rgba(5,7,13,.96);
 
     transition: .35s ease;
+
 }
 
 
 .stat:hover {
 
-    transform: translateY(-5px);
+    transform:
+        translateY(-5px);
 
-    background: rgba(255,255,255,.04);
+    background:
+        rgba(255,255,255,.04);
+
 }
 
 
@@ -380,16 +434,19 @@ h1 {
     font-size: 21px;
 
     font-weight: bold;
+
 }
 
 
 .stat-label {
 
-    color: rgba(255,255,255,.4);
+    color:
+        rgba(255,255,255,.4);
 
     font-size: 9px;
 
     letter-spacing: 2px;
+
 }
 
 
@@ -403,9 +460,13 @@ h1 {
 
     padding: 40px;
 
-    border: 1px solid rgba(255,255,255,.1);
+    border:
+        1px solid
+        rgba(255,255,255,.1);
 
-    background: rgba(255,255,255,.025);
+    background:
+        rgba(255,255,255,.025);
+
 }
 
 
@@ -416,6 +477,7 @@ h1 {
     font-size: 11px;
 
     letter-spacing: 4px;
+
 }
 
 
@@ -423,11 +485,13 @@ h1 {
 
     max-width: 900px;
 
-    color: rgba(255,255,255,.58);
+    color:
+        rgba(255,255,255,.58);
 
     font-size: 14px;
 
     line-height: 1.9;
+
 }
 
 
@@ -443,11 +507,13 @@ h1 {
 
     text-align: center;
 
-    color: rgba(255,255,255,.45);
+    color:
+        rgba(255,255,255,.45);
 
     font-size: 10px;
 
     letter-spacing: 5px;
+
 }
 
 
@@ -455,9 +521,11 @@ h1 {
 
     display: grid;
 
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns:
+        repeat(3,1fr);
 
     gap: 15px;
+
 }
 
 
@@ -465,21 +533,29 @@ h1 {
 
     padding: 28px;
 
-    border: 1px solid rgba(255,255,255,.1);
+    border:
+        1px solid
+        rgba(255,255,255,.1);
 
-    background: rgba(255,255,255,.02);
+    background:
+        rgba(255,255,255,.02);
 
     transition: .35s ease;
+
 }
 
 
 .feature:hover {
 
-    transform: translateY(-6px);
+    transform:
+        translateY(-6px);
 
-    border-color: rgba(190,195,215,.4);
+    border-color:
+        rgba(190,195,215,.4);
 
-    background: rgba(255,255,255,.04);
+    background:
+        rgba(255,255,255,.04);
+
 }
 
 
@@ -490,16 +566,19 @@ h1 {
     font-size: 11px;
 
     letter-spacing: 2px;
+
 }
 
 
 .feature-text {
 
-    color: rgba(255,255,255,.5);
+    color:
+        rgba(255,255,255,.5);
 
     font-size: 12px;
 
     line-height: 1.7;
+
 }
 
 
@@ -515,9 +594,13 @@ h1 {
 
     text-align: center;
 
-    border: 1px solid rgba(255,255,255,.12);
+    border:
+        1px solid
+        rgba(255,255,255,.12);
 
-    background: rgba(255,255,255,.025);
+    background:
+        rgba(255,255,255,.025);
+
 }
 
 
@@ -525,11 +608,13 @@ h1 {
 
     margin-bottom: 16px;
 
-    color: rgba(255,255,255,.42);
+    color:
+        rgba(255,255,255,.42);
 
     font-size: 9px;
 
     letter-spacing: 4px;
+
 }
 
 
@@ -539,9 +624,11 @@ h1 {
 
     margin: auto;
 
-    font-size: clamp(18px,3vw,27px);
+    font-size:
+        clamp(18px,3vw,27px);
 
     line-height: 1.5;
+
 }
 
 
@@ -560,6 +647,7 @@ h1 {
     margin-top: 55px;
 
     flex-wrap: wrap;
+
 }
 
 
@@ -571,11 +659,16 @@ h1 {
 
     justify-content: center;
 
+    min-width: 190px;
+
     padding: 13px 22px;
 
-    color: rgba(255,255,255,.75);
+    color:
+        rgba(255,255,255,.75);
 
-    border: 1px solid rgba(255,255,255,.2);
+    border:
+        1px solid
+        rgba(255,255,255,.2);
 
     text-decoration: none;
 
@@ -584,6 +677,7 @@ h1 {
     letter-spacing: 2px;
 
     transition: .35s ease;
+
 }
 
 
@@ -595,7 +689,9 @@ h1 {
 
     border-color: white;
 
-    transform: translateY(-4px);
+    transform:
+        translateY(-4px);
+
 }
 
 
@@ -609,11 +705,13 @@ h1 {
 
     text-align: center;
 
-    color: rgba(255,255,255,.3);
+    color:
+        rgba(255,255,255,.3);
 
     font-size: 9px;
 
     line-height: 1.7;
+
 }
 
 
@@ -628,44 +726,57 @@ h1 {
         width: 500px;
 
         height: 500px;
+
     }
+
 
     .ceres-core {
 
         width: 190px;
 
         height: 190px;
+
     }
+
 
     .orbit-1 {
 
         width: 230px;
 
         height: 230px;
+
     }
+
 
     .orbit-2 {
 
         width: 350px;
 
         height: 350px;
+
     }
+
 
     .orbit-3 {
 
         width: 470px;
 
         height: 470px;
+
     }
+
 
     .stats {
 
         grid-template-columns: 1fr;
+
     }
+
 
     .features {
 
         grid-template-columns: 1fr;
+
     }
 
 }
@@ -675,8 +786,11 @@ h1 {
 
     .ceres-page {
 
-        padding: 45px 15px 70px;
+        padding:
+            45px 15px 70px;
+
     }
+
 
     .ceres-area {
 
@@ -685,58 +799,83 @@ h1 {
         height: 320px;
 
         margin-top: 45px;
+
     }
+
 
     .ceres-core {
 
         width: 135px;
 
         height: 135px;
+
     }
+
 
     .ceres-title {
 
         font-size: 20px;
 
         letter-spacing: 4px;
+
     }
+
 
     .ceres-type {
 
         bottom: 27px;
 
         font-size: 6px;
+
     }
+
 
     .orbit-1 {
 
         width: 170px;
 
         height: 170px;
+
     }
+
 
     .orbit-2 {
 
         width: 240px;
 
         height: 240px;
+
     }
+
 
     .orbit-3 {
 
         width: 310px;
 
         height: 310px;
+
     }
+
 
     .description {
 
         padding: 25px;
+
     }
+
 
     .fact {
 
-        padding: 28px 20px;
+        padding:
+            28px 20px;
+
+    }
+
+
+    .nav-button {
+
+        width: 100%;
+
     }
 
 }
@@ -747,6 +886,7 @@ h1 {
 
 
 <body>
+
 
 <section class="ceres-page">
 
@@ -764,7 +904,7 @@ h1 {
 
 
 <a
-href="https://sites.google.com/view/kosmolearn/solar-system"
+href="/"
 class="return">
 
 ← RETURN TO SOLAR SYSTEM
@@ -799,7 +939,7 @@ the inner Solar System.
 
 
 <!-- =========================================
-     CERES
+     CERES VISUAL
 ========================================= -->
 
 <div class="ceres-area">
@@ -839,7 +979,9 @@ DWARF PLANET
 <div class="content">
 
 
-<!-- STATS -->
+<!-- =========================================
+     STATS
+========================================= -->
 
 <div class="stats">
 
@@ -847,11 +989,15 @@ DWARF PLANET
 <div class="stat">
 
 <div class="stat-value">
+
 ~940 km
+
 </div>
 
 <div class="stat-label">
+
 DIAMETER
+
 </div>
 
 </div>
@@ -860,11 +1006,15 @@ DIAMETER
 <div class="stat">
 
 <div class="stat-value">
+
 4.6 YEARS
+
 </div>
 
 <div class="stat-label">
+
 ORBITAL PERIOD
+
 </div>
 
 </div>
@@ -873,11 +1023,15 @@ ORBITAL PERIOD
 <div class="stat">
 
 <div class="stat-value">
+
 2.77 AU
+
 </div>
 
 <div class="stat-label">
+
 AVERAGE DISTANCE FROM SUN
+
 </div>
 
 </div>
@@ -886,11 +1040,15 @@ AVERAGE DISTANCE FROM SUN
 <div class="stat">
 
 <div class="stat-value">
+
 1801
+
 </div>
 
 <div class="stat-label">
+
 DISCOVERED
+
 </div>
 
 </div>
@@ -899,11 +1057,15 @@ DISCOVERED
 <div class="stat">
 
 <div class="stat-value">
+
 DWARF PLANET
+
 </div>
 
 <div class="stat-label">
+
 CLASSIFICATION
+
 </div>
 
 </div>
@@ -912,20 +1074,26 @@ CLASSIFICATION
 <div class="stat">
 
 <div class="stat-value">
+
 ASTEROID BELT
+
 </div>
 
 <div class="stat-label">
+
 LOCATION
-</div>
 
 </div>
 
+</div>
+
 
 </div>
 
 
-<!-- DESCRIPTION -->
+<!-- =========================================
+     DESCRIPTION
+========================================= -->
 
 <div class="description">
 
@@ -972,7 +1140,9 @@ in the past.
 </div>
 
 
-<!-- FEATURES -->
+<!-- =========================================
+     FEATURES
+========================================= -->
 
 <div class="features-title">
 
@@ -1044,7 +1214,9 @@ Ceres for several years.
 </div>
 
 
-<!-- FACT -->
+<!-- =========================================
+     FACT
+========================================= -->
 
 <div class="fact">
 
@@ -1068,13 +1240,15 @@ a <strong>dwarf planet</strong>.
 </div>
 
 
-<!-- NAVIGATION -->
+<!-- =========================================
+     NAVIGATION
+========================================= -->
 
 <div class="navigation">
 
 
 <a
-href="https://sites.google.com/view/kosmolearn/solar-system"
+href="/"
 class="nav-button">
 
 ← RETURN TO SOLAR SYSTEM
@@ -1083,7 +1257,7 @@ class="nav-button">
 
 
 <a
-href="https://sites.google.com/view/kosmolearn/solar-system/asteroid-belt"
+href="/asteroid-belt"
 class="nav-button">
 
 ← RETURN TO ASTEROID BELT
@@ -1110,6 +1284,10 @@ TEXT-BASED VISUALIZATION · CERES
 
 
 <script>
+
+/* =========================================
+   STAR PARALLAX
+========================================= */
 
 const stars =
 document.querySelector(".stars");
@@ -1145,6 +1323,38 @@ function(event) {
         `translate(
             ${x * -12}px,
             ${y * -12}px
+        )`;
+
+});
+
+
+/* =========================================
+   CERES PARALLAX
+========================================= */
+
+const ceres =
+document.querySelector(".ceres-core");
+
+
+document.addEventListener(
+"mousemove",
+
+function(event) {
+
+    const x =
+        event.clientX /
+        window.innerWidth - 0.5;
+
+
+    const y =
+        event.clientY /
+        window.innerHeight - 0.5;
+
+
+    ceres.style.transform =
+        `translate(
+            ${x * 10}px,
+            ${y * 10}px
         )`;
 
 });
