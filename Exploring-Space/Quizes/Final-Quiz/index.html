@@ -6,13 +6,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>FINAL SPACE QUIZ</title>
+<title>FINAL SPACE QUIZ | ORBONIX</title>
 
 <style>
 
-/* =========================================
+/* =========================================================
    RESET
-========================================= */
+========================================================= */
 
 * {
     box-sizing: border-box;
@@ -31,9 +31,9 @@ body {
 }
 
 
-/* =========================================
+/* =========================================================
    PAGE
-========================================= */
+========================================================= */
 
 .space-quiz-page {
 
@@ -65,9 +65,9 @@ body {
 }
 
 
-/* =========================================
+/* =========================================================
    STARS
-========================================= */
+========================================================= */
 
 .stars,
 .stars-small {
@@ -116,9 +116,9 @@ body {
 }
 
 
-/* =========================================
+/* =========================================================
    HEADER
-========================================= */
+========================================================= */
 
 .header {
 
@@ -217,9 +217,9 @@ h1 {
 }
 
 
-/* =========================================
-   TOPIC LINE
-========================================= */
+/* =========================================================
+   TOPICS
+========================================================= */
 
 .topic-line {
 
@@ -249,12 +249,25 @@ h1 {
     font-size: 7px;
 
     letter-spacing: 2px;
+
+    transition: .3s ease;
+}
+
+.topic:hover {
+
+    color: white;
+
+    border-color:
+        rgba(150,180,255,.4);
+
+    background:
+        rgba(100,130,255,.05);
 }
 
 
-/* =========================================
+/* =========================================================
    QUIZ CONTAINER
-========================================= */
+========================================================= */
 
 .quiz-container {
 
@@ -280,13 +293,17 @@ h1 {
     backdrop-filter:
         blur(8px);
 
+    box-shadow:
+        0 20px 80px
+        rgba(0,0,0,.35);
+
     transition: .8s ease;
 }
 
 
-/* =========================================
+/* =========================================================
    QUIZ TOP
-========================================= */
+========================================================= */
 
 .quiz-top {
 
@@ -328,12 +345,14 @@ h1 {
     font-size: 8px;
 
     letter-spacing: 2px;
+
+    transition: .3s ease;
 }
 
 
-/* =========================================
+/* =========================================================
    PROGRESS
-========================================= */
+========================================================= */
 
 .progress {
 
@@ -367,9 +386,9 @@ h1 {
 }
 
 
-/* =========================================
+/* =========================================================
    QUESTION
-========================================= */
+========================================================= */
 
 .question {
 
@@ -383,12 +402,34 @@ h1 {
     line-height: 1.4;
 
     letter-spacing: .4px;
+
+    animation:
+        questionAppear .45s ease;
+}
+
+@keyframes questionAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(12px);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
 }
 
 
-/* =========================================
+/* =========================================================
    ANSWERS
-========================================= */
+========================================================= */
 
 .answers {
 
@@ -433,6 +474,40 @@ h1 {
 
     transition:
         .3s ease;
+
+    animation:
+        answerAppear .4s ease both;
+}
+
+.answer:nth-child(2) {
+    animation-delay: .04s;
+}
+
+.answer:nth-child(3) {
+    animation-delay: .08s;
+}
+
+.answer:nth-child(4) {
+    animation-delay: .12s;
+}
+
+@keyframes answerAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(10px);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
 }
 
 
@@ -489,9 +564,9 @@ h1 {
 }
 
 
-/* =========================================
+/* =========================================================
    NEXT
-========================================= */
+========================================================= */
 
 .next-area {
 
@@ -549,9 +624,9 @@ h1 {
 }
 
 
-/* =========================================
+/* =========================================================
    RESULT
-========================================= */
+========================================================= */
 
 .result {
 
@@ -628,9 +703,9 @@ h1 {
 }
 
 
-/* =========================================
+/* =========================================================
    COMPLETION ICON
-========================================= */
+========================================================= */
 
 .completion-icon {
 
@@ -784,9 +859,9 @@ h1 {
 }
 
 
-/* =========================================
+/* =========================================================
    RESULT TEXT
-========================================= */
+========================================================= */
 
 .result-label {
 
@@ -912,9 +987,9 @@ h1 {
 }
 
 
-/* =========================================
+/* =========================================================
    SCORE BAR
-========================================= */
+========================================================= */
 
 .final-score-bar {
 
@@ -957,9 +1032,9 @@ h1 {
 }
 
 
-/* =========================================
+/* =========================================================
    RESULT BUTTONS
-========================================= */
+========================================================= */
 
 .result-buttons {
 
@@ -1026,9 +1101,9 @@ h1 {
 }
 
 
-/* =========================================
+/* =========================================================
    PARTICLES
-========================================= */
+========================================================= */
 
 .final-particle {
 
@@ -1085,9 +1160,9 @@ h1 {
 }
 
 
-/* =========================================
+/* =========================================================
    FOOTER
-========================================= */
+========================================================= */
 
 .footer {
 
@@ -1108,9 +1183,9 @@ h1 {
 }
 
 
-/* =========================================
+/* =========================================================
    MOBILE
-========================================= */
+========================================================= */
 
 @media(max-width:600px) {
 
@@ -1162,44 +1237,33 @@ h1 {
 
 <body>
 
-
 <section class="space-quiz-page">
 
-
 <div class="stars"></div>
-
 <div class="stars-small"></div>
 
 
-<!-- =========================================
+<!-- =========================================================
      HEADER
-========================================= -->
+========================================================= -->
 
 <div class="header">
 
-
 <a
-href="https://sites.google.com/view/kosmolearn"
+href="/"
 class="return">
 
 ← RETURN TO HOME
 
 </a>
 
-
 <div class="label">
-
 ORBONIX · SPACE KNOWLEDGE
-
 </div>
 
-
 <h1>
-
 FINAL SPACE QUIZ
-
 </h1>
-
 
 <div class="subtitle">
 
@@ -1210,44 +1274,31 @@ and the most extreme objects in deep space.
 
 </div>
 
-
 <div class="topic-line">
 
 <div class="topic">PLANETS</div>
-
 <div class="topic">MOONS</div>
-
 <div class="topic">SUN</div>
-
 <div class="topic">STARS</div>
-
 <div class="topic">GALAXIES</div>
-
 <div class="topic">BLACK HOLES</div>
-
 <div class="topic">COMETS</div>
-
 <div class="topic">TELESCOPES</div>
-
 <div class="topic">NASA</div>
-
 <div class="topic">DEEP SPACE</div>
 
 </div>
 
-
 </div>
 
 
-<!-- =========================================
+<!-- =========================================================
      QUIZ
-========================================= -->
+========================================================= -->
 
 <div class="quiz-container">
 
-
 <div id="quiz">
-
 
 <div class="quiz-top">
 
@@ -1258,7 +1309,6 @@ id="questionNumber">
 QUESTION 01 / 100
 
 </div>
-
 
 <div
 class="difficulty"
@@ -1309,28 +1359,22 @@ NEXT QUESTION →
 
 </div>
 
-
 </div>
 
 
-<!-- =========================================
+<!-- =========================================================
      RESULT
-========================================= -->
+========================================================= -->
 
 <div
 class="result"
 id="result">
 
-
 <div class="completion-icon"></div>
 
-
 <div class="result-label">
-
 UNIVERSAL MISSION COMPLETE
-
 </div>
-
 
 <div
 class="result-title"
@@ -1340,7 +1384,6 @@ COSMIC EXPLORER
 
 </div>
 
-
 <div
 class="score"
 id="score">
@@ -1348,7 +1391,6 @@ id="score">
 0 / 100
 
 </div>
-
 
 <div class="final-score-bar">
 
@@ -1359,7 +1401,6 @@ id="finalScoreFill">
 
 </div>
 
-
 <div
 class="result-text"
 id="resultText">
@@ -1369,9 +1410,7 @@ through space and astronomy.
 
 </div>
 
-
 <div class="result-buttons">
-
 
 <button
 class="result-button"
@@ -1383,7 +1422,7 @@ onclick="restartQuiz()">
 
 
 <a
-href="YOUR-QUIZ-SELECT-PAGE-LINK"
+href="/exploring-space/quizzes"
 class="result-button">
 
 ← QUIZ SELECT
@@ -1392,19 +1431,16 @@ class="result-button">
 
 
 <a
-href="https://sites.google.com/view/kosmolearn"
+href="/"
 class="result-button">
 
 RETURN TO HOME
 
 </a>
 
-
 </div>
 
-
 </div>
-
 
 </div>
 
@@ -1414,7 +1450,6 @@ RETURN TO HOME
 ORBONIX · FINAL SPACE QUIZ · 100 QUESTIONS
 
 </div>
-
 
 </section>
 
@@ -1994,7 +2029,7 @@ difficulty:"MEDIUM"
 {
 question:"What is the name of the supermassive black hole at the center of the Milky Way?",
 answers:[
-" Sagittarius A*",
+"Sagittarius A*",
 "Cygnus X-1",
 "TON 618",
 "M87*"
@@ -2168,7 +2203,7 @@ difficulty:"HARD"
 question:"Which black hole was famously imaged by the Event Horizon Telescope in 2019?",
 answers:[
 "M87*",
-" Sagittarius A*",
+"Sagittarius A*",
 "Cygnus X-1",
 "TON 618"
 ],
@@ -2684,14 +2719,12 @@ difficulty:"HARD"
 ========================================================= */
 
 let currentQuestion = 0;
-
 let score = 0;
-
 let answered = false;
 
 
 /* =========================================================
-   SHUFFLE ANSWERS
+   SHUFFLE
 ========================================================= */
 
 function shuffleAnswers(question) {
@@ -2775,11 +2808,13 @@ function loadQuestion() {
         q.question;
 
 
+    /* FIXED PROGRESS */
+
     document.getElementById(
         "progressBar"
     ).style.width =
         `${
-            (currentQuestion /
+            ((currentQuestion + 1) /
             questions.length) * 100
         }%`;
 
@@ -2841,6 +2876,29 @@ function loadQuestion() {
         "nextButton"
     ).style.display =
         "none";
+
+
+    if (
+        currentQuestion ===
+        questions.length - 1
+    ) {
+
+        document.getElementById(
+            "nextButton"
+        ).textContent =
+            "FINISH QUIZ →";
+
+    }
+
+    else {
+
+        document.getElementById(
+            "nextButton"
+        ).textContent =
+            "NEXT QUESTION →";
+
+    }
+
 }
 
 
@@ -2918,6 +2976,7 @@ function selectAnswer(
         "nextButton"
     ).style.display =
         "inline-flex";
+
 }
 
 
@@ -2926,6 +2985,10 @@ function selectAnswer(
 ========================================================= */
 
 function nextQuestion() {
+
+    if (!answered)
+        return;
+
 
     currentQuestion++;
 
@@ -2943,6 +3006,13 @@ function nextQuestion() {
 
 
     loadQuestion();
+
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
 }
 
 
@@ -2968,14 +3038,21 @@ function showResult() {
         "block";
 
 
+    /* RESET SCORE DISPLAY */
+
     document.getElementById(
         "score"
     ).textContent =
-        "0 / 100";
+        `0 / ${questions.length}`;
+
+
+    document.getElementById(
+        "finalScoreFill"
+    ).style.width =
+        "0%";
 
 
     let title = "";
-
     let text = "";
 
 
@@ -3083,7 +3160,6 @@ function showResult() {
 
     createParticles();
 
-
     createFinalBurst();
 
 }
@@ -3105,7 +3181,6 @@ function animateScore() {
 
 
     const duration = 2200;
-
 
     const start =
         performance.now();
@@ -3160,6 +3235,7 @@ function animateScore() {
     requestAnimationFrame(
         update
     );
+
 }
 
 
@@ -3172,6 +3248,15 @@ function createParticles() {
     const result =
         document.getElementById(
             "result"
+        );
+
+
+    document
+        .querySelectorAll(
+            ".final-particle"
+        )
+        .forEach(
+            particle => particle.remove()
         );
 
 
@@ -3361,6 +3446,15 @@ function restartQuiz() {
         "0%";
 
 
+    document
+        .querySelectorAll(
+            ".final-particle"
+        )
+        .forEach(
+            particle => particle.remove()
+        );
+
+
     loadQuestion();
 
 
@@ -3424,7 +3518,6 @@ function(event) {
 loadQuestion();
 
 </script>
-
 
 </body>
 
