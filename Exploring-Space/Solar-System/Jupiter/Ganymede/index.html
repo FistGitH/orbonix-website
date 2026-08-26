@@ -145,6 +145,8 @@ body {
     letter-spacing: 3px;
 
     transition: .35s ease;
+
+    cursor: pointer;
 }
 
 
@@ -211,6 +213,7 @@ h1 {
     position: relative;
 
     width: 620px;
+
     height: 620px;
 
     margin:
@@ -233,6 +236,7 @@ h1 {
     position: absolute;
 
     width: 570px;
+
     height: 190px;
 
     border:
@@ -257,6 +261,7 @@ h1 {
     position: relative;
 
     width: 470px;
+
     height: 470px;
 
     border-radius: 50%;
@@ -284,6 +289,7 @@ h1 {
     position: absolute;
 
     width: 100%;
+
     height: 100%;
 
     object-fit: cover;
@@ -615,6 +621,7 @@ h1 {
     .moon-area {
 
         width: 450px;
+
         height: 450px;
     }
 
@@ -622,6 +629,7 @@ h1 {
     .ganymede {
 
         width: 350px;
+
         height: 350px;
     }
 
@@ -629,6 +637,7 @@ h1 {
     .orbit {
 
         width: 420px;
+
         height: 140px;
     }
 
@@ -659,6 +668,7 @@ h1 {
     .moon-area {
 
         width: 310px;
+
         height: 310px;
 
         margin-top: 50px;
@@ -668,6 +678,7 @@ h1 {
     .ganymede {
 
         width: 245px;
+
         height: 245px;
     }
 
@@ -675,6 +686,7 @@ h1 {
     .orbit {
 
         width: 290px;
+
         height: 100px;
     }
 
@@ -682,6 +694,17 @@ h1 {
     .description {
 
         padding: 25px;
+    }
+
+
+    .return {
+
+        padding:
+            11px 16px;
+
+        font-size: 8px;
+
+        letter-spacing: 2px;
     }
 
 }
@@ -709,8 +732,11 @@ h1 {
 <div class="header">
 
 
+<!-- UNIVERSAL ORBONIX NAVIGATION -->
+
 <a
-href="https://sites.google.com/view/kosmolearn/solar-system/jupiter"
+href="#"
+data-page="Jupiter"
 class="return">
 
 ← RETURN TO JUPITER
@@ -1091,6 +1117,22 @@ function(event) {
 });
 
 </script>
+
+
+<!-- =========================================
+     ORBONIX GLOBAL SEARCH / NAVIGATION
+     =========================================
+
+     search.js должен подключаться здесь.
+     Он автоматически обрабатывает:
+
+     <a data-page="...">
+
+     и находит страницу в ORBONIX_PAGES.
+
+========================================= -->
+
+<script src="/search.js"></script>
 
 
 </body>
