@@ -6,6 +6,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Nereid | ORBONIX</title>
+
 <style>
 
 * {
@@ -389,6 +391,24 @@ h1 {
     box-shadow:
         0 0 15px
         rgba(190,210,240,.4);
+
+    animation:
+        dotPulse 4s ease-in-out infinite;
+}
+
+
+@keyframes dotPulse {
+
+    0%,100% {
+        opacity: .45;
+        transform: scale(.85);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+
 }
 
 
@@ -906,6 +926,14 @@ h1 {
             28px 20px;
     }
 
+
+    .nav-button {
+
+        width: 100%;
+
+        max-width: 300px;
+    }
+
 }
 
 </style>
@@ -914,6 +942,7 @@ h1 {
 
 
 <body>
+
 
 <section class="nereid-page">
 
@@ -931,7 +960,7 @@ h1 {
 
 
 <a
-href="https://sites.google.com/view/kosmolearn/solar-system/neptune"
+href="/solar-system/neptune/"
 class="return">
 
 ← RETURN TO NEPTUNE
@@ -986,14 +1015,14 @@ eccentric orbit around the ice giant.
 <div class="dot dot-3"></div>
 
 
-<a
-href="#NEREID"
-class="nereid">
+<div class="nereid">
 
 
 <img
 src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Nereid-Voyager2.jpg"
-alt="Nereid - Voyager 2">
+alt="Nereid - Voyager 2"
+loading="lazy"
+>
 
 
 <div class="nereid-name">
@@ -1003,7 +1032,7 @@ NEREID
 </div>
 
 
-</a>
+</div>
 
 
 </div>
@@ -1016,7 +1045,9 @@ NEREID
 <div class="content">
 
 
-<!-- STATS -->
+<!-- =========================================
+     STATS
+========================================= -->
 
 <div class="stats">
 
@@ -1102,7 +1133,9 @@ DISTANT MAJOR MOON
 </div>
 
 
-<!-- DESCRIPTION -->
+<!-- =========================================
+     DESCRIPTION
+========================================= -->
 
 <div class="description">
 
@@ -1144,7 +1177,9 @@ its 1989 encounter with Neptune.
 </div>
 
 
-<!-- FEATURES -->
+<!-- =========================================
+     FEATURES
+========================================= -->
 
 <div class="features-title">
 
@@ -1216,7 +1251,9 @@ Neptune system in 1989.
 </div>
 
 
-<!-- FACT -->
+<!-- =========================================
+     FACT
+========================================= -->
 
 <div class="fact">
 
@@ -1241,25 +1278,27 @@ during one orbit.
 </div>
 
 
-<!-- NAVIGATION -->
+<!-- =========================================
+     NAVIGATION
+========================================= -->
 
 <div class="navigation">
 
 
 <a
-href="https://sites.google.com/view/kosmolearn/solar-system"
+href="/solar-system/neptune/"
 class="nav-button">
 
-← RETURN TO SOLAR SYSTEM
+← RETURN TO NEPTUNE
 
 </a>
 
 
 <a
-href="https://sites.google.com/view/kosmolearn/solar-system/neptune"
+href="/solar-system/"
 class="nav-button">
 
-← RETURN TO NEPTUNE
+← RETURN TO SOLAR SYSTEM
 
 </a>
 
@@ -1285,9 +1324,12 @@ NEREID IMAGE VIA WIKIMEDIA COMMONS
 
 <script>
 
+/* =========================================
+   STAR PARALLAX
+========================================= */
+
 const stars =
 document.querySelector(".stars");
-
 
 const smallStars =
 document.querySelector(".stars-small");
@@ -1295,13 +1337,11 @@ document.querySelector(".stars-small");
 
 document.addEventListener(
 "mousemove",
-
 function(event) {
 
     const x =
         event.clientX /
         window.innerWidth - 0.5;
-
 
     const y =
         event.clientY /
@@ -1322,6 +1362,51 @@ function(event) {
         )`;
 
 });
+
+
+/* =========================================
+   NEREID PARALLAX
+========================================= */
+
+const nereid =
+document.querySelector(".nereid");
+
+
+document.addEventListener(
+"mousemove",
+function(event) {
+
+    const x =
+        event.clientX /
+        window.innerWidth - 0.5;
+
+    const y =
+        event.clientY /
+        window.innerHeight - 0.5;
+
+
+    nereid.style.transform =
+        `translate(
+            ${x * 10}px,
+            ${y * 10}px
+        )`;
+
+});
+
+
+/* =========================================
+   TOUCH SAFETY
+========================================= */
+
+if (
+    "ontouchstart" in window
+) {
+
+    stars.style.transform = "none";
+
+    smallStars.style.transform = "none";
+
+}
 
 </script>
 
