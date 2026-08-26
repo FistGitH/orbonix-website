@@ -141,6 +141,8 @@ body {
     letter-spacing: 3px;
 
     transition: .35s ease;
+
+    cursor: pointer;
 }
 
 
@@ -705,9 +707,12 @@ h1 {
 <div class="header">
 
 
+<!-- UNIVERSAL ORBONIX NAVIGATION -->
+
 <a
-href="https://sites.google.com/view/kosmolearn/solar-system/jupiter"
-class="return">
+href="#"
+class="return"
+data-page="Jupiter">
 
 ← RETURN TO JUPITER
 
@@ -881,6 +886,9 @@ KNOWN VOLCANIC FEATURES
 </div>
 
 
+</div>
+
+
 <!-- =========================================
      DESCRIPTION
 ========================================= -->
@@ -1031,6 +1039,13 @@ WIKIMEDIA COMMONS
 </section>
 
 
+<!-- =========================================
+     ORBONIX GLOBAL SEARCH SYSTEM
+========================================= -->
+
+<script src="/search.js"></script>
+
+
 <script>
 
 
@@ -1108,6 +1123,49 @@ function(event) {
         )`;
 
 });
+
+
+/* =========================================
+   ORBONIX UNIVERSAL PAGE NAVIGATION
+========================================= */
+
+const returnButton =
+document.querySelector(".return");
+
+
+if (
+    returnButton &&
+    typeof ORBONIX_PAGES !== "undefined"
+) {
+
+    returnButton.addEventListener(
+        "click",
+        function(event) {
+
+            event.preventDefault();
+
+            const pageName =
+                returnButton.dataset.page;
+
+            const page =
+                ORBONIX_PAGES.find(
+                    item =>
+                        item.title.toLowerCase() ===
+                        pageName.toLowerCase()
+                );
+
+
+            if (page && page.url) {
+
+                window.location.href =
+                    page.url;
+
+            }
+
+        }
+    );
+
+}
 
 
 </script>
