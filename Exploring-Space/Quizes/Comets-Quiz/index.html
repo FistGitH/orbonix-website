@@ -6,6 +6,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Comets Quiz | ORBONIX</title>
+
 <style>
 
 * {
@@ -564,7 +566,7 @@ h1 {
 
 
 /* =========================================
-   COMET COMPLETION ICON
+   COMET ICON
 ========================================= */
 
 .completion-icon {
@@ -1097,13 +1099,15 @@ h1 {
 <div class="stars-small"></div>
 
 
-<!-- HEADER -->
+<!-- =========================================
+     HEADER
+========================================= -->
 
 <div class="header">
 
 
 <a
-href="https://sites.google.com/view/kosmolearn"
+href="https://orbonix.net/"
 class="return">
 
 ← RETURN TO HOME
@@ -1138,7 +1142,9 @@ about the early Solar System.
 </div>
 
 
-<!-- QUIZ -->
+<!-- =========================================
+     QUIZ
+========================================= -->
 
 <div class="quiz-container">
 
@@ -1210,7 +1216,9 @@ NEXT QUESTION →
 </div>
 
 
-<!-- RESULT -->
+<!-- =========================================
+     RESULT
+========================================= -->
 
 <div
 class="result"
@@ -1278,7 +1286,7 @@ onclick="restartQuiz()">
 
 
 <a
-href="YOUR-QUIZ-SELECT-PAGE-LINK"
+href="https://orbonix.net/quizzes"
 class="result-button">
 
 ← QUIZ SELECT
@@ -1287,7 +1295,7 @@ class="result-button">
 
 
 <a
-href="https://sites.google.com/view/kosmolearn"
+href="https://orbonix.net/"
 class="result-button">
 
 RETURN TO HOME
@@ -1323,13 +1331,10 @@ ORBONIX · COMETS QUIZ · SPACE KNOWLEDGE
 
 const questions = [
 
-/* =========================================
-   EASY 1-10
-========================================= */
-
 {
 question:
 "What is a comet primarily made of?",
+
 answers:
 [
 "Ice, dust and rocky material",
@@ -1337,6 +1342,7 @@ answers:
 "Pure hydrogen",
 "Solid iron"
 ],
+
 correct: 0,
 difficulty: "EASY"
 },
@@ -1344,6 +1350,7 @@ difficulty: "EASY"
 {
 question:
 "What gives a comet its famous glowing tail?",
+
 answers:
 [
 "Interaction of released material with sunlight and the solar wind",
@@ -1351,6 +1358,7 @@ answers:
 "Lightning",
 "Radio waves from Jupiter"
 ],
+
 correct: 0,
 difficulty: "EASY"
 },
@@ -1358,6 +1366,7 @@ difficulty: "EASY"
 {
 question:
 "Where does a comet spend most of its time?",
+
 answers:
 [
 "Far from the Sun",
@@ -1365,6 +1374,7 @@ answers:
 "On the surface of a planet",
 "Inside the Sun"
 ],
+
 correct: 0,
 difficulty: "EASY"
 },
@@ -1372,6 +1382,7 @@ difficulty: "EASY"
 {
 question:
 "What happens to a comet when it approaches the Sun?",
+
 answers:
 [
 "Its ices heat up and release gas and dust",
@@ -1379,6 +1390,7 @@ answers:
 "It stops moving",
 "It turns completely into metal"
 ],
+
 correct: 0,
 difficulty: "EASY"
 },
@@ -1386,6 +1398,7 @@ difficulty: "EASY"
 {
 question:
 "What is the solid central part of a comet called?",
+
 answers:
 [
 "The nucleus",
@@ -1393,6 +1406,7 @@ answers:
 "The mantle",
 "The core cloud"
 ],
+
 correct: 0,
 difficulty: "EASY"
 },
@@ -1400,6 +1414,7 @@ difficulty: "EASY"
 {
 question:
 "Which famous comet returns to the inner Solar System roughly every 76 years?",
+
 answers:
 [
 "Halley's Comet",
@@ -1407,6 +1422,7 @@ answers:
 "Comet Hale-Bopp",
 "Comet NEOWISE"
 ],
+
 correct: 0,
 difficulty: "EASY"
 },
@@ -1414,6 +1430,7 @@ difficulty: "EASY"
 {
 question:
 "Which direction does a comet's tail generally point?",
+
 answers:
 [
 "Away from the Sun",
@@ -1421,6 +1438,7 @@ answers:
 "Always toward the Sun",
 "Toward Jupiter"
 ],
+
 correct: 0,
 difficulty: "EASY"
 },
@@ -1428,6 +1446,7 @@ difficulty: "EASY"
 {
 question:
 "What is the glowing cloud surrounding a comet's nucleus called?",
+
 answers:
 [
 "The coma",
@@ -1435,6 +1454,7 @@ answers:
 "The photosphere",
 "The magnetosphere"
 ],
+
 correct: 0,
 difficulty: "EASY"
 },
@@ -1442,6 +1462,7 @@ difficulty: "EASY"
 {
 question:
 "Are comet tails always visible from Earth?",
+
 answers:
 [
 "No",
@@ -1449,6 +1470,7 @@ answers:
 "Only during eclipses",
 "Only in winter"
 ],
+
 correct: 0,
 difficulty: "EASY"
 },
@@ -1456,6 +1478,7 @@ difficulty: "EASY"
 {
 question:
 "What is the name of the region of the Solar System containing many distant icy bodies and some comet sources?",
+
 answers:
 [
 "The Kuiper Belt",
@@ -1463,18 +1486,15 @@ answers:
 "The Main Sequence",
 "The Van Allen Belt"
 ],
+
 correct: 0,
 difficulty: "EASY"
 },
 
-
-/* =========================================
-   MEDIUM 11-20
-========================================= */
-
 {
 question:
 "What is a short-period comet?",
+
 answers:
 [
 "A comet with an orbital period of less than about 200 years",
@@ -1482,6 +1502,7 @@ answers:
 "A comet that never leaves Earth's orbit",
 "A comet that travels only around the Moon"
 ],
+
 correct: 0,
 difficulty: "MEDIUM"
 },
@@ -1489,6 +1510,7 @@ difficulty: "MEDIUM"
 {
 question:
 "Which two forces mainly shape the direction of a comet's tails?",
+
 answers:
 [
 "Solar radiation and the solar wind",
@@ -1496,6 +1518,7 @@ answers:
 "Magnetism from Saturn and Jupiter",
 "Dark matter and gravity waves"
 ],
+
 correct: 0,
 difficulty: "MEDIUM"
 },
@@ -1503,6 +1526,7 @@ difficulty: "MEDIUM"
 {
 question:
 "What is the ion tail of a comet mainly made of?",
+
 answers:
 [
 "Charged gas",
@@ -1510,6 +1534,7 @@ answers:
 "Liquid water",
 "Frozen metal"
 ],
+
 correct: 0,
 difficulty: "MEDIUM"
 },
@@ -1517,6 +1542,7 @@ difficulty: "MEDIUM"
 {
 question:
 "What is the dust tail of a comet mainly made of?",
+
 answers:
 [
 "Tiny solid particles",
@@ -1524,6 +1550,7 @@ answers:
 "Liquid hydrogen",
 "Neutron matter"
 ],
+
 correct: 0,
 difficulty: "MEDIUM"
 },
@@ -1531,6 +1558,7 @@ difficulty: "MEDIUM"
 {
 question:
 "Why do comet tails usually become more prominent near the Sun?",
+
 answers:
 [
 "Solar heating releases gas and dust from the nucleus",
@@ -1538,6 +1566,7 @@ answers:
 "The Sun pulls the tail directly behind it",
 "Earth's atmosphere becomes stronger"
 ],
+
 correct: 0,
 difficulty: "MEDIUM"
 },
@@ -1545,6 +1574,7 @@ difficulty: "MEDIUM"
 {
 question:
 "Where are many short-period comets thought to originate?",
+
 answers:
 [
 "The Kuiper Belt and scattered disk",
@@ -1552,6 +1582,7 @@ answers:
 "Earth's oceans",
 "The asteroid belt exclusively"
 ],
+
 correct: 0,
 difficulty: "MEDIUM"
 },
@@ -1559,6 +1590,7 @@ difficulty: "MEDIUM"
 {
 question:
 "What is the Oort Cloud?",
+
 answers:
 [
 "A hypothetical distant spherical reservoir of icy bodies surrounding the Solar System",
@@ -1566,6 +1598,7 @@ answers:
 "A ring around Saturn",
 "A region of Mars"
 ],
+
 correct: 0,
 difficulty: "MEDIUM"
 },
@@ -1573,6 +1606,7 @@ difficulty: "MEDIUM"
 {
 question:
 "Why are comets scientifically valuable?",
+
 answers:
 [
 "They preserve relatively primitive material from the early Solar System",
@@ -1580,6 +1614,7 @@ answers:
 "They contain only material from Earth",
 "They create all galaxies"
 ],
+
 correct: 0,
 difficulty: "MEDIUM"
 },
@@ -1587,6 +1622,7 @@ difficulty: "MEDIUM"
 {
 question:
 "What spacecraft deliberately impacted a comet's nucleus in NASA's Deep Impact mission?",
+
 answers:
 [
 "An impactor spacecraft",
@@ -1594,6 +1630,7 @@ answers:
 "Voyager 1",
 "New Horizons"
 ],
+
 correct: 0,
 difficulty: "MEDIUM"
 },
@@ -1601,6 +1638,7 @@ difficulty: "MEDIUM"
 {
 question:
 "Which mission famously orbited comet 67P/Churyumov–Gerasimenko?",
+
 answers:
 [
 "Rosetta",
@@ -1608,18 +1646,15 @@ answers:
 "Juno",
 "Galileo"
 ],
+
 correct: 0,
 difficulty: "MEDIUM"
 },
 
-
-/* =========================================
-   HARD 21-30
-========================================= */
-
 {
 question:
 "What is the approximate shape of a typical comet nucleus?",
+
 answers:
 [
 "Irregular and often elongated or lumpy",
@@ -1627,6 +1662,7 @@ answers:
 "Perfectly cubic",
 "Completely flat"
 ],
+
 correct: 0,
 difficulty: "HARD"
 },
@@ -1634,6 +1670,7 @@ difficulty: "HARD"
 {
 question:
 "Why does a comet's tail not simply trail behind it along its orbit?",
+
 answers:
 [
 "Solar wind and radiation pressure push material away from the Sun",
@@ -1641,6 +1678,7 @@ answers:
 "The comet has no orbit",
 "The tail is attached to Earth"
 ],
+
 correct: 0,
 difficulty: "HARD"
 },
@@ -1648,6 +1686,7 @@ difficulty: "HARD"
 {
 question:
 "What happens to a comet's mass over many close passages near the Sun?",
+
 answers:
 [
 "It gradually loses material",
@@ -1655,6 +1694,7 @@ answers:
 "It becomes a star",
 "It turns into an asteroid immediately"
 ],
+
 correct: 0,
 difficulty: "HARD"
 },
@@ -1662,6 +1702,7 @@ difficulty: "HARD"
 {
 question:
 "What is the main difference between a comet and an asteroid?",
+
 answers:
 [
 "Comets typically contain much more volatile ice and can develop comae and tails",
@@ -1669,6 +1710,7 @@ answers:
 "Comets never orbit the Sun",
 "Asteroids cannot contain rock"
 ],
+
 correct: 0,
 difficulty: "HARD"
 },
@@ -1676,6 +1718,7 @@ difficulty: "HARD"
 {
 question:
 "What did the Rosetta mission discover about comet 67P?",
+
 answers:
 [
 "It has a complex, active surface and a distinctive two-lobed shape",
@@ -1683,6 +1726,7 @@ answers:
 "It has a permanent atmosphere like Earth",
 "It is completely covered by liquid water"
 ],
+
 correct: 0,
 difficulty: "HARD"
 },
@@ -1690,6 +1734,7 @@ difficulty: "HARD"
 {
 question:
 "What is cometary outgassing?",
+
 answers:
 [
 "The release of gas and dust caused by heating of volatile material",
@@ -1697,6 +1742,7 @@ answers:
 "The collision of two galaxies",
 "The freezing of water"
 ],
+
 correct: 0,
 difficulty: "HARD"
 },
@@ -1704,6 +1750,7 @@ difficulty: "HARD"
 {
 question:
 "Why can some comets suddenly become much brighter?",
+
 answers:
 [
 "Sudden increases in outgassing or fragmentation can release large amounts of material",
@@ -1711,6 +1758,7 @@ answers:
 "Their gravity disappears",
 "Earth becomes closer to them permanently"
 ],
+
 correct: 0,
 difficulty: "HARD"
 },
@@ -1718,6 +1766,7 @@ difficulty: "HARD"
 {
 question:
 "What is a sungrazing comet?",
+
 answers:
 [
 "A comet whose orbit brings it extremely close to the Sun",
@@ -1725,6 +1774,7 @@ answers:
 "A comet located beyond Neptune",
 "A comet that never approaches the Sun"
 ],
+
 correct: 0,
 difficulty: "HARD"
 },
@@ -1732,6 +1782,7 @@ difficulty: "HARD"
 {
 question:
 "What can happen to a comet that passes extremely close to the Sun?",
+
 answers:
 [
 "It can fragment or even be destroyed by intense heating and tidal forces",
@@ -1739,6 +1790,7 @@ answers:
 "It stops experiencing gravity",
 "It always becomes a black hole"
 ],
+
 correct: 0,
 difficulty: "HARD"
 },
@@ -1746,6 +1798,7 @@ difficulty: "HARD"
 {
 question:
 "Why are long-period comets particularly important for studying the distant Solar System?",
+
 answers:
 [
 "Their origins may lie in the extremely distant Oort Cloud",
@@ -1753,6 +1806,7 @@ answers:
 "They never contain ice",
 "They orbit only between Earth and Mars"
 ],
+
 correct: 0,
 difficulty: "HARD"
 }
@@ -1772,7 +1826,7 @@ let answered = false;
 
 
 /* =========================================
-   SHUFFLE ANSWERS
+   SHUFFLE
 ========================================= */
 
 function shuffleAnswers(question) {
@@ -1891,6 +1945,10 @@ function loadQuestion() {
                 "answer";
 
 
+            button.type =
+                "button";
+
+
             button.textContent =
                 answerObject.text;
 
@@ -1922,6 +1980,7 @@ function loadQuestion() {
         "nextButton"
     ).style.display =
         "none";
+
 }
 
 
@@ -1999,6 +2058,7 @@ function selectAnswer(
         "nextButton"
     ).style.display =
         "inline-flex";
+
 }
 
 
@@ -2024,6 +2084,7 @@ function nextQuestion() {
 
 
     loadQuestion();
+
 }
 
 
@@ -2155,6 +2216,7 @@ function animateScore() {
 
     let value = 0;
 
+
     const scoreElement =
         document.getElementById(
             "score"
@@ -2162,6 +2224,7 @@ function animateScore() {
 
 
     const duration = 1600;
+
 
     const start =
         performance.now();
@@ -2216,6 +2279,7 @@ function animateScore() {
     requestAnimationFrame(
         update
     );
+
 }
 
 
@@ -2228,6 +2292,13 @@ function createParticles() {
     const result =
         document.getElementById(
             "result"
+        );
+
+
+    result
+        .querySelectorAll(".final-particle")
+        .forEach(
+            particle => particle.remove()
         );
 
 
@@ -2309,6 +2380,8 @@ function restartQuiz() {
 
     score = 0;
 
+    answered = false;
+
 
     document.getElementById(
         "quiz"
@@ -2329,6 +2402,13 @@ function restartQuiz() {
 
 
     loadQuestion();
+
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
 }
 
 
@@ -2338,6 +2418,7 @@ function restartQuiz() {
 
 const stars =
 document.querySelector(".stars");
+
 
 const smallStars =
 document.querySelector(".stars-small");
