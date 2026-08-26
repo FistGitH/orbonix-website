@@ -6,6 +6,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Photosphere | ORBONIX</title>
+
 <style>
 
 * {
@@ -66,7 +68,8 @@ body {
 
     background-size: 75px 75px;
 
-    transition: transform 1.5s ease;
+    transition:
+        transform 1.5s ease;
 }
 
 
@@ -89,7 +92,8 @@ body {
 
     background-size: 32px 32px;
 
-    transition: transform 2s ease;
+    transition:
+        transform 2s ease;
 }
 
 
@@ -134,7 +138,8 @@ body {
 
     letter-spacing: 3px;
 
-    transition: .35s ease;
+    transition:
+        .35s ease;
 }
 
 
@@ -146,7 +151,8 @@ body {
 
     border-color: white;
 
-    transform: translateY(-4px);
+    transform:
+        translateY(-4px);
 }
 
 
@@ -180,7 +186,8 @@ h1 {
 
     max-width: 720px;
 
-    margin: 25px auto 0;
+    margin:
+        25px auto 0;
 
     color:
         rgba(255,255,255,.52);
@@ -240,11 +247,15 @@ h1 {
         );
 
     box-shadow:
+
         0 0 55px
         rgba(255,125,20,.25),
 
         0 0 120px
         rgba(255,80,0,.12);
+
+    transition:
+        transform .3s ease;
 }
 
 
@@ -322,14 +333,16 @@ h1 {
 
     0%,100% {
 
-        transform: scale(1);
+        transform:
+            scale(1);
 
         opacity: .68;
     }
 
     50% {
 
-        transform: scale(1.045);
+        transform:
+            scale(1.045);
 
         opacity: .9;
     }
@@ -337,7 +350,7 @@ h1 {
 
 
 /* =========================================
-   SECOND GRANULATION LAYER
+   SECOND GRANULATION
 ========================================= */
 
 .granules-2 {
@@ -375,11 +388,15 @@ h1 {
 @keyframes granulation2 {
 
     from {
-        transform: translate(0,0);
+
+        transform:
+            translate(0,0);
     }
 
     to {
-        transform: translate(30px,18px);
+
+        transform:
+            translate(30px,18px);
     }
 }
 
@@ -406,6 +423,8 @@ h1 {
     box-shadow:
         0 0 8px
         rgba(80,10,0,.4);
+
+    z-index: 3;
 }
 
 
@@ -425,12 +444,18 @@ h1 {
 }
 
 
-.spot1 {
+/* =========================================
+   SPOT 1
+========================================= */
+
+.sp1 {
 
     width: 38px;
+
     height: 38px;
 
     left: 105px;
+
     top: 145px;
 
     animation:
@@ -439,44 +464,64 @@ h1 {
 }
 
 
-.spot2 {
+/* =========================================
+   SPOT 2
+========================================= */
+
+.sp2 {
 
     width: 22px;
+
     height: 22px;
 
     left: 330px;
+
     top: 105px;
 
     animation:
         spotPulse 5s
         ease-in-out infinite;
 
-    animation-delay: -2s;
+    animation-delay:
+        -2s;
 }
 
 
-.spot3 {
+/* =========================================
+   SPOT 3
+========================================= */
+
+.sp3 {
 
     width: 55px;
+
     height: 55px;
 
     right: 85px;
+
     top: 260px;
 
     animation:
         spotPulse 4.5s
         ease-in-out infinite;
 
-    animation-delay: -1s;
+    animation-delay:
+        -1s;
 }
 
 
-.spot4 {
+/* =========================================
+   SPOT 4
+========================================= */
+
+.sp4 {
 
     width: 27px;
+
     height: 27px;
 
     left: 220px;
+
     bottom: 75px;
 
     animation:
@@ -489,14 +534,16 @@ h1 {
 
     0%,100% {
 
-        transform: scale(.95);
+        transform:
+            scale(.95);
 
         opacity: .8;
     }
 
     50% {
 
-        transform: scale(1.08);
+        transform:
+            scale(1.08);
 
         opacity: 1;
     }
@@ -525,11 +572,13 @@ h1 {
         );
 
     pointer-events: none;
+
+    z-index: 5;
 }
 
 
 /* =========================================
-   PROTUBERANCES
+   PROMINENCES
 ========================================= */
 
 .prominence {
@@ -551,15 +600,19 @@ h1 {
     animation:
         prominencePulse 3s
         ease-in-out infinite;
+
+    z-index: 2;
 }
 
 
 .prom1 {
 
     width: 65px;
+
     height: 25px;
 
     top: 68px;
+
     right: 145px;
 
     transform:
@@ -570,30 +623,36 @@ h1 {
 .prom2 {
 
     width: 45px;
+
     height: 18px;
 
     bottom: 95px;
+
     left: 145px;
 
     transform:
         rotate(20deg);
 
-    animation-delay: -1s;
+    animation-delay:
+        -1s;
 }
 
 
 .prom3 {
 
     width: 32px;
+
     height: 14px;
 
     left: 65px;
+
     top: 285px;
 
     transform:
         rotate(70deg);
 
-    animation-delay: -2s;
+    animation-delay:
+        -2s;
 }
 
 
@@ -674,6 +733,10 @@ h1 {
 }
 
 
+/* =========================================
+   INFO GRID
+========================================= */
+
 .info-grid {
 
     display: grid;
@@ -694,12 +757,15 @@ h1 {
 
 .card {
 
+    min-width: 0;
+
     padding: 30px;
 
     background:
         rgba(5,7,13,.95);
 
-    transition: .35s ease;
+    transition:
+        .35s ease;
 }
 
 
@@ -804,7 +870,8 @@ h1 {
     background:
         rgba(255,255,255,.02);
 
-    transition: .35s ease;
+    transition:
+        .35s ease;
 }
 
 
@@ -878,7 +945,8 @@ h1 {
 
     letter-spacing: 2px;
 
-    transition: .3s ease;
+    transition:
+        .3s ease;
 }
 
 
@@ -1012,9 +1080,100 @@ h1 {
     }
 
 
+    .sp1 {
+
+        left: 55px;
+
+        top: 75px;
+    }
+
+
+    .sp2 {
+
+        left: 175px;
+
+        top: 55px;
+    }
+
+
+    .sp3 {
+
+        right: 45px;
+
+        top: 135px;
+    }
+
+
+    .sp4 {
+
+        left: 115px;
+
+        bottom: 45px;
+    }
+
+
+    .prom1 {
+
+        top: 35px;
+
+        right: 65px;
+
+        transform:
+            scale(.7)
+            rotate(-18deg);
+    }
+
+
+    .prom2 {
+
+        bottom: 45px;
+
+        left: 65px;
+
+        transform:
+            scale(.7)
+            rotate(20deg);
+    }
+
+
+    .prom3 {
+
+        left: 15px;
+
+        top: 145px;
+
+        transform:
+            scale(.7)
+            rotate(70deg);
+    }
+
+
     .description {
 
         padding: 25px;
+    }
+
+
+    .card {
+
+        padding: 25px;
+    }
+
+
+    .fact {
+
+        padding: 25px 20px;
+    }
+
+
+    .sun-label {
+
+        font-size: 8px;
+
+        letter-spacing: 2px;
+
+        padding:
+            9px 12px;
     }
 
 }
@@ -1043,7 +1202,7 @@ h1 {
 
 
 <a
-href="https://sites.google.com/view/kosmolearn/sun"
+href="/sun"
 class="return">
 
 ← RETURN TO SUN
@@ -1078,7 +1237,7 @@ into space as sunlight.
 
 
 <!-- =========================================
-     SUN VISUAL
+     SOLAR VISUAL
 ========================================= -->
 
 <div class="sun-area">
@@ -1129,7 +1288,7 @@ PHOTOSPHERE · VISIBLE SURFACE
 
 
 <!-- =========================================
-     INFO
+     INFORMATION
 ========================================= -->
 
 <div class="info">
@@ -1216,6 +1375,9 @@ OF SOLAR RADIUS
 </div>
 
 
+</div>
+
+
 <!-- =========================================
      DESCRIPTION
 ========================================= -->
@@ -1263,18 +1425,13 @@ and granulation.
 
 <div class="feature">
 
-
 <div class="feature-icon">
 ✦
 </div>
 
-
 <div class="feature-title">
-
 GRANULATION
-
 </div>
-
 
 <div class="feature-text">
 
@@ -1287,24 +1444,18 @@ Each granule is typically around
 
 </div>
 
-
 </div>
 
 
 <div class="feature">
 
-
 <div class="feature-icon">
 ●
 </div>
 
-
 <div class="feature-title">
-
 SUNSPOTS
-
 </div>
-
 
 <div class="feature-text">
 
@@ -1315,24 +1466,18 @@ than its surroundings.
 
 </div>
 
-
 </div>
 
 
 <div class="feature">
 
-
 <div class="feature-icon">
 ↗
 </div>
 
-
 <div class="feature-title">
-
 SUNLIGHT
-
 </div>
-
 
 <div class="feature-text">
 
@@ -1341,7 +1486,6 @@ escaped through the photosphere and
 then travelled across space.
 
 </div>
-
 
 </div>
 
@@ -1427,6 +1571,9 @@ document.querySelector(".stars");
 const smallStars =
 document.querySelector(".stars-small");
 
+const sun =
+document.querySelector(".sun");
+
 
 document.addEventListener(
 "mousemove",
@@ -1457,38 +1604,27 @@ function(event) {
             ${y * -12}px
         )`;
 
-});
-
-
-/* =========================================
-   SUN PARALLAX
-========================================= */
-
-const sun =
-document.querySelector(".sun");
-
-
-document.addEventListener(
-"mousemove",
-
-function(event) {
-
-    const x =
-        event.clientX /
-        window.innerWidth -
-        0.5;
-
-    const y =
-        event.clientY /
-        window.innerHeight -
-        0.5;
-
 
     sun.style.transform =
         `translate(
             ${x * 8}px,
             ${y * 8}px
         )`;
+
+});
+
+
+/* =========================================
+   RESET SUN POSITION ON MOBILE TOUCH
+========================================= */
+
+window.addEventListener(
+"touchstart",
+
+function() {
+
+    sun.style.transform =
+        "translate(0,0)";
 
 });
 
