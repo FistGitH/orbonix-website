@@ -7,6 +7,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Nebulae | ORBONIX</title>
+
 <style>
 
 * {
@@ -34,7 +36,7 @@ body {
 
     position: relative;
 
-    min-height: 1650px;
+    min-height: 100vh;
 
     padding: 65px 20px 100px;
 
@@ -59,13 +61,20 @@ body {
    STARS
 ========================================= */
 
-.stars {
+.stars,
+.stars-small {
 
     position: absolute;
 
     inset: -25%;
 
     pointer-events: none;
+
+    will-change: transform;
+}
+
+
+.stars {
 
     opacity: .38;
 
@@ -83,12 +92,6 @@ body {
 
 
 .stars-small {
-
-    position: absolute;
-
-    inset: -25%;
-
-    pointer-events: none;
 
     opacity: .16;
 
@@ -147,7 +150,11 @@ body {
 
     letter-spacing: 3px;
 
-    transition: .35s ease;
+    transition:
+        color .35s ease,
+        background .35s ease,
+        border-color .35s ease,
+        transform .35s ease;
 }
 
 
@@ -203,7 +210,7 @@ h1 {
 
 
 /* =========================================
-   NEBULA VISUAL
+   HERO
 ========================================= */
 
 .hero {
@@ -252,21 +259,25 @@ h1 {
     border-radius: 50%;
 
     background:
+
         radial-gradient(
             ellipse at 35% 45%,
             rgba(255,180,230,.8),
             transparent 22%
         ),
+
         radial-gradient(
             ellipse at 65% 55%,
             rgba(110,140,255,.75),
             transparent 27%
         ),
+
         radial-gradient(
             ellipse at 50% 45%,
             rgba(180,70,210,.55),
             transparent 48%
         ),
+
         radial-gradient(
             ellipse at 50% 50%,
             rgba(40,70,180,.3),
@@ -276,6 +287,7 @@ h1 {
     filter: blur(8px);
 
     box-shadow:
+
         0 0 60px
         rgba(150,100,240,.35),
 
@@ -435,6 +447,8 @@ h1 {
     font-size: 8px;
 
     letter-spacing: 2px;
+
+    line-height: 1.5;
 }
 
 
@@ -639,6 +653,10 @@ h1 {
 
 .navigation {
 
+    position: relative;
+
+    z-index: 10;
+
     display: flex;
 
     justify-content: center;
@@ -671,7 +689,11 @@ h1 {
 
     letter-spacing: 2px;
 
-    transition: .35s ease;
+    transition:
+        color .35s ease,
+        background .35s ease,
+        border-color .35s ease,
+        transform .35s ease;
 }
 
 
@@ -693,6 +715,10 @@ h1 {
 ========================================= */
 
 .footer {
+
+    position: relative;
+
+    z-index: 10;
 
     margin-top: 30px;
 
@@ -746,6 +772,10 @@ h1 {
     .hero {
 
         height: 320px;
+
+        margin-top: 55px;
+
+        padding: 20px;
     }
 
     .stats {
@@ -770,6 +800,37 @@ h1 {
         width: 270px;
 
         height: 155px;
+    }
+
+    .hero-label {
+
+        bottom: 25px;
+
+        font-size: 8px;
+
+        letter-spacing: 3px;
+    }
+
+}
+
+
+/* =========================================
+   REDUCE MOTION
+========================================= */
+
+@media(prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration: 0.01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        transition-duration: 0.01ms !important;
+
+        scroll-behavior: auto !important;
     }
 
 }
@@ -797,8 +858,15 @@ h1 {
 <div class="header">
 
 
+<!--
+    RELATIVE HOME LINK
+
+    This is intentionally "/".
+    It works after changing hosting or domain.
+-->
+
 <a
-href="https://sites.google.com/view/kosmolearn"
+href="/"
 class="return">
 
 ← RETURN TO HOME
@@ -1066,13 +1134,11 @@ MAJOR TYPES OF NEBULAE
 
 <div class="type">
 
-
 <div class="type-name">
 
 EMISSION
 
 </div>
-
 
 <div class="type-text">
 
@@ -1082,19 +1148,16 @@ young, massive stars.
 
 </div>
 
-
 </div>
 
 
 <div class="type">
-
 
 <div class="type-name">
 
 REFLECTION
 
 </div>
-
 
 <div class="type-text">
 
@@ -1104,19 +1167,16 @@ mainly by reflected starlight.
 
 </div>
 
-
 </div>
 
 
 <div class="type">
-
 
 <div class="type-name">
 
 DARK
 
 </div>
-
 
 <div class="type-text">
 
@@ -1126,19 +1186,16 @@ silhouettes against brighter regions.
 
 </div>
 
-
 </div>
 
 
 <div class="type">
-
 
 <div class="type-name">
 
 PLANETARY
 
 </div>
-
 
 <div class="type-text">
 
@@ -1147,19 +1204,16 @@ low- to intermediate-mass stars.
 
 </div>
 
-
 </div>
 
 
 <div class="type">
-
 
 <div class="type-name">
 
 SUPERNOVA REMNANT
 
 </div>
-
 
 <div class="type-text">
 
@@ -1169,12 +1223,10 @@ explodes.
 
 </div>
 
-
 </div>
 
 
 <div class="type">
-
 
 <div class="type-name">
 
@@ -1182,14 +1234,12 @@ MOLECULAR CLOUD
 
 </div>
 
-
 <div class="type-text">
 
 Cold, dense regions rich in molecular
 gas and dust where new stars can form.
 
 </div>
-
 
 </div>
 
@@ -1237,7 +1287,7 @@ cosmic cycle of matter.
 
 
 <a
-href="https://sites.google.com/view/kosmolearn"
+href="/"
 class="nav-button">
 
 ← RETURN TO HOME
@@ -1260,7 +1310,6 @@ ORBONIX · DEEP SPACE · NEBULAE
 
 <script>
 
-
 /* =========================================
    STAR PARALLAX
 ========================================= */
@@ -1272,36 +1321,53 @@ const smallStars =
 document.querySelector(".stars-small");
 
 
+let mouseX = 0;
+let mouseY = 0;
+
+let currentX = 0;
+let currentY = 0;
+
+
 document.addEventListener(
 "mousemove",
-
 function(event) {
 
-    const x =
+    mouseX =
         event.clientX /
         window.innerWidth -
         0.5;
 
-    const y =
+    mouseY =
         event.clientY /
         window.innerHeight -
         0.5;
 
+});
+
+
+function animateStars() {
+
+    currentX +=
+        (mouseX * 20 - currentX) * 0.04;
+
+    currentY +=
+        (mouseY * 20 - currentY) * 0.04;
+
 
     stars.style.transform =
-        `translate(
-            ${x * 20}px,
-            ${y * 20}px
-        )`;
+        `translate(${currentX}px, ${currentY}px)`;
 
 
     smallStars.style.transform =
-        `translate(
-            ${x * -12}px,
-            ${y * -12}px
-        )`;
+        `translate(${-currentX * 0.6}px, ${-currentY * 0.6}px)`;
 
-});
+
+    requestAnimationFrame(animateStars);
+
+}
+
+
+animateStars();
 
 </script>
 
