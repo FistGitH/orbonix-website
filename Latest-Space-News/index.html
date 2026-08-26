@@ -196,6 +196,19 @@ h1 {
     line-height: .9;
 
     letter-spacing: 6px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #aabfff
+        );
+
+    -webkit-background-clip: text;
+
+    background-clip: text;
+
+    color: transparent;
 }
 
 
@@ -420,7 +433,8 @@ h1 {
 
     max-width: 600px;
 
-    margin: 0 0 22px;
+    margin:
+        0 0 22px;
 
     color:
         rgba(255,255,255,.57);
@@ -655,7 +669,10 @@ h1 {
         rgba(255,255,255,.025);
 
     transition:
-        .45s ease;
+        opacity .45s ease,
+        transform .45s ease,
+        border-color .45s ease,
+        box-shadow .45s ease;
 
     opacity: 0;
 
@@ -1031,6 +1048,8 @@ h1 {
 
     text-align: center;
 
+    cursor: pointer;
+
     transition: .35s ease;
 }
 
@@ -1181,7 +1200,7 @@ h1 {
 
 
 <a
-href="https://sites.google.com/view/kosmolearn"
+href="/"
 class="return">
 
 ← RETURN TO HOME
@@ -1216,7 +1235,7 @@ from across the Universe.
 
 <span class="live-dot"></span>
 
-UPDATED · AUGUST 24, 2026
+UPDATED · AUGUST 26, 2026
 
 </div>
 
@@ -1280,7 +1299,7 @@ decade.
 
 <div class="meta">
 
-<span>24 AUG 2026</span>
+<span>26 AUG 2026</span>
 
 <span>NASA</span>
 
@@ -1292,10 +1311,10 @@ decade.
 <a
 href="https://science.nasa.gov/"
 target="_blank"
+rel="noopener noreferrer"
 class="read-button">
 
 READ THE LATEST →
-
 
 </a>
 
@@ -1478,6 +1497,7 @@ SOURCE · NASA
 <a
 href="https://www.nasa.gov/news/"
 target="_blank"
+rel="noopener noreferrer"
 class="read-button">
 
 READ STORY →
@@ -1557,6 +1577,7 @@ SOURCE · NASA
 <a
 href="https://www.nasa.gov/news/"
 target="_blank"
+rel="noopener noreferrer"
 class="read-button">
 
 READ STORY →
@@ -1636,6 +1657,7 @@ SOURCE · ESA / NASA
 <a
 href="https://esahubble.org/news/archive/year/2026/"
 target="_blank"
+rel="noopener noreferrer"
 class="read-button">
 
 READ STORY →
@@ -1715,6 +1737,7 @@ SOURCE · ESA
 <a
 href="https://www.esa.int/ESA_Multimedia/Videos/2026/08/Fly_around_Schiaparelli_Crater_with_Mars_Express"
 target="_blank"
+rel="noopener noreferrer"
 class="read-button">
 
 READ STORY →
@@ -1794,6 +1817,7 @@ SOURCE · JWST / ASTRONOMY
 <a
 href="https://science.nasa.gov/mission/webb/"
 target="_blank"
+rel="noopener noreferrer"
 class="read-button">
 
 READ STORY →
@@ -1873,6 +1897,7 @@ SOURCE · ESA / NASA / CSA
 <a
 href="https://www.esa.int/ESA_Multimedia/Images/2026/08/Webb_opens_a_Treasure_Chest_filled_with_stars"
 target="_blank"
+rel="noopener noreferrer"
 class="read-button">
 
 READ STORY →
@@ -1952,6 +1977,7 @@ SOURCE · NASA APOD
 <a
 href="https://apod.nasa.gov/"
 target="_blank"
+rel="noopener noreferrer"
 class="read-button">
 
 VIEW APOD →
@@ -2031,6 +2057,7 @@ SOURCE · NASA / ESA
 <a
 href="https://science.nasa.gov/eclipses/future-eclipses/total-solar-eclipse-on-august-12-2026/"
 target="_blank"
+rel="noopener noreferrer"
 class="read-button">
 
 EXPLORE ECLIPSE →
@@ -2110,6 +2137,7 @@ SOURCE · ESA
 <a
 href="https://www.esa.int/ESA_Multimedia/Images/2026/08/Proba-3_s_eclipse_hours_before_totality_in_Europe"
 target="_blank"
+rel="noopener noreferrer"
 class="read-button">
 
 READ STORY →
@@ -2188,6 +2216,7 @@ astronomical events.
 <a
 href="https://www.nasa.gov/"
 target="_blank"
+rel="noopener noreferrer"
 class="source-button">
 
 NASA
@@ -2198,6 +2227,7 @@ NASA
 <a
 href="https://science.nasa.gov/"
 target="_blank"
+rel="noopener noreferrer"
 class="source-button">
 
 NASA SCIENCE
@@ -2208,6 +2238,7 @@ NASA SCIENCE
 <a
 href="https://www.esa.int/"
 target="_blank"
+rel="noopener noreferrer"
 class="source-button">
 
 ESA
@@ -2218,6 +2249,7 @@ ESA
 <a
 href="https://esahubble.org/"
 target="_blank"
+rel="noopener noreferrer"
 class="source-button">
 
 ESA / HUBBLE
@@ -2228,6 +2260,7 @@ ESA / HUBBLE
 <a
 href="https://science.nasa.gov/mission/webb/"
 target="_blank"
+rel="noopener noreferrer"
 class="source-button">
 
 JAMES WEBB
@@ -2238,6 +2271,7 @@ JAMES WEBB
 <a
 href="https://apod.nasa.gov/"
 target="_blank"
+rel="noopener noreferrer"
 class="source-button">
 
 NASA APOD
@@ -2263,7 +2297,7 @@ NASA APOD
 
 
 <a
-href="YOUR-SOLAR-SYSTEM-LINK"
+href="/solar-system.html"
 class="final-button">
 
 SOLAR SYSTEM →
@@ -2272,7 +2306,7 @@ SOLAR SYSTEM →
 
 
 <a
-href="YOUR-DEEP-SPACE-LINK"
+href="/deep-space.html"
 class="final-button">
 
 DEEP SPACE →
@@ -2281,7 +2315,7 @@ DEEP SPACE →
 
 
 <a
-href="YOUR-TELESCOPE-LINK"
+href="/telescope.html"
 class="final-button">
 
 TELESCOPE →
@@ -2290,7 +2324,7 @@ TELESCOPE →
 
 
 <a
-href="YOUR-QUIZ-LINK"
+href="/quizzes.html"
 class="final-button">
 
 SPACE QUIZ →
@@ -2299,7 +2333,7 @@ SPACE QUIZ →
 
 
 <a
-href="YOUR-MOONS-LINK"
+href="/moons.html"
 class="final-button">
 
 MOONS →
@@ -2308,7 +2342,7 @@ MOONS →
 
 
 <a
-href="YOUR-STARS-LINK"
+href="/stars.html"
 class="final-button">
 
 STARS →
@@ -2317,7 +2351,7 @@ STARS →
 
 
 <a
-href="YOUR-GALAXIES-LINK"
+href="/galaxies.html"
 class="final-button">
 
 GALAXIES →
@@ -2326,7 +2360,9 @@ GALAXIES →
 
 
 <a
-href="YOUR-NASA-LINK"
+href="https://www.nasa.gov/"
+target="_blank"
+rel="noopener noreferrer"
 class="final-button">
 
 NASA →
@@ -2350,6 +2386,288 @@ ORBONIX · LATEST SPACE NEWS · 2026
 
 
 <script>
+
+/* =========================================================
+   ORBONIX UNIVERSAL PAGE SYSTEM
+========================================================= */
+
+const ORBONIX_PAGES = {
+
+    "home":
+        "/",
+
+    "exploring space":
+        "/exploring-space.html",
+
+    "solar system":
+        "/solar-system.html",
+
+    "deep space":
+        "/deep-space.html",
+
+    "space missions":
+        "/space-missions.html",
+
+    "quizzes":
+        "/quizzes.html",
+
+    "terms":
+        "/terms.html",
+
+    "telescope":
+        "/telescope.html",
+
+    "moons":
+        "/moons.html",
+
+    "stars":
+        "/stars.html",
+
+    "galaxies":
+        "/galaxies.html",
+
+    "sun":
+        "/sun.html",
+
+    "mercury":
+        "/mercury.html",
+
+    "venus":
+        "/venus.html",
+
+    "earth":
+        "/earth.html",
+
+    "mars":
+        "/mars.html",
+
+    "jupiter":
+        "/jupiter.html",
+
+    "saturn":
+        "/saturn.html",
+
+    "uranus":
+        "/uranus.html",
+
+    "neptune":
+        "/neptune.html",
+
+    "dwarf planets":
+        "/dwarf-planets.html",
+
+    "asteroid belt":
+        "/asteroid-belt.html",
+
+    "kuiper belt":
+        "/kuiper-belt.html",
+
+    "oort cloud":
+        "/oort-cloud.html",
+
+    "planet x":
+        "/planet-x.html",
+
+    "black holes":
+        "/black-holes.html",
+
+    "cosmic voids":
+        "/cosmic-voids.html",
+
+    "dark energy":
+        "/dark-energy.html",
+
+    "dark matter":
+        "/dark-matter.html",
+
+    "nebulae":
+        "/nebulae.html",
+
+    "quasars":
+        "/quasars.html",
+
+    "rogue planets":
+        "/rogue-planets.html",
+
+    "wormholes":
+        "/wormholes.html",
+
+    "apollo":
+        "/apollo.html",
+
+    "artemis":
+        "/artemis.html",
+
+    "cassini":
+        "/cassini.html",
+
+    "james webb":
+        "/james-webb.html",
+
+    "new horizons":
+        "/new-horizons.html",
+
+    "voyager":
+        "/voyager.html",
+
+    "black holes quiz":
+        "/black-holes-quiz.html",
+
+    "comets quiz":
+        "/comets-quiz.html",
+
+    "final quiz":
+        "/final-quiz.html",
+
+    "galactic quiz":
+        "/galactic-quiz.html",
+
+    "moons quiz":
+        "/moons-quiz.html",
+
+    "planet quiz":
+        "/planet-quiz.html",
+
+    "stars quiz":
+        "/stars-quiz.html",
+
+    "sun quiz":
+        "/sun-quiz.html",
+
+    "telescope quiz":
+        "/telescope-quiz.html",
+
+    "orbonix fotos":
+        "/orbonix-fotos.html",
+
+    "achievements":
+        "/achievements.html",
+
+    "latest space news":
+        "/latest-space-news.html"
+
+};
+
+
+/* =========================================================
+   UNIVERSAL PAGE NAVIGATION
+========================================================= */
+
+function ORBONIX_GoTo(pageName) {
+
+    const key =
+        pageName
+            .toLowerCase()
+            .trim();
+
+    const destination =
+        ORBONIX_PAGES[key];
+
+    if (destination) {
+
+        window.location.href =
+            destination;
+
+        return;
+
+    }
+
+    console.warn(
+        "ORBONIX page not found:",
+        pageName
+    );
+
+}
+
+
+/* =========================================================
+   UNIVERSAL BUTTON SYSTEM
+========================================================= */
+
+document
+    .querySelectorAll("[data-page]")
+    .forEach(button => {
+
+        button.addEventListener(
+            "click",
+            function(event) {
+
+                event.preventDefault();
+
+                ORBONIX_GoTo(
+                    this.dataset.page
+                );
+
+            }
+        );
+
+    });
+
+
+
+/* =========================================================
+   FINAL NAVIGATION
+========================================================= */
+
+document
+    .querySelectorAll(".final-button")
+    .forEach(button => {
+
+        const text =
+            button.textContent
+                .replace("→","")
+                .trim()
+                .toLowerCase();
+
+
+        if (
+            text === "nasa"
+        ) {
+            return;
+        }
+
+
+        button.addEventListener(
+            "click",
+            function(event) {
+
+                event.preventDefault();
+
+                ORBONIX_GoTo(
+                    text
+                );
+
+            }
+        );
+
+    });
+
+
+
+/* =========================================================
+   RETURN HOME
+========================================================= */
+
+const returnButton =
+    document.querySelector(".return");
+
+
+if (returnButton) {
+
+    returnButton.addEventListener(
+        "click",
+        function(event) {
+
+            event.preventDefault();
+
+            ORBONIX_GoTo("home");
+
+        }
+    );
+
+}
+
+
 
 /* =========================================================
    STAR PARALLAX
@@ -2454,10 +2772,36 @@ function updateCards() {
             title.includes(query);
 
 
+        const matchingCards =
+            [...cards].filter(item => {
+
+                const itemCategory =
+                    item.dataset.category;
+
+                const itemTitle =
+                    item.dataset.title
+                        .toLowerCase();
+
+                return (
+                    (
+                        currentFilter === "all" ||
+                        itemCategory === currentFilter
+                    )
+                    &&
+                    itemTitle.includes(query)
+                );
+
+            });
+
+
+        const matchingIndex =
+            matchingCards.indexOf(card);
+
+
         const shouldShow =
             matchesFilter &&
             matchesSearch &&
-            index < visibleCount;
+            matchingIndex < visibleCount;
 
 
         if (shouldShow) {
@@ -2469,7 +2813,7 @@ function updateCards() {
 
                 card.classList.add("show");
 
-            }, index * 45);
+            }, matchingIndex * 45);
 
             visible++;
 
