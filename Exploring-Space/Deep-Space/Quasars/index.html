@@ -7,6 +7,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Quasars | ORBONIX</title>
+
 <style>
 
 * {
@@ -59,13 +61,18 @@ body {
    STARS
 ========================================= */
 
-.stars {
+.stars,
+.stars-small {
 
     position: absolute;
 
     inset: -25%;
 
     pointer-events: none;
+}
+
+
+.stars {
 
     opacity: .38;
 
@@ -83,12 +90,6 @@ body {
 
 
 .stars-small {
-
-    position: absolute;
-
-    inset: -25%;
-
-    pointer-events: none;
 
     opacity: .16;
 
@@ -203,7 +204,7 @@ h1 {
 
 
 /* =========================================
-   QUASAR VISUAL
+   HERO
 ========================================= */
 
 .hero {
@@ -242,6 +243,10 @@ h1 {
     overflow: hidden;
 }
 
+
+/* =========================================
+   QUASAR VISUAL
+========================================= */
 
 .quasar-core {
 
@@ -436,8 +441,7 @@ h1 {
     background:
         rgba(255,255,255,.04);
 
-    transform:
-        translateY(-5px);
+    transform: translateY(-5px);
 }
 
 
@@ -502,8 +506,7 @@ h1 {
     border-color:
         rgba(255,255,255,.22);
 
-    transform:
-        translateY(-4px);
+    transform: translateY(-4px);
 }
 
 
@@ -578,8 +581,7 @@ h1 {
 
 .feature:hover {
 
-    transform:
-        translateY(-6px);
+    transform: translateY(-6px);
 
     border-color:
         rgba(180,190,240,.3);
@@ -707,8 +709,7 @@ h1 {
 
     border-color: white;
 
-    transform:
-        translateY(-4px);
+    transform: translateY(-4px);
 }
 
 
@@ -783,6 +784,12 @@ h1 {
             30px 22px;
     }
 
+    .quasar-core::before {
+
+        width: 230px;
+
+    }
+
 }
 
 </style>
@@ -809,7 +816,7 @@ h1 {
 
 
 <a
-href="https://sites.google.com/view/kosmolearn"
+href="https://orbonix.net"
 class="return">
 
 ← RETURN TO HOME
@@ -1096,13 +1103,11 @@ QUASAR FEATURES
 
 <div class="feature">
 
-
 <div class="feature-name">
 
 ACCRETION DISK
 
 </div>
-
 
 <div class="feature-text">
 
@@ -1112,19 +1117,16 @@ amounts of radiation.
 
 </div>
 
-
 </div>
 
 
 <div class="feature">
-
 
 <div class="feature-name">
 
 RELATIVISTIC JETS
 
 </div>
-
 
 <div class="feature-text">
 
@@ -1134,19 +1136,16 @@ close to the speed of light.
 
 </div>
 
-
 </div>
 
 
 <div class="feature">
-
 
 <div class="feature-name">
 
 SUPERMASSIVE BLACK HOLE
 
 </div>
-
 
 <div class="feature-text">
 
@@ -1155,7 +1154,6 @@ the center powers the quasar by
 accreting surrounding matter.
 
 </div>
-
 
 </div>
 
@@ -1201,7 +1199,7 @@ is comparatively compact.
 
 
 <a
-href="https://sites.google.com/view/kosmolearn"
+href="https://orbonix.net"
 class="nav-button">
 
 ← RETURN TO HOME
@@ -1223,7 +1221,6 @@ ORBONIX · DEEP SPACE · QUASARS
 
 
 <script>
-
 
 /* =========================================
    STAR PARALLAX
