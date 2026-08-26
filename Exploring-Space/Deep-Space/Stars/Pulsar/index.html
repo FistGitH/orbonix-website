@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,6 +6,8 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Pulsars | ORBONIX</title>
 
 <style>
 
@@ -22,6 +25,15 @@ body {
     color: white;
     font-family: Arial, Helvetica, sans-serif;
     overflow-x: hidden;
+}
+
+
+/* =========================================
+   ORBONIX UNIVERSAL LINK SYSTEM
+========================================= */
+
+:root {
+    --orbonix-base: "https://orbonix.net";
 }
 
 
@@ -265,7 +277,9 @@ h1 {
 }
 
 
-/* MAGNETIC FIELD */
+/* =========================================
+   MAGNETIC FIELD
+========================================= */
 
 .magnetic-field {
 
@@ -323,7 +337,9 @@ h1 {
 }
 
 
-/* RADIATION BEAM */
+/* =========================================
+   RADIATION BEAM
+========================================= */
 
 .beam {
 
@@ -385,7 +401,9 @@ h1 {
 }
 
 
-/* SECOND BEAM */
+/* =========================================
+   SECOND BEAM
+========================================= */
 
 .beam-two {
 
@@ -394,7 +412,9 @@ h1 {
 }
 
 
-/* NEUTRON STAR */
+/* =========================================
+   NEUTRON STAR
+========================================= */
 
 .neutron-star {
 
@@ -435,7 +455,9 @@ h1 {
 }
 
 
-/* STAR CORE */
+/* =========================================
+   STAR CORE
+========================================= */
 
 .neutron-star::before {
 
@@ -461,7 +483,9 @@ h1 {
 }
 
 
-/* POLAR CAPS */
+/* =========================================
+   POLAR CAPS
+========================================= */
 
 .neutron-star::after {
 
@@ -492,6 +516,10 @@ h1 {
         rgba(100,170,255,.9);
 }
 
+
+/* =========================================
+   ANIMATIONS
+========================================= */
 
 @keyframes pulsarFloat {
 
@@ -1031,8 +1059,9 @@ h1 {
 
 
 <a
-href="https://sites.google.com/view/kosmolearn"
-class="return">
+href="#"
+class="return"
+data-page="Home">
 
 ← RETURN TO HOME
 
@@ -1154,6 +1183,9 @@ FIRST PULSAR DISCOVERED
 </div>
 
 
+</div>
+
+
 <!-- =========================================
      CONTENT
 ========================================= -->
@@ -1163,13 +1195,9 @@ FIRST PULSAR DISCOVERED
 
 <div class="info">
 
-
 <div class="info-title">
-
 WHAT IS A PULSAR?
-
 </div>
-
 
 <p class="info-text">
 
@@ -1187,19 +1215,14 @@ astronomers can detect a repeating signal.
 
 </p>
 
-
 </div>
 
 
 <div class="info">
 
-
 <div class="info-title">
-
 HOW IS A PULSAR FORMED?
-
 </div>
-
 
 <p class="info-text">
 
@@ -1217,19 +1240,14 @@ faster.
 
 </p>
 
-
 </div>
 
 
 <div class="info">
 
-
 <div class="info-title">
-
 WHY DOES IT PULSE?
-
 </div>
-
 
 <p class="info-text">
 
@@ -1248,19 +1266,14 @@ turning its radiation on and off.
 
 </p>
 
-
 </div>
 
 
 <div class="info">
 
-
 <div class="info-title">
-
 EXTREME DENSITY
-
 </div>
-
 
 <p class="info-text">
 
@@ -1275,7 +1288,6 @@ A tiny amount of neutron-star material
 would have an enormous mass on Earth.
 
 </p>
-
 
 </div>
 
@@ -1297,9 +1309,7 @@ KEY IDEAS
 <div class="feature">
 
 <div class="feature-title">
-
 LIGHTHOUSE EFFECT
-
 </div>
 
 <div class="feature-text">
@@ -1316,9 +1326,7 @@ regular pulses when viewed from Earth.
 <div class="feature">
 
 <div class="feature-title">
-
 EXTREME ROTATION
-
 </div>
 
 <div class="feature-text">
@@ -1335,9 +1343,7 @@ precise cosmic clocks.
 <div class="feature">
 
 <div class="feature-title">
-
 MAGNETIC FIELD
-
 </div>
 
 <div class="feature-text">
@@ -1354,9 +1360,7 @@ particles and produce radiation.
 <div class="feature">
 
 <div class="feature-title">
-
 MILLISECOND PULSARS
-
 </div>
 
 <div class="feature-text">
@@ -1372,9 +1376,7 @@ with periods of only a few milliseconds.
 <div class="feature">
 
 <div class="feature-title">
-
 COSMIC CLOCKS
-
 </div>
 
 <div class="feature-text">
@@ -1391,9 +1393,7 @@ natural precision clocks.
 <div class="feature">
 
 <div class="feature-title">
-
 PULSAR PLANETS
-
 </div>
 
 <div class="feature-text">
@@ -1419,9 +1419,7 @@ remnants.
 
 
 <div class="fact-label">
-
 DID YOU KNOW?
-
 </div>
 
 
@@ -1447,15 +1445,14 @@ reliable natural clocks known.
 
 <div class="navigation">
 
-
 <a
-href="https://sites.google.com/view/kosmolearn"
-class="nav-button">
+href="#"
+class="nav-button"
+data-page="Home">
 
 ← RETURN TO HOME
 
 </a>
-
 
 </div>
 
@@ -1472,9 +1469,179 @@ ORBONIX · DEEP SPACE · PULSARS
 
 <script>
 
-/* =========================================
+/* =========================================================
+   ORBONIX UNIVERSAL PAGE SYSTEM
+   Change ONLY ORBONIX_BASE when moving hosting/domain.
+========================================================= */
+
+const ORBONIX_BASE = "https://orbonix.net";
+
+
+const ORBONIX_PAGES = {
+
+    "Home":
+        "/",
+
+    "Exploring Space":
+        "/Exploring-Space",
+
+    "Gallery":
+        "/Gallery",
+
+    "Latest Space News":
+        "/Latest-Space-News",
+
+    "More About Orbonix":
+        "/More-About-Orbonix",
+
+    "Solar System Simulation":
+        "/Solar-System-Simulation",
+
+    /* DEEP SPACE */
+
+    "Deep Space":
+        "/Deep-Space",
+
+    "Black Holes":
+        "/Black-Holes",
+
+    "Cosmic Voids":
+        "/Cosmic-Voids",
+
+    "Dark Energy":
+        "/Dark-Energy",
+
+    "Dark Matter":
+        "/Dark-Matter",
+
+    "Galaxies":
+        "/Galaxies",
+
+    "Nebulae":
+        "/Nebulae",
+
+    "Quasars":
+        "/Quasars",
+
+    "Rogue Planets":
+        "/Rogue-Planets",
+
+    "Stars":
+        "/Stars",
+
+    "Giant Stars":
+        "/Giant-Stars",
+
+    "Pulsars":
+        "/Pulsars",
+
+    "Magnetars":
+        "/Magnetars",
+
+    "Wormholes":
+        "/Wormholes",
+
+    /* SOLAR SYSTEM */
+
+    "Solar System":
+        "/Solar-System",
+
+    "Sun":
+        "/Sun",
+
+    "Mercury":
+        "/Mercury",
+
+    "Venus":
+        "/Venus",
+
+    "Earth":
+        "/Earth",
+
+    "Mars":
+        "/Mars",
+
+    "Phobos":
+        "/Phobos",
+
+    "Deimos":
+        "/Deimos",
+
+    "Jupiter":
+        "/Jupiter",
+
+    "Saturn":
+        "/Saturn",
+
+    "Uranus":
+        "/Uranus",
+
+    "Neptune":
+        "/Neptune",
+
+    "Dwarf Planets":
+        "/Dwarf-Planets",
+
+    "Asteroid Belt":
+        "/Asteroid-Belt",
+
+    "Kuiper Belt":
+        "/Kuiper-Belt",
+
+    "Oort Cloud":
+        "/Oort-Cloud",
+
+    "Planet X":
+        "/Planet-X"
+
+};
+
+
+/* =========================================================
+   UNIVERSAL LINK FUNCTION
+========================================================= */
+
+function orbonixPage(pageName) {
+
+    const path =
+        ORBONIX_PAGES[pageName];
+
+    if (!path) {
+
+        console.warn(
+            "ORBONIX page not found:",
+            pageName
+        );
+
+        return ORBONIX_BASE + "/";
+
+    }
+
+    return ORBONIX_BASE + path;
+
+}
+
+
+/* =========================================================
+   APPLY ALL ORBONIX LINKS
+========================================================= */
+
+document
+.querySelectorAll("[data-page]")
+.forEach(function(link) {
+
+    const pageName =
+        link.getAttribute("data-page");
+
+    link.href =
+        orbonixPage(pageName);
+
+});
+
+
+/* =========================================================
    STAR PARALLAX
-========================================= */
+========================================================= */
 
 const stars =
 document.querySelector(".stars");
@@ -1485,7 +1652,6 @@ document.querySelector(".stars-small");
 
 document.addEventListener(
 "mousemove",
-
 function(event) {
 
     const x =
@@ -1514,9 +1680,38 @@ function(event) {
 
 });
 
+
+/* =========================================================
+   MOBILE PERFORMANCE
+========================================================= */
+
+if (
+    window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+    ).matches
+) {
+
+    document
+    .querySelectorAll("*")
+    .forEach(function(element) {
+
+        element.style.animationDuration =
+            "0.01ms";
+
+        element.style.animationIterationCount =
+            "1";
+
+        element.style.transition =
+            "none";
+
+    });
+
+}
+
 </script>
 
 
 </body>
 
 </html>
+```
