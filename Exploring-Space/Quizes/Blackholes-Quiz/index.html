@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,6 +6,8 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ORBONIX · BLACK HOLES QUIZ</title>
 
 <style>
 
@@ -24,59 +27,33 @@ body {
     overflow-x: hidden;
 }
 
-
-/* =========================================
-   PAGE
-========================================= */
-
 .blackholes-quiz-page {
-
     position: relative;
-
     min-height: 100vh;
-
     padding: 65px 20px 100px;
-
     overflow: hidden;
 
     background:
-        radial-gradient(
-            circle at 50% 20%,
-            rgba(100,60,180,.14),
-            transparent 38%
-        ),
-        radial-gradient(
-            circle at 15% 70%,
-            rgba(40,60,160,.08),
-            transparent 35%
-        ),
-        radial-gradient(
-            circle at 85% 75%,
-            rgba(180,70,90,.06),
-            transparent 35%
-        ),
+        radial-gradient(circle at 50% 20%, rgba(100,60,180,.14), transparent 38%),
+        radial-gradient(circle at 15% 70%, rgba(40,60,160,.08), transparent 35%),
+        radial-gradient(circle at 85% 75%, rgba(180,70,90,.06), transparent 35%),
         #010106;
 }
 
 
 /* =========================================
-   BACKGROUND STARS
+   STARS
 ========================================= */
 
 .stars,
 .stars-small {
-
     position: fixed;
-
     inset: -25%;
-
     pointer-events: none;
-
     z-index: 0;
 }
 
 .stars {
-
     opacity: .4;
 
     background-image:
@@ -87,13 +64,10 @@ body {
         );
 
     background-size: 75px 75px;
-
-    transition:
-        transform 1.5s ease;
+    transition: transform 1.5s ease;
 }
 
 .stars-small {
-
     opacity: .17;
 
     background-image:
@@ -104,9 +78,7 @@ body {
         );
 
     background-size: 32px 32px;
-
-    transition:
-        transform 2s ease;
+    transition: transform 2s ease;
 }
 
 
@@ -115,130 +87,89 @@ body {
 ========================================= */
 
 .header {
-
     position: relative;
-
     z-index: 5;
-
     max-width: 900px;
-
     margin: auto;
-
     text-align: center;
 }
 
-
 .return {
-
     display: inline-flex;
-
     align-items: center;
-
     justify-content: center;
 
     padding: 12px 20px;
-
     margin-bottom: 40px;
 
-    color:
-        rgba(255,255,255,.7);
+    color: rgba(255,255,255,.7);
 
-    border:
-        1px solid
-        rgba(255,255,255,.22);
+    border: 1px solid rgba(255,255,255,.22);
 
     text-decoration: none;
 
     font-size: 9px;
-
     letter-spacing: 3px;
 
     transition: .35s ease;
 }
 
-
 .return:hover {
-
     color: #010106;
-
     background: white;
-
     border-color: white;
-
-    transform:
-        translateY(-4px);
+    transform: translateY(-4px);
 }
 
-
 .label {
-
     margin-bottom: 18px;
 
-    color:
-        rgba(180,160,255,.55);
+    color: rgba(180,160,255,.55);
 
     font-size: 10px;
-
     letter-spacing: 5px;
 }
 
-
 h1 {
-
     margin: 0;
 
-    font-size:
-        clamp(40px,8vw,85px);
+    font-size: clamp(40px,8vw,85px);
 
     line-height: .9;
-
     letter-spacing: 6px;
 }
 
-
 .subtitle {
-
     max-width: 720px;
 
-    margin:
-        28px auto 0;
+    margin: 28px auto 0;
 
-    color:
-        rgba(255,255,255,.52);
+    color: rgba(255,255,255,.52);
 
     font-size: 14px;
-
     line-height: 1.8;
 }
 
 
 /* =========================================
-   QUIZ
+   QUIZ CONTAINER
 ========================================= */
 
 .quiz-container {
-
     position: relative;
-
     z-index: 5;
 
-    width:
-        min(850px,100%);
+    width: min(850px,100%);
 
-    margin:
-        70px auto 0;
+    margin: 70px auto 0;
 
     padding: 35px;
 
-    border:
-        1px solid
-        rgba(255,255,255,.1);
+    border: 1px solid rgba(255,255,255,.1);
 
-    background:
-        rgba(255,255,255,.025);
+    background: rgba(255,255,255,.025);
 
-    transition:
-        .8s ease;
+    transition: .8s ease;
 }
 
 
@@ -247,42 +178,29 @@ h1 {
 ========================================= */
 
 .quiz-top {
-
     display: flex;
 
     justify-content: space-between;
-
     align-items: center;
 
     margin-bottom: 15px;
 }
 
-
 .question-number {
-
-    color:
-        rgba(255,255,255,.45);
+    color: rgba(255,255,255,.45);
 
     font-size: 9px;
-
     letter-spacing: 3px;
 }
 
-
 .difficulty {
+    padding: 7px 12px;
 
-    padding:
-        7px 12px;
+    border: 1px solid rgba(255,255,255,.15);
 
-    border:
-        1px solid
-        rgba(255,255,255,.15);
-
-    color:
-        rgba(255,255,255,.5);
+    color: rgba(255,255,255,.5);
 
     font-size: 8px;
-
     letter-spacing: 2px;
 }
 
@@ -292,30 +210,23 @@ h1 {
 ========================================= */
 
 .progress {
-
     width: 100%;
-
     height: 2px;
 
     margin-bottom: 45px;
 
-    background:
-        rgba(255,255,255,.08);
+    background: rgba(255,255,255,.08);
 
     overflow: hidden;
 }
 
-
 .progress-bar {
-
     width: 0%;
-
     height: 100%;
 
     background: white;
 
-    transition:
-        width .5s ease;
+    transition: width .5s ease;
 }
 
 
@@ -324,14 +235,11 @@ h1 {
 ========================================= */
 
 .question {
-
     margin-bottom: 35px;
 
-    font-size:
-        clamp(20px,3vw,30px);
+    font-size: clamp(20px,3vw,30px);
 
     line-height: 1.4;
-
     letter-spacing: .4px;
 }
 
@@ -341,90 +249,62 @@ h1 {
 ========================================= */
 
 .answers {
-
     display: grid;
 
-    grid-template-columns:
-        repeat(2,1fr);
+    grid-template-columns: repeat(2,1fr);
 
     gap: 12px;
 }
 
-
 .answer {
-
     min-height: 70px;
 
-    padding:
-        18px 20px;
+    padding: 18px 20px;
 
     text-align: left;
 
-    color:
-        rgba(255,255,255,.7);
+    color: rgba(255,255,255,.7);
 
-    border:
-        1px solid
-        rgba(255,255,255,.12);
+    border: 1px solid rgba(255,255,255,.12);
 
-    background:
-        rgba(255,255,255,.02);
+    background: rgba(255,255,255,.02);
 
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
 
     font-size: 12px;
 
     cursor: pointer;
 
-    transition:
-        .3s ease;
+    transition: .3s ease;
 }
-
 
 .answer:hover {
-
     color: white;
 
-    border-color:
-        rgba(150,110,255,.5);
+    border-color: rgba(150,110,255,.5);
 
-    background:
-        rgba(100,70,200,.08);
+    background: rgba(100,70,200,.08);
 
-    transform:
-        translateY(-3px);
+    transform: translateY(-3px);
 }
-
 
 .answer.correct {
-
     color: white;
 
-    border-color:
-        rgba(100,220,150,.7);
+    border-color: rgba(100,220,150,.7);
 
-    background:
-        rgba(60,180,110,.12);
+    background: rgba(60,180,110,.12);
 }
-
 
 .answer.wrong {
-
     color: white;
 
-    border-color:
-        rgba(255,90,90,.7);
+    border-color: rgba(255,90,90,.7);
 
-    background:
-        rgba(220,50,50,.12);
+    background: rgba(220,50,50,.12);
 }
 
-
 .answer.disabled {
-
     pointer-events: none;
 }
 
@@ -434,58 +314,41 @@ h1 {
 ========================================= */
 
 .next-area {
-
     display: flex;
-
     justify-content: flex-end;
 
     margin-top: 25px;
 }
 
-
 .next-button {
-
     display: none;
 
-    padding:
-        13px 25px;
+    padding: 13px 25px;
 
-    color:
-        rgba(255,255,255,.8);
+    color: rgba(255,255,255,.8);
 
-    border:
-        1px solid
-        rgba(255,255,255,.2);
+    border: 1px solid rgba(255,255,255,.2);
 
-    background:
-        transparent;
+    background: transparent;
 
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
 
     font-size: 9px;
-
     letter-spacing: 3px;
 
     cursor: pointer;
 
-    transition:
-        .3s ease;
+    transition: .3s ease;
 }
 
-
 .next-button:hover {
-
     color: #010106;
 
     background: white;
 
     border-color: white;
 
-    transform:
-        translateY(-3px);
+    transform: translateY(-3px);
 }
 
 
@@ -494,7 +357,6 @@ h1 {
 ========================================= */
 
 .result {
-
     display: none;
 
     position: relative;
@@ -503,29 +365,23 @@ h1 {
 
     min-height: 500px;
 
-    padding:
-        25px 10px 15px;
+    padding: 25px 10px 15px;
 
     overflow: hidden;
 }
 
-
 .result::before {
-
     content: "";
 
     position: absolute;
 
     width: 390px;
-
     height: 390px;
 
     left: 50%;
-
     top: 43%;
 
-    transform:
-        translate(-50%,-50%);
+    transform: translate(-50%,-50%);
 
     border-radius: 50%;
 
@@ -540,8 +396,7 @@ h1 {
         );
 
     box-shadow:
-        0 0 80px
-        rgba(90,50,200,.18);
+        0 0 80px rgba(90,50,200,.18);
 
     animation:
         blackHoleGlow 4s ease-in-out infinite;
@@ -549,11 +404,9 @@ h1 {
     pointer-events: none;
 }
 
-
 @keyframes blackHoleGlow {
 
     0%,100% {
-
         transform:
             translate(-50%,-50%)
             scale(.88);
@@ -562,7 +415,6 @@ h1 {
     }
 
     50% {
-
         transform:
             translate(-50%,-50%)
             scale(1.12);
@@ -577,15 +429,12 @@ h1 {
 ========================================= */
 
 .completion-icon {
-
     position: relative;
 
     width: 105px;
-
     height: 105px;
 
-    margin:
-        5px auto 32px;
+    margin: 5px auto 32px;
 
     border-radius: 50%;
 
@@ -600,14 +449,9 @@ h1 {
         );
 
     box-shadow:
-        0 0 18px
-        rgba(170,100,255,.65),
-
-        0 0 45px
-        rgba(100,60,210,.45),
-
-        0 0 100px
-        rgba(80,40,180,.2);
+        0 0 18px rgba(170,100,255,.65),
+        0 0 45px rgba(100,60,210,.45),
+        0 0 100px rgba(80,40,180,.2);
 
     animation:
         blackHoleAppear 1s ease forwards,
@@ -616,9 +460,7 @@ h1 {
     z-index: 2;
 }
 
-
 .completion-icon::before {
-
     content: "";
 
     position: absolute;
@@ -627,30 +469,21 @@ h1 {
 
     border-radius: 50%;
 
-    border:
-        5px solid
-        rgba(170,100,255,.15);
+    border: 5px solid rgba(170,100,255,.15);
 
-    border-top-color:
-        rgba(230,190,255,.85);
+    border-top-color: rgba(230,190,255,.85);
+    border-right-color: rgba(120,70,255,.65);
 
-    border-right-color:
-        rgba(120,70,255,.65);
-
-    transform:
-        rotate(-25deg);
+    transform: rotate(-25deg);
 
     box-shadow:
-        0 0 20px
-        rgba(170,100,255,.55);
+        0 0 20px rgba(170,100,255,.55);
 
     animation:
         accretionSpin 3s linear infinite;
 }
 
-
 .completion-icon::after {
-
     content: "";
 
     position: absolute;
@@ -659,79 +492,55 @@ h1 {
 
     border-radius: 50%;
 
-    border:
-        1px dashed
-        rgba(200,170,255,.18);
+    border: 1px dashed rgba(200,170,255,.18);
 
     animation:
         outerSpin 12s linear infinite;
 }
 
-
 @keyframes blackHoleAppear {
 
     from {
-
         opacity: 0;
-
-        transform:
-            scale(.15);
+        transform: scale(.15);
     }
 
     to {
-
         opacity: 1;
-
-        transform:
-            scale(1);
+        transform: scale(1);
     }
 }
-
 
 @keyframes blackHoleFloat {
 
     0%,100% {
-
-        transform:
-            translateY(0);
+        transform: translateY(0);
     }
 
     50% {
-
-        transform:
-            translateY(-8px);
+        transform: translateY(-8px);
     }
 }
-
 
 @keyframes accretionSpin {
 
     from {
-
-        transform:
-            rotate(0deg);
+        transform: rotate(0deg);
     }
 
     to {
-
-        transform:
-            rotate(360deg);
+        transform: rotate(360deg);
     }
 }
-
 
 @keyframes outerSpin {
 
     from {
-
-        transform:
-            rotate(360deg);
+        transform: rotate(360deg);
     }
 
     to {
-
-        transform:
-            rotate(0deg);
+        transform: rotate(0deg);
     }
 }
 
@@ -741,35 +550,27 @@ h1 {
 ========================================= */
 
 .result-label {
-
     position: relative;
-
     z-index: 2;
 
     margin-bottom: 18px;
 
-    color:
-        rgba(190,165,255,.65);
+    color: rgba(190,165,255,.65);
 
     font-size: 10px;
-
     letter-spacing: 6px;
 
     animation:
         fadeUp .8s ease .2s both;
 }
 
-
 .result-title {
-
     position: relative;
-
     z-index: 2;
 
     margin-bottom: 12px;
 
-    font-size:
-        clamp(32px,7vw,65px);
+    font-size: clamp(32px,7vw,65px);
 
     letter-spacing: 5px;
 
@@ -777,41 +578,32 @@ h1 {
         titleAppear 1s ease .35s both;
 }
 
-
 @keyframes titleAppear {
 
     from {
-
         opacity: 0;
 
-        transform:
-            translateY(20px);
+        transform: translateY(20px);
 
         letter-spacing: 15px;
     }
 
     to {
-
         opacity: 1;
 
-        transform:
-            translateY(0);
+        transform: translateY(0);
 
         letter-spacing: 5px;
     }
 }
 
-
 .score {
-
     position: relative;
-
     z-index: 2;
 
     margin-bottom: 22px;
 
     font-size: 25px;
-
     font-weight: bold;
 
     letter-spacing: 3px;
@@ -820,20 +612,15 @@ h1 {
         fadeUp .8s ease .55s both;
 }
 
-
 .result-text {
-
     position: relative;
-
     z-index: 2;
 
     max-width: 650px;
 
-    margin:
-        0 auto 30px;
+    margin: 0 auto 30px;
 
-    color:
-        rgba(255,255,255,.5);
+    color: rgba(255,255,255,.5);
 
     font-size: 13px;
 
@@ -843,23 +630,16 @@ h1 {
         fadeUp .8s ease .7s both;
 }
 
-
 @keyframes fadeUp {
 
     from {
-
         opacity: 0;
-
-        transform:
-            translateY(15px);
+        transform: translateY(15px);
     }
 
     to {
-
         opacity: 1;
-
-        transform:
-            translateY(0);
+        transform: translateY(0);
     }
 }
 
@@ -869,21 +649,16 @@ h1 {
 ========================================= */
 
 .final-score-bar {
-
     position: relative;
-
     z-index: 2;
 
-    width:
-        min(500px,90%);
+    width: min(500px,90%);
 
     height: 3px;
 
-    margin:
-        0 auto 35px;
+    margin: 0 auto 35px;
 
-    background:
-        rgba(255,255,255,.08);
+    background: rgba(255,255,255,.08);
 
     overflow: hidden;
 
@@ -891,18 +666,14 @@ h1 {
         fadeUp .8s ease .85s both;
 }
 
-
 .final-score-fill {
-
     width: 0%;
-
     height: 100%;
 
     background: white;
 
     box-shadow:
-        0 0 12px
-        rgba(190,160,255,.9);
+        0 0 12px rgba(190,160,255,.9);
 
     transition:
         width 1.8s cubic-bezier(.2,.8,.2,1);
@@ -914,9 +685,7 @@ h1 {
 ========================================= */
 
 .result-buttons {
-
     position: relative;
-
     z-index: 2;
 
     display: flex;
@@ -931,28 +700,18 @@ h1 {
         fadeUp .8s ease 1s both;
 }
 
-
 .result-button {
+    padding: 13px 23px;
 
-    padding:
-        13px 23px;
+    color: rgba(255,255,255,.75);
 
-    color:
-        rgba(255,255,255,.75);
+    border: 1px solid rgba(255,255,255,.2);
 
-    border:
-        1px solid
-        rgba(255,255,255,.2);
-
-    background:
-        transparent;
+    background: transparent;
 
     text-decoration: none;
 
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
 
     font-size: 9px;
 
@@ -960,21 +719,17 @@ h1 {
 
     cursor: pointer;
 
-    transition:
-        .3s ease;
+    transition: .3s ease;
 }
 
-
 .result-button:hover {
-
     color: #010106;
 
     background: white;
 
     border-color: white;
 
-    transform:
-        translateY(-3px);
+    transform: translateY(-3px);
 }
 
 
@@ -983,11 +738,9 @@ h1 {
 ========================================= */
 
 .final-particle {
-
     position: absolute;
 
     width: 3px;
-
     height: 3px;
 
     border-radius: 50%;
@@ -1002,11 +755,9 @@ h1 {
         particleFly 2.5s ease-out forwards;
 }
 
-
 @keyframes particleFly {
 
     0% {
-
         opacity: 0;
 
         transform:
@@ -1015,7 +766,6 @@ h1 {
     }
 
     15% {
-
         opacity: 1;
 
         transform:
@@ -1024,7 +774,6 @@ h1 {
     }
 
     100% {
-
         opacity: 0;
 
         transform:
@@ -1042,17 +791,14 @@ h1 {
 ========================================= */
 
 .footer {
-
     position: relative;
-
     z-index: 5;
 
     margin-top: 35px;
 
     text-align: center;
 
-    color:
-        rgba(255,255,255,.25);
+    color: rgba(255,255,255,.25);
 
     font-size: 9px;
 
@@ -1067,39 +813,29 @@ h1 {
 @media(max-width:600px) {
 
     .blackholes-quiz-page {
-
-        padding:
-            50px 15px 80px;
+        padding: 50px 15px 80px;
     }
 
     .quiz-container {
-
         padding: 25px;
     }
 
     .answers {
-
-        grid-template-columns:
-            1fr;
+        grid-template-columns: 1fr;
     }
 
     .question {
-
         font-size: 20px;
     }
 
     .completion-icon {
-
         width: 85px;
-
         height: 85px;
     }
 
     .result {
-
         min-height: 550px;
     }
-
 }
 
 </style>
@@ -1109,12 +845,9 @@ h1 {
 
 <body>
 
-
 <section class="blackholes-quiz-page">
 
-
 <div class="stars"></div>
-
 <div class="stars-small"></div>
 
 
@@ -1124,29 +857,21 @@ h1 {
 
 <div class="header">
 
-
 <a
-href="https://sites.google.com/view/kosmolearn"
+href="/"
 class="return">
 
 ← RETURN TO HOME
 
 </a>
 
-
 <div class="label">
-
 ORBONIX · SPACE KNOWLEDGE
-
 </div>
 
-
 <h1>
-
 BLACK HOLES QUIZ
-
 </h1>
-
 
 <div class="subtitle">
 
@@ -1157,7 +882,6 @@ extreme black holes in the Universe.
 
 </div>
 
-
 </div>
 
 
@@ -1167,9 +891,7 @@ extreme black holes in the Universe.
 
 <div class="quiz-container">
 
-
 <div id="quiz">
-
 
 <div class="quiz-top">
 
@@ -1180,7 +902,6 @@ id="questionNumber">
 QUESTION 01 / 30
 
 </div>
-
 
 <div
 class="difficulty"
@@ -1231,7 +952,6 @@ NEXT QUESTION →
 
 </div>
 
-
 </div>
 
 
@@ -1243,16 +963,11 @@ NEXT QUESTION →
 class="result"
 id="result">
 
-
 <div class="completion-icon"></div>
 
-
 <div class="result-label">
-
 SINGULARITY MISSION COMPLETE
-
 </div>
-
 
 <div
 class="result-title"
@@ -1262,7 +977,6 @@ BLACK HOLE EXPLORER
 
 </div>
 
-
 <div
 class="score"
 id="score">
@@ -1270,7 +984,6 @@ id="score">
 0 / 30
 
 </div>
-
 
 <div class="final-score-bar">
 
@@ -1281,7 +994,6 @@ id="finalScoreFill">
 
 </div>
 
-
 <div
 class="result-text"
 id="resultText">
@@ -1291,9 +1003,7 @@ through the physics of black holes.
 
 </div>
 
-
 <div class="result-buttons">
-
 
 <button
 class="result-button"
@@ -1304,8 +1014,14 @@ onclick="restartQuiz()">
 </button>
 
 
+<!--
+     CHANGE THIS FILE NAME ONLY
+     IF YOUR QUIZ SELECT PAGE
+     HAS A DIFFERENT FILE NAME.
+-->
+
 <a
-href="YOUR-QUIZ-SELECT-PAGE-LINK"
+href="/quizzes.html"
 class="result-button">
 
 ← QUIZ SELECT
@@ -1314,19 +1030,16 @@ class="result-button">
 
 
 <a
-href="https://sites.google.com/view/kosmolearn"
+href="/"
 class="result-button">
 
 RETURN TO HOME
 
 </a>
 
-
 </div>
 
-
 </div>
-
 
 </div>
 
@@ -1336,7 +1049,6 @@ RETURN TO HOME
 ORBONIX · BLACK HOLES QUIZ · SPACE KNOWLEDGE
 
 </div>
-
 
 </section>
 
@@ -1349,10 +1061,6 @@ ORBONIX · BLACK HOLES QUIZ · SPACE KNOWLEDGE
 ========================================= */
 
 const questions = [
-
-/* =========================================
-   EASY 1-10
-========================================= */
 
 {
 question:
@@ -1370,7 +1078,6 @@ correct: 0,
 difficulty: "EASY"
 },
 
-
 {
 question:
 "What is the event horizon?",
@@ -1386,7 +1093,6 @@ answers:
 correct: 0,
 difficulty: "EASY"
 },
-
 
 {
 question:
@@ -1404,7 +1110,6 @@ correct: 0,
 difficulty: "EASY"
 },
 
-
 {
 question:
 "Can light escape from inside the event horizon?",
@@ -1420,7 +1125,6 @@ answers:
 correct: 0,
 difficulty: "EASY"
 },
-
 
 {
 question:
@@ -1438,7 +1142,6 @@ correct: 0,
 difficulty: "EASY"
 },
 
-
 {
 question:
 "What is Sagittarius A*?",
@@ -1454,7 +1157,6 @@ answers:
 correct: 0,
 difficulty: "EASY"
 },
-
 
 {
 question:
@@ -1472,7 +1174,6 @@ correct: 0,
 difficulty: "EASY"
 },
 
-
 {
 question:
 "What is an accretion disk?",
@@ -1489,7 +1190,6 @@ correct: 0,
 difficulty: "EASY"
 },
 
-
 {
 question:
 "Why can material around a black hole become extremely hot?",
@@ -1505,7 +1205,6 @@ answers:
 correct: 0,
 difficulty: "EASY"
 },
-
 
 {
 question:
@@ -1525,7 +1224,7 @@ difficulty: "EASY"
 
 
 /* =========================================
-   MEDIUM 11-20
+   MEDIUM
 ========================================= */
 
 {
@@ -1544,7 +1243,6 @@ correct: 0,
 difficulty: "MEDIUM"
 },
 
-
 {
 question:
 "What is the Schwarzschild radius?",
@@ -1560,7 +1258,6 @@ answers:
 correct: 0,
 difficulty: "MEDIUM"
 },
-
 
 {
 question:
@@ -1578,7 +1275,6 @@ correct: 0,
 difficulty: "MEDIUM"
 },
 
-
 {
 question:
 "What is gravitational time dilation?",
@@ -1594,7 +1290,6 @@ answers:
 correct: 0,
 difficulty: "MEDIUM"
 },
-
 
 {
 question:
@@ -1612,7 +1307,6 @@ correct: 0,
 difficulty: "MEDIUM"
 },
 
-
 {
 question:
 "What is the ergosphere of a rotating black hole?",
@@ -1628,7 +1322,6 @@ answers:
 correct: 0,
 difficulty: "MEDIUM"
 },
-
 
 {
 question:
@@ -1646,7 +1339,6 @@ correct: 0,
 difficulty: "MEDIUM"
 },
 
-
 {
 question:
 "What happens when two black holes merge?",
@@ -1663,7 +1355,6 @@ correct: 0,
 difficulty: "MEDIUM"
 },
 
-
 {
 question:
 "What are gravitational waves?",
@@ -1679,7 +1370,6 @@ answers:
 correct: 0,
 difficulty: "MEDIUM"
 },
-
 
 {
 question:
@@ -1699,7 +1389,7 @@ difficulty: "MEDIUM"
 
 
 /* =========================================
-   HARD 21-30
+   HARD
 ========================================= */
 
 {
@@ -1718,7 +1408,6 @@ correct: 0,
 difficulty: "HARD"
 },
 
-
 {
 question:
 "What happens to a black hole's mass if it loses energy through Hawking radiation?",
@@ -1734,7 +1423,6 @@ answers:
 correct: 0,
 difficulty: "HARD"
 },
-
 
 {
 question:
@@ -1752,7 +1440,6 @@ correct: 0,
 difficulty: "HARD"
 },
 
-
 {
 question:
 "What is the black hole information paradox about?",
@@ -1768,7 +1455,6 @@ answers:
 correct: 0,
 difficulty: "HARD"
 },
-
 
 {
 question:
@@ -1786,7 +1472,6 @@ correct: 0,
 difficulty: "HARD"
 },
 
-
 {
 question:
 "What is a relativistic jet from an active black hole?",
@@ -1802,7 +1487,6 @@ answers:
 correct: 0,
 difficulty: "HARD"
 },
-
 
 {
 question:
@@ -1820,7 +1504,6 @@ correct: 0,
 difficulty: "HARD"
 },
 
-
 {
 question:
 "What is the photon sphere around a non-rotating black hole?",
@@ -1837,7 +1520,6 @@ correct: 0,
 difficulty: "HARD"
 },
 
-
 {
 question:
 "What is the Event Horizon Telescope famous for?",
@@ -1853,7 +1535,6 @@ answers:
 correct: 0,
 difficulty: "HARD"
 },
-
 
 {
 question:
@@ -1879,34 +1560,23 @@ difficulty: "HARD"
 ========================================= */
 
 let currentQuestion = 0;
-
 let score = 0;
-
 let answered = false;
 
 
 /* =========================================
-   SHUFFLE ANSWERS
+   SHUFFLE
 ========================================= */
 
 function shuffleAnswers(question) {
 
     const answerObjects =
         question.answers.map(
-            (answer, index) => {
-
-                return {
-
-                    text: answer,
-
-                    correct:
-                        index === question.correct
-
-                };
-
-            }
+            (answer, index) => ({
+                text: answer,
+                correct: index === question.correct
+            })
         );
-
 
     for (
         let i = answerObjects.length - 1;
@@ -1919,7 +1589,6 @@ function shuffleAnswers(question) {
                 Math.random() * (i + 1)
             );
 
-
         [
             answerObjects[i],
             answerObjects[j]
@@ -1928,9 +1597,7 @@ function shuffleAnswers(question) {
             answerObjects[j],
             answerObjects[i]
         ];
-
     }
-
 
     return answerObjects;
 }
@@ -1944,10 +1611,8 @@ function loadQuestion() {
 
     answered = false;
 
-
     const q =
         questions[currentQuestion];
-
 
     document.getElementById(
         "questionNumber"
@@ -1957,18 +1622,15 @@ function loadQuestion() {
             .padStart(2,"0")
         } / ${questions.length}`;
 
-
     document.getElementById(
         "difficulty"
     ).textContent =
         q.difficulty;
 
-
     document.getElementById(
         "question"
     ).textContent =
         q.question;
-
 
     document.getElementById(
         "progressBar"
@@ -1978,40 +1640,29 @@ function loadQuestion() {
             questions.length) * 100
         }%`;
 
-
     const answersContainer =
-        document.getElementById(
-            "answers"
-        );
-
+        document.getElementById("answers");
 
     answersContainer.innerHTML = "";
 
-
     const shuffled =
         shuffleAnswers(q);
-
 
     shuffled.forEach(
         answerObject => {
 
             const button =
-                document.createElement(
-                    "button"
-                );
+                document.createElement("button");
 
+            button.className = "answer";
 
-            button.className =
-                "answer";
-
+            button.type = "button";
 
             button.textContent =
                 answerObject.text;
 
-
             button.dataset.correct =
                 answerObject.correct;
-
 
             button.onclick =
                 function() {
@@ -2023,14 +1674,11 @@ function loadQuestion() {
 
                 };
 
-
             answersContainer.appendChild(
                 button
             );
-
         }
     );
-
 
     document.getElementById(
         "nextButton"
@@ -2040,7 +1688,7 @@ function loadQuestion() {
 
 
 /* =========================================
-   ANSWER
+   SELECT ANSWER
 ========================================= */
 
 function selectAnswer(
@@ -2051,32 +1699,22 @@ function selectAnswer(
     if (answered)
         return;
 
-
     answered = true;
 
-
     const buttons =
-        document.querySelectorAll(
-            ".answer"
-        );
-
+        document.querySelectorAll(".answer");
 
     buttons.forEach(
         button => {
 
-            button.classList.add(
-                "disabled"
-            );
+            button.classList.add("disabled");
 
         }
     );
 
-
     if (isCorrect) {
 
-        selectedButton.classList.add(
-            "correct"
-        );
+        selectedButton.classList.add("correct");
 
         score++;
 
@@ -2084,30 +1722,23 @@ function selectAnswer(
 
     else {
 
-        selectedButton.classList.add(
-            "wrong"
-        );
-
+        selectedButton.classList.add("wrong");
 
         buttons.forEach(
             button => {
 
                 if (
-                    button.dataset.correct
-                    === "true"
+                    button.dataset.correct ===
+                    "true"
                 ) {
 
-                    button.classList.add(
-                        "correct"
-                    );
+                    button.classList.add("correct");
 
                 }
 
             }
         );
-
     }
-
 
     document.getElementById(
         "nextButton"
@@ -2124,7 +1755,6 @@ function nextQuestion() {
 
     currentQuestion++;
 
-
     if (
         currentQuestion >=
         questions.length
@@ -2133,9 +1763,7 @@ function nextQuestion() {
         showResult();
 
         return;
-
     }
-
 
     loadQuestion();
 }
@@ -2152,27 +1780,19 @@ function showResult() {
     ).style.display =
         "none";
 
-
     const result =
-        document.getElementById(
-            "result"
-        );
-
+        document.getElementById("result");
 
     result.style.display =
         "block";
 
-
     document.getElementById(
         "score"
     ).textContent =
-        "0 / 30";
-
+        `0 / ${questions.length}`;
 
     let title = "";
-
     let text = "";
-
 
     if (score <= 10) {
 
@@ -2224,21 +1844,17 @@ function showResult() {
 
     }
 
-
     document.getElementById(
         "resultTitle"
     ).textContent =
         title;
-
 
     document.getElementById(
         "resultText"
     ).textContent =
         text;
 
-
     animateScore();
-
 
     setTimeout(
         function() {
@@ -2255,9 +1871,12 @@ function showResult() {
         600
     );
 
-
     createParticles();
 
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
 }
 
 
@@ -2269,19 +1888,13 @@ function animateScore() {
 
     let value = 0;
 
-
     const scoreElement =
-        document.getElementById(
-            "score"
-        );
-
+        document.getElementById("score");
 
     const duration = 1600;
 
-
     const start =
         performance.now();
-
 
     function update(now) {
 
@@ -2292,7 +1905,6 @@ function animateScore() {
                 1
             );
 
-
         const eased =
             1 -
             Math.pow(
@@ -2300,22 +1912,17 @@ function animateScore() {
                 3
             );
 
-
         value =
             Math.floor(
                 eased * score
             );
 
-
         scoreElement.textContent =
             `${value} / ${questions.length}`;
 
-
         if (progress < 1) {
 
-            requestAnimationFrame(
-                update
-            );
+            requestAnimationFrame(update);
 
         }
 
@@ -2325,14 +1932,9 @@ function animateScore() {
                 `${score} / ${questions.length}`;
 
         }
-
     }
 
-
-    requestAnimationFrame(
-        update
-    );
-
+    requestAnimationFrame(update);
 }
 
 
@@ -2343,10 +1945,7 @@ function animateScore() {
 function createParticles() {
 
     const result =
-        document.getElementById(
-            "result"
-        );
-
+        document.getElementById("result");
 
     for (
         let i = 0;
@@ -2355,24 +1954,18 @@ function createParticles() {
     ) {
 
         const particle =
-            document.createElement(
-                "div"
-            );
-
+            document.createElement("div");
 
         particle.className =
             "final-particle";
 
-
         particle.style.left =
             Math.random() * 100 + "%";
-
 
         particle.style.top =
             40 +
             Math.random() * 20 +
             "%";
-
 
         particle.style.setProperty(
             "--x",
@@ -2382,7 +1975,6 @@ function createParticles() {
             ) + "px"
         );
 
-
         particle.style.setProperty(
             "--y",
             (
@@ -2391,16 +1983,11 @@ function createParticles() {
             ) + "px"
         );
 
-
         particle.style.animationDelay =
             Math.random() * .8 +
             "s";
 
-
-        result.appendChild(
-            particle
-        );
-
+        result.appendChild(particle);
 
         setTimeout(
             function() {
@@ -2410,9 +1997,7 @@ function createParticles() {
             },
             3500
         );
-
     }
-
 }
 
 
@@ -2423,29 +2008,30 @@ function createParticles() {
 function restartQuiz() {
 
     currentQuestion = 0;
-
     score = 0;
-
+    answered = false;
 
     document.getElementById(
         "quiz"
     ).style.display =
         "block";
 
-
     document.getElementById(
         "result"
     ).style.display =
         "none";
-
 
     document.getElementById(
         "finalScoreFill"
     ).style.width =
         "0%";
 
-
     loadQuestion();
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
 }
 
 
@@ -2454,44 +2040,39 @@ function restartQuiz() {
 ========================================= */
 
 const stars =
-document.querySelector(".stars");
-
+    document.querySelector(".stars");
 
 const smallStars =
-document.querySelector(".stars-small");
-
+    document.querySelector(".stars-small");
 
 document.addEventListener(
-"mousemove",
+    "mousemove",
+    function(event) {
 
-function(event) {
+        const x =
+            event.clientX /
+            window.innerWidth -
+            0.5;
 
-    const x =
-        event.clientX /
-        window.innerWidth -
-        0.5;
+        const y =
+            event.clientY /
+            window.innerHeight -
+            0.5;
 
+        stars.style.transform =
+            `translate(
+                ${x * 20}px,
+                ${y * 20}px
+            )`;
 
-    const y =
-        event.clientY /
-        window.innerHeight -
-        0.5;
+        smallStars.style.transform =
+            `translate(
+                ${x * -12}px,
+                ${y * -12}px
+            )`;
 
-
-    stars.style.transform =
-        `translate(
-            ${x * 20}px,
-            ${y * 20}px
-        )`;
-
-
-    smallStars.style.transform =
-        `translate(
-            ${x * -12}px,
-            ${y * -12}px
-        )`;
-
-});
+    }
+);
 
 
 /* =========================================
@@ -2502,7 +2083,7 @@ loadQuestion();
 
 </script>
 
-
 </body>
 
 </html>
+```
