@@ -6,6 +6,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Europa | ORBONIX</title>
+
 <style>
 
 * {
@@ -72,7 +74,8 @@ body {
 
     background-size: 75px 75px;
 
-    transition: transform 1.5s ease;
+    transition:
+        transform 1.5s ease;
 }
 
 
@@ -95,7 +98,8 @@ body {
 
     background-size: 32px 32px;
 
-    transition: transform 2s ease;
+    transition:
+        transform 2s ease;
 }
 
 
@@ -140,7 +144,8 @@ body {
 
     letter-spacing: 3px;
 
-    transition: .35s ease;
+    transition:
+        .35s ease;
 }
 
 
@@ -187,7 +192,8 @@ h1 {
 
     max-width: 720px;
 
-    margin: 25px auto 0;
+    margin:
+        25px auto 0;
 
     color:
         rgba(255,255,255,.52);
@@ -199,7 +205,7 @@ h1 {
 
 
 /* =========================================
-   MOON AREA
+   EUROPA AREA
 ========================================= */
 
 .moon-area {
@@ -207,6 +213,7 @@ h1 {
     position: relative;
 
     width: 620px;
+
     height: 620px;
 
     margin:
@@ -229,6 +236,7 @@ h1 {
     position: absolute;
 
     width: 570px;
+
     height: 190px;
 
     border:
@@ -241,11 +249,14 @@ h1 {
         rotate(-18deg);
 
     pointer-events: none;
+
+    transition:
+        transform 1s ease;
 }
 
 
 /* =========================================
-   EUROPA IMAGE
+   EUROPA
 ========================================= */
 
 .europa {
@@ -253,6 +264,7 @@ h1 {
     position: relative;
 
     width: 470px;
+
     height: 470px;
 
     border-radius: 50%;
@@ -271,7 +283,8 @@ h1 {
         rgba(190,205,215,.14);
 
     transition:
-        transform 1s ease;
+        transform 1s ease,
+        box-shadow .7s ease;
 }
 
 
@@ -280,6 +293,7 @@ h1 {
     position: absolute;
 
     width: 100%;
+
     height: 100%;
 
     object-fit: cover;
@@ -287,6 +301,35 @@ h1 {
     object-position: center;
 
     display: block;
+
+    transition:
+        transform 1.2s ease,
+        filter 1.2s ease;
+}
+
+
+.moon-area:hover .europa {
+
+    box-shadow:
+
+        inset -45px -20px 70px
+        rgba(0,0,0,.75),
+
+        inset 20px 10px 35px
+        rgba(255,255,255,.1),
+
+        0 0 100px
+        rgba(190,205,215,.2);
+}
+
+
+.moon-area:hover .europa img {
+
+    transform: scale(1.035);
+
+    filter:
+        brightness(1.06)
+        contrast(1.08);
 }
 
 
@@ -373,6 +416,10 @@ h1 {
 }
 
 
+/* =========================================
+   INFO GRID
+========================================= */
+
 .info-grid {
 
     display: grid;
@@ -398,7 +445,8 @@ h1 {
     background:
         rgba(5,7,13,.95);
 
-    transition: .35s ease;
+    transition:
+        .35s ease;
 }
 
 
@@ -503,7 +551,8 @@ h1 {
     background:
         rgba(255,255,255,.02);
 
-    transition: .35s ease;
+    transition:
+        .35s ease;
 }
 
 
@@ -514,6 +563,9 @@ h1 {
 
     border-color:
         rgba(255,255,255,.4);
+
+    background:
+        rgba(255,255,255,.04);
 }
 
 
@@ -556,6 +608,19 @@ h1 {
 
     background:
         rgba(255,255,255,.025);
+
+    transition:
+        .35s ease;
+}
+
+
+.fact:hover {
+
+    border-color:
+        rgba(255,255,255,.25);
+
+    background:
+        rgba(255,255,255,.04);
 }
 
 
@@ -611,6 +676,7 @@ h1 {
     .moon-area {
 
         width: 450px;
+
         height: 450px;
     }
 
@@ -618,6 +684,7 @@ h1 {
     .europa {
 
         width: 350px;
+
         height: 350px;
     }
 
@@ -625,19 +692,22 @@ h1 {
     .orbit {
 
         width: 420px;
+
         height: 140px;
     }
 
 
     .info-grid {
 
-        grid-template-columns: 1fr;
+        grid-template-columns:
+            1fr;
     }
 
 
     .features {
 
-        grid-template-columns: 1fr;
+        grid-template-columns:
+            1fr;
     }
 
 }
@@ -652,18 +722,57 @@ h1 {
     }
 
 
+    .header {
+
+        padding:
+            0 5px;
+    }
+
+
+    .return {
+
+        font-size: 8px;
+
+        letter-spacing: 2px;
+
+        padding:
+            11px 15px;
+    }
+
+
+    h1 {
+
+        font-size:
+            clamp(45px,17vw,75px);
+
+        letter-spacing: 5px;
+    }
+
+
+    .subtitle {
+
+        font-size: 13px;
+
+        line-height: 1.7;
+    }
+
+
     .moon-area {
 
         width: 310px;
+
         height: 310px;
 
         margin-top: 50px;
+
+        margin-bottom: 65px;
     }
 
 
     .europa {
 
         width: 245px;
+
         height: 245px;
     }
 
@@ -671,13 +780,56 @@ h1 {
     .orbit {
 
         width: 290px;
+
         height: 100px;
+    }
+
+
+    .moon-label {
+
+        font-size: 7px;
+
+        letter-spacing: 2px;
+
+        padding:
+            9px 12px;
+    }
+
+
+    .card {
+
+        padding: 25px;
     }
 
 
     .description {
 
         padding: 25px;
+
+        margin-top: 45px;
+    }
+
+
+    .description-text {
+
+        font-size: 13px;
+
+        line-height: 1.8;
+    }
+
+
+    .feature {
+
+        padding: 23px;
+    }
+
+
+    .fact {
+
+        padding:
+            28px 20px;
+
+        margin-top: 45px;
     }
 
 }
@@ -706,7 +858,7 @@ h1 {
 
 
 <a
-href="https://sites.google.com/view/kosmolearn/solar-system/jupiter"
+href="../jupiter/"
 class="return">
 
 ← RETURN TO JUPITER
@@ -782,13 +934,10 @@ EUROPA · JUPITER'S MOON
 <div class="card">
 
 <div class="number">
-
 671,100 km
-
 </div>
 
 <div class="card-label">
-
 DISTANCE FROM JUPITER
 </div>
 
@@ -798,13 +947,10 @@ DISTANCE FROM JUPITER
 <div class="card">
 
 <div class="number">
-
 3,122 km
-
 </div>
 
 <div class="card-label">
-
 DIAMETER
 </div>
 
@@ -814,13 +960,10 @@ DIAMETER
 <div class="card">
 
 <div class="number">
-
 3.55 DAYS
-
 </div>
 
 <div class="card-label">
-
 ORBITAL PERIOD
 </div>
 
@@ -830,13 +973,10 @@ ORBITAL PERIOD
 <div class="card">
 
 <div class="number">
-
 3.55 DAYS
-
 </div>
 
 <div class="card-label">
-
 ROTATION PERIOD
 </div>
 
@@ -846,13 +986,10 @@ ROTATION PERIOD
 <div class="card">
 
 <div class="number">
-
 3.01 g/cm³
-
 </div>
 
 <div class="card-label">
-
 AVERAGE DENSITY
 </div>
 
@@ -862,16 +999,15 @@ AVERAGE DENSITY
 <div class="card">
 
 <div class="number">
-
 ~100 km+
-
 </div>
 
 <div class="card-label">
-
 ESTIMATED OCEAN DEPTH
+</div>
 
 </div>
+
 
 </div>
 
@@ -1027,7 +1163,6 @@ NASA / JPL / WIKIMEDIA COMMONS
 
 <script>
 
-
 /* =========================================
    STAR PARALLAX
 ========================================= */
@@ -1103,6 +1238,46 @@ function(event) {
 
 });
 
+
+/* =========================================
+   TOUCH SUPPORT
+========================================= */
+
+document.addEventListener(
+"touchmove",
+
+function(event) {
+
+    if (!event.touches.length) return;
+
+    const x =
+        event.touches[0].clientX /
+        window.innerWidth -
+        0.5;
+
+    const y =
+        event.touches[0].clientY /
+        window.innerHeight -
+        0.5;
+
+
+    stars.style.transform =
+        `translate(
+            ${x * 20}px,
+            ${y * 20}px
+        )`;
+
+
+    smallStars.style.transform =
+        `translate(
+            ${x * -12}px,
+            ${y * -12}px
+        )`;
+
+},
+{
+    passive: true
+});
 
 </script>
 
