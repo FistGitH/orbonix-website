@@ -6,6 +6,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Galaxies Quiz | ORBONIX</title>
+
 <style>
 
 * {
@@ -408,6 +410,10 @@ h1 {
 
     background:
         rgba(60,180,110,.12);
+
+    box-shadow:
+        0 0 20px
+        rgba(60,180,110,.08);
 }
 
 
@@ -420,6 +426,10 @@ h1 {
 
     background:
         rgba(220,50,50,.12);
+
+    box-shadow:
+        0 0 20px
+        rgba(220,50,50,.08);
 }
 
 
@@ -569,7 +579,7 @@ h1 {
 
 
 /* =========================================
-   GALAXY COMPLETION ICON
+   COMPLETION ICON
 ========================================= */
 
 .completion-icon {
@@ -1118,7 +1128,7 @@ h1 {
 
 
 <a
-href="https://sites.google.com/view/kosmolearn"
+href="/"
 class="return">
 
 ← RETURN TO HOME
@@ -1297,7 +1307,7 @@ onclick="restartQuiz()">
 
 
 <a
-href="YOUR-QUIZ-SELECT-PAGE-LINK"
+href="/exploring-space/quizzes"
 class="result-button">
 
 ← QUIZ SELECT
@@ -1306,7 +1316,7 @@ class="result-button">
 
 
 <a
-href="https://sites.google.com/view/kosmolearn"
+href="/"
 class="result-button">
 
 RETURN TO HOME
@@ -1341,10 +1351,6 @@ ORBONIX · GALAXIES QUIZ · SPACE KNOWLEDGE
 ========================================= */
 
 const questions = [
-
-/* =========================================
-   EASY 1-10
-========================================= */
 
 {
 question:
@@ -1516,10 +1522,6 @@ difficulty: "EASY"
 },
 
 
-/* =========================================
-   MEDIUM 11-20
-========================================= */
-
 {
 question:
 "What are the three broad traditional galaxy categories?",
@@ -1689,10 +1691,6 @@ correct: 0,
 difficulty: "MEDIUM"
 },
 
-
-/* =========================================
-   HARD 21-30
-========================================= */
 
 {
 question:
@@ -1878,25 +1876,21 @@ let answered = false;
 
 
 /* =========================================
-   SHUFFLE ANSWERS
+   SHUFFLE
 ========================================= */
 
 function shuffleAnswers(question) {
 
     const answerObjects =
         question.answers.map(
-            (answer, index) => {
+            (answer, index) => ({
 
-                return {
+                text: answer,
 
-                    text: answer,
+                correct:
+                    index === question.correct
 
-                    correct:
-                        index === question.correct
-
-                };
-
-            }
+            })
         );
 
 
@@ -1962,13 +1956,17 @@ function loadQuestion() {
         q.question;
 
 
+    /* FIXED PROGRESS */
+
+    const progress =
+        ((currentQuestion + 1) /
+        questions.length) * 100;
+
+
     document.getElementById(
         "progressBar"
     ).style.width =
-        `${
-            (currentQuestion /
-            questions.length) * 100
-        }%`;
+        `${progress}%`;
 
 
     const answersContainer =
@@ -2024,10 +2022,35 @@ function loadQuestion() {
     );
 
 
-    document.getElementById(
-        "nextButton"
-    ).style.display =
+    const nextButton =
+        document.getElementById(
+            "nextButton"
+        );
+
+
+    nextButton.style.display =
         "none";
+
+
+    /* Change final button text */
+
+    if (
+        currentQuestion ===
+        questions.length - 1
+    ) {
+
+        nextButton.textContent =
+            "FINISH QUIZ →";
+
+    }
+
+    else {
+
+        nextButton.textContent =
+            "NEXT QUESTION →";
+
+    }
+
 }
 
 
@@ -2105,6 +2128,7 @@ function selectAnswer(
         "nextButton"
     ).style.display =
         "inline-flex";
+
 }
 
 
@@ -2130,6 +2154,7 @@ function nextQuestion() {
 
 
     loadQuestion();
+
 }
 
 
@@ -2158,7 +2183,7 @@ function showResult() {
     document.getElementById(
         "score"
     ).textContent =
-        "0 / 30";
+        `0 / ${questions.length}`;
 
 
     let title = "";
@@ -2418,6 +2443,8 @@ function restartQuiz() {
 
     score = 0;
 
+    answered = false;
+
 
     document.getElementById(
         "quiz"
@@ -2437,7 +2464,14 @@ function restartQuiz() {
         "0%";
 
 
+    document.getElementById(
+        "score"
+    ).textContent =
+        `0 / ${questions.length}`;
+
+
     loadQuestion();
+
 }
 
 
