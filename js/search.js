@@ -1,5 +1,5 @@
 /* =========================================================
-   ORBONIX SEARCH + NAVIGATION + UNIVERSAL BUTTON SYSTEM
+   ORBONIX SEARCH + AUTO NAVIGATION
    Website: https://orbonix.net
 ========================================================= */
 
@@ -17,127 +17,132 @@ const ORBONIX_BASE = "https://orbonix.net";
 
 const ORBONIX_PAGES = [
 
-    /* =====================================================
+    /* =========================
        MAIN
-    ===================================================== */
+    ========================= */
 
     {
         title: "Home",
         url: `${ORBONIX_BASE}/`,
+        parent: null,
         category: "Main",
         keywords: "home orbonix space astronomy universe",
-        description: "The main ORBONIX space and astronomy website."
+        description: "The main ORBONIX website."
     },
 
     {
         title: "Exploring Space",
         url: `${ORBONIX_BASE}/Exploring-Space/`,
+        parent: null,
         category: "Main",
-        keywords: "exploring space explore astronomy universe cosmos",
+        keywords: "exploring space astronomy universe cosmos",
         description: "Explore space and the universe."
     },
 
     {
         title: "Gallery",
         url: `${ORBONIX_BASE}/Gallery/`,
+        parent: null,
         category: "Main",
-        keywords: "gallery photos images pictures telescope observations",
-        description: "Explore the ORBONIX space gallery."
+        keywords: "gallery photos images telescope observations",
+        description: "Explore the ORBONIX gallery."
     },
 
     {
         title: "Latest Space News",
         url: `${ORBONIX_BASE}/Latest-Space-News/`,
+        parent: null,
         category: "Main",
-        keywords: "latest space news astronomy nasa esa discoveries",
-        description: "Read the latest space news."
+        keywords: "latest space news astronomy nasa esa",
+        description: "Latest space news and discoveries."
     },
 
     {
         title: "More About Orbonix",
         url: `${ORBONIX_BASE}/More-About-Orbonix/`,
+        parent: null,
         category: "Main",
-        keywords: "about orbonix project website information",
+        keywords: "about orbonix project website",
         description: "Learn more about ORBONIX."
     },
 
     {
         title: "Solar System Simulation",
         url: `${ORBONIX_BASE}/Solar-System-Simulation/`,
+        parent: null,
         category: "Main",
-        keywords: "solar system simulation planets orbit interactive",
-        description: "Explore the interactive Solar System simulation."
+        keywords: "solar system simulation planets orbit",
+        description: "Interactive Solar System simulation."
     },
 
 
-    /* =====================================================
+    /* =========================
        EXPLORING SPACE
-    ===================================================== */
-
-    {
-        title: "Exploring Space",
-        url: `${ORBONIX_BASE}/Exploring-Space/`,
-        category: "Exploring Space",
-        keywords: "exploring space astronomy universe cosmos",
-        description: "Explore the universe."
-    },
+    ========================= */
 
     {
         title: "Deep Space",
         url: `${ORBONIX_BASE}/Exploring-Space/Deep-Space/`,
+        parent: "Exploring Space",
         category: "Exploring Space",
-        keywords: "deep space strange objects universe cosmos",
-        description: "Explore mysterious objects in deep space."
+        keywords: "deep space strange objects universe",
+        description: "Explore deep space."
     },
 
     {
         title: "Solar System",
         url: `${ORBONIX_BASE}/Exploring-Space/Solar-System/`,
+        parent: "Exploring Space",
         category: "Exploring Space",
-        keywords: "solar system sun planets moons asteroids comets",
+        keywords: "solar system planets moons sun",
         description: "Explore the Solar System."
     },
 
     {
         title: "Space Missions",
         url: `${ORBONIX_BASE}/Exploring-Space/Space-Missions/`,
+        parent: "Exploring Space",
         category: "Exploring Space",
-        keywords: "space missions nasa esa spacecraft rockets exploration",
-        description: "Explore famous space missions."
+        keywords: "space missions nasa esa spacecraft",
+        description: "Explore space missions."
     },
 
     {
         title: "Quizzes",
         url: `${ORBONIX_BASE}/Exploring-Space/Quizes/`,
+        parent: "Exploring Space",
         category: "Exploring Space",
-        keywords: "quiz quizzes astronomy test space knowledge",
-        description: "Test your astronomy knowledge."
+        keywords: "quizzes tests astronomy space",
+        description: "Test your space knowledge."
     },
 
     {
         title: "Terms",
         url: `${ORBONIX_BASE}/Exploring-Space/Terms/`,
+        parent: "Exploring Space",
         category: "Exploring Space",
-        keywords: "terms glossary dictionary astronomy definitions",
-        description: "Explore space and astronomy terminology."
+        keywords: "terms dictionary astronomy definitions",
+        description: "Space and astronomy terms."
     },
 
 
-    /* =====================================================
+    /* =========================
        SOLAR SYSTEM
-    ===================================================== */
+    ========================= */
 
     {
         title: "Sun",
         url: `${ORBONIX_BASE}/Exploring-Space/Solar-System/Sun/`,
+        parent: "Solar System",
         category: "Solar System",
-        keywords: "sun star solar flare sunspots corona solar wind",
+        keywords: "sun star solar flare sunspots corona",
         description: "Explore the Sun."
     },
 
     {
         title: "Mercury",
         url: `${ORBONIX_BASE}/Exploring-Space/Solar-System/Mercury/`,
+        parent: "Solar System",
         category: "Planets",
         keywords: "mercury planet smallest closest sun",
         description: "Explore Mercury."
@@ -146,102 +151,115 @@ const ORBONIX_PAGES = [
     {
         title: "Venus",
         url: `${ORBONIX_BASE}/Exploring-Space/Solar-System/Venus/`,
+        parent: "Solar System",
         category: "Planets",
-        keywords: "venus planet hottest atmosphere clouds greenhouse",
+        keywords: "venus planet hottest atmosphere",
         description: "Explore Venus."
     },
 
     {
         title: "Earth",
         url: `${ORBONIX_BASE}/Exploring-Space/Solar-System/Earth/`,
+        parent: "Solar System",
         category: "Planets",
-        keywords: "earth planet world life atmosphere oceans",
+        keywords: "earth planet world life ocean",
         description: "Explore Earth."
     },
 
     {
         title: "Mars",
         url: `${ORBONIX_BASE}/Exploring-Space/Solar-System/Mars/`,
+        parent: "Solar System",
         category: "Planets",
-        keywords: "mars planet red planet rover phobos deimos",
+        keywords: "mars red planet rover phobos deimos",
         description: "Explore Mars."
     },
 
     {
         title: "Phobos",
         url: `${ORBONIX_BASE}/Exploring-Space/Solar-System/Mars/Phobos/`,
+        parent: "Mars",
         category: "Mars",
-        keywords: "phobos mars moon satellite",
+        keywords: "phobos mars moon",
         description: "Explore Phobos."
     },
 
     {
         title: "Deimos",
         url: `${ORBONIX_BASE}/Exploring-Space/Solar-System/Mars/Deimos/`,
+        parent: "Mars",
         category: "Mars",
-        keywords: "deimos mars moon satellite",
+        keywords: "deimos mars moon",
         description: "Explore Deimos."
     },
 
     {
         title: "Jupiter",
         url: `${ORBONIX_BASE}/Exploring-Space/Solar-System/Jupiter/`,
+        parent: "Solar System",
         category: "Planets",
-        keywords: "jupiter gas giant largest planet great red spot moons",
+        keywords: "jupiter gas giant great red spot moons",
         description: "Explore Jupiter."
     },
 
     {
         title: "Saturn",
         url: `${ORBONIX_BASE}/Exploring-Space/Solar-System/Saturn/`,
+        parent: "Solar System",
         category: "Planets",
-        keywords: "saturn rings gas giant titan enceladus",
+        keywords: "saturn rings titan gas giant",
         description: "Explore Saturn."
     },
 
     {
         title: "Uranus",
         url: `${ORBONIX_BASE}/Exploring-Space/Solar-System/Uranus/`,
+        parent: "Solar System",
         category: "Planets",
-        keywords: "uranus ice giant rings tilted planet",
+        keywords: "uranus ice giant rings",
         description: "Explore Uranus."
     },
 
     {
         title: "Neptune",
         url: `${ORBONIX_BASE}/Exploring-Space/Solar-System/Neptune/`,
+        parent: "Solar System",
         category: "Planets",
-        keywords: "neptune ice giant blue planet winds",
+        keywords: "neptune ice giant blue planet",
         description: "Explore Neptune."
     },
 
     {
         title: "Dwarf Planets",
         url: `${ORBONIX_BASE}/Exploring-Space/Solar-System/Dwarf-Planets/`,
+        parent: "Solar System",
         category: "Solar System",
-        keywords: "dwarf planets pluto ceres eris haumea makemake",
+        keywords: "dwarf planets pluto ceres eris",
         description: "Explore dwarf planets."
     },
 
     {
         title: "Asteroid Belt",
         url: `${ORBONIX_BASE}/Exploring-Space/Solar-System/Asteroid-Belt/`,
+        parent: "Solar System",
         category: "Solar System",
         keywords: "asteroid belt asteroids mars jupiter",
-        description: "Explore the asteroid belt."
+        description: "Explore the Asteroid Belt."
     },
 
     {
         title: "Kuiper Belt",
         url: `${ORBONIX_BASE}/Exploring-Space/Solar-System/Kuiper-Belt/`,
+        parent: "Solar System",
         category: "Solar System",
-        keywords: "kuiper belt icy objects outer solar system",
+        keywords: "kuiper belt icy objects",
         description: "Explore the Kuiper Belt."
     },
 
     {
         title: "Oort Cloud",
         url: `${ORBONIX_BASE}/Exploring-Space/Solar-System/Oort-Cloud/`,
+        parent: "Solar System",
         category: "Solar System",
         keywords: "oort cloud comets outer solar system",
         description: "Explore the Oort Cloud."
@@ -250,27 +268,30 @@ const ORBONIX_PAGES = [
     {
         title: "Planet X",
         url: `${ORBONIX_BASE}/Exploring-Space/Solar-System/Planet-X/`,
+        parent: "Solar System",
         category: "Solar System",
-        keywords: "planet x planet nine hypothetical planet",
-        description: "Explore the hypothetical Planet X."
+        keywords: "planet x planet nine hypothetical",
+        description: "Explore Planet X."
     },
 
 
-    /* =====================================================
+    /* =========================
        DEEP SPACE
-    ===================================================== */
+    ========================= */
 
     {
         title: "Black Holes",
         url: `${ORBONIX_BASE}/Exploring-Space/Deep-Space/Blackholes/`,
+        parent: "Deep Space",
         category: "Deep Space",
-        keywords: "black holes black hole event horizon singularity gravity",
+        keywords: "black holes event horizon singularity gravity",
         description: "Explore black holes."
     },
 
     {
         title: "Cosmic Voids",
         url: `${ORBONIX_BASE}/Exploring-Space/Deep-Space/Cosmic-Voids/`,
+        parent: "Deep Space",
         category: "Deep Space",
         keywords: "cosmic voids empty universe galaxies",
         description: "Explore cosmic voids."
@@ -279,91 +300,102 @@ const ORBONIX_PAGES = [
     {
         title: "Dark Energy",
         url: `${ORBONIX_BASE}/Exploring-Space/Deep-Space/Dark-Energy/`,
+        parent: "Deep Space",
         category: "Deep Space",
-        keywords: "dark energy universe expansion acceleration cosmology",
+        keywords: "dark energy expansion cosmology",
         description: "Explore dark energy."
     },
 
     {
         title: "Dark Matter",
         url: `${ORBONIX_BASE}/Exploring-Space/Deep-Space/Dark-Matter/`,
+        parent: "Deep Space",
         category: "Deep Space",
-        keywords: "dark matter gravity galaxies invisible matter",
+        keywords: "dark matter gravity galaxies",
         description: "Explore dark matter."
     },
 
     {
         title: "Galaxies",
         url: `${ORBONIX_BASE}/Exploring-Space/Deep-Space/Galaxies/`,
+        parent: "Deep Space",
         category: "Deep Space",
-        keywords: "galaxies galaxy milky way andromeda spiral elliptical",
+        keywords: "galaxies milky way andromeda spiral",
         description: "Explore galaxies."
     },
 
     {
         title: "Nebulae",
         url: `${ORBONIX_BASE}/Exploring-Space/Deep-Space/Nebulae/`,
+        parent: "Deep Space",
         category: "Deep Space",
-        keywords: "nebula nebulae gas dust stars star formation",
+        keywords: "nebulae gas dust stars",
         description: "Explore nebulae."
     },
 
     {
         title: "Quasars",
         url: `${ORBONIX_BASE}/Exploring-Space/Deep-Space/Quasars/`,
+        parent: "Deep Space",
         category: "Deep Space",
-        keywords: "quasar quasars active galaxy black hole accretion",
+        keywords: "quasars black holes active galaxy",
         description: "Explore quasars."
     },
 
     {
         title: "Rogue Planets",
         url: `${ORBONIX_BASE}/Exploring-Space/Deep-Space/Rogue-Planets/`,
+        parent: "Deep Space",
         category: "Deep Space",
-        keywords: "rogue planets free floating planets wandering planets",
+        keywords: "rogue planets free floating planets",
         description: "Explore rogue planets."
     },
 
     {
         title: "Stars",
         url: `${ORBONIX_BASE}/Exploring-Space/Deep-Space/Stars/`,
+        parent: "Deep Space",
         category: "Deep Space",
-        keywords: "stars star stellar evolution supernova neutron star white dwarf",
+        keywords: "stars stellar evolution supernova neutron star",
         description: "Explore stars."
     },
 
     {
         title: "Wormholes",
         url: `${ORBONIX_BASE}/Exploring-Space/Deep-Space/Wormholes/`,
+        parent: "Deep Space",
         category: "Deep Space",
-        keywords: "wormholes wormhole spacetime einstein rosen bridge",
-        description: "Explore theoretical wormholes."
+        keywords: "wormholes spacetime einstein rosen bridge",
+        description: "Explore wormholes."
     },
 
 
-    /* =====================================================
+    /* =========================
        SPACE MISSIONS
-    ===================================================== */
+    ========================= */
 
     {
         title: "Apollo",
         url: `${ORBONIX_BASE}/Exploring-Space/Space-Missions/Apollo/`,
+        parent: "Space Missions",
         category: "Space Missions",
-        keywords: "apollo apollo 11 moon nasa lunar",
-        description: "Explore the Apollo program."
+        keywords: "apollo moon nasa apollo 11",
+        description: "Explore Apollo."
     },
 
     {
         title: "Artemis",
         url: `${ORBONIX_BASE}/Exploring-Space/Space-Missions/Artemis/`,
+        parent: "Space Missions",
         category: "Space Missions",
-        keywords: "artemis moon lunar nasa mission",
+        keywords: "artemis moon nasa",
         description: "Explore Artemis."
     },
 
     {
         title: "Cassini",
         url: `${ORBONIX_BASE}/Exploring-Space/Space-Missions/Cassini/`,
+        parent: "Space Missions",
         category: "Space Missions",
         keywords: "cassini saturn titan nasa esa",
         description: "Explore Cassini."
@@ -372,14 +404,16 @@ const ORBONIX_PAGES = [
     {
         title: "James Webb Space Telescope",
         url: `${ORBONIX_BASE}/Exploring-Space/Space-Missions/James-Webb/`,
+        parent: "Space Missions",
         category: "Space Missions",
-        keywords: "james webb jwst telescope infrared nasa esa csa",
-        description: "Explore the James Webb Space Telescope."
+        keywords: "james webb jwst telescope nasa esa",
+        description: "Explore JWST."
     },
 
     {
         title: "New Horizons",
         url: `${ORBONIX_BASE}/Exploring-Space/Space-Missions/New-Horizons/`,
+        parent: "Space Missions",
         category: "Space Missions",
         keywords: "new horizons pluto kuiper belt nasa",
         description: "Explore New Horizons."
@@ -388,223 +422,122 @@ const ORBONIX_PAGES = [
     {
         title: "Voyager",
         url: `${ORBONIX_BASE}/Exploring-Space/Space-Missions/Voyager/`,
+        parent: "Space Missions",
         category: "Space Missions",
-        keywords: "voyager voyager 1 voyager 2 interstellar nasa",
+        keywords: "voyager voyager 1 voyager 2 interstellar",
         description: "Explore Voyager."
     },
 
 
-    /* =====================================================
+    /* =========================
        QUIZZES
-    ===================================================== */
+    ========================= */
 
     {
         title: "Black Holes Quiz",
         url: `${ORBONIX_BASE}/Exploring-Space/Quizes/Black-Holes-Quiz/`,
+        parent: "Quizzes",
         category: "Quiz",
-        keywords: "black holes quiz test",
-        description: "Test your knowledge of black holes."
+        keywords: "black holes quiz",
+        description: "Black holes quiz."
     },
 
     {
         title: "Comets Quiz",
         url: `${ORBONIX_BASE}/Exploring-Space/Quizes/Comets-Quiz/`,
+        parent: "Quizzes",
         category: "Quiz",
-        keywords: "comets quiz comet test halley",
-        description: "Test your knowledge of comets."
+        keywords: "comets quiz",
+        description: "Comets quiz."
     },
 
     {
         title: "Final Quiz",
         url: `${ORBONIX_BASE}/Exploring-Space/Quizes/Final-Quiz/`,
+        parent: "Quizzes",
         category: "Quiz",
-        keywords: "final quiz mega quiz ultimate space test",
-        description: "Take the ultimate ORBONIX space quiz."
+        keywords: "final mega quiz ultimate quiz",
+        description: "The ultimate ORBONIX quiz."
     },
 
     {
         title: "Galactic Quiz",
         url: `${ORBONIX_BASE}/Exploring-Space/Quizes/Galactic-Quiz/`,
+        parent: "Quizzes",
         category: "Quiz",
-        keywords: "galactic quiz galaxy quiz universe test",
-        description: "Test your knowledge of galaxies."
+        keywords: "galactic galaxy quiz",
+        description: "Galactic quiz."
     },
 
     {
         title: "Moons Quiz",
         url: `${ORBONIX_BASE}/Exploring-Space/Quizes/Moons-Quiz/`,
+        parent: "Quizzes",
         category: "Quiz",
-        keywords: "moons quiz moon satellites test",
-        description: "Test your knowledge of moons."
+        keywords: "moons quiz",
+        description: "Moons quiz."
     },
 
     {
         title: "Planet Quiz",
         url: `${ORBONIX_BASE}/Exploring-Space/Quizes/Planet-Quiz/`,
+        parent: "Quizzes",
         category: "Quiz",
-        keywords: "planet quiz planets solar system test",
-        description: "Test your knowledge of planets."
+        keywords: "planet quiz",
+        description: "Planet quiz."
     },
 
     {
         title: "Stars Quiz",
         url: `${ORBONIX_BASE}/Exploring-Space/Quizes/Stars-Quiz/`,
+        parent: "Quizzes",
         category: "Quiz",
-        keywords: "stars quiz stellar supernova test",
-        description: "Test your knowledge of stars."
+        keywords: "stars quiz",
+        description: "Stars quiz."
     },
 
     {
         title: "Sun Quiz",
         url: `${ORBONIX_BASE}/Exploring-Space/Quizes/Sun-Quiz/`,
+        parent: "Quizzes",
         category: "Quiz",
-        keywords: "sun quiz solar flares sunspots test",
-        description: "Test your knowledge of the Sun."
+        keywords: "sun quiz solar quiz",
+        description: "Sun quiz."
     },
 
     {
         title: "Telescope Quiz",
         url: `${ORBONIX_BASE}/Exploring-Space/Quizes/Telescope-Quiz/`,
+        parent: "Quizzes",
         category: "Quiz",
-        keywords: "telescope quiz astronomy observation test",
-        description: "Test your knowledge of telescopes."
+        keywords: "telescope quiz astronomy",
+        description: "Telescope quiz."
     },
 
 
-    /* =====================================================
+    /* =========================
        ORBONIX
-    ===================================================== */
+    ========================= */
 
     {
         title: "Orbonix Fotos and Telescope",
         url: `${ORBONIX_BASE}/More-About-Orbonix/Orbonix-Fotos-and-Telescope/`,
+        parent: "More About Orbonix",
         category: "Orbonix",
-        keywords: "orbonix fotos telescope photos photography",
-        description: "Explore ORBONIX telescope photos."
+        keywords: "orbonix fotos telescope photos",
+        description: "ORBONIX telescope photos."
     },
 
     {
         title: "Site Achievements",
         url: `${ORBONIX_BASE}/More-About-Orbonix/Site-Achivments/`,
+        parent: "More About Orbonix",
         category: "Orbonix",
-        keywords: "site achievements milestones orbonix",
-        description: "Explore ORBONIX achievements."
+        keywords: "orbonix achievements milestones",
+        description: "ORBONIX achievements."
     }
 
 ];
-
-
-/* =========================================================
-   NAVIGATION TREE
-========================================================= */
-
-const ORBONIX_NAVIGATION = {
-
-    "Exploring Space": {
-
-        page: "Exploring Space",
-
-        children: {
-
-            "Deep Space": {
-
-                page: "Deep Space",
-
-                children: [
-                    "Black Holes",
-                    "Cosmic Voids",
-                    "Dark Energy",
-                    "Dark Matter",
-                    "Galaxies",
-                    "Nebulae",
-                    "Quasars",
-                    "Rogue Planets",
-                    "Stars",
-                    "Wormholes"
-                ]
-
-            },
-
-            "Solar System": {
-
-                page: "Solar System",
-
-                children: [
-                    "Sun",
-                    "Mercury",
-                    "Venus",
-                    "Earth",
-                    "Mars",
-                    "Jupiter",
-                    "Saturn",
-                    "Uranus",
-                    "Neptune",
-                    "Dwarf Planets",
-                    "Asteroid Belt",
-                    "Kuiper Belt",
-                    "Oort Cloud",
-                    "Planet X"
-                ]
-
-            },
-
-            "Space Missions": {
-
-                page: "Space Missions",
-
-                children: [
-                    "Apollo",
-                    "Artemis",
-                    "Cassini",
-                    "James Webb Space Telescope",
-                    "New Horizons",
-                    "Voyager"
-                ]
-
-            },
-
-            "Quizzes": {
-
-                page: "Quizzes",
-
-                children: [
-                    "Black Holes Quiz",
-                    "Comets Quiz",
-                    "Final Quiz",
-                    "Galactic Quiz",
-                    "Moons Quiz",
-                    "Planet Quiz",
-                    "Stars Quiz",
-                    "Sun Quiz",
-                    "Telescope Quiz"
-                ]
-
-            },
-
-            "Terms": {
-
-                page: "Terms",
-
-                children: []
-
-            }
-
-        }
-
-    },
-
-    "More About Orbonix": {
-
-        page: "More About Orbonix",
-
-        children: [
-            "Orbonix Fotos and Telescope",
-            "Site Achievements"
-        ]
-
-    }
-
-};
 
 
 /* =========================================================
@@ -631,37 +564,37 @@ function normalizeSearchText(text) {
 function levenshtein(a, b) {
 
     if (a === b) return 0;
-
     if (!a.length) return b.length;
-
     if (!b.length) return a.length;
 
     const matrix = [];
 
     for (let i = 0; i <= b.length; i++) {
-
         matrix[i] = [i];
-
     }
 
     for (let j = 0; j <= a.length; j++) {
-
         matrix[0][j] = j;
-
     }
 
     for (let i = 1; i <= b.length; i++) {
 
         for (let j = 1; j <= a.length; j++) {
 
-            matrix[i][j] =
-                b[j - 1] === a[j - 1]
-                    ? matrix[i - 1][j - 1]
-                    : Math.min(
-                        matrix[i - 1][j] + 1,
-                        matrix[i][j - 1] + 1,
-                        matrix[i - 1][j - 1] + 1
-                    );
+            if (b[j - 1] === a[j - 1]) {
+
+                matrix[i][j] =
+                    matrix[i - 1][j - 1];
+
+            } else {
+
+                matrix[i][j] = Math.min(
+                    matrix[i - 1][j] + 1,
+                    matrix[i][j - 1] + 1,
+                    matrix[i - 1][j - 1] + 1
+                );
+
+            }
 
         }
 
@@ -691,50 +624,29 @@ function scoreSearchResult(page, query) {
 
     let score = 0;
 
+    if (title === q) score += 3000;
 
-    if (title === q) {
-        score += 3000;
-    }
+    if (title.includes(q)) score += 1500;
 
-    if (title.includes(q)) {
-        score += 1500;
-    }
+    if (category.includes(q)) score += 700;
 
-    if (category.includes(q)) {
-        score += 700;
-    }
+    if (keywords.includes(q)) score += 1000;
 
-    if (keywords.includes(q)) {
-        score += 1000;
-    }
-
-    if (description.includes(q)) {
-        score += 300;
-    }
-
+    if (description.includes(q)) score += 300;
 
     for (const word of words) {
 
         if (word.length < 2) continue;
 
-        if (title.includes(word)) {
-            score += 500;
-        }
+        if (title.includes(word)) score += 500;
 
-        if (category.includes(word)) {
-            score += 250;
-        }
+        if (category.includes(word)) score += 250;
 
-        if (keywords.includes(word)) {
-            score += 300;
-        }
+        if (keywords.includes(word)) score += 300;
 
-        if (description.includes(word)) {
-            score += 100;
-        }
+        if (description.includes(word)) score += 100;
 
     }
-
 
     const titleWords = title.split(" ");
 
@@ -764,7 +676,6 @@ function scoreSearchResult(page, query) {
 
     }
 
-
     return score;
 
 }
@@ -791,12 +702,8 @@ function searchOrbonix(query) {
                 normalized
             )
         }))
-        .filter(page =>
-            page.score > 0
-        )
-        .sort((a, b) =>
-            b.score - a.score
-        )
+        .filter(page => page.score > 0)
+        .sort((a, b) => b.score - a.score)
         .slice(0, 15);
 
 }
@@ -836,468 +743,7 @@ function findOrbonixPage(name) {
 
 
 /* =========================================================
-   UNIVERSAL BUTTONS
-========================================================= */
-
-function initializeOrbonixButtons() {
-
-    document
-        .querySelectorAll("[data-page]")
-        .forEach(button => {
-
-            if (
-                button.dataset.orbonixInitialized
-                === "true"
-            ) {
-                return;
-            }
-
-            button.dataset.orbonixInitialized =
-                "true";
-
-            const pageName =
-                button.getAttribute(
-                    "data-page"
-                );
-
-            if (!pageName) return;
-
-            button.style.cursor =
-                "pointer";
-
-            button.addEventListener(
-                "click",
-                function(event) {
-
-                    if (
-                        this.tagName.toLowerCase()
-                        === "a"
-                    ) {
-                        event.preventDefault();
-                    }
-
-                    const page =
-                        findOrbonixPage(
-                            pageName
-                        );
-
-                    if (
-                        page &&
-                        page.url
-                    ) {
-
-                        window.location.href =
-                            page.url;
-
-                    }
-
-                }
-            );
-
-        });
-
-}
-
-
-/* =========================================================
-   SEARCH UI
-========================================================= */
-
-function initializeOrbonixSearch() {
-
-    document
-        .querySelectorAll(
-            "[data-orbonix-search]"
-        )
-        .forEach(input => {
-
-            if (
-                input.dataset.orbonixSearchInitialized
-                === "true"
-            ) {
-                return;
-            }
-
-            input.dataset.orbonixSearchInitialized =
-                "true";
-
-
-            /* ENTER */
-
-            input.addEventListener(
-                "keydown",
-                function(event) {
-
-                    if (
-                        event.key === "Enter"
-                    ) {
-
-                        event.preventDefault();
-
-                        const query =
-                            this.value.trim();
-
-                        if (!query) return;
-
-                        const results =
-                            searchOrbonix(
-                                query
-                            );
-
-                        if (
-                            results.length
-                        ) {
-
-                            window.location.href =
-                                results[0].url;
-
-                        }
-
-                    }
-
-
-                    /* ESC */
-
-                    if (
-                        event.key === "Escape"
-                    ) {
-
-                        this.value = "";
-
-                        const container =
-                            document.getElementById(
-                                "orbonix-search-results"
-                            );
-
-                        if (container) {
-                            container.innerHTML = "";
-                        }
-
-                    }
-
-                }
-            );
-
-
-            /* LIVE SEARCH */
-
-            input.addEventListener(
-                "input",
-                function() {
-
-                    const query =
-                        this.value.trim();
-
-                    const container =
-                        document.getElementById(
-                            "orbonix-search-results"
-                        );
-
-                    if (!container) {
-                        return;
-                    }
-
-                    if (!query) {
-
-                        container.innerHTML =
-                            "";
-
-                        return;
-
-                    }
-
-
-                    const results =
-                        searchOrbonix(
-                            query
-                        );
-
-
-                    container.innerHTML =
-                        "";
-
-
-                    results.forEach(page => {
-
-                        const item =
-                            document.createElement(
-                                "a"
-                            );
-
-                        item.href =
-                            page.url;
-
-                        item.className =
-                            "orbonix-search-result";
-
-                        item.innerHTML = `
-
-                            <strong>
-                                ${escapeHTML(
-                                    page.title
-                                )}
-                            </strong>
-
-                            <small>
-                                ${escapeHTML(
-                                    page.category
-                                )}
-                            </small>
-
-                            <span>
-                                ${escapeHTML(
-                                    page.description
-                                )}
-                            </span>
-
-                        `;
-
-                        container.appendChild(
-                            item
-                        );
-
-                    });
-
-                }
-            );
-
-        });
-
-}
-
-
-/* =========================================================
-   AUTOMATIC NAVIGATION
-========================================================= */
-
-function createNavigationItem(
-    title,
-    data
-) {
-
-    const wrapper =
-        document.createElement("div");
-
-    wrapper.className =
-        "orbonix-nav-item";
-
-
-    const row =
-        document.createElement("div");
-
-    row.className =
-        "orbonix-nav-row";
-
-
-    const link =
-        document.createElement("a");
-
-    link.className =
-        "orbonix-nav-link";
-
-    link.textContent =
-        title;
-
-    link.href =
-        "#";
-
-
-    link.addEventListener(
-        "click",
-        function(event) {
-
-            event.preventDefault();
-
-            const page =
-                findOrbonixPage(
-                    data.page || title
-                );
-
-            if (
-                page &&
-                page.url
-            ) {
-
-                window.location.href =
-                    page.url;
-
-            }
-
-        }
-    );
-
-
-    row.appendChild(link);
-
-
-    if (
-        data.children &&
-        (
-            Array.isArray(data.children)
-            ? data.children.length > 0
-            : Object.keys(data.children).length > 0
-        )
-    ) {
-
-        const arrow =
-            document.createElement("button");
-
-        arrow.className =
-            "orbonix-nav-arrow";
-
-        arrow.type =
-            "button";
-
-        arrow.innerHTML =
-            "▼";
-
-
-        const children =
-            document.createElement("div");
-
-        children.className =
-            "orbonix-nav-children";
-
-        children.style.display =
-            "none";
-
-
-        arrow.addEventListener(
-            "click",
-            function(event) {
-
-                event.stopPropagation();
-
-                const opened =
-                    children.style.display
-                    !== "none";
-
-                children.style.display =
-                    opened
-                        ? "none"
-                        : "block";
-
-                arrow.innerHTML =
-                    opened
-                        ? "▼"
-                        : "▲";
-
-            }
-        );
-
-
-        row.appendChild(arrow);
-
-
-        if (
-            Array.isArray(
-                data.children
-            )
-        ) {
-
-            data.children.forEach(
-                childTitle => {
-
-                    const childData = {
-                        page: childTitle,
-                        children: []
-                    };
-
-                    children.appendChild(
-                        createNavigationItem(
-                            childTitle,
-                            childData
-                        )
-                    );
-
-                }
-            );
-
-        } else {
-
-            Object.entries(
-                data.children
-            ).forEach(
-                ([childTitle, childData]) => {
-
-                    children.appendChild(
-                        createNavigationItem(
-                            childTitle,
-                            childData
-                        )
-                    );
-
-                }
-            );
-
-        }
-
-
-        wrapper.appendChild(
-            children
-        );
-
-    }
-
-
-    wrapper.appendChild(
-        row
-    );
-
-
-    return wrapper;
-
-}
-
-
-/* =========================================================
-   INITIALIZE NAVIGATION
-========================================================= */
-
-function initializeOrbonixNavigation() {
-
-    const containers =
-        document.querySelectorAll(
-            "[data-orbonix-navigation]"
-        );
-
-    containers.forEach(container => {
-
-        if (
-            container.dataset.orbonixNavigationInitialized
-            === "true"
-        ) {
-            return;
-        }
-
-        container.dataset.orbonixNavigationInitialized =
-            "true";
-
-        container.innerHTML = "";
-
-
-        Object.entries(
-            ORBONIX_NAVIGATION
-        ).forEach(
-            ([title, data]) => {
-
-                container.appendChild(
-                    createNavigationItem(
-                        title,
-                        data
-                    )
-                );
-
-            }
-        );
-
-    });
-
-}
-
-
-/* =========================================================
-   HTML ESCAPE
+   ESCAPE HTML
 ========================================================= */
 
 function escapeHTML(text) {
@@ -1313,16 +759,803 @@ function escapeHTML(text) {
 
 
 /* =========================================================
+   AUTO NAVIGATION CSS
+========================================================= */
+
+function injectOrbonixNavigationCSS() {
+
+    if (document.getElementById(
+        "orbonix-navigation-style"
+    )) {
+        return;
+    }
+
+    const style =
+        document.createElement("style");
+
+    style.id =
+        "orbonix-navigation-style";
+
+    style.textContent = `
+
+        #orbonix-auto-navigation {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 18px;
+            box-sizing: border-box;
+            position: relative;
+            z-index: 99999;
+            font-family: Arial, sans-serif;
+        }
+
+        .orbonix-nav-item {
+            position: relative;
+        }
+
+        .orbonix-nav-main {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .orbonix-nav-link,
+        .orbonix-nav-arrow {
+            border: none;
+            background: transparent;
+            color: inherit;
+            text-decoration: none;
+            cursor: pointer;
+            font: inherit;
+            padding: 8px 10px;
+            border-radius: 8px;
+            transition:
+                background .2s ease,
+                transform .2s ease;
+        }
+
+        .orbonix-nav-link:hover,
+        .orbonix-nav-arrow:hover {
+            background: rgba(127,127,127,.15);
+        }
+
+        .orbonix-nav-arrow {
+            padding-left: 3px;
+            padding-right: 3px;
+            font-size: 11px;
+            transition: transform .2s ease;
+        }
+
+        .orbonix-nav-arrow.open {
+            transform: rotate(180deg);
+        }
+
+        .orbonix-nav-dropdown {
+            position: absolute;
+            top: calc(100% + 5px);
+            left: 0;
+            min-width: 220px;
+            padding: 7px;
+            border-radius: 12px;
+            background: rgba(20,20,25,.96);
+            backdrop-filter: blur(14px);
+            box-shadow:
+                0 15px 45px rgba(0,0,0,.35);
+            display: none;
+        }
+
+        .orbonix-nav-dropdown.open {
+            display: block;
+            animation:
+                orbonixNavFade .18s ease;
+        }
+
+        .orbonix-nav-dropdown a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 9px 12px;
+            border-radius: 8px;
+            white-space: nowrap;
+            transition:
+                background .2s ease,
+                padding-left .2s ease;
+        }
+
+        .orbonix-nav-dropdown a:hover {
+            background: rgba(255,255,255,.12);
+            padding-left: 16px;
+        }
+
+        .orbonix-nav-sub {
+            position: relative;
+        }
+
+        .orbonix-nav-sub-arrow {
+            float: right;
+            opacity: .7;
+        }
+
+        .orbonix-nav-submenu {
+            display: none;
+            margin-left: 8px;
+            margin-top: 3px;
+            padding-left: 8px;
+            border-left: 1px solid rgba(255,255,255,.15);
+        }
+
+        .orbonix-nav-sub.open
+        .orbonix-nav-submenu {
+            display: block;
+        }
+
+        @keyframes orbonixNavFade {
+
+            from {
+                opacity: 0;
+                transform: translateY(-5px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+        @media(max-width: 800px) {
+
+            #orbonix-auto-navigation {
+                flex-wrap: wrap;
+            }
+
+            .orbonix-nav-dropdown {
+                position: absolute;
+                max-width: 90vw;
+                overflow-x: auto;
+            }
+
+        }
+
+    `;
+
+    document.head.appendChild(style);
+
+}
+
+
+/* =========================================================
+   GET CHILDREN
+========================================================= */
+
+function getOrbonixChildren(parent) {
+
+    return ORBONIX_PAGES.filter(page =>
+        page.parent === parent
+    );
+
+}
+
+
+/* =========================================================
+   CREATE NAVIGATION ITEM
+========================================================= */
+
+function createNavigationItem(page) {
+
+    const children =
+        getOrbonixChildren(page.title);
+
+    const wrapper =
+        document.createElement("div");
+
+    wrapper.className =
+        "orbonix-nav-item";
+
+    const main =
+        document.createElement("div");
+
+    main.className =
+        "orbonix-nav-main";
+
+    const link =
+        document.createElement("a");
+
+    link.className =
+        "orbonix-nav-link";
+
+    link.href =
+        page.url;
+
+    link.textContent =
+        page.title;
+
+    main.appendChild(link);
+
+
+    /* =========================
+       ARROW
+    ========================= */
+
+    if (children.length > 0) {
+
+        const arrow =
+            document.createElement("button");
+
+        arrow.className =
+            "orbonix-nav-arrow";
+
+        arrow.type =
+            "button";
+
+        arrow.innerHTML =
+            "▼";
+
+        arrow.setAttribute(
+            "aria-label",
+            "Open submenu"
+        );
+
+        const dropdown =
+            document.createElement("div");
+
+        dropdown.className =
+            "orbonix-nav-dropdown";
+
+
+        children.forEach(child => {
+
+            const childWrapper =
+                document.createElement("div");
+
+            childWrapper.className =
+                "orbonix-nav-sub";
+
+            const childLink =
+                document.createElement("a");
+
+            childLink.href =
+                child.url;
+
+            childLink.textContent =
+                child.title;
+
+            childWrapper.appendChild(
+                childLink
+            );
+
+
+            const grandchildren =
+                getOrbonixChildren(
+                    child.title
+                );
+
+
+            if (grandchildren.length > 0) {
+
+                const subArrow =
+                    document.createElement(
+                        "span"
+                    );
+
+                subArrow.className =
+                    "orbonix-nav-sub-arrow";
+
+                subArrow.textContent =
+                    "›";
+
+                childLink.appendChild(
+                    subArrow
+                );
+
+
+                const submenu =
+                    document.createElement(
+                        "div"
+                    );
+
+                submenu.className =
+                    "orbonix-nav-submenu";
+
+
+                grandchildren.forEach(
+                    grandchild => {
+
+                        const grandLink =
+                            document.createElement(
+                                "a"
+                            );
+
+                        grandLink.href =
+                            grandchild.url;
+
+                        grandLink.textContent =
+                            grandchild.title;
+
+                        submenu.appendChild(
+                            grandLink
+                        );
+
+                    }
+                );
+
+
+                childWrapper.appendChild(
+                    submenu
+                );
+
+
+                childLink.addEventListener(
+                    "click",
+                    function(event) {
+
+                        event.preventDefault();
+
+                        childWrapper.classList.toggle(
+                            "open"
+                        );
+
+                    }
+                );
+
+            }
+
+            dropdown.appendChild(
+                childWrapper
+            );
+
+        });
+
+
+        arrow.addEventListener(
+            "click",
+            function(event) {
+
+                event.stopPropagation();
+
+                const isOpen =
+                    dropdown.classList.contains(
+                        "open"
+                    );
+
+
+                document
+                    .querySelectorAll(
+                        ".orbonix-nav-dropdown.open"
+                    )
+                    .forEach(menu => {
+
+                        menu.classList.remove(
+                            "open"
+                        );
+
+                    });
+
+
+                document
+                    .querySelectorAll(
+                        ".orbonix-nav-arrow.open"
+                    )
+                    .forEach(button => {
+
+                        button.classList.remove(
+                            "open"
+                        );
+
+                    });
+
+
+                if (!isOpen) {
+
+                    dropdown.classList.add(
+                        "open"
+                    );
+
+                    arrow.classList.add(
+                        "open"
+                    );
+
+                }
+
+            }
+        );
+
+
+        main.appendChild(
+            arrow
+        );
+
+        wrapper.appendChild(
+            main
+        );
+
+        wrapper.appendChild(
+            dropdown
+        );
+
+    } else {
+
+        wrapper.appendChild(
+            main
+        );
+
+    }
+
+    return wrapper;
+
+}
+
+
+/* =========================================================
+   CREATE AUTO NAVIGATION
+========================================================= */
+
+function initializeOrbonixNavigation() {
+
+    if (
+        document.getElementById(
+            "orbonix-auto-navigation"
+        )
+    ) {
+        return;
+    }
+
+
+    injectOrbonixNavigationCSS();
+
+
+    const navigation =
+        document.createElement("nav");
+
+    navigation.id =
+        "orbonix-auto-navigation";
+
+
+    const rootPages =
+        ORBONIX_PAGES.filter(page =>
+            page.parent === null
+        );
+
+
+    rootPages.forEach(page => {
+
+        navigation.appendChild(
+            createNavigationItem(page)
+        );
+
+    });
+
+
+    /* =========================
+       INSERT AT TOP OF BODY
+    ========================= */
+
+    if (document.body.firstChild) {
+
+        document.body.insertBefore(
+            navigation,
+            document.body.firstChild
+        );
+
+    } else {
+
+        document.body.appendChild(
+            navigation
+        );
+
+    }
+
+
+    /* =========================
+       CLOSE WHEN CLICKING OUTSIDE
+    ========================= */
+
+    document.addEventListener(
+        "click",
+        function(event) {
+
+            if (
+                !navigation.contains(
+                    event.target
+                )
+            ) {
+
+                document
+                    .querySelectorAll(
+                        ".orbonix-nav-dropdown.open"
+                    )
+                    .forEach(menu => {
+
+                        menu.classList.remove(
+                            "open"
+                        );
+
+                    });
+
+
+                document
+                    .querySelectorAll(
+                        ".orbonix-nav-arrow.open"
+                    )
+                    .forEach(button => {
+
+                        button.classList.remove(
+                            "open"
+                        );
+
+                    });
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   UNIVERSAL DATA-PAGE BUTTONS
+========================================================= */
+
+function initializeOrbonixButtons() {
+
+    const buttons =
+        document.querySelectorAll(
+            "[data-page]"
+        );
+
+
+    buttons.forEach(button => {
+
+        if (
+            button.dataset.orbonixInitialized
+            === "true"
+        ) {
+            return;
+        }
+
+
+        button.dataset.orbonixInitialized =
+            "true";
+
+
+        const pageName =
+            button.getAttribute(
+                "data-page"
+            );
+
+
+        if (!pageName) {
+            return;
+        }
+
+
+        button.style.cursor =
+            "pointer";
+
+
+        button.addEventListener(
+            "click",
+            function(event) {
+
+                if (
+                    this.tagName.toLowerCase()
+                    === "a"
+                ) {
+                    event.preventDefault();
+                }
+
+
+                const page =
+                    findOrbonixPage(
+                        pageName
+                    );
+
+
+                if (
+                    page &&
+                    page.url
+                ) {
+
+                    window.location.href =
+                        page.url;
+
+                } else {
+
+                    console.warn(
+                        "ORBONIX: Page not found:",
+                        pageName
+                    );
+
+                }
+
+            }
+        );
+
+    });
+
+}
+
+
+/* =========================================================
+   SEARCH UI
+========================================================= */
+
+function initializeOrbonixSearch() {
+
+    const searchInputs =
+        document.querySelectorAll(
+            "[data-orbonix-search]"
+        );
+
+
+    searchInputs.forEach(input => {
+
+        if (
+            input.dataset.orbonixSearchInitialized
+            === "true"
+        ) {
+            return;
+        }
+
+
+        input.dataset.orbonixSearchInitialized =
+            "true";
+
+
+        input.addEventListener(
+            "keydown",
+            function(event) {
+
+                if (
+                    event.key === "Enter"
+                ) {
+
+                    event.preventDefault();
+
+
+                    const query =
+                        this.value.trim();
+
+
+                    if (!query) {
+                        return;
+                    }
+
+
+                    const results =
+                        searchOrbonix(
+                            query
+                        );
+
+
+                    if (
+                        results.length > 0
+                    ) {
+
+                        window.location.href =
+                            results[0].url;
+
+                    } else {
+
+                        console.warn(
+                            "ORBONIX: Nothing found:",
+                            query
+                        );
+
+                    }
+
+                }
+
+
+                if (
+                    event.key === "Escape"
+                ) {
+
+                    this.value = "";
+
+                }
+
+            }
+        );
+
+
+        input.addEventListener(
+            "input",
+            function() {
+
+                const query =
+                    this.value.trim();
+
+
+                const container =
+                    document.getElementById(
+                        "orbonix-search-results"
+                    );
+
+
+                if (!container) {
+                    return;
+                }
+
+
+                if (!query) {
+
+                    container.innerHTML =
+                        "";
+
+                    return;
+
+                }
+
+
+                const results =
+                    searchOrbonix(
+                        query
+                    );
+
+
+                container.innerHTML =
+                    "";
+
+
+                results.forEach(page => {
+
+                    const item =
+                        document.createElement(
+                            "a"
+                        );
+
+
+                    item.href =
+                        page.url;
+
+
+                    item.className =
+                        "orbonix-search-result";
+
+
+                    item.innerHTML = `
+                        <strong>
+                            ${escapeHTML(page.title)}
+                        </strong>
+
+                        <small>
+                            ${escapeHTML(page.category)}
+                        </small>
+
+                        <span>
+                            ${escapeHTML(page.description)}
+                        </span>
+                    `;
+
+
+                    container.appendChild(
+                        item
+                    );
+
+                });
+
+            }
+        );
+
+    });
+
+}
+
+
+/* =========================================================
    INITIALIZE EVERYTHING
 ========================================================= */
 
 function initializeOrbonix() {
 
+    initializeOrbonixNavigation();
+
     initializeOrbonixButtons();
 
     initializeOrbonixSearch();
-
-    initializeOrbonixNavigation();
 
 }
 
@@ -1331,18 +1564,33 @@ function initializeOrbonix() {
    PAGE LOAD
 ========================================================= */
 
+function startOrbonix() {
+
+    if (!document.body) {
+        return;
+    }
+
+    initializeOrbonix();
+
+}
+
+
+/* =========================================================
+   START
+========================================================= */
+
 if (
     document.readyState === "loading"
 ) {
 
     document.addEventListener(
         "DOMContentLoaded",
-        initializeOrbonix
+        startOrbonix
     );
 
 } else {
 
-    initializeOrbonix();
+    startOrbonix();
 
 }
 
@@ -1358,18 +1606,20 @@ const orbonixObserver =
 
         initializeOrbonixSearch();
 
-        initializeOrbonixNavigation();
-
     });
 
 
-orbonixObserver.observe(
-    document.body,
-    {
-        childList: true,
-        subtree: true
-    }
-);
+if (document.body) {
+
+    orbonixObserver.observe(
+        document.body,
+        {
+            childList: true,
+            subtree: true
+        }
+    );
+
+}
 
 
 /* =========================================================
@@ -1379,9 +1629,6 @@ orbonixObserver.observe(
 window.ORBONIX_PAGES =
     ORBONIX_PAGES;
 
-window.ORBONIX_NAVIGATION =
-    ORBONIX_NAVIGATION;
-
 window.searchOrbonix =
     searchOrbonix;
 
@@ -1390,3 +1637,6 @@ window.findOrbonixPage =
 
 window.initializeOrbonix =
     initializeOrbonix;
+
+window.initializeOrbonixNavigation =
+    initializeOrbonixNavigation;
