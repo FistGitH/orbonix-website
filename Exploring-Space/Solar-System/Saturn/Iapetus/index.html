@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,6 +6,8 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Iapetus | ORBONIX</title>
 
 <style>
 
@@ -94,8 +97,10 @@ body {
 .header {
     position: relative;
     z-index: 10;
+
     max-width: 950px;
     margin: auto;
+
     text-align: center;
 }
 
@@ -103,6 +108,7 @@ body {
 .return {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
 
     padding: 12px 20px;
     margin-bottom: 35px;
@@ -124,6 +130,7 @@ body {
     background: white;
     color: #020308;
     border-color: white;
+
     transform: translateY(-4px);
 }
 
@@ -141,8 +148,7 @@ body {
 h1 {
     margin: 0;
 
-    font-size:
-        clamp(55px,9vw,105px);
+    font-size: clamp(55px,9vw,105px);
 
     line-height: .9;
 
@@ -225,21 +231,38 @@ h1 {
         inset 20px 10px 40px rgba(255,255,255,.10),
         0 0 75px rgba(160,175,195,.12);
 
-    transition: transform 1s ease;
+    transition:
+        transform .8s ease,
+        box-shadow .45s ease;
 }
 
 
 .iapetus img {
     position: absolute;
 
+    inset: 0;
+
     width: 100%;
     height: 100%;
 
     object-fit: cover;
-
     object-position: center;
 
     display: block;
+
+    border-radius: 50%;
+}
+
+
+/* =========================================
+   MOON HOVER
+========================================= */
+
+.iapetus:hover {
+    box-shadow:
+        inset -55px -20px 80px rgba(0,0,0,.78),
+        inset 20px 10px 40px rgba(255,255,255,.12),
+        0 0 100px rgba(180,195,220,.22);
 }
 
 
@@ -279,7 +302,6 @@ h1 {
     z-index: 10;
 
     bottom: 0;
-
     left: 50%;
 
     transform: translateX(-50%);
@@ -312,8 +334,7 @@ h1 {
 
     z-index: 5;
 
-    width:
-        min(1050px,100%);
+    width: min(1050px,100%);
 
     margin: auto;
 }
@@ -447,6 +468,9 @@ h1 {
 
     border-color:
         rgba(255,255,255,.4);
+
+    background:
+        rgba(255,255,255,.04);
 }
 
 
@@ -510,11 +534,67 @@ h1 {
 
 
 /* =========================================
+   NAVIGATION
+========================================= */
+
+.navigation {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 15px;
+
+    margin-top: 55px;
+
+    flex-wrap: wrap;
+}
+
+
+.nav-button {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-width: 180px;
+
+    padding: 13px 22px;
+
+    color:
+        rgba(255,255,255,.75);
+
+    border:
+        1px solid
+        rgba(255,255,255,.2);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    transition: .35s ease;
+}
+
+
+.nav-button:hover {
+    color: #020308;
+
+    background: white;
+
+    border-color: white;
+
+    transform: translateY(-4px);
+}
+
+
+/* =========================================
    CREDIT
 ========================================= */
 
 .credit {
-    margin-top: 25px;
+    margin-top: 30px;
 
     text-align: center;
 
@@ -525,7 +605,7 @@ h1 {
 
     letter-spacing: 1px;
 
-    line-height: 1.6;
+    line-height: 1.7;
 }
 
 
@@ -540,19 +620,23 @@ h1 {
         height: 450px;
     }
 
+
     .iapetus {
         width: 350px;
         height: 350px;
     }
+
 
     .orbit {
         width: 420px;
         height: 140px;
     }
 
+
     .info-grid {
         grid-template-columns: 1fr;
     }
+
 
     .features {
         grid-template-columns: 1fr;
@@ -567,24 +651,90 @@ h1 {
         padding: 45px 15px 70px;
     }
 
+
+    .header {
+        width: 100%;
+    }
+
+
+    .label {
+        font-size: 8px;
+        letter-spacing: 3px;
+    }
+
+
+    h1 {
+        font-size: clamp(45px,16vw,75px);
+        letter-spacing: 4px;
+    }
+
+
+    .subtitle {
+        font-size: 13px;
+        line-height: 1.7;
+    }
+
+
     .moon-area {
         width: 310px;
         height: 310px;
+
         margin-top: 50px;
+        margin-bottom: 65px;
     }
+
 
     .iapetus {
         width: 245px;
         height: 245px;
     }
 
+
     .orbit {
         width: 290px;
         height: 100px;
     }
 
+
+    .moon-label {
+        padding: 9px 14px;
+
+        font-size: 7px;
+
+        letter-spacing: 2.5px;
+    }
+
+
     .description {
         padding: 25px;
+    }
+
+
+    .description-text {
+        font-size: 13px;
+    }
+
+
+    .feature {
+        padding: 22px;
+    }
+
+
+    .fact {
+        padding: 28px 20px;
+    }
+
+
+    .navigation {
+        flex-direction: column;
+
+        width: 100%;
+    }
+
+
+    .nav-button {
+        width: 100%;
+        max-width: 320px;
     }
 
 }
@@ -601,17 +751,18 @@ h1 {
 
 
 <div class="stars"></div>
-
 <div class="stars-small"></div>
 
 
-<!-- HEADER -->
+<!-- =========================================
+     HEADER
+========================================= -->
 
 <div class="header">
 
 
 <a
-href="https://sites.google.com/view/kosmolearn/solar-system"
+href="../"
 class="return">
 
 ← RETURN TO SATURN
@@ -620,16 +771,12 @@ class="return">
 
 
 <div class="label">
-
 ORBONIX · SATURN SYSTEM
-
 </div>
 
 
 <h1>
-
 IAPETUS
-
 </h1>
 
 
@@ -645,7 +792,9 @@ equatorial ridge.
 </div>
 
 
-<!-- IAPETUS -->
+<!-- =========================================
+     IAPETUS
+========================================= -->
 
 <div class="moon-area">
 
@@ -657,7 +806,8 @@ equatorial ridge.
 
 <img
 src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Iapetus.jpg"
-alt="Iapetus">
+alt="Iapetus — NASA / Cassini"
+loading="eager">
 
 </div>
 
@@ -672,7 +822,9 @@ IAPETUS · NASA / CASSINI
 </div>
 
 
-<!-- INFORMATION -->
+<!-- =========================================
+     INFORMATION
+========================================= -->
 
 <div class="info">
 
@@ -719,7 +871,9 @@ IAPETUS · NASA / CASSINI
 </div>
 
 
-<!-- DESCRIPTION -->
+<!-- =========================================
+     DESCRIPTION
+========================================= -->
 
 <div class="description">
 
@@ -750,7 +904,9 @@ so the same side always faces the planet.
 </div>
 
 
-<!-- FEATURES -->
+<!-- =========================================
+     FEATURES
+========================================= -->
 
 <div class="features">
 
@@ -807,13 +963,17 @@ than Rhea, Titan, Enceladus and Mimas.
 </div>
 
 
-<!-- FACT -->
+<!-- =========================================
+     FACT
+========================================= -->
 
 <div class="fact">
+
 
 <div class="fact-label">
 DID YOU KNOW?
 </div>
+
 
 <div class="fact-text">
 
@@ -822,6 +982,35 @@ Iapetus has one of the most dramatic
 in the Solar System.
 
 </div>
+
+
+</div>
+
+
+<!-- =========================================
+     NAVIGATION
+========================================= -->
+
+<div class="navigation">
+
+
+<a
+href="../"
+class="nav-button">
+
+← RETURN TO SATURN
+
+</a>
+
+
+<a
+href="../../"
+class="nav-button">
+
+← RETURN TO SOLAR SYSTEM
+
+</a>
+
 
 </div>
 
@@ -846,6 +1035,10 @@ CASSINI
 
 <script>
 
+/* =========================================
+   ELEMENTS
+========================================= */
+
 const stars =
 document.querySelector(".stars");
 
@@ -855,6 +1048,10 @@ document.querySelector(".stars-small");
 const iapetus =
 document.querySelector(".iapetus");
 
+
+/* =========================================
+   MOUSE PARALLAX
+========================================= */
 
 document.addEventListener(
 "mousemove",
@@ -892,9 +1089,21 @@ function(event) {
 
 });
 
+
+/* =========================================
+   TOUCH / MOBILE
+========================================= */
+
+if (window.matchMedia("(pointer: coarse)").matches) {
+
+    iapetus.style.transform = "none";
+
+}
+
 </script>
 
 
 </body>
 
 </html>
+```
