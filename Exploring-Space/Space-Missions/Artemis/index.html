@@ -6,6 +6,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Artemis | ORBONIX</title>
+
 <style>
 
 * {
@@ -124,6 +126,8 @@ body {
     display: inline-flex;
 
     align-items: center;
+
+    justify-content: center;
 
     padding: 12px 20px;
 
@@ -479,12 +483,14 @@ h1 {
 @keyframes flame {
 
     from {
+
         transform:
             translateX(-50%)
             scaleY(.85);
     }
 
     to {
+
         transform:
             translateX(-50%)
             scaleY(1.1);
@@ -558,9 +564,11 @@ h1 {
 .moon::before {
 
     width: 18px;
+
     height: 18px;
 
     left: 25px;
+
     top: 45px;
 }
 
@@ -568,9 +576,11 @@ h1 {
 .moon::after {
 
     width: 11px;
+
     height: 11px;
 
     right: 20px;
+
     top: 25px;
 }
 
@@ -972,10 +982,12 @@ h1 {
         height: 500px;
     }
 
+
     .rocket {
 
         transform: scale(.8);
     }
+
 
     .rocket:hover {
 
@@ -983,6 +995,7 @@ h1 {
             translateY(-10px)
             scale(.86);
     }
+
 
     .moon {
 
@@ -995,10 +1008,12 @@ h1 {
         height: 70px;
     }
 
+
     .stats {
 
         grid-template-columns: 1fr;
     }
+
 
     .features {
 
@@ -1016,6 +1031,7 @@ h1 {
             45px 15px 70px;
     }
 
+
     .mission-area {
 
         width: 320px;
@@ -1025,12 +1041,14 @@ h1 {
         margin-top: 45px;
     }
 
+
     .orbit-1 {
 
         width: 170px;
 
         height: 170px;
     }
+
 
     .orbit-2 {
 
@@ -1039,12 +1057,14 @@ h1 {
         height: 250px;
     }
 
+
     .orbit-3 {
 
         width: 320px;
 
         height: 320px;
     }
+
 
     .moon {
 
@@ -1057,10 +1077,12 @@ h1 {
         height: 55px;
     }
 
+
     .description {
 
         padding: 25px;
     }
+
 
     .fact {
 
@@ -1093,7 +1115,7 @@ h1 {
 
 
 <a
-href="https://sites.google.com/view/kosmolearn"
+href="https://orbonix.net/"
 class="return">
 
 ← RETURN TO HOME
@@ -1245,7 +1267,8 @@ LUNAR
 </div>
 
 <div class="stat-label">
-EXPLORATION PROGRAM</div>
+EXPLORATION PROGRAM
+</div>
 
 </div>
 
@@ -1415,7 +1438,7 @@ its mission.
 
 
 <a
-href="https://sites.google.com/view/kosmolearn"
+href="https://orbonix.net/"
 class="nav-button">
 
 ← RETURN TO HOME
@@ -1424,7 +1447,7 @@ class="nav-button">
 
 
 <a
-href="https://sites.google.com/view/kosmolearn/space-missions"
+href="https://orbonix.net/space-missions"
 class="nav-button">
 
 ← SPACE MISSIONS
@@ -1452,6 +1475,10 @@ ARTEMIS PROGRAM
 
 <script>
 
+/* =========================================
+   STAR PARALLAX
+========================================= */
+
 const stars =
 document.querySelector(".stars");
 
@@ -1466,12 +1493,14 @@ function(event) {
 
     const x =
         event.clientX /
-        window.innerWidth - 0.5;
+        window.innerWidth -
+        0.5;
 
 
     const y =
         event.clientY /
-        window.innerHeight - 0.5;
+        window.innerHeight -
+        0.5;
 
 
     stars.style.transform =
