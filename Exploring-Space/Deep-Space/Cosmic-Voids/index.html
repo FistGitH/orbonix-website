@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,6 +5,8 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Cosmic Voids | ORBONIX</title>
 
 <style>
 
@@ -42,9 +43,14 @@ body {
 
     background:
         radial-gradient(
-            circle at 50% 30%,
+            circle at 50% 25%,
             rgba(40,70,140,.14),
             transparent 45%
+        ),
+        radial-gradient(
+            circle at 50% 70%,
+            rgba(70,50,150,.06),
+            transparent 40%
         ),
         #010208;
 }
@@ -62,6 +68,8 @@ body {
     inset: -25%;
 
     pointer-events: none;
+
+    will-change: transform;
 }
 
 .stars {
@@ -237,7 +245,7 @@ h1 {
 
 
 /* =========================================
-   COSMIC VOID VISUAL
+   COSMIC VOID
 ========================================= */
 
 .void {
@@ -254,24 +262,32 @@ h1 {
         radial-gradient(
             circle,
             #000000 0%,
-            #00030a 48%,
-            rgba(5,10,25,.7) 68%,
-            transparent 72%
+            #00030a 42%,
+            #020817 60%,
+            rgba(5,10,25,.65) 70%,
+            transparent 75%
         );
 
     box-shadow:
-        0 0 50px
-        rgba(0,0,0,.9),
+        0 0 45px
+        rgba(0,0,0,.95),
 
-        0 0 120px
-        rgba(20,40,100,.18);
+        0 0 100px
+        rgba(20,40,100,.18),
+
+        inset 0 0 45px
+        rgba(0,0,0,.8);
 
     animation:
         voidPulse 7s ease-in-out infinite;
+
+    will-change: transform;
 }
 
 
-/* DISTANT GALAXIES */
+/* =========================================
+   DISTANT GALAXIES
+========================================= */
 
 .void::before {
 
@@ -312,10 +328,15 @@ h1 {
             black 65%,
             black 100%
         );
+
+    animation:
+        galaxyDrift 18s linear infinite;
 }
 
 
-/* VOID EDGE */
+/* =========================================
+   VOID EDGE
+========================================= */
 
 .void::after {
 
@@ -356,6 +377,35 @@ h1 {
 }
 
 
+@keyframes galaxyDrift {
+
+    0% {
+
+        transform:
+            rotate(0deg)
+            scale(1);
+
+    }
+
+    50% {
+
+        transform:
+            rotate(3deg)
+            scale(1.03);
+
+    }
+
+    100% {
+
+        transform:
+            rotate(0deg)
+            scale(1);
+
+    }
+
+}
+
+
 .hero-label {
 
     position: absolute;
@@ -368,6 +418,8 @@ h1 {
     font-size: 9px;
 
     letter-spacing: 4px;
+
+    text-align: center;
 }
 
 
@@ -409,7 +461,8 @@ h1 {
     background:
         rgba(5,7,15,.94);
 
-    transition: .35s ease;
+    transition:
+        .35s ease;
 }
 
 
@@ -462,6 +515,10 @@ h1 {
 }
 
 
+/* =========================================
+   INFO
+========================================= */
+
 .info {
 
     margin-bottom: 18px;
@@ -475,7 +532,8 @@ h1 {
     background:
         rgba(255,255,255,.025);
 
-    transition: .35s ease;
+    transition:
+        .35s ease;
 }
 
 
@@ -554,7 +612,8 @@ h1 {
     background:
         rgba(255,255,255,.02);
 
-    transition: .35s ease;
+    transition:
+        .35s ease;
 }
 
 
@@ -568,6 +627,10 @@ h1 {
 
     background:
         rgba(255,255,255,.04);
+
+    box-shadow:
+        0 12px 35px
+        rgba(0,0,0,.25);
 }
 
 
@@ -610,6 +673,19 @@ h1 {
 
     background:
         rgba(255,255,255,.025);
+
+    transition:
+        .35s ease;
+}
+
+
+.fact:hover {
+
+    border-color:
+        rgba(255,255,255,.2);
+
+    background:
+        rgba(255,255,255,.035);
 }
 
 
@@ -677,7 +753,8 @@ h1 {
 
     letter-spacing: 2px;
 
-    transition: .35s ease;
+    transition:
+        .35s ease;
 }
 
 
@@ -728,7 +805,7 @@ h1 {
     .features {
 
         grid-template-columns:
-            1fr;
+            1fr 1fr;
     }
 
 }
@@ -760,6 +837,12 @@ h1 {
             1fr;
     }
 
+    .features {
+
+        grid-template-columns:
+            1fr;
+    }
+
     .info {
 
         padding: 27px;
@@ -769,6 +852,30 @@ h1 {
 
         padding:
             30px 22px;
+    }
+
+    .hero-label {
+
+        bottom: 25px;
+
+        max-width: 90%;
+
+        line-height: 1.5;
+    }
+
+}
+
+
+@media(prefers-reduced-motion: reduce) {
+
+    .stars,
+    .stars-small,
+    .void,
+    .void::before {
+
+        animation: none !important;
+
+        transition: none !important;
     }
 
 }
@@ -862,11 +969,15 @@ THE EMPTY SPACES BETWEEN GALAXIES
 <div class="stat">
 
 <div class="stat-value">
+
 MILLIONS
+
 </div>
 
 <div class="stat-label">
+
 LIGHT-YEARS ACROSS
+
 </div>
 
 </div>
@@ -875,11 +986,15 @@ LIGHT-YEARS ACROSS
 <div class="stat">
 
 <div class="stat-value">
+
 LOW DENSITY
+
 </div>
 
 <div class="stat-label">
+
 FEW GALAXIES
+
 </div>
 
 </div>
@@ -888,11 +1003,15 @@ FEW GALAXIES
 <div class="stat">
 
 <div class="stat-value">
+
 COSMIC WEB
+
 </div>
 
 <div class="stat-label">
+
 LARGE-SCALE STRUCTURE
+
 </div>
 
 </div>
@@ -901,11 +1020,15 @@ LARGE-SCALE STRUCTURE
 <div class="stat">
 
 <div class="stat-value">
+
 DARK
+
 </div>
 
 <div class="stat-label">
+
 VERY LITTLE MATTER
+
 </div>
 
 </div>
@@ -1237,36 +1360,95 @@ const smallStars =
 document.querySelector(".stars-small");
 
 
+let mouseX = 0;
+let mouseY = 0;
+
+let currentX = 0;
+let currentY = 0;
+
+
 document.addEventListener(
 "mousemove",
 
 function(event) {
 
-    const x =
+    mouseX =
         event.clientX /
         window.innerWidth -
         0.5;
 
-    const y =
+    mouseY =
         event.clientY /
         window.innerHeight -
         0.5;
 
+});
+
+
+function animateStars() {
+
+    currentX +=
+        (mouseX * 20 - currentX) * 0.035;
+
+    currentY +=
+        (mouseY * 20 - currentY) * 0.035;
+
 
     stars.style.transform =
         `translate(
-            ${x * 20}px,
-            ${y * 20}px
+            ${currentX}px,
+            ${currentY}px
         )`;
 
 
     smallStars.style.transform =
         `translate(
-            ${x * -12}px,
-            ${y * -12}px
+            ${-currentX * 0.6}px,
+            ${-currentY * 0.6}px
         )`;
 
+
+    requestAnimationFrame(
+        animateStars
+    );
+
+}
+
+
+animateStars();
+
+
+/* =========================================
+   TOUCH PARALLAX
+========================================= */
+
+document.addEventListener(
+"touchmove",
+
+function(event) {
+
+    if (!event.touches.length) return;
+
+    const touch =
+        event.touches[0];
+
+
+    mouseX =
+        touch.clientX /
+        window.innerWidth -
+        0.5;
+
+
+    mouseY =
+        touch.clientY /
+        window.innerHeight -
+        0.5;
+
+},
+{
+    passive: true
 });
+
 
 </script>
 
@@ -1274,4 +1456,3 @@ function(event) {
 </body>
 
 </html>
-```
