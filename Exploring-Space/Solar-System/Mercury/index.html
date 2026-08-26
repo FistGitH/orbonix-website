@@ -34,7 +34,14 @@ body {
     min-height: 1450px;
     padding: 55px 20px 100px;
     overflow: hidden;
-    background: #020308;
+
+    background:
+        radial-gradient(
+            circle at 50% 42%,
+            rgba(150,150,150,.10),
+            transparent 45%
+        ),
+        #020308;
 }
 
 
@@ -56,7 +63,6 @@ body {
         );
 
     background-size: 75px 75px;
-
     transition: transform 1.5s ease;
 }
 
@@ -75,7 +81,6 @@ body {
         );
 
     background-size: 32px 32px;
-
     transition: transform 2s ease;
 }
 
@@ -112,6 +117,8 @@ body {
     letter-spacing: 3px;
 
     transition: .35s ease;
+
+    cursor: pointer;
 }
 
 
@@ -141,7 +148,6 @@ h1 {
         clamp(55px,9vw,105px);
 
     line-height: .9;
-
     letter-spacing: 7px;
 }
 
@@ -154,7 +160,6 @@ h1 {
     color: rgba(255,255,255,.52);
 
     font-size: 14px;
-
     line-height: 1.8;
 }
 
@@ -164,7 +169,6 @@ h1 {
 ========================================= */
 
 .planet-area {
-
     position: relative;
 
     width: 620px;
@@ -173,7 +177,6 @@ h1 {
     margin: 65px auto 90px;
 
     display: flex;
-
     align-items: center;
     justify-content: center;
 }
@@ -184,7 +187,6 @@ h1 {
 ========================================= */
 
 .orbit {
-
     position: absolute;
 
     width: 570px;
@@ -196,26 +198,23 @@ h1 {
 
     border-radius: 50%;
 
-    transform:
-        rotate(-18deg);
+    transform: rotate(-18deg);
 
     pointer-events: none;
 }
 
 
 /* =========================================
-   MERCURY IMAGE
+   MERCURY
 ========================================= */
 
 .mercury {
-
     position: relative;
 
     width: 470px;
     height: 470px;
 
     border-radius: 50%;
-
     overflow: hidden;
 
     box-shadow:
@@ -229,20 +228,17 @@ h1 {
         0 0 70px
         rgba(150,150,150,.12);
 
-    transition:
-        transform 1s ease;
+    transition: transform 1s ease;
 }
 
 
 .mercury img {
-
     position: absolute;
 
     width: 100%;
     height: 100%;
 
     object-fit: cover;
-
     object-position: center;
 
     display: block;
@@ -254,11 +250,9 @@ h1 {
 ========================================= */
 
 .mercury::after {
-
     content: "";
 
     position: absolute;
-
     inset: 0;
 
     border-radius: 50%;
@@ -282,20 +276,16 @@ h1 {
 ========================================= */
 
 .planet-label {
-
     position: absolute;
 
     z-index: 10;
 
     bottom: 0;
-
     left: 50%;
 
-    transform:
-        translateX(-50%);
+    transform: translateX(-50%);
 
-    padding:
-        10px 20px;
+    padding: 10px 20px;
 
     border:
         1px solid
@@ -304,11 +294,9 @@ h1 {
     background:
         rgba(2,3,8,.9);
 
-    backdrop-filter:
-        blur(8px);
+    backdrop-filter: blur(8px);
 
     font-size: 9px;
-
     letter-spacing: 4px;
 
     white-space: nowrap;
@@ -320,20 +308,15 @@ h1 {
 ========================================= */
 
 .info {
-
     position: relative;
-
     z-index: 5;
 
-    width:
-        min(1050px,100%);
-
+    width: min(1050px,100%);
     margin: auto;
 }
 
 
 .info-grid {
-
     display: grid;
 
     grid-template-columns:
@@ -351,7 +334,6 @@ h1 {
 
 
 .card {
-
     padding: 30px;
 
     background:
@@ -362,9 +344,7 @@ h1 {
 
 
 .card:hover {
-
-    transform:
-        translateY(-5px);
+    transform: translateY(-5px);
 
     background:
         rgba(255,255,255,.04);
@@ -372,22 +352,18 @@ h1 {
 
 
 .number {
-
     margin-bottom: 8px;
 
     font-size: 20px;
-
     font-weight: bold;
 }
 
 
 .card-label {
-
     color:
         rgba(255,255,255,.4);
 
     font-size: 9px;
-
     letter-spacing: 2px;
 }
 
@@ -397,7 +373,6 @@ h1 {
 ========================================= */
 
 .description {
-
     margin-top: 60px;
 
     padding: 40px;
@@ -412,24 +387,20 @@ h1 {
 
 
 .description-title {
-
     margin-bottom: 20px;
 
     font-size: 11px;
-
     letter-spacing: 4px;
 }
 
 
 .description-text {
-
     max-width: 900px;
 
     color:
         rgba(255,255,255,.58);
 
     font-size: 14px;
-
     line-height: 1.9;
 }
 
@@ -439,7 +410,6 @@ h1 {
 ========================================= */
 
 .features {
-
     display: grid;
 
     grid-template-columns:
@@ -452,7 +422,6 @@ h1 {
 
 
 .feature {
-
     padding: 25px;
 
     border:
@@ -467,9 +436,7 @@ h1 {
 
 
 .feature:hover {
-
-    transform:
-        translateY(-6px);
+    transform: translateY(-6px);
 
     border-color:
         rgba(255,255,255,.4);
@@ -477,22 +444,18 @@ h1 {
 
 
 .feature-title {
-
     margin-bottom: 10px;
 
     font-size: 12px;
-
     letter-spacing: 2px;
 }
 
 
 .feature-text {
-
     color:
         rgba(255,255,255,.5);
 
     font-size: 12px;
-
     line-height: 1.7;
 }
 
@@ -502,7 +465,6 @@ h1 {
 ========================================= */
 
 .fact {
-
     margin-top: 60px;
 
     padding: 35px;
@@ -519,20 +481,17 @@ h1 {
 
 
 .fact-label {
-
     margin-bottom: 15px;
 
     color:
         rgba(255,255,255,.45);
 
     font-size: 9px;
-
     letter-spacing: 4px;
 }
 
 
 .fact-text {
-
     font-size:
         clamp(18px,3vw,27px);
 
@@ -545,7 +504,6 @@ h1 {
 ========================================= */
 
 .credit {
-
     margin-top: 25px;
 
     text-align: center;
@@ -568,34 +526,25 @@ h1 {
 @media(max-width:800px) {
 
     .planet-area {
-
         width: 450px;
         height: 450px;
     }
 
-
     .mercury {
-
         width: 350px;
         height: 350px;
     }
 
-
     .orbit {
-
         width: 420px;
         height: 140px;
     }
 
-
     .info-grid {
-
         grid-template-columns: 1fr;
     }
 
-
     .features {
-
         grid-template-columns: 1fr;
     }
 
@@ -605,37 +554,28 @@ h1 {
 @media(max-width:500px) {
 
     .mercury-page {
-
         padding:
             45px 15px 70px;
     }
 
-
     .planet-area {
-
         width: 310px;
         height: 310px;
 
         margin-top: 50px;
     }
 
-
     .mercury {
-
         width: 245px;
         height: 245px;
     }
 
-
     .orbit {
-
         width: 290px;
         height: 100px;
     }
 
-
     .description {
-
         padding: 25px;
     }
 
@@ -647,7 +587,6 @@ h1 {
 
 
 <body>
-
 
 <section class="mercury-page">
 
@@ -665,7 +604,8 @@ h1 {
 
 
 <a
-href="https://sites.google.com/view/kosmolearn"
+href="#"
+data-page="Solar System"
 class="return">
 
 ← RETURN TO SOLAR SYSTEM
@@ -969,12 +909,104 @@ TRUE COLOR IMAGE
 <script>
 
 /* =========================================
+   ORBONIX UNIVERSAL PAGE SYSTEM
+========================================= */
+
+const ORBONIX_BASE = "";
+
+
+/*
+    Page names are resolved automatically.
+
+    This means you can move the whole website
+    to another hosting/domain without changing
+    every button's absolute URL.
+*/
+
+const ORBONIX_PAGES = {
+
+    "Solar System":
+        "/solar-system/",
+
+    "Mercury":
+        "/solar-system/mercury/",
+
+    "Venus":
+        "/solar-system/venus/",
+
+    "Earth":
+        "/solar-system/earth/",
+
+    "Mars":
+        "/solar-system/mars/",
+
+    "Jupiter":
+        "/solar-system/jupiter/",
+
+    "Saturn":
+        "/solar-system/saturn/",
+
+    "Uranus":
+        "/solar-system/uranus/",
+
+    "Neptune":
+        "/solar-system/neptune/",
+
+    "Dwarf Planets":
+        "/solar-system/dwarf-planets/",
+
+    "Asteroid Belt":
+        "/solar-system/asteroid-belt/",
+
+    "Kuiper Belt":
+        "/solar-system/kuiper-belt/",
+
+    "Oort Cloud":
+        "/solar-system/oort-cloud/"
+
+};
+
+
+/* =========================================
+   UNIVERSAL PAGE NAVIGATION
+========================================= */
+
+document.querySelectorAll("[data-page]").forEach(button => {
+
+    button.addEventListener("click", function(event) {
+
+        event.preventDefault();
+
+        const pageName =
+            this.getAttribute("data-page");
+
+        const target =
+            ORBONIX_PAGES[pageName];
+
+        if (!target) {
+
+            console.warn(
+                "ORBONIX page not found:",
+                pageName
+            );
+
+            return;
+        }
+
+        window.location.href =
+            ORBONIX_BASE + target;
+
+    });
+
+});
+
+
+/* =========================================
    STAR PARALLAX
 ========================================= */
 
 const stars =
 document.querySelector(".stars");
-
 
 const smallStars =
 document.querySelector(".stars-small");
