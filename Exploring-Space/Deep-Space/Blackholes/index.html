@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,6 +5,8 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Black Holes | ORBONIX</title>
 
 <style>
 
@@ -790,7 +791,7 @@ h1 {
 
 
 <a
-href="https://sites.google.com/view/kosmolearn"
+href="/"
 class="return">
 
 ← RETURN TO HOME
@@ -1214,7 +1215,7 @@ black hole at the center of galaxy M87.
 
 
 <a
-href="https://sites.google.com/view/kosmolearn"
+href="/"
 class="nav-button">
 
 ← RETURN TO HOME
@@ -1239,6 +1240,44 @@ ORBONIX · DEEP SPACE · BLACK HOLES
 
 
 /* =========================================
+   UNIVERSAL ORBONIX HOME LINK
+========================================= */
+
+/*
+   Используем относительный путь "/".
+
+   Поэтому ссылка автоматически работает
+   на текущем домене:
+
+   https://orbonix.net/
+   https://другой-домен/
+   GitHub Pages
+   Cloudflare Pages
+   и т.д.
+
+   Домен в коде менять не нужно.
+*/
+
+document.querySelectorAll(
+    'a[href="/"]'
+).forEach(function(link) {
+
+    link.addEventListener(
+        "click",
+        function(event) {
+
+            event.preventDefault();
+
+            window.location.href =
+                window.location.origin + "/";
+
+        }
+    );
+
+});
+
+
+/* =========================================
    STAR PARALLAX
 ========================================= */
 
@@ -1250,37 +1289,78 @@ document.querySelector(".stars-small");
 
 
 document.addEventListener(
-"mousemove",
+    "mousemove",
+    function(event) {
 
-function(event) {
-
-    const x =
-        event.clientX /
-        window.innerWidth -
-        0.5;
-
-
-    const y =
-        event.clientY /
-        window.innerHeight -
-        0.5;
+        const x =
+            event.clientX /
+            window.innerWidth -
+            0.5;
 
 
-    stars.style.transform =
-        `translate(
-            ${x * 20}px,
-            ${y * 20}px
-        )`;
+        const y =
+            event.clientY /
+            window.innerHeight -
+            0.5;
 
 
-    smallStars.style.transform =
-        `translate(
-            ${x * -12}px,
-            ${y * -12}px
-        )`;
+        stars.style.transform =
+            `translate(
+                ${x * 20}px,
+                ${y * 20}px
+            )`;
 
-});
 
+        smallStars.style.transform =
+            `translate(
+                ${x * -12}px,
+                ${y * -12}px
+            )`;
+
+    }
+);
+
+
+/* =========================================
+   TOUCH / MOBILE
+========================================= */
+
+document.addEventListener(
+    "touchmove",
+    function(event) {
+
+        if (!event.touches.length)
+            return;
+
+
+        const x =
+            event.touches[0].clientX /
+            window.innerWidth -
+            0.5;
+
+
+        const y =
+            event.touches[0].clientY /
+            window.innerHeight -
+            0.5;
+
+
+        stars.style.transform =
+            `translate(
+                ${x * 10}px,
+                ${y * 10}px
+            )`;
+
+
+        smallStars.style.transform =
+            `translate(
+                ${x * -6}px,
+                ${y * -6}px
+            )`;
+
+    },
+    { passive: true }
+);
 
 </script>
 
@@ -1288,4 +1368,3 @@ function(event) {
 </body>
 
 </html>
-```
