@@ -1,15 +1,12 @@
-```javascript
 /* =========================================================
-   ORBONIX GLOBAL SEARCH + UNIVERSAL BUTTONS + AUTO NAVIGATION
+   ORBONIX SEARCH + NAVIGATION + UNIVERSAL BUTTON SYSTEM
    Website: https://orbonix.net
 
    ONE FILE:
    - Global Search
-   - Universal Buttons
    - Automatic Navigation
    - Dropdown Subpages
-   - Typo-tolerant Search
-   - Dynamic Content Support
+   - Universal data-page buttons
 ========================================================= */
 
 
@@ -513,7 +510,49 @@ const ORBONIX_NAVIGATION = [
 
             {
                 title: "Deep Space",
-                page: "Deep Space"
+                page: "Deep Space",
+                children: [
+                    {
+                        title: "Black Holes",
+                        page: "Black Holes"
+                    },
+                    {
+                        title: "Cosmic Voids",
+                        page: "Cosmic Voids"
+                    },
+                    {
+                        title: "Dark Energy",
+                        page: "Dark Energy"
+                    },
+                    {
+                        title: "Dark Matter",
+                        page: "Dark Matter"
+                    },
+                    {
+                        title: "Galaxies",
+                        page: "Galaxies"
+                    },
+                    {
+                        title: "Nebulae",
+                        page: "Nebulae"
+                    },
+                    {
+                        title: "Quasars",
+                        page: "Quasars"
+                    },
+                    {
+                        title: "Rogue Planets",
+                        page: "Rogue Planets"
+                    },
+                    {
+                        title: "Stars",
+                        page: "Stars"
+                    },
+                    {
+                        title: "Wormholes",
+                        page: "Wormholes"
+                    }
+                ]
             },
 
             {
@@ -545,17 +584,14 @@ const ORBONIX_NAVIGATION = [
                         title: "Mars",
                         page: "Mars",
                         children: [
-
                             {
                                 title: "Phobos",
                                 page: "Phobos"
                             },
-
                             {
                                 title: "Deimos",
                                 page: "Deimos"
                             }
-
                         ]
                     },
 
@@ -887,6 +923,7 @@ function scoreSearchResult(page, query) {
     const titleWords =
         title.split(" ");
 
+
     for (const word of words) {
 
         if (word.length < 4) {
@@ -978,7 +1015,6 @@ function findOrbonixPage(name) {
         return null;
     }
 
-
     const exact =
         ORBONIX_PAGES.find(page =>
             normalizeSearchText(page.title)
@@ -988,7 +1024,6 @@ function findOrbonixPage(name) {
     if (exact) {
         return exact;
     }
-
 
     const results =
         searchOrbonix(name);
@@ -1185,9 +1220,7 @@ function initializeOrbonixSearch() {
                     container.innerHTML = "";
 
                     return;
-
                 }
-
 
                 const results =
                     searchOrbonix(
@@ -1195,7 +1228,6 @@ function initializeOrbonixSearch() {
                     );
 
                 container.innerHTML = "";
-
 
                 results.forEach(page => {
 
@@ -1241,56 +1273,319 @@ function initializeOrbonixSearch() {
 
 
 /* =========================================================
-   AUTOMATIC NAVIGATION
+   HTML ESCAPE
 ========================================================= */
 
-function createOrbonixNavigation() {
+function escapeHTML(text) {
+
+    return String(text || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+}
+
+
+/* =========================================================
+   NAVIGATION CSS
+========================================================= */
+
+function injectOrbonixNavigationCSS() {
 
     if (
         document.getElementById(
-            "orbonix-auto-navigation"
+            "orbonix-navigation-css"
         )
     ) {
         return;
     }
 
+    const style =
+        document.createElement("style");
 
-    const navigation =
-        document.createElement("nav");
+    style.id =
+        "orbonix-navigation-css";
 
-    navigation.id =
-        "orbonix-auto-navigation";
+    style.textContent = `
 
-    navigation.className =
-        "orbonix-navigation";
+        #orbonix-navigation {
 
+            width: 100%;
 
-    const menu =
-        document.createElement("div");
+            position: relative;
 
-    menu.className =
-        "orbonix-navigation-menu";
+            z-index: 99999;
 
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
 
-    ORBONIX_NAVIGATION.forEach(item => {
-
-        menu.appendChild(
-            createNavigationItem(item)
-        );
-
-    });
+        }
 
 
-    navigation.appendChild(menu);
+        .orbonix-nav-inner {
+
+            width: 100%;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            padding: 10px 18px;
+
+            background:
+                rgba(8, 10, 20, 0.96);
+
+            backdrop-filter:
+                blur(12px);
+
+            border-bottom:
+                1px solid
+                rgba(255,255,255,0.12);
+
+        }
 
 
-    document.body.insertBefore(
-        navigation,
-        document.body.firstChild
-    );
+        .orbonix-nav-logo {
+
+            color: white;
+
+            font-size: 22px;
+
+            font-weight: 800;
+
+            text-decoration: none;
+
+            margin-right: 18px;
+
+            white-space: nowrap;
+
+        }
 
 
-    addNavigationStyles();
+        .orbonix-nav-menu {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 4px;
+
+            list-style: none;
+
+            margin: 0;
+
+            padding: 0;
+
+        }
+
+
+        .orbonix-nav-item {
+
+            position: relative;
+
+        }
+
+
+        .orbonix-nav-row {
+
+            display: flex;
+
+            align-items: center;
+
+        }
+
+
+        .orbonix-nav-link {
+
+            display: block;
+
+            padding: 10px 12px;
+
+            color: white;
+
+            text-decoration: none;
+
+            font-size: 14px;
+
+            border-radius: 8px;
+
+            white-space: nowrap;
+
+            cursor: pointer;
+
+            transition:
+                background 0.2s ease,
+                color 0.2s ease;
+
+        }
+
+
+        .orbonix-nav-link:hover {
+
+            background:
+                rgba(255,255,255,0.10);
+
+        }
+
+
+        .orbonix-nav-arrow {
+
+            width: 30px;
+
+            height: 34px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            color: white;
+
+            cursor: pointer;
+
+            border-radius: 7px;
+
+            transition:
+                transform 0.2s ease,
+                background 0.2s ease;
+
+            user-select: none;
+
+        }
+
+
+        .orbonix-nav-arrow:hover {
+
+            background:
+                rgba(255,255,255,0.10);
+
+        }
+
+
+        .orbonix-nav-item.open >
+        .orbonix-nav-row >
+        .orbonix-nav-arrow {
+
+            transform:
+                rotate(180deg);
+
+        }
+
+
+        .orbonix-nav-submenu {
+
+            position: absolute;
+
+            top: calc(100% + 4px);
+
+            left: 0;
+
+            min-width: 230px;
+
+            max-height: 0;
+
+            overflow: hidden;
+
+            opacity: 0;
+
+            visibility: hidden;
+
+            background:
+                rgba(10, 12, 24, 0.98);
+
+            border:
+                1px solid
+                rgba(255,255,255,0.12);
+
+            border-radius: 10px;
+
+            box-shadow:
+                0 15px 40px
+                rgba(0,0,0,0.45);
+
+            transition:
+                max-height 0.25s ease,
+                opacity 0.2s ease;
+
+        }
+
+
+        .orbonix-nav-item.open >
+        .orbonix-nav-submenu {
+
+            max-height: 800px;
+
+            opacity: 1;
+
+            visibility: visible;
+
+        }
+
+
+        .orbonix-nav-submenu
+        .orbonix-nav-submenu {
+
+            top: -1px;
+
+            left: calc(100% + 3px);
+
+        }
+
+
+        .orbonix-nav-submenu
+        .orbonix-nav-link {
+
+            width: 100%;
+
+            padding:
+                10px 14px;
+
+        }
+
+
+        @media (max-width: 900px) {
+
+            .orbonix-nav-inner {
+
+                overflow-x: auto;
+
+            }
+
+            .orbonix-nav-menu {
+
+                flex-wrap: nowrap;
+
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .orbonix-nav-logo {
+
+                display: none;
+
+            }
+
+            .orbonix-nav-link {
+
+                font-size: 13px;
+
+            }
+
+        }
+
+    `;
+
+    document.head.appendChild(style);
 
 }
 
@@ -1299,12 +1594,12 @@ function createOrbonixNavigation() {
    CREATE NAVIGATION ITEM
 ========================================================= */
 
-function createNavigationItem(item) {
+function createOrbonixNavigationItem(item) {
 
-    const wrapper =
-        document.createElement("div");
+    const li =
+        document.createElement("li");
 
-    wrapper.className =
+    li.className =
         "orbonix-nav-item";
 
 
@@ -1324,8 +1619,7 @@ function createNavigationItem(item) {
     link.textContent =
         item.title;
 
-    link.href =
-        "#";
+    link.href = "#";
 
 
     link.addEventListener(
@@ -1362,47 +1656,25 @@ function createNavigationItem(item) {
     ) {
 
         const arrow =
-            document.createElement("button");
-
-        arrow.type =
-            "button";
+            document.createElement("span");
 
         arrow.className =
             "orbonix-nav-arrow";
 
         arrow.innerHTML =
-            "▾";
-
-        arrow.setAttribute(
-            "aria-label",
-            `Open ${item.title} submenu`
-        );
-
-
-        const submenu =
-            document.createElement("div");
-
-        submenu.className =
-            "orbonix-nav-submenu";
-
-
-        item.children.forEach(child => {
-
-            submenu.appendChild(
-                createNavigationItem(child)
-            );
-
-        });
+            "▼";
 
 
         arrow.addEventListener(
             "click",
             function(event) {
 
+                event.preventDefault();
+
                 event.stopPropagation();
 
-                wrapper.classList.toggle(
-                    "orbonix-nav-open"
+                li.classList.toggle(
+                    "open"
                 );
 
             }
@@ -1411,342 +1683,160 @@ function createNavigationItem(item) {
 
         row.appendChild(arrow);
 
-        wrapper.appendChild(row);
+    }
 
-        wrapper.appendChild(submenu);
 
-    } else {
+    li.appendChild(row);
 
-        wrapper.appendChild(row);
+
+    if (
+        item.children &&
+        item.children.length > 0
+    ) {
+
+        const submenu =
+            document.createElement("ul");
+
+        submenu.className =
+            "orbonix-nav-submenu";
+
+        submenu.style.listStyle =
+            "none";
+
+        submenu.style.margin =
+            "0";
+
+        submenu.style.padding =
+            "6px";
+
+
+        item.children.forEach(
+            child => {
+
+                submenu.appendChild(
+                    createOrbonixNavigationItem(
+                        child
+                    )
+                );
+
+            }
+        );
+
+
+        li.appendChild(
+            submenu
+        );
 
     }
 
 
-    return wrapper;
+    return li;
 
 }
 
 
 /* =========================================================
-   NAVIGATION STYLES
+   CREATE AUTOMATIC NAVIGATION
 ========================================================= */
 
-function addNavigationStyles() {
+function initializeOrbonixNavigation() {
 
     if (
         document.getElementById(
-            "orbonix-navigation-styles"
+            "orbonix-navigation"
         )
     ) {
         return;
     }
 
 
-    const style =
-        document.createElement("style");
-
-    style.id =
-        "orbonix-navigation-styles";
+    injectOrbonixNavigationCSS();
 
 
-    style.textContent = `
+    const navigation =
+        document.createElement("nav");
 
-        #orbonix-auto-navigation {
-
-            width: 100%;
-            position: relative;
-            z-index: 999999;
-
-            font-family:
-                Arial,
-                Helvetica,
-                sans-serif;
-
-            background:
-                rgba(5, 8, 20, 0.96);
-
-            border-bottom:
-                1px solid
-                rgba(255,255,255,0.12);
-
-            box-shadow:
-                0 5px 25px
-                rgba(0,0,0,0.35);
-
-        }
+    navigation.id =
+        "orbonix-navigation";
 
 
-        .orbonix-navigation-menu {
+    const inner =
+        document.createElement("div");
 
-            width: 100%;
-            max-width: 1500px;
+    inner.className =
+        "orbonix-nav-inner";
 
-            margin: 0 auto;
 
-            display: flex;
+    const logo =
+        document.createElement("a");
 
-            align-items: center;
+    logo.className =
+        "orbonix-nav-logo";
 
-            justify-content: center;
+    logo.textContent =
+        "ORBONIX";
 
-            flex-wrap: wrap;
+    logo.href =
+        `${ORBONIX_BASE}/`;
 
-            gap: 4px;
 
-            padding: 8px 12px;
+    inner.appendChild(
+        logo
+    );
+
+
+    const menu =
+        document.createElement("ul");
+
+    menu.className =
+        "orbonix-nav-menu";
+
+
+    ORBONIX_NAVIGATION.forEach(
+        item => {
+
+            menu.appendChild(
+                createOrbonixNavigationItem(
+                    item
+                )
+            );
 
         }
+    );
 
 
-        .orbonix-nav-item {
+    inner.appendChild(
+        menu
+    );
 
-            position: relative;
 
-        }
+    navigation.appendChild(
+        inner
+    );
 
 
-        .orbonix-nav-row {
+    /*
 
-            display: flex;
+       Automatically place
+       Navigation at the top
+       of the page.
 
-            align-items: center;
+    */
 
-            border-radius: 8px;
+    if (document.body.firstChild) {
 
-            transition:
-                background 0.2s ease;
+        document.body.insertBefore(
+            navigation,
+            document.body.firstChild
+        );
 
-        }
+    } else {
 
+        document.body.appendChild(
+            navigation
+        );
 
-        .orbonix-nav-row:hover {
-
-            background:
-                rgba(255,255,255,0.08);
-
-        }
-
-
-        .orbonix-nav-link {
-
-            display: block;
-
-            padding:
-                10px 8px;
-
-            color: white;
-
-            text-decoration: none;
-
-            font-size: 14px;
-
-            font-weight: 500;
-
-            white-space: nowrap;
-
-            cursor: pointer;
-
-        }
-
-
-        .orbonix-nav-arrow {
-
-            width: 30px;
-            height: 36px;
-
-            border: 0;
-
-            background: transparent;
-
-            color: white;
-
-            font-size: 16px;
-
-            cursor: pointer;
-
-            border-radius: 6px;
-
-            transition:
-                transform 0.2s ease,
-                background 0.2s ease;
-
-        }
-
-
-        .orbonix-nav-arrow:hover {
-
-            background:
-                rgba(255,255,255,0.12);
-
-        }
-
-
-        .orbonix-nav-open >
-        .orbonix-nav-row
-        .orbonix-nav-arrow {
-
-            transform:
-                rotate(180deg);
-
-        }
-
-
-        .orbonix-nav-submenu {
-
-            display: none;
-
-            position: absolute;
-
-            top: calc(100% + 4px);
-
-            left: 0;
-
-            min-width: 220px;
-
-            max-height: 70vh;
-
-            overflow-y: auto;
-
-            padding: 6px;
-
-            background:
-                rgba(8,12,28,0.98);
-
-            border:
-                1px solid
-                rgba(255,255,255,0.12);
-
-            border-radius: 10px;
-
-            box-shadow:
-                0 12px 35px
-                rgba(0,0,0,0.5);
-
-        }
-
-
-        .orbonix-nav-open >
-        .orbonix-nav-submenu {
-
-            display: block;
-
-        }
-
-
-        .orbonix-nav-submenu
-        .orbonix-nav-item {
-
-            width: 100%;
-
-        }
-
-
-        .orbonix-nav-submenu
-        .orbonix-nav-row {
-
-            width: 100%;
-
-            justify-content:
-                space-between;
-
-        }
-
-
-        .orbonix-nav-submenu
-        .orbonix-nav-link {
-
-            width: 100%;
-
-            padding:
-                9px 10px;
-
-        }
-
-
-        .orbonix-nav-submenu
-        .orbonix-nav-submenu {
-
-            top: 0;
-
-            left: 100%;
-
-            margin-left: 4px;
-
-        }
-
-
-        .orbonix-nav-submenu
-        .orbonix-nav-item
-        .orbonix-nav-arrow {
-
-            flex-shrink: 0;
-
-        }
-
-
-        @media (max-width: 800px) {
-
-            .orbonix-navigation-menu {
-
-                justify-content:
-                    flex-start;
-
-                overflow-x: auto;
-
-                flex-wrap: nowrap;
-
-            }
-
-            .orbonix-nav-submenu {
-
-                position: fixed;
-
-                left: 10px !important;
-
-                right: 10px;
-
-                top: auto;
-
-                max-width:
-                    calc(100vw - 20px);
-
-                min-width: 0;
-
-            }
-
-            .orbonix-nav-submenu
-            .orbonix-nav-submenu {
-
-                position: relative;
-
-                left: 0 !important;
-
-                margin-left: 12px;
-
-            }
-
-        }
-
-    `;
-
-
-    document.head.appendChild(style);
-
-}
-
-
-/* =========================================================
-   HTML ESCAPE
-========================================================= */
-
-function escapeHTML(text) {
-
-    return String(text || "")
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
+    }
 
 }
 
@@ -1755,20 +1845,19 @@ function escapeHTML(text) {
    CLOSE NAVIGATION WHEN CLICKING OUTSIDE
 ========================================================= */
 
-function initializeNavigationOutsideClick() {
+function initializeOrbonixNavigationOutsideClick() {
 
     if (
         document.body.dataset
-            .orbonixNavigationOutsideClick
+            .orbonixOutsideClick
             === "true"
     ) {
         return;
     }
 
-
     document.body.dataset
-        .orbonixNavigationOutsideClick
-        = "true";
+        .orbonixOutsideClick =
+        "true";
 
 
     document.addEventListener(
@@ -1777,7 +1866,7 @@ function initializeNavigationOutsideClick() {
 
             const navigation =
                 document.getElementById(
-                    "orbonix-auto-navigation"
+                    "orbonix-navigation"
                 );
 
             if (!navigation) {
@@ -1796,89 +1885,13 @@ function initializeNavigationOutsideClick() {
 
             navigation
                 .querySelectorAll(
-                    ".orbonix-nav-open"
+                    ".orbonix-nav-item.open"
                 )
                 .forEach(item => {
 
                     item.classList.remove(
-                        "orbonix-nav-open"
+                        "open"
                     );
-
-                });
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   CLOSE OTHER DROPDOWNS AT SAME LEVEL
-========================================================= */
-
-function initializeNavigationDropdownLogic() {
-
-    if (
-        document.body.dataset
-            .orbonixNavigationDropdownLogic
-            === "true"
-    ) {
-        return;
-    }
-
-
-    document.body.dataset
-        .orbonixNavigationDropdownLogic
-        = "true";
-
-
-    document.addEventListener(
-        "click",
-        function(event) {
-
-            const arrow =
-                event.target.closest(
-                    ".orbonix-nav-arrow"
-                );
-
-            if (!arrow) {
-                return;
-            }
-
-
-            const currentItem =
-                arrow.closest(
-                    ".orbonix-nav-item"
-                );
-
-            if (!currentItem) {
-                return;
-            }
-
-
-            const parent =
-                currentItem.parentElement;
-
-            if (!parent) {
-                return;
-            }
-
-
-            parent
-                .querySelectorAll(
-                    ":scope > .orbonix-nav-item.orbonix-nav-open"
-                )
-                .forEach(item => {
-
-                    if (
-                        item !== currentItem
-                    ) {
-
-                        item.classList.remove(
-                            "orbonix-nav-open"
-                        );
-
-                    }
 
                 });
 
@@ -1894,15 +1907,13 @@ function initializeNavigationDropdownLogic() {
 
 function initializeOrbonix() {
 
+    initializeOrbonixNavigation();
+
+    initializeOrbonixNavigationOutsideClick();
+
     initializeOrbonixButtons();
 
     initializeOrbonixSearch();
-
-    createOrbonixNavigation();
-
-    initializeNavigationOutsideClick();
-
-    initializeNavigationDropdownLogic();
 
 }
 
@@ -1928,32 +1939,36 @@ if (
 
 
 /* =========================================================
-   SUPPORT DYNAMICALLY ADDED CONTENT
+   SUPPORT DYNAMIC CONTENT
 ========================================================= */
 
 const orbonixObserver =
-    new MutationObserver(() => {
+    new MutationObserver(
+        function() {
 
-        initializeOrbonixButtons();
+            initializeOrbonixButtons();
 
-        initializeOrbonixSearch();
+            initializeOrbonixSearch();
 
-        if (
-            !document.getElementById(
-                "orbonix-auto-navigation"
-            )
-        ) {
+            if (
+                !document.getElementById(
+                    "orbonix-navigation"
+                )
+            ) {
 
-            createOrbonixNavigation();
+                initializeOrbonixNavigation();
+
+            }
 
         }
+    );
 
-    });
 
+/*
 
-/* =========================================================
-   OBSERVER START
-========================================================= */
+   Start observer after body exists.
+
+*/
 
 if (document.body) {
 
@@ -1972,6 +1987,9 @@ if (document.body) {
    GLOBAL API
 ========================================================= */
 
+window.ORBONIX_BASE =
+    ORBONIX_BASE;
+
 window.ORBONIX_PAGES =
     ORBONIX_PAGES;
 
@@ -1987,6 +2005,5 @@ window.findOrbonixPage =
 window.initializeOrbonix =
     initializeOrbonix;
 
-window.createOrbonixNavigation =
-    createOrbonixNavigation;
-```
+window.initializeOrbonixNavigation =
+    initializeOrbonixNavigation;
