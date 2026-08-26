@@ -6,6 +6,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Planet X | ORBONIX</title>
+
 <style>
 
 * {
@@ -532,7 +534,7 @@ h1 {
 
 
 /* =========================================
-   WARNING
+   STATUS
 ========================================= */
 
 .status {
@@ -1077,7 +1079,7 @@ h1 {
 
 
 <a
-href="https://sites.google.com/view/kosmolearn/solar-system"
+href="/solar-system"
 class="return">
 
 ← RETURN TO SOLAR SYSTEM
@@ -1215,7 +1217,8 @@ UNKNOWN
 </div>
 
 <div class="stat-label">
-DIAMETER</div>
+DIAMETER
+</div>
 
 </div>
 
@@ -1249,7 +1252,9 @@ EXISTENCE
 </div>
 
 
-<!-- DESCRIPTION -->
+<!-- =========================================
+     DESCRIPTION
+========================================= -->
 
 <div class="description">
 
@@ -1293,7 +1298,9 @@ surveys.
 </div>
 
 
-<!-- FEATURES -->
+<!-- =========================================
+     FEATURES
+========================================= -->
 
 <div class="features-title">
 
@@ -1364,7 +1371,9 @@ direct observation of the proposed planet.
 </div>
 
 
-<!-- FACT -->
+<!-- =========================================
+     FACT
+========================================= -->
 
 <div class="fact">
 
@@ -1388,13 +1397,15 @@ known planet</strong> in our Solar System.
 </div>
 
 
-<!-- NAVIGATION -->
+<!-- =========================================
+     NAVIGATION
+========================================= -->
 
 <div class="navigation">
 
 
 <a
-href="https://sites.google.com/view/kosmolearn/solar-system"
+href="/solar-system"
 class="nav-button">
 
 ← RETURN TO SOLAR SYSTEM
@@ -1424,9 +1435,12 @@ ORBONIX · SOLAR SYSTEM
 
 <script>
 
+/* =========================================
+   STAR PARALLAX
+========================================= */
+
 const stars =
 document.querySelector(".stars");
-
 
 const smallStars =
 document.querySelector(".stars-small");
@@ -1461,6 +1475,52 @@ function(event) {
         )`;
 
 });
+
+
+/* =========================================
+   ORBONIX UNIVERSAL NAVIGATION
+========================================= */
+
+document.querySelectorAll(
+    'a[href^="/"]'
+).forEach(function(link) {
+
+    link.addEventListener(
+        "click",
+        function(event) {
+
+            const path =
+                link.getAttribute("href");
+
+            if (!path) return;
+
+            /*
+             * Relative navigation.
+             *
+             * The domain is NEVER written here.
+             *
+             * Example:
+             *
+             * /solar-system
+             *
+             * automatically becomes:
+             *
+             * https://CURRENT-DOMAIN/solar-system
+             *
+             * So if ORBONIX moves from one
+             * hosting provider to another,
+             * these links continue working.
+             */
+
+            event.preventDefault();
+
+            window.location.href = path;
+
+        }
+    );
+
+});
+
 
 </script>
 
