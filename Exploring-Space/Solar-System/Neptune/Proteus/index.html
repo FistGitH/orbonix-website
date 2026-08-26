@@ -6,6 +6,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Proteus | ORBONIX</title>
+
 <style>
 
 * {
@@ -24,10 +26,19 @@ body {
     overflow-x: hidden;
 }
 
+
+/* =========================================
+   PAGE
+========================================= */
+
 .proteus-page {
+
     position: relative;
+
     min-height: 1750px;
+
     padding: 55px 20px 100px;
+
     overflow: hidden;
 
     background:
@@ -39,10 +50,19 @@ body {
         #020308;
 }
 
+
+/* =========================================
+   STARS
+========================================= */
+
 .stars {
+
     position: absolute;
+
     inset: -20%;
+
     pointer-events: none;
+
     opacity: .38;
 
     background-image:
@@ -53,13 +73,20 @@ body {
         );
 
     background-size: 75px 75px;
-    transition: transform 1.5s ease;
+
+    transition:
+        transform 1.5s ease;
 }
 
+
 .stars-small {
+
     position: absolute;
+
     inset: -20%;
+
     pointer-events: none;
+
     opacity: .14;
 
     background-image:
@@ -70,131 +97,197 @@ body {
         );
 
     background-size: 32px 32px;
-    transition: transform 2s ease;
+
+    transition:
+        transform 2s ease;
 }
 
 
-/* HEADER */
+/* =========================================
+   HEADER
+========================================= */
 
 .header {
+
     position: relative;
+
     z-index: 100;
+
     max-width: 950px;
+
     margin: auto;
+
     text-align: center;
 }
 
+
 .return {
+
     display: inline-flex;
+
     align-items: center;
 
     padding: 12px 20px;
+
     margin-bottom: 35px;
 
-    color: rgba(255,255,255,.7);
+    color:
+        rgba(255,255,255,.7);
 
-    border: 1px solid rgba(255,255,255,.22);
+    border:
+        1px solid
+        rgba(255,255,255,.22);
 
     text-decoration: none;
 
     font-size: 9px;
+
     letter-spacing: 3px;
 
-    transition: .35s ease;
+    transition:
+        .35s ease;
 }
+
 
 .return:hover {
+
     color: #020308;
+
     background: white;
+
     border-color: white;
-    transform: translateY(-4px);
+
+    transform:
+        translateY(-4px);
 }
 
+
 .label {
+
     margin-bottom: 18px;
 
-    color: rgba(255,255,255,.4);
+    color:
+        rgba(255,255,255,.4);
 
     font-size: 10px;
+
     letter-spacing: 5px;
 }
 
+
 h1 {
+
     margin: 0;
 
-    font-size: clamp(55px,9vw,105px);
+    font-size:
+        clamp(55px,9vw,105px);
 
     line-height: .9;
+
     letter-spacing: 7px;
 }
 
-.subtitle {
-    max-width: 720px;
-    margin: 25px auto 0;
 
-    color: rgba(255,255,255,.52);
+.subtitle {
+
+    max-width: 720px;
+
+    margin:
+        25px auto 0;
+
+    color:
+        rgba(255,255,255,.52);
 
     font-size: 14px;
+
     line-height: 1.8;
 }
 
 
-/* PROTEUS */
+/* =========================================
+   PROTEUS AREA
+========================================= */
 
 .proteus-area {
+
     position: relative;
 
     width: 720px;
+
     height: 720px;
 
-    margin: 65px auto 90px;
+    margin:
+        65px auto 90px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 }
 
 
-/* ORBITS */
+/* =========================================
+   ORBITS
+========================================= */
 
 .orbit {
+
     position: absolute;
 
     left: 50%;
+
     top: 50%;
 
-    transform: translate(-50%,-50%);
+    transform:
+        translate(-50%,-50%);
 
-    border: 1px solid rgba(145,160,180,.15);
+    border:
+        1px solid
+        rgba(145,160,180,.15);
 
     border-radius: 50%;
 
     pointer-events: none;
 }
 
+
 .orbit-1 {
+
     width: 270px;
+
     height: 270px;
 }
 
+
 .orbit-2 {
+
     width: 420px;
+
     height: 420px;
 }
 
+
 .orbit-3 {
+
     width: 590px;
+
     height: 590px;
 }
 
 
-/* PROTEUS IMAGE */
+/* =========================================
+   PROTEUS IMAGE
+========================================= */
 
 .proteus {
+
     position: relative;
+
     z-index: 20;
 
     width: 285px;
+
     height: 285px;
 
     display: block;
@@ -203,13 +296,17 @@ h1 {
 
     text-decoration: none;
 
-    overflow: hidden;
+    overflow: visible;
 
-    transition: transform .45s ease;
+    transition:
+        transform .45s ease;
 }
 
+
 .proteus img {
+
     width: 100%;
+
     height: 100%;
 
     display: block;
@@ -221,247 +318,373 @@ h1 {
     background: #11151a;
 
     box-shadow:
-        0 0 45px rgba(160,175,195,.3),
-        0 0 100px rgba(100,120,145,.13);
 
-    transition: .45s ease;
+        0 0 45px
+        rgba(160,175,195,.3),
+
+        0 0 100px
+        rgba(100,120,145,.13);
+
+    transition:
+        .45s ease;
 }
+
 
 .proteus:hover {
-    transform: scale(1.07);
+
+    transform:
+        scale(1.07);
 }
+
 
 .proteus:hover img {
+
     box-shadow:
-        0 0 60px rgba(190,205,225,.42),
-        0 0 125px rgba(130,150,175,.2);
+
+        0 0 60px
+        rgba(190,205,225,.42),
+
+        0 0 125px
+        rgba(130,150,175,.2);
 }
 
+
 .proteus-name {
+
     position: absolute;
 
     left: 50%;
-    bottom: -45px;
 
-    transform: translateX(-50%);
+    bottom: -42px;
+
+    transform:
+        translateX(-50%);
 
     white-space: nowrap;
 
     font-size: 10px;
+
     letter-spacing: 5px;
 
-    color: rgba(255,255,255,.75);
+    color:
+        rgba(255,255,255,.75);
+
+    pointer-events: none;
 }
 
 
-/* DOTS */
+/* =========================================
+   DECORATIVE DOTS
+========================================= */
 
 .dot {
+
     position: absolute;
 
     width: 11px;
+
     height: 11px;
 
     border-radius: 50%;
 
-    background: rgba(220,225,235,.85);
+    background:
+        rgba(220,225,235,.85);
 
     box-shadow:
-        0 0 15px rgba(190,210,240,.4);
+        0 0 15px
+        rgba(190,210,240,.4);
 }
+
 
 .dot-1 {
-    left: calc(50% + 135px);
-    top: calc(50% - 115px);
+
+    left:
+        calc(50% + 135px);
+
+    top:
+        calc(50% - 115px);
 }
+
 
 .dot-2 {
-    left: calc(50% - 215px);
-    top: calc(50% + 95px);
+
+    left:
+        calc(50% - 215px);
+
+    top:
+        calc(50% + 95px);
 }
+
 
 .dot-3 {
-    left: calc(50% + 275px);
-    top: calc(50% + 20px);
+
+    left:
+        calc(50% + 275px);
+
+    top:
+        calc(50% + 20px);
 }
 
 
-/* CONTENT */
+/* =========================================
+   CONTENT
+========================================= */
 
 .content {
+
     position: relative;
+
     z-index: 10;
 
-    width: min(1050px,100%);
+    width:
+        min(1050px,100%);
 
     margin: auto;
 }
 
 
-/* STATS */
+/* =========================================
+   STATS
+========================================= */
 
 .stats {
+
     display: grid;
 
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns:
+        repeat(3,1fr);
 
     gap: 1px;
 
-    background: rgba(255,255,255,.1);
+    background:
+        rgba(255,255,255,.1);
 
-    border: 1px solid rgba(255,255,255,.1);
+    border:
+        1px solid
+        rgba(255,255,255,.1);
 }
+
 
 .stat {
+
     padding: 30px;
 
-    background: rgba(5,7,13,.96);
+    background:
+        rgba(5,7,13,.96);
 
-    transition: .35s ease;
+    transition:
+        .35s ease;
 }
+
 
 .stat:hover {
-    transform: translateY(-5px);
 
-    background: rgba(255,255,255,.04);
+    transform:
+        translateY(-5px);
+
+    background:
+        rgba(255,255,255,.04);
 }
 
+
 .stat-value {
+
     margin-bottom: 9px;
 
     font-size: 21px;
+
     font-weight: bold;
 }
 
+
 .stat-label {
-    color: rgba(255,255,255,.4);
+
+    color:
+        rgba(255,255,255,.4);
 
     font-size: 9px;
+
     letter-spacing: 2px;
 }
 
 
-/* DESCRIPTION */
+/* =========================================
+   DESCRIPTION
+========================================= */
 
 .description {
+
     margin-top: 60px;
 
     padding: 40px;
 
-    border: 1px solid rgba(255,255,255,.1);
+    border:
+        1px solid
+        rgba(255,255,255,.1);
 
-    background: rgba(255,255,255,.025);
+    background:
+        rgba(255,255,255,.025);
 }
 
+
 .description-title {
+
     margin-bottom: 20px;
 
     font-size: 11px;
+
     letter-spacing: 4px;
 }
 
+
 .description-text {
+
     max-width: 900px;
 
-    color: rgba(255,255,255,.58);
+    color:
+        rgba(255,255,255,.58);
 
     font-size: 14px;
+
     line-height: 1.9;
 }
 
 
-/* FEATURES */
+/* =========================================
+   FEATURES
+========================================= */
 
 .features-title {
+
     margin-top: 60px;
+
     margin-bottom: 25px;
 
     text-align: center;
 
-    color: rgba(255,255,255,.45);
+    color:
+        rgba(255,255,255,.45);
 
     font-size: 10px;
+
     letter-spacing: 5px;
 }
 
+
 .features {
+
     display: grid;
 
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns:
+        repeat(3,1fr);
 
     gap: 15px;
 }
 
+
 .feature {
+
     padding: 28px;
 
-    border: 1px solid rgba(255,255,255,.1);
+    border:
+        1px solid
+        rgba(255,255,255,.1);
 
-    background: rgba(255,255,255,.02);
+    background:
+        rgba(255,255,255,.02);
 
-    transition: .35s ease;
+    transition:
+        .35s ease;
 }
+
 
 .feature:hover {
-    transform: translateY(-6px);
 
-    border-color: rgba(180,205,235,.4);
+    transform:
+        translateY(-6px);
 
-    background: rgba(255,255,255,.04);
+    border-color:
+        rgba(180,205,235,.4);
+
+    background:
+        rgba(255,255,255,.04);
 }
 
+
 .feature-title {
+
     margin-bottom: 12px;
 
     font-size: 11px;
+
     letter-spacing: 2px;
 }
 
+
 .feature-text {
-    color: rgba(255,255,255,.5);
+
+    color:
+        rgba(255,255,255,.5);
 
     font-size: 12px;
+
     line-height: 1.7;
 }
 
 
-/* FACT */
+/* =========================================
+   FACT
+========================================= */
 
 .fact {
+
     margin-top: 60px;
 
     padding: 40px;
 
     text-align: center;
 
-    border: 1px solid rgba(255,255,255,.12);
+    border:
+        1px solid
+        rgba(255,255,255,.12);
 
-    background: rgba(255,255,255,.025);
+    background:
+        rgba(255,255,255,.025);
 }
 
+
 .fact-label {
+
     margin-bottom: 16px;
 
-    color: rgba(255,255,255,.42);
+    color:
+        rgba(255,255,255,.42);
 
     font-size: 9px;
+
     letter-spacing: 4px;
 }
 
+
 .fact-text {
+
     max-width: 800px;
 
     margin: auto;
 
-    font-size: clamp(18px,3vw,27px);
+    font-size:
+        clamp(18px,3vw,27px);
 
     line-height: 1.5;
 }
 
 
-/* NAVIGATION */
+/* =========================================
+   NAVIGATION
+========================================= */
 
 .navigation {
+
     display: flex;
 
     justify-content: center;
@@ -473,144 +696,228 @@ h1 {
     flex-wrap: wrap;
 }
 
+
 .nav-button {
+
     display: inline-flex;
 
     align-items: center;
+
     justify-content: center;
 
     padding: 13px 22px;
 
-    color: rgba(255,255,255,.75);
+    color:
+        rgba(255,255,255,.75);
 
-    border: 1px solid rgba(255,255,255,.2);
+    border:
+        1px solid
+        rgba(255,255,255,.2);
 
     text-decoration: none;
 
     font-size: 9px;
+
     letter-spacing: 2px;
 
-    transition: .35s ease;
+    transition:
+        .35s ease;
 }
 
+
 .nav-button:hover {
+
     color: #020308;
 
     background: white;
 
     border-color: white;
 
-    transform: translateY(-4px);
+    transform:
+        translateY(-4px);
 }
 
 
-/* CREDIT */
+/* =========================================
+   CREDIT
+========================================= */
 
 .credit {
+
     margin-top: 30px;
 
     text-align: center;
 
-    color: rgba(255,255,255,.3);
+    color:
+        rgba(255,255,255,.3);
 
     font-size: 9px;
+
     line-height: 1.7;
 }
 
 
-/* MOBILE */
+/* =========================================
+   MOBILE
+========================================= */
 
 @media(max-width:800px) {
 
     .proteus-area {
+
         width: 500px;
+
         height: 500px;
     }
 
+
     .proteus {
+
         width: 210px;
+
         height: 210px;
     }
 
+
     .orbit-1 {
+
         width: 230px;
+
         height: 230px;
     }
 
+
     .orbit-2 {
+
         width: 350px;
+
         height: 350px;
     }
 
+
     .orbit-3 {
+
         width: 470px;
+
         height: 470px;
     }
 
+
     .stats {
+
         grid-template-columns: 1fr;
     }
 
+
     .features {
+
         grid-template-columns: 1fr;
     }
+
 }
 
 
 @media(max-width:500px) {
 
     .proteus-page {
-        padding: 45px 15px 70px;
+
+        padding:
+            45px 15px 70px;
     }
 
+
     .proteus-area {
+
         width: 320px;
+
         height: 320px;
 
         margin-top: 45px;
     }
 
+
     .proteus {
+
         width: 145px;
+
         height: 145px;
     }
 
+
     .orbit-1 {
+
         width: 170px;
+
         height: 170px;
     }
 
+
     .orbit-2 {
+
         width: 240px;
+
         height: 240px;
     }
 
+
     .orbit-3 {
+
         width: 310px;
+
         height: 310px;
     }
 
+
     .dot-1 {
-        left: calc(50% + 65px);
-        top: calc(50% - 60px);
+
+        left:
+            calc(50% + 65px);
+
+        top:
+            calc(50% - 60px);
     }
+
 
     .dot-2 {
-        left: calc(50% - 105px);
-        top: calc(50% + 50px);
+
+        left:
+            calc(50% - 105px);
+
+        top:
+            calc(50% + 50px);
     }
+
 
     .dot-3 {
-        left: calc(50% + 125px);
-        top: calc(50% + 15px);
+
+        left:
+            calc(50% + 125px);
+
+        top:
+            calc(50% + 15px);
     }
 
+
     .description {
+
         padding: 25px;
     }
 
+
     .fact {
-        padding: 28px 20px;
+
+        padding:
+            28px 20px;
+    }
+
+
+    .proteus-name {
+
+        bottom: -35px;
+
+        font-size: 9px;
+
+        letter-spacing: 4px;
     }
 
 }
@@ -624,17 +931,23 @@ h1 {
 
 <section class="proteus-page">
 
+
 <div class="stars"></div>
 
 <div class="stars-small"></div>
 
 
-<!-- HEADER -->
+<!-- =========================================
+     HEADER
+========================================= -->
 
 <div class="header">
 
+
+<!-- RELATIVE URL — DOMAIN CAN CHANGE -->
+
 <a
-href="https://sites.google.com/view/kosmolearn/solar-system/neptune"
+href="../"
 class="return">
 
 ← RETURN TO NEPTUNE
@@ -664,12 +977,16 @@ by the violent history of the outer Solar System.
 
 </div>
 
+
 </div>
 
 
-<!-- PROTEUS -->
+<!-- =========================================
+     PROTEUS
+========================================= -->
 
 <div class="proteus-area">
+
 
 <div class="orbit orbit-1"></div>
 
@@ -689,6 +1006,7 @@ by the violent history of the outer Solar System.
 href="#PROTEUS"
 class="proteus">
 
+
 <img
 src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Proteus_%28Voyager_2%29.jpg"
 alt="Proteus - Voyager 2">
@@ -700,12 +1018,16 @@ PROTEUS
 
 </div>
 
+
 </a>
+
 
 </div>
 
 
-<!-- CONTENT -->
+<!-- =========================================
+     CONTENT
+========================================= -->
 
 <div class="content">
 
@@ -713,6 +1035,7 @@ PROTEUS
 <!-- STATS -->
 
 <div class="stats">
+
 
 <div class="stat">
 
@@ -791,12 +1114,16 @@ SHAPE
 
 </div>
 
+
 </div>
 
 
-<!-- DESCRIPTION -->
+<!-- =========================================
+     DESCRIPTION
+========================================= -->
 
 <div class="description">
+
 
 <div class="description-title">
 
@@ -831,10 +1158,13 @@ in just over one Earth day.
 
 </div>
 
+
 </div>
 
 
-<!-- FEATURES -->
+<!-- =========================================
+     FEATURES
+========================================= -->
 
 <div class="features-title">
 
@@ -848,11 +1178,13 @@ PROTEUS FEATURES
 
 <div class="feature">
 
+
 <div class="feature-title">
 
 HEAVILY CRATERED
 
 </div>
+
 
 <div class="feature-text">
 
@@ -862,16 +1194,19 @@ with other objects.
 
 </div>
 
+
 </div>
 
 
 <div class="feature">
+
 
 <div class="feature-title">
 
 IRREGULAR SHAPE
 
 </div>
+
 
 <div class="feature-text">
 
@@ -881,16 +1216,19 @@ distinctive irregular appearance.
 
 </div>
 
+
 </div>
 
 
 <div class="feature">
+
 
 <div class="feature-title">
 
 VOYAGER 2
 
 </div>
+
 
 <div class="feature-text">
 
@@ -900,14 +1238,19 @@ during its historic 1989 encounter.
 
 </div>
 
-</div>
 
 </div>
 
 
-<!-- FACT -->
+</div>
+
+
+<!-- =========================================
+     FACT
+========================================= -->
 
 <div class="fact">
+
 
 <div class="fact-label">
 
@@ -919,35 +1262,47 @@ DID YOU KNOW?
 <div class="fact-text">
 
 Proteus is larger than some spherical
-moons, but it remains <strong>irregularly shaped</strong>
+moons, but it remains
+<strong>irregularly shaped</strong>
 because its gravity is too weak to pull
 it into a sphere.
 
 </div>
 
+
 </div>
 
 
-<!-- NAVIGATION -->
+<!-- =========================================
+     NAVIGATION
+========================================= -->
 
 <div class="navigation">
 
+
 <a
-href="https://sites.google.com/view/kosmolearn/solar-system/neptune"
+href="../"
 class="nav-button">
 
 ← RETURN TO NEPTUNE
 
 </a>
 
+
 </div>
 
+
+<!-- =========================================
+     CREDIT
+========================================= -->
 
 <div class="credit">
 
 IMAGE:
 NASA / JPL / VOYAGER 2
+
 <br>
+
 PROTEUS IMAGE VIA WIKIMEDIA COMMONS
 
 </div>
@@ -955,10 +1310,15 @@ PROTEUS IMAGE VIA WIKIMEDIA COMMONS
 
 </div>
 
+
 </section>
 
 
 <script>
+
+/* =========================================
+   STAR PARALLAX
+========================================= */
 
 const stars =
 document.querySelector(".stars");
@@ -972,6 +1332,7 @@ document.addEventListener(
 "mousemove",
 
 function(event) {
+
 
     const x =
         event.clientX /
@@ -997,6 +1358,7 @@ function(event) {
         )`;
 
 });
+
 
 </script>
 
