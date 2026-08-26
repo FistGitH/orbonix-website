@@ -6,6 +6,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Venus | ORBONIX</title>
+
 <style>
 
 * {
@@ -30,10 +32,15 @@ body {
 ========================================= */
 
 .venus-page {
+
     position: relative;
+
     min-height: 1450px;
+
     padding: 55px 20px 100px;
+
     overflow: hidden;
+
     background: #020308;
 }
 
@@ -43,9 +50,13 @@ body {
 ========================================= */
 
 .stars {
+
     position: absolute;
+
     inset: -20%;
+
     pointer-events: none;
+
     opacity: .32;
 
     background-image:
@@ -57,14 +68,19 @@ body {
 
     background-size: 75px 75px;
 
-    transition: transform 1.5s ease;
+    transition:
+        transform 1.5s ease;
 }
 
 
 .stars-small {
+
     position: absolute;
+
     inset: -20%;
+
     pointer-events: none;
+
     opacity: .13;
 
     background-image:
@@ -76,7 +92,8 @@ body {
 
     background-size: 32px 32px;
 
-    transition: transform 2s ease;
+    transition:
+        transform 2s ease;
 }
 
 
@@ -85,56 +102,84 @@ body {
 ========================================= */
 
 .header {
+
     position: relative;
+
     z-index: 10;
 
     max-width: 950px;
+
     margin: auto;
 
     text-align: center;
 }
 
 
+/* =========================================
+   RETURN BUTTON
+========================================= */
+
 .return {
+
     display: inline-flex;
+
     align-items: center;
+    justify-content: center;
 
     padding: 12px 20px;
+
     margin-bottom: 35px;
 
-    border: 1px solid rgba(255,255,255,.22);
+    border:
+        1px solid
+        rgba(255,255,255,.22);
 
-    color: rgba(255,255,255,.7);
+    color:
+        rgba(255,255,255,.7);
 
     text-decoration: none;
 
     font-size: 9px;
+
     letter-spacing: 3px;
 
-    transition: .35s ease;
+    transition:
+        .35s ease;
 }
 
 
 .return:hover {
+
     background: white;
+
     color: #020308;
+
     border-color: white;
 
-    transform: translateY(-4px);
+    transform:
+        translateY(-4px);
 }
 
 
+/* =========================================
+   HEADER TEXT
+========================================= */
+
 .label {
+
     margin-bottom: 18px;
 
-    color: rgba(255,255,255,.4);
+    color:
+        rgba(255,255,255,.4);
 
     font-size: 10px;
+
     letter-spacing: 5px;
 }
 
 
 h1 {
+
     margin: 0;
 
     font-size:
@@ -147,11 +192,14 @@ h1 {
 
 
 .subtitle {
+
     max-width: 720px;
 
-    margin: 25px auto 0;
+    margin:
+        25px auto 0;
 
-    color: rgba(255,255,255,.52);
+    color:
+        rgba(255,255,255,.52);
 
     font-size: 14px;
 
@@ -168,13 +216,16 @@ h1 {
     position: relative;
 
     width: 620px;
+
     height: 620px;
 
-    margin: 65px auto 90px;
+    margin:
+        65px auto 90px;
 
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 }
 
@@ -188,6 +239,7 @@ h1 {
     position: absolute;
 
     width: 570px;
+
     height: 190px;
 
     border:
@@ -200,11 +252,32 @@ h1 {
         rotate(-18deg);
 
     pointer-events: none;
+
+    animation:
+        orbitPulse 5s
+        ease-in-out infinite;
+}
+
+
+@keyframes orbitPulse {
+
+    0%,100% {
+
+        opacity: .45;
+
+    }
+
+    50% {
+
+        opacity: .9;
+
+    }
+
 }
 
 
 /* =========================================
-   VENUS IMAGE
+   VENUS
 ========================================= */
 
 .venus {
@@ -212,6 +285,7 @@ h1 {
     position: relative;
 
     width: 470px;
+
     height: 470px;
 
     border-radius: 50%;
@@ -230,7 +304,10 @@ h1 {
         rgba(220,170,90,.14);
 
     transition:
-        transform 1s ease;
+        transform .25s ease-out;
+
+    will-change:
+        transform;
 }
 
 
@@ -239,6 +316,7 @@ h1 {
     position: absolute;
 
     width: 100%;
+
     height: 100%;
 
     object-fit: cover;
@@ -246,6 +324,37 @@ h1 {
     object-position: center;
 
     display: block;
+
+    user-select: none;
+
+    -webkit-user-drag: none;
+}
+
+
+/* =========================================
+   VENUS ATMOSPHERE
+========================================= */
+
+.venus::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 2;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            rgba(255,220,150,.12),
+            transparent 42%
+        );
+
+    pointer-events: none;
 }
 
 
@@ -260,6 +369,8 @@ h1 {
     position: absolute;
 
     inset: 0;
+
+    z-index: 3;
 
     border-radius: 50%;
 
@@ -357,7 +468,8 @@ h1 {
     background:
         rgba(5,7,13,.95);
 
-    transition: .35s ease;
+    transition:
+        .35s ease;
 }
 
 
@@ -462,7 +574,8 @@ h1 {
     background:
         rgba(255,255,255,.02);
 
-    transition: .35s ease;
+    transition:
+        .35s ease;
 }
 
 
@@ -570,6 +683,7 @@ h1 {
     .planet-area {
 
         width: 450px;
+
         height: 450px;
     }
 
@@ -577,6 +691,7 @@ h1 {
     .venus {
 
         width: 350px;
+
         height: 350px;
     }
 
@@ -584,19 +699,22 @@ h1 {
     .orbit {
 
         width: 420px;
+
         height: 140px;
     }
 
 
     .info-grid {
 
-        grid-template-columns: 1fr;
+        grid-template-columns:
+            1fr;
     }
 
 
     .features {
 
-        grid-template-columns: 1fr;
+        grid-template-columns:
+            1fr;
     }
 
 }
@@ -614,6 +732,7 @@ h1 {
     .planet-area {
 
         width: 310px;
+
         height: 310px;
 
         margin-top: 50px;
@@ -623,6 +742,7 @@ h1 {
     .venus {
 
         width: 245px;
+
         height: 245px;
     }
 
@@ -630,6 +750,7 @@ h1 {
     .orbit {
 
         width: 290px;
+
         height: 100px;
     }
 
@@ -637,6 +758,47 @@ h1 {
     .description {
 
         padding: 25px;
+    }
+
+
+    .return {
+
+        font-size: 8px;
+
+        letter-spacing: 2px;
+
+        padding:
+            11px 15px;
+    }
+
+}
+
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media(prefers-reduced-motion: reduce) {
+
+    html {
+
+        scroll-behavior: auto;
+    }
+
+    .orbit {
+
+        animation: none;
+    }
+
+    .venus {
+
+        transition: none;
+    }
+
+    .stars,
+    .stars-small {
+
+        transition: none;
     }
 
 }
@@ -657,13 +819,15 @@ h1 {
 <div class="stars-small"></div>
 
 
-<!-- HEADER -->
+<!-- =========================================
+     HEADER
+========================================= -->
 
 <div class="header">
 
 
 <a
-href="https://sites.google.com/view/kosmolearn/solar-system"
+href="/solar-system"
 class="return">
 
 ← RETURN TO SOLAR SYSTEM
@@ -697,7 +861,9 @@ and extreme heat.
 </div>
 
 
-<!-- PLANET -->
+<!-- =========================================
+     PLANET
+========================================= -->
 
 <div class="planet-area">
 
@@ -709,7 +875,7 @@ and extreme heat.
 
 <img
 src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Venus-real%20color.jpg"
-alt="Venus">
+alt="Venus — real color">
 
 </div>
 
@@ -724,7 +890,9 @@ VENUS · REAL COLOR
 </div>
 
 
-<!-- INFORMATION -->
+<!-- =========================================
+     INFORMATION
+========================================= -->
 
 <div class="info">
 
@@ -813,7 +981,9 @@ AVERAGE SURFACE TEMPERATURE
 </div>
 
 
-<!-- DESCRIPTION -->
+<!-- =========================================
+     DESCRIPTION
+========================================= -->
 
 <div class="description">
 
@@ -846,7 +1016,9 @@ about 225 Earth days.
 </div>
 
 
-<!-- FEATURES -->
+<!-- =========================================
+     FEATURES
+========================================= -->
 
 <div class="features">
 
@@ -910,7 +1082,9 @@ clouds made largely of sulfuric acid.
 </div>
 
 
-<!-- FACT -->
+<!-- =========================================
+     FACT
+========================================= -->
 
 <div class="fact">
 
@@ -936,6 +1110,10 @@ in only about 225 days.
 
 </div>
 
+
+<!-- =========================================
+     CREDIT
+========================================= -->
 
 <div class="credit">
 
@@ -1031,6 +1209,21 @@ function(event) {
         )`;
 
 });
+
+
+/* =========================================
+   MOBILE TOUCH RESET
+========================================= */
+
+window.addEventListener(
+"mouseleave",
+function() {
+
+    venus.style.transform =
+        "translate(0,0)";
+
+});
+
 
 </script>
 
