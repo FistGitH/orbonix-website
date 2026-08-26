@@ -72,7 +72,8 @@ body {
 
     background-size: 75px 75px;
 
-    transition: transform 1.5s ease;
+    transition:
+        transform 1.5s ease;
 }
 
 
@@ -95,7 +96,8 @@ body {
 
     background-size: 32px 32px;
 
-    transition: transform 2s ease;
+    transition:
+        transform 2s ease;
 }
 
 
@@ -140,7 +142,8 @@ body {
 
     letter-spacing: 3px;
 
-    transition: .35s ease;
+    transition:
+        .35s ease;
 }
 
 
@@ -187,7 +190,8 @@ h1 {
 
     max-width: 720px;
 
-    margin: 25px auto 0;
+    margin:
+        25px auto 0;
 
     color:
         rgba(255,255,255,.52);
@@ -207,6 +211,7 @@ h1 {
     position: relative;
 
     width: 620px;
+
     height: 620px;
 
     margin:
@@ -229,6 +234,7 @@ h1 {
     position: absolute;
 
     width: 570px;
+
     height: 190px;
 
     border:
@@ -253,6 +259,7 @@ h1 {
     position: relative;
 
     width: 470px;
+
     height: 470px;
 
     border-radius: 50%;
@@ -275,11 +282,19 @@ h1 {
 }
 
 
+.moon:hover {
+
+    transform:
+        scale(1.025);
+}
+
+
 .moon img {
 
     position: absolute;
 
     width: 100%;
+
     height: 100%;
 
     object-fit: cover;
@@ -287,6 +302,16 @@ h1 {
     object-position: center;
 
     display: block;
+
+    transition:
+        transform 1.2s ease;
+}
+
+
+.moon:hover img {
+
+    transform:
+        scale(1.035);
 }
 
 
@@ -398,7 +423,8 @@ h1 {
     background:
         rgba(5,7,13,.95);
 
-    transition: .35s ease;
+    transition:
+        .35s ease;
 }
 
 
@@ -503,7 +529,8 @@ h1 {
     background:
         rgba(255,255,255,.02);
 
-    transition: .35s ease;
+    transition:
+        .35s ease;
 }
 
 
@@ -514,6 +541,9 @@ h1 {
 
     border-color:
         rgba(255,255,255,.4);
+
+    background:
+        rgba(255,255,255,.04);
 }
 
 
@@ -581,6 +611,10 @@ h1 {
 }
 
 
+/* =========================================
+   CREDIT
+========================================= */
+
 .credit {
 
     margin-top: 25px;
@@ -607,6 +641,7 @@ h1 {
     .moon-area {
 
         width: 450px;
+
         height: 450px;
     }
 
@@ -614,6 +649,7 @@ h1 {
     .moon {
 
         width: 350px;
+
         height: 350px;
     }
 
@@ -621,6 +657,7 @@ h1 {
     .orbit {
 
         width: 420px;
+
         height: 140px;
     }
 
@@ -651,6 +688,7 @@ h1 {
     .moon-area {
 
         width: 310px;
+
         height: 310px;
 
         margin-top: 50px;
@@ -660,6 +698,7 @@ h1 {
     .moon {
 
         width: 245px;
+
         height: 245px;
     }
 
@@ -667,13 +706,32 @@ h1 {
     .orbit {
 
         width: 290px;
+
         height: 100px;
+    }
+
+
+    .planet-label {
+
+        font-size: 7px;
+
+        letter-spacing: 2px;
+
+        padding:
+            8px 12px;
     }
 
 
     .description {
 
         padding: 25px;
+    }
+
+
+    .fact {
+
+        padding:
+            28px 20px;
     }
 
 }
@@ -702,10 +760,10 @@ h1 {
 
 
 <a
-href="https://sites.google.com/view/kosmolearn/solar-system/earth"
+href="/"
 class="return">
 
-← RETURN TO EARTH
+← RETURN TO HOME
 
 </a>
 
