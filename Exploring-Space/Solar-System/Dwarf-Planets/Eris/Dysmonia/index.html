@@ -6,6 +6,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Dysnomia | ORBONIX</title>
+
 <style>
 
 * {
@@ -24,10 +26,19 @@ body {
     overflow-x: hidden;
 }
 
+
+/* =========================================
+   PAGE
+========================================= */
+
 .dysnomia-page {
+
     position: relative;
+
     min-height: 1500px;
+
     padding: 55px 20px 100px;
+
     overflow: hidden;
 
     background:
@@ -39,12 +50,19 @@ body {
         #020308;
 }
 
-/* STARS */
+
+/* =========================================
+   STARS
+========================================= */
 
 .stars {
+
     position: absolute;
+
     inset: -20%;
+
     pointer-events: none;
+
     opacity: .38;
 
     background-image:
@@ -57,12 +75,18 @@ body {
     background-size: 75px 75px;
 
     transition: transform 1.5s ease;
+
 }
 
+
 .stars-small {
+
     position: absolute;
+
     inset: -20%;
+
     pointer-events: none;
+
     opacity: .14;
 
     background-image:
@@ -75,26 +99,43 @@ body {
     background-size: 32px 32px;
 
     transition: transform 2s ease;
+
 }
 
-/* HEADER */
+
+/* =========================================
+   HEADER
+========================================= */
 
 .header {
+
     position: relative;
+
     z-index: 100;
+
     max-width: 950px;
+
     margin: auto;
+
     text-align: center;
+
 }
 
+
 .return {
+
     display: inline-flex;
+
     align-items: center;
 
+    justify-content: center;
+
     padding: 12px 20px;
+
     margin-bottom: 35px;
 
-    color: rgba(255,255,255,.7);
+    color:
+        rgba(255,255,255,.7);
 
     border:
         1px solid
@@ -103,63 +144,94 @@ body {
     text-decoration: none;
 
     font-size: 9px;
+
     letter-spacing: 3px;
 
     transition: .35s ease;
+
 }
+
 
 .return:hover {
+
     color: #020308;
+
     background: white;
+
     border-color: white;
-    transform: translateY(-4px);
+
+    transform:
+        translateY(-4px);
+
 }
+
 
 .label {
+
     margin-bottom: 18px;
 
-    color: rgba(255,255,255,.4);
+    color:
+        rgba(255,255,255,.4);
 
     font-size: 10px;
+
     letter-spacing: 5px;
+
 }
 
+
 h1 {
+
     margin: 0;
 
     font-size:
         clamp(50px,9vw,105px);
 
     line-height: .9;
+
     letter-spacing: 7px;
+
 }
 
+
 .subtitle {
+
     max-width: 720px;
 
     margin:
         25px auto 0;
 
-    color: rgba(255,255,255,.52);
+    color:
+        rgba(255,255,255,.52);
 
     font-size: 14px;
+
     line-height: 1.8;
+
 }
 
-/* MAIN VISUAL — TEXT ONLY */
+
+/* =========================================
+   MAIN VISUAL
+========================================= */
 
 .dysnomia-area {
+
     position: relative;
 
-    width: min(900px,100%);
+    width:
+        min(900px,100%);
 
     margin:
         100px auto 110px;
 
     text-align: center;
+
 }
 
+
 .dysnomia-title {
+
     font-size:
         clamp(35px,7vw,75px);
 
@@ -169,19 +241,30 @@ h1 {
         rgba(255,255,255,.9);
 
     margin-bottom: 20px;
+
+    text-shadow:
+        0 0 30px
+        rgba(150,140,190,.18);
+
 }
 
+
 .dysnomia-line {
+
     width: 180px;
+
     height: 1px;
 
     margin: auto;
 
     background:
         rgba(255,255,255,.25);
+
 }
 
+
 .dysnomia-description {
+
     max-width: 650px;
 
     margin:
@@ -195,23 +278,34 @@ h1 {
     line-height: 1.8;
 
     letter-spacing: 1px;
+
 }
 
-/* CONTENT */
+
+/* =========================================
+   CONTENT
+========================================= */
 
 .content {
+
     position: relative;
+
     z-index: 10;
 
     width:
         min(1050px,100%);
 
     margin: auto;
+
 }
 
-/* STATS */
+
+/* =========================================
+   STATS
+========================================= */
 
 .stats {
+
     display: grid;
 
     grid-template-columns:
@@ -225,43 +319,62 @@ h1 {
     border:
         1px solid
         rgba(255,255,255,.1);
+
 }
 
+
 .stat {
+
     padding: 30px;
 
     background:
         rgba(5,7,13,.96);
 
     transition: .35s ease;
+
 }
 
+
 .stat:hover {
+
     transform:
         translateY(-5px);
 
     background:
         rgba(255,255,255,.04);
+
 }
 
+
 .stat-value {
+
     margin-bottom: 9px;
 
     font-size: 21px;
+
     font-weight: bold;
+
 }
 
+
 .stat-label {
+
     color:
         rgba(255,255,255,.4);
 
     font-size: 9px;
+
     letter-spacing: 2px;
+
 }
 
-/* DESCRIPTION */
+
+/* =========================================
+   DESCRIPTION
+========================================= */
 
 .description {
+
     margin-top: 60px;
 
     padding: 40px;
@@ -272,29 +385,43 @@ h1 {
 
     background:
         rgba(255,255,255,.025);
+
 }
 
+
 .description-title {
+
     margin-bottom: 20px;
 
     font-size: 11px;
+
     letter-spacing: 4px;
+
 }
 
+
 .description-text {
+
     max-width: 900px;
 
     color:
         rgba(255,255,255,.58);
 
     font-size: 14px;
+
     line-height: 1.9;
+
 }
 
-/* FEATURES */
+
+/* =========================================
+   FEATURES
+========================================= */
 
 .features-title {
+
     margin-top: 60px;
+
     margin-bottom: 25px;
 
     text-align: center;
@@ -303,19 +430,26 @@ h1 {
         rgba(255,255,255,.45);
 
     font-size: 10px;
+
     letter-spacing: 5px;
+
 }
 
+
 .features {
+
     display: grid;
 
     grid-template-columns:
         repeat(3,1fr);
 
     gap: 15px;
+
 }
 
+
 .feature {
+
     padding: 28px;
 
     border:
@@ -326,9 +460,12 @@ h1 {
         rgba(255,255,255,.02);
 
     transition: .35s ease;
+
 }
 
+
 .feature:hover {
+
     transform:
         translateY(-6px);
 
@@ -337,26 +474,39 @@ h1 {
 
     background:
         rgba(255,255,255,.04);
+
 }
 
+
 .feature-title {
+
     margin-bottom: 12px;
 
     font-size: 11px;
+
     letter-spacing: 2px;
+
 }
 
+
 .feature-text {
+
     color:
         rgba(255,255,255,.5);
 
     font-size: 12px;
+
     line-height: 1.7;
+
 }
 
-/* FACT */
+
+/* =========================================
+   FACT
+========================================= */
 
 .fact {
+
     margin-top: 60px;
 
     padding: 40px;
@@ -369,19 +519,26 @@ h1 {
 
     background:
         rgba(255,255,255,.025);
+
 }
 
+
 .fact-label {
+
     margin-bottom: 16px;
 
     color:
         rgba(255,255,255,.42);
 
     font-size: 9px;
+
     letter-spacing: 4px;
+
 }
 
+
 .fact-text {
+
     max-width: 800px;
 
     margin: auto;
@@ -390,11 +547,16 @@ h1 {
         clamp(18px,3vw,27px);
 
     line-height: 1.5;
+
 }
 
-/* NAVIGATION */
+
+/* =========================================
+   NAVIGATION
+========================================= */
 
 .navigation {
+
     display: flex;
 
     justify-content: center;
@@ -404,12 +566,16 @@ h1 {
     margin-top: 55px;
 
     flex-wrap: wrap;
+
 }
 
+
 .nav-button {
+
     display: inline-flex;
 
     align-items: center;
+
     justify-content: center;
 
     padding: 13px 22px;
@@ -424,12 +590,16 @@ h1 {
     text-decoration: none;
 
     font-size: 9px;
+
     letter-spacing: 2px;
 
     transition: .35s ease;
+
 }
 
+
 .nav-button:hover {
+
     color: #020308;
 
     background: white;
@@ -438,11 +608,16 @@ h1 {
 
     transform:
         translateY(-4px);
+
 }
 
-/* CREDIT */
+
+/* =========================================
+   CREDIT
+========================================= */
 
 .credit {
+
     margin-top: 30px;
 
     text-align: center;
@@ -453,40 +628,83 @@ h1 {
     font-size: 9px;
 
     line-height: 1.7;
+
 }
 
-/* MOBILE */
+
+/* =========================================
+   MOBILE
+========================================= */
 
 @media(max-width:800px) {
 
     .stats {
-        grid-template-columns: 1fr;
+
+        grid-template-columns:
+            1fr;
+
     }
 
+
     .features {
-        grid-template-columns: 1fr;
+
+        grid-template-columns:
+            1fr;
+
     }
+
 }
+
 
 @media(max-width:500px) {
 
     .dysnomia-page {
+
         padding:
             45px 15px 70px;
+
     }
+
+
+    .dysnomia-area {
+
+        margin:
+            75px auto 85px;
+
+    }
+
 
     .description {
+
         padding: 25px;
+
     }
+
 
     .fact {
+
         padding:
             28px 20px;
+
     }
 
+
     .dysnomia-title {
+
         letter-spacing: 7px;
+
     }
+
+
+    .return {
+
+        padding:
+            11px 16px;
+
+        font-size: 8px;
+
+    }
+
 }
 
 </style>
@@ -496,23 +714,30 @@ h1 {
 
 <body>
 
+
 <section class="dysnomia-page">
 
+
 <div class="stars"></div>
+
 <div class="stars-small"></div>
 
 
-<!-- HEADER -->
+<!-- =========================================
+     HEADER
+========================================= -->
 
 <div class="header">
 
+
 <a
-href="https://sites.google.com/view/kosmolearn/solar-system"
+href="/solar-system"
 class="return">
 
 ← RETURN TO SOLAR SYSTEM
 
 </a>
+
 
 <div class="label">
 
@@ -520,11 +745,13 @@ ORBONIX · ERIS SYSTEM
 
 </div>
 
+
 <h1>
 
 DYSNOMIA
 
 </h1>
+
 
 <div class="subtitle">
 
@@ -535,12 +762,16 @@ in the Solar System.
 
 </div>
 
+
 </div>
 
 
-<!-- TEXT ONLY -->
+<!-- =========================================
+     MAIN VISUAL
+========================================= -->
 
 <div class="dysnomia-area">
+
 
 <div class="dysnomia-title">
 
@@ -548,7 +779,9 @@ DYSNOMIA
 
 </div>
 
+
 <div class="dysnomia-line"></div>
+
 
 <div class="dysnomia-description">
 
@@ -556,13 +789,20 @@ ERIS · DWARF PLANET SYSTEM · DISTANT SOLAR SYSTEM
 
 </div>
 
+
 </div>
 
+
+<!-- =========================================
+     CONTENT
+========================================= -->
 
 <div class="content">
 
 
-<!-- STATS -->
+<!-- =========================================
+     STATS
+========================================= -->
 
 <div class="stats">
 
@@ -570,11 +810,15 @@ ERIS · DWARF PLANET SYSTEM · DISTANT SOLAR SYSTEM
 <div class="stat">
 
 <div class="stat-value">
+
 ~700 km
+
 </div>
 
 <div class="stat-label">
+
 ESTIMATED DIAMETER
+
 </div>
 
 </div>
@@ -583,11 +827,15 @@ ESTIMATED DIAMETER
 <div class="stat">
 
 <div class="stat-value">
+
 15.8 DAYS
+
 </div>
 
 <div class="stat-label">
+
 ORBITAL PERIOD
+
 </div>
 
 </div>
@@ -596,11 +844,15 @@ ORBITAL PERIOD
 <div class="stat">
 
 <div class="stat-value">
+
 ~37,000 km
+
 </div>
 
 <div class="stat-label">
+
 DISTANCE FROM ERIS
+
 </div>
 
 </div>
@@ -609,11 +861,15 @@ DISTANCE FROM ERIS
 <div class="stat">
 
 <div class="stat-value">
+
 2005
+
 </div>
 
 <div class="stat-label">
+
 DISCOVERED
+
 </div>
 
 </div>
@@ -622,11 +878,15 @@ DISCOVERED
 <div class="stat">
 
 <div class="stat-value">
+
 1
+
 </div>
 
 <div class="stat-label">
+
 KNOWN MOON OF ERIS
+
 </div>
 
 </div>
@@ -635,28 +895,36 @@ KNOWN MOON OF ERIS
 <div class="stat">
 
 <div class="stat-value">
+
 ERIS
+
 </div>
 
 <div class="stat-label">
+
 PARENT BODY
-</div>
 
 </div>
 
+</div>
 
-<!-- DESCRIPTION -->
 
 </div>
 
+
+<!-- =========================================
+     DESCRIPTION
+========================================= -->
 
 <div class="description">
+
 
 <div class="description-title">
 
 THE MOON OF ERIS
 
 </div>
+
 
 <div class="description-text">
 
@@ -685,10 +953,13 @@ the Eris system.
 
 </div>
 
+
 </div>
 
 
-<!-- FEATURES -->
+<!-- =========================================
+     FEATURES
+========================================= -->
 
 <div class="features-title">
 
@@ -702,11 +973,13 @@ DYSNOMIA FEATURES
 
 <div class="feature">
 
+
 <div class="feature-title">
 
 ONLY MOON
 
 </div>
+
 
 <div class="feature-text">
 
@@ -716,16 +989,19 @@ the dwarf planet Eris.
 
 </div>
 
+
 </div>
 
 
 <div class="feature">
+
 
 <div class="feature-title">
 
 DISTANT WORLD
 
 </div>
+
 
 <div class="feature-text">
 
@@ -735,16 +1011,19 @@ distant Kuiper Belt region.
 
 </div>
 
+
 </div>
 
 
 <div class="feature">
+
 
 <div class="feature-title">
 
 MEASURING ERIS
 
 </div>
+
 
 <div class="feature-text">
 
@@ -754,21 +1033,26 @@ high precision.
 
 </div>
 
-</div>
-
 
 </div>
 
 
-<!-- FACT -->
+</div>
+
+
+<!-- =========================================
+     FACT
+========================================= -->
 
 <div class="fact">
+
 
 <div class="fact-label">
 
 DID YOU KNOW?
 
 </div>
+
 
 <div class="fact-text">
 
@@ -779,36 +1063,48 @@ difficulty determining the mass of
 
 </div>
 
+
 </div>
 
 
-<!-- NAVIGATION -->
+<!-- =========================================
+     NAVIGATION
+========================================= -->
 
 <div class="navigation">
 
+
 <a
-href="https://sites.google.com/view/kosmolearn/solar-system"
+href="/solar-system"
 class="nav-button">
 
 ← RETURN TO SOLAR SYSTEM
 
 </a>
 
+
 <a
-href="https://sites.google.com/view/kosmolearn/solar-system/eris"
+href="/solar-system/eris"
 class="nav-button">
 
 ← RETURN TO ERIS
 
 </a>
 
+
 </div>
 
+
+<!-- =========================================
+     CREDIT
+========================================= -->
 
 <div class="credit">
 
 ORBONIX · DWARF PLANETS
+
 <br>
+
 DYSNOMIA · ERIS SYSTEM
 
 </div>
@@ -816,13 +1112,19 @@ DYSNOMIA · ERIS SYSTEM
 
 </div>
 
+
 </section>
 
 
 <script>
 
+/* =========================================
+   STAR PARALLAX
+========================================= */
+
 const stars =
 document.querySelector(".stars");
+
 
 const smallStars =
 document.querySelector(".stars-small");
@@ -833,9 +1135,11 @@ document.addEventListener(
 
 function(event) {
 
+
     const x =
         event.clientX /
         window.innerWidth - 0.5;
+
 
     const y =
         event.clientY /
@@ -854,6 +1158,22 @@ function(event) {
             ${x * -12}px,
             ${y * -12}px
         )`;
+
+});
+
+
+/* =========================================
+   TOUCH / MOBILE PARALLAX RESET
+========================================= */
+
+window.addEventListener(
+"touchstart",
+
+function() {
+
+    stars.style.transform = "translate(0,0)";
+
+    smallStars.style.transform = "translate(0,0)";
 
 });
 
