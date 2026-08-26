@@ -140,6 +140,8 @@ body {
 
     letter-spacing: 3px;
 
+    cursor: pointer;
+
     transition: .35s ease;
 }
 
@@ -702,8 +704,8 @@ h1 {
 
 
 <a
-href="https://sites.google.com/view/kosmolearn/solar-system/mars"
-class="return">
+class="return orbonix-link"
+data-page="Mars">
 
 ← RETURN TO MARS
 
@@ -843,7 +845,6 @@ ESTIMATED MASS
 
 <div class="number">
 IRREGULAR
-
 </div>
 
 <div class="card-label">
@@ -1005,8 +1006,14 @@ WIKIMEDIA COMMONS
 </section>
 
 
-<script>
+<!-- =========================================
+     ORBONIX GLOBAL SEARCH / NAVIGATION
+========================================= -->
 
+<script src="/search.js"></script>
+
+
+<script>
 
 /* =========================================
    STAR PARALLAX
@@ -1050,6 +1057,69 @@ function(event) {
 
 });
 
+
+/* =========================================
+   PHOBOS PARALLAX
+========================================= */
+
+const phobos =
+document.querySelector(".phobos");
+
+
+document.addEventListener(
+"mousemove",
+
+function(event) {
+
+    const x =
+        event.clientX /
+        window.innerWidth -
+        0.5;
+
+    const y =
+        event.clientY /
+        window.innerHeight -
+        0.5;
+
+
+    phobos.style.transform =
+        `translate(
+            ${x * 10}px,
+            ${y * 10}px
+        )`;
+
+});
+
+
+/* =========================================
+   UNIVERSAL ORBONIX NAVIGATION
+========================================= */
+
+document.querySelectorAll(".orbonix-link").forEach(
+    function(link) {
+
+        link.addEventListener(
+            "click",
+            function(event) {
+
+                event.preventDefault();
+
+                const page =
+                    link.getAttribute("data-page");
+
+                if (
+                    typeof ORBONIX_GO === "function"
+                ) {
+
+                    ORBONIX_GO(page);
+
+                }
+
+            }
+        );
+
+    }
+);
 
 </script>
 
