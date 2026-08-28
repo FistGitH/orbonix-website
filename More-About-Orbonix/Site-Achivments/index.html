@@ -1,827 +1,2142 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Achievements — ORBONIX</title>
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<link
+    rel="icon"
+    type="image/png"
+    href="/favicon.png"
+>
+
+<title>ORBONIX — Achievements</title>
+
 
 <style>
 
-* {
-    box-sizing: border-box;
+*{
+    box-sizing:border-box;
 }
 
-html {
-    scroll-behavior: smooth;
+html{
+    scroll-behavior:smooth;
 }
 
-body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
+body{
+
+    margin:0;
+
+    background:#020308;
+
+    color:white;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    overflow-x:hidden;
+}
+
+
+/* =====================================================
+   PAGE
+===================================================== */
+
+.orbonix-page{
+
+    position:relative;
+
+    min-height:2100px;
+
+    padding:
+        60px 20px 120px;
+
+    overflow:hidden;
+
     background:
-        radial-gradient(circle at 20% 20%, rgba(65, 90, 180, 0.18), transparent 35%),
-        radial-gradient(circle at 80% 70%, rgba(130, 60, 180, 0.16), transparent 35%),
-        #050712;
-    color: white;
-    min-height: 100vh;
+
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(70,100,190,.18),
+            transparent 38%
+        ),
+
+        radial-gradient(
+            circle at 10% 55%,
+            rgba(100,70,180,.08),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 90% 75%,
+            rgba(40,100,180,.07),
+            transparent 30%
+        ),
+
+        #020308;
 }
 
-/* =========================
-   BACKGROUND STARS
-========================= */
 
-.stars,
-.stars::before,
-.stars::after {
-    position: fixed;
-    inset: 0;
-    content: "";
-    pointer-events: none;
-    z-index: -1;
-}
+/* =====================================================
+   STARS
+===================================================== */
 
-.stars {
+.stars{
+
+    position:absolute;
+
+    inset:-20%;
+
+    pointer-events:none;
+
+    opacity:.32;
+
     background-image:
-        radial-gradient(2px 2px at 10% 20%, white, transparent),
-        radial-gradient(1px 1px at 25% 70%, white, transparent),
-        radial-gradient(2px 2px at 40% 30%, white, transparent),
-        radial-gradient(1px 1px at 60% 80%, white, transparent),
-        radial-gradient(2px 2px at 75% 25%, white, transparent),
-        radial-gradient(1px 1px at 90% 60%, white, transparent),
-        radial-gradient(1px 1px at 15% 90%, white, transparent),
-        radial-gradient(2px 2px at 55% 15%, white, transparent);
-    background-size: 300px 300px;
-    opacity: 0.6;
+
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.9) 1px,
+            transparent 1px
+        );
+
+    background-size:
+        75px 75px;
+
+    transition:
+        transform 1.5s ease;
 }
 
-.stars::before {
+
+.stars-small{
+
+    position:absolute;
+
+    inset:-20%;
+
+    pointer-events:none;
+
+    opacity:.13;
+
     background-image:
-        radial-gradient(1px 1px at 15% 35%, white, transparent),
-        radial-gradient(1px 1px at 35% 85%, white, transparent),
-        radial-gradient(2px 2px at 70% 45%, white, transparent),
-        radial-gradient(1px 1px at 85% 15%, white, transparent);
-    background-size: 450px 450px;
-    opacity: 0.5;
+
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.8) 1px,
+            transparent 1px
+        );
+
+    background-size:
+        32px 32px;
+
+    transition:
+        transform 2s ease;
 }
 
-/* =========================
+
+/* =====================================================
    HEADER
-========================= */
+===================================================== */
 
-header {
-    width: 100%;
-    padding: 20px 6%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.header{
 
-    background: rgba(5, 7, 18, 0.78);
-    backdrop-filter: blur(14px);
+    position:relative;
 
-    border-bottom: 1px solid rgba(255,255,255,0.08);
+    z-index:5;
 
-    position: sticky;
-    top: 0;
-    z-index: 100;
+    max-width:1000px;
+
+    margin:auto;
+
+    text-align:center;
 }
 
-.logo {
-    font-size: 25px;
-    font-weight: 800;
-    letter-spacing: 3px;
+
+.return{
+
+    display:inline-flex;
+
+    padding:
+        12px 20px;
+
+    margin-bottom:40px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.2);
+
+    color:
+        rgba(255,255,255,.7);
+
+    text-decoration:none;
+
+    font-size:9px;
+
+    letter-spacing:3px;
+
+    transition:.35s ease;
+
+    cursor:pointer;
 }
 
-.logo span {
-    color: #7da7ff;
+
+.return:hover{
+
+    background:white;
+
+    color:#020308;
+
+    border-color:white;
+
+    transform:
+        translateY(-4px);
 }
 
-nav {
-    display: flex;
-    gap: 25px;
+
+.label{
+
+    margin-bottom:20px;
+
+    color:
+        rgba(255,255,255,.4);
+
+    font-size:10px;
+
+    letter-spacing:6px;
 }
 
-nav a {
-    color: #cbd3e8;
-    text-decoration: none;
-    font-size: 14px;
-    transition: 0.25s;
+
+h1{
+
+    margin:0;
+
+    font-size:
+        clamp(
+            55px,
+            11vw,
+            125px
+        );
+
+    line-height:.85;
+
+    letter-spacing:10px;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #aabfff,
+            #ffffff
+        );
+
+    -webkit-background-clip:text;
+
+    background-clip:text;
+
+    color:transparent;
 }
 
-nav a:hover {
-    color: white;
+
+.subtitle{
+
+    max-width:750px;
+
+    margin:
+        30px auto 0;
+
+    color:
+        rgba(255,255,255,.52);
+
+    font-size:15px;
+
+    line-height:1.9;
 }
 
-/* =========================
-   HERO
-========================= */
 
-.hero {
-    text-align: center;
-    padding: 90px 20px 55px;
+/* =====================================================
+   HERO LINE
+===================================================== */
+
+.hero-line{
+
+    width:80px;
+
+    height:1px;
+
+    margin:
+        45px auto;
+
+    background:
+        rgba(150,170,255,.7);
+
+    box-shadow:
+        0 0 15px
+        rgba(100,130,255,.6);
 }
 
-.hero .icon {
-    font-size: 55px;
-    margin-bottom: 15px;
+
+/* =====================================================
+   INTRO
+===================================================== */
+
+.intro{
+
+    position:relative;
+
+    z-index:5;
+
+    max-width:1050px;
+
+    margin:
+        0 auto 80px;
+
+    padding:
+        45px 40px;
+
+    text-align:center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+
+        radial-gradient(
+            circle at center,
+            rgba(70,100,190,.07),
+            transparent 70%
+        );
 }
 
-.hero h1 {
-    margin: 0;
-    font-size: clamp(42px, 7vw, 75px);
-    font-weight: 900;
-    letter-spacing: -2px;
+
+.intro-label{
+
+    margin-bottom:18px;
+
+    color:
+        rgba(255,255,255,.38);
+
+    font-size:9px;
+
+    letter-spacing:5px;
 }
 
-.hero h1 span {
-    color: #7da7ff;
+
+.intro h2{
+
+    margin:
+        0 0 18px;
+
+    font-size:
+        clamp(
+            25px,
+            5vw,
+            42px
+        );
+
+    letter-spacing:4px;
 }
 
-.hero p {
-    max-width: 720px;
-    margin: 20px auto 0;
-    color: #9ca7c0;
-    font-size: 18px;
-    line-height: 1.7;
+
+.intro p{
+
+    max-width:800px;
+
+    margin:auto;
+
+    color:
+        rgba(255,255,255,.48);
+
+    font-size:13px;
+
+    line-height:1.9;
 }
 
-/* =========================
-   STATS
-========================= */
 
-.stats {
-    max-width: 1100px;
-    margin: 0 auto 60px;
-    padding: 0 20px;
+/* =====================================================
+   ACHIEVEMENT SECTION
+===================================================== */
 
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
+.section{
+
+    position:relative;
+
+    z-index:5;
+
+    max-width:1050px;
+
+    margin:
+        0 auto 90px;
 }
 
-.stat {
-    padding: 25px;
-    text-align: center;
 
-    background: rgba(255,255,255,0.045);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 18px;
+.section-label{
 
-    backdrop-filter: blur(10px);
+    margin-bottom:25px;
+
+    color:
+        rgba(255,255,255,.38);
+
+    font-size:9px;
+
+    letter-spacing:5px;
 }
 
-.stat-number {
-    font-size: 34px;
-    font-weight: 800;
-    color: #7da7ff;
+
+/* =====================================================
+   ACHIEVEMENT GRID
+===================================================== */
+
+.achievements{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(2,1fr);
+
+    gap:15px;
 }
 
-.stat-label {
-    margin-top: 7px;
-    color: #9ca7c0;
-    font-size: 14px;
+
+/* =====================================================
+   ACHIEVEMENT CARD
+===================================================== */
+
+.achievement{
+
+    position:relative;
+
+    min-height:260px;
+
+    padding:35px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.025);
+
+    overflow:hidden;
+
+    transition:.45s ease;
 }
 
-/* =========================
-   ACHIEVEMENTS
-========================= */
 
-.section {
-    max-width: 1200px;
-    margin: auto;
-    padding: 20px;
+.achievement::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:220px;
+
+    height:220px;
+
+    border-radius:50%;
+
+    right:-110px;
+
+    top:-110px;
+
+    background:
+        rgba(100,130,255,.07);
+
+    filter:blur(20px);
+
+    transition:.5s ease;
 }
 
-.section-title {
-    text-align: center;
-    margin-bottom: 35px;
+
+.achievement:hover{
+
+    transform:
+        translateY(-8px);
+
+    border-color:
+        rgba(140,165,255,.4);
+
+    background:
+        rgba(80,100,180,.05);
+
+    box-shadow:
+        0 25px 70px
+        rgba(0,0,0,.35);
 }
 
-.section-title h2 {
-    font-size: 35px;
-    margin-bottom: 10px;
+
+.achievement:hover::before{
+
+    transform:
+        scale(1.5);
 }
 
-.section-title p {
-    color: #8e98b0;
+
+/* =====================================================
+   NUMBER
+===================================================== */
+
+.achievement-number{
+
+    position:absolute;
+
+    right:25px;
+
+    top:22px;
+
+    color:
+        rgba(150,170,255,.35);
+
+    font-size:10px;
+
+    letter-spacing:3px;
 }
 
-/* =========================
-   CARDS
-========================= */
 
-.achievements {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 22px;
+/* =====================================================
+   ICON
+===================================================== */
+
+.achievement-icon{
+
+    width:58px;
+
+    height:58px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    margin-bottom:22px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.035);
+
+    font-size:25px;
+
+    transition:.35s ease;
 }
 
-.achievement {
-    position: relative;
 
-    padding: 28px;
+.achievement:hover
+.achievement-icon{
 
-    min-height: 240px;
+    border-color:
+        rgba(150,175,255,.35);
+
+    background:
+        rgba(100,130,255,.08);
+
+    transform:
+        scale(1.06);
+}
+
+
+/* =====================================================
+   TITLE
+===================================================== */
+
+.achievement-title{
+
+    margin-bottom:12px;
+
+    font-size:18px;
+
+    letter-spacing:3px;
+}
+
+
+/* =====================================================
+   TEXT
+===================================================== */
+
+.achievement-text{
+
+    color:
+        rgba(255,255,255,.44);
+
+    font-size:12px;
+
+    line-height:1.8;
+}
+
+
+/* =====================================================
+   DATE
+===================================================== */
+
+.achievement-date{
+
+    display:inline-block;
+
+    margin-top:20px;
+
+    padding:
+        7px 12px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+    color:
+        rgba(255,255,255,.32);
+
+    font-size:8px;
+
+    letter-spacing:3px;
+}
+
+
+/* =====================================================
+   FEATURE ACHIEVEMENT
+===================================================== */
+
+.achievement.featured{
+
+    grid-column:
+        span 2;
+
+    min-height:290px;
+
+    text-align:center;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:
+
+        radial-gradient(
+            circle at center,
+            rgba(80,110,200,.08),
+            rgba(255,255,255,.02) 65%
+        );
+}
+
+
+.achievement.featured
+.achievement-icon{
+
+    width:70px;
+
+    height:70px;
+
+    font-size:30px;
+}
+
+
+.achievement.featured
+.achievement-text{
+
+    max-width:700px;
+}
+
+
+/* =====================================================
+   MILESTONE LINE
+===================================================== */
+
+.timeline{
+
+    position:relative;
+
+    margin-top:25px;
+
+    padding-left:35px;
+}
+
+
+.timeline::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:7px;
+
+    top:0;
+
+    bottom:0;
+
+    width:1px;
 
     background:
         linear-gradient(
-            145deg,
-            rgba(255,255,255,0.075),
-            rgba(255,255,255,0.025)
+            to bottom,
+            rgba(140,165,255,.5),
+            rgba(255,255,255,.08),
+            transparent
         );
-
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 22px;
-
-    overflow: hidden;
-
-    transition:
-        transform 0.3s ease,
-        border-color 0.3s ease,
-        box-shadow 0.3s ease;
 }
 
-.achievement::before {
-    content: "";
-    position: absolute;
-    width: 140px;
-    height: 140px;
 
-    background: #5d7cff;
+.timeline-item{
 
-    filter: blur(80px);
-    opacity: 0.12;
+    position:relative;
 
-    top: -60px;
-    right: -60px;
+    margin-bottom:45px;
+
+    padding:
+        0 0 0 20px;
 }
 
-.achievement:hover {
-    transform: translateY(-7px);
-    border-color: rgba(125,167,255,0.5);
+
+.timeline-item::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:-32px;
+
+    top:5px;
+
+    width:8px;
+
+    height:8px;
+
+    border-radius:50%;
+
+    background:#aabfff;
 
     box-shadow:
-        0 15px 45px rgba(0,0,0,0.35),
-        0 0 30px rgba(80,110,255,0.08);
+        0 0 15px
+        rgba(130,160,255,.8);
 }
 
-.achievement-icon {
-    width: 62px;
-    height: 62px;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.timeline-year{
 
-    border-radius: 17px;
+    margin-bottom:8px;
 
-    background: rgba(125,167,255,0.12);
-    border: 1px solid rgba(125,167,255,0.2);
+    color:
+        rgba(150,170,255,.55);
 
-    font-size: 30px;
+    font-size:9px;
 
-    margin-bottom: 20px;
+    letter-spacing:4px;
 }
 
-.achievement h3 {
-    margin: 0 0 10px;
-    font-size: 21px;
+
+.timeline-title{
+
+    margin-bottom:8px;
+
+    font-size:17px;
+
+    letter-spacing:2px;
 }
 
-.achievement p {
-    margin: 0;
 
-    color: #9ca7c0;
+.timeline-text{
 
-    font-size: 14px;
-    line-height: 1.6;
+    color:
+        rgba(255,255,255,.4);
+
+    font-size:12px;
+
+    line-height:1.8;
 }
 
-.date {
-    display: inline-block;
 
-    margin-top: 18px;
+/* =====================================================
+   FUTURE
+===================================================== */
 
-    font-size: 12px;
-    color: #71809d;
+.future{
 
-    padding: 6px 10px;
+    position:relative;
 
-    border-radius: 8px;
+    z-index:5;
 
-    background: rgba(255,255,255,0.045);
+    max-width:1050px;
+
+    margin:
+        0 auto 90px;
+
+    padding:
+        50px 40px;
+
+    text-align:center;
+
+    border:
+        1px solid
+        rgba(150,130,255,.18);
+
+    background:
+
+        radial-gradient(
+            circle at center,
+            rgba(100,80,190,.08),
+            transparent 65%
+        );
 }
 
-/* =========================
-   PROGRESS
-========================= */
 
-.progress-section {
-    max-width: 800px;
-    margin: 80px auto;
+.future-label{
 
-    padding: 35px;
+    margin-bottom:18px;
 
-    background: rgba(255,255,255,0.045);
+    color:
+        rgba(180,165,255,.5);
 
-    border: 1px solid rgba(255,255,255,0.08);
+    font-size:9px;
 
-    border-radius: 22px;
+    letter-spacing:5px;
 }
 
-.progress-title {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 14px;
+
+.future h2{
+
+    margin:
+        0 0 18px;
+
+    font-size:
+        clamp(
+            24px,
+            5vw,
+            40px
+        );
+
+    letter-spacing:3px;
 }
 
-.progress-title strong {
-    font-size: 17px;
+
+.future p{
+
+    max-width:780px;
+
+    margin:auto;
+
+    color:
+        rgba(255,255,255,.45);
+
+    font-size:13px;
+
+    line-height:1.9;
 }
 
-.progress-title span {
-    color: #7da7ff;
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+.navigation{
+
+    position:relative;
+
+    z-index:5;
+
+    max-width:1050px;
+
+    margin:auto;
 }
 
-.progress-bar {
-    width: 100%;
-    height: 10px;
 
-    background: rgba(255,255,255,0.08);
+.navigation-label{
 
-    border-radius: 20px;
+    margin-bottom:25px;
 
-    overflow: hidden;
+    text-align:center;
+
+    color:
+        rgba(255,255,255,.38);
+
+    font-size:9px;
+
+    letter-spacing:5px;
 }
 
-.progress-fill {
-    width: 68%;
-    height: 100%;
 
-    background: linear-gradient(
-        90deg,
-        #5578ff,
-        #9a7dff
-    );
+.navigation-grid{
 
-    border-radius: inherit;
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:15px;
 }
 
-/* =========================
+
+.nav-button{
+
+    position:relative;
+
+    min-height:190px;
+
+    padding:35px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    text-decoration:none;
+
+    color:white;
+
+    border:
+        1px solid
+        rgba(255,255,255,.13);
+
+    background:
+        rgba(255,255,255,.025);
+
+    overflow:hidden;
+
+    transition:.45s ease;
+
+    cursor:pointer;
+}
+
+
+.nav-button::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:250px;
+
+    height:250px;
+
+    border-radius:50%;
+
+    right:-120px;
+
+    top:-120px;
+
+    background:
+        rgba(100,130,255,.08);
+
+    filter:blur(20px);
+
+    transition:.5s ease;
+}
+
+
+.nav-button:hover{
+
+    transform:
+        translateY(-8px);
+
+    border-color:
+        rgba(150,175,255,.45);
+
+    background:
+        rgba(80,100,180,.07);
+
+    box-shadow:
+        0 25px 70px
+        rgba(0,0,0,.35);
+}
+
+
+.nav-button:hover::before{
+
+    transform:
+        scale(1.5);
+}
+
+
+.nav-icon{
+
+    font-size:35px;
+
+    margin-bottom:20px;
+}
+
+
+.nav-title{
+
+    margin-bottom:10px;
+
+    font-size:20px;
+
+    letter-spacing:3px;
+}
+
+
+.nav-description{
+
+    max-width:420px;
+
+    color:
+        rgba(255,255,255,.42);
+
+    font-size:11px;
+
+    line-height:1.7;
+}
+
+
+.nav-arrow{
+
+    position:absolute;
+
+    right:30px;
+
+    bottom:25px;
+
+    color:
+        rgba(255,255,255,.45);
+
+    font-size:20px;
+
+    transition:.3s ease;
+}
+
+
+.nav-button:hover .nav-arrow{
+
+    transform:
+        translateX(7px);
+
+    color:white;
+}
+
+
+/* =====================================================
    FOOTER
-========================= */
+===================================================== */
 
-footer {
-    margin-top: 80px;
-    padding: 35px 20px;
+.footer{
 
-    text-align: center;
+    position:relative;
 
-    border-top: 1px solid rgba(255,255,255,0.08);
+    z-index:5;
 
-    color: #69738a;
+    max-width:900px;
 
-    font-size: 13px;
+    margin:
+        90px auto 0;
+
+    text-align:center;
+
+    color:
+        rgba(255,255,255,.25);
+
+    font-size:9px;
+
+    letter-spacing:2px;
+
+    line-height:2;
 }
 
-footer strong {
-    color: #9baeff;
-}
 
-/* =========================
+/* =====================================================
    MOBILE
-========================= */
+===================================================== */
 
-@media (max-width: 850px) {
+@media(max-width:800px){
 
-    .achievements {
-        grid-template-columns: repeat(2, 1fr);
+    .achievements{
+
+        grid-template-columns:1fr;
+    }
+
+
+    .achievement.featured{
+
+        grid-column:
+            span 1;
     }
 
 }
 
-@media (max-width: 600px) {
 
-    header {
-        padding: 17px 20px;
+@media(max-width:600px){
+
+    .orbonix-page{
+
+        padding:
+            45px 15px 80px;
     }
 
-    nav {
-        display: none;
+
+    .navigation-grid{
+
+        grid-template-columns:1fr;
     }
 
-    .hero {
-        padding-top: 65px;
+
+    .achievement{
+
+        padding:30px;
+
+        min-height:240px;
     }
 
-    .hero h1 {
-        font-size: 48px;
+
+    .intro,
+    .future{
+
+        padding:
+            30px 25px;
     }
 
-    .hero p {
-        font-size: 15px;
-    }
 
-    .stats {
-        grid-template-columns: 1fr;
-    }
+    .timeline{
 
-    .achievements {
-        grid-template-columns: 1fr;
-    }
-
-    .progress-section {
-        margin: 60px 20px;
-        padding: 25px;
+        padding-left:30px;
     }
 
 }
 
 </style>
+
 </head>
+
 
 <body>
 
+
+<section class="orbonix-page">
+
+
 <div class="stars"></div>
 
-<!-- =========================
+<div class="stars-small"></div>
+
+
+<!-- =================================================
      HEADER
-========================= -->
+================================================= -->
 
-<header>
-
-    <div class="logo">
-        <span>OR</span>BONIX
-    </div>
-
-    <nav>
-        <a href="/">Home</a>
-        <a href="/exploring-space/">Exploring Space</a>
-        <a href="/gallery/">Gallery</a>
-        <a href="/latest-space-news/">Space News</a>
-    </nav>
-
-</header>
+<div class="header">
 
 
-<!-- =========================
-     HERO
-========================= -->
+<a
+    href="#"
+    data-page="More About Orbonix"
+    class="return"
+>
 
-<section class="hero">
+← RETURN TO ORBONIX
 
-    <div class="icon">🏆</div>
-
-    <h1>
-        ORBONIX <span>Achievements</span>
-    </h1>
-
-    <p>
-        Explore the milestones, projects and achievements
-        that have shaped the ORBONIX journey through space,
-        science and technology.
-    </p>
-
-</section>
+</a>
 
 
-<!-- =========================
-     STATS
-========================= -->
+<div class="label">
 
-<section class="stats">
+ORBONIX · SITE ACHIEVEMENTS
 
-    <div class="stat">
-
-        <div class="stat-number">
-            10+
-        </div>
-
-        <div class="stat-label">
-            Achievements
-        </div>
-
-    </div>
+</div>
 
 
-    <div class="stat">
+<h1>
 
-        <div class="stat-number">
-            2026
-        </div>
+ACHIEVEMENTS
 
-        <div class="stat-label">
-            ORBONIX Era
-        </div>
-
-    </div>
+</h1>
 
 
-    <div class="stat">
+<div class="subtitle">
 
-        <div class="stat-number">
-            ∞
-        </div>
+A record of the milestones, discoveries,
+projects and developments that have shaped
+the ORBONIX universe.
 
-        <div class="stat-label">
-            Future Discoveries
-        </div>
-
-    </div>
-
-</section>
+</div>
 
 
-<!-- =========================
+<div class="hero-line"></div>
+
+
+</div>
+
+
+
+<!-- =================================================
+     INTRO
+================================================= -->
+
+<div class="intro">
+
+
+<div class="intro-label">
+
+THE ORBONIX JOURNEY
+
+</div>
+
+
+<h2>
+
+EVERY MILESTONE MATTERS
+
+</h2>
+
+
+<p>
+
+ORBONIX is constantly evolving.
+
+From the first pages and astronomy concepts
+to interactive simulations, telescope
+observations and a growing space knowledge
+base, every stage represents another step
+toward building a complete digital universe.
+
+</p>
+
+
+</div>
+
+
+
+<!-- =================================================
      ACHIEVEMENTS
-========================= -->
+================================================= -->
 
-<section class="section">
+<div class="section">
 
-    <div class="section-title">
 
-        <h2>Our Milestones</h2>
+<div class="section-label">
 
-        <p>
-            Every achievement is another step into the universe.
-        </p>
+MAJOR ACHIEVEMENTS
 
-    </div>
+</div>
 
 
-    <div class="achievements">
+<div class="achievements">
 
 
-        <!-- ACHIEVEMENT 1 -->
+<!-- ===============================================
+     01
+================================================ -->
 
-        <div class="achievement">
+<div class="achievement featured">
 
-            <div class="achievement-icon">
-                🌌
-            </div>
 
-            <h3>
-                ORBONIX Website
-            </h3>
+<div class="achievement-number">
 
-            <p>
-                ORBONIX officially launched its own space
-                and astronomy website.
-            </p>
+01
 
-            <span class="date">
-                2026
-            </span>
+</div>
 
-        </div>
 
+<div class="achievement-icon">
 
-        <!-- ACHIEVEMENT 2 -->
+🌌
 
-        <div class="achievement">
+</div>
 
-            <div class="achievement-icon">
-                🔭
-            </div>
 
-            <h3>
-                Telescope Photography
-            </h3>
+<div class="achievement-title">
 
-            <p>
-                ORBONIX began capturing astronomical objects
-                using a telescope and astrophotography equipment.
-            </p>
+ORBONIX WEBSITE
 
-            <span class="date">
-                2026
-            </span>
+</div>
 
-        </div>
 
+<div class="achievement-text">
 
-        <!-- ACHIEVEMENT 3 -->
+ORBONIX became an independent space and
+astronomy website dedicated to exploration,
+scientific knowledge, interactive content
+and the universe.
 
-        <div class="achievement">
+</div>
 
-            <div class="achievement-icon">
-                🌕
-            </div>
 
-            <h3>
-                Lunar Photography
-            </h3>
+<div class="achievement-date">
 
-            <p>
-                High-resolution observations and photographs
-                of the Moon became part of the ORBONIX gallery.
-            </p>
+2026 · WEBSITE
 
-            <span class="date">
-                2026
-            </span>
+</div>
 
-        </div>
 
+</div>
 
-        <!-- ACHIEVEMENT 4 -->
 
-        <div class="achievement">
 
-            <div class="achievement-icon">
-                🚀
-            </div>
+<!-- ===============================================
+     02
+================================================ -->
 
-            <h3>
-                Space Projects
-            </h3>
+<div class="achievement">
 
-            <p>
-                Interactive space projects and simulations
-                were added to the ORBONIX platform.
-            </p>
 
-            <span class="date">
-                2026
-            </span>
+<div class="achievement-number">
 
-        </div>
+02
 
+</div>
 
-        <!-- ACHIEVEMENT 5 -->
 
-        <div class="achievement">
+<div class="achievement-icon">
 
-            <div class="achievement-icon">
-                🪐
-            </div>
+☀️
 
-            <h3>
-                Solar System
-            </h3>
+</div>
 
-            <p>
-                ORBONIX created an expanding collection of
-                pages dedicated to planets, moons and other
-                Solar System objects.
-            </p>
 
-            <span class="date">
-                2026
-            </span>
+<div class="achievement-title">
 
-        </div>
+SOLAR SYSTEM
 
+</div>
 
-        <!-- ACHIEVEMENT 6 -->
 
-        <div class="achievement">
+<div class="achievement-text">
 
-            <div class="achievement-icon">
-                🛰️
-            </div>
+The ORBONIX Solar System section expanded
+into dedicated pages covering the Sun,
+planets, dwarf planets, asteroid regions,
+the Kuiper Belt, Oort Cloud and Planet X.
 
-            <h3>
-                Space Missions
-            </h3>
+</div>
 
-            <p>
-                Major missions such as Apollo, Voyager,
-                Cassini, Artemis and James Webb were added
-                to the ORBONIX knowledge base.
-            </p>
 
-            <span class="date">
-                2026
-            </span>
+<div class="achievement-date">
 
-        </div>
+2026 · SOLAR SYSTEM
 
+</div>
 
-        <!-- ACHIEVEMENT 7 -->
 
-        <div class="achievement">
+</div>
 
-            <div class="achievement-icon">
-                🧠
-            </div>
 
-            <h3>
-                Space Quizzes
-            </h3>
 
-            <p>
-                Interactive astronomy quizzes were introduced
-                to test knowledge about planets, stars,
-                black holes and more.
-            </p>
+<!-- ===============================================
+     03
+================================================ -->
 
-            <span class="date">
-                2026
-            </span>
+<div class="achievement">
 
-        </div>
 
+<div class="achievement-number">
 
-        <!-- ACHIEVEMENT 8 -->
+03
 
-        <div class="achievement">
+</div>
 
-            <div class="achievement-icon">
-                💻
-            </div>
 
-            <h3>
-                ORBONIX Technology
-            </h3>
+<div class="achievement-icon">
 
-            <p>
-                Custom JavaScript systems, navigation,
-                search and interactive features were developed
-                for the ORBONIX website.
-            </p>
+🌌
 
-            <span class="date">
-                2026
-            </span>
+</div>
 
-        </div>
 
+<div class="achievement-title">
 
-        <!-- ACHIEVEMENT 9 -->
+DEEP SPACE
 
-        <div class="achievement">
+</div>
 
-            <div class="achievement-icon">
-                📡
-            </div>
 
-            <h3>
-                Space News
-            </h3>
+<div class="achievement-text">
 
-            <p>
-                ORBONIX expanded into space news and astronomy
-                updates covering discoveries and missions.
-            </p>
+ORBONIX expanded beyond the Solar System
+with pages dedicated to black holes,
+galaxies, nebulae, quasars, dark matter,
+dark energy, cosmic voids and wormholes.
 
-            <span class="date">
-                2026
-            </span>
+</div>
 
-        </div>
 
+<div class="achievement-date">
 
-    </div>
+2026 · DEEP SPACE
 
-</section>
+</div>
 
 
-<!-- =========================
-     PROGRESS
-========================= -->
+</div>
 
-<section class="progress-section">
 
-    <div class="progress-title">
 
-        <strong>
-            ORBONIX Journey
-        </strong>
+<!-- ===============================================
+     04
+================================================ -->
 
-        <span>
-            68%
-        </span>
+<div class="achievement">
 
-    </div>
 
-    <div class="progress-bar">
+<div class="achievement-number">
 
-        <div class="progress-fill"></div>
+04
 
-    </div>
+</div>
 
-</section>
 
+<div class="achievement-icon">
 
-<!-- =========================
+🛰️
+
+</div>
+
+
+<div class="achievement-title">
+
+SPACE MISSIONS
+
+</div>
+
+
+<div class="achievement-text">
+
+Major missions including Apollo, Artemis,
+Cassini, James Webb, New Horizons and
+Voyager became part of the ORBONIX
+exploration system.
+
+</div>
+
+
+<div class="achievement-date">
+
+2026 · MISSIONS
+
+</div>
+
+
+</div>
+
+
+
+<!-- ===============================================
+     05
+================================================ -->
+
+<div class="achievement">
+
+
+<div class="achievement-number">
+
+05
+
+</div>
+
+
+<div class="achievement-icon">
+
+🧠
+
+</div>
+
+
+<div class="achievement-title">
+
+SPACE QUIZZES
+
+</div>
+
+
+<div class="achievement-text">
+
+Interactive quizzes were introduced to
+turn astronomy knowledge into an active
+learning and testing experience.
+
+</div>
+
+
+<div class="achievement-date">
+
+2026 · QUIZZES
+
+</div>
+
+
+</div>
+
+
+
+<!-- ===============================================
+     06
+================================================ -->
+
+<div class="achievement">
+
+
+<div class="achievement-number">
+
+06
+
+</div>
+
+
+<div class="achievement-icon">
+
+🔭
+
+</div>
+
+
+<div class="achievement-title">
+
+TELESCOPE OBSERVATIONS
+
+</div>
+
+
+<div class="achievement-text">
+
+ORBONIX began developing its observational
+side with telescope photography, lunar
+observations and real-world astronomy.
+
+</div>
+
+
+<div class="achievement-date">
+
+2026 · OBSERVATION
+
+</div>
+
+
+</div>
+
+
+
+<!-- ===============================================
+     07
+================================================ -->
+
+<div class="achievement">
+
+
+<div class="achievement-number">
+
+07
+
+</div>
+
+
+<div class="achievement-icon">
+
+📸
+
+</div>
+
+
+<div class="achievement-title">
+
+ORBONIX PHOTOS
+
+</div>
+
+
+<div class="achievement-text">
+
+Astronomical photographs and observations
+became part of the ORBONIX visual collection,
+connecting the digital project with the
+real night sky.
+
+</div>
+
+
+<div class="achievement-date">
+
+2026 · PHOTOGRAPHY
+
+</div>
+
+
+</div>
+
+
+
+<!-- ===============================================
+     08
+================================================ -->
+
+<div class="achievement">
+
+
+<div class="achievement-number">
+
+08
+
+</div>
+
+
+<div class="achievement-icon">
+
+💻
+
+</div>
+
+
+<div class="achievement-title">
+
+INTERACTIVE SYSTEMS
+
+</div>
+
+
+<div class="achievement-text">
+
+Custom JavaScript systems were developed
+for navigation, search, page discovery
+and universal ORBONIX buttons.
+
+</div>
+
+
+<div class="achievement-date">
+
+2026 · TECHNOLOGY
+
+</div>
+
+
+</div>
+
+
+
+<!-- ===============================================
+     09
+================================================ -->
+
+<div class="achievement featured">
+
+
+<div class="achievement-number">
+
+09
+
+</div>
+
+
+<div class="achievement-icon">
+
+🚀
+
+</div>
+
+
+<div class="achievement-title">
+
+SOLAR SYSTEM SIMULATION
+
+</div>
+
+
+<div class="achievement-text">
+
+ORBONIX moved toward interactive space
+simulation with planets, realistic
+distances, orbital systems, moons and
+interactive exploration.
+
+</div>
+
+
+<div class="achievement-date">
+
+2026 · SIMULATION
+
+</div>
+
+
+</div>
+
+
+</div>
+
+</div>
+
+
+
+<!-- =================================================
+     TIMELINE
+================================================= -->
+
+<div class="section">
+
+
+<div class="section-label">
+
+ORBONIX TIMELINE
+
+</div>
+
+
+<div class="timeline">
+
+
+<div class="timeline-item">
+
+
+<div class="timeline-year">
+
+2026 · BEGINNING
+
+</div>
+
+
+<div class="timeline-title">
+
+THE ORBONIX PROJECT
+
+</div>
+
+
+<div class="timeline-text">
+
+The project developed into a dedicated
+space and astronomy platform focused on
+making the universe easier to explore.
+
+</div>
+
+
+</div>
+
+
+
+<div class="timeline-item">
+
+
+<div class="timeline-year">
+
+2026 · EXPANSION
+
+</div>
+
+
+<div class="timeline-title">
+
+SOLAR SYSTEM + DEEP SPACE
+
+</div>
+
+
+<div class="timeline-text">
+
+The website expanded into a larger
+knowledge system covering planets,
+moons and deep-space phenomena.
+
+</div>
+
+
+</div>
+
+
+
+<div class="timeline-item">
+
+
+<div class="timeline-year">
+
+2026 · INTERACTION
+
+</div>
+
+
+<div class="timeline-title">
+
+QUIZZES + SIMULATIONS
+
+</div>
+
+
+<div class="timeline-text">
+
+Interactive astronomy experiences began
+turning ORBONIX from a collection of pages
+into a more exploratory environment.
+
+</div>
+
+
+</div>
+
+
+
+<div class="timeline-item">
+
+
+<div class="timeline-year">
+
+2026 · OBSERVATION
+
+</div>
+
+
+<div class="timeline-title">
+
+TELESCOPE + PHOTOGRAPHY
+
+</div>
+
+
+<div class="timeline-text">
+
+Real astronomical observations and
+telescope photography became another
+part of the ORBONIX project.
+
+</div>
+
+
+</div>
+
+
+
+<div class="timeline-item">
+
+
+<div class="timeline-year">
+
+FUTURE
+
+</div>
+
+
+<div class="timeline-title">
+
+THE UNIVERSE CONTINUES
+
+</div>
+
+
+<div class="timeline-text">
+
+More astronomical objects, simulations,
+observations, discoveries and interactive
+features are planned for the future.
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+<!-- =================================================
+     FUTURE
+================================================= -->
+
+<div class="future">
+
+
+<div class="future-label">
+
+NEXT CHAPTER
+
+</div>
+
+
+<h2>
+
+THE JOURNEY IS NOT OVER
+
+</h2>
+
+
+<p>
+
+ORBONIX is still being built.
+
+The current achievements are only the
+beginning. The project will continue to
+expand with new astronomical objects,
+interactive experiences, observations,
+simulations and scientific content.
+
+There is always more of the universe to explore.
+
+</p>
+
+
+</div>
+
+
+
+<!-- =================================================
+     NAVIGATION
+================================================= -->
+
+<div class="navigation">
+
+
+<div class="navigation-label">
+
+EXPLORE MORE
+
+</div>
+
+
+<div class="navigation-grid">
+
+
+<!-- =================================================
+     ABOUT
+================================================= -->
+
+<a
+    href="#"
+    data-page="More About Orbonix"
+    class="nav-button"
+>
+
+
+<div class="nav-icon">
+
+🌌
+
+</div>
+
+
+<div class="nav-title">
+
+ABOUT ORBONIX
+
+</div>
+
+
+<div class="nav-description">
+
+Learn more about the idea behind ORBONIX,
+its mission, content and vision for the
+future.
+
+</div>
+
+
+<div class="nav-arrow">
+
+→
+
+</div>
+
+
+</a>
+
+
+
+<!-- =================================================
+     PHOTOS
+================================================= -->
+
+<a
+    href="#"
+    data-page="Orbonix Fotos and Telescope"
+    class="nav-button"
+>
+
+
+<div class="nav-icon">
+
+📸
+
+</div>
+
+
+<div class="nav-title">
+
+ORBONIX PHOTOS
+
+</div>
+
+
+<div class="nav-description">
+
+Explore telescope observations,
+astronomical photography and the visual
+side of the ORBONIX project.
+
+</div>
+
+
+<div class="nav-arrow">
+
+→
+
+</div>
+
+
+</a>
+
+
+</div>
+
+
+</div>
+
+
+
+<!-- =================================================
      FOOTER
-========================= -->
+================================================= -->
 
-<footer>
+<div class="footer">
 
-    <strong>ORBONIX</strong>
+ORBONIX
 
-    <br><br>
+<br>
 
-    Exploring the universe, one discovery at a time.
+SPACE · KNOWLEDGE · EXPLORATION · DISCOVERY
 
-    <br><br>
+<br><br>
 
-    © 2026 ORBONIX. All rights reserved.
+THE UNIVERSE IS WAITING TO BE EXPLORED.
 
-</footer>
+</div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     PAGE JAVASCRIPT
+===================================================== -->
+
+<script>
+
+
+/* =================================================
+   STAR PARALLAX
+================================================= */
+
+const stars =
+document.querySelector(".stars");
+
+const smallStars =
+document.querySelector(".stars-small");
+
+
+document.addEventListener(
+"mousemove",
+
+function(event){
+
+    const x =
+        event.clientX /
+        window.innerWidth -
+        .5;
+
+    const y =
+        event.clientY /
+        window.innerHeight -
+        .5;
+
+
+    stars.style.transform =
+        `translate(
+            ${x * 20}px,
+            ${y * 20}px
+        )`;
+
+
+    smallStars.style.transform =
+        `translate(
+            ${x * -12}px,
+            ${y * -12}px
+        )`;
+
+});
+
+
+/* =================================================
+   SCROLL REVEAL
+================================================= */
+
+const elements =
+document.querySelectorAll(
+    ".intro, .achievement, .timeline-item, .future, .nav-button"
+);
+
+
+const observer =
+new IntersectionObserver(
+
+    (entries)=>{
+
+        entries.forEach(
+            entry=>{
+
+                if(
+                    entry.isIntersecting
+                ){
+
+                    entry.target.style.opacity =
+                        "1";
+
+                    entry.target.style.transform =
+                        "translateY(0)";
+
+                }
+
+            }
+        );
+
+    },
+
+    {
+        threshold:.12
+    }
+
+);
+
+
+elements.forEach(
+    element=>{
+
+        element.style.opacity =
+            "0";
+
+        element.style.transform =
+            "translateY(35px)";
+
+        element.style.transition =
+            "opacity .8s ease, transform .8s ease";
+
+        observer.observe(element);
+
+    }
+);
+
+
+</script>
+
+
+
+<!-- =====================================================
+     ORBONIX GLOBAL SEARCH + AUTO NAVIGATION
+===================================================== -->
+
+<script src="/search.js"></script>
 
 
 </body>
+
 </html>
+```
