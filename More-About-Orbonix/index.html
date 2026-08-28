@@ -10,7 +10,6 @@
     content="width=device-width, initial-scale=1.0"
 >
 
-<!-- FAVICON -->
 <link
     rel="icon"
     type="image/png"
@@ -391,7 +390,8 @@ h1{
     margin:
         0 auto 80px;
 
-    padding:55px 40px;
+    padding:
+        55px 40px;
 
     text-align:center;
 
@@ -936,7 +936,7 @@ h1{
 
 
 <a
-    href="/"
+    href="#"
     data-page="Home"
     class="return"
 >
@@ -1445,7 +1445,7 @@ EXPLORE MORE
 ================================================= -->
 
 <a
-    href="/More-About-Orbonix/Orbonix-Fotos-And-Telescope/"
+    href="#"
     data-page="Orbonix Fotos and Telescope"
     class="nav-button"
 >
@@ -1491,7 +1491,7 @@ through cameras and telescopes.
 ================================================= -->
 
 <a
-    href="/More-About-Orbonix/Site-Achivments/"
+    href="#"
     data-page="Site Achievements"
     class="nav-button"
 >
@@ -1580,41 +1580,40 @@ document.querySelector(".stars-small");
 
 
 document.addEventListener(
-    "mousemove",
+"mousemove",
 
-    function(event){
+function(event){
 
-        const x =
-            event.clientX /
-            window.innerWidth -
-            .5;
+    const x =
+        event.clientX /
+        window.innerWidth -
+        .5;
 
-        const y =
-            event.clientY /
-            window.innerHeight -
-            .5;
-
-
-        stars.style.transform =
-            `translate(
-                ${x * 20}px,
-                ${y * 20}px
-            )`;
+    const y =
+        event.clientY /
+        window.innerHeight -
+        .5;
 
 
-        smallStars.style.transform =
-            `translate(
-                ${x * -12}px,
-                ${y * -12}px
-            )`;
+    stars.style.transform =
+        `translate(
+            ${x * 20}px,
+            ${y * 20}px
+        )`;
 
-    }
-);
+
+    smallStars.style.transform =
+        `translate(
+            ${x * -12}px,
+            ${y * -12}px
+        )`;
+
+});
 
 
 /* =================================================
    SCROLL REVEAL
-===================================================== */
+================================================= */
 
 const elements =
 document.querySelectorAll(
@@ -1634,9 +1633,10 @@ new IntersectionObserver(
                     entry.isIntersecting
                 ){
 
-                    entry.target.style.opacity="1";
+                    entry.target.style.opacity =
+                        "1";
 
-                    entry.target.style.transform=
+                    entry.target.style.transform =
                         "translateY(0)";
 
                 }
@@ -1649,18 +1649,20 @@ new IntersectionObserver(
     {
         threshold:.12
     }
+
 );
 
 
 elements.forEach(
     element=>{
 
-        element.style.opacity="0";
+        element.style.opacity =
+            "0";
 
-        element.style.transform=
+        element.style.transform =
             "translateY(35px)";
 
-        element.style.transition=
+        element.style.transition =
             "opacity .8s ease, transform .8s ease";
 
         observer.observe(element);
