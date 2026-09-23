@@ -1200,8 +1200,7 @@ h1 {
 
 
 <a
-href="/"
-class="return">
+class="return" data-page="Home" href="https://orbonix.net/">
 
 ← RETURN TO HOME
 
@@ -2297,8 +2296,7 @@ NASA APOD
 
 
 <a
-href="/solar-system.html"
-class="final-button">
+class="final-button" data-page="Solar System" href="https://orbonix.net/Exploring-Space/Solar-System/">
 
 SOLAR SYSTEM →
 
@@ -2306,8 +2304,7 @@ SOLAR SYSTEM →
 
 
 <a
-href="/deep-space.html"
-class="final-button">
+class="final-button" data-page="Deep Space" href="https://orbonix.net/Exploring-Space/Deep-Space/">
 
 DEEP SPACE →
 
@@ -2315,7 +2312,7 @@ DEEP SPACE →
 
 
 <a
-href="/telescope.html"
+aria-disabled="true" role="link" title="This page is not available yet" data-orbonix-missing="/telescope.html"
 class="final-button">
 
 TELESCOPE →
@@ -2324,8 +2321,7 @@ TELESCOPE →
 
 
 <a
-href="/quizzes.html"
-class="final-button">
+class="final-button" data-page="Quizzes" href="https://orbonix.net/Exploring-Space/Quizes/">
 
 SPACE QUIZ →
 
@@ -2333,7 +2329,7 @@ SPACE QUIZ →
 
 
 <a
-href="/moons.html"
+aria-disabled="true" role="link" title="This page is not available yet" data-orbonix-missing="/moons.html"
 class="final-button">
 
 MOONS →
@@ -2342,8 +2338,7 @@ MOONS →
 
 
 <a
-href="/stars.html"
-class="final-button">
+class="final-button" data-page="Stars" href="https://orbonix.net/Exploring-Space/Deep-Space/Stars/">
 
 STARS →
 
@@ -2351,8 +2346,7 @@ STARS →
 
 
 <a
-href="/galaxies.html"
-class="final-button">
+class="final-button" data-page="Galaxies" href="https://orbonix.net/Exploring-Space/Deep-Space/Galaxies/">
 
 GALAXIES →
 
@@ -2387,260 +2381,9 @@ ORBONIX · LATEST SPACE NEWS · 2026
 
 <script>
 
-/* =========================================================
-   ORBONIX UNIVERSAL PAGE SYSTEM
-========================================================= */
 
-const ORBONIX_PAGES = {
 
-    "home":
-        "/",
 
-    "exploring space":
-        "/exploring-space.html",
-
-    "solar system":
-        "/solar-system.html",
-
-    "deep space":
-        "/deep-space.html",
-
-    "space missions":
-        "/space-missions.html",
-
-    "quizzes":
-        "/quizzes.html",
-
-    "terms":
-        "/terms.html",
-
-    "telescope":
-        "/telescope.html",
-
-    "moons":
-        "/moons.html",
-
-    "stars":
-        "/stars.html",
-
-    "galaxies":
-        "/galaxies.html",
-
-    "sun":
-        "/sun.html",
-
-    "mercury":
-        "/mercury.html",
-
-    "venus":
-        "/venus.html",
-
-    "earth":
-        "/earth.html",
-
-    "mars":
-        "/mars.html",
-
-    "jupiter":
-        "/jupiter.html",
-
-    "saturn":
-        "/saturn.html",
-
-    "uranus":
-        "/uranus.html",
-
-    "neptune":
-        "/neptune.html",
-
-    "dwarf planets":
-        "/dwarf-planets.html",
-
-    "asteroid belt":
-        "/asteroid-belt.html",
-
-    "kuiper belt":
-        "/kuiper-belt.html",
-
-    "oort cloud":
-        "/oort-cloud.html",
-
-    "planet x":
-        "/planet-x.html",
-
-    "black holes":
-        "/black-holes.html",
-
-    "cosmic voids":
-        "/cosmic-voids.html",
-
-    "dark energy":
-        "/dark-energy.html",
-
-    "dark matter":
-        "/dark-matter.html",
-
-    "nebulae":
-        "/nebulae.html",
-
-    "quasars":
-        "/quasars.html",
-
-    "rogue planets":
-        "/rogue-planets.html",
-
-    "wormholes":
-        "/wormholes.html",
-
-    "apollo":
-        "/apollo.html",
-
-    "artemis":
-        "/artemis.html",
-
-    "cassini":
-        "/cassini.html",
-
-    "james webb":
-        "/james-webb.html",
-
-    "new horizons":
-        "/new-horizons.html",
-
-    "voyager":
-        "/voyager.html",
-
-    "black holes quiz":
-        "/black-holes-quiz.html",
-
-    "comets quiz":
-        "/comets-quiz.html",
-
-    "final quiz":
-        "/final-quiz.html",
-
-    "galactic quiz":
-        "/galactic-quiz.html",
-
-    "moons quiz":
-        "/moons-quiz.html",
-
-    "planet quiz":
-        "/planet-quiz.html",
-
-    "stars quiz":
-        "/stars-quiz.html",
-
-    "sun quiz":
-        "/sun-quiz.html",
-
-    "telescope quiz":
-        "/telescope-quiz.html",
-
-    "orbonix fotos":
-        "/orbonix-fotos.html",
-
-    "achievements":
-        "/achievements.html",
-
-    "latest space news":
-        "/latest-space-news.html"
-
-};
-
-
-/* =========================================================
-   UNIVERSAL PAGE NAVIGATION
-========================================================= */
-
-function ORBONIX_GoTo(pageName) {
-
-    const key =
-        pageName
-            .toLowerCase()
-            .trim();
-
-    const destination =
-        ORBONIX_PAGES[key];
-
-    if (destination) {
-
-        window.location.href =
-            destination;
-
-        return;
-
-    }
-
-    console.warn(
-        "ORBONIX page not found:",
-        pageName
-    );
-
-}
-
-
-/* =========================================================
-   UNIVERSAL BUTTON SYSTEM
-========================================================= */
-
-document
-    .querySelectorAll("[data-page]")
-    .forEach(button => {
-
-        button.addEventListener(
-            "click",
-            function(event) {
-
-                event.preventDefault();
-
-                ORBONIX_GoTo(
-                    this.dataset.page
-                );
-
-            }
-        );
-
-    });
-
-
-
-/* =========================================================
-   FINAL NAVIGATION
-========================================================= */
-
-document
-    .querySelectorAll(".final-button")
-    .forEach(button => {
-
-        const text =
-            button.textContent
-                .replace("→","")
-                .trim()
-                .toLowerCase();
-
-
-        if (
-            text === "nasa"
-        ) {
-            return;
-        }
-
-
-        button.addEventListener(
-            "click",
-            function(event) {
-
-                event.preventDefault();
-
-                ORBONIX_GoTo(
-                    text
-                );
-
-            }
-        );
-
-    });
 
 
 
@@ -2651,21 +2394,6 @@ document
 const returnButton =
     document.querySelector(".return");
 
-
-if (returnButton) {
-
-    returnButton.addEventListener(
-        "click",
-        function(event) {
-
-            event.preventDefault();
-
-            ORBONIX_GoTo("home");
-
-        }
-    );
-
-}
 
 
 
@@ -3008,6 +2736,8 @@ cards.forEach(card => {
 </script>
 
 
+<script src="/js/search.js"></script>
 </body>
 
 </html>
+

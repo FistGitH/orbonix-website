@@ -4113,8 +4113,7 @@ body {
             ========================== -->
 
             <div
-                class="orbonix-button"
-                data-page="/exploring-space">
+                class="orbonix-button" data-page="Exploring Space">
 
                 EXPLORE SPACE
 
@@ -4126,8 +4125,7 @@ body {
             ========================== -->
 
             <div
-                class="orbonix-button"
-                data-page="/solar-system-simulation">
+                class="orbonix-button" data-page="Solar System Simulation">
 
                 SOLAR SIMULATION
 
@@ -4602,7 +4600,7 @@ buttons.forEach(
 
                 /* =================================
                    RELATIVE URL
-                   
+
                    Example:
                    /exploring-space
 
@@ -4620,9 +4618,7 @@ buttons.forEach(
                     button.dataset.page;
 
 
-                const url =
-                    window.location.origin +
-                    page;
+
 
 
                 /* PRESS */
@@ -4803,15 +4799,7 @@ buttons.forEach(
                    NAVIGATION
                 ================================= */
 
-                setTimeout(
-                    function() {
 
-                        window.top.location.href =
-                            url;
-
-                    },
-                    250
-                );
 
             }
 
@@ -6685,7 +6673,7 @@ document.addEventListener(
 <div class="simulation-label">ORBONIX · INTERACTIVE EXPERIENCE</div>
 <h1 class="simulation-title">SOLAR SYSTEM</h1>
 <div class="simulation-description">Enter the interactive Solar System and explore planets, dwarf planets and moons in a realistic three-dimensional environment. Travel through space, approach different objects and follow them with the camera.</div>
-<a href="https://sites.google.com/view/kosmolearn/simulation" class="simulation-button">ENTER SIMULATION <span class="arrow">→</span></a>
+<a class="simulation-button" data-page="Solar System Simulation" href="https://orbonix.net/Solar-System-Simulation/">ENTER SIMULATION <span class="arrow">→</span></a>
 </div>
 </section>
 
@@ -7163,7 +7151,7 @@ buttons.forEach(
 
                 /* =================================
                    RELATIVE URL
-                   
+
                    Example:
                    /exploring-space
 
@@ -7181,9 +7169,7 @@ buttons.forEach(
                     button.dataset.page;
 
 
-                const url =
-                    window.location.origin +
-                    page;
+
 
 
                 /* PRESS */
@@ -7364,15 +7350,7 @@ buttons.forEach(
                    NAVIGATION
                 ================================= */
 
-                setTimeout(
-                    function() {
 
-                        window.top.location.href =
-                            url;
-
-                    },
-                    250
-                );
 
             }
 
@@ -8113,9 +8091,10 @@ const footerSmallStars=document.querySelector('.footer-stars-small');
 document.addEventListener('mousemove',event=>{const x=event.clientX/window.innerWidth-.5;const y=event.clientY/window.innerHeight-.5;if(footerStars)footerStars.style.transform=`translate(${x*18}px,${y*18}px)`;if(footerSmallStars)footerSmallStars.style.transform=`translate(${x*-10}px,${y*-10}px)`;});
 
 </script>
-   
+
    <script src="/js/search.js"></script>
 <script src="/js/search-ui.js"></script>
-   
+
 </body>
 </html>
+

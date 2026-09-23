@@ -601,9 +601,7 @@ h1 {
 <div class="header">
 
 <a
-href="#"
-onclick="goToPage('solar-system/dwarf-planets'); return false;"
-class="return">
+class="return" data-page="Dwarf Planets" href="https://orbonix.net/Exploring-Space/Solar-System/Dwarf-Planets/">
 
 ← RETURN TO DWARF PLANETS
 
@@ -853,18 +851,14 @@ a single orbit.
 <div class="navigation">
 
 <a
-href="#"
-onclick="goToPage('solar-system/dwarf-planets'); return false;"
-class="nav-button">
+class="nav-button" data-page="Dwarf Planets" href="https://orbonix.net/Exploring-Space/Solar-System/Dwarf-Planets/">
 
 ← RETURN TO DWARF PLANETS
 
 </a>
 
 <a
-href="#"
-onclick="goToPage('solar-system'); return false;"
-class="nav-button">
+class="nav-button" data-page="Solar System" href="https://orbonix.net/Exploring-Space/Solar-System/">
 
 ← RETURN TO SOLAR SYSTEM
 
@@ -885,68 +879,6 @@ DWARF PLANET · ERIS
 
 <script>
 
-/* =========================================
-   GOOGLE SITES / DOMAIN-SAFE NAVIGATION
-========================================= */
-
-function goToPage(page) {
-
-    /*
-       Google Sites:
-       https://sites.google.com/view/kosmolearn/...
-
-       Custom domain:
-       https://your-domain.com/...
-
-       При смене домена путь страницы
-       останется тем же.
-    */
-
-    const currentHost =
-        window.top.location.hostname;
-
-    let siteBase = "";
-
-
-    /*
-       Если сайт открыт через стандартный
-       адрес Google Sites, сохраняем
-       /view/kosmolearn
-    */
-
-    if (
-        currentHost === "sites.google.com" ||
-        currentHost.endsWith(".sites.google.com")
-    ) {
-
-        siteBase =
-            "/view/kosmolearn";
-
-    }
-
-
-    /*
-       Убираем лишние / в начале и конце
-    */
-
-    page =
-        String(page)
-        .replace(/^\/+/, "")
-        .replace(/\/+$/, "");
-
-
-    /*
-       Переход на страницу
-    */
-
-    const target =
-        siteBase + "/" + page;
-
-
-    window.top.location.href =
-        target;
-
-}
 
 
 /* =========================================
@@ -993,6 +925,8 @@ function(event) {
 
 </script>
 
+<script src="/js/search.js"></script>
 </body>
 
 </html>
+

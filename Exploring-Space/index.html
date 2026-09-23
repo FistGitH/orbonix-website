@@ -3294,8 +3294,7 @@ body {
             ========================== -->
 
             <div
-                class="orbonix-button"
-                data-page="/exploring-space">
+                class="orbonix-button" data-page="Exploring Space">
 
                 EXPLORE SPACE
 
@@ -3307,8 +3306,7 @@ body {
             ========================== -->
 
             <div
-                class="orbonix-button"
-                data-page="/solar-system-simulation">
+                class="orbonix-button" data-page="Solar System Simulation">
 
                 SOLAR SIMULATION
 
@@ -3783,7 +3781,7 @@ buttons.forEach(
 
                 /* =================================
                    RELATIVE URL
-                   
+
                    Example:
                    /exploring-space
 
@@ -3801,9 +3799,7 @@ buttons.forEach(
                     button.dataset.page;
 
 
-                const url =
-                    window.location.origin +
-                    page;
+
 
 
                 /* PRESS */
@@ -3984,15 +3980,7 @@ buttons.forEach(
                    NAVIGATION
                 ================================= */
 
-                setTimeout(
-                    function() {
 
-                        window.top.location.href =
-                            url;
-
-                    },
-                    250
-                );
 
             }
 
@@ -4713,8 +4701,7 @@ document.addEventListener(
 
 
 <a
-href="https://sites.google.com/view/kosmolearn"
-class="solar-return-home">
+class="solar-return-home" data-page="Home" href="https://orbonix.net/">
 
 ← RETURN TO HOME
 
@@ -4968,8 +4955,7 @@ EXPLORE DWARF PLANETS →
 <div class="solar-button-container">
 
 <a
-href="https://sites.google.com/view/kosmolearn/solar-system"
-class="solar-button">
+class="solar-button" data-page="Solar System" href="https://orbonix.net/Exploring-Space/Solar-System/">
 
 GO TO SOLAR SYSTEM →
 
@@ -5491,7 +5477,7 @@ buttons.forEach(
 
                 /* =================================
                    RELATIVE URL
-                   
+
                    Example:
                    /exploring-space
 
@@ -5509,9 +5495,7 @@ buttons.forEach(
                     button.dataset.page;
 
 
-                const url =
-                    window.location.origin +
-                    page;
+
 
 
                 /* PRESS */
@@ -5692,15 +5676,7 @@ buttons.forEach(
                    NAVIGATION
                 ================================= */
 
-                setTimeout(
-                    function() {
 
-                        window.top.location.href =
-                            url;
-
-                    },
-                    250
-                );
 
             }
 
@@ -6027,5 +6003,7 @@ function(event) {
 
 
 </script>
+<script src="/js/search.js"></script>
 </body>
 </html>
+

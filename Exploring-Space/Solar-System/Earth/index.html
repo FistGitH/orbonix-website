@@ -928,8 +928,7 @@ h1 {
 
 
 <a
-href="?page=Solar%20System"
-class="return">
+class="return" data-page="Solar System" href="https://orbonix.net/Exploring-Space/Solar-System/">
 
 ← RETURN TO SOLAR SYSTEM
 
@@ -990,8 +989,7 @@ alt="Earth">
 ========================================= -->
 
 <a
-href="?page=Moon"
-class="moon">
+class="moon" data-page="Moon" href="https://orbonix.net/Exploring-Space/Solar-System/Earth/Moon/">
 
 <img
 src="https://commons.wikimedia.org/wiki/Special:Redirect/file/FullMoon2010.jpg"
@@ -1323,86 +1321,6 @@ NASA
 <script>
 
 
-/* =========================================
-   PAGE NAVIGATION
-========================================= */
-
-/*
-   Используем названия страниц вместо
-   постоянных URL.
-
-   Примеры:
-
-   ?page=Solar%20System
-   ?page=Moon
-   ?page=Earth
-
-   При переносе сайта домен менять
-   не потребуется.
-*/
-
-function goToPage(pageName) {
-
-    const encodedPage =
-        encodeURIComponent(pageName);
-
-    /*
-       Если сайт работает через Google Sites,
-       используем текущий домен.
-    */
-
-    const currentUrl =
-        new URL(window.location.href);
-
-    /*
-       Сохраняем текущий сайт и меняем
-       только параметр page.
-    */
-
-    currentUrl.searchParams.set(
-        "page",
-        pageName
-    );
-
-    window.location.href =
-        currentUrl.toString();
-
-}
-
-
-/* =========================================
-   FIX NAVIGATION LINKS
-========================================= */
-
-document.querySelectorAll(
-    'a[href^="?page="]'
-).forEach(
-    link => {
-
-        link.addEventListener(
-            "click",
-            function(event) {
-
-                event.preventDefault();
-
-                const page =
-                    new URL(
-                        this.href
-                    ).searchParams.get(
-                        "page"
-                    );
-
-                if(page) {
-
-                    goToPage(page);
-
-                }
-
-            }
-        );
-
-    }
-);
 
 
 /* =========================================
@@ -1482,7 +1400,9 @@ function(event) {
 </script>
 
 
+<script src="/js/search.js"></script>
 </body>
 
 </html>
 ```
+

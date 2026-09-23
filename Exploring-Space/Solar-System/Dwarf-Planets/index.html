@@ -638,9 +638,7 @@ h1 {
 
 
 <a
-href="#"
-onclick="goToPage('solar-system'); return false;"
-class="return">
+class="return" data-page="Solar System" href="https://orbonix.net/Exploring-Space/Solar-System/">
 
 ← RETURN TO SOLAR SYSTEM
 
@@ -682,9 +680,7 @@ and dwarf-planet candidates of the Solar System.
 <!-- CERES -->
 
 <a
-href="#"
-onclick="goToPage('ceres'); return false;"
-class="planet-button">
+class="planet-button" data-page="Ceres" href="https://orbonix.net/Exploring-Space/Solar-System/Dwarf-Planets/Ceres/">
 
 <div>
 
@@ -708,9 +704,7 @@ CERES
 <!-- PLUTO -->
 
 <a
-href="#"
-onclick="goToPage('pluto'); return false;"
-class="planet-button">
+class="planet-button" data-page="Pluto" href="https://orbonix.net/Exploring-Space/Solar-System/Dwarf-Planets/Pluto/">
 
 <div>
 
@@ -734,9 +728,7 @@ PLUTO
 <!-- ERIS -->
 
 <a
-href="#"
-onclick="goToPage('eris'); return false;"
-class="planet-button">
+class="planet-button" data-page="Eris" href="https://orbonix.net/Exploring-Space/Solar-System/Dwarf-Planets/Eris/">
 
 <div>
 
@@ -760,9 +752,7 @@ ERIS
 <!-- HAUMEA -->
 
 <a
-href="#"
-onclick="goToPage('haumea'); return false;"
-class="planet-button">
+class="planet-button" data-page="Haumea" href="https://orbonix.net/Exploring-Space/Solar-System/Dwarf-Planets/Haumea/">
 
 <div>
 
@@ -786,9 +776,7 @@ HAUMEA
 <!-- MAKEMAKE -->
 
 <a
-href="#"
-onclick="goToPage('makemake'); return false;"
-class="planet-button">
+class="planet-button" data-page="Makemake" href="https://orbonix.net/Exploring-Space/Solar-System/Dwarf-Planets/Makemake/">
 
 <div>
 
@@ -812,9 +800,7 @@ MAKEMAKE
 <!-- ORCUS -->
 
 <a
-href="#"
-onclick="goToPage('orcus'); return false;"
-class="planet-button">
+class="planet-button" data-page="Orcus" href="https://orbonix.net/Exploring-Space/Solar-System/Dwarf-Planets/Orcus/">
 
 <div>
 
@@ -838,9 +824,7 @@ ORCUS
 <!-- GONGGONG -->
 
 <a
-href="#"
-onclick="goToPage('gonggong'); return false;"
-class="planet-button">
+class="planet-button" data-page="Gonggong" href="https://orbonix.net/Exploring-Space/Solar-System/Dwarf-Planets/Gonggong/">
 
 <div>
 
@@ -1027,9 +1011,7 @@ hidden in the distant outer Solar System.
 
 
 <a
-href="#"
-onclick="goToPage('solar-system'); return false;"
-class="nav-button">
+class="nav-button" data-page="Solar System" href="https://orbonix.net/Exploring-Space/Solar-System/">
 
 ← RETURN TO SOLAR SYSTEM
 
@@ -1054,105 +1036,8 @@ ORBONIX · SOLAR SYSTEM
 
 <script>
 
-/* =========================================
-   ORBONIX PAGE NAVIGATION
-========================================= */
-
-/*
-   ВСЕ ССЫЛКИ НА СТРАНИЦЫ НАХОДЯТСЯ ЗДЕСЬ.
-
-   Если URL сайта когда-нибудь изменится,
-   достаточно изменить BASE_URL и при необходимости
-   адреса страниц ниже.
-*/
-
-const BASE_URL =
-    "https://sites.google.com/view/kosmolearn";
 
 
-const SITE_PAGES = {
-
-    "solar-system":
-        "/solar-system",
-
-    "ceres":
-        "/solar-system/dwarf-planets/ceres",
-
-    "pluto":
-        "/solar-system/dwarf-planets/pluto",
-
-    "eris":
-        "/solar-system/dwarf-planets/eris",
-
-    "haumea":
-        "/solar-system/dwarf-planets/haumea",
-
-    "makemake":
-        "/solar-system/dwarf-planets/makemake",
-
-    "orcus":
-        "/solar-system/dwarf-planets/orcus",
-
-    "gonggong":
-        "/solar-system/dwarf-planets/gonggong"
-
-};
-
-
-/* =========================================
-   GO TO PAGE
-========================================= */
-
-function goToPage(pageName) {
-
-    const page =
-        SITE_PAGES[pageName];
-
-    if (!page) {
-
-        console.error(
-            "ORBONIX: Page not found:",
-            pageName
-        );
-
-        return;
-    }
-
-
-    const target =
-        BASE_URL + page;
-
-
-    /*
-       Google Sites / embedded HTML:
-       пытаемся открыть страницу
-       в основном окне сайта.
-    */
-
-    try {
-
-        if (window.top) {
-
-            window.top.location.href =
-                target;
-
-        } else {
-
-            window.location.href =
-                target;
-
-        }
-
-    }
-
-    catch(error) {
-
-        window.location.href =
-            target;
-
-    }
-
-}
 
 
 /* =========================================
@@ -1202,7 +1087,9 @@ function(event) {
 </script>
 
 
+<script src="/js/search.js"></script>
 </body>
 
 </html>
 ```
+

@@ -710,9 +710,7 @@ h1 {
 <!-- UNIVERSAL ORBONIX NAVIGATION -->
 
 <a
-href="#"
-class="return"
-data-page="Jupiter">
+class="return" data-page="Jupiter" href="https://orbonix.net/Exploring-Space/Solar-System/Jupiter/">
 
 ← RETURN TO JUPITER
 
@@ -1043,7 +1041,7 @@ WIKIMEDIA COMMONS
      ORBONIX GLOBAL SEARCH SYSTEM
 ========================================= -->
 
-<script src="/search.js"></script>
+<script src="/js/search.js"></script>
 
 
 <script>
@@ -1133,40 +1131,6 @@ const returnButton =
 document.querySelector(".return");
 
 
-if (
-    returnButton &&
-    typeof ORBONIX_PAGES !== "undefined"
-) {
-
-    returnButton.addEventListener(
-        "click",
-        function(event) {
-
-            event.preventDefault();
-
-            const pageName =
-                returnButton.dataset.page;
-
-            const page =
-                ORBONIX_PAGES.find(
-                    item =>
-                        item.title.toLowerCase() ===
-                        pageName.toLowerCase()
-                );
-
-
-            if (page && page.url) {
-
-                window.location.href =
-                    page.url;
-
-            }
-
-        }
-    );
-
-}
-
 
 </script>
 
@@ -1174,3 +1138,4 @@ if (
 </body>
 
 </html>
+

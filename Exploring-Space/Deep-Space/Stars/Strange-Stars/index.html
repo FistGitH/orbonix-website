@@ -654,10 +654,8 @@ h1 {
 <div class="header">
 
 <a
-    href="/"
     class="return"
-    data-orbonix-page="Home"
->
+ data-page="Home" href="https://orbonix.net/">
 ← RETURN TO HOME
 </a>
 
@@ -1014,10 +1012,8 @@ Universe.
 <div class="navigation">
 
 <a
-    href="/"
     class="nav-button"
-    data-orbonix-page="Home"
->
+ data-page="Home" href="https://orbonix.net/">
 ← RETURN TO HOME
 </a>
 
@@ -1033,113 +1029,7 @@ ORBONIX · DEEP SPACE · STRANGE STARS
 
 <script>
 
-/* =========================================
-   ORBONIX UNIVERSAL PAGE LINK SYSTEM
-   =========================================
 
-   Все внутренние ссылки используют
-   название страницы, а не старый URL.
-
-   Если домен/хостинг изменится,
-   ссылки продолжат работать.
-========================================= */
-
-const ORBONIX_PAGES = {
-
-    "Home": "/",
-
-    "Exploring Space": "/exploring-space",
-    "Gallery": "/gallery",
-    "Latest Space News": "/latest-space-news",
-
-    "Deep Space": "/deep-space",
-
-    "Strange Stars": "/deep-space/strange-stars",
-
-    "Pulsars": "/deep-space/pulsars",
-    "Magnetars": "/deep-space/magnetars",
-
-    "Black Holes": "/deep-space/black-holes",
-    "Cosmic Voids": "/deep-space/cosmic-voids",
-    "Dark Energy": "/deep-space/dark-energy",
-    "Dark Matter": "/deep-space/dark-matter",
-    "Galaxies": "/deep-space/galaxies",
-    "Nebulae": "/deep-space/nebulae",
-    "Quasars": "/deep-space/quasars",
-    "Rogue Planets": "/deep-space/rogue-planets",
-    "Stars": "/deep-space/stars",
-    "Wormholes": "/deep-space/wormholes",
-
-    "Solar System": "/solar-system",
-
-    "Sun": "/solar-system/sun",
-    "Mercury": "/solar-system/mercury",
-    "Venus": "/solar-system/venus",
-    "Earth": "/solar-system/earth",
-    "Mars": "/solar-system/mars",
-    "Phobos": "/solar-system/phobos",
-    "Deimos": "/solar-system/deimos",
-    "Jupiter": "/solar-system/jupiter",
-    "Saturn": "/solar-system/saturn",
-    "Uranus": "/solar-system/uranus",
-    "Neptune": "/solar-system/neptune",
-
-    "Dwarf Planets": "/solar-system/dwarf-planets",
-    "Asteroid Belt": "/solar-system/asteroid-belt",
-    "Kuiper Belt": "/solar-system/kuiper-belt",
-    "Oort Cloud": "/solar-system/oort-cloud",
-    "Planet X": "/solar-system/planet-x",
-
-    "Space Missions": "/space-missions",
-
-    "Apollo": "/space-missions/apollo",
-    "Artemis": "/space-missions/artemis",
-    "Cassini": "/space-missions/cassini",
-    "James Webb": "/space-missions/james-webb",
-    "New Horizons": "/space-missions/new-horizons",
-    "Voyager": "/space-missions/voyager",
-
-    "Quizzes": "/quizzes",
-
-    "Black Holes Quiz": "/quizzes/black-holes",
-    "Comets Quiz": "/quizzes/comets",
-    "Final Quiz": "/quizzes/final",
-    "Galactic Quiz": "/quizzes/galactic",
-    "Moons Quiz": "/quizzes/moons",
-    "Planet Quiz": "/quizzes/planets",
-    "Stars Quiz": "/quizzes/stars",
-    "Sun Quiz": "/quizzes/sun",
-    "Telescope Quiz": "/quizzes/telescope",
-
-    "More About Orbonix": "/more-about-orbonix",
-    "Orbonix Fotos": "/orbonix-fotos",
-    "Telescope": "/telescope",
-    "Site Achievements": "/achievements",
-
-    "Solar System Simulation": "/solar-system-simulation"
-
-};
-
-
-/* =========================================
-   UNIVERSAL LINK CONVERTER
-========================================= */
-
-document
-.querySelectorAll("[data-orbonix-page]")
-.forEach(function(link) {
-
-    const page =
-        link.getAttribute("data-orbonix-page");
-
-    if (ORBONIX_PAGES[page]) {
-
-        link.href =
-            ORBONIX_PAGES[page];
-
-    }
-
-});
 
 
 /* =========================================
@@ -1185,6 +1075,8 @@ function(event) {
 
 </script>
 
+<script src="/js/search.js"></script>
 </body>
 
 </html>
+

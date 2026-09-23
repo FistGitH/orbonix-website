@@ -737,8 +737,7 @@ h1 {
 
 
 <a
-href="https://sites.google.com/view/kosmolearn"
-class="return">
+class="return" data-page="Home" href="https://orbonix.net/">
 
 ← RETURN TO HOME
 
@@ -813,9 +812,7 @@ FEATURED MISSIONS
 
 
 <a
-href="javascript:void(0)"
-class="mission"
-data-page="Apollo">
+class="mission" data-page="Apollo" href="https://orbonix.net/Exploring-Space/Space-Missions/Apollo/">
 
 <div>
 
@@ -845,9 +842,7 @@ EXPLORE MISSION →
 
 
 <a
-href="javascript:void(0)"
-class="mission"
-data-page="Voyager">
+class="mission" data-page="Voyager" href="https://orbonix.net/Exploring-Space/Space-Missions/Voyager/">
 
 <div>
 
@@ -876,9 +871,7 @@ EXPLORE MISSION →
 
 
 <a
-href="javascript:void(0)"
-class="mission"
-data-page="Cassini">
+class="mission" data-page="Cassini" href="https://orbonix.net/Exploring-Space/Space-Missions/Cassini/">
 
 <div>
 
@@ -907,9 +900,7 @@ EXPLORE MISSION →
 
 
 <a
-href="javascript:void(0)"
-class="mission"
-data-page="New Horizons">
+class="mission" data-page="New Horizons" href="https://orbonix.net/Exploring-Space/Space-Missions/New-Horizonts/">
 
 <div>
 
@@ -938,9 +929,7 @@ EXPLORE MISSION →
 
 
 <a
-href="javascript:void(0)"
-class="mission"
-data-page="James Webb">
+class="mission" data-page="James Webb Space Telescope" href="https://orbonix.net/Exploring-Space/Space-Missions/James-Webb/">
 
 <div>
 
@@ -969,9 +958,7 @@ EXPLORE MISSION →
 
 
 <a
-href="javascript:void(0)"
-class="mission"
-data-page="Artemis">
+class="mission" data-page="Artemis" href="https://orbonix.net/Exploring-Space/Space-Missions/Artemis/">
 
 <div>
 
@@ -1109,8 +1096,7 @@ from the <strong>edge of interstellar space</strong>.
 
 
 <a
-href="https://sites.google.com/view/kosmolearn"
-class="nav-button">
+class="nav-button" data-page="Home" href="https://orbonix.net/">
 
 ← RETURN TO HOME
 
@@ -1136,68 +1122,7 @@ EXPLORING HUMANITY'S JOURNEY INTO SPACE
 
 <script>
 
-/* =========================================
-   GOOGLE SITES PAGE NAVIGATION
-   Finds the page by its Google Sites name
-========================================= */
 
-function openGoogleSitePage(pageName) {
-
-    const baseURL =
-        "https://sites.google.com/view/kosmolearn";
-
-    const currentURL =
-        window.location.href;
-
-    /*
-       Google Sites normally creates URLs like:
-
-       /apollo
-       /voyager
-       /cassini
-
-       We generate the URL automatically
-       from the page name.
-    */
-
-    const slug =
-        pageName
-            .trim()
-            .toLowerCase()
-            .replace(/&/g, "and")
-            .replace(/[^a-z0-9]+/g, "-")
-            .replace(/^-+|-+$/g, "");
-
-    window.location.href =
-        baseURL + "/" + slug;
-}
-
-
-/* =========================================
-   MISSION BUTTONS
-========================================= */
-
-document
-    .querySelectorAll(".mission")
-    .forEach(function(card) {
-
-        card.addEventListener(
-            "click",
-            function(event) {
-
-                event.preventDefault();
-
-                const page =
-                    card.getAttribute("data-page");
-
-                if (!page) return;
-
-                openGoogleSitePage(page);
-
-            }
-        );
-
-    });
 
 
 /* =========================================
@@ -1245,7 +1170,9 @@ document.addEventListener(
 </script>
 
 
+<script src="/js/search.js"></script>
 </body>
 
 </html>
 ```
+

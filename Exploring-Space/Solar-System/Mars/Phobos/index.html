@@ -704,8 +704,7 @@ h1 {
 
 
 <a
-class="return orbonix-link"
-data-page="Mars">
+class="return orbonix-link" data-page="Mars" href="https://orbonix.net/Exploring-Space/Solar-System/Mars/">
 
 ← RETURN TO MARS
 
@@ -1010,7 +1009,7 @@ WIKIMEDIA COMMONS
      ORBONIX GLOBAL SEARCH / NAVIGATION
 ========================================= -->
 
-<script src="/search.js"></script>
+<script src="/js/search.js"></script>
 
 
 <script>
@@ -1091,39 +1090,10 @@ function(event) {
 });
 
 
-/* =========================================
-   UNIVERSAL ORBONIX NAVIGATION
-========================================= */
-
-document.querySelectorAll(".orbonix-link").forEach(
-    function(link) {
-
-        link.addEventListener(
-            "click",
-            function(event) {
-
-                event.preventDefault();
-
-                const page =
-                    link.getAttribute("data-page");
-
-                if (
-                    typeof ORBONIX_GO === "function"
-                ) {
-
-                    ORBONIX_GO(page);
-
-                }
-
-            }
-        );
-
-    }
-);
-
 </script>
 
 
 </body>
 
 </html>
+

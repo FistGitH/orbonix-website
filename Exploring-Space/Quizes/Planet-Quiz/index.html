@@ -1144,9 +1144,8 @@ h1 {
 
 
 <a
-    href="/"
     class="return"
->
+ data-page="Home" href="https://orbonix.net/">
 
 ← RETURN TO HOME
 
@@ -1340,9 +1339,8 @@ through the Solar System.
 
 
 <a
-    href="/quizzes/"
     class="result-button"
->
+ data-page="Quizzes" href="https://orbonix.net/Exploring-Space/Quizes/">
 
 ← QUIZ SELECT
 
@@ -1350,9 +1348,8 @@ through the Solar System.
 
 
 <a
-    href="/"
     class="result-button"
->
+ data-page="Home" href="https://orbonix.net/">
 
 RETURN TO HOME
 
@@ -1380,28 +1377,6 @@ ORBONIX · PLANET QUIZ · SPACE KNOWLEDGE
 
 <script>
 
-/* =========================================
-   ORBONIX UNIVERSAL NAVIGATION
-========================================= */
-
-/*
-   All main navigation now uses relative URLs.
-
-   This means:
-
-   https://orbonix.net
-   https://example.com
-   https://newdomain.com
-
-   can all use the same code.
-
-   The domain itself is NEVER written into
-   the page links.
-*/
-
-
-const ORBONIX_BASE =
-    window.location.origin;
 
 
 /* =========================================
@@ -2503,6 +2478,8 @@ loadQuestion();
 </script>
 
 
+<script src="/js/search.js"></script>
 </body>
 
 </html>
+

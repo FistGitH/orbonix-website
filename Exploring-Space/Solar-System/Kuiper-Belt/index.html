@@ -787,9 +787,7 @@ h1 {
 
 
 <a
-href="#"
-class="return"
-data-page="Solar System">
+class="return" data-page="Solar System" href="https://orbonix.net/Exploring-Space/Solar-System/">
 
 ← RETURN TO SOLAR SYSTEM
 
@@ -1094,9 +1092,7 @@ the Sun.
 
 
 <a
-href="#"
-class="nav-button"
-data-page="Solar System">
+class="nav-button" data-page="Solar System" href="https://orbonix.net/Exploring-Space/Solar-System/">
 
 ← RETURN TO SOLAR SYSTEM
 
@@ -1128,7 +1124,7 @@ ORBONIX · SOLAR SYSTEM
      ORBONIX SEARCH.JS
 ========================================= -->
 
-<script src="/search.js"></script>
+<script src="/js/search.js"></script>
 
 
 <script>
@@ -1177,100 +1173,6 @@ function(event) {
 });
 
 
-/* =========================================
-   ORBONIX UNIVERSAL NAVIGATION
-========================================= */
-
-function setupOrbonixNavigation() {
-
-    const buttons =
-        document.querySelectorAll(
-            "[data-page]"
-        );
-
-
-    buttons.forEach(function(button) {
-
-        button.addEventListener(
-            "click",
-
-            function(event) {
-
-                event.preventDefault();
-
-                const requestedPage =
-                    button.dataset.page;
-
-
-                if (
-                    typeof ORBONIX_PAGES ===
-                    "undefined"
-                ) {
-
-                    console.error(
-                        "ORBONIX_PAGES was not found. Check search.js."
-                    );
-
-                    return;
-                }
-
-
-                const page =
-                    ORBONIX_PAGES.find(
-                        function(item) {
-
-                            return (
-                                item.title &&
-                                item.title
-                                    .trim()
-                                    .toLowerCase() ===
-                                requestedPage
-                                    .trim()
-                                    .toLowerCase()
-                            );
-
-                        }
-                    );
-
-
-                if (page && page.url) {
-
-                    window.location.href =
-                        page.url;
-
-                } else {
-
-                    console.error(
-                        "ORBONIX page not found:",
-                        requestedPage
-                    );
-
-                }
-
-            }
-
-        );
-
-    });
-
-}
-
-
-if (
-    document.readyState ===
-    "loading"
-) {
-
-    document.addEventListener(
-        "DOMContentLoaded",
-        setupOrbonixNavigation
-    );
-
-} else {
-
-    setupOrbonixNavigation();
-
-}
 
 
 </script>
@@ -1279,3 +1181,4 @@ if (
 </body>
 
 </html>
+

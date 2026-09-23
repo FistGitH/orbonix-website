@@ -1079,8 +1079,7 @@ h1 {
 
 
 <a
-href="/solar-system"
-class="return">
+class="return" data-page="Solar System" href="https://orbonix.net/Exploring-Space/Solar-System/">
 
 ← RETURN TO SOLAR SYSTEM
 
@@ -1405,8 +1404,7 @@ known planet</strong> in our Solar System.
 
 
 <a
-href="/solar-system"
-class="nav-button">
+class="nav-button" data-page="Solar System" href="https://orbonix.net/Exploring-Space/Solar-System/">
 
 ← RETURN TO SOLAR SYSTEM
 
@@ -1477,54 +1475,12 @@ function(event) {
 });
 
 
-/* =========================================
-   ORBONIX UNIVERSAL NAVIGATION
-========================================= */
-
-document.querySelectorAll(
-    'a[href^="/"]'
-).forEach(function(link) {
-
-    link.addEventListener(
-        "click",
-        function(event) {
-
-            const path =
-                link.getAttribute("href");
-
-            if (!path) return;
-
-            /*
-             * Relative navigation.
-             *
-             * The domain is NEVER written here.
-             *
-             * Example:
-             *
-             * /solar-system
-             *
-             * automatically becomes:
-             *
-             * https://CURRENT-DOMAIN/solar-system
-             *
-             * So if ORBONIX moves from one
-             * hosting provider to another,
-             * these links continue working.
-             */
-
-            event.preventDefault();
-
-            window.location.href = path;
-
-        }
-    );
-
-});
-
 
 </script>
 
 
+<script src="/js/search.js"></script>
 </body>
 
 </html>
+
