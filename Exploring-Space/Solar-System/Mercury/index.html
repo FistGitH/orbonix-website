@@ -604,9 +604,7 @@ h1 {
 
 
 <a
-href="#"
-data-page="Solar System"
-class="return">
+class="return" data-page="Solar System" href="https://orbonix.net/Exploring-Space/Solar-System/">
 
 ← RETURN TO SOLAR SYSTEM
 
@@ -908,97 +906,8 @@ TRUE COLOR IMAGE
 
 <script>
 
-/* =========================================
-   ORBONIX UNIVERSAL PAGE SYSTEM
-========================================= */
-
-const ORBONIX_BASE = "";
 
 
-/*
-    Page names are resolved automatically.
-
-    This means you can move the whole website
-    to another hosting/domain without changing
-    every button's absolute URL.
-*/
-
-const ORBONIX_PAGES = {
-
-    "Solar System":
-        "/solar-system/",
-
-    "Mercury":
-        "/solar-system/mercury/",
-
-    "Venus":
-        "/solar-system/venus/",
-
-    "Earth":
-        "/solar-system/earth/",
-
-    "Mars":
-        "/solar-system/mars/",
-
-    "Jupiter":
-        "/solar-system/jupiter/",
-
-    "Saturn":
-        "/solar-system/saturn/",
-
-    "Uranus":
-        "/solar-system/uranus/",
-
-    "Neptune":
-        "/solar-system/neptune/",
-
-    "Dwarf Planets":
-        "/solar-system/dwarf-planets/",
-
-    "Asteroid Belt":
-        "/solar-system/asteroid-belt/",
-
-    "Kuiper Belt":
-        "/solar-system/kuiper-belt/",
-
-    "Oort Cloud":
-        "/solar-system/oort-cloud/"
-
-};
-
-
-/* =========================================
-   UNIVERSAL PAGE NAVIGATION
-========================================= */
-
-document.querySelectorAll("[data-page]").forEach(button => {
-
-    button.addEventListener("click", function(event) {
-
-        event.preventDefault();
-
-        const pageName =
-            this.getAttribute("data-page");
-
-        const target =
-            ORBONIX_PAGES[pageName];
-
-        if (!target) {
-
-            console.warn(
-                "ORBONIX page not found:",
-                pageName
-            );
-
-            return;
-        }
-
-        window.location.href =
-            ORBONIX_BASE + target;
-
-    });
-
-});
 
 
 /* =========================================
@@ -1079,6 +988,8 @@ function(event) {
 </script>
 
 
+<script src="/js/search.js"></script>
 </body>
 
 </html>
+

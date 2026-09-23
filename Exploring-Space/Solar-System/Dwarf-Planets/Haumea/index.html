@@ -765,9 +765,7 @@ h1 {
 <div class="header">
 
 <a
-href="#"
-data-page="Solar System"
-class="return">
+class="return" data-page="Solar System" href="https://orbonix.net/Exploring-Space/Solar-System/">
 
 ← RETURN TO SOLAR SYSTEM
 
@@ -1042,9 +1040,7 @@ HAUMEA'S MOONS
 <div class="moons">
 
 <a
-href="#"
-data-page="Hiʻiaka"
-class="moon-button">
+class="moon-button" data-page="Hiʻiaka" href="https://orbonix.net/Exploring-Space/Solar-System/Dwarf-Planets/Haumea/Hiʻiaka/">
 
 <div class="moon-name">
 
@@ -1062,9 +1058,7 @@ Click to explore Hiʻiaka.
 </a>
 
 <a
-href="#"
-data-page="Namaka"
-class="moon-button">
+class="moon-button" data-page="Namaka" href="https://orbonix.net/Exploring-Space/Solar-System/Dwarf-Planets/Haumea/Namaka/">
 
 <div class="moon-name">
 
@@ -1090,18 +1084,14 @@ Click to explore Namaka.
 <div class="navigation">
 
 <a
-href="#"
-data-page="Solar System"
-class="nav-button">
+class="nav-button" data-page="Solar System" href="https://orbonix.net/Exploring-Space/Solar-System/">
 
 ← RETURN TO SOLAR SYSTEM
 
 </a>
 
 <a
-href="#"
-data-page="Dwarf Planets"
-class="nav-button">
+class="nav-button" data-page="Dwarf Planets" href="https://orbonix.net/Exploring-Space/Solar-System/Dwarf-Planets/">
 
 ← RETURN TO DWARF PLANETS
 
@@ -1126,226 +1116,18 @@ HAUMEA · HIʻIAKA · NAMAKA
 
 <script>
 
-/* =========================================================
-   ORBONIX BASE
-========================================================= */
 
-const ORBONIX_BASE = "https://orbonix.net";
 
 
-/* =========================================================
-   PAGE DATABASE
-========================================================= */
 
-const ORBONIX_PAGES = [
 
-    {
-        title: "Solar System",
-        url: `${ORBONIX_BASE}/Exploring%20Space/Solar%20System/`
-    },
 
-    {
-        title: "Dwarf Planets",
-        url: `${ORBONIX_BASE}/Exploring%20Space/Solar%20System/Dwarf%20Planets/`
-    },
 
-    {
-        title: "Hiʻiaka",
-        url: `${ORBONIX_BASE}/Exploring%20Space/Solar%20System/Dwarf%20Planets/Haumea/Hi%CA%BBiaka/`
-    },
 
-    {
-        title: "Namaka",
-        url: `${ORBONIX_BASE}/Exploring%20Space/Solar%20System/Dwarf%20Planets/Haumea/Namaka/`
-    }
 
-];
 
 
-/* =========================================================
-   NORMALIZE
-========================================================= */
 
-function normalizeSearchText(text) {
-
-    return String(text || "")
-        .toLowerCase()
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "")
-        .replace(/[^a-z0-9\s]/g, " ")
-        .replace(/\s+/g, " ")
-        .trim();
-
-}
-
-
-/* =========================================================
-   FIND PAGE
-========================================================= */
-
-function findOrbonixPage(name) {
-
-    const normalized =
-        normalizeSearchText(name);
-
-
-    if (!normalized) {
-        return null;
-    }
-
-
-    return ORBONIX_PAGES.find(page =>
-        normalizeSearchText(page.title)
-        === normalized
-    ) || null;
-
-}
-
-
-/* =========================================================
-   UNIVERSAL BUTTON SYSTEM
-========================================================= */
-
-function initializeOrbonixButtons() {
-
-    const buttons =
-        document.querySelectorAll(
-            "[data-page]"
-        );
-
-
-    buttons.forEach(button => {
-
-        if (
-            button.dataset.orbonixInitialized
-            === "true"
-        ) {
-            return;
-        }
-
-
-        button.dataset.orbonixInitialized =
-            "true";
-
-
-        const pageName =
-            button.getAttribute(
-                "data-page"
-            );
-
-
-        if (!pageName) {
-            return;
-        }
-
-
-        button.style.cursor =
-            "pointer";
-
-
-        button.addEventListener(
-            "click",
-            function(event) {
-
-                event.preventDefault();
-
-
-                const page =
-                    findOrbonixPage(
-                        pageName
-                    );
-
-
-                if (
-                    page &&
-                    page.url
-                ) {
-
-                    window.location.href =
-                        page.url;
-
-                } else {
-
-                    console.warn(
-                        "ORBONIX: Page not found:",
-                        pageName
-                    );
-
-                }
-
-            }
-        );
-
-    });
-
-}
-
-
-/* =========================================================
-   INITIALIZE
-========================================================= */
-
-function initializeOrbonix() {
-
-    initializeOrbonixButtons();
-
-}
-
-
-/* =========================================================
-   PAGE LOAD
-========================================================= */
-
-if (
-    document.readyState
-    === "loading"
-) {
-
-    document.addEventListener(
-        "DOMContentLoaded",
-        initializeOrbonix
-    );
-
-} else {
-
-    initializeOrbonix();
-
-}
-
-
-/* =========================================================
-   DYNAMIC BUTTON SUPPORT
-========================================================= */
-
-const orbonixObserver =
-    new MutationObserver(() => {
-
-        initializeOrbonixButtons();
-
-    });
-
-
-orbonixObserver.observe(
-    document.body,
-    {
-        childList: true,
-        subtree: true
-    }
-);
-
-
-/* =========================================================
-   GLOBAL API
-========================================================= */
-
-window.ORBONIX_PAGES =
-    ORBONIX_PAGES;
-
-window.findOrbonixPage =
-    findOrbonixPage;
-
-window.initializeOrbonix =
-    initializeOrbonix;
 
 </script>
 
@@ -1395,6 +1177,8 @@ function(event) {
 
 </script>
 
+<script src="/js/search.js"></script>
 </body>
 
 </html>
+

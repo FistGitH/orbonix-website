@@ -728,8 +728,7 @@ h1 {
 
 
 <a
-href="/solar-system"
-class="return">
+class="return" data-page="Saturn" href="https://orbonix.net/Exploring-Space/Solar-System/Saturn/">
 
 ← RETURN TO SATURN
 
@@ -1094,24 +1093,12 @@ function() {
 { passive: true }
 );
 
-
-/* =========================================
-   UNIVERSAL ORBONIX PAGE NAVIGATION
-========================================= */
-
-document.querySelector(".return").addEventListener(
-"click",
-function(event) {
-
-    event.preventDefault();
-
-    window.location.href = "/solar-system";
-
-});
     
 </script>
 
 
+<script src="/js/search.js"></script>
 </body>
 
 </html>
+

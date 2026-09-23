@@ -412,7 +412,7 @@ const ORBONIX_PAGES = [
 
     {
         title: "New Horizons",
-        url: `${ORBONIX_BASE}/Exploring-Space/Space-Missions/New-Horizons/`,
+        url: `${ORBONIX_BASE}/Exploring-Space/Space-Missions/New-Horizonts/`,
         parent: "Space Missions",
         category: "Space Missions",
         keywords: "new horizons pluto kuiper belt nasa",
@@ -435,7 +435,7 @@ const ORBONIX_PAGES = [
 
     {
         title: "Black Holes Quiz",
-        url: `${ORBONIX_BASE}/Exploring-Space/Quizes/Black-Holes-Quiz/`,
+        url: `${ORBONIX_BASE}/Exploring-Space/Quizes/Blackholes-Quiz/`,
         parent: "Quizzes",
         category: "Quiz",
         keywords: "black holes quiz",
@@ -521,7 +521,7 @@ const ORBONIX_PAGES = [
 
     {
         title: "Orbonix Fotos and Telescope",
-        url: `${ORBONIX_BASE}/More-About-Orbonix/Orbonix-Fotos-And-Telescope/`,
+        url: `${ORBONIX_BASE}/More-About-Orbonix/Orbonix-fotos-and-telescope/`,
         parent: "More About Orbonix",
         category: "Orbonix",
         keywords: "orbonix fotos telescope photos",
@@ -535,6 +535,494 @@ const ORBONIX_PAGES = [
         category: "Orbonix",
         keywords: "orbonix achievements milestones",
         description: "ORBONIX achievements."
+    }
+,
+
+    // Existing article pages share the same navigation and search catalog.
+    {
+        "title": "Brown Dwarfs",
+        "url": `${ORBONIX_BASE}/Exploring-Space/Deep-Space/Stars/Brown-Dwarfs/`,
+        "parent": "Stars",
+        "category": "Stars",
+        "keywords": "brown dwarfs",
+        "description": "Explore Brown Dwarfs."
+    },
+
+    {
+        "title": "Giant Stars",
+        "url": `${ORBONIX_BASE}/Exploring-Space/Deep-Space/Stars/Giant-Stars/`,
+        "parent": "Stars",
+        "category": "Stars",
+        "keywords": "giant stars",
+        "description": "Explore Giant Stars."
+    },
+
+    {
+        "title": "Magnetars",
+        "url": `${ORBONIX_BASE}/Exploring-Space/Deep-Space/Stars/Magnetars/`,
+        "parent": "Stars",
+        "category": "Stars",
+        "keywords": "magnetars",
+        "description": "Explore Magnetars."
+    },
+
+    {
+        "title": "Pulsars",
+        "url": `${ORBONIX_BASE}/Exploring-Space/Deep-Space/Stars/Pulsar/`,
+        "parent": "Stars",
+        "category": "Stars",
+        "keywords": "pulsars",
+        "description": "Explore Pulsars."
+    },
+
+    {
+        "title": "Strange Stars",
+        "url": `${ORBONIX_BASE}/Exploring-Space/Deep-Space/Stars/Strange-Stars/`,
+        "parent": "Stars",
+        "category": "Stars",
+        "keywords": "strange stars",
+        "description": "Explore Strange Stars."
+    },
+
+    {
+        "title": "Supernovae",
+        "url": `${ORBONIX_BASE}/Exploring-Space/Deep-Space/Stars/Supernovae/`,
+        "parent": "Stars",
+        "category": "Stars",
+        "keywords": "supernovae",
+        "description": "Explore Supernovae."
+    },
+
+    {
+        "title": "The Brightest Star",
+        "url": `${ORBONIX_BASE}/Exploring-Space/Deep-Space/Stars/The-Brightest-Star/`,
+        "parent": "Stars",
+        "category": "Stars",
+        "keywords": "the brightest star",
+        "description": "Explore The Brightest Star."
+    },
+
+    {
+        "title": "The Largest Known Star",
+        "url": `${ORBONIX_BASE}/Exploring-Space/Deep-Space/Stars/The-largest-Known-Star/`,
+        "parent": "Stars",
+        "category": "Stars",
+        "keywords": "the largest known star",
+        "description": "Explore The Largest Known Star."
+    },
+
+    {
+        "title": "White Dwarfs",
+        "url": `${ORBONIX_BASE}/Exploring-Space/Deep-Space/Stars/White-Dwarfs/`,
+        "parent": "Stars",
+        "category": "Stars",
+        "keywords": "white dwarfs",
+        "description": "Explore White Dwarfs."
+    },
+
+    {
+        "title": "Ceres",
+        "url": `${ORBONIX_BASE}/Exploring-Space/Solar-System/Dwarf-Planets/Ceres/`,
+        "parent": "Dwarf Planets",
+        "category": "Dwarf Planets",
+        "keywords": "ceres",
+        "description": "Explore Ceres."
+    },
+
+    {
+        "title": "Dysnomia",
+        "url": `${ORBONIX_BASE}/Exploring-Space/Solar-System/Dwarf-Planets/Eris/Dysmonia/`,
+        "parent": "Eris",
+        "category": "Eris",
+        "keywords": "dysnomia",
+        "description": "Explore Dysnomia."
+    },
+
+    {
+        "title": "Eris",
+        "url": `${ORBONIX_BASE}/Exploring-Space/Solar-System/Dwarf-Planets/Eris/`,
+        "parent": "Dwarf Planets",
+        "category": "Dwarf Planets",
+        "keywords": "eris",
+        "description": "Explore Eris."
+    },
+
+    {
+        "title": "Gonggong",
+        "url": `${ORBONIX_BASE}/Exploring-Space/Solar-System/Dwarf-Planets/Gonggong/`,
+        "parent": "Dwarf Planets",
+        "category": "Dwarf Planets",
+        "keywords": "gonggong",
+        "description": "Explore Gonggong."
+    },
+
+    {
+        "title": "Xiangliu",
+        "url": `${ORBONIX_BASE}/Exploring-Space/Solar-System/Dwarf-Planets/Gonggong/Xiangliu/`,
+        "parent": "Gonggong",
+        "category": "Gonggong",
+        "keywords": "xiangliu",
+        "description": "Explore Xiangliu."
+    },
+
+    {
+        "title": "Hiʻiaka",
+        "url": `${ORBONIX_BASE}/Exploring-Space/Solar-System/Dwarf-Planets/Haumea/Hiʻiaka/`,
+        "parent": "Haumea",
+        "category": "Haumea",
+        "keywords": "hiʻiaka",
+        "description": "Explore Hiʻiaka."
+    },
+
+    {
+        "title": "Haumea",
+        "url": `${ORBONIX_BASE}/Exploring-Space/Solar-System/Dwarf-Planets/Haumea/`,
+        "parent": "Dwarf Planets",
+        "category": "Dwarf Planets",
+        "keywords": "haumea",
+        "description": "Explore Haumea."
+    },
+
+    {
+        "title": "Namaka",
+        "url": `${ORBONIX_BASE}/Exploring-Space/Solar-System/Dwarf-Planets/Haumea/Namaka/`,
+        "parent": "Haumea",
+        "category": "Haumea",
+        "keywords": "namaka",
+        "description": "Explore Namaka."
+    },
+
+    {
+        "title": "Makemake",
+        "url": `${ORBONIX_BASE}/Exploring-Space/Solar-System/Dwarf-Planets/Makemake/`,
+        "parent": "Dwarf Planets",
+        "category": "Dwarf Planets",
+        "keywords": "makemake",
+        "description": "Explore Makemake."
+    },
+
+    {
+        "title": "MK2",
+        "url": `${ORBONIX_BASE}/Exploring-Space/Solar-System/Dwarf-Planets/Makemake/MK2/`,
+        "parent": "Makemake",
+        "category": "Makemake",
+        "keywords": "mk2",
+        "description": "Explore MK2."
+    },
+
+    {
+        "title": "Orcus",
+        "url": `${ORBONIX_BASE}/Exploring-Space/Solar-System/Dwarf-Planets/Orcus/`,
+        "parent": "Dwarf Planets",
+        "category": "Dwarf Planets",
+        "keywords": "orcus",
+        "description": "Explore Orcus."
+    },
+
+    {
+        "title": "Vanth",
+        "url": `${ORBONIX_BASE}/Exploring-Space/Solar-System/Dwarf-Planets/Orcus/Vanth/`,
+        "parent": "Orcus",
+        "category": "Orcus",
+        "keywords": "vanth",
+        "description": "Explore Vanth."
+    },
+
+    {
+        "title": "Charon",
+        "url": `${ORBONIX_BASE}/Exploring-Space/Solar-System/Dwarf-Planets/Pluto/Charon/`,
+        "parent": "Pluto",
+        "category": "Pluto",
+        "keywords": "charon",
+        "description": "Explore Charon."
+    },
+
+    {
+        "title": "Hydra",
+        "url": `${ORBONIX_BASE}/Exploring-Space/Solar-System/Dwarf-Planets/Pluto/Hydra/`,
+        "parent": "Pluto",
+        "category": "Pluto",
+        "keywords": "hydra",
+        "description": "Explore Hydra."
+    },
+
+    {
+        "title": "Pluto",
+        "url": `${ORBONIX_BASE}/Exploring-Space/Solar-System/Dwarf-Planets/Pluto/`,
+        "parent": "Dwarf Planets",
+        "category": "Dwarf Planets",
+        "keywords": "pluto",
+        "description": "Explore Pluto."
+    },
+
+    {
+        "title": "Kerberos",
+        "url": `${ORBONIX_BASE}/Exploring-Space/Solar-System/Dwarf-Planets/Pluto/Kerberos/`,
+        "parent": "Pluto",
+        "category": "Pluto",
+        "keywords": "kerberos",
+        "description": "Explore Kerberos."
+    },
+
+    {
+        "title": "Nix",
+        "url": `${ORBONIX_BASE}/Exploring-Space/Solar-System/Dwarf-Planets/Pluto/Nix/`,
+        "parent": "Pluto",
+        "category": "Pluto",
+        "keywords": "nix",
+        "description": "Explore Nix."
+    },
+
+    {
+        "title": "Styx",
+        "url": `${ORBONIX_BASE}/Exploring-Space/Solar-System/Dwarf-Planets/Pluto/Styx/`,
+        "parent": "Pluto",
+        "category": "Pluto",
+        "keywords": "styx",
+        "description": "Explore Styx."
+    },
+
+    {
+        "title": "Moon",
+        "url": `${ORBONIX_BASE}/Exploring-Space/Solar-System/Earth/Moon/`,
+        "parent": "Earth",
+        "category": "Earth",
+        "keywords": "moon",
+        "description": "Explore Moon."
+    },
+
+    {
+        "title": "Callisto",
+        "url": `${ORBONIX_BASE}/Exploring-Space/Solar-System/Jupiter/Callisto/`,
+        "parent": "Jupiter",
+        "category": "Jupiter",
+        "keywords": "callisto",
+        "description": "Explore Callisto."
+    },
+
+    {
+        "title": "Europa",
+        "url": `${ORBONIX_BASE}/Exploring-Space/Solar-System/Jupiter/Europa/`,
+        "parent": "Jupiter",
+        "category": "Jupiter",
+        "keywords": "europa",
+        "description": "Explore Europa."
+    },
+
+    {
+        "title": "Ganymede",
+        "url": `${ORBONIX_BASE}/Exploring-Space/Solar-System/Jupiter/Ganymede/`,
+        "parent": "Jupiter",
+        "category": "Jupiter",
+        "keywords": "ganymede",
+        "description": "Explore Ganymede."
+    },
+
+    {
+        "title": "Io",
+        "url": `${ORBONIX_BASE}/Exploring-Space/Solar-System/Jupiter/Io/`,
+        "parent": "Jupiter",
+        "category": "Jupiter",
+        "keywords": "io",
+        "description": "Explore Io."
+    },
+
+    {
+        "title": "Galatea",
+        "url": `${ORBONIX_BASE}/Exploring-Space/Solar-System/Neptune/Galatea/`,
+        "parent": "Neptune",
+        "category": "Neptune",
+        "keywords": "galatea",
+        "description": "Explore Galatea."
+    },
+
+    {
+        "title": "Larissa",
+        "url": `${ORBONIX_BASE}/Exploring-Space/Solar-System/Neptune/Larissa/`,
+        "parent": "Neptune",
+        "category": "Neptune",
+        "keywords": "larissa",
+        "description": "Explore Larissa."
+    },
+
+    {
+        "title": "Nereid",
+        "url": `${ORBONIX_BASE}/Exploring-Space/Solar-System/Neptune/Nereid/`,
+        "parent": "Neptune",
+        "category": "Neptune",
+        "keywords": "nereid",
+        "description": "Explore Nereid."
+    },
+
+    {
+        "title": "Proteus",
+        "url": `${ORBONIX_BASE}/Exploring-Space/Solar-System/Neptune/Proteus/`,
+        "parent": "Neptune",
+        "category": "Neptune",
+        "keywords": "proteus",
+        "description": "Explore Proteus."
+    },
+
+    {
+        "title": "Triton",
+        "url": `${ORBONIX_BASE}/Exploring-Space/Solar-System/Neptune/Triton/`,
+        "parent": "Neptune",
+        "category": "Neptune",
+        "keywords": "triton",
+        "description": "Explore Triton."
+    },
+
+    {
+        "title": "Dione",
+        "url": `${ORBONIX_BASE}/Exploring-Space/Solar-System/Saturn/Dione/`,
+        "parent": "Saturn",
+        "category": "Saturn",
+        "keywords": "dione",
+        "description": "Explore Dione."
+    },
+
+    {
+        "title": "Enceladus",
+        "url": `${ORBONIX_BASE}/Exploring-Space/Solar-System/Saturn/Enceladus/`,
+        "parent": "Saturn",
+        "category": "Saturn",
+        "keywords": "enceladus",
+        "description": "Explore Enceladus."
+    },
+
+    {
+        "title": "Iapetus",
+        "url": `${ORBONIX_BASE}/Exploring-Space/Solar-System/Saturn/Iapetus/`,
+        "parent": "Saturn",
+        "category": "Saturn",
+        "keywords": "iapetus",
+        "description": "Explore Iapetus."
+    },
+
+    {
+        "title": "Mimas",
+        "url": `${ORBONIX_BASE}/Exploring-Space/Solar-System/Saturn/Mimas/`,
+        "parent": "Saturn",
+        "category": "Saturn",
+        "keywords": "mimas",
+        "description": "Explore Mimas."
+    },
+
+    {
+        "title": "Rhea",
+        "url": `${ORBONIX_BASE}/Exploring-Space/Solar-System/Saturn/Rhea/`,
+        "parent": "Saturn",
+        "category": "Saturn",
+        "keywords": "rhea",
+        "description": "Explore Rhea."
+    },
+
+    {
+        "title": "Tethys",
+        "url": `${ORBONIX_BASE}/Exploring-Space/Solar-System/Saturn/Tethys/`,
+        "parent": "Saturn",
+        "category": "Saturn",
+        "keywords": "tethys",
+        "description": "Explore Tethys."
+    },
+
+    {
+        "title": "Titan",
+        "url": `${ORBONIX_BASE}/Exploring-Space/Solar-System/Saturn/Titan/`,
+        "parent": "Saturn",
+        "category": "Saturn",
+        "keywords": "titan",
+        "description": "Explore Titan."
+    },
+
+    {
+        "title": "Convective Zone",
+        "url": `${ORBONIX_BASE}/Exploring-Space/Solar-System/Sun/Convective-Zone/`,
+        "parent": "Sun",
+        "category": "Sun",
+        "keywords": "convective zone",
+        "description": "Explore Convective Zone."
+    },
+
+    {
+        "title": "Core",
+        "url": `${ORBONIX_BASE}/Exploring-Space/Solar-System/Sun/Core/`,
+        "parent": "Sun",
+        "category": "Sun",
+        "keywords": "core",
+        "description": "Explore Core."
+    },
+
+    {
+        "title": "Photosphere",
+        "url": `${ORBONIX_BASE}/Exploring-Space/Solar-System/Sun/Photosphere/`,
+        "parent": "Sun",
+        "category": "Sun",
+        "keywords": "photosphere",
+        "description": "Explore Photosphere."
+    },
+
+    {
+        "title": "Radiative Zone",
+        "url": `${ORBONIX_BASE}/Exploring-Space/Solar-System/Sun/Rediative-Zone/`,
+        "parent": "Sun",
+        "category": "Sun",
+        "keywords": "radiative zone",
+        "description": "Explore Radiative Zone."
+    },
+
+    {
+        "title": "Ariel",
+        "url": `${ORBONIX_BASE}/Exploring-Space/Solar-System/Uranus/Ariel/`,
+        "parent": "Uranus",
+        "category": "Uranus",
+        "keywords": "ariel",
+        "description": "Explore Ariel."
+    },
+
+    {
+        "title": "Miranda",
+        "url": `${ORBONIX_BASE}/Exploring-Space/Solar-System/Uranus/Miranda/`,
+        "parent": "Uranus",
+        "category": "Uranus",
+        "keywords": "miranda",
+        "description": "Explore Miranda."
+    },
+
+    {
+        "title": "Oberon",
+        "url": `${ORBONIX_BASE}/Exploring-Space/Solar-System/Uranus/Oberon/`,
+        "parent": "Uranus",
+        "category": "Uranus",
+        "keywords": "oberon",
+        "description": "Explore Oberon."
+    },
+
+    {
+        "title": "Titania",
+        "url": `${ORBONIX_BASE}/Exploring-Space/Solar-System/Uranus/Titania/`,
+        "parent": "Uranus",
+        "category": "Uranus",
+        "keywords": "titania",
+        "description": "Explore Titania."
+    },
+
+    {
+        "title": "Umbriel",
+        "url": `${ORBONIX_BASE}/Exploring-Space/Solar-System/Uranus/Umbriel/`,
+        "parent": "Uranus",
+        "category": "Uranus",
+        "keywords": "umbriel",
+        "description": "Explore Umbriel."
+    },
+
+    {
+        "title": "Search",
+        "url": `${ORBONIX_BASE}/search/`,
+        "parent": null,
+        "category": "Main",
+        "keywords": "search",
+        "description": "Explore Search."
     }
 
 ];
@@ -1299,82 +1787,35 @@ function initializeOrbonixNavigation() {
 ========================================================= */
 
 function initializeOrbonixButtons() {
+    document.querySelectorAll("[data-page]").forEach(button => {
+        if (button.dataset.orbonixInitialized === "true") return;
 
-    const buttons =
-        document.querySelectorAll(
-            "[data-page]"
-        );
-
-
-    buttons.forEach(button => {
-
-        if (
-            button.dataset.orbonixInitialized
-            === "true"
-        ) {
+        // Navigation requires an exact catalog key; fuzzy matching is for search.
+        const pageName = button.getAttribute("data-page");
+        const page = ORBONIX_PAGES.find(item => item.title === pageName);
+        if (!page) {
+            console.warn("ORBONIX: Page not found:", pageName);
             return;
         }
 
+        button.dataset.orbonixInitialized = "true";
+        button.style.cursor = "pointer";
 
-        button.dataset.orbonixInitialized =
-            "true";
-
-
-        const pageName =
-            button.getAttribute(
-                "data-page"
-            );
-
-
-        if (!pageName) {
+        if (button.tagName.toLowerCase() === "a") {
+            // Keep native keyboard, new-tab, download and target behavior.
+            // Preserve page-specific query parameters and fragments.
+            const previous = new URL(button.getAttribute("href") || page.url, page.url);
+            const target = new URL(page.url);
+            target.search = previous.search;
+            target.hash = previous.hash;
+            button.href = target.href;
             return;
         }
 
-
-        button.style.cursor =
-            "pointer";
-
-
-        button.addEventListener(
-            "click",
-            function(event) {
-
-                if (
-                    this.tagName.toLowerCase()
-                    === "a"
-                ) {
-                    event.preventDefault();
-                }
-
-
-                const page =
-                    findOrbonixPage(
-                        pageName
-                    );
-
-
-                if (
-                    page &&
-                    page.url
-                ) {
-
-                    window.location.href =
-                        page.url;
-
-                } else {
-
-                    console.warn(
-                        "ORBONIX: Page not found:",
-                        pageName
-                    );
-
-                }
-
-            }
-        );
-
+        button.addEventListener("click", () => {
+            window.location.href = page.url;
+        });
     });
-
 }
 
 
@@ -1640,3 +2081,4 @@ window.initializeOrbonix =
 
 window.initializeOrbonixNavigation =
     initializeOrbonixNavigation;
+

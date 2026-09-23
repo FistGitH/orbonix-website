@@ -908,9 +908,7 @@ h1 {
 
 
 <a
-href="#"
-class="return orbonix-link"
-data-page="Uranus">
+class="return orbonix-link" data-page="Uranus" href="https://orbonix.net/Exploring-Space/Solar-System/Uranus/">
 
 ← RETURN TO URANUS
 
@@ -1218,9 +1216,7 @@ compared with Earth's Moon.
 
 
 <a
-href="#"
-class="nav-button orbonix-link"
-data-page="Uranus">
+class="nav-button orbonix-link" data-page="Uranus" href="https://orbonix.net/Exploring-Space/Solar-System/Uranus/">
 
 ← RETURN TO URANUS
 
@@ -1228,9 +1224,7 @@ data-page="Uranus">
 
 
 <a
-href="#"
-class="nav-button orbonix-link"
-data-page="Solar System">
+class="nav-button orbonix-link" data-page="Solar System" href="https://orbonix.net/Exploring-Space/Solar-System/">
 
 ← RETURN TO SOLAR SYSTEM
 
@@ -1258,91 +1252,14 @@ IMAGE SOURCE: WIKIMEDIA COMMONS
 
 <script>
 
-/* =========================================================
-   ORBONIX UNIVERSAL PAGE SYSTEM
-   The page name is used instead of a fixed URL.
-   Change URLs only inside this array when needed.
-========================================================= */
 
-const ORBONIX_PAGES = [
-
-    {
-        title: "Home",
-        url: "/"
-    },
-
-    {
-        title: "Exploring Space",
-        url: "/exploring-space"
-    },
-
-    {
-        title: "Solar System",
-        url: "/solar-system"
-    },
-
-    {
-        title: "Uranus",
-        url: "/solar-system/uranus"
-    },
-
-    {
-        title: "Ariel",
-        url: "/solar-system/uranus/ariel"
-    }
-
-];
-
-
-/* =========================================================
-   FIND PAGE
-========================================================= */
-
-function findOrbonixPage(pageName) {
-
-    const normalized =
-        pageName
-            .trim()
-            .toLowerCase();
-
-    return ORBONIX_PAGES.find(
-        page =>
-            page.title
-                .trim()
-                .toLowerCase() === normalized
-    );
-
-}
 
 
 /* =========================================================
    UNIVERSAL LINKS
 ========================================================= */
 
-document.querySelectorAll(
-    ".orbonix-link"
-).forEach(function(link) {
 
-    const pageName =
-        link.dataset.page;
-
-    const page =
-        findOrbonixPage(pageName);
-
-    if (!page) {
-
-        console.warn(
-            "ORBONIX PAGE NOT FOUND:",
-            pageName
-        );
-
-        return;
-    }
-
-    link.href =
-        page.url;
-
-});
 
 
 /* =========================================================
@@ -1423,6 +1340,8 @@ document.addEventListener(
 </script>
 
 
+<script src="/js/search.js"></script>
 </body>
 
 </html>
+

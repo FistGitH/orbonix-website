@@ -1059,9 +1059,7 @@ h1 {
 
 
 <a
-href="#"
-class="return"
-data-page="Home">
+class="return" data-page="Home" href="https://orbonix.net/">
 
 ← RETURN TO HOME
 
@@ -1446,9 +1444,7 @@ reliable natural clocks known.
 <div class="navigation">
 
 <a
-href="#"
-class="nav-button"
-data-page="Home">
+class="nav-button" data-page="Home" href="https://orbonix.net/">
 
 ← RETURN TO HOME
 
@@ -1469,174 +1465,9 @@ ORBONIX · DEEP SPACE · PULSARS
 
 <script>
 
-/* =========================================================
-   ORBONIX UNIVERSAL PAGE SYSTEM
-   Change ONLY ORBONIX_BASE when moving hosting/domain.
-========================================================= */
-
-const ORBONIX_BASE = "https://orbonix.net";
 
 
-const ORBONIX_PAGES = {
 
-    "Home":
-        "/",
-
-    "Exploring Space":
-        "/Exploring-Space",
-
-    "Gallery":
-        "/Gallery",
-
-    "Latest Space News":
-        "/Latest-Space-News",
-
-    "More About Orbonix":
-        "/More-About-Orbonix",
-
-    "Solar System Simulation":
-        "/Solar-System-Simulation",
-
-    /* DEEP SPACE */
-
-    "Deep Space":
-        "/Deep-Space",
-
-    "Black Holes":
-        "/Black-Holes",
-
-    "Cosmic Voids":
-        "/Cosmic-Voids",
-
-    "Dark Energy":
-        "/Dark-Energy",
-
-    "Dark Matter":
-        "/Dark-Matter",
-
-    "Galaxies":
-        "/Galaxies",
-
-    "Nebulae":
-        "/Nebulae",
-
-    "Quasars":
-        "/Quasars",
-
-    "Rogue Planets":
-        "/Rogue-Planets",
-
-    "Stars":
-        "/Stars",
-
-    "Giant Stars":
-        "/Giant-Stars",
-
-    "Pulsars":
-        "/Pulsars",
-
-    "Magnetars":
-        "/Magnetars",
-
-    "Wormholes":
-        "/Wormholes",
-
-    /* SOLAR SYSTEM */
-
-    "Solar System":
-        "/Solar-System",
-
-    "Sun":
-        "/Sun",
-
-    "Mercury":
-        "/Mercury",
-
-    "Venus":
-        "/Venus",
-
-    "Earth":
-        "/Earth",
-
-    "Mars":
-        "/Mars",
-
-    "Phobos":
-        "/Phobos",
-
-    "Deimos":
-        "/Deimos",
-
-    "Jupiter":
-        "/Jupiter",
-
-    "Saturn":
-        "/Saturn",
-
-    "Uranus":
-        "/Uranus",
-
-    "Neptune":
-        "/Neptune",
-
-    "Dwarf Planets":
-        "/Dwarf-Planets",
-
-    "Asteroid Belt":
-        "/Asteroid-Belt",
-
-    "Kuiper Belt":
-        "/Kuiper-Belt",
-
-    "Oort Cloud":
-        "/Oort-Cloud",
-
-    "Planet X":
-        "/Planet-X"
-
-};
-
-
-/* =========================================================
-   UNIVERSAL LINK FUNCTION
-========================================================= */
-
-function orbonixPage(pageName) {
-
-    const path =
-        ORBONIX_PAGES[pageName];
-
-    if (!path) {
-
-        console.warn(
-            "ORBONIX page not found:",
-            pageName
-        );
-
-        return ORBONIX_BASE + "/";
-
-    }
-
-    return ORBONIX_BASE + path;
-
-}
-
-
-/* =========================================================
-   APPLY ALL ORBONIX LINKS
-========================================================= */
-
-document
-.querySelectorAll("[data-page]")
-.forEach(function(link) {
-
-    const pageName =
-        link.getAttribute("data-page");
-
-    link.href =
-        orbonixPage(pageName);
-
-});
 
 
 /* =========================================================
@@ -1711,7 +1542,9 @@ if (
 </script>
 
 
+<script src="/js/search.js"></script>
 </body>
 
 </html>
 ```
+
