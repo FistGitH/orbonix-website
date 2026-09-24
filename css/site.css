@@ -1,0 +1,89 @@
+/* Shared navigation and responsive foundations for every Orbonix page. */
+html { -webkit-text-size-adjust: 100%; scroll-padding-top: 5rem; }
+body { min-width: 0; }
+img, video, iframe { max-width: 100%; }
+input, select, textarea { max-width: 100%; }
+:where(a,button,input,select,summary):focus-visible { outline: 3px solid #9ddcff; outline-offset: 4px; }
+:where(h1,h2,h3,p,a,button) { overflow-wrap: break-word; }
+#orbonix-auto-navigation, #orbonix-search-dialog, .orbonix-directory { box-sizing: border-box; font: 16px/1.5 Arial, sans-serif; color: #edf4ff; text-align: left; letter-spacing: normal; }
+#orbonix-auto-navigation * , #orbonix-search-dialog * { box-sizing: border-box; }
+#orbonix-auto-navigation { position: relative; z-index: 100000; display: flex; align-items: center; gap: 12px; width: 100%; padding: 10px max(16px, env(safe-area-inset-left)); background: #080d1b; border-bottom: 1px solid #354158; }
+#orbonix-auto-navigation .orbonix-brand { display: inline-flex; align-items: center; gap: 10px; margin-right: auto; color: #fff; text-decoration: none; font-weight: 700; letter-spacing: 2px; min-height: 44px; }
+.orbonix-brand img { width: 32px; height: 32px; object-fit: contain; }
+#orbonix-auto-navigation button, #orbonix-search-dialog button { width: auto; min-height: 44px; padding: 9px 14px; background: #182239; color: #fff; border: 1px solid #53617b; border-radius: 8px; cursor: pointer; font: inherit; letter-spacing: normal; }
+#orbonix-page-menu { position: absolute; top: 100%; left: 0; right: 0; max-height: min(75dvh, 650px); overflow: auto; overscroll-behavior: contain; background: #080d1b; padding: 16px; border-bottom: 1px solid #53617b; box-shadow: 0 16px 30px #0008; }
+#orbonix-page-menu[hidden] { display: none; }
+#orbonix-page-menu ul { list-style: none; padding: 0 0 0 14px; margin: 0; border-left: 1px solid #354158; }
+#orbonix-page-menu > ul { border: 0; padding: 0; }
+#orbonix-page-menu li { padding: 2px 0; }
+#orbonix-page-menu a { display: inline-block; color: #d5e8ff; padding: 10px; min-height: 44px; text-decoration: none; }
+#orbonix-page-menu summary { cursor: pointer; min-height: 44px; }
+#orbonix-page-menu a:hover { background: #182239; border-radius: 6px; }
+#orbonix-search-dialog { width: min(760px, calc(100% - 24px)); max-height: calc(100dvh - 24px); padding: 20px; border: 1px solid #53617b; border-radius: 16px; background: #080d1b; overflow: auto; overscroll-behavior: contain; }
+#orbonix-search-dialog::backdrop { background: #020611d9; }
+.orbonix-search-heading { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+#orbonix-search-dialog h2 { font: bold 24px/1.3 Arial,sans-serif; color: white; margin: 0; letter-spacing: 0; }
+.orbonix-search-label { display: block; margin: 18px 0 6px; }
+#orbonix-search-input { display: block; width: 100%; min-width: 0; padding: 14px; font: 16px Arial,sans-serif; color: white; background: #111b2d; border: 1px solid #73829c; border-radius: 8px; }
+.orbonix-result-count { color: #b8c8df; margin: 12px 0; }
+.orbonix-result-list { display: grid; gap: 8px; }
+.orbonix-result-link { display: block; padding: 14px; border: 1px solid #354158; border-radius: 9px; color: #eef5ff; background: #111b2d; text-decoration: none; }
+.orbonix-result-link:hover { border-color: #9ddcff; }
+.orbonix-result-link strong, .orbonix-result-link small { display: block; }
+.orbonix-result-link small { color: #b8c8df; margin-top: 4px; }
+.orbonix-directory { max-width: 960px; margin: 0 auto; padding: 40px 20px; }
+.orbonix-directory input { width: 100%; padding: 14px; font-size: 16px; }
+@media (max-width: 800px) {
+    .quiz-container, .deep-container { grid-template-columns: minmax(0,1fr) !important; gap: 32px !important; }
+    .quiz-info, .deep-info { min-width: 0; transform: none !important; opacity: 1 !important; }
+    .quiz-title, .deep-title { font-size: clamp(32px, 9vw, 64px) !important; overflow-wrap: anywhere; }
+    .search-box { flex-wrap: wrap; }
+    .search-box input { min-width: 0; width: 100%; }
+    .navigation, .filters { flex-wrap: wrap; }
+    .return, .nav-button { min-height: 44px; max-width: 100%; text-align: center; }
+    input, select, textarea { font-size: 16px !important; }
+}
+@media (max-width: 420px) {
+    #orbonix-auto-navigation { gap: 6px; padding: 8px; }
+    #orbonix-auto-navigation .orbonix-brand { gap: 6px; font-size: 13px; letter-spacing: 1px; }
+    #orbonix-auto-navigation button { padding: 8px 10px; font-size: 14px; }
+    #orbonix-search-dialog { padding: 14px; }
+    h1 { overflow-wrap: anywhere; }
+}
+/* Full-screen simulation keeps its canvas beneath a compact shared header. */
+body.orbonix-simulation #orbonix-auto-navigation { position: absolute; top: 0; }
+body.orbonix-simulation .topbar { top: 66px; }
+body.orbonix-simulation .panel { top: 150px; max-height: calc(100dvh - 300px); overflow: auto; }
+body.orbonix-simulation #space { touch-action: none; }
+body.orbonix-simulation .timeControls { grid-template-columns: repeat(3, minmax(0,1fr)) minmax(40px,2fr) repeat(3,minmax(0,1fr)); }
+body.orbonix-simulation .timeControls button { min-width: 0; min-height: 44px; padding: 6px 2px; }
+body.orbonix-simulation #orbonix-panel-toggle { position: absolute; z-index: 35; width: auto; max-width: calc(100% - 24px); left: 12px; top: 108px; padding: 10px 14px; min-height: 44px; color: white; background: #142039; border: 1px solid #53617b; border-radius: 8px; }
+@media (max-width: 800px) {
+    body.orbonix-simulation .topbar { height: 42px; padding: 0 12px; }
+    body.orbonix-simulation .brand { font-size: 12px; letter-spacing: 1px; }
+    body.orbonix-simulation .brand span, body.orbonix-simulation .live { display: none; }
+    body.orbonix-simulation .panel { top: 160px; left: 10px; width: min(300px,calc(100% - 20px)); max-height: calc(100dvh - 290px); }
+    body.orbonix-simulation .timebar { width: calc(100% - 16px); bottom: max(8px,env(safe-area-inset-bottom)); padding: 8px; }
+    body.orbonix-simulation .timeControls { grid-template-columns: repeat(3,minmax(0,1fr)); }
+    body.orbonix-simulation .timeControls input { grid-column: 1 / -1; }
+    body.orbonix-simulation .timeTop { flex-wrap: wrap; gap: 4px; }
+    body.orbonix-simulation .panel { max-height: calc(100dvh - 360px); }
+}
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto !important; }
+    *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
+@media (max-width: 600px) {
+    .earth-page .earth-system { width: min(330px, 100%); }
+    .earth-page .moon { left: calc(100% - 21px); }
+    .earth-page .moon-orbit { max-width: calc(100% - 42px); }
+    .neptune-page .planet-area { max-width: 100%; }
+    .neptune-page .galatea { left: calc(100% - 40px); }
+}
+@media (max-width: 1000px) {
+    .quiz-container, .deep-container { grid-template-columns: minmax(0,1fr) !important; }
+    .quiz-info, .deep-info { min-width: 0; transform: none !important; opacity: 1 !important; }
+}
+@media (max-width: 800px) {
+    .missions-timeline .mission { transform: none !important; transition: none !important; }
+}

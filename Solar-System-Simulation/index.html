@@ -3,8 +3,6 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>ORBONIX | Real-Time Solar System</title>
 
 <style>
@@ -498,6 +496,12 @@ select option{
 
 </style>
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/favicon.png">
+<link rel="stylesheet" href="/css/site.css">
+<script src="/js/search.js" defer></script>
+<script src="/js/search-ui.js" defer></script>
 </head>
 
 <body>
@@ -3169,92 +3173,55 @@ canvas.addEventListener(
    MOUSE DRAG
 ========================================================= */
 
-let dragging=false;
-
-let lastMouseX=0;
-let lastMouseY=0;
-
-let movedDuringDrag=false;
-
-
-canvas.addEventListener(
-    "mousedown",
-    e=>{
-
-        dragging=true;
-
-        movedDuringDrag=false;
-
-        lastMouseX=
-            e.clientX;
-
-        lastMouseY=
-            e.clientY;
-
+const activePointers = new Map();
+let movedDuringDrag = false;
+let pinchDistance = 0;
+canvas.addEventListener('pointerdown', event => {
+    if (event.pointerType === 'mouse' && event.button !== 0) return;
+    if (!activePointers.size) movedDuringDrag = false;
+    activePointers.set(event.pointerId, {x:event.clientX, y:event.clientY});
+    canvas.setPointerCapture(event.pointerId);
+    if (activePointers.size === 2) {
+        const [a,b] = [...activePointers.values()];
+        pinchDistance = Math.hypot(a.x-b.x, a.y-b.y);
     }
-);
-
-
-window.addEventListener(
-    "mouseup",
-    ()=>{
-
-        dragging=false;
-
+});
+canvas.addEventListener('pointermove', event => {
+    const previous = activePointers.get(event.pointerId);
+    if (!previous) return;
+    const next = {x:event.clientX, y:event.clientY};
+    activePointers.set(event.pointerId, next);
+    if (activePointers.size === 2) {
+        const [a,b] = [...activePointers.values()];
+        const distance = Math.hypot(a.x-b.x,a.y-b.y);
+        if (pinchDistance > 0) cameraZoom = Math.max(.15, Math.min(15, cameraZoom * distance / pinchDistance));
+        pinchDistance = distance; movedDuringDrag = true;
+    } else {
+        const dx = next.x-previous.x, dy = next.y-previous.y;
+        if (Math.abs(dx)+Math.abs(dy)>2) movedDuringDrag = true;
+        cameraPosition.x -= dx/cameraZoom; cameraPosition.y -= dy/cameraZoom;
     }
-);
+});
+function releasePointer(event) { activePointers.delete(event.pointerId); pinchDistance = 0; }
+canvas.addEventListener('pointerup', releasePointer);
+canvas.addEventListener('pointercancel', releasePointer);
+canvas.addEventListener('lostpointercapture', releasePointer);
 
-
-window.addEventListener(
-    "mousemove",
-    e=>{
-
-        if(!dragging)
-            return;
-
-
-        const dx =
-            e.clientX-
-            lastMouseX;
-
-
-        const dy =
-            e.clientY-
-            lastMouseY;
-
-
-        if(
-            Math.abs(dx)>2 ||
-            Math.abs(dy)>2
-        ){
-
-            movedDuringDrag=
-                true;
-
-        }
-
-
-        /*
-            Pan camera.
-        */
-
-        cameraPosition.x -=
-            dx/
-            cameraZoom;
-
-        cameraPosition.y -=
-            dy/
-            cameraZoom;
-
-
-        lastMouseX=
-            e.clientX;
-
-        lastMouseY=
-            e.clientY;
-
-    }
-);
+// Collapsible controls leave room for the canvas on small and landscape screens.
+document.body.classList.add('orbonix-simulation');
+const objectPanel = document.querySelector('.panel');
+objectPanel.id = 'orbonix-object-panel';
+const panelToggle = document.createElement('button');
+panelToggle.id = 'orbonix-panel-toggle'; panelToggle.type = 'button';
+panelToggle.textContent = 'Object controls';
+panelToggle.setAttribute('aria-controls', objectPanel.id);
+objectPanel.hidden = window.matchMedia('(max-width: 800px)').matches;
+panelToggle.setAttribute('aria-expanded', String(!objectPanel.hidden));
+panelToggle.addEventListener('click', () => {
+    objectPanel.hidden = !objectPanel.hidden;
+    panelToggle.setAttribute('aria-expanded', String(!objectPanel.hidden));
+});
+document.body.appendChild(panelToggle);
 
 
 /* =========================================================
@@ -3812,3 +3779,4 @@ loop();
 
 </body>
 </html>
+

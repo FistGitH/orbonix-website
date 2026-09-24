@@ -22,6 +22,9 @@ const pages = context.window.ORBONIX_PAGES;
 const byTitle = new Map(pages.map(page => [page.title, page]));
 assert.equal(byTitle.size, pages.length, 'Duplicate catalog key');
 const byPath = new Map(pages.map(page => [decodeURIComponent(new URL(page.url).pathname), page]));
+assert.equal(context.window.searchOrbonix('').length, htmlFiles.length, 'Empty search must list every page');
+assert.ok(context.window.searchOrbonix('moons').length > 20, 'Satellite pages must be searchable by group');
+assert.equal(context.window.findOrbonixPage('Mar'), null, 'Navigation must not guess a page');
 assert.equal(byPath.size, pages.length, 'Duplicate catalog URL');
 for (const page of pages) {
     const url = new URL(page.url);
@@ -34,6 +37,13 @@ let links = 0;
 const unavailable = [];
 for (const file of htmlFiles) {
     const html = fs.readFileSync(file, 'utf8');
+    assert.match(html, /<meta\b[^>]*name="viewport"[^>]*width=device-width/);
+    assert.match(html, /<link\b[^>]*rel="icon"[^>]*href="\/favicon.png"/);
+    assert.match(html, /<link\b[^>]*rel="apple-touch-icon"[^>]*href="\/favicon.png"/);
+    assert.match(html, /<link\b[^>]*href="\/css\/site.css"/);
+    assert.equal((html.match(/src="\/js\/search.js"/g) || []).length, 1);
+    assert.equal((html.match(/src="\/js\/search-ui.js"/g) || []).length, 1);
+    for (const script of html.matchAll(/<script\b[^>]*>([\s\S]*?)<\/script>/gi)) new vm.Script(script[1], {filename:file});
     let keyed = false;
     const tokens = html.match(/<!--[\s\S]*?-->|<script\b[^>]*>[\s\S]*?<\/script>|<style\b[^>]*>[\s\S]*?<\/style>|<[a-z][^>]*>/gi) || [];
     for (const token of tokens) {
