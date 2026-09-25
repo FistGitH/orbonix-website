@@ -2516,7 +2516,7 @@ function drawPlanets(){
                     "rgba(255,255,255,.75)";
 
                 ctx.fillText(
-                    planet.name,
+                    window.orbonixTranslate ? window.orbonixTranslate(planet.name) : planet.name,
                     screen.x+
                     radius+
                     5,
@@ -2619,7 +2619,7 @@ function drawMoons(){
                     "rgba(255,255,255,.6)";
 
                 ctx.fillText(
-                    moon.name,
+                    window.orbonixTranslate ? window.orbonixTranslate(moon.name) : moon.name,
                     screen.x+
                     radius+
                     4,

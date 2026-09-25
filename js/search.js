@@ -1040,7 +1040,7 @@ function normalizeSearchText(text) {
         .toLowerCase()
         .normalize("NFD")
         .replace(/[\u0300-\u036f]/g, "")
-        .replace(/[^a-z0-9\s]/g, " ")
+        .replace(/[^\p{L}\p{N}\s]/gu, " ")
         .replace(/\s+/g, " ")
         .trim();
 
@@ -1187,10 +1187,7 @@ function searchOrbonix(query) {
     return ORBONIX_PAGES
         .map(page => ({
             ...page,
-            score: scoreSearchResult(
-                page,
-                normalized
-            )
+            score: Math.max(scoreSearchResult(page, normalized), window.orbonixTranslate ? scoreSearchResult({...page, title: window.orbonixTranslate(page.title), description: window.orbonixTranslate(page.description), category: window.orbonixTranslate(page.category), keywords: page.keywords}, normalized) : 0)
         }))
         .filter(page => page.score > 0)
         .sort((a, b) => b.score - a.score)

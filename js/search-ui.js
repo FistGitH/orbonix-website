@@ -35,3 +35,6 @@
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initializeOrbonixSearchUI);
     else initializeOrbonixSearchUI();
 })();
+
+// The language module is shared by every page that loads the search interface.
+(function () { const script = document.createElement("script"); script.src = "/js/language.js"; document.head.appendChild(script); })();

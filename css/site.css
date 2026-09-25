@@ -87,3 +87,16 @@ body.orbonix-simulation #orbonix-panel-toggle { position: absolute; z-index: 35;
 @media (max-width: 800px) {
     .missions-timeline .mission { transform: none !important; transition: none !important; }
 }
+/* Compact, keyboard-accessible language selector on every page. */
+#orbonix-language-control { position: relative; flex-shrink: 0; }
+#orbonix-language { width: 64px; min-height: 44px; padding: 8px 4px; border: 1px solid #53617b; border-radius: 8px; background: #182239; color: #fff; font: 16px Arial,sans-serif; cursor: pointer; }
+#orbonix-language-status:not(:empty) { position: absolute; top: 100%; right: 0; width: max-content; max-width: 260px; padding: 8px; background: #182239; color: #fff; font: 14px/1.4 Arial,sans-serif; }
+@media (max-width: 600px) {
+    #orbonix-auto-navigation { gap: 5px; padding: 8px; }
+    #orbonix-auto-navigation .orbonix-brand { font-size: 0; letter-spacing: 0; gap: 0; }
+    #orbonix-auto-navigation button { padding: 8px 6px; font-size: 12px; }
+    #hero .orbonix-button { white-space: normal; text-align: center; height: auto; min-height: 52px; }
+    #orbonix-search-dialog h2 { font-size: 20px; }
+    #orbonix-search-dialog .orbonix-search-heading { align-items: flex-start; }
+}
+html:not([lang="en"]) :is(h1,h2,h3,.title,.subtitle,.tagline,button,.orbonix-button) { overflow-wrap: anywhere; }
