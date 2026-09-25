@@ -100,3 +100,6 @@ body.orbonix-simulation #orbonix-panel-toggle { position: absolute; z-index: 35;
     #orbonix-search-dialog .orbonix-search-heading { align-items: flex-start; }
 }
 html:not([lang="en"]) :is(h1,h2,h3,.title,.subtitle,.tagline,button,.orbonix-button) { overflow-wrap: anywhere; }
+@media (max-width: 600px) {
+    html[lang="de"] h1 { font-size: clamp(28px, 9vw, 40px) !important; letter-spacing: .08em !important; line-height: 1.15; hyphens: auto; }
+}

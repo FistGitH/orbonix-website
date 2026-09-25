@@ -1,6 +1,6 @@
 # Website languages
 
-The language menu supports English (original content), Russian, Spanish and French.
+The language menu supports English (original content), Russian, Spanish, French and German.
 Translations are stored locally in JSON dictionaries keyed by normalized English text.
 No translation API, credentials or external scripts are used by visitors.
 
@@ -12,7 +12,7 @@ page titles. Simulation canvas labels explicitly use the same dictionary.
 
 Translations were generated with Cloudflare Workers AI and include manual terminology
 corrections. They are machine translations, not professionally reviewed translations.
-When English content changes, add its normalized text and translations to all three
+When English content changes, add its normalized text and translations to all four
 dictionaries. Keep the ORBONIX brand, proper identifiers and numerical facts intact.
 
 To exclude content from translation, add `translate="no"` to its containing element.

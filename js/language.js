@@ -1,10 +1,10 @@
 /* Local full-page translations. Routing keys, URLs and user input remain unchanged. */
 (function () {
     'use strict';
-    const supported = ['en', 'ru', 'es', 'fr'];
-    const names = {en:'English',ru:'Русский',es:'Español',fr:'Français'};
-    const notices = {en:'Automatic translation',ru:'Машинный перевод',es:'Traducción automática',fr:'Traduction automatique'};
-    const failures = {en:'Translation unavailable. Please try again.',ru:'Перевод недоступен. Попробуйте ещё раз.',es:'Traducción no disponible. Inténtalo de nuevo.',fr:'Traduction indisponible. Réessayez.'};
+    const supported = ['en', 'ru', 'es', 'fr', 'de'];
+    const names = {en:'English',ru:'Русский',es:'Español',fr:'Français',de:'Deutsch'};
+    const notices = {en:'Automatic translation',ru:'Машинный перевод',es:'Traducción automática',fr:'Traduction automatique',de:'Automatische Übersetzung'};
+    const failures = {en:'Translation unavailable. Please try again.',ru:'Перевод недоступен. Попробуйте ещё раз.',es:'Traducción no disponible. Inténtalo de nuevo.',fr:'Traduction indisponible. Réessayez.',de:'Übersetzung nicht verfügbar. Bitte erneut versuchen.'};
     const normalize = text => text.replace(/\s+/g, ' ').trim();
     const originals = new WeakMap();
     const attributeOriginals = new WeakMap();
@@ -71,7 +71,7 @@
         const nav = document.getElementById('orbonix-auto-navigation');
         if (!nav || document.getElementById('orbonix-language-control')) return;
         const control = document.createElement('div'); control.id = 'orbonix-language-control'; control.translate = false;
-        const select = document.createElement('select'); select.id = 'orbonix-language'; select.setAttribute('aria-label','Language / Язык / Idioma / Langue');
+        const select = document.createElement('select'); select.id = 'orbonix-language'; select.setAttribute('aria-label','Language / Язык / Idioma / Langue / Sprache');
         for (const code of supported) {
             const option = document.createElement('option'); option.value = code; option.textContent = code.toUpperCase(); option.label = code.toUpperCase(); option.title = names[code]; select.appendChild(option);
         }
