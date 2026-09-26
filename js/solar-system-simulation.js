@@ -354,7 +354,7 @@ function buildSelect(){
             categories.STAR.push(p);
 
         else if(
-            p.type==="DWARF PLANET"
+            p.type && p.type.includes("DWARF PLANET")
         )
             categories["DWARF PLANETS"].push(p);
 
@@ -418,6 +418,13 @@ function updatePanel(){
 
     const o =
         selected;
+
+    const exploreButton=document.getElementById("explore");
+    if(exploreButton){
+        const route=o.id==="sun" ? null : window.findOrbonixPage(o.name+" Simulation");
+        exploreButton.disabled=!route;
+        exploreButton.title=route ? "Open the detailed "+o.name+" system" : "No detailed system page available";
+    }
 
     document
         .getElementById(
@@ -1959,6 +1966,7 @@ function addDays(
         );
 
     updateDate();
+    if(typeof syncDateControls==="function") syncDateControls();
 
 }
 
@@ -2199,6 +2207,7 @@ syncSpeedControls();
 
 let previousTime =
     performance.now();
+let lastControlSync=0;
 
 
 function loop(){
@@ -2235,6 +2244,10 @@ function loop(){
             );
 
         updateDate();
+        if(now-lastControlSync>250){
+            syncDateControls();
+            lastControlSync=now;
+        }
 
     }
 
