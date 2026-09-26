@@ -1425,7 +1425,7 @@ function flyTo(object){
  const target=projectPosition(...Object.values(orbitalPosition(object))),start={...cameraPosition},zoom=cameraZoom,began=performance.now();
  const flight=document.getElementById('flight');flight.classList.add('active');flight.textContent='APPROACHING '+object.name.toUpperCase();
  function animate(t){const progress=Math.min(1,(t-began)/1200),e=progress*progress*(3-2*progress);cameraPosition.x=start.x+(target.x-start.x)*e;cameraPosition.y=start.y+(target.y-start.y)*e;cameraZoom=zoom+((object.id==='sun'?.85:3)-zoom)*e;
- if(progress<1)flightAnimation=requestAnimationFrame(animate);else{flight.classList.remove('active');if(object.id!=='sun'){const route=window.findOrbonixPage(object.name+' Simulation');if(route)location.href=route.url;}}}
+ if(progress<1)flightAnimation=requestAnimationFrame(animate);else{flight.classList.remove('active');}}
  flightAnimation=requestAnimationFrame(animate);
 }
 
@@ -1844,6 +1844,13 @@ document
 );
 
 
+document.getElementById("explore").addEventListener("click",()=>{
+    if(selected.id==="sun") return;
+    const route=window.findOrbonixPage(selected.name+" Simulation");
+    if(route) location.href=route.url;
+});
+
+
 document
 .getElementById("scale")
 .addEventListener(
@@ -2006,6 +2013,7 @@ document
             new Date();
 
         updateDate();
+        syncDateControls();
 
     }
 );
@@ -2055,6 +2063,23 @@ function updateSpeed(){
 }
 
 
+function syncSpeedControls(){
+    document.querySelectorAll("#speedPresets [data-speed]").forEach(button=>{
+        button.classList.toggle("active", Number(button.dataset.speed)===timeSpeed);
+    });
+}
+
+document.querySelectorAll("#speedPresets [data-speed]").forEach(button=>{
+    button.addEventListener("click",()=>{
+        timeSpeed=Number(button.dataset.speed);
+        running=true;
+        document.getElementById("pause").textContent="Ⅱ";
+        updateSpeed();
+        syncSpeedControls();
+    });
+});
+
+
 window.addEventListener(
     "keydown",
     e=>{
@@ -2091,6 +2116,7 @@ window.addEventListener(
                 );
 
             updateSpeed();
+            syncSpeedControls();
 
         }
 
@@ -2106,6 +2132,7 @@ window.addEventListener(
                 );
 
             updateSpeed();
+            syncSpeedControls();
 
         }
 
@@ -2137,9 +2164,33 @@ function updateDate(){
 
 }
 
-updateDate();
+const datePicker=document.getElementById("datePicker");
+const timeline=document.getElementById("timeline");
+const timelineEpoch=new Date();
+function dateInputValue(date){
+    const y=date.getFullYear(),m=String(date.getMonth()+1).padStart(2,"0"),d=String(date.getDate()).padStart(2,"0");
+    return y+"-"+m+"-"+d;
+}
+function syncDateControls(){
+    datePicker.value=dateInputValue(simulationDate);
+    const offset=Math.round((simulationDate-timelineEpoch)/DAY);
+    timeline.value=String(Math.max(-3650,Math.min(3650,offset)));
+}
+datePicker.addEventListener("change",()=>{
+    if(!datePicker.value)return;
+    const parts=datePicker.value.split("-").map(Number);
+    simulationDate=new Date(parts[0],parts[1]-1,parts[2],12,0,0);
+    updateDate();syncDateControls();
+});
+timeline.addEventListener("input",()=>{
+    simulationDate=new Date(timelineEpoch.getTime()+Number(timeline.value)*DAY);
+    updateDate();syncDateControls();
+});
 
+updateDate();
+syncDateControls();
 updateSpeed();
+syncSpeedControls();
 
 
 /* =========================================================
