@@ -263,7 +263,22 @@ const planets = [
    MAJOR MOONS
 ========================================================= */
 
-const moons = []; // Moons belong to the individual planetary-system pages.
+const moons = [
+ {id:"moon",name:"Moon",parent:"earth",type:"MOON",radius:1737.4,distance:384400,period:27.322,color:"#c9c9c9"},
+ {id:"phobos",name:"Phobos",parent:"mars",type:"MOON",radius:11.27,distance:9376,period:.319,color:"#8d8176"},
+ {id:"deimos",name:"Deimos",parent:"mars",type:"MOON",radius:6.2,distance:23463,period:1.263,color:"#a49a8c"},
+ {id:"io",name:"Io",parent:"jupiter",type:"MOON",radius:1821.6,distance:421700,period:1.769,color:"#e4c44f"},
+ {id:"europa",name:"Europa",parent:"jupiter",type:"MOON",radius:1560.8,distance:671100,period:3.551,color:"#c8b89d"},
+ {id:"ganymede",name:"Ganymede",parent:"jupiter",type:"MOON",radius:2634.1,distance:1070400,period:7.155,color:"#9b8e80"},
+ {id:"callisto",name:"Callisto",parent:"jupiter",type:"MOON",radius:2410.3,distance:1882700,period:16.689,color:"#786d61"},
+ {id:"titan",name:"Titan",parent:"saturn",type:"MOON",radius:2574.7,distance:1221870,period:15.945,color:"#d9a84e"},
+ {id:"enceladus",name:"Enceladus",parent:"saturn",type:"MOON",radius:252.1,distance:238020,period:1.37,color:"#e8eef4"},
+ {id:"rhea",name:"Rhea",parent:"saturn",type:"MOON",radius:763.8,distance:527108,period:4.518,color:"#b8b8b5"},
+ {id:"titania",name:"Titania",parent:"uranus",type:"MOON",radius:788.9,distance:435910,period:8.706,color:"#aaa8a1"},
+ {id:"oberon",name:"Oberon",parent:"uranus",type:"MOON",radius:761.4,distance:583520,period:13.463,color:"#8f8b84"},
+ {id:"triton",name:"Triton",parent:"neptune",type:"MOON",radius:1353.4,distance:354759,period:5.877,color:"#c8b6a7"},
+ {id:"charon",name:"Charon",parent:"pluto",type:"MOON",radius:606,distance:19596,period:6.387,color:"#aaa7a2"}
+];
 
 
 /* =========================================================
@@ -1425,7 +1440,7 @@ let flightAnimation =
 
 function flyTo(object){
  if(!object)return;cancelAnimationFrame(flightAnimation);
- const target=projectPosition(...Object.values(orbitalPosition(object))),start={...cameraPosition},zoom=cameraZoom,began=performance.now();
+ const wp=object.parent ? moonPosition(object) : orbitalPosition(object); const target=projectPosition(wp.x,wp.y),start={...cameraPosition},zoom=cameraZoom,began=performance.now();
  const flight=document.getElementById('flight');flight.classList.add('active');flight.textContent='APPROACHING '+object.name.toUpperCase();
  function animate(t){const progress=Math.min(1,(t-began)/1200),e=progress*progress*(3-2*progress);cameraPosition.x=start.x+(target.x-start.x)*e;cameraPosition.y=start.y+(target.y-start.y)*e;cameraZoom=zoom+((object.id==='sun'?.85:3)-zoom)*e;
  if(progress<1)flightAnimation=requestAnimationFrame(animate);else{flight.classList.remove('active');}}
@@ -2345,7 +2360,7 @@ function draw(){
     drawSun();
 
     drawPlanets();
-    // Satellites are displayed only inside their planetary systems.
+    drawMoons();
 
 }
 
