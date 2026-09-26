@@ -1,0 +1,1277 @@
+/* =========================================
+   RESET
+========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: #020308;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   PAGE
+========================================= */
+
+.neptune-page {
+
+    position: relative;
+
+    min-height: 1750px;
+
+    padding: 55px 20px 100px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 30%,
+            rgba(50,90,220,.18),
+            transparent 45%
+        ),
+        #020308;
+}
+
+
+/* =========================================
+   STARS
+========================================= */
+
+.stars {
+
+    position: absolute;
+
+    inset: -20%;
+
+    pointer-events: none;
+
+    opacity: .38;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.9) 1px,
+            transparent 1px
+        );
+
+    background-size: 75px 75px;
+
+    transition:
+        transform 1.5s ease;
+}
+
+
+.stars-small {
+
+    position: absolute;
+
+    inset: -20%;
+
+    pointer-events: none;
+
+    opacity: .14;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.8) 1px,
+            transparent 1px
+        );
+
+    background-size: 32px 32px;
+
+    transition:
+        transform 2s ease;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header {
+
+    position: relative;
+
+    z-index: 100;
+
+    width: min(950px, 100%);
+
+    margin: auto;
+
+    text-align: center;
+}
+
+
+.return {
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 12px 20px;
+
+    margin-bottom: 35px;
+
+    color:
+        rgba(255,255,255,.7);
+
+    border:
+        1px solid
+        rgba(255,255,255,.22);
+
+    text-decoration: none;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    transition:
+        .35s ease;
+}
+
+
+.return:hover {
+
+    color: #020308;
+
+    background: white;
+
+    border-color: white;
+
+    transform:
+        translateY(-4px);
+}
+
+
+.label {
+
+    margin-bottom: 18px;
+
+    color:
+        rgba(255,255,255,.4);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+}
+
+
+h1 {
+
+    margin: 0;
+
+    font-size:
+        clamp(55px, 9vw, 105px);
+
+    line-height: .9;
+
+    letter-spacing: 7px;
+}
+
+
+.subtitle {
+
+    max-width: 720px;
+
+    margin:
+        25px auto 0;
+
+    color:
+        rgba(255,255,255,.52);
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   NEPTUNE SYSTEM
+========================================= */
+
+.planet-area {
+
+    position: relative;
+
+    width: 760px;
+
+    height: 760px;
+
+    margin:
+        65px auto 90px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+/* =========================================
+   ORBITS
+========================================= */
+
+.moon-orbit {
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    border:
+        1px solid
+        rgba(80,130,255,.18);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+
+.orbit-triton {
+
+    width: 280px;
+    height: 280px;
+}
+
+
+.orbit-nereid {
+
+    width: 390px;
+    height: 390px;
+}
+
+
+.orbit-proteus {
+
+    width: 500px;
+    height: 500px;
+}
+
+
+.orbit-larissa {
+
+    width: 600px;
+    height: 600px;
+}
+
+
+.orbit-galatea {
+
+    width: 700px;
+    height: 700px;
+}
+
+
+/* =========================================
+   NEPTUNE CENTER
+========================================= */
+
+.neptune-center {
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    z-index: 20;
+
+    width: 195px;
+    height: 195px;
+
+    border-radius: 50%;
+
+    text-decoration: none;
+
+    transition:
+        .4s ease;
+}
+
+
+.neptune-center img {
+
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    box-shadow:
+
+        0 0 45px
+        rgba(60,100,255,.42),
+
+        0 0 100px
+        rgba(30,70,220,.16);
+
+    transition:
+        .4s ease;
+}
+
+
+.neptune-center:hover {
+
+    transform:
+        translate(-50%, -50%)
+        scale(1.08);
+}
+
+
+.neptune-center:hover img {
+
+    box-shadow:
+
+        0 0 60px
+        rgba(70,120,255,.6),
+
+        0 0 120px
+        rgba(30,70,220,.25);
+}
+
+
+.neptune-center span {
+
+    position: absolute;
+
+    left: 50%;
+
+    bottom: -35px;
+
+    transform:
+        translateX(-50%);
+
+    color: white;
+
+    font-size: 10px;
+
+    letter-spacing: 4px;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================
+   MOONS
+========================================= */
+
+.neptune-moon {
+
+    position: absolute;
+
+    z-index: 30;
+
+    width: 65px;
+    height: 65px;
+
+    display: block;
+
+    text-decoration: none;
+
+    transition:
+        transform .35s ease;
+}
+
+
+.neptune-moon img {
+
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    background: #11151a;
+
+    box-shadow:
+        0 0 18px
+        rgba(120,150,230,.2);
+
+    transition:
+        .35s ease;
+}
+
+
+.neptune-moon span {
+
+    position: absolute;
+
+    left: 50%;
+    top: 75px;
+
+    transform:
+        translateX(-50%);
+
+    color:
+        rgba(255,255,255,.65);
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+
+    white-space: nowrap;
+
+    transition:
+        .3s ease;
+}
+
+
+.neptune-moon:hover {
+
+    transform:
+        scale(1.18);
+
+    z-index: 50;
+}
+
+
+.neptune-moon:hover img {
+
+    box-shadow:
+        0 0 35px
+        rgba(130,160,255,.5);
+}
+
+
+.neptune-moon:hover span {
+
+    color: white;
+}
+
+
+/* =========================================
+   MOON POSITIONS
+========================================= */
+
+.triton {
+
+    left:
+        calc(50% + 110px);
+
+    top:
+        calc(50% - 140px);
+}
+
+
+.nereid {
+
+    left:
+        calc(50% + 145px);
+
+    top:
+        calc(50% + 105px);
+}
+
+
+.proteus {
+
+    left:
+        calc(50% - 250px);
+
+    top:
+        calc(50% - 240px);
+}
+
+
+.larissa {
+
+    left:
+        calc(50% - 305px);
+
+    top:
+        calc(50% + 95px);
+}
+
+
+.galatea {
+
+    left:
+        calc(50% + 285px);
+
+    top:
+        calc(50% - 50px);
+}
+
+
+/* =========================================
+   INFORMATION
+========================================= */
+
+.info {
+
+    position: relative;
+
+    z-index: 5;
+
+    width:
+        min(1050px, 100%);
+
+    margin: auto;
+}
+
+
+.info-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 1px;
+
+    background:
+        rgba(255,255,255,.1);
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+}
+
+
+.card {
+
+    padding: 30px;
+
+    min-width: 0;
+
+    background:
+        rgba(5,7,13,.95);
+
+    transition:
+        .35s ease;
+}
+
+
+.card:hover {
+
+    transform:
+        translateY(-5px);
+
+    background:
+        rgba(255,255,255,.04);
+}
+
+
+.number {
+
+    margin-bottom: 8px;
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+    line-height: 1.3;
+}
+
+
+.card-label {
+
+    color:
+        rgba(255,255,255,.4);
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   DESCRIPTION
+========================================= */
+
+.description {
+
+    margin-top: 60px;
+
+    padding: 40px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.025);
+}
+
+
+.description-title {
+
+    margin-bottom: 20px;
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+}
+
+
+.description-text {
+
+    max-width: 900px;
+
+    color:
+        rgba(255,255,255,.58);
+
+    font-size: 14px;
+
+    line-height: 1.9;
+}
+
+
+/* =========================================
+   MAJOR MOONS
+========================================= */
+
+.moons-title {
+
+    margin-top: 55px;
+
+    margin-bottom: 25px;
+
+    text-align: center;
+
+    font-size: 11px;
+
+    letter-spacing: 5px;
+
+    color:
+        rgba(255,255,255,.5);
+}
+
+
+.moons {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(5, 1fr);
+
+    gap: 15px;
+}
+
+
+.moon-card {
+
+    display: block;
+
+    padding: 20px;
+
+    min-width: 0;
+
+    color: white;
+
+    text-decoration: none;
+
+    text-align: center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.025);
+
+    transition:
+        .35s ease;
+}
+
+
+.moon-card:hover {
+
+    transform:
+        translateY(-7px);
+
+    border-color:
+        rgba(90,130,255,.5);
+
+    background:
+        rgba(255,255,255,.05);
+}
+
+
+.moon-image {
+
+    width: 105px;
+    height: 105px;
+
+    margin:
+        0 auto 15px;
+
+    display: block;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    background: #10151a;
+
+    box-shadow:
+        0 0 25px
+        rgba(80,120,240,.14);
+
+    transition:
+        .35s ease;
+}
+
+
+.moon-card:hover .moon-image {
+
+    transform:
+        scale(1.05);
+
+    box-shadow:
+        0 0 35px
+        rgba(80,120,240,.28);
+}
+
+
+.moon-name {
+
+    margin-bottom: 8px;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+}
+
+
+.moon-description {
+
+    color:
+        rgba(255,255,255,.42);
+
+    font-size: 9px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   FEATURES
+========================================= */
+
+.features {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 15px;
+
+    margin-top: 45px;
+}
+
+
+.feature {
+
+    padding: 25px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.1);
+
+    background:
+        rgba(255,255,255,.02);
+
+    transition:
+        .35s ease;
+}
+
+
+.feature:hover {
+
+    transform:
+        translateY(-6px);
+
+    border-color:
+        rgba(90,130,255,.4);
+}
+
+
+.feature-title {
+
+    margin-bottom: 10px;
+
+    font-size: 12px;
+
+    letter-spacing: 2px;
+}
+
+
+.feature-text {
+
+    color:
+        rgba(255,255,255,.5);
+
+    font-size: 12px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   FACT
+========================================= */
+
+.fact {
+
+    margin-top: 60px;
+
+    padding: 35px;
+
+    text-align: center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    background:
+        rgba(255,255,255,.025);
+}
+
+
+.fact-label {
+
+    margin-bottom: 15px;
+
+    color:
+        rgba(255,255,255,.45);
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+}
+
+
+.fact-text {
+
+    font-size:
+        clamp(18px, 3vw, 27px);
+
+    line-height: 1.5;
+}
+
+
+/* =========================================
+   CREDIT
+========================================= */
+
+.credit {
+
+    margin-top: 25px;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,.3);
+
+    font-size: 9px;
+
+    letter-spacing: 1px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media(max-width:900px) {
+
+    .moons {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:800px) {
+
+    .planet-area {
+
+        width: 450px;
+
+        height: 450px;
+    }
+
+
+    .neptune-center {
+
+        width: 130px;
+
+        height: 130px;
+    }
+
+
+    .orbit-triton {
+
+        width: 180px;
+
+        height: 180px;
+    }
+
+
+    .orbit-nereid {
+
+        width: 250px;
+
+        height: 250px;
+    }
+
+
+    .orbit-proteus {
+
+        width: 320px;
+
+        height: 320px;
+    }
+
+
+    .orbit-larissa {
+
+        width: 400px;
+
+        height: 400px;
+    }
+
+
+    .orbit-galatea {
+
+        width: 490px;
+
+        height: 490px;
+    }
+
+
+    .neptune-moon {
+
+        width: 50px;
+
+        height: 50px;
+    }
+
+
+    .triton {
+
+        left:
+            calc(50% + 55px);
+
+        top:
+            calc(50% - 90px);
+    }
+
+
+    .nereid {
+
+        left:
+            calc(50% + 80px);
+
+        top:
+            calc(50% + 55px);
+    }
+
+
+    .proteus {
+
+        left:
+            calc(50% - 150px);
+
+        top:
+            calc(50% - 160px);
+    }
+
+
+    .larissa {
+
+        left:
+            calc(50% - 200px);
+
+        top:
+            calc(50% + 75px);
+    }
+
+
+    .galatea {
+
+        left:
+            calc(50% + 185px);
+
+        top:
+            calc(50% - 40px);
+    }
+
+
+    .info-grid {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .features {
+
+        grid-template-columns:
+            1fr;
+    }
+
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media(max-width:500px) {
+
+    .neptune-page {
+
+        padding:
+            45px 15px 70px;
+    }
+
+
+    .header {
+
+        width: 100%;
+    }
+
+
+    .return {
+
+        font-size: 8px;
+
+        letter-spacing: 2px;
+
+        padding:
+            11px 15px;
+    }
+
+
+    .label {
+
+        font-size: 8px;
+
+        letter-spacing: 4px;
+    }
+
+
+    h1 {
+
+        font-size:
+            clamp(45px, 17vw, 75px);
+
+        letter-spacing: 5px;
+    }
+
+
+    .subtitle {
+
+        font-size: 12px;
+
+        line-height: 1.7;
+    }
+
+
+    .planet-area {
+
+        width: 320px;
+
+        height: 320px;
+
+        margin:
+            50px auto 70px;
+    }
+
+
+    .neptune-center {
+
+        width: 95px;
+
+        height: 95px;
+    }
+
+
+    .neptune-center span {
+
+        bottom: -28px;
+
+        font-size: 8px;
+
+        letter-spacing: 3px;
+    }
+
+
+    .orbit-triton {
+
+        width: 135px;
+
+        height: 135px;
+    }
+
+
+    .orbit-nereid {
+
+        width: 180px;
+
+        height: 180px;
+    }
+
+
+    .orbit-proteus {
+
+        width: 230px;
+
+        height: 230px;
+    }
+
+
+    .orbit-larissa {
+
+        width: 285px;
+
+        height: 285px;
+    }
+
+
+    .orbit-galatea {
+
+        width: 315px;
+
+        height: 315px;
+    }
+
+
+    .neptune-moon {
+
+        width: 40px;
+
+        height: 40px;
+    }
+
+
+    .neptune-moon span {
+
+        top: 48px;
+
+        font-size: 7px;
+
+        letter-spacing: 1.5px;
+    }
+
+
+    .triton {
+
+        left:
+            calc(50% + 45px);
+
+        top:
+            calc(50% - 65px);
+    }
+
+
+    .nereid {
+
+        left:
+            calc(50% + 55px);
+
+        top:
+            calc(50% + 40px);
+    }
+
+
+    .proteus {
+
+        left:
+            calc(50% - 110px);
+
+        top:
+            calc(50% - 115px);
+    }
+
+
+    .larissa {
+
+        left:
+            calc(50% - 135px);
+
+        top:
+            calc(50% + 55px);
+    }
+
+
+    .galatea {
+
+        left:
+            calc(50% + 125px);
+
+        top:
+            calc(50% - 30px);
+    }
+
+
+    .description {
+
+        padding: 25px;
+    }
+
+
+    .description-text {
+
+        font-size: 13px;
+
+        line-height: 1.8;
+    }
+
+
+    .moons {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .moon-card {
+
+        padding: 25px;
+    }
+
+
+    .fact {
+
+        padding: 25px;
+    }
+
+}
