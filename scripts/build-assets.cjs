@@ -26,7 +26,27 @@ function walk(dir){
   });
 }
 function escapeAttr(s){return s.replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+const seoOverrides={
+  'Exploring-Space/Solar-System/Sun/index.html':['Sun: Facts, Structure & Solar Activity | ORBONIX','Explore the Sun, its structure, fusion, visible surface and role at the center of the Solar System.'],
+  'Exploring-Space/Solar-System/Mercury/index.html':['Mercury: Facts, Surface & Extreme Temperatures | ORBONIX','Explore Mercury, the closest planet to the Sun, including its cratered surface, extreme temperatures, polar ice and metallic core.'],
+  'Exploring-Space/Solar-System/Venus/index.html':['Venus: Facts, Atmosphere & Extreme Heat | ORBONIX','Explore Venus, its dense carbon-dioxide atmosphere, runaway greenhouse effect, clouds and volcanic landscape.'],
+  'Exploring-Space/Solar-System/Earth/index.html':['Earth: Facts, Atmosphere, Oceans & Moon | ORBONIX','Explore Earth, its oceans, atmosphere, magnetic field, geology and the conditions that make it the only known world with life.'],
+  'Exploring-Space/Solar-System/Earth/Moon/index.html':['The Moon: Facts, Geology & Exploration | ORBONIX','Explore the Moon, its craters and geology, its influence on Earth, Apollo samples and modern lunar exploration.'],
+  'Exploring-Space/Solar-System/Mars/index.html':['Mars: Facts, Moons, Atmosphere & Exploration | ORBONIX','Explore Mars, its atmosphere, geology, evidence of ancient water, robotic exploration and the moons Phobos and Deimos.'],
+  'Exploring-Space/Solar-System/Jupiter/index.html':['Jupiter: Facts, Great Red Spot & Moons | ORBONIX','Explore Jupiter, the Solar System’s largest planet, its atmosphere, Great Red Spot and major moons Io, Europa, Ganymede and Callisto.'],
+  'Exploring-Space/Solar-System/Saturn/index.html':['Saturn: Facts, Rings & Moons | ORBONIX','Explore Saturn, its spectacular ring system and diverse moons including Titan and ocean world Enceladus.'],
+  'Exploring-Space/Solar-System/Uranus/index.html':['Uranus: Facts, Rings, Tilt & Moons | ORBONIX','Explore Uranus, the ice giant with an extreme axial tilt, faint rings, unusual magnetic field and major moons.'],
+  'Exploring-Space/Solar-System/Neptune/index.html':['Neptune: Facts, Weather, Triton & Moons | ORBONIX','Explore Neptune, its powerful weather and winds, atmosphere, ring system and remarkable captured moon Triton.'],
+  'Exploring-Space/Deep-Space/Blackholes/index.html':['Black Holes: Formation, Detection & Facts | ORBONIX','Learn how black holes form, how astronomers detect them, what event horizons are and how black holes shape their surroundings.'],
+  'Exploring-Space/Deep-Space/Galaxies/index.html':['Galaxies: Types, Structure & Evolution | ORBONIX','Explore galaxies, their stars, gas, dust and dark matter, and how astronomers study their structure and evolution.'],
+  'Exploring-Space/Deep-Space/Dark-Matter/index.html':['Dark Matter: Evidence, Gravity & the Universe | ORBONIX','Explore the evidence for dark matter from galaxies, gravitational lensing, galaxy clusters and large-scale cosmic structure.'],
+  'Exploring-Space/Deep-Space/Dark-Energy/index.html':['Dark Energy & the Expanding Universe | ORBONIX','Learn about the evidence for accelerated cosmic expansion, dark energy and the major unanswered questions in modern cosmology.'],
+  'Exploring-Space/Space-Missions/James-Webb/index.html':['James Webb Space Telescope: Science & Infrared Astronomy | ORBONIX','Explore the James Webb Space Telescope, infrared astronomy, spectroscopy and its study of galaxies, stars and planetary systems.'],
+  'Exploring-Space/Space-Missions/Apollo/index.html':['Apollo Program: Moon Landings, Science & History | ORBONIX','Explore the Apollo program, six crewed Moon landings, returned lunar samples and its lasting impact on lunar science.'],
+  'Exploring-Space/Space-Missions/Artemis/index.html':['Artemis Program: NASA’s Return to the Moon | ORBONIX','Explore the Artemis program, its spacecraft, lunar science goals and plans for sustained human exploration of the Moon.']
+};
 function titleFor(rel){
+  if(seoOverrides[rel]) return seoOverrides[rel][0];
   if(rel==='index.html') return 'ORBONIX | Explore Space, Astronomy & the Solar System';
   const parts=rel.split('/').slice(0,-1);
   const leaf=pretty(parts.at(-1));
@@ -35,6 +55,7 @@ function titleFor(rel){
   return leaf+' | ORBONIX';
 }
 function descFor(rel){
+  if(seoOverrides[rel]) return seoOverrides[rel][1];
   if(rel==='index.html') return 'Explore space with ORBONIX: the Solar System, deep space, space missions, astronomy quizzes, simulations, news and original telescope observations.';
   const parts=rel.split('/').slice(0,-1), leaf=pretty(parts.at(-1));
   if(rel.includes('/Quizes/')) return 'Test your astronomy knowledge with the '+leaf+' on ORBONIX.';
