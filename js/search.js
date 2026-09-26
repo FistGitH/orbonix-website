@@ -32,6 +32,7 @@ const ORBONIX_PAGES = [
     {"title":"Orcus Simulation","url":"https://orbonix.net/Solar-System-Simulation/Orcus/","parent":"Solar System Simulation","category":"Simulations","keywords":"Orcus simulation moons satellites orbit","description":"Explore Orcus and its satellite catalogue."},
     {"title":"Gonggong Simulation","url":"https://orbonix.net/Solar-System-Simulation/Gonggong/","parent":"Solar System Simulation","category":"Simulations","keywords":"Gonggong simulation moons satellites orbit","description":"Explore Gonggong and its satellite catalogue."},
     {title:"Account",url:`${ORBONIX_BASE}/Account/`,parent:null,category:"Main",keywords:"account register login profile achievements",description:"Your profile and quiz achievements."},
+    {title:"Orbonix AI",url:`${ORBONIX_BASE}/Orbonix-AI/`,parent:null,category:"Tools",keywords:"orbonix ai assistant astronomy space questions artificial intelligence",description:"Ask the Orbonix AI assistant about space, astronomy and science."},
 
     /* =========================
        MAIN
@@ -1248,6 +1249,14 @@ function initializeOrbonixNavigation() {
     const menuButton = document.createElement('button'); menuButton.type = 'button'; menuButton.textContent = 'Pages';
     menuButton.setAttribute('aria-expanded', 'false'); menuButton.setAttribute('aria-controls', 'orbonix-page-menu');
     const searchButton = document.createElement('button'); searchButton.type = 'button'; searchButton.id = 'orbonix-search-button'; searchButton.textContent = 'Search'; searchButton.setAttribute('aria-haspopup', 'dialog');
+    const moreWrap=document.createElement('div'); moreWrap.id='orbonix-more-control';
+    const moreButton=document.createElement('button'); moreButton.type='button'; moreButton.id='orbonix-more-button'; moreButton.textContent='More'; moreButton.setAttribute('aria-expanded','false'); moreButton.setAttribute('aria-controls','orbonix-more-menu');
+    const moreMenu=document.createElement('div'); moreMenu.id='orbonix-more-menu'; moreMenu.hidden=true;
+    const aiPage=findOrbonixPage('Orbonix AI'); if(aiPage) moreMenu.appendChild(createOrbonixLink(aiPage,'orbonix-more-link'));
+    moreWrap.append(moreButton,moreMenu);
+    function closeMore(){moreMenu.hidden=true;moreButton.setAttribute('aria-expanded','false');}
+    moreButton.addEventListener('click',e=>{e.stopPropagation();moreMenu.hidden=!moreMenu.hidden;moreButton.setAttribute('aria-expanded',String(!moreMenu.hidden));});
+
     const menu = document.createElement('div'); menu.id = 'orbonix-page-menu'; menu.hidden = true;
     function list(parent) {
         const ul = document.createElement('ul');
@@ -1264,9 +1273,9 @@ function initializeOrbonixNavigation() {
     menu.appendChild(list(null));
     function closeMenu() { menu.hidden = true; menuButton.setAttribute('aria-expanded', 'false'); }
     menuButton.addEventListener('click', () => { menu.hidden = !menu.hidden; menuButton.setAttribute('aria-expanded', String(!menu.hidden)); });
-    document.addEventListener('click', e => { if (!nav.contains(e.target)) closeMenu(); });
+    document.addEventListener('click', e => { if (!nav.contains(e.target)) { closeMenu(); closeMore(); } else if(!moreWrap.contains(e.target)) closeMore(); });
     nav.addEventListener('keydown', e => { if (e.key === 'Escape') { closeMenu(); menuButton.focus(); } });
-    nav.append(brand, menuButton, searchButton, menu); document.body.prepend(nav);
+    nav.append(brand, menuButton, searchButton, moreWrap, menu); document.body.prepend(nav);
 }
 function renderOrbonixResults(container, query, status) {
     const pages = searchOrbonix(query); container.replaceChildren();
