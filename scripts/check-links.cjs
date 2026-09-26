@@ -44,6 +44,11 @@ for (const file of htmlFiles) {
     assert.equal((html.match(/src="\/js\/search.js"/g) || []).length, 1);
     assert.equal((html.match(/src="\/js\/search-ui.js"/g) || []).length, 1);
     for (const script of html.matchAll(/<script\b[^>]*>([\s\S]*?)<\/script>/gi)) new vm.Script(script[1], {filename:file});
+    for (const asset of html.matchAll(/<(?:script|link)\\b[^>]*(?:src|href)=(["'])(\\/[^"'?#]+)\\1[^>]*>/gi)) {
+        const assetPath = asset[2];
+        if (!/\\.(?:css|js)$/i.test(assetPath)) continue;
+        assert.ok(fs.existsSync(path.join(root, assetPath)), `Missing local asset ${assetPath} in ${file}`);
+    }
     let keyed = false;
     const tokens = html.match(/<!--[\s\S]*?-->|<script\b[^>]*>[\s\S]*?<\/script>|<style\b[^>]*>[\s\S]*?<\/style>|<[a-z][^>]*>/gi) || [];
     for (const token of tokens) {
