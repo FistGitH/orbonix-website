@@ -2,7 +2,7 @@
 const fs=require('node:fs'),path=require('node:path');
 const root=path.resolve(__dirname,'..'),out=path.join(root,'public');
 fs.mkdirSync(out,{recursive:true});
-for(const name of ['index.html','404.html','favicon.png','robots.txt','sitemap.xml','css','js','locales','data','Account','Exploring-Space','Gallery','Latest-Space-News','More-About-Orbonix','search','Solar-System-Simulation']) {
+for(const name of ['index.html','404.html','favicon.png','og-image.jpg','robots.txt','sitemap.xml','css','js','locales','data','Account','Exploring-Space','Gallery','Latest-Space-News','More-About-Orbonix','search','Solar-System-Simulation']) {
   fs.cpSync(path.join(root,name),path.join(out,name),{recursive:true});
 }
 
@@ -130,10 +130,9 @@ for(const file of walk(out).filter(f=>f.endsWith('.html'))){
 <meta property="og:type" content="website">
 <meta property="og:title" content="${escapeAttr(title)}">
 <meta property="og:description" content="${escapeAttr(desc)}">
-<meta property="og:url" content="${escapeAttr(url)}">
-<meta name="twitter:card" content="summary">
+<meta property="og:url" content="${escapeAttr(url)}">\n<meta property="og:image" content="${BASE}/og-image.jpg">\n<meta property="og:image:width" content="1200">\n<meta property="og:image:height" content="630">\n<meta property="og:image:alt" content="ORBONIX — Explore. Learn. Discover.">\n<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="${escapeAttr(title)}">
-<meta name="twitter:description" content="${escapeAttr(desc)}">
+<meta name="twitter:description" content="${escapeAttr(desc)}">\n<meta name="twitter:image" content="${BASE}/og-image.jpg">
 <script type="application/ld+json">${JSON.stringify(schema)}</script>`;
   html=html.replace(/<head(\s[^>]*)?>/i,m=>m+'\n'+seo);
   fs.writeFileSync(file,html);
