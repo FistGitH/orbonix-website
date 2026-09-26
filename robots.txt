@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /Account/
+Disallow: /search/
+
+Sitemap: https://orbonix.net/sitemap.xml
