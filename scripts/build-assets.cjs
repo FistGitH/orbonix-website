@@ -66,10 +66,20 @@ for(const file of walk(out).filter(f=>f.endsWith('.html'))){
       "item":BASE+"/"+segments.slice(0,index+1).join("/")+"/"
     }))
   ];
+  const isQuiz=rel.includes('/Quizes/') && !rel.endsWith('/Quizes/index.html');
+  const isArticle=(
+    rel.includes('/Solar-System/') ||
+    rel.includes('/Deep-Space/') ||
+    rel.includes('/Space-Missions/')
+  ) && !rel.endsWith('/Solar-System/index.html') && !rel.endsWith('/Deep-Space/index.html') && !rel.endsWith('/Space-Missions/index.html');
+  const pageType=isArticle?'Article':'WebPage';
+  const pageSchema={"@type":pageType,"name":title,"description":desc,"url":url,"isPartOf":{"@type":"WebSite","name":"ORBONIX","url":BASE+"/"}};
+  if(isArticle) pageSchema.publisher={"@type":"Organization","name":"ORBONIX","url":BASE+"/"};
+  if(isQuiz) pageSchema.about={"@type":"Thing","name":"Astronomy quiz"};
   const schema=rel==='index.html'
     ? {"@context":"https://schema.org","@type":"WebSite","name":"ORBONIX","url":BASE+"/"}
     : {"@context":"https://schema.org","@graph":[
-        {"@type":"WebPage","name":title,"description":desc,"url":url,"isPartOf":{"@type":"WebSite","name":"ORBONIX","url":BASE+"/"}},
+        pageSchema,
         {"@type":"BreadcrumbList","itemListElement":breadcrumbItems}
       ]};
   const seo=`
