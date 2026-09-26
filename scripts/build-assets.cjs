@@ -2,7 +2,7 @@
 const fs=require('node:fs'),path=require('node:path');
 const root=path.resolve(__dirname,'..'),out=path.join(root,'public');
 fs.mkdirSync(out,{recursive:true});
-for(const name of ['index.html','404.html','favicon.png','og-image.jpg','robots.txt','sitemap.xml','css','js','locales','data','Account','Exploring-Space','Gallery','Latest-Space-News','More-About-Orbonix','search','Solar-System-Simulation']) {
+for(const name of ['index.html','404.html','favicon.png','og-image.jpg','robots.txt','sitemap.xml','css','js','locales','data','Account','Exploring-Space','Gallery','Latest-Space-News','More-About-Orbonix','search','Solar-System-Simulation','Orbonix-AI']) {
   fs.cpSync(path.join(root,name),path.join(out,name),{recursive:true});
 }
 
