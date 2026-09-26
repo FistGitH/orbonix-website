@@ -56,9 +56,22 @@ for(const file of walk(out).filter(f=>f.endsWith('.html'))){
   const url=rel==='index.html'?BASE+'/':BASE+'/'+rel.replace(/index\.html$/,'');
   const title=titleFor(rel), desc=descFor(rel);
   html=html.replace(/<title[^>]*>[\s\S]*?<\/title>/i,'').replace(/<meta[^>]+name=["']description["'][^>]*>/ig,'').replace(/<meta[^>]+name=["']viewport["'][^>]*>/ig,'').replace(/<link[^>]+rel=["']canonical["'][^>]*>/ig,'').replace(/<meta[^>]+property=["']og:[^"']+["'][^>]*>/ig,'').replace(/<meta[^>]+name=["']twitter:[^"']+["'][^>]*>/ig,'').replace(/<script[^>]+type=["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>/ig,'');
+  const segments=rel.split('/').slice(0,-1);
+  const breadcrumbItems=[
+    {"@type":"ListItem","position":1,"name":"ORBONIX","item":BASE+"/"},
+    ...segments.map((segment,index)=>({
+      "@type":"ListItem",
+      "position":index+2,
+      "name":pretty(segment),
+      "item":BASE+"/"+segments.slice(0,index+1).join("/")+"/"
+    }))
+  ];
   const schema=rel==='index.html'
     ? {"@context":"https://schema.org","@type":"WebSite","name":"ORBONIX","url":BASE+"/"}
-    : {"@context":"https://schema.org","@type":"WebPage","name":title,"description":desc,"url":url,"isPartOf":{"@type":"WebSite","name":"ORBONIX","url":BASE+"/"}};
+    : {"@context":"https://schema.org","@graph":[
+        {"@type":"WebPage","name":title,"description":desc,"url":url,"isPartOf":{"@type":"WebSite","name":"ORBONIX","url":BASE+"/"}},
+        {"@type":"BreadcrumbList","itemListElement":breadcrumbItems}
+      ]};
   const seo=`
 <title>${escapeAttr(title)}</title>
 <meta name="description" content="${escapeAttr(desc)}">
