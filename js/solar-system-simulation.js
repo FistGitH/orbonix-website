@@ -753,25 +753,13 @@ function moonPosition(
         Convert km to AU.
     */
 
-    const moonAU =
-        moon.distance /
-        AU;
-
-
+    const moonAU=moon.distance/AU;
+    // Major moons use an educational display separation in the global view.
+    // The information panel still reports their real orbital distance in km.
+    const visibleAU=Math.max(moonAU, .055+Math.log10(Math.max(10,moon.distance))*.012);
     return {
-
-        x:
-            parentPosition.x
-            +
-            moonAU *
-            Math.cos(angle),
-
-        y:
-            parentPosition.y
-            +
-            moonAU *
-            Math.sin(angle)
-
+        x:parentPosition.x+visibleAU*Math.cos(angle),
+        y:parentPosition.y+visibleAU*Math.sin(angle)*.62
     };
 
 }
@@ -1421,7 +1409,7 @@ function drawMoons(){
 
             if(
                 showLabels &&
-                radius>2
+                (cameraZoom>1.05 || moon===selected)
             ){
 
                 ctx.font =
