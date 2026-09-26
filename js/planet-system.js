@@ -124,6 +124,7 @@
         link.textContent = "Explore " + m.name;
         detail.append(link);
       }
+      if(window.orbonixPlanet3D) window.orbonixPlanet3D.select(m.id);
       status.textContent =
         m !== planet && !m.distance
           ? "Orbital elements are not available for this satellite. It remains in the catalogue."
@@ -147,6 +148,7 @@
       zoom = 1;
       pan = { x: 0, y: 0 };
       choose(planet);
+      if(window.orbonixPlanet3D) window.orbonixPlanet3D.systemView();
     };
     document.getElementById("system-speed").oninput = (e) => {
       speed = Number(e.target.value);
