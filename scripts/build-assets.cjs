@@ -2,7 +2,7 @@
 const fs=require('node:fs'),path=require('node:path');
 const root=path.resolve(__dirname,'..'),out=path.join(root,'public');
 fs.mkdirSync(out,{recursive:true});
-for(const name of ['index.html','favicon.png','css','js','locales','data','Account','Exploring-Space','Gallery','Latest-Space-News','More-About-Orbonix','search','Solar-System-Simulation']) {
+for(const name of ['index.html','favicon.png','robots.txt','sitemap.xml','css','js','locales','data','Account','Exploring-Space','Gallery','Latest-Space-News','More-About-Orbonix','search','Solar-System-Simulation']) {
   fs.cpSync(path.join(root,name),path.join(out,name),{recursive:true});
 }
 
@@ -56,6 +56,9 @@ for(const file of walk(out).filter(f=>f.endsWith('.html'))){
   const url=rel==='index.html'?BASE+'/':BASE+'/'+rel.replace(/index\.html$/,'');
   const title=titleFor(rel), desc=descFor(rel);
   html=html.replace(/<title[^>]*>[\s\S]*?<\/title>/i,'').replace(/<meta[^>]+name=["']description["'][^>]*>/ig,'').replace(/<meta[^>]+name=["']viewport["'][^>]*>/ig,'').replace(/<link[^>]+rel=["']canonical["'][^>]*>/ig,'').replace(/<meta[^>]+property=["']og:[^"']+["'][^>]*>/ig,'').replace(/<meta[^>]+name=["']twitter:[^"']+["'][^>]*>/ig,'');
+  const schema=rel==='index.html'
+    ? {"@context":"https://schema.org","@type":"WebSite","name":"ORBONIX","url":BASE+"/"}
+    : {"@context":"https://schema.org","@type":"WebPage","name":title,"description":desc,"url":url,"isPartOf":{"@type":"WebSite","name":"ORBONIX","url":BASE+"/"}};
   const seo=`
 <title>${escapeAttr(title)}</title>
 <meta name="description" content="${escapeAttr(desc)}">
@@ -70,7 +73,7 @@ for(const file of walk(out).filter(f=>f.endsWith('.html'))){
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="${escapeAttr(title)}">
 <meta name="twitter:description" content="${escapeAttr(desc)}">
-<script type="application/ld+json">${JSON.stringify({"@context":"https://schema.org","@type":"WebSite","name":"ORBONIX","url":BASE+"/"})}</script>`;
+<script type="application/ld+json">${JSON.stringify(schema)}</script>`;
   html=html.replace(/<head(\s[^>]*)?>/i,m=>m+'\n'+seo);
   fs.writeFileSync(file,html);
 }
