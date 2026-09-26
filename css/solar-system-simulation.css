@@ -1,0 +1,488 @@
+*{
+    box-sizing:border-box;
+}
+
+html,
+body{
+    margin:0;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    background:#000;
+    color:white;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    position:relative;
+}
+
+#space{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    display:block;
+    cursor:grab;
+}
+
+#space:active{
+    cursor:grabbing;
+}
+
+
+/* =========================================================
+   TOP
+========================================================= */
+
+.topbar{
+
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+
+    height:80px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 28px;
+
+    z-index:20;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0,0,0,.95),
+            rgba(0,0,0,.35),
+            transparent
+        );
+
+    pointer-events:none;
+}
+
+.seo-title{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+.brand{
+
+    font-size:19px;
+    font-weight:bold;
+
+    letter-spacing:7px;
+}
+
+.brand span{
+
+    opacity:.35;
+    font-weight:normal;
+    letter-spacing:2px;
+}
+
+.live{
+
+    display:flex;
+    align-items:center;
+    gap:8px;
+
+    font-size:10px;
+    letter-spacing:2px;
+
+    opacity:.8;
+}
+
+.liveDot{
+
+    width:7px;
+    height:7px;
+
+    border-radius:50%;
+
+    background:#65ffad;
+
+    box-shadow:
+        0 0 15px #65ffad;
+}
+
+
+/* =========================================================
+   PANEL
+========================================================= */
+
+.panel{
+
+    position:absolute;
+
+    top:95px;
+    left:20px;
+
+    width:300px;
+
+    max-height:
+        calc(100vh - 120px);
+
+    overflow-y:auto;
+
+    z-index:30;
+
+    padding:18px;
+
+    border-radius:16px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    background:
+        rgba(3,7,15,.78);
+
+    backdrop-filter:
+        blur(18px);
+
+    box-shadow:
+        0 20px 70px
+        rgba(0,0,0,.5);
+}
+
+.panel::-webkit-scrollbar{
+    width:4px;
+}
+
+.panel::-webkit-scrollbar-thumb{
+    background:rgba(255,255,255,.18);
+    border-radius:10px;
+}
+
+.title{
+
+    font-size:9px;
+
+    letter-spacing:3px;
+
+    opacity:.4;
+
+    margin-bottom:8px;
+}
+
+.objectName{
+
+    font-size:28px;
+
+    font-weight:bold;
+
+    margin-bottom:4px;
+}
+
+.objectType{
+
+    font-size:10px;
+
+    letter-spacing:2px;
+
+    color:#8ba1be;
+
+    margin-bottom:18px;
+}
+
+
+/* =========================================================
+   INFO
+========================================================= */
+
+.infoGrid{
+
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:7px;
+}
+
+.info{
+
+    padding:10px;
+
+    border-radius:10px;
+
+    background:
+        rgba(255,255,255,.045);
+
+    border:
+        1px solid
+        rgba(255,255,255,.06);
+}
+
+.info small{
+
+    display:block;
+
+    font-size:8px;
+
+    letter-spacing:1.5px;
+
+    opacity:.4;
+
+    margin-bottom:5px;
+}
+
+.info strong{
+
+    font-size:12px;
+
+    font-weight:normal;
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.section{
+
+    margin-top:20px;
+
+    margin-bottom:9px;
+
+    font-size:9px;
+
+    letter-spacing:2px;
+
+    opacity:.4;
+}
+
+button,
+select,
+input{
+
+    width:100%;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    background:
+        rgba(255,255,255,.05);
+
+    color:white;
+
+    border-radius:9px;
+
+    padding:9px;
+
+    outline:none;
+}
+
+button{
+
+    cursor:pointer;
+
+    transition:
+        .2s;
+}
+
+button:hover{
+
+    background:
+        rgba(255,255,255,.12);
+
+    border-color:
+        rgba(255,255,255,.3);
+}
+
+button:active{
+
+    transform:scale(.97);
+}
+
+select option{
+
+    background:#050910;
+}
+
+.row{
+
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:7px;
+
+    margin-bottom:7px;
+}
+
+
+/* =========================================================
+   FLIGHT INDICATOR
+========================================================= */
+
+#flight{
+
+    display:none;
+
+    position:absolute;
+
+    z-index:40;
+
+    top:90px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    padding:9px 18px;
+
+    border-radius:30px;
+
+    background:
+        rgba(4,8,16,.8);
+
+    border:
+        1px solid
+        rgba(255,255,255,.15);
+
+    backdrop-filter:
+        blur(12px);
+
+    font-size:10px;
+
+    letter-spacing:2px;
+}
+
+#flight.active{
+    display:block;
+}
+
+
+/* =========================================================
+   TIME
+========================================================= */
+
+.timebar{
+
+    position:absolute;
+
+    z-index:30;
+
+    bottom:20px;
+
+    left:50%;
+
+    transform:
+        translateX(-50%);
+
+    width:
+        min(720px,calc(100% - 40px));
+
+    padding:12px 15px;
+
+    border-radius:15px;
+
+    background:
+        rgba(3,7,15,.82);
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    backdrop-filter:
+        blur(16px);
+}
+
+.timeTop{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-bottom:9px;
+}
+
+#simDate{
+
+    font-size:11px;
+
+    letter-spacing:1px;
+}
+
+#speed{
+
+    font-size:10px;
+
+    color:#8195af;
+}
+
+.timeControls{
+
+    display:grid;
+
+    grid-template-columns:
+        45px 45px 45px 1fr
+        45px 45px 45px;
+
+    gap:6px;
+}
+
+
+/* =========================================================
+   HELP
+========================================================= */
+
+.help{
+
+    position:absolute;
+
+    right:20px;
+
+    bottom:20px;
+
+    z-index:20;
+
+    padding:10px 13px;
+
+    border-radius:10px;
+
+    background:
+        rgba(3,7,15,.65);
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+    font-size:9px;
+
+    color:#8b9ab0;
+
+    line-height:1.7;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:800px){
+
+    .panel{
+
+        width:245px;
+
+        left:10px;
+
+        top:78px;
+
+        max-height:43vh;
+    }
+
+    .help{
+        display:none;
+    }
+
+    .brand{
+        font-size:14px;
+        letter-spacing:4px;
+    }
+
+}
