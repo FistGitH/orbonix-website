@@ -1577,6 +1577,7 @@ function screenObjectAt(clientX,clientY){
     let closest=null,closestDistance=Infinity;
     const objects=[...planets,...moons];
     objects.forEach(object=>{
+        if(!objectVisible(object))return;
         const world=object.parent ? moonPosition(object) : orbitalPosition(object);
         const screen=worldToScreen(world.x,world.y);
         const radius=object.id==="sun" ? 35 : object.parent ? 14 : Math.max(18,visualRadius(object)+10);
@@ -1636,6 +1637,8 @@ canvas.addEventListener(
         planets.forEach(
             planet=>{
 
+                if(!objectVisible(planet))return;
+
                 if(
                     planet.id==="sun"
                 )
@@ -1689,6 +1692,8 @@ canvas.addEventListener(
 
         moons.forEach(
             moon=>{
+
+                if(!objectVisible(moon))return;
 
                 const world =
                     moonPosition(
