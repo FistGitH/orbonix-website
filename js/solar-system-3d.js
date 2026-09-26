@@ -31,7 +31,7 @@ function frame(){if(!active)return;positions();const cinematic=performance.now()
 function select3D(id){if(selected3D?.material?.emissive)selected3D.material.emissive.setHex(0x000000);selected3D=meshes.get(id)||null;if(selected3D?.material?.emissive)selected3D.material.emissive.setHex(0x17345f);}
 function fly3D(id){const mesh=meshes.get(id);if(!mesh)return;select3D(id);cameraTarget3D=mesh.position;targetDistance=Math.max(5,mesh.geometry.parameters.radius*6);cinematicStart=performance.now();}
 function system3D(){cameraTarget3D=null;targetDistance=105;}
-window.orbonix3D={flyTo:fly3D,systemView:system3D,isActive:()=>active};
+window.orbonix3D={flyTo:fly3D,systemView:system3D,isActive:()=>active,select:select3D};
 function setMode(mode){if(mode==="3d"){if(!init())return;active=true;host.hidden=false;canvas2d.style.visibility="hidden";b3.classList.add("active");b2.classList.remove("active");frame()}else{active=false;cancelAnimationFrame(raf);host.hidden=true;canvas2d.style.visibility="visible";b2.classList.add("active");b3.classList.remove("active")}}
 b3.addEventListener("click",()=>setMode("3d"));b2.addEventListener("click",()=>setMode("2d"));
 })();
