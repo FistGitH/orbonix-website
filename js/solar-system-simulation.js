@@ -1932,7 +1932,8 @@ document
 .addEventListener(
     "click",
     ()=>{
-        flyTo(selected);
+        if(window.orbonix3D?.isActive()) window.orbonix3D.flyTo(selected.id);
+        else flyTo(selected);
     }
 );
 
@@ -1942,7 +1943,8 @@ document
 .addEventListener(
     "click",
     ()=>{
-        systemView();
+        if(window.orbonix3D?.isActive()) window.orbonix3D.systemView();
+        else systemView();
     }
 );
 
