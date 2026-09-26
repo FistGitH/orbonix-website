@@ -56,6 +56,15 @@
     APPROACHING OBJECT
 </div>
 
+<div id="comparePanel" class="comparePanel" hidden aria-live="polite">
+    <div class="compareHeader">
+        <div><small>SIZE COMPARISON</small><strong id="compareTitle">Planet sizes</strong></div>
+        <button id="closeCompare" type="button" aria-label="Close size comparison">×</button>
+    </div>
+    <canvas id="compareCanvas" width="900" height="300"></canvas>
+    <p>Diameters are drawn on one logarithmic visual scale so small worlds remain visible. Numeric diameters remain real.</p>
+</div>
+
 
 <!-- =====================================================
      OBJECT PANEL
@@ -237,6 +246,10 @@
 
         <button id="belts">
             BELTS ON
+        </button>
+
+        <button id="compare">
+            SIZE COMPARE
         </button>
 
     </div>
