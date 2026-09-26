@@ -486,3 +486,15 @@ select option{
     }
 
 }
+
+
+/* Solar System 2.0 */
+.speedPresets{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}
+.speedPresets button{padding:8px 3px;font-size:10px}
+.speedPresets button.active{background:rgba(125,170,255,.22);border-color:rgba(150,190,255,.65);color:#dbe8ff}
+#datePicker{color-scheme:dark}
+#explore{grid-column:span 2;background:rgba(100,145,255,.12)}
+.panel .row:has(#fly){grid-template-columns:1fr 1fr 1fr}
+#timeline{padding:0;accent-color:#a9c7ff}
+button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid #b9d2ff;outline-offset:2px}
+@media(max-width:800px){.speedPresets{grid-template-columns:repeat(3,1fr)}.panel .row:has(#fly){grid-template-columns:1fr}.timeControls{grid-template-columns:38px 38px 38px 1fr 38px 38px 44px}.timebar{bottom:10px;width:calc(100% - 20px)}}
