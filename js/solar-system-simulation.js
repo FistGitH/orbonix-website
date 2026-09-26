@@ -1521,6 +1521,37 @@ function systemView(){
 }
 
 
+function screenObjectAt(clientX,clientY){
+    let closest=null,closestDistance=Infinity;
+    const objects=[...planets,...moons];
+    objects.forEach(object=>{
+        const world=object.parent ? moonPosition(object) : orbitalPosition(object);
+        const screen=worldToScreen(world.x,world.y);
+        const radius=object.id==="sun" ? 35 : object.parent ? 14 : Math.max(18,visualRadius(object)+10);
+        const d=Math.hypot(screen.x-clientX,screen.y-clientY);
+        if(d<radius&&d<closestDistance){closest=object;closestDistance=d;}
+    });
+    return closest;
+}
+
+const hoverHud=document.getElementById("hoverHud");
+canvas.addEventListener("pointermove",event=>{
+    if(activePointers.size)return;
+    const object=screenObjectAt(event.clientX,event.clientY);
+    if(!object){hoverHud.hidden=true;canvas.style.cursor="grab";return;}
+    document.getElementById("hoverName").textContent=object.name;
+    document.getElementById("hoverMeta").textContent=(object.type||"MOON")+" · "+Math.round(object.radius*2).toLocaleString()+" km";
+    hoverHud.style.left=Math.min(width-180,event.clientX+16)+"px";
+    hoverHud.style.top=Math.max(86,event.clientY-12)+"px";
+    hoverHud.hidden=false;canvas.style.cursor="pointer";
+});
+canvas.addEventListener("pointerleave",()=>{hoverHud.hidden=true;});
+
+function setZoom(value){cameraZoom=Math.max(.15,Math.min(15,value));targetZoom=cameraZoom;}
+document.getElementById("zoomIn").addEventListener("click",()=>setZoom(cameraZoom*1.35));
+document.getElementById("zoomOut").addEventListener("click",()=>setZoom(cameraZoom/1.35));
+document.getElementById("resetCamera").addEventListener("click",()=>systemView());
+
 /* =========================================================
    CLICK OBJECT
 ========================================================= */
@@ -1761,24 +1792,8 @@ canvas.addEventListener(
         e.preventDefault();
 
 
-        const factor =
-            e.deltaY>0
-            ? .88
-            : 1.14;
-
-
-        cameraZoom *=
-            factor;
-
-
-        cameraZoom =
-            Math.max(
-                .15,
-                Math.min(
-                    15,
-                    cameraZoom
-                )
-            );
+        const factor=e.deltaY>0 ? .88 : 1.14;
+        setZoom(cameraZoom*factor);
 
     },
     {
