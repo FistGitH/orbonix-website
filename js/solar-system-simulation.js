@@ -357,6 +357,7 @@ let targetZoom =
 
 let simulationDate =
     new Date();
+window.orbonixSimulationDate=()=>simulationDate;
 
 
 /* =========================================================
