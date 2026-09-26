@@ -318,6 +318,10 @@ let showLabels =
 let showBelts =
     true;
 
+let showTrails = true;
+const orbitTrails = new Map();
+let lastTrailSample = 0;
+
 let realScale =
     true;
 
@@ -1161,6 +1165,25 @@ function visualRadius(
 }
 
 
+function updateTrails(now){
+    if(!showTrails||now-lastTrailSample<120)return;
+    lastTrailSample=now;
+    planets.filter(p=>p.id!=="sun").forEach(p=>{
+        const trail=orbitTrails.get(p.id)||[];
+        trail.push(orbitalPosition(p));
+        if(trail.length>28)trail.shift();
+        orbitTrails.set(p.id,trail);
+    });
+}
+function drawTrails(){
+    if(!showTrails)return;
+    planets.filter(p=>p.id!=="sun").forEach(p=>{
+        const trail=orbitTrails.get(p.id);if(!trail||trail.length<2)return;
+        ctx.beginPath();trail.forEach((point,i)=>{const s=worldToScreen(point.x,point.y);if(i===0)ctx.moveTo(s.x,s.y);else ctx.lineTo(s.x,s.y);});
+        ctx.strokeStyle=p.color+"66";ctx.lineWidth=1.4;ctx.stroke();
+    });
+}
+
 /* =========================================================
    DRAW PLANETS
 ========================================================= */
@@ -1980,6 +2003,14 @@ document
 );
 
 
+
+
+document.getElementById("trails").addEventListener("click",()=>{
+    showTrails=!showTrails;
+    document.getElementById("trails").textContent=showTrails?"TRAILS ON":"TRAILS OFF";
+    if(!showTrails)orbitTrails.clear();
+});
+
 /* =========================================================
    SIZE COMPARISON
 ========================================================= */
@@ -2375,6 +2406,8 @@ function draw(){
     drawBelts();
 
     drawOrbits();
+    updateTrails(performance.now());
+    drawTrails();
 
     drawSun();
 
