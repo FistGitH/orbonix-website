@@ -106,3 +106,10 @@ html:not([lang="en"]) :is(h1,h2,h3,.title,.subtitle,.tagline,button,.orbonix-but
 
 /* Account link wraps with the shared navigation on narrow screens. */
 #orbonix-auto-navigation{flex-wrap:wrap}#account-link{white-space:nowrap;color:inherit;text-decoration:none;padding:7px 10px;font-size:12px;border:1px solid #344963;border-radius:7px}.simulation-source-note{position:fixed;bottom:6px;left:12px;right:12px;font:10px/1.4 Arial;color:#a7b7ca;pointer-events:auto;max-width:650px;z-index:2}.simulation-source-note a{color:#a7dfff}@media(max-width:600px){.simulation-source-note{display:none}#orbonix-auto-navigation{gap:5px}#account-link{font-size:10px;padding:5px}}
+
+/* Shared More launcher. Add future banner tools inside #orbonix-more-menu. */
+#orbonix-more-control{position:relative;flex-shrink:0}
+#orbonix-more-menu{position:absolute;right:0;top:calc(100% + 8px);width:min(260px,calc(100vw - 24px));padding:8px;background:#0b1324;border:1px solid #53617b;border-radius:10px;box-shadow:0 16px 34px #000a;z-index:100010}
+#orbonix-more-menu[hidden]{display:none}
+#orbonix-more-menu .orbonix-more-link{display:block;min-height:44px;padding:11px 12px;color:#eaf4ff;text-decoration:none;border-radius:7px}
+#orbonix-more-menu .orbonix-more-link:hover{background:#182239}
