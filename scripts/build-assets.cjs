@@ -109,7 +109,10 @@ for(const file of walk(out).filter(f=>f.endsWith('.html'))){
   ) && !rel.endsWith('/Solar-System/index.html') && !rel.endsWith('/Deep-Space/index.html') && !rel.endsWith('/Space-Missions/index.html');
   const pageType=isArticle?'Article':'WebPage';
   const pageSchema={"@type":pageType,"name":title,"description":desc,"url":url,"isPartOf":{"@type":"WebSite","name":"ORBONIX","url":BASE+"/"}};
-  if(isArticle) pageSchema.publisher={"@type":"Organization","name":"ORBONIX","url":BASE+"/"};
+  if(isArticle) {
+    pageSchema.headline=title;
+    pageSchema.publisher={"@type":"Organization","name":"ORBONIX","url":BASE+"/"};
+  }
   if(isQuiz) pageSchema.about={"@type":"Thing","name":"Astronomy quiz"};
   const schema=rel==='index.html'
     ? {"@context":"https://schema.org","@type":"WebSite","name":"ORBONIX","url":BASE+"/"}
