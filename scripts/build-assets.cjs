@@ -55,7 +55,7 @@ for(const file of walk(out).filter(f=>f.endsWith('.html'))){
   }
   const url=rel==='index.html'?BASE+'/':BASE+'/'+rel.replace(/index\.html$/,'');
   const title=titleFor(rel), desc=descFor(rel);
-  html=html.replace(/<title[^>]*>[\s\S]*?<\/title>/i,'').replace(/<meta[^>]+name=["']description["'][^>]*>/ig,'').replace(/<meta[^>]+name=["']viewport["'][^>]*>/ig,'').replace(/<link[^>]+rel=["']canonical["'][^>]*>/ig,'').replace(/<meta[^>]+property=["']og:[^"']+["'][^>]*>/ig,'').replace(/<meta[^>]+name=["']twitter:[^"']+["'][^>]*>/ig,'');
+  html=html.replace(/<title[^>]*>[\s\S]*?<\/title>/i,'').replace(/<meta[^>]+name=["']description["'][^>]*>/ig,'').replace(/<meta[^>]+name=["']viewport["'][^>]*>/ig,'').replace(/<link[^>]+rel=["']canonical["'][^>]*>/ig,'').replace(/<meta[^>]+property=["']og:[^"']+["'][^>]*>/ig,'').replace(/<meta[^>]+name=["']twitter:[^"']+["'][^>]*>/ig,'').replace(/<script[^>]+type=["']application\/ld\+json["'][^>]*>[\s\S]*?<\/script>/ig,'');
   const schema=rel==='index.html'
     ? {"@context":"https://schema.org","@type":"WebSite","name":"ORBONIX","url":BASE+"/"}
     : {"@context":"https://schema.org","@type":"WebPage","name":title,"description":desc,"url":url,"isPartOf":{"@type":"WebSite","name":"ORBONIX","url":BASE+"/"}};
