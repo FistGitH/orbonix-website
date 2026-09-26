@@ -642,6 +642,14 @@ function updatePanel(){
 
 updatePanel();
 
+window.orbonixSelectObject=(id)=>{
+    const object=findObject(id);
+    if(!object)return;
+    selected=object;
+    select.value=object.id;
+    updatePanel();
+};
+
 
 /* =========================================================
    SELECT
