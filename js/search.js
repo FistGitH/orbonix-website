@@ -1250,7 +1250,7 @@ function initializeOrbonixNavigation() {
     menuButton.setAttribute('aria-expanded', 'false'); menuButton.setAttribute('aria-controls', 'orbonix-page-menu');
     const searchButton = document.createElement('button'); searchButton.type = 'button'; searchButton.id = 'orbonix-search-button'; searchButton.textContent = 'Search'; searchButton.setAttribute('aria-haspopup', 'dialog');
     const moreWrap=document.createElement('div'); moreWrap.id='orbonix-more-control';
-    const moreButton=document.createElement('button'); moreButton.type='button'; moreButton.id='orbonix-more-button'; moreButton.textContent='More'; moreButton.setAttribute('aria-expanded','false'); moreButton.setAttribute('aria-controls','orbonix-more-menu');
+    const moreButton=document.createElement('button'); moreButton.type='button'; moreButton.id='orbonix-more-button'; moreButton.textContent='⋯'; moreButton.setAttribute('aria-label','More'); moreButton.title='More'; moreButton.setAttribute('aria-expanded','false'); moreButton.setAttribute('aria-controls','orbonix-more-menu');
     const moreMenu=document.createElement('div'); moreMenu.id='orbonix-more-menu'; moreMenu.hidden=true;
     const aiPage=findOrbonixPage('Orbonix AI'); if(aiPage) moreMenu.appendChild(createOrbonixLink(aiPage,'orbonix-more-link'));
     moreWrap.append(moreButton,moreMenu);
