@@ -1,0 +1,13 @@
+{
+  "$schema": "../node_modules/wrangler/config-schema.json",
+  "name": "orbonix-website",
+  "main": "worker.mjs",
+  "compatibility_date": "2026-09-25",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {"directory": "../public", "binding": "ASSETS", "run_worker_first": ["/api/*"]},
+  "d1_databases": [{"binding":"DB","database_name":"orbonix-accounts","database_id":"REPLACE_WITH_CREATED_DATABASE_ID"}],
+  "send_email": [{"name":"EMAIL","allowed_sender_addresses":["noreply@accounts.orbonix.net"]}],
+  "vars": {"SITE_ORIGIN":"https://orbonix.net","EMAIL_FROM":"noreply@accounts.orbonix.net"},
+  "triggers": {"crons":["*/30 * * * *"]},
+  "observability": {"enabled":true,"logs":{"enabled":true,"invocation_logs":false}}
+}

@@ -1180,7 +1180,8 @@ h1 {
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="apple-touch-icon" href="/favicon.png">
 <link rel="stylesheet" href="/css/site.css">
-<script src="/js/search.js" defer></script>
+<script src="/js/search.js" defer>
+</script>
 <script src="/js/search-ui.js" defer></script>
 </head>
 
@@ -2446,7 +2447,7 @@ function(event) {
    NEWS CARDS
 ========================================================= */
 
-const cards =
+let cards =
 document.querySelectorAll(".news-card");
 
 const filters =
@@ -2734,6 +2735,32 @@ cards.forEach(card => {
     observer.observe(card);
 
 });
+
+// Refresh the existing grid and keep its filters, search and load-more controls.
+const newsStatus=document.createElement('p');newsStatus.setAttribute('role','status');
+document.getElementById('newsGrid').before(newsStatus);
+function newsCategory(title){if(/telescope|webb|hubble/i.test(title))return 'telescopes';if(/astronaut|crew|artemis|station/i.test(title))return 'human-spaceflight';if(/mars|moon|planet|asteroid|comet/i.test(title))return 'planets';if(/launch|rocket|satellite/i.test(title))return 'missions';return 'astronomy';}
+function renderLiveNews(articles,stale){
+ const grid=document.getElementById('newsGrid');const fragment=document.createDocumentFragment();
+ const safe=u=>{try{return new URL(u).protocol==='https:';}catch{return false;}};
+ for(const item of articles){if(!safe(item.url)||!item.title)continue;
+ const card=document.createElement('article');card.className='news-card';card.dataset.category=newsCategory(item.title);card.dataset.title=item.title;
+ const wrapper=document.createElement('div');wrapper.className='news-image-wrapper';const img=document.createElement('img');img.className='news-image';img.src=safe(item.image)?item.image:'/favicon.png';img.alt=item.title;img.loading='lazy';img.referrerPolicy='no-referrer';img.onerror=()=>{img.onerror=null;img.src='/favicon.png';};wrapper.append(img);
+ const content=document.createElement('div');content.className='news-content';const date=document.createElement('div');date.className='news-date';const when=new Date(item.date);date.textContent=Number.isNaN(+when)?'':when.toLocaleDateString(document.documentElement.lang||'en');
+ const title=document.createElement('h2');title.className='news-title';title.textContent=item.title;title.translate=false;
+ const source=document.createElement('p');source.className='news-source';source.textContent=item.source;source.translate=false;
+ const link=document.createElement('a');link.className='read-button';link.href=item.url;link.rel='noopener noreferrer';link.target='_blank';link.textContent='READ STORY →';content.append(date,title,source,link);card.append(wrapper,content);fragment.append(card);
+ }
+ if(!fragment.children.length)throw Error('No news');grid.replaceChildren(fragment);cards=grid.querySelectorAll('.news-card');newsStatus.textContent=stale?'Showing saved news. The latest update is unavailable.':'News updated automatically. Headlines are shown in the source language.';updateCards();
+}
+async function refreshNews(){
+ try{let articles;
+ const response=await fetch('/api/news',{signal:AbortSignal.timeout(12000)});if(response.ok&&response.headers.get('content-type')?.includes('application/json')){const data=await response.json();if(data.articles?.length){articles=data.articles;renderLiveNews(articles,data.stale);}}
+ if(!articles){const r=await fetch('https://api.spaceflightnewsapi.net/v4/articles/?limit=30&ordering=-published_at',{signal:AbortSignal.timeout(12000)});if(!r.ok)throw Error('News unavailable');const data=await r.json();articles=data.results.map(a=>({title:a.title,url:a.url,image:a.image_url,source:a.news_site,date:a.published_at}));renderLiveNews(articles,false);}
+ try{localStorage.setItem('orbonix-news',JSON.stringify(articles));}catch{}
+ }catch{let cached;try{cached=JSON.parse(localStorage.getItem('orbonix-news'));}catch{}if(cached?.length){try{renderLiveNews(cached,true);}catch{newsStatus.textContent='News temporarily unavailable. Please try again later.';}}else newsStatus.textContent='Live news unavailable. Showing the editorial archive below.';}
+}
+refreshNews();setInterval(()=>{if(!document.hidden)refreshNews();},1800000);
 
 </script>
 

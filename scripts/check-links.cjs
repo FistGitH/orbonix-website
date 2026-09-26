@@ -5,7 +5,7 @@ const path = require('node:path');
 const vm = require('node:vm');
 const root = path.resolve(__dirname, '..');
 const walk = directory => fs.readdirSync(directory, { withFileTypes: true }).flatMap(entry =>
-    entry.name === '.git' ? [] : entry.isDirectory()
+    ['.git','node_modules','public','.wrangler'].includes(entry.name) ? [] : entry.isDirectory()
         ? walk(path.join(directory, entry.name)) : [path.join(directory, entry.name)]);
 const htmlFiles = walk(root).filter(file => /\.html$/i.test(file));
 const source = fs.readFileSync(path.join(root, 'js/search.js'), 'utf8');

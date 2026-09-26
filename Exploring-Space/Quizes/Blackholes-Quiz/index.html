@@ -1562,6 +1562,8 @@ difficulty: "HARD"
 
 let currentQuestion = 0;
 let score = 0;
+let submittedAnswers = [];
+let attemptId = crypto.randomUUID();
 let answered = false;
 
 
@@ -1574,7 +1576,7 @@ function shuffleAnswers(question) {
     const answerObjects =
         question.answers.map(
             (answer, index) => ({
-                text: answer,
+                text: answer, originalIndex: index,
                 correct: index === question.correct
             })
         );
@@ -1662,8 +1664,8 @@ function loadQuestion() {
             button.textContent =
                 answerObject.text;
 
-            button.dataset.correct =
-                answerObject.correct;
+            button.dataset.correct = answerObject.correct;
+            button.dataset.originalIndex = answerObject.originalIndex;
 
             button.onclick =
                 function() {
@@ -1701,6 +1703,7 @@ function selectAnswer(
         return;
 
     answered = true;
+    submittedAnswers[currentQuestion] = Number(selectedButton.dataset.originalIndex);
 
     const buttons =
         document.querySelectorAll(".answer");
@@ -1775,6 +1778,7 @@ function nextQuestion() {
 ========================================= */
 
 function showResult() {
+    window.orbonixSaveQuiz?.("Blackholes-Quiz",submittedAnswers.slice(),attemptId);
 
     document.getElementById(
         "quiz"
@@ -2007,6 +2011,8 @@ function createParticles() {
 ========================================= */
 
 function restartQuiz() {
+    submittedAnswers = []; attemptId = crypto.randomUUID();
+    document.getElementById("quiz-save-status")?.remove();
 
     currentQuestion = 0;
     score = 0;

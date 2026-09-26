@@ -815,6 +815,7 @@ select option{
 </div>
 
 
+<script src="/js/planet-render.js"></script>
 <script>
 
 /* =========================================================
@@ -873,181 +874,193 @@ const DAY =
 */
 
 const planets = [
-
-    {
-        id:"sun",
-        name:"Sun",
-        type:"STAR",
-        radius:696340,
-        distance:0,
-        period:0,
-        speed:0,
-        color:"#fff3a8",
-        moons:0
-    },
-
-    {
-        id:"mercury",
-        name:"Mercury",
-        type:"PLANET",
-        radius:2439.7,
-        distance:.387098,
-        period:87.969,
-        speed:47.36,
-        color:"#96928a",
-        moons:0
-    },
-
-    {
-        id:"venus",
-        name:"Venus",
-        type:"PLANET",
-        radius:6051.8,
-        distance:.723336,
-        period:224.701,
-        speed:35.02,
-        color:"#d6ae76",
-        moons:0
-    },
-
-    {
-        id:"earth",
-        name:"Earth",
-        type:"PLANET",
-        radius:6371,
-        distance:1.000001,
-        period:365.256,
-        speed:29.78,
-        color:"#4f8cff",
-        moons:1
-    },
-
-    {
-        id:"mars",
-        name:"Mars",
-        type:"PLANET",
-        radius:3389.5,
-        distance:1.523679,
-        period:686.980,
-        speed:24.13,
-        color:"#c45b3d",
-        moons:2
-    },
-
-    {
-        id:"jupiter",
-        name:"Jupiter",
-        type:"PLANET",
-        radius:69911,
-        distance:5.20260,
-        period:4332.59,
-        speed:13.07,
-        color:"#caa27c",
-        moons:95
-    },
-
-    {
-        id:"saturn",
-        name:"Saturn",
-        type:"PLANET",
-        radius:58232,
-        distance:9.55491,
-        period:10759.22,
-        speed:9.68,
-        color:"#d2b982",
-        moons:274,
-        rings:true
-    },
-
-    {
-        id:"uranus",
-        name:"Uranus",
-        type:"PLANET",
-        radius:25362,
-        distance:19.2184,
-        period:30688.5,
-        speed:6.80,
-        color:"#83d8dc",
-        moons:28,
-        rings:true
-    },
-
-    {
-        id:"neptune",
-        name:"Neptune",
-        type:"PLANET",
-        radius:24622,
-        distance:30.1104,
-        period:60182,
-        speed:5.43,
-        color:"#4169df",
-        moons:16,
-        rings:true
-    },
-
-
-    /* DWARF PLANETS */
-
-    {
-        id:"ceres",
-        name:"Ceres",
-        type:"DWARF PLANET",
-        radius:469.7,
-        distance:2.7675,
-        period:1681.63,
-        speed:17.90,
-        color:"#999",
-        moons:0
-    },
-
-    {
-        id:"pluto",
-        name:"Pluto",
-        type:"DWARF PLANET",
-        radius:1188.3,
-        distance:39.482,
-        period:90560,
-        speed:4.74,
-        color:"#b69a85",
-        moons:5
-    },
-
-    {
-        id:"haumea",
-        name:"Haumea",
-        type:"DWARF PLANET",
-        radius:816,
-        distance:43.218,
-        period:103774,
-        speed:4.53,
-        color:"#bfc8d2",
-        moons:2
-    },
-
-    {
-        id:"makemake",
-        name:"Makemake",
-        type:"DWARF PLANET",
-        radius:715,
-        distance:45.430,
-        period:113183,
-        speed:4.41,
-        color:"#b8aa98",
-        moons:1
-    },
-
-    {
-        id:"eris",
-        name:"Eris",
-        type:"DWARF PLANET",
-        radius:1163,
-        distance:67.781,
-        period:203830,
-        speed:3.43,
-        color:"#d2d2d2",
-        moons:1
-    }
-
+  {
+    "id": "sun",
+    "name": "Sun",
+    "type": "STAR",
+    "radius": 696340,
+    "distance": 0,
+    "period": 0,
+    "speed": 0,
+    "color": "#fff3a8",
+    "moons": 0,
+    "texture": "https://www.solarsystemscope.com/textures/download/2k_sun.jpg"
+  },
+  {
+    "id": "mercury",
+    "name": "Mercury",
+    "type": "PLANET",
+    "radius": 2439.7,
+    "distance": 0.387098,
+    "period": 87.969,
+    "speed": 47.36,
+    "color": "#96928a",
+    "moons": 0,
+    "texture": "https://www.solarsystemscope.com/textures/download/2k_mercury.jpg"
+  },
+  {
+    "id": "venus",
+    "name": "Venus",
+    "type": "PLANET",
+    "radius": 6051.8,
+    "distance": 0.723336,
+    "period": 224.701,
+    "speed": 35.02,
+    "color": "#d6ae76",
+    "moons": 0,
+    "texture": "https://www.solarsystemscope.com/textures/download/2k_venus_atmosphere.jpg"
+  },
+  {
+    "id": "earth",
+    "name": "Earth",
+    "type": "PLANET",
+    "radius": 6371,
+    "distance": 1.000001,
+    "period": 365.256,
+    "speed": 29.78,
+    "color": "#4f8cff",
+    "moons": 1,
+    "texture": "https://www.solarsystemscope.com/textures/download/2k_earth_daymap.jpg"
+  },
+  {
+    "id": "mars",
+    "name": "Mars",
+    "type": "PLANET",
+    "radius": 3389.5,
+    "distance": 1.523679,
+    "period": 686.98,
+    "speed": 24.13,
+    "color": "#c45b3d",
+    "moons": 2,
+    "texture": "https://www.solarsystemscope.com/textures/download/2k_mars.jpg"
+  },
+  {
+    "id": "jupiter",
+    "name": "Jupiter",
+    "type": "PLANET",
+    "radius": 69911,
+    "distance": 5.2026,
+    "period": 4332.59,
+    "speed": 13.07,
+    "color": "#caa27c",
+    "moons": 117,
+    "texture": "https://www.solarsystemscope.com/textures/download/2k_jupiter.jpg"
+  },
+  {
+    "id": "saturn",
+    "name": "Saturn",
+    "type": "PLANET",
+    "radius": 58232,
+    "distance": 9.55491,
+    "period": 10759.22,
+    "speed": 9.68,
+    "color": "#d2b982",
+    "moons": 293,
+    "rings": true,
+    "texture": "https://www.solarsystemscope.com/textures/download/2k_saturn.jpg"
+  },
+  {
+    "id": "uranus",
+    "name": "Uranus",
+    "type": "PLANET",
+    "radius": 25362,
+    "distance": 19.2184,
+    "period": 30688.5,
+    "speed": 6.8,
+    "color": "#83d8dc",
+    "moons": 29,
+    "rings": true,
+    "texture": "https://www.solarsystemscope.com/textures/download/2k_uranus.jpg"
+  },
+  {
+    "id": "neptune",
+    "name": "Neptune",
+    "type": "PLANET",
+    "radius": 24622,
+    "distance": 30.1104,
+    "period": 60182,
+    "speed": 5.43,
+    "color": "#4169df",
+    "moons": 16,
+    "rings": true,
+    "texture": "https://www.solarsystemscope.com/textures/download/2k_neptune.jpg"
+  },
+  {
+    "id": "ceres",
+    "name": "Ceres",
+    "type": "DWARF PLANET",
+    "radius": 469.7,
+    "distance": 2.7675,
+    "period": 1681.63,
+    "speed": 17.9,
+    "color": "#999",
+    "moons": 0
+  },
+  {
+    "id": "pluto",
+    "name": "Pluto",
+    "type": "DWARF PLANET",
+    "radius": 1188.3,
+    "distance": 39.482,
+    "period": 90560,
+    "speed": 4.74,
+    "color": "#b69a85",
+    "moons": 5,
+    "texture": "https://assets.science.nasa.gov/content/dam/science/psd/solar/2023/09/p/l/pluto_color_mapmosaic.jpg"
+  },
+  {
+    "id": "haumea",
+    "name": "Haumea",
+    "type": "DWARF PLANET",
+    "radius": 816,
+    "distance": 43.218,
+    "period": 103774,
+    "speed": 4.53,
+    "color": "#bfc8d2",
+    "moons": 2
+  },
+  {
+    "id": "makemake",
+    "name": "Makemake",
+    "type": "DWARF PLANET",
+    "radius": 715,
+    "distance": 45.43,
+    "period": 113183,
+    "speed": 4.41,
+    "color": "#b8aa98",
+    "moons": 1
+  },
+  {
+    "id": "eris",
+    "name": "Eris",
+    "type": "DWARF PLANET",
+    "radius": 1163,
+    "distance": 67.781,
+    "period": 203830,
+    "speed": 3.43,
+    "color": "#d2d2d2",
+    "moons": 1
+  },
+  {
+    "id": "orcus",
+    "name": "Orcus",
+    "type": "DWARF PLANET CANDIDATE",
+    "distance": 39.17,
+    "radius": 458,
+    "period": 89500,
+    "color": "#bcb5a8",
+    "moons": 1
+  },
+  {
+    "id": "gonggong",
+    "name": "Gonggong",
+    "type": "DWARF PLANET CANDIDATE",
+    "distance": 67.5,
+    "radius": 615,
+    "period": 202000,
+    "color": "#ad7865",
+    "moons": 1
+  }
 ];
 
 
@@ -1055,310 +1068,7 @@ const planets = [
    MAJOR MOONS
 ========================================================= */
 
-const moons = [
-
-    {
-        id:"moon",
-        name:"Moon",
-        parent:"earth",
-        radius:1737.4,
-        distance:384400,
-        period:27.321661,
-        color:"#aaa"
-    },
-
-    {
-        id:"phobos",
-        name:"Phobos",
-        parent:"mars",
-        radius:11.1,
-        distance:9376,
-        period:.31891,
-        color:"#777"
-    },
-
-    {
-        id:"deimos",
-        name:"Deimos",
-        parent:"mars",
-        radius:6.2,
-        distance:23463,
-        period:1.263,
-        color:"#777"
-    },
-
-
-    /* JUPITER */
-
-    {
-        id:"io",
-        name:"Io",
-        parent:"jupiter",
-        radius:1821.6,
-        distance:421700,
-        period:1.769,
-        color:"#d7c44f"
-    },
-
-    {
-        id:"europa",
-        name:"Europa",
-        parent:"jupiter",
-        radius:1560.8,
-        distance:671034,
-        period:3.551,
-        color:"#d5c6a8"
-    },
-
-    {
-        id:"ganymede",
-        name:"Ganymede",
-        parent:"jupiter",
-        radius:2634.1,
-        distance:1070412,
-        period:7.155,
-        color:"#8e877b"
-    },
-
-    {
-        id:"callisto",
-        name:"Callisto",
-        parent:"jupiter",
-        radius:2410.3,
-        distance:1882709,
-        period:16.689,
-        color:"#746d65"
-    },
-
-
-    /* SATURN */
-
-    {
-        id:"titan",
-        name:"Titan",
-        parent:"saturn",
-        radius:2574.7,
-        distance:1221870,
-        period:15.945,
-        color:"#d29a56"
-    },
-
-    {
-        id:"enceladus",
-        name:"Enceladus",
-        parent:"saturn",
-        radius:252.1,
-        distance:237948,
-        period:1.370,
-        color:"#ddd"
-    },
-
-    {
-        id:"rhea",
-        name:"Rhea",
-        parent:"saturn",
-        radius:763.8,
-        distance:527108,
-        period:4.518,
-        color:"#aaa"
-    },
-
-    {
-        id:"iapetus",
-        name:"Iapetus",
-        parent:"saturn",
-        radius:734.5,
-        distance:3560820,
-        period:79.3215,
-        color:"#777"
-    },
-
-    {
-        id:"dione",
-        name:"Dione",
-        parent:"saturn",
-        radius:561.4,
-        distance:377396,
-        period:2.737,
-        color:"#aaa"
-    },
-
-    {
-        id:"tethys",
-        name:"Tethys",
-        parent:"saturn",
-        radius:531.1,
-        distance:294619,
-        period:1.888,
-        color:"#aaa"
-    },
-
-
-    /* URANUS */
-
-    {
-        id:"titania",
-        name:"Titania",
-        parent:"uranus",
-        radius:788.9,
-        distance:435910,
-        period:8.706,
-        color:"#aaa"
-    },
-
-    {
-        id:"oberon",
-        name:"Oberon",
-        parent:"uranus",
-        radius:761.4,
-        distance:583520,
-        period:13.463,
-        color:"#888"
-    },
-
-    {
-        id:"ariel",
-        name:"Ariel",
-        parent:"uranus",
-        radius:578.9,
-        distance:190900,
-        period:2.520,
-        color:"#aaa"
-    },
-
-    {
-        id:"umbriel",
-        name:"Umbriel",
-        parent:"uranus",
-        radius:584.7,
-        distance:266000,
-        period:4.144,
-        color:"#777"
-    },
-
-    {
-        id:"miranda",
-        name:"Miranda",
-        parent:"uranus",
-        radius:235.8,
-        distance:129900,
-        period:1.413,
-        color:"#aaa"
-    },
-
-
-    /* NEPTUNE */
-
-    {
-        id:"triton",
-        name:"Triton",
-        parent:"neptune",
-        radius:1353.4,
-        distance:354759,
-        period:5.877,
-        color:"#b8aaa0"
-    },
-
-    {
-        id:"nereid",
-        name:"Nereid",
-        parent:"neptune",
-        radius:170,
-        distance:5513818,
-        period:360.13,
-        color:"#777"
-    },
-
-
-    /* PLUTO */
-
-    {
-        id:"charon",
-        name:"Charon",
-        parent:"pluto",
-        radius:606,
-        distance:19571,
-        period:6.387,
-        color:"#999"
-    },
-
-    {
-        id:"styx",
-        name:"Styx",
-        parent:"pluto",
-        radius:5,
-        distance:42656,
-        period:20.16,
-        color:"#777"
-    },
-
-    {
-        id:"nix",
-        name:"Nix",
-        parent:"pluto",
-        radius:19,
-        distance:48694,
-        period:24.85,
-        color:"#888"
-    },
-
-    {
-        id:"kerberos",
-        name:"Kerberos",
-        parent:"pluto",
-        radius:6,
-        distance:57783,
-        period:32.17,
-        color:"#777"
-    },
-
-    {
-        id:"hydra",
-        name:"Hydra",
-        parent:"pluto",
-        radius:18,
-        distance:64738,
-        period:38.20,
-        color:"#888"
-    },
-
-
-    /* ERIS */
-
-    {
-        id:"dysnomia",
-        name:"Dysnomia",
-        parent:"eris",
-        radius:350,
-        distance:37350,
-        period:15.785,
-        color:"#777"
-    },
-
-
-    /* HAUMEA */
-
-    {
-        id:"hiʻiaka",
-        name:"Hiʻiaka",
-        parent:"haumea",
-        radius:80,
-        distance:49880,
-        period:49.12,
-        color:"#999"
-    },
-
-    {
-        id:"namaka",
-        name:"Namaka",
-        parent:"haumea",
-        radius:85,
-        distance:25657,
-        period:18.28,
-        color:"#777"
-    }
-
-];
+const moons = []; // Moons belong to the individual planetary-system pages.
 
 
 /* =========================================================
@@ -1853,125 +1563,12 @@ function moonPosition(
    WORLD → SCREEN
 ========================================================= */
 
-function worldToScreen(
-    x,
-    y
-){
-
-    /*
-        REAL DISTANCE MODE
-
-        1 AU is scaled relative
-        to the viewport.
-
-        Logarithmic projection prevents
-        Neptune from becoming impossible
-        to see.
-
-        The underlying coordinates are
-        still real AU.
-    */
-
-    let sx;
-    let sy;
-
-
-    if(realScale){
-
-        /*
-            Compress large distances
-            logarithmically.
-
-            This preserves ordering
-            and relative distance information
-            while keeping the system visible.
-        */
-
-        const signX =
-            x < 0 ? -1 : 1;
-
-        const signY =
-            y < 0 ? -1 : 1;
-
-
-        const ax =
-            Math.abs(x);
-
-        const ay =
-            Math.abs(y);
-
-
-        const scaleX =
-            Math.log10(
-                1 + ax
-            )
-            *
-            250;
-
-
-        const scaleY =
-            Math.log10(
-                1 + ay
-            )
-            *
-            250;
-
-
-        sx =
-            width/2
-            +
-            (scaleX*signX
-            -
-            cameraPosition.x)
-            *
-            cameraZoom;
-
-
-        sy =
-            height/2
-            +
-            (scaleY*signY
-            -
-            cameraPosition.y)
-            *
-            cameraZoom;
-
-    }
-
-    else{
-
-        sx =
-            width/2
-            +
-            (
-                x-cameraPosition.x
-            )
-            *
-            50
-            *
-            cameraZoom;
-
-
-        sy =
-            height/2
-            +
-            (
-                y-cameraPosition.y
-            )
-            *
-            50
-            *
-            cameraZoom;
-
-    }
-
-
-    return {
-        x:sx,
-        y:sy
-    };
-
+function projectPosition(x,y){
+ const r=Math.hypot(x,y);const extent=Math.min(width,height)*.42;
+ const scale=realScale ? extent/75 : (r ? Math.log1p(r)*extent/Math.log(76)/r : extent/Math.log(76));
+ return {x:x*scale,y:y*scale};
 }
+function worldToScreen(x,y){const p=projectPosition(x,y);return {x:width/2+(p.x-cameraPosition.x)*cameraZoom,y:height/2+(p.y-cameraPosition.y)*cameraZoom};}
 
 
 /* =========================================================
@@ -2436,6 +2033,7 @@ function drawPlanets(){
 
 
             ctx.shadowBlur=0;
+            window.orbonixDrawPlanet(ctx,planet,screen.x,screen.y,radius);
 
 
             /*
@@ -2642,289 +2240,13 @@ let flightAnimation =
     null;
 
 
-function flyTo(
-    object
-){
-
-    if(!object)
-        return;
-
-
-    /*
-        Show flight UI
-    */
-
-    const flight =
-        document.getElementById(
-            "flight"
-        );
-
-    flight.classList.add(
-        "active"
-    );
-
-    flight.textContent =
-        "APPROACHING " +
-        object.name.toUpperCase();
-
-
-    /*
-        Calculate target coordinates.
-    */
-
-    let target;
-
-
-    if(object.parent){
-
-        target =
-            moonPosition(
-                object
-            );
-
-    }
-
-    else{
-
-        target =
-            orbitalPosition(
-                object
-            );
-
-    }
-
-
-    /*
-        Camera target.
-
-        We want selected object
-        to move to screen center.
-    */
-
-    const targetX =
-        realScale
-
-        ?
-
-        (
-            Math.sign(
-                target.x
-            )
-            *
-            Math.log10(
-                1+
-                Math.abs(
-                    target.x
-                )
-            )
-            *
-            250
-        )
-
-        :
-
-        target.x*50;
-
-
-    const targetY =
-        realScale
-
-        ?
-
-        (
-            Math.sign(
-                target.y
-            )
-            *
-            Math.log10(
-                1+
-                Math.abs(
-                    target.y
-                )
-            )
-            *
-            250
-        )
-
-        :
-
-        target.y*50;
-
-
-    /*
-        Desired camera position
-        is object position.
-    */
-
-    const startX =
-        cameraPosition.x;
-
-    const startY =
-        cameraPosition.y;
-
-    const startZoom =
-        cameraZoom;
-
-
-    /*
-        Determine zoom.
-
-        Moon = very close
-        planet = close
-        Sun/system = wide
-    */
-
-    let desiredZoom;
-
-
-    if(
-        object.parent
-    ){
-
-        desiredZoom =
-            10;
-
-    }
-
-    else if(
-        object.id==="sun"
-    ){
-
-        desiredZoom =
-            .85;
-
-    }
-
-    else if(
-        object.distance < 2
-    ){
-
-        desiredZoom =
-            5;
-
-    }
-
-    else if(
-        object.distance < 6
-    ){
-
-        desiredZoom =
-            3;
-
-    }
-
-    else if(
-        object.distance < 20
-    ){
-
-        desiredZoom =
-            2;
-
-    }
-
-    else{
-
-        desiredZoom =
-            1.6;
-
-    }
-
-
-    const start =
-        performance.now();
-
-
-    const duration =
-        1800;
-
-
-    function animateFlight(
-        now
-    ){
-
-        const progress =
-            Math.min(
-                1,
-                (now-start)
-                /duration
-            );
-
-
-        /*
-            Smoothstep
-        */
-
-        const eased =
-            progress*
-            progress*
-            (
-                3-
-                2*progress
-            );
-
-
-        cameraPosition.x =
-            startX+
-            (
-                targetX-
-                startX
-            )
-            *
-            eased;
-
-
-        cameraPosition.y =
-            startY+
-            (
-                targetY-
-                startY
-            )
-            *
-            eased;
-
-
-        cameraZoom =
-            startZoom+
-            (
-                desiredZoom-
-                startZoom
-            )
-            *
-            eased;
-
-
-        if(
-            progress<1
-        ){
-
-            flightAnimation =
-                requestAnimationFrame(
-                    animateFlight
-                );
-
-        }
-
-        else{
-
-            flight.classList.remove(
-                "active"
-            );
-
-        }
-
-    }
-
-
-    cancelAnimationFrame(
-        flightAnimation
-    );
-
-
-    flightAnimation =
-        requestAnimationFrame(
-            animateFlight
-        );
-
+function flyTo(object){
+ if(!object)return;cancelAnimationFrame(flightAnimation);
+ const target=projectPosition(...Object.values(orbitalPosition(object))),start={...cameraPosition},zoom=cameraZoom,began=performance.now();
+ const flight=document.getElementById('flight');flight.classList.add('active');flight.textContent='APPROACHING '+object.name.toUpperCase();
+ function animate(t){const progress=Math.min(1,(t-began)/1200),e=progress*progress*(3-2*progress);cameraPosition.x=start.x+(target.x-start.x)*e;cameraPosition.y=start.y+(target.y-start.y)*e;cameraZoom=zoom+((object.id==='sun'?.85:3)-zoom)*e;
+ if(progress<1)flightAnimation=requestAnimationFrame(animate);else{flight.classList.remove('active');if(object.id!=='sun'){const route=window.findOrbonixPage(object.name+' Simulation');if(route)location.href=route.url;}}}
+ flightAnimation=requestAnimationFrame(animate);
 }
 
 
@@ -2933,6 +2255,7 @@ function flyTo(
 ========================================================= */
 
 function systemView(){
+    cancelAnimationFrame(flightAnimation); document.getElementById("flight").classList.remove("active");
 
     const startX =
         cameraPosition.x;
@@ -3178,6 +2501,7 @@ let movedDuringDrag = false;
 let pinchDistance = 0;
 canvas.addEventListener('pointerdown', event => {
     if (event.pointerType === 'mouse' && event.button !== 0) return;
+    cancelAnimationFrame(flightAnimation); document.getElementById("flight").classList.remove("active");
     if (!activePointers.size) movedDuringDrag = false;
     activePointers.set(event.pointerId, {x:event.clientX, y:event.clientY});
     canvas.setPointerCapture(event.pointerId);
@@ -3346,8 +2670,8 @@ document
     "click",
     ()=>{
 
-        realScale=
-            !realScale;
+        realScale = !realScale;
+        cancelAnimationFrame(flightAnimation); cameraPosition.x=0; cameraPosition.y=0; cameraZoom=.85;
 
 
         document
@@ -3763,8 +3087,7 @@ function draw(){
     drawSun();
 
     drawPlanets();
-
-    drawMoons();
+    // Satellites are displayed only inside their planetary systems.
 
 }
 
@@ -3777,6 +3100,6 @@ loop();
 
 </script>
 
-</body>
+<p class="simulation-source-note">Distances are proportional in Real distance mode; body sizes are enlarged. <a href="https://www.solarsystemscope.com/textures/" target="_blank" rel="noopener">NASA-derived maps: Solar System Scope (CC BY 4.0)</a> <a href="https://science.nasa.gov/resource/pluto-global-color-map/" target="_blank" rel="noopener">Pluto map: NASA/JHUAPL/SwRI</a>. Orbits show an educational model, not live ephemerides.</p></body>
 </html>
 

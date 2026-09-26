@@ -1,0 +1,11 @@
+/.git/**
+/server/**
+/scripts/**
+/node_modules/**
+/public/**
+/.wrangler/**
+/package*.json
+/README.md
+/.gitignore
+
+/tests/**

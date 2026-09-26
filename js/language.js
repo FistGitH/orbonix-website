@@ -19,9 +19,15 @@
         if (key.includes(' · ')) return key.split(' · ').map(translate).join(' · ');
         if (key.includes(' | ')) return key.split(' | ').map(translate).join(' | ');
         if (Object.hasOwn(dictionary,key)) return dictionary[key];
+        if (key.endsWith(' Simulation')) return translate(key.slice(0,-11)) + ' ' + translate('Simulation');
+        if (key.startsWith('Explore ')) return translate('Explore') + ' ' + translate(key.slice(8));
+        const milestone = key.match(/^Complete (.+) quiz with (at least 50%|100%) correct\.$/);
+        if (milestone) return translate('Quiz') + ': ' + translate(milestone[1]) + ' · ' + (milestone[2].includes('50')?'≥50%':'100%');
         if (key.startsWith('Pages in ')) return translate('Pages in') + ' ' + translate(key.slice(9));
         const count = key.match(/^(\d+) (pages?|questions?)$/i);
         if (count) return count[1] + ' ' + translate(count[2]);
+        const satelliteCount = key.match(/^(\d+) satellites in this catalogue$/);
+        if (satelliteCount) return satelliteCount[1] + ' ' + translate('satellites in this catalogue');
         const question = key.match(/^QUESTION (\d+\s*\/\s*\d+)$/);
         if (question) return translate('QUESTION') + ' ' + question[1];
         const approach = key.match(/^APPROACHING\s+(.+)$/);
@@ -117,9 +123,10 @@
                 select.value = language; status.textContent = failures[next]; control.setAttribute('aria-busy','false');
             }
         }
-        select.addEventListener('change',() => changeLanguage(select.value));
+        window.orbonixSetLanguage = changeLanguage;
+        select.addEventListener('change',() => { try { localStorage.setItem('orbonix-language-manual','1'); } catch (_) {} changeLanguage(select.value); });
         let saved = 'en'; try { saved = localStorage.getItem('orbonix-language') || 'en'; } catch (_) {}
-        changeLanguage(supported.includes(saved) ? saved : 'en');
+        window.orbonixLanguageReady = changeLanguage(supported.includes(saved) ? saved : 'en').then(() => document.dispatchEvent(new Event('orbonix:languageready')));
     }
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded',start);
     else start();

@@ -1,0 +1,14 @@
+PRAGMA foreign_keys = ON;
+CREATE TABLE IF NOT EXISTS users (
+ id TEXT PRIMARY KEY, email TEXT NOT NULL UNIQUE, first_name TEXT NOT NULL, last_name TEXT NOT NULL,
+ password_hash TEXT NOT NULL, verified INTEGER NOT NULL DEFAULT 0, country TEXT NOT NULL,
+ language TEXT NOT NULL, avatar BLOB, avatar_type TEXT, created_at INTEGER NOT NULL
+);
+CREATE TABLE IF NOT EXISTS sessions (token_hash TEXT PRIMARY KEY, user_id TEXT NOT NULL REFERENCES users(id) ON DELETE CASCADE, expires INTEGER NOT NULL);
+CREATE TABLE IF NOT EXISTS email_tokens (token_hash TEXT PRIMARY KEY, user_id TEXT NOT NULL REFERENCES users(id) ON DELETE CASCADE, purpose TEXT NOT NULL, expires INTEGER NOT NULL);
+CREATE TABLE IF NOT EXISTS quiz_attempts (id TEXT PRIMARY KEY, user_id TEXT NOT NULL REFERENCES users(id) ON DELETE CASCADE, quiz TEXT NOT NULL, score INTEGER NOT NULL, total INTEGER NOT NULL, created_at INTEGER NOT NULL);
+CREATE TABLE IF NOT EXISTS achievements (user_id TEXT NOT NULL REFERENCES users(id) ON DELETE CASCADE, achievement TEXT NOT NULL, earned_at INTEGER NOT NULL, PRIMARY KEY(user_id,achievement));
+CREATE TABLE IF NOT EXISTS rate_limits (key TEXT PRIMARY KEY, count INTEGER NOT NULL, expires INTEGER NOT NULL);
+CREATE TABLE IF NOT EXISTS news_cache (id INTEGER PRIMARY KEY CHECK(id=1), payload TEXT NOT NULL, updated_at INTEGER NOT NULL);
+CREATE INDEX IF NOT EXISTS attempt_user ON quiz_attempts(user_id);
+CREATE INDEX IF NOT EXISTS achievement_id ON achievements(achievement);

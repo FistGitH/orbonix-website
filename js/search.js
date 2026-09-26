@@ -16,6 +16,22 @@ const ORBONIX_BASE = "https://orbonix.net";
 ========================================================= */
 
 const ORBONIX_PAGES = [
+    {"title":"Mercury Simulation","url":"https://orbonix.net/Solar-System-Simulation/Mercury/","parent":"Solar System Simulation","category":"Simulations","keywords":"Mercury simulation moons satellites orbit","description":"Explore Mercury and its satellite catalogue."},
+    {"title":"Venus Simulation","url":"https://orbonix.net/Solar-System-Simulation/Venus/","parent":"Solar System Simulation","category":"Simulations","keywords":"Venus simulation moons satellites orbit","description":"Explore Venus and its satellite catalogue."},
+    {"title":"Earth Simulation","url":"https://orbonix.net/Solar-System-Simulation/Earth/","parent":"Solar System Simulation","category":"Simulations","keywords":"Earth simulation moons satellites orbit","description":"Explore Earth and its satellite catalogue."},
+    {"title":"Mars Simulation","url":"https://orbonix.net/Solar-System-Simulation/Mars/","parent":"Solar System Simulation","category":"Simulations","keywords":"Mars simulation moons satellites orbit","description":"Explore Mars and its satellite catalogue."},
+    {"title":"Jupiter Simulation","url":"https://orbonix.net/Solar-System-Simulation/Jupiter/","parent":"Solar System Simulation","category":"Simulations","keywords":"Jupiter simulation moons satellites orbit","description":"Explore Jupiter and its satellite catalogue."},
+    {"title":"Saturn Simulation","url":"https://orbonix.net/Solar-System-Simulation/Saturn/","parent":"Solar System Simulation","category":"Simulations","keywords":"Saturn simulation moons satellites orbit","description":"Explore Saturn and its satellite catalogue."},
+    {"title":"Uranus Simulation","url":"https://orbonix.net/Solar-System-Simulation/Uranus/","parent":"Solar System Simulation","category":"Simulations","keywords":"Uranus simulation moons satellites orbit","description":"Explore Uranus and its satellite catalogue."},
+    {"title":"Neptune Simulation","url":"https://orbonix.net/Solar-System-Simulation/Neptune/","parent":"Solar System Simulation","category":"Simulations","keywords":"Neptune simulation moons satellites orbit","description":"Explore Neptune and its satellite catalogue."},
+    {"title":"Ceres Simulation","url":"https://orbonix.net/Solar-System-Simulation/Ceres/","parent":"Solar System Simulation","category":"Simulations","keywords":"Ceres simulation moons satellites orbit","description":"Explore Ceres and its satellite catalogue."},
+    {"title":"Pluto Simulation","url":"https://orbonix.net/Solar-System-Simulation/Pluto/","parent":"Solar System Simulation","category":"Simulations","keywords":"Pluto simulation moons satellites orbit","description":"Explore Pluto and its satellite catalogue."},
+    {"title":"Haumea Simulation","url":"https://orbonix.net/Solar-System-Simulation/Haumea/","parent":"Solar System Simulation","category":"Simulations","keywords":"Haumea simulation moons satellites orbit","description":"Explore Haumea and its satellite catalogue."},
+    {"title":"Makemake Simulation","url":"https://orbonix.net/Solar-System-Simulation/Makemake/","parent":"Solar System Simulation","category":"Simulations","keywords":"Makemake simulation moons satellites orbit","description":"Explore Makemake and its satellite catalogue."},
+    {"title":"Eris Simulation","url":"https://orbonix.net/Solar-System-Simulation/Eris/","parent":"Solar System Simulation","category":"Simulations","keywords":"Eris simulation moons satellites orbit","description":"Explore Eris and its satellite catalogue."},
+    {"title":"Orcus Simulation","url":"https://orbonix.net/Solar-System-Simulation/Orcus/","parent":"Solar System Simulation","category":"Simulations","keywords":"Orcus simulation moons satellites orbit","description":"Explore Orcus and its satellite catalogue."},
+    {"title":"Gonggong Simulation","url":"https://orbonix.net/Solar-System-Simulation/Gonggong/","parent":"Solar System Simulation","category":"Simulations","keywords":"Gonggong simulation moons satellites orbit","description":"Explore Gonggong and its satellite catalogue."},
+    {title:"Account",url:`${ORBONIX_BASE}/Account/`,parent:null,category:"Main",keywords:"account register login profile achievements",description:"Your profile and quiz achievements."},
 
     /* =========================
        MAIN

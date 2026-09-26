@@ -1,0 +1,9 @@
+{
+  "name": "orbonix-website",
+  "private": true,
+  "scripts": {
+    "test": "node scripts/check-links.cjs && node tests/achievements.cjs && node tests/accounts.cjs",
+    "build": "node scripts/build-assets.cjs"
+  },
+  "devDependencies": {"miniflare":"4.20260730.0"}
+}
