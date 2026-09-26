@@ -324,6 +324,8 @@ let lastTrailSample = 0;
 
 let realScale =
     true;
+let objectFilter="all";
+let focusMode=false;
 
 
 /*
@@ -457,6 +459,27 @@ function buildSelect(){
 }
 
 buildSelect();
+function objectVisible(object){
+    if(object.id==="sun") return objectFilter==="all";
+    if(objectFilter==="planet") return object.type==="PLANET";
+    if(objectFilter==="moon") return !!object.parent;
+    if(objectFilter==="dwarf") return !!object.type&&object.type.includes("DWARF PLANET");
+    return true;
+}
+function rebuildFilteredSelect(){
+    buildSelect();
+    [...select.querySelectorAll("option")].forEach(option=>{
+        const object=findObject(option.value); option.hidden=!objectVisible(object);
+    });
+    [...select.querySelectorAll("optgroup")].forEach(group=>{group.hidden=![...group.children].some(o=>!o.hidden);});
+    if(selected&&objectVisible(selected)) select.value=selected.id;
+}
+document.querySelectorAll("#objectFilters [data-filter]").forEach(button=>button.addEventListener("click",()=>{
+    objectFilter=button.dataset.filter;
+    document.querySelectorAll("#objectFilters [data-filter]").forEach(b=>b.classList.toggle("active",b===button));
+    rebuildFilteredSelect();
+}));
+
 
 
 /* =========================================================
@@ -866,6 +889,8 @@ function drawOrbits(){
     planets.forEach(
         planet=>{
 
+            if(!objectVisible(planet)) return;
+
             if(
                 planet.distance===0
             )
@@ -1193,6 +1218,8 @@ function drawPlanets(){
     planets.forEach(
         planet=>{
 
+            if(!objectVisible(planet)) return;
+
             if(
                 planet.id==="sun"
             )
@@ -1362,6 +1389,8 @@ function drawMoons(){
 
     moons.forEach(
         moon=>{
+
+            if(!objectVisible(moon)) return;
 
             const world =
                 moonPosition(
@@ -2009,6 +2038,13 @@ document.getElementById("trails").addEventListener("click",()=>{
     showTrails=!showTrails;
     document.getElementById("trails").textContent=showTrails?"TRAILS ON":"TRAILS OFF";
     if(!showTrails)orbitTrails.clear();
+});
+
+document.getElementById("focusMode").addEventListener("click",()=>{
+    focusMode=!focusMode;
+    document.body.classList.toggle("focus-mode",focusMode);
+    document.getElementById("focusMode").textContent=focusMode?"EXIT FOCUS":"FOCUS MODE";
+    if(focusMode) flyTo(selected); else systemView();
 });
 
 /* =========================================================
