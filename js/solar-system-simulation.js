@@ -72,6 +72,7 @@ const planets = [
     "type": "PLANET",
     "radius": 2439.7,
     "distance": 0.387098,
+    "eccentricity": 0.2056,
     "period": 87.969,
     "speed": 47.36,
     "color": "#96928a",
@@ -84,6 +85,7 @@ const planets = [
     "type": "PLANET",
     "radius": 6051.8,
     "distance": 0.723336,
+    "eccentricity": 0.0068,
     "period": 224.701,
     "speed": 35.02,
     "color": "#d6ae76",
@@ -96,6 +98,7 @@ const planets = [
     "type": "PLANET",
     "radius": 6371,
     "distance": 1.000001,
+    "eccentricity": 0.0167,
     "period": 365.256,
     "speed": 29.78,
     "color": "#4f8cff",
@@ -108,6 +111,7 @@ const planets = [
     "type": "PLANET",
     "radius": 3389.5,
     "distance": 1.523679,
+    "eccentricity": 0.0934,
     "period": 686.98,
     "speed": 24.13,
     "color": "#c45b3d",
@@ -120,6 +124,7 @@ const planets = [
     "type": "PLANET",
     "radius": 69911,
     "distance": 5.2026,
+    "eccentricity": 0.0489,
     "period": 4332.59,
     "speed": 13.07,
     "color": "#caa27c",
@@ -132,6 +137,7 @@ const planets = [
     "type": "PLANET",
     "radius": 58232,
     "distance": 9.55491,
+    "eccentricity": 0.0565,
     "period": 10759.22,
     "speed": 9.68,
     "color": "#d2b982",
@@ -145,6 +151,7 @@ const planets = [
     "type": "PLANET",
     "radius": 25362,
     "distance": 19.2184,
+    "eccentricity": 0.0463,
     "period": 30688.5,
     "speed": 6.8,
     "color": "#83d8dc",
@@ -158,6 +165,7 @@ const planets = [
     "type": "PLANET",
     "radius": 24622,
     "distance": 30.1104,
+    "eccentricity": 0.0095,
     "period": 60182,
     "speed": 5.43,
     "color": "#4169df",
@@ -171,6 +179,7 @@ const planets = [
     "type": "DWARF PLANET",
     "radius": 469.7,
     "distance": 2.7675,
+    "eccentricity": 0.0758,
     "period": 1681.63,
     "speed": 17.9,
     "color": "#999",
@@ -182,6 +191,7 @@ const planets = [
     "type": "DWARF PLANET",
     "radius": 1188.3,
     "distance": 39.482,
+    "eccentricity": 0.2488,
     "period": 90560,
     "speed": 4.74,
     "color": "#b69a85",
@@ -194,6 +204,7 @@ const planets = [
     "type": "DWARF PLANET",
     "radius": 816,
     "distance": 43.218,
+    "eccentricity": 0.195,
     "period": 103774,
     "speed": 4.53,
     "color": "#bfc8d2",
@@ -205,6 +216,7 @@ const planets = [
     "type": "DWARF PLANET",
     "radius": 715,
     "distance": 45.43,
+    "eccentricity": 0.159,
     "period": 113183,
     "speed": 4.41,
     "color": "#b8aa98",
@@ -216,6 +228,7 @@ const planets = [
     "type": "DWARF PLANET",
     "radius": 1163,
     "distance": 67.781,
+    "eccentricity": 0.436,
     "period": 203830,
     "speed": 3.43,
     "color": "#d2d2d2",
@@ -226,6 +239,7 @@ const planets = [
     "name": "Orcus",
     "type": "DWARF PLANET CANDIDATE",
     "distance": 39.17,
+    "eccentricity": 0.227,
     "radius": 458,
     "period": 89500,
     "color": "#bcb5a8",
@@ -236,6 +250,7 @@ const planets = [
     "name": "Gonggong",
     "type": "DWARF PLANET CANDIDATE",
     "distance": 67.5,
+    "eccentricity": 0.5,
     "radius": 615,
     "period": 202000,
     "color": "#ad7865",
@@ -651,29 +666,15 @@ function orbitalPosition(
         JPL ephemeris solution.
     */
 
-    const angle =
-        (
-            days /
-            planet.period
-        )
-        *
-        Math.PI*2
-        +
-        planet.id.length;
-
-
+    const meanAnomaly=(days/planet.period)*Math.PI*2+planet.id.length;
+    const e=planet.eccentricity||0;
+    let eccentricAnomaly=meanAnomaly;
+    for(let i=0;i<6;i++) eccentricAnomaly=meanAnomaly+e*Math.sin(eccentricAnomaly);
+    const a=planet.distance;
+    const b=a*Math.sqrt(1-e*e);
     return {
-
-        x:
-            planet.distance
-            *
-            Math.cos(angle),
-
-        y:
-            planet.distance
-            *
-            Math.sin(angle)
-
+        x:a*(Math.cos(eccentricAnomaly)-e),
+        y:b*Math.sin(eccentricAnomaly)
     };
 
 }
@@ -863,16 +864,11 @@ function drawOrbits(){
                     Math.PI*2;
 
 
-                const x =
-                    planet.distance
-                    *
-                    Math.cos(angle);
-
-
-                const y =
-                    planet.distance
-                    *
-                    Math.sin(angle);
+                const e=planet.eccentricity||0;
+                const a=planet.distance;
+                const b=a*Math.sqrt(1-e*e);
+                const x=a*(Math.cos(angle)-e);
+                const y=b*Math.sin(angle);
 
 
                 points.push(
@@ -1949,6 +1945,24 @@ document
     }
 );
 
+
+/* =========================================================
+   SIZE COMPARISON
+========================================================= */
+const comparePanel=document.getElementById("comparePanel");
+const compareCanvas=document.getElementById("compareCanvas");
+const compareCtx=compareCanvas.getContext("2d");
+function drawSizeComparison(){
+    const dpr=Math.min(2,window.devicePixelRatio||1),rect=compareCanvas.getBoundingClientRect();
+    compareCanvas.width=Math.max(600,Math.round(rect.width*dpr)); compareCanvas.height=Math.round(300*dpr); compareCtx.setTransform(dpr,0,0,dpr,0,0);
+    const w=compareCanvas.width/dpr,h=300; compareCtx.clearRect(0,0,w,h);
+    const worlds=planets.filter(p=>p.id!=="sun"&&p.type==="PLANET");
+    const max=Math.max(...worlds.map(p=>p.radius)); const gap=w/(worlds.length+1);
+    worlds.forEach((p,i)=>{const r=12+Math.log10(p.radius)/Math.log10(max)*42,x=gap*(i+1),y=125;compareCtx.fillStyle=p.color;compareCtx.beginPath();compareCtx.arc(x,y,r,0,Math.PI*2);compareCtx.fill();compareCtx.fillStyle="rgba(255,255,255,.9)";compareCtx.font="11px Arial";compareCtx.textAlign="center";compareCtx.fillText(p.name,x,205);compareCtx.fillStyle="rgba(255,255,255,.55)";compareCtx.font="9px Arial";compareCtx.fillText(Math.round(p.radius*2).toLocaleString()+" km",x,221);});
+}
+document.getElementById("compare").addEventListener("click",()=>{comparePanel.hidden=false;drawSizeComparison();});
+document.getElementById("closeCompare").addEventListener("click",()=>{comparePanel.hidden=true;});
+window.addEventListener("resize",()=>{if(!comparePanel.hidden)drawSizeComparison();});
 
 /* =========================================================
    TIME
