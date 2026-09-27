@@ -7,7 +7,7 @@ for(const name of ['index.html','404.html','favicon.png','og-image.jpg','robots.
 }
 
 const BASE='https://orbonix.net';
-const excluded=new Set(['404.html','Account/index.html','Orbonix-Tools/search/index.html']);
+const excluded=new Set(['404.html','Account/index.html','search/index.html']);
 const pretty=s=>s
   .replace(/-/g,' ')
   .replace(/\bQuizes\b/gi,'Quizzes')
