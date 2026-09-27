@@ -12,3 +12,7 @@
 #skySearchResults button:hover{background:#ffffff0d}
 #skySearchResults small{display:block;color:#7890ad;margin-top:3px}
 @media(max-width:800px){.skySearch{top:108px;width:calc(100% - 44px)}.legend{display:none}}
+
+.layersPanel{position:fixed;z-index:10;right:22px;top:145px;width:270px;padding:16px;border:1px solid #9ab8dc3b;border-radius:22px;background:#06101bea;backdrop-filter:blur(22px);box-shadow:0 25px 70px #0008}
+.panelTitle{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;font-size:9px;letter-spacing:.17em;color:#91a9c7}.panelTitle button{border:0;background:none;color:white;font-size:22px}.layersPanel>label{display:flex;align-items:center;gap:10px;padding:8px 2px;color:#d9e5f5;font-size:12px}.layersPanel input[type=checkbox]{accent-color:#9bc8ff}.layersPanel .sliderLabel{display:grid;grid-template-columns:1fr;gap:6px;color:#8fa4c0}.catalogCredit{position:fixed;z-index:3;left:22px;bottom:6px;font-size:7px;letter-spacing:.08em;color:#71839a88;pointer-events:none}
+@media(max-width:650px){.layersPanel{left:22px;right:22px;top:155px;width:auto;max-height:55vh;overflow:auto}.catalogCredit{display:none}}
