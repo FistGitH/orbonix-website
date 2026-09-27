@@ -21,3 +21,9 @@
 
 .plannerPanel{position:fixed;z-index:11;left:22px;top:145px;width:min(410px,calc(100% - 44px));max-height:calc(100vh - 250px);overflow:auto;padding:16px;border:1px solid #9ab8dc3b;border-radius:22px;background:#06101bf2;backdrop-filter:blur(24px);box-shadow:0 25px 70px #0009}.plannerSummary{display:grid;gap:4px;padding:8px 2px 14px}.plannerSummary strong{font-size:20px}.plannerSummary span{font-size:10px;color:#8299b5}.plannerFilters{display:flex;gap:5px;margin-bottom:10px}.plannerFilters button{border:1px solid #86a5c832;background:#ffffff06;color:#9fb0c5;border-radius:12px;padding:7px 8px;font-size:8px}.plannerFilters .active{background:#dbeaff;color:#07111d}.plannerList{display:grid;gap:7px}.plannerItem{display:grid;grid-template-columns:1fr auto;gap:7px;padding:11px;border:1px solid #ffffff10;border-radius:14px;background:#ffffff05;color:#edf5ff;text-align:left}.plannerItem b{font-size:12px}.plannerItem small{display:block;color:#7f96b2;margin-top:4px}.plannerItem .score{font-size:10px;color:#bcd4ef}.plannerItem .bar{grid-column:1/-1;height:3px;border-radius:4px;background:#ffffff0b;overflow:hidden}.plannerItem .bar i{display:block;height:100%;background:#b9d9ff}.plannerItem:hover{background:#ffffff0b}
 @media(max-width:650px){.plannerPanel{top:155px;max-height:52vh}}
+
+.controls button,.plannerPanel,.layersPanel,.objectCard,#skySearchResults{transition:opacity .18s ease,transform .18s ease,background .18s ease,border-color .18s ease}
+.controls button:active{transform:scale(.96)}
+.controls button:focus-visible,.objectActions button:focus-visible,.objectActions a:focus-visible,.skySearch input:focus-visible{outline:2px solid #b9d9ff;outline-offset:2px}
+#sky{cursor:grab}.skyPage:active #sky{cursor:grabbing}
+@media(prefers-reduced-motion:reduce){.controls button,.plannerPanel,.layersPanel,.objectCard,#skySearchResults{transition:none}}
