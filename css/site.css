@@ -113,3 +113,23 @@ html:not([lang="en"]) :is(h1,h2,h3,.title,.subtitle,.tagline,button,.orbonix-but
 #orbonix-more-menu[hidden]{display:none}
 #orbonix-more-menu .orbonix-more-link{display:block;min-height:44px;padding:11px 12px;color:#eaf4ff;text-decoration:none;border-radius:7px}
 #orbonix-more-menu .orbonix-more-link:hover{background:#182239}
+
+
+/* Mobile navigation interaction fix */
+#orbonix-page-menu,
+#orbonix-more-menu {
+    pointer-events: auto;
+    touch-action: manipulation;
+}
+#orbonix-page-menu a,
+#orbonix-more-menu a,
+#orbonix-page-menu summary {
+    position: relative;
+    z-index: 1;
+    pointer-events: auto;
+    touch-action: manipulation;
+}
+#orbonix-page-menu a {
+    display: block;
+    width: 100%;
+}
