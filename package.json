@@ -4,7 +4,8 @@
   "scripts": {
     "test": "node scripts/check-links.cjs && node tests/achievements.cjs && node tests/accounts.cjs",
     "build": "node scripts/build-assets.cjs",
-    "deploy": "npm run build && npx wrangler deploy"
+    "deploy": "npx wrangler deploy",
+    "predeploy": "npm run build"
   },
   "devDependencies": {
     "miniflare": "4.20260730.0"
