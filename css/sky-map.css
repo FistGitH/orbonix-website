@@ -70,3 +70,44 @@ html,body{max-width:100%;overflow-x:hidden}
  .skyPage{position:relative!important;inset:auto!important;width:100%!important;max-width:100%!important}
  #sky,#starfield{position:absolute!important;left:0!important;right:0!important;top:0!important;bottom:0!important}
 }
+/* Mobile UI centering — override desktop left/transform geometry */
+@media(max-width:650px){
+  .objectCard{
+    left:50%!important;
+    right:auto!important;
+    width:calc(100dvw - 20px)!important;
+    max-width:430px!important;
+    transform:translateX(-50%)!important;
+    box-sizing:border-box!important;
+  }
+  .plannerPanel,.layersPanel{
+    left:50%!important;
+    right:auto!important;
+    width:calc(100dvw - 20px)!important;
+    max-width:430px!important;
+    transform:translateX(-50%)!important;
+    box-sizing:border-box!important;
+  }
+  .skySearch{
+    left:12px!important;
+    right:82px!important;
+    width:auto!important;
+    max-width:none!important;
+    transform:none!important;
+  }
+  .mobileDock{
+    left:50%!important;
+    right:auto!important;
+    width:calc(100dvw - 20px)!important;
+    max-width:520px!important;
+    transform:translateX(-50%)!important;
+  }
+  .controls.mobileOpen{
+    left:50%!important;
+    right:auto!important;
+    width:calc(100dvw - 24px)!important;
+    max-width:520px!important;
+    transform:translateX(-50%)!important;
+    box-sizing:border-box!important;
+  }
+}
