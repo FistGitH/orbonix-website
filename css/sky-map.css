@@ -147,3 +147,13 @@ html,body{max-width:100%;overflow-x:hidden}
   .readout #catalogState{font-size:6px!important;max-width:150px!important}
   .readout #fovReadout{font-size:7px!important}
 }
+/* Mobile object-card actions positioning */
+@media(max-width:650px){
+  .objectCard .objectActions{
+    position:relative;
+    left:8px;
+    top:-7px;
+    margin-top:14px;
+    padding-right:8px;
+  }
+}
