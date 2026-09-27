@@ -34,14 +34,6 @@ const ORBONIX_PAGES = [
     {title:"Account",url:`${ORBONIX_BASE}/Account/`,parent:null,category:"Main",keywords:"account register login profile achievements",description:"Your profile and quiz achievements."},
     {title:"Orbonix AI",url:`${ORBONIX_BASE}/Orbonix-Tools/Orbonix-AI/`,parent:"Orbonix Tools",category:"Orbonix Tools",keywords:"orbonix ai assistant astronomy space questions artificial intelligence",description:"Ask the Orbonix AI assistant about space, astronomy and science."},
 
-    {
-        title: "Orbonix Search",
-        url: `${ORBONIX_BASE}/Orbonix-Tools/search/`,
-        parent: "Orbonix Tools",
-        category: "Orbonix Tools",
-        keywords: "orbonix search pages planets moons missions tool",
-        description: "Search all Orbonix pages and topics."
-    },
 
     /* =========================
        MAIN
