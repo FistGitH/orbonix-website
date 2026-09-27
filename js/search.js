@@ -1245,8 +1245,18 @@ function initializeOrbonixButtons() {
 }
 function createOrbonixLink(page, className) {
     const link = document.createElement('a');
-    link.href = page.url; link.dataset.page = page.title; link.textContent = page.title;
+    link.href = page.url;
+    link.textContent = page.title;
     if (className) link.className = className;
+
+    // Links created by the navigation already have their final URL.
+    // Do not add data-page here: the global data-page initializer is for
+    // static page buttons and can interfere with dynamically created links.
+    link.addEventListener('click', function (event) {
+        event.stopPropagation();
+        window.location.assign(page.url);
+    });
+
     return link;
 }
 function initializeOrbonixNavigation() {
@@ -1282,7 +1292,21 @@ function initializeOrbonixNavigation() {
     menu.appendChild(list(null));
     function closeMenu() { menu.hidden = true; menuButton.setAttribute('aria-expanded', 'false'); }
     menuButton.addEventListener('click', () => { menu.hidden = !menu.hidden; menuButton.setAttribute('aria-expanded', String(!menu.hidden)); });
-    document.addEventListener('click', e => { if (!nav.contains(e.target)) { closeMenu(); closeMore(); } else if(!moreWrap.contains(e.target)) closeMore(); });
+    document.addEventListener('click', e => {
+        if (!nav.contains(e.target)) {
+            closeMenu();
+            closeMore();
+            return;
+        }
+
+        // Clicking inside the page directory must never cancel a link tap.
+        if (menu.contains(e.target)) return;
+
+        // Keep More open while its own link is being tapped.
+        if (moreWrap.contains(e.target)) return;
+
+        closeMore();
+    });
     nav.addEventListener('keydown', e => { if (e.key === 'Escape') { closeMenu(); menuButton.focus(); } });
     nav.append(brand, menuButton, searchButton, moreWrap, menu); document.body.prepend(nav);
 }
