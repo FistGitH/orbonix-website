@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<title>ORBONIX | Real-Time Solar System</title>
+
+<link rel="stylesheet" href="/css/solar-system-simulation.css">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/favicon.png">
+<link rel="stylesheet" href="/css/site.css">
+<script src="/js/search.js" defer></script>
+<script src="/js/search-ui.js" defer></script>
+</head>
+
+<body>
+
+
+<h1 class="seo-title">Interactive Real-Time Solar System Simulation</h1>\n\n<canvas id="space"></canvas>
+<div id="space3d" class="space3d" hidden aria-label="Interactive 3D Solar System"></div>
+<div class="viewMode" aria-label="Simulation view mode">
+    <button id="view2d" type="button" class="active">2D</button>
+    <button id="view3d" type="button">3D</button>
+</div>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<div class="topbar">
+
+    <div class="brand">
+
+        ORBONIX
+
+        <span>
+            / INTERACTIVE SOLAR SYSTEM 3.0
+        </span>
+
+    </div>
+
+    <div class="live">
+
+        <span class="liveDot"></span>
+
+        SIMULATION 3.0
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     FLIGHT
+===================================================== -->
+
+<div id="flight">
+    APPROACHING OBJECT
+</div>
+
+<div id="hoverHud" class="hoverHud" hidden>
+    <strong id="hoverName">Earth</strong>
+    <span id="hoverMeta">PLANET</span>
+</div>
+
+<div class="cameraTools" aria-label="Camera controls">
+    <button id="zoomIn" type="button" aria-label="Zoom in">+</button>
+    <button id="zoomOut" type="button" aria-label="Zoom out">−</button>
+    <button id="resetCamera" type="button" aria-label="Reset camera">⌂</button>
+</div>
+
+<div id="comparePanel" class="comparePanel" hidden aria-live="polite">
+    <div class="compareHeader">
+        <div><small>SIZE COMPARISON</small><strong id="compareTitle">Planet sizes</strong></div>
+        <button id="closeCompare" type="button" aria-label="Close size comparison">×</button>
+    </div>
+    <canvas id="compareCanvas" width="900" height="300"></canvas>
+    <p>Diameters are drawn on one logarithmic visual scale so small worlds remain visible. Numeric diameters remain real.</p>
+</div>
+
+
+<!-- =====================================================
+     OBJECT PANEL
+===================================================== -->
+
+<div class="panel">\n\n    <h2 class="seo-subtitle" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">Explore the Solar System in 3D</h2>
+
+    <div class="title">
+        SELECTED OBJECT
+    </div>
+
+    <div
+        class="objectName"
+        id="objectName"
+    >
+        Sun
+    </div>
+
+    <div
+        class="objectType"
+        id="objectType"
+    >
+        STAR
+    </div>
+
+
+    <div class="infoGrid">
+
+        <div class="info">
+
+            <small>
+                DISTANCE FROM SUN
+            </small>
+
+            <strong id="distance">
+                0 km
+            </strong>
+
+        </div>
+
+
+        <div class="info">
+
+            <small>
+                ORBIT
+            </small>
+
+            <strong id="orbit">
+                —
+            </strong>
+
+        </div>
+
+
+        <div class="info">
+
+            <small>
+                DIAMETER
+            </small>
+
+            <strong id="diameter">
+                1,392,700 km
+            </strong>
+
+        </div>
+
+
+        <div class="info">
+
+            <small>
+                ORBITAL SPEED
+            </small>
+
+            <strong id="velocity">
+                —
+            </strong>
+
+        </div>
+
+
+        <div class="info">
+
+            <small>
+                MOONS
+            </small>
+
+            <strong id="moons">
+                0
+            </strong>
+
+        </div>
+
+
+        <div class="info">
+
+            <small>
+                TYPE
+            </small>
+
+            <strong id="classType">
+                G-type star
+            </strong>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         SELECT
+    ================================================= -->
+
+    <div class="section">
+        OBJECT FILTER
+    </div>
+
+    <div class="filterChips" id="objectFilters" aria-label="Object filters">
+        <button type="button" data-filter="all" class="active">ALL</button>
+        <button type="button" data-filter="planet">PLANETS</button>
+         <button type="button" data-filter="dwarf">DWARFS</button>
+    </div>
+
+    <div class="section">
+        OBJECT
+    </div>
+
+    <select id="objectSelect"></select>
+
+
+    <!-- =================================================
+         CAMERA
+    ================================================= -->
+
+    <div class="section">
+        CAMERA
+    </div>
+
+    <div class="row">
+
+        <button id="fly">
+            FLY TO
+        </button>
+
+        <button id="explore">
+            OPEN SYSTEM
+        </button>
+
+        <button id="system">
+            SYSTEM VIEW
+        </button>
+
+    </div>
+
+
+    <!-- =================================================
+         SCALE
+    ================================================= -->
+
+    <div class="section">
+        SCALE
+    </div>
+
+    <div class="row">
+
+        <button id="scale">
+            REAL DISTANCE
+        </button>
+
+        <button id="orbits">
+            ORBITS ON
+        </button>
+
+    </div>
+
+
+    <!-- =================================================
+         DISPLAY
+    ================================================= -->
+
+    <div class="section">
+        DISPLAY
+    </div>
+
+    <div class="row">
+
+        <button id="labels">
+            LABELS ON
+        </button>
+
+        <button id="belts">
+            BELTS ON
+        </button>
+
+        <button id="compare">
+            SIZE COMPARE
+        </button>
+
+        <button id="trails">
+            TRAILS ON
+        </button>
+
+        <button id="focusMode">
+            FOCUS MODE
+        </button>
+
+    </div>
+
+
+    <!-- =================================================
+         SEARCH
+    ================================================= -->
+
+    <div class="section">
+        TIME SPEED
+    </div>
+
+    <div class="speedPresets" id="speedPresets" aria-label="Simulation speed">
+        <button type="button" data-speed="0.1">×0.1</button>
+        <button type="button" data-speed="1" class="active">×1</button>
+        <button type="button" data-speed="10">×10</button>
+        <button type="button" data-speed="100">×100</button>
+        <button type="button" data-speed="1000">×1000</button>
+    </div>
+
+    <div class="section">
+        DATE
+    </div>
+
+    <input id="datePicker" type="date" aria-label="Simulation date">
+
+    <div class="section">
+        SEARCH
+    </div>
+
+    <input
+        id="search"
+        placeholder="Search planet / dwarf planet..."
+    >
+
+</div>
+
+
+<!-- =====================================================
+     TIME BAR
+===================================================== -->
+
+<div class="timebar">
+
+    <div class="timeTop">
+
+        <div id="simDate">
+            24 AUG 2026
+        </div>
+
+        <div id="speed">
+            TIME ×1
+        </div>
+
+    </div>
+
+    <div class="timeControls">
+
+        <button id="back1000">
+            −1000
+        </button>
+
+        <button id="back100">
+            −100
+        </button>
+
+        <button id="pause">
+            Ⅱ
+        </button>
+
+        <input
+            id="timeline"
+            type="range"
+            min="-3650"
+            max="3650"
+            value="0"
+        >
+
+        <button id="forward100">
+            +100
+        </button>
+
+        <button id="forward1000">
+            +1000
+        </button>
+
+        <button id="now">
+            NOW
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     HELP
+===================================================== -->
+
+<div class="modelBadge" title="Educational orbital model, not a precision ephemeris">EDUCATIONAL MODEL · AU SCALE</div>
+
+<div class="help">
+
+    DRAG — MOVE CAMERA<br>
+    WHEEL — ZOOM<br>
+    CLICK OBJECT — SELECT<br>
+    SPACE — PAUSE<br>
+    +/- — TIME SPEED
+
+</div>
+
+
+<script src="/js/planet-render.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.min.js"></script>
+<script src="/js/solar-system-simulation.js"></script>
+<script src="/js/solar-system-3d.js"></script>
+
+<p class="simulation-source-note">Distances are proportional in Real distance mode; body sizes are enlarged. <a href="https://www.solarsystemscope.com/textures/" target="_blank" rel="noopener">NASA-derived maps: Solar System Scope (CC BY 4.0)</a> <a href="https://science.nasa.gov/resource/pluto-global-color-map/" target="_blank" rel="noopener">Pluto map: NASA/JHUAPL/SwRI</a>. Orbits show an educational model, not live ephemerides.</p></body>
+</html>
+
