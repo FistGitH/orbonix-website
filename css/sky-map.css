@@ -116,3 +116,34 @@ html,body{max-width:100%;overflow-x:hidden}
   .mobileMenuButton{z-index:42!important}
   .controls.mobileOpen{z-index:40!important}
 }
+/* Compact mobile sky readout: keep information away from the central target */
+@media(max-width:650px){
+  .readout{
+    left:auto!important;
+    right:14px!important;
+    bottom:calc(150px + env(safe-area-inset-bottom))!important;
+    width:150px!important;
+    max-width:42vw!important;
+    transform:none!important;
+    text-align:right!important;
+    align-items:flex-end!important;
+    gap:3px!important;
+    font-size:6px!important;
+    line-height:1.15!important;
+    opacity:.72;
+  }
+  .readout strong{
+    font-size:11px!important;
+    line-height:1.05!important;
+    letter-spacing:.08em!important;
+  }
+  .readout span{
+    font-size:6px!important;
+    line-height:1.15!important;
+    letter-spacing:.04em!important;
+    white-space:normal!important;
+  }
+  .readout #sunState{font-size:7px!important}
+  .readout #catalogState{font-size:6px!important;max-width:150px!important}
+  .readout #fovReadout{font-size:7px!important}
+}
