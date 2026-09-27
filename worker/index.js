@@ -1,5 +1,17 @@
 const json=(body,status=200)=>new Response(JSON.stringify(body),{status,headers:{"content-type":"application/json; charset=utf-8","cache-control":"no-store"}});
 async function hash(value){const digest=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(value));return [...new Uint8Array(digest)].map(b=>b.toString(16).padStart(2,"0")).join("")}
+const ORBONIX_LINKS=[
+ {terms:["black hole","black holes","черная дыра","чёрная дыра","черные дыры","чёрные дыры"],links:[{label:"Black Holes",url:"/Exploring-Space/Deep-Space/Blackholes/"}]},
+ {terms:["mars","марс"],links:[{label:"Mars",url:"/Exploring-Space/Solar-System/Mars/"},{label:"Phobos",url:"/Exploring-Space/Solar-System/Mars/Phobos/"},{label:"Deimos",url:"/Exploring-Space/Solar-System/Mars/Deimos/"},{label:"Mars Simulation",url:"/Solar-System-Simulation/Mars/"}]},
+ {terms:["jupiter","юпитер"],links:[{label:"Jupiter",url:"/Exploring-Space/Solar-System/Jupiter/"},{label:"Jupiter Simulation",url:"/Solar-System-Simulation/Jupiter/"}]},
+ {terms:["saturn","сатурн"],links:[{label:"Saturn",url:"/Exploring-Space/Solar-System/Saturn/"},{label:"Saturn Simulation",url:"/Solar-System-Simulation/Saturn/"}]},
+ {terms:["solar system","солнечная система"],links:[{label:"Solar System",url:"/Exploring-Space/Solar-System/"},{label:"Solar System Simulation",url:"/Solar-System-Simulation/"}]},
+ {terms:["galaxy","galaxies","галактика","галактики"],links:[{label:"Galaxies",url:"/Exploring-Space/Deep-Space/Galaxies/"}]},
+ {terms:["nebula","nebulae","туманность","туманности"],links:[{label:"Nebulae",url:"/Exploring-Space/Deep-Space/Nebulae/"}]},
+ {terms:["dark matter","темная материя","тёмная материя"],links:[{label:"Dark Matter",url:"/Exploring-Space/Deep-Space/Dark-Matter/"}]},
+ {terms:["dark energy","темная энергия","тёмная энергия"],links:[{label:"Dark Energy",url:"/Exploring-Space/Deep-Space/Dark-Energy/"}]}
+];
+function relatedLinks(question){const q=question.toLowerCase();const found=[];for(const group of ORBONIX_LINKS)if(group.terms.some(t=>q.includes(t)))for(const link of group.links)if(!found.some(x=>x.url===link.url))found.push(link);return found.slice(0,4)}
 async function orbonixAI(request,env){
  if(request.method!=="POST")return json({error:"Method not allowed."},405);
  let body;try{body=await request.json()}catch{return json({error:"Invalid request."},400)}
@@ -18,6 +30,6 @@ async function orbonixAI(request,env){
  const data=await response.json();if(!response.ok)return json({error:"AI service request failed."},502);
  const answer=(data.output||[]).flatMap(x=>x.content||[]).filter(x=>x.type==="output_text").map(x=>x.text).join("\n").trim();
  if(!answer)return json({error:"Orbonix AI returned no text."},502);
- const used=current+1;await env.ORBONIX_AI_LIMITS.put(key,String(used),{expirationTtl:172800});return json({answer,remaining:10-used});
+ const used=current+1;await env.ORBONIX_AI_LIMITS.put(key,String(used),{expirationTtl:172800});return json({answer,remaining:10-used,links:relatedLinks(question)});
 }
 export default{async fetch(request,env){try{const url=new URL(request.url);if(url.pathname==="/api/orbonix-ai")return await orbonixAI(request,env);return env.ASSETS.fetch(request)}catch{return json({error:"Orbonix service error."},500)}}};
