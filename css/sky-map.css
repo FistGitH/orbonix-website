@@ -28,7 +28,7 @@
 #sky{cursor:grab}.skyPage:active #sky{cursor:grabbing}
 @media(prefers-reduced-motion:reduce){.controls button,.plannerPanel,.layersPanel,.objectCard,#skySearchResults{transition:none}}
 
-#starfield{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}#sky{z-index:1;background:transparent}.skyHead,.controls,.legend,.readout,.crosshair,.permission,.skySearch{isolation:isolate}
+#starfield{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}#sky{z-index:2;background:transparent}.skyHead,.controls,.legend,.readout,.crosshair,.permission,.skySearch{isolation:isolate}
 
 .mobileDock,.mobileZoom,.mobileMenuButton{display:none}
 @media(max-width:650px){
@@ -41,3 +41,5 @@
 .legend{display:none}.readout{left:12px;bottom:calc(91px + env(safe-area-inset-bottom));max-width:48%;font-size:8px}.readout #coords,.readout #clock{display:none}.permission{display:none}.crosshair{opacity:.5}
 .objectCard{left:10px!important;right:10px!important;bottom:calc(78px + env(safe-area-inset-bottom))!important;width:auto!important;max-height:47vh;overflow:auto}.plannerPanel,.layersPanel{left:10px;right:10px;top:118px;width:auto;max-height:calc(100vh - 210px);padding:14px}.plannerItem{padding:10px}
 }
+
+.skyPage{background:#01030b}.skyHead,.skySearch,.controls,.mobileDock,.mobileZoom,.mobileMenuButton,.plannerPanel,.layersPanel,.objectCard,.legend,.readout,.permission,.catalogCredit,.crosshair{z-index:5}
