@@ -3,3 +3,12 @@
 .objectCard{position:fixed;z-index:8;left:50%;bottom:95px;transform:translateX(-50%);width:min(430px,calc(100% - 32px));padding:20px 22px;border:1px solid #a9c7ed3d;border-radius:24px;background:linear-gradient(145deg,#101c2bd9,#050b14e8);backdrop-filter:blur(22px);box-shadow:0 24px 70px #0008}
 .objectCard>button{position:absolute;right:14px;top:12px;border:0;background:none;color:#fff;font-size:24px}.objectCard>span{font-size:9px;letter-spacing:.2em;color:#8fa9ca}.objectCard h2{font-size:28px;margin:7px 0 15px}.objectCard p{color:#aebdd0;font-size:12px;line-height:1.55;margin-bottom:0}.objectStats{display:grid;grid-template-columns:1fr 1fr;gap:8px}.objectStats div{padding:10px;background:#ffffff09;border:1px solid #ffffff12;border-radius:12px}.objectStats small{display:block;font-size:8px;letter-spacing:.15em;color:#7186a2}.objectStats strong{font-size:14px}
 @media(max-width:650px){.objectCard{bottom:145px}}
+
+.deepDot{background:#77d8c9!important;box-shadow:0 0 8px #77d8c9}
+.skySearch{position:fixed;z-index:9;left:50%;top:78px;transform:translateX(-50%);width:min(390px,calc(100% - 300px))}
+.skySearch input{width:100%;padding:12px 18px;border-radius:24px;border:1px solid #91afd144;background:#06101bd9;backdrop-filter:blur(18px);color:#eef6ff;outline:none}
+#skySearchResults{margin-top:7px;max-height:260px;overflow:auto;border:1px solid #91afd133;border-radius:18px;background:#06101bf2;backdrop-filter:blur(20px);padding:6px}
+#skySearchResults button{display:block;width:100%;text-align:left;border:0;background:transparent;color:#eaf3ff;padding:10px 12px;border-radius:12px}
+#skySearchResults button:hover{background:#ffffff0d}
+#skySearchResults small{display:block;color:#7890ad;margin-top:3px}
+@media(max-width:800px){.skySearch{top:108px;width:calc(100% - 44px)}.legend{display:none}}
