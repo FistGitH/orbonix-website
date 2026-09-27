@@ -43,3 +43,19 @@
 }
 
 .skyPage{background:#01030b}.skyHead,.skySearch,.controls,.mobileDock,.mobileZoom,.mobileMenuButton,.plannerPanel,.layersPanel,.objectCard,.legend,.readout,.permission,.catalogCredit,.crosshair{z-index:5}
+
+/* Mobile viewport hardening */
+html,body{max-width:100%;overflow-x:hidden}
+.skyPage{position:fixed;inset:0;width:100dvw;max-width:100dvw;height:100dvh;overflow:hidden}
+#sky,#starfield{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;max-width:100dvw!important}
+@media(max-width:650px){
+  .skyPage{left:0!important;right:auto!important;transform:none!important}
+  .skyHead{left:12px!important;right:12px!important;width:auto!important;max-width:calc(100dvw - 24px);box-sizing:border-box}
+  .skySearch{left:12px!important;right:82px!important;transform:none!important;width:auto!important;max-width:none!important;box-sizing:border-box}
+  .skySearch input{box-sizing:border-box;min-width:0}
+  .mobileMenuButton{right:12px!important}
+  .mobileDock{left:10px!important;right:10px!important;width:auto!important;box-sizing:border-box}
+  .mobileZoom{right:12px!important}
+  .readout{left:12px!important;right:auto!important;transform:none!important}
+  .plannerPanel,.layersPanel,.objectCard{box-sizing:border-box;max-width:calc(100dvw - 20px)!important}
+}
