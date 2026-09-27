@@ -59,3 +59,14 @@ html,body{max-width:100%;overflow-x:hidden}
   .readout{left:12px!important;right:auto!important;transform:none!important}
   .plannerPanel,.layersPanel,.objectCard{box-sizing:border-box;max-width:calc(100dvw - 20px)!important}
 }
+/* Interaction layer fix */
+.skyPage{position:relative!important;min-height:100dvh;height:100dvh;width:100%;max-width:100%;overflow:hidden}
+#starfield{pointer-events:none!important;z-index:0!important}
+#sky{pointer-events:auto!important;z-index:1!important;touch-action:none}
+.skyHead,.readout,.crosshair,.catalogCredit{pointer-events:none}
+.skySearch,.mobileMenuButton,.mobileDock,.mobileZoom,.controls,.plannerPanel,.layersPanel,.objectCard{position:fixed;z-index:30!important;pointer-events:auto!important}
+.skySearch input,.skySearch button,.mobileMenuButton,.mobileDock button,.mobileZoom button,.controls button,.controls input,.plannerPanel button,.layersPanel button,.layersPanel input,.objectCard button,.objectCard a{pointer-events:auto!important;touch-action:manipulation}
+@media(max-width:650px){
+ .skyPage{position:relative!important;inset:auto!important;width:100%!important;max-width:100%!important}
+ #sky,#starfield{position:absolute!important;left:0!important;right:0!important;top:0!important;bottom:0!important}
+}
