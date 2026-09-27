@@ -34,6 +34,15 @@ const ORBONIX_PAGES = [
     {title:"Account",url:`${ORBONIX_BASE}/Account/`,parent:null,category:"Main",keywords:"account register login profile achievements",description:"Your profile and quiz achievements."},
     {title:"Orbonix AI",url:`${ORBONIX_BASE}/Orbonix-AI/`,parent:null,category:"Tools",keywords:"orbonix ai assistant astronomy space questions artificial intelligence",description:"Ask the Orbonix AI assistant about space, astronomy and science."},
 
+    {
+        title: "Orbonix Search",
+        url: `${ORBONIX_BASE}/search/`,
+        parent: "Orbonix Tools",
+        category: "Orbonix Tools",
+        keywords: "orbonix search pages planets moons missions tool",
+        description: "Search all Orbonix pages and topics."
+    },
+
     /* =========================
        MAIN
     ========================= */
@@ -84,11 +93,20 @@ const ORBONIX_PAGES = [
     },
 
     {
-        title: "Solar System Simulation",
-        url: `${ORBONIX_BASE}/Solar-System-Simulation/`,
+        title: "Orbonix Tools",
+        url: `${ORBONIX_BASE}/Orbonix-Tools/`,
         parent: null,
         category: "Main",
-        keywords: "solar system simulation planets orbit",
+        keywords: "orbonix tools ai search simulation utilities",
+        description: "Interactive Orbonix tools for exploring space."
+    },
+
+    {
+        title: "Solar System Simulation",
+        url: `${ORBONIX_BASE}/Solar-System-Simulation/`,
+        parent: "Orbonix Tools",
+        category: "Orbonix Tools",
+        keywords: "solar system simulation planets orbit tool",
         description: "Interactive Solar System simulation."
     },
 
