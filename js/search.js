@@ -94,6 +94,24 @@ const ORBONIX_PAGES = [
     },
 
     {
+        title: "Moon Phase",
+        url: `${ORBONIX_BASE}/Orbonix-Tools/Moon-Phase/`,
+        parent: "Orbonix Tools",
+        category: "Orbonix Tools",
+        keywords: "moon phase lunar cycle illumination terminator current moon",
+        description: "Live visualization of the current Moon phase."
+    },
+
+    {
+        title: "Sky Map",
+        url: `${ORBONIX_BASE}/Orbonix-Tools/Sky-Map/`,
+        parent: "Orbonix Tools",
+        category: "Orbonix Tools",
+        keywords: "sky map stars live sky astronomy location ar camera stargazing",
+        description: "Interactive live sky map for your location."
+    },
+
+    {
         title: "Solar System Simulation",
         url: `${ORBONIX_BASE}/Orbonix-Tools/Solar-System-Simulation/`,
         parent: "Orbonix Tools",
