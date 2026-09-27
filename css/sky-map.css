@@ -29,3 +29,15 @@
 @media(prefers-reduced-motion:reduce){.controls button,.plannerPanel,.layersPanel,.objectCard,#skySearchResults{transition:none}}
 
 #starfield{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}#sky{z-index:1;background:transparent}.skyHead,.controls,.legend,.readout,.crosshair,.permission,.skySearch{isolation:isolate}
+
+.mobileDock,.mobileZoom,.mobileMenuButton{display:none}
+@media(max-width:650px){
+.skyHead{top:max(12px,env(safe-area-inset-top));left:14px;right:14px}.skyHead h1{font-size:22px}.skyHead>div:last-child{display:none}
+.skySearch{top:66px;left:14px;right:14px;width:auto}.skySearch input{height:42px}
+.controls{display:none!important}.controls.mobileOpen{display:flex!important;position:fixed;z-index:20;left:12px;right:12px;bottom:calc(86px + env(safe-area-inset-bottom));top:auto;max-height:54vh;overflow:auto;padding:12px;border-radius:20px;background:#07111cf5;backdrop-filter:blur(24px);box-shadow:0 20px 70px #000b;flex-wrap:wrap}.controls.mobileOpen button{flex:1 1 45%;min-height:42px}.controls.mobileOpen .desktopZoom{display:none}.controls.mobileOpen .timeControl{flex:1 1 100%}.controls.mobileOpen #status{flex:1 1 100%}
+.mobileDock{display:grid;position:fixed;z-index:18;left:10px;right:10px;bottom:calc(8px + env(safe-area-inset-bottom));grid-template-columns:repeat(4,1fr);padding:6px;border:1px solid #ffffff16;border-radius:22px;background:#07111ce8;backdrop-filter:blur(22px);box-shadow:0 12px 50px #0009}.mobileDock button{border:0;background:transparent;color:#e7f2ff;min-height:54px;border-radius:16px;font-size:19px}.mobileDock small{display:block;margin-top:3px;font-size:7px;letter-spacing:.08em;color:#8ea5bf}.mobileDock button:active{background:#ffffff10}
+.mobileMenuButton{display:block;position:fixed;z-index:19;right:14px;top:66px;height:42px;border:1px solid #ffffff18;border-radius:14px;background:#07111cdd;color:#dcecff;padding:0 12px;font-size:8px;letter-spacing:.1em}.skySearch{right:80px}
+.mobileZoom{display:flex;align-items:center;position:fixed;z-index:9;right:12px;bottom:calc(82px + env(safe-area-inset-bottom));padding:4px;border-radius:16px;background:#07111cb8;backdrop-filter:blur(14px)}.mobileZoom button{width:36px;height:36px;border:0;background:transparent;color:white;font-size:20px}.mobileZoom span{min-width:40px;text-align:center;font-size:8px;color:#9db1c9}
+.legend{display:none}.readout{left:12px;bottom:calc(91px + env(safe-area-inset-bottom));max-width:48%;font-size:8px}.readout #coords,.readout #clock{display:none}.permission{display:none}.crosshair{opacity:.5}
+.objectCard{left:10px!important;right:10px!important;bottom:calc(78px + env(safe-area-inset-bottom))!important;width:auto!important;max-height:47vh;overflow:auto}.plannerPanel,.layersPanel{left:10px;right:10px;top:118px;width:auto;max-height:calc(100vh - 210px);padding:14px}.plannerItem{padding:10px}
+}
