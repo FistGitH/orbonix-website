@@ -111,3 +111,8 @@ html,body{max-width:100%;overflow-x:hidden}
     box-sizing:border-box!important;
   }
 }
+/* Keep TOOLS tappable while its mobile panel is open */
+@media(max-width:650px){
+  .mobileMenuButton{z-index:42!important}
+  .controls.mobileOpen{z-index:40!important}
+}
