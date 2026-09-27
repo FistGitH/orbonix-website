@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Orbonix Tools | AI, Search & Solar System Simulation</title>
+<meta name="description" content="Explore Orbonix Tools: Orbonix AI, site-wide Orbonix Search, and the interactive Solar System Simulation.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/favicon.png">
+<link rel="stylesheet" href="/css/site.css">
+<script src="/js/search.js" defer></script>
+<script src="/js/search-ui.js" defer></script>
+<style>
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:radial-gradient(circle at 50% -10%,#17223d 0,#090d18 38%,#03050a 75%);color:#fff;font-family:Arial,sans-serif}
+.tools{width:min(1180px,calc(100% - 36px));margin:auto;padding:96px 0 80px}
+.kicker{font-size:12px;letter-spacing:.3em;color:#8da7d8;text-transform:uppercase;margin-bottom:18px}
+h1{font-size:clamp(42px,8vw,92px);line-height:.9;letter-spacing:-.055em;margin:0 0 22px;text-transform:uppercase}
+.intro{max-width:680px;color:#aeb9cd;font-size:18px;line-height:1.65;margin:0 0 52px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{position:relative;display:flex;min-height:350px;flex-direction:column;padding:30px;border:1px solid rgba(255,255,255,.12);background:linear-gradient(145deg,rgba(22,32,54,.88),rgba(6,10,18,.9));color:#fff;text-decoration:none;overflow:hidden;transition:.25s ease}
+.card:hover{transform:translateY(-5px);border-color:rgba(142,177,255,.55);box-shadow:0 20px 60px rgba(0,0,0,.35)}
+.number{font-size:11px;letter-spacing:.24em;color:#7487a9}
+.icon{font-size:38px;margin:auto 0 28px}
+.card h2{font-size:28px;margin:0 0 12px;letter-spacing:-.03em}
+.card p{margin:0;color:#9daac0;line-height:1.55}
+.open{margin-top:26px;font-size:12px;letter-spacing:.18em;color:#c9d8f4}
+.note{margin-top:44px;color:#64728b;font-size:12px;letter-spacing:.08em}
+@media(max-width:800px){.tools{padding-top:70px}.grid{grid-template-columns:1fr}.card{min-height:260px}}
+</style>
+</head>
+<body>
+<main class="tools">
+<div class="kicker">ORBONIX · INTERACTIVE SYSTEMS</div>
+<h1>Orbonix<br>Tools</h1>
+<p class="intro">Interactive systems built to help you search, learn and explore space through Orbonix.</p>
+<section class="grid" aria-label="Orbonix tools">
+<a class="card" href="/Orbonix-AI/" data-page="Orbonix AI">
+<span class="number">TOOL 01 · INTELLIGENCE</span><div class="icon">✦</div>
+<h2>Orbonix AI</h2><p>Ask questions about astronomy, space exploration and science.</p><span class="open">OPEN AI →</span>
+</a>
+<a class="card" href="/search/" data-page="Orbonix Search">
+<span class="number">TOOL 02 · DISCOVERY</span><div class="icon">⌕</div>
+<h2>Orbonix Search</h2><p>Search across Orbonix pages, planets, moons, missions and deep-space topics.</p><span class="open">OPEN SEARCH →</span>
+</a>
+<a class="card" href="/Solar-System-Simulation/" data-page="Solar System Simulation">
+<span class="number">TOOL 03 · SIMULATION</span><div class="icon">◎</div>
+<h2>Solar System Simulation</h2><p>Explore planets and dwarf planets in the interactive Orbonix Solar System model.</p><span class="open">OPEN SIMULATION →</span>
+</a>
+</section>
+<p class="note">ORBONIX TOOLS · MORE INTERACTIVE SYSTEMS COMING SOON</p>
+</main>
+</body>
+</html>
