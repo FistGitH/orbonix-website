@@ -103,7 +103,7 @@ const ORBONIX_PAGES = [
 
     {
         title: "Solar System Simulation",
-        url: `${ORBONIX_BASE}/Solar-System-Simulation/`,
+        url: `${ORBONIX_BASE}/Orbonix-Tools/Solar-System-Simulation/`,
         parent: "Orbonix Tools",
         category: "Orbonix Tools",
         keywords: "solar system simulation planets orbit tool",
@@ -1050,15 +1050,6 @@ const ORBONIX_PAGES = [
         "keywords": "umbriel",
         "description": "Explore Umbriel."
     },
-
-    {
-        "title": "Search",
-        "url": `${ORBONIX_BASE}/search/`,
-        "parent": null,
-        "category": "Main",
-        "keywords": "search",
-        "description": "Explore Search."
-    }
 
 ];
 
