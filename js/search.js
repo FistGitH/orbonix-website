@@ -32,7 +32,7 @@ const ORBONIX_PAGES = [
     {"title":"Orcus Simulation","url":"https://orbonix.net/Solar-System-Simulation/Orcus/","parent":"Solar System Simulation","category":"Simulations","keywords":"Orcus simulation moons satellites orbit","description":"Explore Orcus and its satellite catalogue."},
     {"title":"Gonggong Simulation","url":"https://orbonix.net/Solar-System-Simulation/Gonggong/","parent":"Solar System Simulation","category":"Simulations","keywords":"Gonggong simulation moons satellites orbit","description":"Explore Gonggong and its satellite catalogue."},
     {title:"Account",url:`${ORBONIX_BASE}/Account/`,parent:null,category:"Main",keywords:"account register login profile achievements",description:"Your profile and quiz achievements."},
-    {title:"Orbonix AI",url:`${ORBONIX_BASE}/Orbonix-AI/`,parent:null,category:"Tools",keywords:"orbonix ai assistant astronomy space questions artificial intelligence",description:"Ask the Orbonix AI assistant about space, astronomy and science."},
+    {title:"Orbonix AI",url:`${ORBONIX_BASE}/Orbonix-Tools/Orbonix-AI/`,parent:"Orbonix Tools",category:"Orbonix Tools",keywords:"orbonix ai assistant astronomy space questions artificial intelligence",description:"Ask the Orbonix AI assistant about space, astronomy and science."},
 
     {
         title: "Orbonix Search",
