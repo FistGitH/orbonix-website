@@ -856,7 +856,13 @@ function nextQuestion() {
 ========================================================= */
 
 function showResult() {
-    window.orbonixSaveQuiz?.("Telescope-Quiz",submittedAnswers.slice(),attemptId);
+    const percent = Math.round((score / questions.length) * 100);
+    fetch("/api/quiz", {
+        method: "POST",
+        credentials: "same-origin",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ quiz: "Telescope Quiz", percent })
+    }).catch(() => {});
 
     document.getElementById(
         "quiz"
