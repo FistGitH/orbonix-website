@@ -27,3 +27,14 @@ CREATE TABLE IF NOT EXISTS quiz_results (
   FOREIGN KEY(user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 CREATE INDEX IF NOT EXISTS quiz_results_user_idx ON quiz_results(user_id);
+
+CREATE TABLE IF NOT EXISTS app_sessions (
+  token_hash TEXT PRIMARY KEY,
+  user_id TEXT NOT NULL,
+  device_name TEXT NOT NULL DEFAULT '',
+  created_at TEXT NOT NULL,
+  expires_at TEXT NOT NULL,
+  FOREIGN KEY(user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+CREATE INDEX IF NOT EXISTS app_sessions_user_idx ON app_sessions(user_id);
+CREATE INDEX IF NOT EXISTS app_sessions_expiry_idx ON app_sessions(expires_at);
