@@ -1,3 +1,22 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="referrer" content="no-referrer"><title>Account · ORBONIX</title><link rel="icon" href="/favicon.png"><link rel="stylesheet" href="/css/site.css"><link rel="stylesheet" href="/css/account.css"><script src="/js/search.js" defer></script><script src="/js/search-ui.js" defer></script><link rel="apple-touch-icon" href="/favicon.png"></head>
-<body><main class="account-main"><a href="https://orbonix.net/" data-page="Home">Home</a><h1>Your Orbonix account</h1><p id="account-status" role="status" aria-live="polite"></p><div id="account-root"></div></main></body></html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="referrer" content="no-referrer">
+<title>Account · ORBONIX</title><link rel="icon" href="/favicon.png"><link rel="apple-touch-icon" href="/favicon.png">
+<link rel="stylesheet" href="/css/site.css"><link rel="stylesheet" href="/css/account.css">
+<script src="/js/search.js" defer></script><script src="/js/search-ui.js" defer></script><script src="/js/account.js" defer></script>
+</head>
+<body>
+<main class="account-main">
+<a class="account-home" href="https://orbonix.net/" data-page="Home">← ORBONIX</a>
+<section class="account-hero"><p class="eyebrow">ORBONIX ACCOUNT</p><h1>Explore with your own account.</h1><p>Save your Orbonix profile and prepare for personalized astronomy tools.</p></section>
+<p id="account-status" role="status" aria-live="polite"></p>
+<div id="account-root">
+<section id="auth-view" class="auth-shell">
+<div class="auth-tabs" role="tablist"><button id="show-login" class="active" type="button">Log in</button><button id="show-register" type="button">Create account</button></div>
+<form id="login-form" autocomplete="on"><h2>Welcome back</h2><label>Email<input id="login-email" name="email" type="email" autocomplete="email" required maxlength="254"></label><label>Password<input id="login-password" name="password" type="password" autocomplete="current-password" required minlength="8" maxlength="128"></label><button class="primary" type="submit">Log in</button></form>
+<form id="register-form" hidden autocomplete="on"><h2>Create your account</h2><label>Display name<input id="register-name" name="name" type="text" autocomplete="nickname" required minlength="2" maxlength="32"></label><label>Email<input id="register-email" name="email" type="email" autocomplete="email" required maxlength="254"></label><label>Password<input id="register-password" name="password" type="password" autocomplete="new-password" required minlength="10" maxlength="128"></label><label>Confirm password<input id="register-confirm" name="confirmPassword" type="password" autocomplete="new-password" required minlength="10" maxlength="128"></label><p class="form-note">Use at least 10 characters. Never reuse an important password.</p><button class="primary" type="submit">Create account</button></form>
+</section>
+<section id="profile-view" class="profile-card" hidden><p class="eyebrow">SIGNED IN</p><h2 id="profile-name"></h2><p id="profile-email"></p><button id="logout-button" type="button">Log out</button></section>
+</div>
+</main></body></html>
