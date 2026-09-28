@@ -88,7 +88,13 @@ async function accountAPI(request,env,url){
  }
  const u=await authUser(request,env);
  if(!u)return json({error:"Please sign in."},401);
-  if(p==="/api/avatar"&&m==="POST"){
+  if(p==="/api/profile"&&m==="PATCH"){
+  const b=await authBody(request),firstName=String(b.firstName||"").trim().slice(0,60),lastName=String(b.lastName||"").trim().slice(0,60);
+  if(!firstName||!lastName)return json({error:"First name and last name are required."},400);
+  await env.DB.prepare("UPDATE users SET first_name=?,last_name=? WHERE id=?").bind(firstName,lastName,u.id).run();
+  return json({ok:true,user:{...u,firstName,lastName}})
+ }
+ if(p==="/api/avatar"&&m==="POST"){
    const b=await authBody(request),image=String(b.image||"");
    const allowed=["data:image/jpeg;base64,","data:image/png;base64,","data:image/webp;base64,"];
    const prefix=allowed.find(x=>image.startsWith(x));
@@ -169,4 +175,4 @@ async function accountAPI(request,env,url){
  return json({error:"API endpoint not found."},404)
 }
 
-export default{async fetch(request,env){try{const url=new URL(request.url);if(url.pathname==="/api/orbonix-ai")return await orbonixAI(request,env);if(["/api/register","/api/login","/api/logout","/api/me","/api/quiz","/api/avatar","/api/observations"].includes(url.pathname)||url.pathname.startsWith("/api/observations/")||url.pathname.startsWith("/api/observation-photo/"))return await accountAPI(request,env,url);return env.ASSETS.fetch(request)}catch(e){return json({error:e?.message||"Orbonix service error."},e?.status||500)}}};
+export default{async fetch(request,env){try{const url=new URL(request.url);if(url.pathname==="/api/orbonix-ai")return await orbonixAI(request,env);if(["/api/register","/api/login","/api/logout","/api/me","/api/quiz","/api/avatar","/api/profile","/api/observations"].includes(url.pathname)||url.pathname.startsWith("/api/observations/")||url.pathname.startsWith("/api/observation-photo/"))return await accountAPI(request,env,url);return env.ASSETS.fetch(request)}catch(e){return json({error:e?.message||"Orbonix service error."},e?.status||500)}}};
