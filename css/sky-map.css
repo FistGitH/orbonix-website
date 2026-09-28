@@ -157,3 +157,24 @@ html,body{max-width:100%;overflow-x:hidden}
     padding-right:8px;
   }
 }
+.closeMobileTools{display:none}
+@media(max-width:650px){
+ .controls.mobileOpen .closeMobileTools{
+   display:flex!important;
+   position:sticky!important;
+   top:0;
+   margin:0 0 4px auto!important;
+   flex:0 0 38px!important;
+   width:38px!important;
+   min-height:38px!important;
+   align-items:center;
+   justify-content:center;
+   border:1px solid #ffffff24!important;
+   border-radius:50%!important;
+   background:#101d2c!important;
+   color:#eef6ff!important;
+   font-size:25px!important;
+   line-height:1!important;
+   z-index:50!important;
+ }
+}
