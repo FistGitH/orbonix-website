@@ -203,6 +203,7 @@
       );
     }
     async function showProfile() {
+      root.replaceChildren();
       const u = profile.user;
       root.classList.add("profile-view");
 
