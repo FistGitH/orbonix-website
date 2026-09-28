@@ -719,7 +719,13 @@ function nextQuestion() {
 ========================================= */
 
 function showResult() {
-    window.orbonixSaveQuiz?.("Blackholes-Quiz",submittedAnswers.slice(),attemptId);
+    const percent = Math.round((score / questions.length) * 100);
+    fetch("/api/quiz", {
+        method: "POST",
+        credentials: "same-origin",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ quiz: "Black Holes Quiz", percent })
+    }).catch(() => {});
 
     document.getElementById(
         "quiz"
