@@ -718,7 +718,13 @@ function nextQuestion() {
 ========================================= */
 
 function showResult() {
-    window.orbonixSaveQuiz?.("Sun-Quiz",submittedAnswers.slice(),attemptId);
+    const percent = Math.round((score / questions.length) * 100);
+    fetch("/api/quiz", {
+        method: "POST",
+        credentials: "same-origin",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ quiz: "Sun Quiz", percent })
+    }).catch(() => {});
 
     document.getElementById(
         "quiz"
