@@ -124,3 +124,10 @@ body {
  .profile-save-actions{display:grid;grid-template-columns:1fr 1fr}
  .profile-save-actions button{width:100%}
 }
+
+/* Strict profile view/edit states */
+.profile-card:not(.is-editing) .photo-button,
+.profile-card:not(.is-editing) .profile-file-input,
+.profile-card:not(.is-editing) .profile-edit-fields{display:none!important}
+.profile-card.is-editing .photo-button{display:inline-flex!important}
+.profile-edit.exit-editing{border-color:#526276!important;background:#111b29!important;color:#b9c6d7!important}
