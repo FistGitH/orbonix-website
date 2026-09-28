@@ -33,6 +33,7 @@ const ORBONIX_PAGES = [
     {"title":"Gonggong Simulation","url":"https://orbonix.net/Orbonix-Tools/Solar-System-Simulation/Gonggong/","parent":"Solar System Simulation","category":"Simulations","keywords":"Gonggong simulation moons satellites orbit","description":"Explore Gonggong and its satellite catalogue."},
     {title:"Account",url:`${ORBONIX_BASE}/Account/`,parent:null,category:"Main",keywords:"account register login profile achievements",description:"Your profile and quiz achievements."},
     {title:"Orbonix AI",url:`${ORBONIX_BASE}/Orbonix-Tools/Orbonix-AI/`,parent:"Orbonix Tools",category:"Orbonix Tools",keywords:"orbonix ai assistant astronomy space questions artificial intelligence",description:"Ask the Orbonix AI assistant about space, astronomy and science."},
+    {title:"Observation Log",url:`${ORBONIX_BASE}/Orbonix-Tools/Observation-Log/`,parent:"Orbonix Tools",category:"Orbonix Tools",keywords:"observation log astronomy journal observing notes astrophotography telescope favorite pinned",description:"Keep a private astronomy observation journal with notes and photos."},
 
 
     /* =========================
