@@ -56,6 +56,9 @@ async function authUser(request,env){
  return env.DB.prepare("SELECT u.id,u.first_name AS firstName,u.last_name AS lastName,u.email,u.language,u.avatar FROM sessions s JOIN users u ON u.id=s.user_id WHERE s.token=? AND s.expires_at>datetime('now')").bind(t).first()
 }
 async function authSession(env,id){const t=authToken();await env.DB.prepare("INSERT INTO sessions(token,user_id,expires_at) VALUES(?,?,datetime('now','+30 days'))").bind(t,id).run();return t}
+async function avatarTable(env){
+ await env.DB.prepare("CREATE TABLE IF NOT EXISTS user_avatars (user_id TEXT PRIMARY KEY,mime TEXT NOT NULL,data BLOB NOT NULL,updated_at TEXT NOT NULL,FOREIGN KEY(user_id) REFERENCES users(id) ON DELETE CASCADE)").run();
+}
 async function observationTables(env){
  await env.DB.prepare("CREATE TABLE IF NOT EXISTS observations (id TEXT PRIMARY KEY,user_id TEXT NOT NULL,object_name TEXT NOT NULL,observed_at TEXT NOT NULL,location TEXT NOT NULL DEFAULT '',conditions TEXT NOT NULL DEFAULT '',notes TEXT NOT NULL DEFAULT '',favorite INTEGER NOT NULL DEFAULT 0,pinned INTEGER NOT NULL DEFAULT 0,has_photo INTEGER NOT NULL DEFAULT 0,created_at TEXT NOT NULL,FOREIGN KEY(user_id) REFERENCES users(id) ON DELETE CASCADE)").run();
  await env.DB.prepare("CREATE INDEX IF NOT EXISTS observations_user_idx ON observations(user_id,created_at)").run();
@@ -101,14 +104,17 @@ async function accountAPI(request,env,url){
    if(!prefix)return json({error:"Choose a JPEG, PNG or WebP photo."},400);
    const encoded=image.slice(prefix.length);
    let bytes;try{const raw=atob(encoded);if(!raw.length||raw.length>400000)throw Error();bytes=Uint8Array.from(raw,c=>c.charCodeAt(0))}catch{return json({error:"Profile photo is too large or invalid."},413)}
-   await env.DB.prepare("UPDATE users SET avatar=? WHERE id=?").bind(bytes,u.id).run();
+   await avatarTable(env);
+   await env.DB.prepare("INSERT OR REPLACE INTO user_avatars(user_id,mime,data,updated_at) VALUES(?,?,?,datetime('now'))").bind(u.id,"image/jpeg",bytes).run();
+   await env.DB.prepare("UPDATE users SET avatar='1' WHERE id=?").bind(u.id).run();
    return json({ok:true})
   }
  if(p==="/api/avatar"&&m==="GET"){
-  const row=await env.DB.prepare("SELECT avatar FROM users WHERE id=?").bind(u.id).first();
-  if(!row?.avatar)return new Response(null,{status:404});
-  const avatarBytes=row.avatar instanceof ArrayBuffer?new Uint8Array(row.avatar):row.avatar instanceof Uint8Array?row.avatar:Array.isArray(row.avatar)?new Uint8Array(row.avatar):new Uint8Array(Object.values(row.avatar));
-  return new Response(avatarBytes.buffer.slice(avatarBytes.byteOffset,avatarBytes.byteOffset+avatarBytes.byteLength),{headers:{"content-type":"image/jpeg","content-length":String(avatarBytes.byteLength),"cache-control":"private, no-store","x-content-type-options":"nosniff"}})
+  await avatarTable(env);
+  const row=await env.DB.prepare("SELECT mime,data FROM user_avatars WHERE user_id=?").bind(u.id).first();
+  if(!row?.data)return new Response(null,{status:404});
+  const avatarBytes=row.data instanceof ArrayBuffer?new Uint8Array(row.data):row.data instanceof Uint8Array?row.data:Array.isArray(row.data)?new Uint8Array(row.data):new Uint8Array(Object.values(row.data));
+  return new Response(avatarBytes.buffer.slice(avatarBytes.byteOffset,avatarBytes.byteOffset+avatarBytes.byteLength),{headers:{"content-type":row.mime||"image/jpeg","content-length":String(avatarBytes.byteLength),"cache-control":"private, no-store","x-content-type-options":"nosniff"}})
  }
  if(p==="/api/me"&&m==="GET"){
   const q=await env.DB.prepare("SELECT quiz,percent,created_at AS createdAt FROM quiz_results WHERE user_id=? ORDER BY created_at DESC LIMIT 100").bind(u.id).all();
