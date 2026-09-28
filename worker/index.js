@@ -56,6 +56,11 @@ async function authUser(request,env){
  return env.DB.prepare("SELECT u.id,u.first_name AS firstName,u.last_name AS lastName,u.email,u.language,u.avatar FROM sessions s JOIN users u ON u.id=s.user_id WHERE s.token=? AND s.expires_at>datetime('now')").bind(t).first()
 }
 async function authSession(env,id){const t=authToken();await env.DB.prepare("INSERT INTO sessions(token,user_id,expires_at) VALUES(?,?,datetime('now','+30 days'))").bind(t,id).run();return t}
+async function observationTables(env){
+ await env.DB.prepare("CREATE TABLE IF NOT EXISTS observations (id TEXT PRIMARY KEY,user_id TEXT NOT NULL,object_name TEXT NOT NULL,observed_at TEXT NOT NULL,location TEXT NOT NULL DEFAULT '',conditions TEXT NOT NULL DEFAULT '',notes TEXT NOT NULL DEFAULT '',favorite INTEGER NOT NULL DEFAULT 0,pinned INTEGER NOT NULL DEFAULT 0,has_photo INTEGER NOT NULL DEFAULT 0,created_at TEXT NOT NULL,FOREIGN KEY(user_id) REFERENCES users(id) ON DELETE CASCADE)").run();
+ await env.DB.prepare("CREATE INDEX IF NOT EXISTS observations_user_idx ON observations(user_id,created_at)").run();
+ await env.DB.prepare("CREATE TABLE IF NOT EXISTS observation_photos (observation_id TEXT PRIMARY KEY,user_id TEXT NOT NULL,mime TEXT NOT NULL,data BLOB NOT NULL,FOREIGN KEY(observation_id) REFERENCES observations(id) ON DELETE CASCADE,FOREIGN KEY(user_id) REFERENCES users(id) ON DELETE CASCADE)").run();
+}
 async function accountAPI(request,env,url){
  if(!env.DB)return json({error:"Account database is not configured."},503);
  const p=url.pathname,m=request.method;
@@ -106,6 +111,53 @@ async function accountAPI(request,env,url){
   const b=await authBody(request),language=String(b.language||"").slice(0,12);if(!language)return json({error:"Unsupported language."},400);
   await env.DB.prepare("UPDATE users SET language=? WHERE id=?").bind(language,u.id).run();return json({ok:true})
  }
+ if(p==="/api/observations"&&m==="GET"){
+  await observationTables(env);
+  const q=await env.DB.prepare("SELECT id,object_name AS objectName,observed_at AS observedAt,location,conditions,notes,favorite,pinned,has_photo AS hasPhoto,created_at AS createdAt FROM observations WHERE user_id=? ORDER BY pinned DESC, observed_at DESC, created_at DESC LIMIT 200").bind(u.id).all();
+  return json({observations:q.results||[]})
+ }
+ if(p==="/api/observations"&&m==="POST"){
+  await observationTables(env);
+  const b=await authBody(request),objectName=String(b.objectName||"").trim().slice(0,120),observedAt=String(b.observedAt||"").trim().slice(0,40),location=String(b.location||"").trim().slice(0,160),conditions=String(b.conditions||"").trim().slice(0,240),notes=String(b.notes||"").trim().slice(0,4000);
+  if(!objectName||!observedAt||!notes)return json({error:"Object, observation date and notes are required."},400);
+  const id=crypto.randomUUID();
+  await env.DB.prepare("INSERT INTO observations(id,user_id,object_name,observed_at,location,conditions,notes,favorite,pinned,has_photo,created_at) VALUES(?,?,?,?,?,?,?,0,0,0,datetime('now'))").bind(id,u.id,objectName,observedAt,location,conditions,notes).run();
+  return json({id},201)
+ }
+ if(p.startsWith("/api/observations/")&&m==="PATCH"){
+  await observationTables(env);
+  const id=decodeURIComponent(p.slice("/api/observations/".length)),b=await authBody(request);
+  const row=await env.DB.prepare("SELECT favorite,pinned FROM observations WHERE id=? AND user_id=?").bind(id,u.id).first();
+  if(!row)return json({error:"Observation not found."},404);
+  const favorite=b.favorite===undefined?Number(row.favorite):b.favorite?1:0,pinned=b.pinned===undefined?Number(row.pinned):b.pinned?1:0;
+  await env.DB.prepare("UPDATE observations SET favorite=?,pinned=? WHERE id=? AND user_id=?").bind(favorite,pinned,id,u.id).run();
+  return json({ok:true,favorite:!!favorite,pinned:!!pinned})
+ }
+ if(p.startsWith("/api/observations/")&&m==="DELETE"){
+  await observationTables(env);
+  const id=decodeURIComponent(p.slice("/api/observations/".length));
+  await env.DB.prepare("DELETE FROM observation_photos WHERE observation_id=? AND user_id=?").bind(id,u.id).run();
+  await env.DB.prepare("DELETE FROM observations WHERE id=? AND user_id=?").bind(id,u.id).run();
+  return json({ok:true})
+ }
+ if(p.startsWith("/api/observation-photo/")&&m==="POST"){
+  await observationTables(env);
+  const id=decodeURIComponent(p.slice("/api/observation-photo/".length)),owned=await env.DB.prepare("SELECT id FROM observations WHERE id=? AND user_id=?").bind(id,u.id).first();
+  if(!owned)return json({error:"Observation not found."},404);
+  const b=await authBody(request),image=String(b.image||""),prefix=["data:image/jpeg;base64,","data:image/png;base64,","data:image/webp;base64,"].find(x=>image.startsWith(x));
+  if(!prefix)return json({error:"Choose a JPEG, PNG or WebP photo."},400);
+  let bytes;try{const raw=atob(image.slice(prefix.length));if(!raw.length||raw.length>650000)throw Error();bytes=Uint8Array.from(raw,c=>c.charCodeAt(0))}catch{return json({error:"Observation photo is too large or invalid."},413)}
+  const mime=prefix.slice(5,-8);
+  await env.DB.prepare("INSERT OR REPLACE INTO observation_photos(observation_id,user_id,mime,data) VALUES(?,?,?,?)").bind(id,u.id,mime,bytes).run();
+  await env.DB.prepare("UPDATE observations SET has_photo=1 WHERE id=? AND user_id=?").bind(id,u.id).run();
+  return json({ok:true})
+ }
+ if(p.startsWith("/api/observation-photo/")&&m==="GET"){
+  await observationTables(env);
+  const id=decodeURIComponent(p.slice("/api/observation-photo/".length)),row=await env.DB.prepare("SELECT mime,data FROM observation_photos WHERE observation_id=? AND user_id=?").bind(id,u.id).first();
+  if(!row?.data)return new Response(null,{status:404});
+  return new Response(row.data,{headers:{"content-type":row.mime,"cache-control":"private, no-store","x-content-type-options":"nosniff"}})
+ }
  if(p==="/api/quiz"&&m==="POST"){
   const b=await authBody(request),quiz=String(b.quiz||"").slice(0,100);let percent=Number(b.percent);
   if(!Number.isFinite(percent)&&Array.isArray(b.answers)){const correct=b.answers.filter(v=>v===true||v?.correct===true).length;percent=b.answers.length?correct*100/b.answers.length:0}
@@ -115,4 +167,4 @@ async function accountAPI(request,env,url){
  return json({error:"API endpoint not found."},404)
 }
 
-export default{async fetch(request,env){try{const url=new URL(request.url);if(url.pathname==="/api/orbonix-ai")return await orbonixAI(request,env);if(["/api/register","/api/login","/api/logout","/api/me","/api/quiz","/api/avatar"].includes(url.pathname))return await accountAPI(request,env,url);return env.ASSETS.fetch(request)}catch(e){return json({error:e?.message||"Orbonix service error."},e?.status||500)}}};
+export default{async fetch(request,env){try{const url=new URL(request.url);if(url.pathname==="/api/orbonix-ai")return await orbonixAI(request,env);if(["/api/register","/api/login","/api/logout","/api/me","/api/quiz","/api/avatar","/api/observations"].includes(url.pathname)||url.pathname.startsWith("/api/observations/")||url.pathname.startsWith("/api/observation-photo/"))return await accountAPI(request,env,url);return env.ASSETS.fetch(request)}catch(e){return json({error:e?.message||"Orbonix service error."},e?.status||500)}}};
