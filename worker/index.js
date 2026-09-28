@@ -84,7 +84,7 @@ async function accountAPI(request,env,url){
  const u=await authUser(request,env);
  if(!u)return json({error:"Please sign in."},401);
  if(p==="/api/avatar"&&m==="POST"){
-  const b=await authBody(request),image=String(b.image||""),match=image.match(/^data:(image\\/(?:jpeg|png|webp));base64,([A-Za-z0-9+/=]+)$/);
+  const b=await authBody(request),image=String(b.image||""),match=image.match(/^data:(image\/(?:jpeg|png|webp));base64,([A-Za-z0-9+/=]+)$/);
   if(!match)return json({error:"Choose a JPEG, PNG or WebP photo."},400);
   let bytes;try{const raw=atob(match[2]);if(raw.length>400000)throw Error();bytes=Uint8Array.from(raw,c=>c.charCodeAt(0))}catch{return json({error:"Profile photo is too large."},413)}
   await env.DB.prepare("UPDATE users SET avatar=? WHERE id=?").bind(bytes,u.id).run();
