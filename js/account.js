@@ -290,10 +290,19 @@
       const quizCard = el("article", null, "profile-section");
       quizCard.append(el("p", "LEARNING", "section-kicker"), el("h2", "Quiz progress"));
       const quizzes = profile.quizzes || [];
-      if (!quizzes.length) quizCard.append(el("p", "Your completed Orbonix quizzes will appear here.", "section-muted"));
+      const bestQuizzes = new Map();
       for (const q of quizzes) {
+        const displayName = String(q.quiz || "").replaceAll("-", " ").replace(/\s+/g, " ").trim();
+        const key = displayName.toLowerCase();
+        const percent = Math.max(0, Math.min(100, Number(q.percent) || 0));
+        const previous = bestQuizzes.get(key);
+        if (!previous || percent > previous.percent)
+          bestQuizzes.set(key, { name: displayName, percent });
+      }
+      if (!bestQuizzes.size) quizCard.append(el("p", "Your completed Orbonix quizzes will appear here.", "section-muted"));
+      for (const q of bestQuizzes.values()) {
         const row = el("div", null, "quiz-row");
-        row.append(el("span", q.quiz.replaceAll("-", " ")), el("strong", Math.round(q.percent) + "%"));
+        row.append(el("span", q.name), el("strong", Math.round(q.percent) + "%"));
         quizCard.append(row);
       }
       dashboard.append(quizCard);
