@@ -101,7 +101,8 @@ async function accountAPI(request,env,url){
  if(p==="/api/avatar"&&m==="GET"){
   const row=await env.DB.prepare("SELECT avatar FROM users WHERE id=?").bind(u.id).first();
   if(!row?.avatar)return new Response(null,{status:404});
-  return new Response(row.avatar,{headers:{"content-type":"image/jpeg","cache-control":"private, no-store","x-content-type-options":"nosniff"}})
+  const avatarBytes=row.avatar instanceof ArrayBuffer?new Uint8Array(row.avatar):row.avatar instanceof Uint8Array?row.avatar:Array.isArray(row.avatar)?new Uint8Array(row.avatar):new Uint8Array(Object.values(row.avatar));
+  return new Response(avatarBytes.buffer.slice(avatarBytes.byteOffset,avatarBytes.byteOffset+avatarBytes.byteLength),{headers:{"content-type":"image/jpeg","content-length":String(avatarBytes.byteLength),"cache-control":"private, no-store","x-content-type-options":"nosniff"}})
  }
  if(p==="/api/me"&&m==="GET"){
   const q=await env.DB.prepare("SELECT quiz,percent,created_at AS createdAt FROM quiz_results WHERE user_id=? ORDER BY created_at DESC LIMIT 100").bind(u.id).all();
