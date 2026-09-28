@@ -117,8 +117,12 @@ async function accountAPI(request,env,url){
   return new Response(avatarBytes.buffer.slice(avatarBytes.byteOffset,avatarBytes.byteOffset+avatarBytes.byteLength),{headers:{"content-type":row.mime||"image/jpeg","content-length":String(avatarBytes.byteLength),"cache-control":"private, no-store","x-content-type-options":"nosniff"}})
  }
  if(p==="/api/me"&&m==="GET"){
-  const q=await env.DB.prepare("SELECT quiz,percent,created_at AS createdAt FROM quiz_results WHERE user_id=? ORDER BY created_at DESC LIMIT 100").bind(u.id).all();
-  return json({user:authPublic(u),quizzes:q.results||[],earned:[]})
+  await avatarTable(env);
+  const [q,av]=await Promise.all([
+   env.DB.prepare("SELECT quiz,percent,created_at AS createdAt FROM quiz_results WHERE user_id=? ORDER BY created_at DESC LIMIT 100").bind(u.id).all(),
+   env.DB.prepare("SELECT 1 AS present FROM user_avatars WHERE user_id=?").bind(u.id).first()
+  ]);
+  return json({user:{...authPublic(u),avatar:!!av},quizzes:q.results||[],earned:[]})
  }
  if(p==="/api/me"&&m==="PATCH"){
   const b=await authBody(request),language=String(b.language||"").slice(0,12);if(!language)return json({error:"Unsupported language."},400);
