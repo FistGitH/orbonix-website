@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Observation Log | ORBONIX</title><meta name="description" content="Keep a private astronomy observation log with your Orbonix Account. Record targets, observing conditions, notes and photos.">
+<link rel="icon" href="/favicon.png"><link rel="apple-touch-icon" href="/favicon.png">
+<link rel="stylesheet" href="/css/site.css"><link rel="stylesheet" href="/css/observation-log.css">
+<script src="/js/search.js" defer></script><script src="/js/search-ui.js" defer></script><script src="/js/observation-log.js" defer></script>
+</head>
+<body>
+<main class="obs-shell">
+<a class="back" href="/Orbonix-Tools/" data-page="Orbonix Tools">← ORBONIX TOOLS</a>
+<header class="obs-hero"><p class="eyebrow">ORBONIX · ASTRONOMER WORKSPACE</p><h1>Observation<br>Log</h1><p>Build your personal record of the night sky. Save targets, observing conditions, field notes and your own astrophotography.</p></header>
+<div id="obs-status" class="status" role="status" aria-live="polite"></div>
+<section id="signed-out" class="gate" hidden><div><p class="eyebrow">ORBONIX ACCOUNT REQUIRED</p><h2>Your observing journal travels with your account.</h2><p>Sign in to create and manage your private observation records.</p></div><a href="/Account/" data-page="Account">SIGN IN →</a></section>
+<section id="obs-app" hidden>
+<div class="workspace">
+<form id="obs-form" class="composer">
+<div class="composer-head"><div><p class="eyebrow">NEW ENTRY</p><h2>Record an observation</h2></div><span id="observer-name"></span></div>
+<div class="fields">
+<label class="wide">Object observed<input id="object-name" maxlength="120" required placeholder="e.g. Saturn, M31, Moon"></label>
+<label>Date & time<input id="observed-at" type="datetime-local" required></label>
+<label>Location<input id="location" maxlength="160" placeholder="e.g. Dingolfing, backyard"></label>
+<label class="wide">Conditions<input id="conditions" maxlength="240" placeholder="e.g. Clear sky · Bortle 5 · good seeing"></label>
+<label class="wide">Observation notes<textarea id="notes" maxlength="4000" required rows="6" placeholder="What did you see? Which telescope, eyepiece or camera did you use?"></textarea></label>
+<label class="photo-field wide"><span>Observation photo <small>optional · JPEG, PNG or WebP</small></span><input id="photo" type="file" accept="image/jpeg,image/png,image/webp"><span id="photo-name">Choose your astronomy photo</span></label>
+</div>
+<button id="save-observation" class="primary" type="submit">SAVE OBSERVATION →</button>
+</form>
+<section class="journal">
+<div class="journal-head"><div><p class="eyebrow">YOUR SKY RECORD</p><h2>Observations</h2></div><div class="filters" role="group" aria-label="Observation filters"><button class="filter active" data-filter="all" type="button">All</button><button class="filter" data-filter="favorite" type="button">★ Favorites</button><button class="filter" data-filter="pinned" type="button">⌖ Pinned</button></div></div>
+<div id="observation-list" class="observation-list"></div>
+</section>
+</div>
+</section>
+</main>
+</body></html>
