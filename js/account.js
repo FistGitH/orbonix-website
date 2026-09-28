@@ -216,10 +216,18 @@
       photo.className = "account-avatar";
       const initials = el("div", (u.firstName?.[0] || "") + (u.lastName?.[0] || ""), "avatar-fallback");
       initials.setAttribute("aria-hidden", "true");
+      photo.hidden = true;
       if (u.avatar) {
+        photo.onload = () => {
+          photo.hidden = false;
+          initials.hidden = true;
+        };
+        photo.onerror = () => {
+          photo.hidden = true;
+          initials.hidden = false;
+        };
         photo.src = "/api/avatar?t=" + Date.now();
-        initials.hidden = true;
-      } else photo.hidden = true;
+      }
       avatarWrap.append(photo, initials);
 
       const upload = el("label", "Change photo", "photo-button");
@@ -262,9 +270,15 @@
           context.drawImage(bitmap,(bitmap.width-side)/2,(bitmap.height-side)/2,side,side,0,0,256,256);
           bitmap.close();
           await api("avatar", { image: canvas.toDataURL("image/jpeg", 0.84) });
+          photo.onload = () => {
+            photo.hidden = false;
+            initials.hidden = true;
+          };
+          photo.onerror = () => {
+            photo.hidden = true;
+            initials.hidden = false;
+          };
           photo.src = "/api/avatar?t=" + Date.now();
-          photo.hidden = false;
-          initials.hidden = true;
           u.avatar = true;
           tell("Profile photo updated.");
         } catch (e) {
