@@ -1,4 +1,4 @@
-const json=(body,status=200)=>new Response(JSON.stringify(body),{status,headers:{"content-type":"application/json; charset=utf-8","cache-control":"no-store"}});
+const json=(body,status=200,extra={})=>new Response(JSON.stringify(body),{status,headers:{"content-type":"application/json; charset=utf-8","cache-control":"no-store",...extra}});
 async function hash(value){const digest=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(value));return [...new Uint8Array(digest)].map(b=>b.toString(16).padStart(2,"0")).join("")}
 const ORBONIX_LINKS=[
  {terms:["black hole","black holes","черная дыра","чёрная дыра","черные дыры","чёрные дыры"],links:[{label:"Black Holes",url:"/Exploring-Space/Deep-Space/Blackholes/"}]},
