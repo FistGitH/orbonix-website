@@ -178,3 +178,30 @@ html,body{max-width:100%;overflow-x:hidden}
    z-index:50!important;
  }
 }
+/* Tools close control: true corner button, outside the controls grid flow */
+@media(max-width:650px){
+ .controls.mobileOpen{position:fixed!important;padding-top:48px!important}
+ .controls.mobileOpen .closeMobileTools{
+   display:flex!important;
+   position:absolute!important;
+   top:9px!important;
+   right:9px!important;
+   left:auto!important;
+   bottom:auto!important;
+   margin:0!important;
+   padding:0!important;
+   width:32px!important;
+   height:32px!important;
+   min-height:32px!important;
+   flex:none!important;
+   align-items:center!important;
+   justify-content:center!important;
+   border:0!important;
+   border-radius:50%!important;
+   background:#ffffff0d!important;
+   color:#dce9f8!important;
+   font-size:22px!important;
+   line-height:32px!important;
+   z-index:100!important;
+ }
+}
