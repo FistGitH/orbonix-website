@@ -655,7 +655,13 @@ function nextQuestion(){
 ========================================= */
 
 function showResult(){
-    window.orbonixSaveQuiz?.("Stars-Quiz",submittedAnswers.slice(),attemptId);
+    const percent = Math.round((score / questions.length) * 100);
+    fetch("/api/quiz", {
+        method: "POST",
+        credentials: "same-origin",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ quiz: "Stars Quiz", percent })
+    }).catch(() => {});
 
     document.getElementById(
         "quiz"
