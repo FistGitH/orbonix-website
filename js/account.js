@@ -184,7 +184,15 @@
               b.language = localStorage.getItem("orbonix-language");
           } catch {}
           const r = await api("register", b);
-          tell(r.message);
+          if (r.user) {
+            await applyUser(r.user);
+            profile = await api("me");
+            root.replaceChildren();
+            await showProfile();
+            tell("Account created and signed in.");
+          } else {
+            tell(r.message);
+          }
         },
       );
       root.append(
