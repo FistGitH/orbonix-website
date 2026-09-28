@@ -14,5 +14,11 @@
       "database_name": "orbonix-accounts",
       "database_id": "143fa557-3f66-4408-91a9-c9123da34bbe"
     }
+  ],
+  "kv_namespaces": [
+    {
+      "binding": "ORBONIX_AI_LIMITS",
+      "id": "88bfb7e324074a948298b64b2af1bbfc"
+    }
   ]
 }
