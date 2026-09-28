@@ -56,6 +56,33 @@ async function authUser(request,env){
  return env.DB.prepare("SELECT u.id,u.first_name AS firstName,u.last_name AS lastName,u.email,u.language,u.avatar FROM sessions s JOIN users u ON u.id=s.user_id WHERE s.token=? AND s.expires_at>datetime('now')").bind(t).first()
 }
 async function authSession(env,id){const t=authToken();await env.DB.prepare("INSERT INTO sessions(token,user_id,expires_at) VALUES(?,?,datetime('now','+30 days'))").bind(t,id).run();return t}
+async function appSessionTable(env){
+ await env.DB.prepare("CREATE TABLE IF NOT EXISTS app_sessions (token_hash TEXT PRIMARY KEY,user_id TEXT NOT NULL,device_name TEXT NOT NULL DEFAULT '',created_at TEXT NOT NULL,expires_at TEXT NOT NULL,FOREIGN KEY(user_id) REFERENCES users(id) ON DELETE CASCADE)").run();
+ await env.DB.prepare("CREATE INDEX IF NOT EXISTS app_sessions_user_idx ON app_sessions(user_id)").run();
+ await env.DB.prepare("CREATE INDEX IF NOT EXISTS app_sessions_expiry_idx ON app_sessions(expires_at)").run();
+}
+async function appTokenHash(token){return await hash("orbonix-app|"+token)}
+async function appCreateSession(env,userId,deviceName=""){
+ await appSessionTable(env);
+ const token=authToken(),tokenHash=await appTokenHash(token);
+ await env.DB.prepare("INSERT INTO app_sessions(token_hash,user_id,device_name,created_at,expires_at) VALUES(?,?,?,datetime('now'),datetime('now','+30 days'))").bind(tokenHash,userId,String(deviceName||"").slice(0,120)).run();
+ return token
+}
+function appBearer(request){
+ const h=request.headers.get("authorization")||"",m=h.match(/^Bearer\s+(.+)$/i);
+ return m?m[1].trim():null
+}
+async function appUser(request,env){
+ const token=appBearer(request);if(!token)return null;
+ await appSessionTable(env);
+ const tokenHash=await appTokenHash(token);
+ return env.DB.prepare("SELECT u.id,u.first_name AS firstName,u.last_name AS lastName,u.email,u.language FROM app_sessions s JOIN users u ON u.id=s.user_id WHERE s.token_hash=? AND s.expires_at>datetime('now')").bind(tokenHash).first()
+}
+async function appPublicUser(env,u){
+ await avatarTable(env);
+ const av=await env.DB.prepare("SELECT 1 AS present FROM user_avatars WHERE user_id=?").bind(u.id).first();
+ return{...authPublic(u),avatar:!!av}
+}
 async function avatarTable(env){
  await env.DB.prepare("CREATE TABLE IF NOT EXISTS user_avatars (user_id TEXT PRIMARY KEY,mime TEXT NOT NULL,data BLOB NOT NULL,updated_at TEXT NOT NULL,FOREIGN KEY(user_id) REFERENCES users(id) ON DELETE CASCADE)").run();
 }
