@@ -206,11 +206,12 @@
       root.replaceChildren();
       const u = profile.user;
       root.classList.add("profile-view");
+      let editing = false, pendingPhoto = null, previewUrl = "";
 
       const hero = el("section", null, "profile-card");
       const avatarWrap = el("div", null, "profile-avatar-wrap");
       const photo = el("img");
-      photo.alt = "Profile photo";
+      photo.alt = "";
       photo.width = 128;
       photo.height = 128;
       photo.className = "account-avatar";
@@ -218,86 +219,151 @@
       initials.setAttribute("aria-hidden", "true");
       photo.hidden = true;
       if (u.avatar) {
-        photo.onload = () => {
-          photo.hidden = false;
-          initials.hidden = true;
-        };
-        photo.onerror = () => {
-          photo.hidden = true;
-          initials.hidden = false;
-        };
+        photo.onload = () => { photo.hidden = false; initials.hidden = true; };
+        photo.onerror = () => { photo.hidden = true; initials.hidden = false; };
         photo.src = "/api/avatar?t=" + Date.now();
       }
-      avatarWrap.append(photo, initials);
 
-      const upload = el("label", "Change photo", "photo-button");
-      const input = el("input");
+      const photoButton = el("button", "Change photo", "photo-button");
+      photoButton.type = "button";
+      photoButton.hidden = true;
+      const input = document.createElement("input");
       input.type = "file";
       input.accept = "image/png,image/jpeg,image/webp";
-      input.hidden = true;
-      upload.append(input);
-      avatarWrap.append(upload);
+      input.className = "profile-file-input";
+      input.setAttribute("aria-hidden", "true");
+      input.tabIndex = -1;
+      avatarWrap.append(photo, initials, photoButton, input);
 
       const identity = el("div", null, "profile-identity");
+      const badge = el("span", "ORBONIX MEMBER", "profile-badge");
       const heading = el("h2");
       heading.translate = false;
-      heading.textContent = u.firstName + " " + u.lastName;
       const email = el("p", u.email, "profile-email");
       email.translate = false;
-      const badge = el("span", "ORBONIX MEMBER", "profile-badge");
-      identity.append(badge, heading, email);
+      const editFields = el("div", null, "profile-edit-fields");
+      editFields.hidden = true;
+      const first = document.createElement("input");
+      first.type = "text"; first.maxLength = 60; first.value = u.firstName || ""; first.placeholder = "First name";
+      const last = document.createElement("input");
+      last.type = "text"; last.maxLength = 60; last.value = u.lastName || ""; last.placeholder = "Last name";
+      editFields.append(first, last);
+      identity.append(badge, heading, editFields, email);
 
+      const actions = el("div", null, "profile-actions");
+      const edit = el("button", "✎  Edit profile", "profile-edit");
+      edit.type = "button";
       const logout = el("button", "Sign out", "profile-signout");
       logout.type = "button";
-      hero.append(avatarWrap, identity, logout);
+      actions.append(edit, logout);
+      hero.append(avatarWrap, identity, actions);
       root.append(hero);
 
-      input.addEventListener("change", async () => {
-        const f = input.files[0];
-        if (!f) return;
-        try {
-          tell("Processing profile photo…");
-          if (f.size > 10000000) throw Error("Choose a photo smaller than 10 MB.");
-          const bitmap = await createImageBitmap(f);
-          if (bitmap.width > 16000 || bitmap.height > 16000) {
-            bitmap.close();
-            throw Error("Photo dimensions are too large.");
-          }
-          const canvas = document.createElement("canvas");
-          canvas.width = canvas.height = 256;
-          const context = canvas.getContext("2d");
-          const side = Math.min(bitmap.width, bitmap.height);
-          context.drawImage(bitmap,(bitmap.width-side)/2,(bitmap.height-side)/2,side,side,0,0,256,256);
-          bitmap.close();
-          await api("avatar", { image: canvas.toDataURL("image/jpeg", 0.84) });
-          photo.onload = () => {
-            photo.hidden = false;
-            initials.hidden = true;
-          };
-          photo.onerror = () => {
-            photo.hidden = true;
-            initials.hidden = false;
-          };
+      const saveBar = el("div", null, "profile-save-bar");
+      saveBar.hidden = true;
+      const saveText = el("span", "You have unsaved profile changes.");
+      const saveActions = el("div", null, "profile-save-actions");
+      const cancel = el("button", "Cancel", "profile-cancel");
+      cancel.type = "button";
+      const save = el("button", "Save changes", "profile-save");
+      save.type = "button";
+      saveActions.append(cancel, save);
+      saveBar.append(saveText, saveActions);
+      document.body.append(saveBar);
+
+      function updateHeading() {
+        heading.textContent = (u.firstName + " " + u.lastName).trim();
+        initials.textContent = (u.firstName?.[0] || "") + (u.lastName?.[0] || "");
+      }
+      updateHeading();
+
+      function dirty() {
+        return first.value.trim() !== u.firstName || last.value.trim() !== u.lastName || !!pendingPhoto;
+      }
+      function updateSaveBar() { saveBar.hidden = !editing || !dirty(); }
+      function setEditing(value) {
+        editing = value;
+        editFields.hidden = !value;
+        heading.hidden = value;
+        photoButton.hidden = !value;
+        edit.textContent = value ? "Editing profile" : "✎  Edit profile";
+        edit.disabled = value;
+        updateSaveBar();
+      }
+      function resetDraft() {
+        first.value = u.firstName || "";
+        last.value = u.lastName || "";
+        pendingPhoto = null;
+        if (previewUrl) { URL.revokeObjectURL(previewUrl); previewUrl = ""; }
+        if (u.avatar) {
+          photo.onload = () => { photo.hidden = false; initials.hidden = true; };
+          photo.onerror = () => { photo.hidden = true; initials.hidden = false; };
           photo.src = "/api/avatar?t=" + Date.now();
-          u.avatar = true;
-          tell("Profile photo updated.");
-        } catch (e) {
-          tell(e.message);
-        }
+        } else { photo.hidden = true; initials.hidden = false; }
         input.value = "";
+      }
+
+      edit.onclick = () => { setEditing(true); first.focus(); };
+      first.addEventListener("input", updateSaveBar);
+      last.addEventListener("input", updateSaveBar);
+      photoButton.onclick = () => input.click();
+      input.addEventListener("change", () => {
+        const f = input.files?.[0];
+        if (!f) return;
+        if (f.size > 10000000) { tell("Choose a photo smaller than 10 MB."); input.value = ""; return; }
+        pendingPhoto = f;
+        if (previewUrl) URL.revokeObjectURL(previewUrl);
+        previewUrl = URL.createObjectURL(f);
+        photo.onload = () => { photo.hidden = false; initials.hidden = true; };
+        photo.src = previewUrl;
+        updateSaveBar();
       });
+      cancel.onclick = () => { resetDraft(); setEditing(false); tell(""); };
+
+      async function encodePhoto(f) {
+        const bitmap = await createImageBitmap(f);
+        if (bitmap.width > 16000 || bitmap.height > 16000) { bitmap.close(); throw Error("Photo dimensions are too large."); }
+        const canvas = document.createElement("canvas");
+        canvas.width = canvas.height = 256;
+        const context = canvas.getContext("2d");
+        const side = Math.min(bitmap.width, bitmap.height);
+        context.drawImage(bitmap,(bitmap.width-side)/2,(bitmap.height-side)/2,side,side,0,0,256,256);
+        bitmap.close();
+        return canvas.toDataURL("image/jpeg",0.84);
+      }
+
+      save.onclick = async () => {
+        const firstName = first.value.trim(), lastName = last.value.trim();
+        if (!firstName || !lastName) { tell("First name and last name are required."); return; }
+        save.disabled = cancel.disabled = true;
+        save.textContent = "Saving…";
+        try {
+          if (firstName !== u.firstName || lastName !== u.lastName)
+            await api("profile", { firstName, lastName });
+          if (pendingPhoto) {
+            const image = await encodePhoto(pendingPhoto);
+            await api("avatar", { image });
+            u.avatar = true;
+          }
+          u.firstName = firstName; u.lastName = lastName;
+          updateHeading();
+          resetDraft();
+          setEditing(false);
+          tell("Profile saved.");
+        } catch (e) { tell(e.message); }
+        finally { save.disabled = cancel.disabled = false; save.textContent = "Save changes"; }
+      };
 
       logout.onclick = async () => {
         try {
+          saveBar.remove();
           await api("logout", {});
           current = null;
           root.classList.remove("profile-view");
           root.replaceChildren();
           showAuth();
           tell("Signed out.");
-        } catch (e) {
-          tell(e.message);
-        }
+        } catch (e) { tell(e.message); }
       };
 
       const dashboard = el("section", null, "profile-dashboard");
@@ -310,8 +376,7 @@
         const key = displayName.toLowerCase();
         const percent = Math.max(0, Math.min(100, Number(q.percent) || 0));
         const previous = bestQuizzes.get(key);
-        if (!previous || percent > previous.percent)
-          bestQuizzes.set(key, { name: displayName, percent });
+        if (!previous || percent > previous.percent) bestQuizzes.set(key, { name: displayName, percent });
       }
       if (!bestQuizzes.size) quizCard.append(el("p", "Your completed Orbonix quizzes will appear here.", "section-muted"));
       for (const q of bestQuizzes.values()) {
@@ -320,11 +385,9 @@
         quizCard.append(row);
       }
       dashboard.append(quizCard);
-
       const accountCard = el("article", null, "profile-section");
       accountCard.append(el("p", "ACCOUNT", "section-kicker"), el("h2", "Orbonix Account"));
-      const sync = el("p", "One account for Orbonix services. Your profile and astronomy progress can stay connected across supported Orbonix apps.", "section-muted");
-      accountCard.append(sync);
+      accountCard.append(el("p", "One account for Orbonix services. Your profile and astronomy progress can stay connected across supported Orbonix apps.", "section-muted"));
       dashboard.append(accountCard);
       root.append(dashboard);
     }
