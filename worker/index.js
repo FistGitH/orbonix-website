@@ -62,7 +62,7 @@ async function accountAPI(request,env,url){
  if(m!=="GET"&&request.headers.get("Origin")&&request.headers.get("Origin")!==url.origin)return json({error:"Invalid request origin."},403);
  if(p==="/api/register"&&m==="POST"){
   const b=await authBody(request),email=String(b.email||"").trim().toLowerCase(),first=String(b.firstName||"").trim(),last=String(b.lastName||"").trim(),password=String(b.password||"");
-  if(!first||!last||first.length>80||last.length>80||!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email)||email.length>254||password.length<12||password.length>128)return json({error:"Enter your name, a valid email and a password of 12–128 characters."},400);
+  if(!first||!last||first.length>80||last.length>80||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)||email.length>254||password.length<12||password.length>128)return json({error:"Enter your name, a valid email and a password of 12–128 characters."},400);
   if(await env.DB.prepare("SELECT id FROM users WHERE email=?").bind(email).first())return json({error:"An account with this email already exists."},409);
   const hp=await authPassword(password),id=crypto.randomUUID(),language=String(b.language||"en").slice(0,12);
   await env.DB.prepare("INSERT INTO users(id,first_name,last_name,email,password_hash,password_salt,language,created_at) VALUES(?,?,?,?,?,?,?,datetime('now'))").bind(id,first,last,email,hp.hash,hp.salt,language).run();
