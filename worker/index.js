@@ -39,7 +39,7 @@ const authToken=()=>authHex(crypto.getRandomValues(new Uint8Array(32)));
 async function authPassword(password,saltHex){
  const salt=saltHex?Uint8Array.from(saltHex.match(/../g)||[],x=>parseInt(x,16)):crypto.getRandomValues(new Uint8Array(16));
  const key=await crypto.subtle.importKey("raw",AUTH_ENC.encode(password),"PBKDF2",false,["deriveBits"]);
- const bits=await crypto.subtle.deriveBits({name:"PBKDF2",hash:"SHA-256",salt,iterations:210000},key,256);
+ const bits=await crypto.subtle.deriveBits({name:"PBKDF2",hash:"SHA-256",salt,iterations:100000},key,256);
  return{hash:authHex(bits),salt:authHex(salt)}
 }
 function authCookie(request){
