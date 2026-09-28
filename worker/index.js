@@ -53,7 +53,7 @@ const authPublic=u=>({id:u.id,firstName:u.firstName,lastName:u.lastName,email:u.
 async function authBody(request){try{return await request.json()}catch{throw Object.assign(new Error("Invalid JSON request."),{status:400})}}
 async function authUser(request,env){
  const t=authCookie(request);if(!t)return null;
- return env.DB.prepare("SELECT u.id,u.first_name AS firstName,u.last_name AS lastName,u.email,u.language FROM sessions s JOIN users u ON u.id=s.user_id WHERE s.token=? AND s.expires_at>datetime('now')").bind(t).first()
+ return env.DB.prepare("SELECT u.id,u.first_name AS firstName,u.last_name AS lastName,u.email,u.language,u.avatar FROM sessions s JOIN users u ON u.id=s.user_id WHERE s.token=? AND s.expires_at>datetime('now')").bind(t).first()
 }
 async function authSession(env,id){const t=authToken();await env.DB.prepare("INSERT INTO sessions(token,user_id,expires_at) VALUES(?,?,datetime('now','+30 days'))").bind(t,id).run();return t}
 async function accountAPI(request,env,url){
@@ -83,6 +83,18 @@ async function accountAPI(request,env,url){
  }
  const u=await authUser(request,env);
  if(!u)return json({error:"Please sign in."},401);
+ if(p==="/api/avatar"&&m==="POST"){
+  const b=await authBody(request),image=String(b.image||""),match=image.match(/^data:(image\\/(?:jpeg|png|webp));base64,([A-Za-z0-9+/=]+)$/);
+  if(!match)return json({error:"Choose a JPEG, PNG or WebP photo."},400);
+  let bytes;try{const raw=atob(match[2]);if(raw.length>400000)throw Error();bytes=Uint8Array.from(raw,c=>c.charCodeAt(0))}catch{return json({error:"Profile photo is too large."},413)}
+  await env.DB.prepare("UPDATE users SET avatar=? WHERE id=?").bind(bytes,u.id).run();
+  return json({ok:true})
+ }
+ if(p==="/api/avatar"&&m==="GET"){
+  const row=await env.DB.prepare("SELECT avatar FROM users WHERE id=?").bind(u.id).first();
+  if(!row?.avatar)return new Response(null,{status:404});
+  return new Response(row.avatar,{headers:{"content-type":"image/jpeg","cache-control":"private, no-store","x-content-type-options":"nosniff"}})
+ }
  if(p==="/api/me"&&m==="GET"){
   const q=await env.DB.prepare("SELECT quiz,percent,created_at AS createdAt FROM quiz_results WHERE user_id=? ORDER BY created_at DESC LIMIT 100").bind(u.id).all();
   return json({user:authPublic(u),quizzes:q.results||[],earned:[]})
@@ -100,4 +112,4 @@ async function accountAPI(request,env,url){
  return json({error:"API endpoint not found."},404)
 }
 
-export default{async fetch(request,env){try{const url=new URL(request.url);if(url.pathname==="/api/orbonix-ai")return await orbonixAI(request,env);if(["/api/register","/api/login","/api/logout","/api/me","/api/quiz"].includes(url.pathname))return await accountAPI(request,env,url);return env.ASSETS.fetch(request)}catch(e){return json({error:e?.message||"Orbonix service error."},e?.status||500)}}};
+export default{async fetch(request,env){try{const url=new URL(request.url);if(url.pathname==="/api/orbonix-ai")return await orbonixAI(request,env);if(["/api/register","/api/login","/api/logout","/api/me","/api/quiz","/api/avatar"].includes(url.pathname))return await accountAPI(request,env,url);return env.ASSETS.fetch(request)}catch(e){return json({error:e?.message||"Orbonix service error."},e?.status||500)}}};
