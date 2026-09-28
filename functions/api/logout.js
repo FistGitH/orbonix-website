@@ -1,0 +1,1 @@
+import{json,cookie,clearSession}from"../_auth.js";export async function onRequestPost({request,env}){try{const t=cookie(request,"orbonix_session");if(t&&env.DB)await env.DB.prepare("DELETE FROM sessions WHERE token=?").bind(t).run();return json({message:"Signed out."},200,{"set-cookie":clearSession})}catch{return json({message:"Signed out."},200,{"set-cookie":clearSession})}}
