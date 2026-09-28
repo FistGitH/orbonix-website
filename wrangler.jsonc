@@ -7,5 +7,12 @@
     "directory": "./public",
     "binding": "ASSETS",
     "run_worker_first": ["/api/*"]
-  }
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "orbonix-accounts",
+      "database_id": "143fa557-3f66-4408-91a9-c9123da34bbe"
+    }
+  ]
 }
