@@ -283,11 +283,12 @@
       function updateSaveBar() { saveBar.hidden = !editing || !dirty(); }
       function setEditing(value) {
         editing = value;
+        hero.classList.toggle("is-editing", value);
         editFields.hidden = !value;
         heading.hidden = value;
         photoButton.hidden = !value;
-        edit.textContent = value ? "Editing profile" : "✎  Edit profile";
-        edit.disabled = value;
+        edit.textContent = value ? "✕  Exit editing" : "✎  Edit profile";
+        edit.classList.toggle("exit-editing", value);
         updateSaveBar();
       }
       function resetDraft() {
@@ -303,7 +304,16 @@
         input.value = "";
       }
 
-      edit.onclick = () => { setEditing(true); first.focus(); };
+      edit.onclick = () => {
+        if (editing) {
+          resetDraft();
+          setEditing(false);
+          tell("");
+          return;
+        }
+        setEditing(true);
+        first.focus();
+      };
       first.addEventListener("input", updateSaveBar);
       last.addEventListener("input", updateSaveBar);
       photoButton.onclick = () => input.click();
