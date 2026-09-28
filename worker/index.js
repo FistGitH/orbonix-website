@@ -32,4 +32,72 @@ async function orbonixAI(request,env){
  if(!answer)return json({error:"Orbonix AI returned no text."},502);
  const used=current+1;await env.ORBONIX_AI_LIMITS.put(key,String(used),{expirationTtl:172800});return json({answer,remaining:10-used,links:relatedLinks(question)});
 }
-export default{async fetch(request,env){try{const url=new URL(request.url);if(url.pathname==="/api/orbonix-ai")return await orbonixAI(request,env);return env.ASSETS.fetch(request)}catch{return json({error:"Orbonix service error."},500)}}};
+
+const AUTH_ENC=new TextEncoder();
+const authHex=a=>[...new Uint8Array(a)].map(b=>b.toString(16).padStart(2,"0")).join("");
+const authToken=()=>authHex(crypto.getRandomValues(new Uint8Array(32)));
+async function authPassword(password,saltHex){
+ const salt=saltHex?Uint8Array.from(saltHex.match(/../g)||[],x=>parseInt(x,16)):crypto.getRandomValues(new Uint8Array(16));
+ const key=await crypto.subtle.importKey("raw",AUTH_ENC.encode(password),"PBKDF2",false,["deriveBits"]);
+ const bits=await crypto.subtle.deriveBits({name:"PBKDF2",hash:"SHA-256",salt,iterations:210000},key,256);
+ return{hash:authHex(bits),salt:authHex(salt)}
+}
+function authCookie(request){
+ const raw=request.headers.get("cookie")||"";
+ for(const p of raw.split(";")){const [k,...v]=p.trim().split("=");if(k==="orbonix_session")return decodeURIComponent(v.join("="))}
+ return null
+}
+const authSessionCookie=t=>"orbonix_session="+encodeURIComponent(t)+"; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=2592000";
+const authClearCookie="orbonix_session=; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=0";
+const authPublic=u=>({id:u.id,firstName:u.firstName,lastName:u.lastName,email:u.email,language:u.language||"en",avatar:false});
+async function authBody(request){try{return await request.json()}catch{throw Object.assign(new Error("Invalid JSON request."),{status:400})}}
+async function authUser(request,env){
+ const t=authCookie(request);if(!t)return null;
+ return env.DB.prepare("SELECT u.id,u.first_name AS firstName,u.last_name AS lastName,u.email,u.language FROM sessions s JOIN users u ON u.id=s.user_id WHERE s.token=? AND s.expires_at>datetime('now')").bind(t).first()
+}
+async function authSession(env,id){const t=authToken();await env.DB.prepare("INSERT INTO sessions(token,user_id,expires_at) VALUES(?,?,datetime('now','+30 days'))").bind(t,id).run();return t}
+async function accountAPI(request,env,url){
+ if(!env.DB)return json({error:"Account database is not configured."},503);
+ const p=url.pathname,m=request.method;
+ if(m!=="GET"&&request.headers.get("Origin")&&request.headers.get("Origin")!==url.origin)return json({error:"Invalid request origin."},403);
+ if(p==="/api/register"&&m==="POST"){
+  const b=await authBody(request),email=String(b.email||"").trim().toLowerCase(),first=String(b.firstName||"").trim(),last=String(b.lastName||"").trim(),password=String(b.password||"");
+  if(!first||!last||first.length>80||last.length>80||!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(email)||email.length>254||password.length<12||password.length>128)return json({error:"Enter your name, a valid email and a password of 12–128 characters."},400);
+  if(await env.DB.prepare("SELECT id FROM users WHERE email=?").bind(email).first())return json({error:"An account with this email already exists."},409);
+  const hp=await authPassword(password),id=crypto.randomUUID(),language=String(b.language||"en").slice(0,12);
+  await env.DB.prepare("INSERT INTO users(id,first_name,last_name,email,password_hash,password_salt,language,created_at) VALUES(?,?,?,?,?,?,?,datetime('now'))").bind(id,first,last,email,hp.hash,hp.salt,language).run();
+  const t=await authSession(env,id);
+  return json({message:"Account created.",user:{id,firstName:first,lastName:last,email,language,avatar:false}},201,{"Set-Cookie":authSessionCookie(t)})
+ }
+ if(p==="/api/login"&&m==="POST"){
+  const b=await authBody(request),email=String(b.email||"").trim().toLowerCase(),password=String(b.password||"");
+  const u=await env.DB.prepare("SELECT id,first_name AS firstName,last_name AS lastName,email,password_hash,password_salt,language FROM users WHERE email=?").bind(email).first();
+  if(!u)return json({error:"Incorrect email or password."},401);
+  const hp=await authPassword(password,u.password_salt);
+  if(hp.hash!==u.password_hash)return json({error:"Incorrect email or password."},401);
+  const t=await authSession(env,u.id);return json({user:authPublic(u)},200,{"Set-Cookie":authSessionCookie(t)})
+ }
+ if(p==="/api/logout"&&m==="POST"){
+  const t=authCookie(request);if(t)await env.DB.prepare("DELETE FROM sessions WHERE token=?").bind(t).run();
+  return json({ok:true},200,{"Set-Cookie":authClearCookie})
+ }
+ const u=await authUser(request,env);
+ if(!u)return json({error:"Please sign in."},401);
+ if(p==="/api/me"&&m==="GET"){
+  const q=await env.DB.prepare("SELECT quiz,percent,created_at AS createdAt FROM quiz_results WHERE user_id=? ORDER BY created_at DESC LIMIT 100").bind(u.id).all();
+  return json({user:authPublic(u),quizzes:q.results||[],earned:[]})
+ }
+ if(p==="/api/me"&&m==="PATCH"){
+  const b=await authBody(request),language=String(b.language||"").slice(0,12);if(!language)return json({error:"Unsupported language."},400);
+  await env.DB.prepare("UPDATE users SET language=? WHERE id=?").bind(language,u.id).run();return json({ok:true})
+ }
+ if(p==="/api/quiz"&&m==="POST"){
+  const b=await authBody(request),quiz=String(b.quiz||"").slice(0,100);let percent=Number(b.percent);
+  if(!Number.isFinite(percent)&&Array.isArray(b.answers)){const correct=b.answers.filter(v=>v===true||v?.correct===true).length;percent=b.answers.length?correct*100/b.answers.length:0}
+  percent=Math.max(0,Math.min(100,Number.isFinite(percent)?percent:0));
+  await env.DB.prepare("INSERT INTO quiz_results(id,user_id,quiz,percent,created_at) VALUES(?,?,?,?,datetime('now'))").bind(crypto.randomUUID(),u.id,quiz,percent).run();return json({percent:Math.round(percent)})
+ }
+ return json({error:"API endpoint not found."},404)
+}
+
+export default{async fetch(request,env){try{const url=new URL(request.url);if(url.pathname==="/api/orbonix-ai")return await orbonixAI(request,env);if(["/api/register","/api/login","/api/logout","/api/me","/api/quiz"].includes(url.pathname))return await accountAPI(request,env,url);return env.ASSETS.fetch(request)}catch(e){return json({error:e?.message||"Orbonix service error."},e?.status||500)}}};
