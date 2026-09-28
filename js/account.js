@@ -187,18 +187,6 @@
           tell(r.message);
         },
       );
-      form(
-        "Resend confirmation",
-        [["email", "Email", "email", "email"]],
-        "Send confirmation",
-        async (b) => tell((await api("resend", b)).message),
-      );
-      form(
-        "Forgot password",
-        [["email", "Email", "email", "email"]],
-        "Reset password",
-        async (b) => tell((await api("forgot", b)).message),
-      );
       root.append(
         el(
           "p",
