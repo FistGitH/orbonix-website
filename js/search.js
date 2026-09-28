@@ -1282,7 +1282,7 @@ function initializeOrbonixNavigation() {
     const moreWrap=document.createElement('div'); moreWrap.id='orbonix-more-control';
     const moreButton=document.createElement('button'); moreButton.type='button'; moreButton.id='orbonix-more-button'; moreButton.textContent='⋯'; moreButton.setAttribute('aria-label','More'); moreButton.title='More'; moreButton.setAttribute('aria-expanded','false'); moreButton.setAttribute('aria-controls','orbonix-more-menu');
     const moreMenu=document.createElement('div'); moreMenu.id='orbonix-more-menu'; moreMenu.hidden=true;
-    const morePages=['Orbonix AI','Moon Phase','Sky Map'];
+    const morePages=['Orbonix AI','Moon Phase','Sky Map','Observation Log'];
     morePages.forEach(title=>{const page=findOrbonixPage(title);if(page)moreMenu.appendChild(createOrbonixLink(page,'orbonix-more-link'));});
     moreWrap.append(moreButton,moreMenu);
     function closeMore(){moreMenu.hidden=true;moreButton.setAttribute('aria-expanded','false');}
