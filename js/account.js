@@ -204,33 +204,51 @@
     }
     async function showProfile() {
       const u = profile.user;
-      const heading = el("h2");
-      heading.translate = false;
-      heading.textContent = u.firstName + " " + u.lastName;
-      root.append(heading);
-      const email = el("p", u.email);
-      email.translate = false;
-      root.append(email);
+      root.classList.add("profile-view");
+
+      const hero = el("section", null, "profile-card");
+      const avatarWrap = el("div", null, "profile-avatar-wrap");
       const photo = el("img");
       photo.alt = "Profile photo";
-      photo.width = 96;
-      photo.height = 96;
+      photo.width = 128;
+      photo.height = 128;
       photo.className = "account-avatar";
-      if (u.avatar) photo.src = "/api/avatar";
-      else photo.hidden = true;
-      root.append(photo);
-      const label = el("label", "Profile photo");
+      const initials = el("div", (u.firstName?.[0] || "") + (u.lastName?.[0] || ""), "avatar-fallback");
+      initials.setAttribute("aria-hidden", "true");
+      if (u.avatar) {
+        photo.src = "/api/avatar?t=" + Date.now();
+        initials.hidden = true;
+      } else photo.hidden = true;
+      avatarWrap.append(photo, initials);
+
+      const upload = el("label", "Change photo", "photo-button");
       const input = el("input");
       input.type = "file";
       input.accept = "image/png,image/jpeg,image/webp";
-      label.append(input);
-      root.append(label);
+      input.hidden = true;
+      upload.append(input);
+      avatarWrap.append(upload);
+
+      const identity = el("div", null, "profile-identity");
+      const heading = el("h2");
+      heading.translate = false;
+      heading.textContent = u.firstName + " " + u.lastName;
+      const email = el("p", u.email, "profile-email");
+      email.translate = false;
+      const badge = el("span", "ORBONIX MEMBER", "profile-badge");
+      identity.append(badge, heading, email);
+
+      const logout = el("button", "Sign out", "profile-signout");
+      logout.type = "button";
+      hero.append(avatarWrap, identity, logout);
+      root.append(hero);
+
       input.addEventListener("change", async () => {
         const f = input.files[0];
         if (!f) return;
         try {
-          if (f.size > 10000000)
-            throw Error("Choose a photo smaller than 10 MB.");
+          tell("Processing profile photo…");
+          if (f.size > 10000000) throw Error("Choose a photo smaller than 10 MB.");
           const bitmap = await createImageBitmap(f);
           if (bitmap.width > 16000 || bitmap.height > 16000) {
             bitmap.close();
@@ -240,32 +258,25 @@
           canvas.width = canvas.height = 256;
           const context = canvas.getContext("2d");
           const side = Math.min(bitmap.width, bitmap.height);
-          context.drawImage(
-            bitmap,
-            (bitmap.width - side) / 2,
-            (bitmap.height - side) / 2,
-            side,
-            side,
-            0,
-            0,
-            256,
-            256,
-          );
+          context.drawImage(bitmap,(bitmap.width-side)/2,(bitmap.height-side)/2,side,side,0,0,256,256);
           bitmap.close();
-          await api("avatar", { image: canvas.toDataURL("image/jpeg", 0.85) });
+          await api("avatar", { image: canvas.toDataURL("image/jpeg", 0.84) });
           photo.src = "/api/avatar?t=" + Date.now();
           photo.hidden = false;
-          tell("Photo saved.");
+          initials.hidden = true;
+          u.avatar = true;
+          tell("Profile photo updated.");
         } catch (e) {
           tell(e.message);
         }
         input.value = "";
       });
-      const logout = el("button", "Sign out");
+
       logout.onclick = async () => {
         try {
           await api("logout", {});
           current = null;
+          root.classList.remove("profile-view");
           root.replaceChildren();
           showAuth();
           tell("Signed out.");
@@ -273,44 +284,25 @@
           tell(e.message);
         }
       };
-      root.append(logout);
-      root.append(el("h2", "Your quiz results"));
-      for (const q of profile.quizzes || []) {
-        const p = el(
-          "p",
-          q.quiz.replaceAll("-", " ") + " · " + Math.round(q.percent) + "%",
-        );
-        root.append(p);
+
+      const dashboard = el("section", null, "profile-dashboard");
+      const quizCard = el("article", null, "profile-section");
+      quizCard.append(el("p", "LEARNING", "section-kicker"), el("h2", "Quiz progress"));
+      const quizzes = profile.quizzes || [];
+      if (!quizzes.length) quizCard.append(el("p", "Your completed Orbonix quizzes will appear here.", "section-muted"));
+      for (const q of quizzes) {
+        const row = el("div", null, "quiz-row");
+        row.append(el("span", q.quiz.replaceAll("-", " ")), el("strong", Math.round(q.percent) + "%"));
+        quizCard.append(row);
       }
-      root.append(el("h2", "Achievements"));
-      try {
-        const data = await api("achievements");
-        root.append(
-          el(
-            "p",
-            "Percent of all confirmed accounts that earned each achievement.",
-          ),
-        );
-        const grid = el("div", null, "achievement-grid");
-        for (const a of data.achievements) {
-          const earned = profile.earned?.some((e) => e.achievement === a.id),
-            card = el(
-              "article",
-              null,
-              "achievement " + (earned ? "earned" : ""),
-            );
-          card.append(
-            el("h3", a.name),
-            el("p", a.description),
-            el("strong", earned ? "Unlocked" : "Locked"),
-            el("p", a.percent + "%"),
-          );
-          grid.append(card);
-        }
-        root.append(grid);
-      } catch (e) {
-        tell(e.message);
-      }
+      dashboard.append(quizCard);
+
+      const accountCard = el("article", null, "profile-section");
+      accountCard.append(el("p", "ACCOUNT", "section-kicker"), el("h2", "Orbonix Account"));
+      const sync = el("p", "One account for Orbonix services. Your profile and astronomy progress can stay connected across supported Orbonix apps.", "section-muted");
+      accountCard.append(sync);
+      dashboard.append(accountCard);
+      root.append(dashboard);
     }
     if (profile?.user) await showProfile();
     else showAuth();
