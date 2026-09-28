@@ -91,7 +91,7 @@ async function accountAPI(request,env,url){
  }
  const u=await authUser(request,env);
  if(!u)return json({error:"Please sign in."},401);
-  if(p==="/api/profile"&&m==="PATCH"){
+  if(p==="/api/profile"&&(m==="PATCH"||m==="POST")){
   const b=await authBody(request),firstName=String(b.firstName||"").trim().slice(0,60),lastName=String(b.lastName||"").trim().slice(0,60);
   if(!firstName||!lastName)return json({error:"First name and last name are required."},400);
   await env.DB.prepare("UPDATE users SET first_name=?,last_name=? WHERE id=?").bind(firstName,lastName,u.id).run();
