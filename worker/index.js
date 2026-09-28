@@ -156,7 +156,8 @@ async function accountAPI(request,env,url){
   await observationTables(env);
   const id=decodeURIComponent(p.slice("/api/observation-photo/".length)),row=await env.DB.prepare("SELECT mime,data FROM observation_photos WHERE observation_id=? AND user_id=?").bind(id,u.id).first();
   if(!row?.data)return new Response(null,{status:404});
-  return new Response(row.data,{headers:{"content-type":row.mime,"cache-control":"private, no-store","x-content-type-options":"nosniff"}})
+  const photoBytes=row.data instanceof ArrayBuffer?new Uint8Array(row.data):row.data instanceof Uint8Array?row.data:Array.isArray(row.data)?new Uint8Array(row.data):new Uint8Array(Object.values(row.data));
+  return new Response(photoBytes.buffer.slice(photoBytes.byteOffset,photoBytes.byteOffset+photoBytes.byteLength),{headers:{"content-type":row.mime||"image/jpeg","content-length":String(photoBytes.byteLength),"cache-control":"private, no-store","x-content-type-options":"nosniff"}})
  }
  if(p==="/api/quiz"&&m==="POST"){
   const b=await authBody(request),quiz=String(b.quiz||"").slice(0,100);let percent=Number(b.percent);
