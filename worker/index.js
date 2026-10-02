@@ -55,12 +55,6 @@ async function authUser(request,env){
  const t=authCookie(request);if(!t)return null;
  return env.DB.prepare("SELECT u.id,u.first_name AS firstName,u.last_name AS lastName,u.email,u.language,u.avatar FROM sessions s JOIN users u ON u.id=s.user_id WHERE s.token=? AND s.expires_at>datetime('now')").bind(t).first()
 }
-async function tiktokPrivateAccess(request,env){
- if(!env.DB||!env.TIKTOK_ADMIN_EMAIL)return false;
- const u=await authUser(request,env);
- if(!u)return false;
- return String(u.email||"").trim().toLowerCase()===String(env.TIKTOK_ADMIN_EMAIL||"").trim().toLowerCase();
-}
 async function authSession(env,id){const t=authToken();await env.DB.prepare("INSERT INTO sessions(token,user_id,expires_at) VALUES(?,?,datetime('now','+30 days'))").bind(t,id).run();return t}
 async function appSessionTable(env){
  await env.DB.prepare("CREATE TABLE IF NOT EXISTS app_sessions (token_hash TEXT PRIMARY KEY,user_id TEXT NOT NULL,device_name TEXT NOT NULL DEFAULT '',created_at TEXT NOT NULL,expires_at TEXT NOT NULL,FOREIGN KEY(user_id) REFERENCES users(id) ON DELETE CASCADE)").run();
@@ -309,4 +303,4 @@ async function accountAPI(request,env,url){
  return json({error:"API endpoint not found."},404)
 }
 
-export default{async fetch(request,env){try{const url=new URL(request.url);if(url.pathname==="/api/orbonix-ai")return await orbonixAI(request,env);if(url.pathname.startsWith("/api/app/"))return await appAPI(request,env,url);if(["/api/register","/api/login","/api/logout","/api/me","/api/quiz","/api/avatar","/api/profile","/api/observations"].includes(url.pathname)||url.pathname.startsWith("/api/observations/")||url.pathname.startsWith("/api/observation-photo/"))return await accountAPI(request,env,url);if(url.pathname.startsWith("/tiktok/connect")||url.pathname.startsWith("/tiktok/callback")){if(!await tiktokPrivateAccess(request,env))return new Response("Not Found",{status:404,headers:{"cache-control":"no-store","x-robots-tag":"noindex, nofollow"}})}return env.ASSETS.fetch(request)}catch(e){return json({error:e?.message||"Orbonix service error."},e?.status||500)}}};
+export default{async fetch(request,env){try{const url=new URL(request.url);if(url.pathname==="/api/orbonix-ai")return await orbonixAI(request,env);if(url.pathname.startsWith("/api/app/"))return await appAPI(request,env,url);if(["/api/register","/api/login","/api/logout","/api/me","/api/quiz","/api/avatar","/api/profile","/api/observations"].includes(url.pathname)||url.pathname.startsWith("/api/observations/")||url.pathname.startsWith("/api/observation-photo/"))return await accountAPI(request,env,url);return env.ASSETS.fetch(request)}catch(e){return json({error:e?.message||"Orbonix service error."},e?.status||500)}}};
